@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CCellPipeline : CPipeline
 
+@property (nonatomic , class, readonly) NSString *pName;
 
 @end
 

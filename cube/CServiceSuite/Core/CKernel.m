@@ -34,6 +34,7 @@ static CKernel *kernel = nil;
     dispatch_once(&onceToken, ^{
         kernel = [CKernel new];
         [kernel initializeData];
+        [kernel installDefaultModulesAndPipeline];
     });
     return kernel;
 }
@@ -44,7 +45,9 @@ static CKernel *kernel = nil;
 - (void)initializeData{
     self.pipelines = [NSMutableDictionary dictionary];
     self.modules = [NSMutableDictionary dictionary];
-    
+}
+
+- (void)installDefaultModulesAndPipeline{
     [self installModule:[CAuthService new]];
     [self installPipeline:[CCellPipeline new]];
 }
@@ -52,23 +55,32 @@ static CKernel *kernel = nil;
 #pragma mark - invoke
 
 -(void)startUp:(CKernelConfig *)config completion:(void (^)(void))completion failure:(void (^)(void))failure{
+    
+    // set log level according to config.
+    
     // bundle default.
     [self bundleDefault];
     
-    
-    
-    [self checkAuth:config completion:^(CToken *token) {
-        if (!token || !token.isValid) { // failure.
-            if (failure) {
-                failure();
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        
+        [self checkAuth:config completion:^(CAuthToken *token) {
+            if (!token || !token.isValid) { // failure.
+                if (failure) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        failure();
+                    });
+                }
             }
-        }
-        else{        // success.
-            if (completion) {
-                completion();
+            else{
+                // success.
+                if (completion) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion();
+                    });
+                }
             }
-        }
-    }];
+        }];
+    });
 }
 
 -(void)shutdown{
@@ -84,9 +96,11 @@ static CKernel *kernel = nil;
 }
 
 #pragma mark - auth
-- (void)checkAuth:(CKernelConfig *)config completion:(void(^)(CToken *token))completion{
+- (void)checkAuth:(CKernelConfig *)config completion:(void(^)(CAuthToken *token))completion{
     NSAssert(config, @"kernel can't check auth with nil config.");
     CAuthService *auth = (CAuthService *)[self getModule:CAuthService.mName];
+    
+    // defense code.
     if (!auth) {
         NSLog(@"Kernel can't find auth module.");
         return;
@@ -97,7 +111,8 @@ static CKernel *kernel = nil;
         return;
     }
     
-    [auth check:config.domain appKey:config.appKey address:config.address completion:^(CToken * _Nonnull token) {
+    
+    [auth check:config.domain appKey:config.appKey address:config.address completion:^(CAuthToken * _Nonnull token) {
         if (!token) {
             NSLog(@"Kernel Auth token is invalid");
         }
@@ -107,18 +122,51 @@ static CKernel *kernel = nil;
     }];
 }
 
+// async use
+- (CAuthToken *)checkAuth:(CKernelConfig *)config{
+    NSAssert(config, @"kernel can't check auth with nil config.");
+    CAuthService *auth = (CAuthService *)[self getModule:CAuthService.mName];
+    
+    // defense code.
+    if (!auth) {
+        NSLog(@"Kernel can't find auth module.");
+        return nil;
+    }
+    
+    if (!config.domain || !config.appKey) {
+        NSLog(@"Kernel config error with nil domain or nil appkey.");
+        return nil;
+    }
+    
+    __block CAuthToken *t = nil;
+    AnyPromise *checkPromise = [AnyPromise promiseWithAdapterBlock:^(PMKAdapter  _Nonnull adapter) {
+        [auth check:config.domain appKey:config.appKey address:config.address completion:^(CAuthToken * _Nonnull token) {
+              if (!token) {
+                  NSLog(@"Kernel Auth token is invalid");
+              }
+            adapter(token,nil);
+          }];
+    }];
+    checkPromise.then(^(CAuthToken *token){
+        t = token;
+    });
+    PMKHang(checkPromise);
+    return t;
+}
+
 
 
 #pragma mark - configure
 
 - (void)bundleDefault{
-    CPipeline *cell = [self getPipeline:@"cell"];
+    // default all modules's pipeline is cellpipe.
+    CPipeline *cell = [self getPipeline:CCellPipeline.pName];
     for (CModule *module in self.modules.allValues) {
         module.pipeline = cell;
     }
 }
 
-- (void)configModules:(CKernelConfig *)config token:(CToken *)token{
+- (void)configModules:(CKernelConfig *)config token:(CAuthToken *)token{
     NSAssert(token, @"can't config modules with nil token.");
     for (CPipeline *pipeline in self.pipelines.allValues) {
         [pipeline setRemoteAddress:token.pDescription.address port:7070];

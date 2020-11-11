@@ -14,7 +14,7 @@
 
 #import "CMessageService.h"
 
-
+#import "CContactService.h"
 
 
 @interface CEngine ()
@@ -43,6 +43,16 @@ static CEngine *engine = nil;
 - (void)startWithConfig:(CKernelConfig *)config{
     [self.kernel startUp:config completion:^{
         
+        
+        
+//        CContactService *contact = (CContactService *)[self getModule:CContactService.mName];
+//        CAuthService *auth = (CAuthService *)[self getModule:CAuthService.mName];
+//        CContact *me = [[CContact alloc] initWithId:1234567 domain:auth.token.domain];
+//        me.name = @"wowowo1";
+//        CDevice *device = [[CDevice alloc] initWithName:@"iOS" platform:@"ipod gold"];
+//        [me addDevice:device];
+//        [contact setCurrentContact:me];
+        
     } failure:^{
         
     }]; //TODO:  start with config
@@ -62,11 +72,12 @@ static CEngine *engine = nil;
 #pragma mark - install
 
 - (void)initializePipeline{
-//    [self.kernel installPipeline:[CCellPipeline new]];
+//    [self.kernel installPipeline:[CCellPipeline new]]; // already install in kernel.
 }
 
 - (void)initializeModules{
-//    [self.kernel installModule:[CMessageService new]];
+    [self.kernel installModule:[CMessageService new]];
+    [self.kernel installModule:[CContactService new]];
 }
 
 #pragma mark - Public
@@ -75,17 +86,19 @@ static CEngine *engine = nil;
     return [self.kernel getModule:moduleName];
 }
 
-//- (id)getContactService{
-//    return self.kernel getModule:c
-//}
+-(CContactService *)contactService{
+    return (CContactService *)[self.kernel getModule:CContactService.mName];
+}
 
-//- (id)getMessagingService{
-//    return <#expression#>
-//}
+-(CMessageService *)messageService{
+    return (CMessageService *)[self.kernel getModule:CMessageService.mName];
+}
 
-//- (CAuthService *)getAuthService{
-//    return (CAuthService *)[self.kernel getModule:CAuthService.name];
-//}
+-(CAuthService *)authService{
+    return (CAuthService *)[self.kernel getModule:CAuthService.mName];
+}
+
+
 
 
 

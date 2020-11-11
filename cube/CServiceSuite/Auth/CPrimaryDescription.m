@@ -7,6 +7,7 @@
 //
 
 #import "CPrimaryDescription.h"
+#import "CJsonableUtil.h"
 
 @implementation CPrimaryDescription
 
@@ -33,8 +34,6 @@
         @"primaryContent":self.primaryContent,
     };
 }
-
-
 
 
 @end

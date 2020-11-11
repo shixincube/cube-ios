@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CCore.h"
-#import "CCellPipeLine.h"
+#import "CCellPipeline.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)shareKernel;
 
 - (void)startUp:(CKernelConfig *)config completion:(void(^)(void))completion failure:(void(^)(void))failure;
+
+//- (void)startUp:(CKernelConfig *)config;
 
 - (void)shutdown;
 

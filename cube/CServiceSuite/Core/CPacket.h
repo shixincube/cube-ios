@@ -15,11 +15,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , copy) NSString *name;
 
-@property (nonatomic , strong) NSDictionary *data; // temp use nsdata
-// sequence number : sn
-@property (nonatomic , assign) long sn;
+@property (nonatomic , strong) NSDictionary *data;
 
-- (int)getStateCode;
+@property (nonatomic , assign) int64_t sn;
+
+@property (nonatomic , strong) NSDictionary *state; // 状态信息
+
+- (instancetype)initWithName:(NSString *)name data:(NSDictionary *)data sn:(long)sn;
+
+- (int)getStateCode; //从状态信息获取状态码
 
 
 @end

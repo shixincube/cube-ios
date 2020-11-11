@@ -8,7 +8,10 @@
 
 #import "CCellPipeline.h"
 #import <cell/cell.h>
+#import "CAuthService.h"
+#import "CKernel.h"
 
+static NSString *_pName = @"Cell";
 
 @interface CCellPipeline ()<CellTalkListener>
 {
@@ -42,9 +45,13 @@
 }
 
 -(instancetype)init{
-    if (self = [super initWithName:@"cell"]) {
+    if (self = [super initWithName:CCellPipeline.pName]) {
     }
     return self;
+}
+
++(NSString *)pName{
+    return _pName;
 }
 
 - (BOOL)_speakToCellet:(NSString *)cellet action:(NSString *)action params:(NSDictionary *)params{
@@ -52,9 +59,21 @@
     if (params) {
         [dialect appendParam:@"data" json:params[@"data"]];
         [dialect appendParam:@"sn" longlongValue:[params[@"sn"] longLongValue]];
+        
+        
+        //TODO: need optimize here.
+        CAuthService *auth = (CAuthService *)[[CKernel shareKernel] getModule:CAuthService.mName];
+        
+        if (auth.token.code) {
+            [dialect appendParam:@"token" stringValue:auth.token.code];
+        }
     }
     NSLog(@"send to cellet : %@ , action : %@ , data : %@",cellet,action,params);
-    return [self.nucleus.talkService speak:cellet withPrimitive:dialect];
+    BOOL success = [self.nucleus.talkService speak:cellet withPrimitive:dialect];
+    if (success) {
+        NSLog(@"send action %@ success",action);
+    }
+    return success;
 }
 
 @end
@@ -82,14 +101,17 @@
     
     long timeStamp = [[NSDate date] timeIntervalSince1970] * 1000;
     
-    NSString *sn = [NSString stringWithFormat:@"%ld",packet.sn];
-    // put response into map cache.
-    [self.responseMap setObject:@{
-        @"destination":destination,
-        @"handle":response,
-        @"timestamp":[NSNumber numberWithLong:timeStamp],
-        @"action":packet.name
-    } forKey:sn];
+    NSString *sn = [NSString stringWithFormat:@"%lld",packet.sn];
+    
+    if (response) {
+        // put response into map cache.
+        [self.responseMap setObject:@{
+            @"destination":destination,
+            @"handle":response,
+            @"timestamp":[NSNumber numberWithLong:timeStamp],
+            @"action":packet.name
+        } forKey:sn];
+    }
     
     // TODO: ack time out process. remove response from map cache.
     
@@ -107,13 +129,11 @@
     // super trigger listeners
     CellActionDialect *action = [[CellActionDialect alloc] initWithPrimitive:primitive];
     
-    NSLog(@"cell pipeline on listened destination : %@ , action : %@ , data : %@ ,sn : %ld",cellet,action.name,[action getParamAsJson:@"data"],[action getParamAsLong:@"sn"]);
+    NSLog(@"cell pipeline on listened destination : %@ , action : %@ , data : %@ ,sn : %ld ,state : %@",cellet,action.name,[action getParamAsJson:@"data"],[action getParamAsLong:@"sn"],[action getParamAsJson:@"state"]);
     
     long sn = [action getParamAsLong:@"sn"];
-    CPacket *packet = [CPacket new];
-    packet.data = [action getParamAsJson:@"data"];
-    packet.name = action.name;
-    packet.sn = sn;
+    CPacket *packet = [[CPacket alloc] initWithName:action.name data:[action getParamAsJson:@"data"] sn:sn];
+    packet.state = [action getParamAsJson:@"state"];
     NSDictionary *responseJson = [self.responseMap objectForKey:[NSString stringWithFormat:@"%ld",sn]];
     void (^response)(CPacket *) = responseJson[@"handle"];
     if (response) {

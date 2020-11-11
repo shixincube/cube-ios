@@ -11,6 +11,10 @@
 // TODO: condition
 //#import "CMessageService.h"
 
+@class CContactService;
+@class CMessageService;
+@class CAuthService;
+
 #import "CKernel.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -21,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)startWithConfig:(CKernelConfig *)config;
 
+
+- (CContactService *)contactService;
+- (CMessageService *)messageService;
+- (CAuthService *)authService;
 
 
 @end

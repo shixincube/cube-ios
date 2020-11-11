@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import "CPrimaryDescription.h"
+#import "CJsonable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CToken : NSObject
+@interface CAuthToken : NSObject <CJsonable>
 
 @property (nonatomic , copy) NSString *code;
 
@@ -30,9 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) CPrimaryDescription *pDescription;
 
-- (NSDictionary *)toJson;
-
+// 使用dialect data初始化
 - (instancetype)initWithJson:(NSDictionary *)json;
+
+// 使用jons初始化 请使用 jsonable方式
 
 @end
 

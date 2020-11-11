@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CPacket.h"
 
-NS_ASSUME_NONNULL_BEGIN
+//NS_ASSUME_NONNULL_BEGIN
 
 /*
  * pipeline 约束了管道的行为，name、address、port是必要属性，使用name区分及获取管道，address及port为管道的连接地址
@@ -77,4 +77,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END
+//NS_ASSUME_NONNULL_END

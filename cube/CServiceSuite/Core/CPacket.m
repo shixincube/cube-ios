@@ -11,14 +11,26 @@
 
 @implementation CPacket
 
+
+-(instancetype)initWithName:(NSString *)name data:(NSDictionary *)data sn:(long)sn{
+    if (self = [super init]) {
+        self.name = name;
+        self.data = data;
+        if (sn) {
+            self.sn = sn;
+        }
+    }
+    return self;
+}
+
 -(int)getStateCode{
-    if (self.data[@"data"][@"state"]) {
-        return [self.data[@"data"][@"state"][@"code"] intValue];
+    if (self.state[@"code"]) {
+        return [self.state[@"code"] intValue];
     }
     return -1;
 }
 
--(long)sn{
+-(int64_t)sn{
     if (!_sn) {
         _sn = [CellUtil generateUnsignedSerialNumber];
     }

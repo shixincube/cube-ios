@@ -14,14 +14,25 @@
 		820C78FD24FF6C0E0021E494 /* CCellPipeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 820C78FB24FF6C0E0021E494 /* CCellPipeline.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		820C78FE24FF6C0E0021E494 /* CCellPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 820C78FC24FF6C0E0021E494 /* CCellPipeline.m */; };
 		820C790824FFA6210021E494 /* cell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820C790624FFA34F0021E494 /* cell.framework */; };
+		820E2B0025393C09007FFC3F /* CServiceSuiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E2AFF25393C09007FFC3F /* CServiceSuiteTests.m */; };
+		820E2B0225393C0A007FFC3F /* CServiceSuite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8244B00524F763D700958B71 /* CServiceSuite.framework */; };
+		820E2B0925393C89007FFC3F /* CKernelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E2B0825393C89007FFC3F /* CKernelTests.m */; };
+		820E2B0B25393CB5007FFC3F /* CPipelineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E2B0A25393CB5007FFC3F /* CPipelineTests.m */; };
+		820E2B0F25393EBC007FFC3F /* CAuthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E2B0E25393EBC007FFC3F /* CAuthTests.m */; };
+		820E2B1325393EF8007FFC3F /* CContactTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E2B1225393EF8007FFC3F /* CContactTests.m */; };
+		820E2B1525393F03007FFC3F /* CMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E2B1425393F03007FFC3F /* CMessageTests.m */; };
+		820E2B1725394282007FFC3F /* cell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820C790624FFA34F0021E494 /* cell.framework */; };
+		820E2B1B253944A1007FFC3F /* cell.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 820C790624FFA34F0021E494 /* cell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		820F7696253155B0008E1164 /* CPrimaryDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 820F7694253155B0008E1164 /* CPrimaryDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		820F7697253155B0008E1164 /* CPrimaryDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 820F7695253155B0008E1164 /* CPrimaryDescription.m */; };
 		820FEE5225305D6300AD1519 /* CAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = 820FEE5025305D6300AD1519 /* CAuthService.m */; };
 		820FEE5325305D6300AD1519 /* CAuthService.h in Headers */ = {isa = PBXBuildFile; fileRef = 820FEE5125305D6300AD1519 /* CAuthService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		820FEE5725305D6900AD1519 /* CMessageService.h in Headers */ = {isa = PBXBuildFile; fileRef = 820FEE5525305D6900AD1519 /* CMessageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		820FEE5825305D6900AD1519 /* CMessageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 820FEE5625305D6900AD1519 /* CMessageService.m */; };
-		820FEE5C25306C8F00AD1519 /* CToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 820FEE5A25306C8F00AD1519 /* CToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		820FEE5D25306C8F00AD1519 /* CToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 820FEE5B25306C8F00AD1519 /* CToken.m */; };
+		820FEE5C25306C8F00AD1519 /* CAuthToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 820FEE5A25306C8F00AD1519 /* CAuthToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		820FEE5D25306C8F00AD1519 /* CAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 820FEE5B25306C8F00AD1519 /* CAuthToken.m */; };
+		8215FFCB2552941400283FDA /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8215FFCA2552941400283FDA /* PromiseKit.framework */; };
+		8215FFCE2552A0F200283FDA /* PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 8215FFCD2552A0F200283FDA /* PrefixHeader.pch */; };
 		8216FEEF2508C34A00028D32 /* CSubject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8216FEED2508C34A00028D32 /* CSubject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8216FEF02508C34A00028D32 /* CSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8216FEEE2508C34A00028D32 /* CSubject.m */; };
 		8216FEF92508D3D000028D32 /* CSafeWeakRefArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8216FEF72508D3D000028D32 /* CSafeWeakRefArray.h */; };
@@ -44,7 +55,45 @@
 		8245BABC24FE3A36003631A2 /* CEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8245BABA24FE3A36003631A2 /* CEngine.m */; };
 		8245BAC024FE4632003631A2 /* CPacket.h in Headers */ = {isa = PBXBuildFile; fileRef = 8245BABE24FE4632003631A2 /* CPacket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8245BAC124FE4632003631A2 /* CPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8245BABF24FE4632003631A2 /* CPacket.m */; };
+		824D0FDD2533F17A00D75261 /* CContactService.h in Headers */ = {isa = PBXBuildFile; fileRef = 824D0FDB2533F17A00D75261 /* CContactService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		824D0FDE2533F17A00D75261 /* CContactService.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D0FDC2533F17A00D75261 /* CContactService.m */; };
+		824D0FE12533F97200D75261 /* CEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 824D0FDF2533F97200D75261 /* CEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		824D0FE22533F97200D75261 /* CEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D0FE02533F97200D75261 /* CEntity.m */; };
+		824D0FE52534012900D75261 /* CContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 824D0FE32534012900D75261 /* CContact.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		824D0FE62534012900D75261 /* CContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D0FE42534012900D75261 /* CContact.m */; };
+		824D0FE9253401FC00D75261 /* CDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 824D0FE7253401FC00D75261 /* CDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		824D0FEA253401FC00D75261 /* CDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D0FE8253401FC00D75261 /* CDevice.m */; };
+		824D0FEE2534315100D75261 /* CJsonable.h in Headers */ = {isa = PBXBuildFile; fileRef = 824D0FEC2534315100D75261 /* CJsonable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		824D0FF225343BC200D75261 /* CJsonableUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 824D0FF025343BC200D75261 /* CJsonableUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		824D0FF325343BC200D75261 /* CJsonableUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D0FF125343BC200D75261 /* CJsonableUtil.m */; };
+		82A0B42A254FB34200F884BE /* CMessagePipelineListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 82A0B428254FB34200F884BE /* CMessagePipelineListener.h */; };
+		82A0B42B254FB34200F884BE /* CMessagePipelineListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A0B429254FB34200F884BE /* CMessagePipelineListener.m */; };
+		82AD3FB4253844770072B40A /* CMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 82AD3FB2253844770072B40A /* CMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82AD3FB5253844770072B40A /* CMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AD3FB3253844770072B40A /* CMessage.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		820E2B0325393C0A007FFC3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8244AFFC24F763D700958B71 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8244B00424F763D700958B71;
+			remoteInfo = CServiceSuite;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		820E2B1A25394490007FFC3F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				820E2B1B253944A1007FFC3F /* cell.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		82085B4A2509D4E700A9BFF0 /* CThreadSafeArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CThreadSafeArray.h; sourceTree = "<group>"; };
@@ -54,14 +103,24 @@
 		820C78FB24FF6C0E0021E494 /* CCellPipeline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCellPipeline.h; sourceTree = "<group>"; };
 		820C78FC24FF6C0E0021E494 /* CCellPipeline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCellPipeline.m; sourceTree = "<group>"; };
 		820C790624FFA34F0021E494 /* cell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = cell.framework; sourceTree = "<group>"; };
+		820E2AFD25393C09007FFC3F /* CServiceSuiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CServiceSuiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		820E2AFF25393C09007FFC3F /* CServiceSuiteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CServiceSuiteTests.m; sourceTree = "<group>"; };
+		820E2B0125393C0A007FFC3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		820E2B0825393C89007FFC3F /* CKernelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKernelTests.m; sourceTree = "<group>"; };
+		820E2B0A25393CB5007FFC3F /* CPipelineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPipelineTests.m; sourceTree = "<group>"; };
+		820E2B0E25393EBC007FFC3F /* CAuthTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthTests.m; sourceTree = "<group>"; };
+		820E2B1225393EF8007FFC3F /* CContactTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactTests.m; sourceTree = "<group>"; };
+		820E2B1425393F03007FFC3F /* CMessageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessageTests.m; sourceTree = "<group>"; };
 		820F7694253155B0008E1164 /* CPrimaryDescription.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPrimaryDescription.h; sourceTree = "<group>"; };
 		820F7695253155B0008E1164 /* CPrimaryDescription.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPrimaryDescription.m; sourceTree = "<group>"; };
 		820FEE5025305D6300AD1519 /* CAuthService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAuthService.m; sourceTree = "<group>"; };
 		820FEE5125305D6300AD1519 /* CAuthService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAuthService.h; sourceTree = "<group>"; };
 		820FEE5525305D6900AD1519 /* CMessageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMessageService.h; sourceTree = "<group>"; };
 		820FEE5625305D6900AD1519 /* CMessageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMessageService.m; sourceTree = "<group>"; };
-		820FEE5A25306C8F00AD1519 /* CToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CToken.h; sourceTree = "<group>"; };
-		820FEE5B25306C8F00AD1519 /* CToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CToken.m; sourceTree = "<group>"; };
+		820FEE5A25306C8F00AD1519 /* CAuthToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthToken.h; sourceTree = "<group>"; };
+		820FEE5B25306C8F00AD1519 /* CAuthToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthToken.m; sourceTree = "<group>"; };
+		8215FFCA2552941400283FDA /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = "<group>"; };
+		8215FFCD2552A0F200283FDA /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8216FEED2508C34A00028D32 /* CSubject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSubject.h; sourceTree = "<group>"; };
 		8216FEEE2508C34A00028D32 /* CSubject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSubject.m; sourceTree = "<group>"; };
 		8216FEF72508D3D000028D32 /* CSafeWeakRefArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSafeWeakRefArray.h; sourceTree = "<group>"; };
@@ -86,14 +145,39 @@
 		8245BABA24FE3A36003631A2 /* CEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEngine.m; sourceTree = "<group>"; };
 		8245BABE24FE4632003631A2 /* CPacket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPacket.h; sourceTree = "<group>"; };
 		8245BABF24FE4632003631A2 /* CPacket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPacket.m; sourceTree = "<group>"; };
+		824D0FDB2533F17A00D75261 /* CContactService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactService.h; sourceTree = "<group>"; };
+		824D0FDC2533F17A00D75261 /* CContactService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactService.m; sourceTree = "<group>"; };
+		824D0FDF2533F97200D75261 /* CEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEntity.h; sourceTree = "<group>"; };
+		824D0FE02533F97200D75261 /* CEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEntity.m; sourceTree = "<group>"; };
+		824D0FE32534012900D75261 /* CContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContact.h; sourceTree = "<group>"; };
+		824D0FE42534012900D75261 /* CContact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContact.m; sourceTree = "<group>"; };
+		824D0FE7253401FC00D75261 /* CDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDevice.h; sourceTree = "<group>"; };
+		824D0FE8253401FC00D75261 /* CDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDevice.m; sourceTree = "<group>"; };
+		824D0FEC2534315100D75261 /* CJsonable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJsonable.h; sourceTree = "<group>"; };
+		824D0FF025343BC200D75261 /* CJsonableUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJsonableUtil.h; sourceTree = "<group>"; };
+		824D0FF125343BC200D75261 /* CJsonableUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJsonableUtil.m; sourceTree = "<group>"; };
+		82A0B428254FB34200F884BE /* CMessagePipelineListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessagePipelineListener.h; sourceTree = "<group>"; };
+		82A0B429254FB34200F884BE /* CMessagePipelineListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessagePipelineListener.m; sourceTree = "<group>"; };
+		82AD3FB2253844770072B40A /* CMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessage.h; sourceTree = "<group>"; };
+		82AD3FB3253844770072B40A /* CMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		820E2AFA25393C09007FFC3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				820E2B1725394282007FFC3F /* cell.framework in Frameworks */,
+				820E2B0225393C0A007FFC3F /* CServiceSuite.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8244B00224F763D700958B71 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				820C790824FFA6210021E494 /* cell.framework in Frameworks */,
+				8215FFCB2552941400283FDA /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,16 +196,70 @@
 		820C790524FFA3190021E494 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8215FFCA2552941400283FDA /* PromiseKit.framework */,
 				820C790624FFA34F0021E494 /* cell.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
+		820E2AFE25393C09007FFC3F /* CServiceSuiteTests */ = {
+			isa = PBXGroup;
+			children = (
+				820E2AFF25393C09007FFC3F /* CServiceSuiteTests.m */,
+				820E2B1125393ED1007FFC3F /* CMessageTests */,
+				820E2B1025393EC3007FFC3F /* CContactTests */,
+				820E2B0D25393E8C007FFC3F /* CAuthTests */,
+				820E2B0C25393D4A007FFC3F /* CoreTests */,
+				820E2B0125393C0A007FFC3F /* Info.plist */,
+			);
+			path = CServiceSuiteTests;
+			sourceTree = "<group>";
+		};
+		820E2B0C25393D4A007FFC3F /* CoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				820E2B0825393C89007FFC3F /* CKernelTests.m */,
+				820E2B0A25393CB5007FFC3F /* CPipelineTests.m */,
+			);
+			path = CoreTests;
+			sourceTree = "<group>";
+		};
+		820E2B0D25393E8C007FFC3F /* CAuthTests */ = {
+			isa = PBXGroup;
+			children = (
+				820E2B0E25393EBC007FFC3F /* CAuthTests.m */,
+			);
+			path = CAuthTests;
+			sourceTree = "<group>";
+		};
+		820E2B1025393EC3007FFC3F /* CContactTests */ = {
+			isa = PBXGroup;
+			children = (
+				820E2B1225393EF8007FFC3F /* CContactTests.m */,
+			);
+			path = CContactTests;
+			sourceTree = "<group>";
+		};
+		820E2B1125393ED1007FFC3F /* CMessageTests */ = {
+			isa = PBXGroup;
+			children = (
+				820E2B1425393F03007FFC3F /* CMessageTests.m */,
+			);
+			path = CMessageTests;
+			sourceTree = "<group>";
+		};
+		820E2B1625394282007FFC3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		820FEE4F25305D6300AD1519 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				820FEE5A25306C8F00AD1519 /* CToken.h */,
-				820FEE5B25306C8F00AD1519 /* CToken.m */,
+				820FEE5A25306C8F00AD1519 /* CAuthToken.h */,
+				820FEE5B25306C8F00AD1519 /* CAuthToken.m */,
 				820FEE5125305D6300AD1519 /* CAuthService.h */,
 				820FEE5025305D6300AD1519 /* CAuthService.m */,
 				820F7694253155B0008E1164 /* CPrimaryDescription.h */,
@@ -135,13 +273,26 @@
 			children = (
 				820FEE5525305D6900AD1519 /* CMessageService.h */,
 				820FEE5625305D6900AD1519 /* CMessageService.m */,
+				82AD3FB2253844770072B40A /* CMessage.h */,
+				82AD3FB3253844770072B40A /* CMessage.m */,
+				82A0B428254FB34200F884BE /* CMessagePipelineListener.h */,
+				82A0B429254FB34200F884BE /* CMessagePipelineListener.m */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		8215FFCC2552A0AC00283FDA /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				8215FFCD2552A0F200283FDA /* PrefixHeader.pch */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 		8216FEF12508C8A400028D32 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				824D0FEB2534313600D75261 /* Jsonable */,
 				8216FEF72508D3D000028D32 /* CSafeWeakRefArray.h */,
 				8216FEF82508D3D000028D32 /* CSafeWeakRefArray.m */,
 				8216FEFB2508DC6500028D32 /* CSafeWeakRefDictionary.h */,
@@ -158,7 +309,9 @@
 			isa = PBXGroup;
 			children = (
 				8244B00724F763D700958B71 /* CServiceSuite */,
+				820E2AFE25393C09007FFC3F /* CServiceSuiteTests */,
 				8244B00624F763D700958B71 /* Products */,
+				820E2B1625394282007FFC3F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				8244B00524F763D700958B71 /* CServiceSuite.framework */,
+				820E2AFD25393C09007FFC3F /* CServiceSuiteTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,8 +329,10 @@
 			children = (
 				8244B00824F763D700958B71 /* CServiceSuite.h */,
 				8244B00924F763D700958B71 /* Info.plist */,
+				8215FFCC2552A0AC00283FDA /* Supporting files */,
 				820C790524FFA3190021E494 /* Frameworks */,
 				820FEE5425305D6900AD1519 /* Message */,
+				824D0FDA2533F15600D75261 /* Contact */,
 				820FEE4F25305D6300AD1519 /* Auth */,
 				820C78FA24FF6BF00021E494 /* Pipelines */,
 				8245BAB824FE3A28003631A2 /* Engine */,
@@ -201,6 +357,8 @@
 				8245BAB524FE3A03003631A2 /* CPlugin.m */,
 				8245BAB024FE39F8003631A2 /* CPluginSystem.h */,
 				8245BAB124FE39F8003631A2 /* CPluginSystem.m */,
+				824D0FDF2533F97200D75261 /* CEntity.h */,
+				824D0FE02533F97200D75261 /* CEntity.m */,
 				8245BABE24FE4632003631A2 /* CPacket.h */,
 				8245BABF24FE4632003631A2 /* CPacket.m */,
 				8216FEF12508C8A400028D32 /* Support */,
@@ -217,6 +375,29 @@
 			path = Engine;
 			sourceTree = "<group>";
 		};
+		824D0FDA2533F15600D75261 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				824D0FDB2533F17A00D75261 /* CContactService.h */,
+				824D0FDC2533F17A00D75261 /* CContactService.m */,
+				824D0FE32534012900D75261 /* CContact.h */,
+				824D0FE42534012900D75261 /* CContact.m */,
+				824D0FE7253401FC00D75261 /* CDevice.h */,
+				824D0FE8253401FC00D75261 /* CDevice.m */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		824D0FEB2534313600D75261 /* Jsonable */ = {
+			isa = PBXGroup;
+			children = (
+				824D0FEC2534315100D75261 /* CJsonable.h */,
+				824D0FF025343BC200D75261 /* CJsonableUtil.h */,
+				824D0FF125343BC200D75261 /* CJsonableUtil.m */,
+			);
+			path = Jsonable;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -226,20 +407,29 @@
 			files = (
 				82085B4C2509D4E700A9BFF0 /* CThreadSafeArray.h in Headers */,
 				8245BABB24FE3A36003631A2 /* CEngine.h in Headers */,
+				82AD3FB4253844770072B40A /* CMessage.h in Headers */,
 				8216FEFD2508DC6500028D32 /* CSafeWeakRefDictionary.h in Headers */,
 				8245BAB224FE39F8003631A2 /* CPluginSystem.h in Headers */,
-				820FEE5C25306C8F00AD1519 /* CToken.h in Headers */,
+				820FEE5C25306C8F00AD1519 /* CAuthToken.h in Headers */,
 				820F7696253155B0008E1164 /* CPrimaryDescription.h in Headers */,
 				8245BAAE24FE2F2E003631A2 /* CCore.h in Headers */,
 				8245BAB624FE3A03003631A2 /* CPlugin.h in Headers */,
 				8245BAAA24FE2ECD003631A2 /* CModule.h in Headers */,
 				8245BAC024FE4632003631A2 /* CPacket.h in Headers */,
 				820FEE5725305D6900AD1519 /* CMessageService.h in Headers */,
+				8215FFCE2552A0F200283FDA /* PrefixHeader.pch in Headers */,
 				8245BAA624FE2EB8003631A2 /* CPipeline.h in Headers */,
 				820C78FD24FF6C0E0021E494 /* CCellPipeline.h in Headers */,
+				824D0FE9253401FC00D75261 /* CDevice.h in Headers */,
+				824D0FE52534012900D75261 /* CContact.h in Headers */,
+				824D0FEE2534315100D75261 /* CJsonable.h in Headers */,
+				824D0FE12533F97200D75261 /* CEntity.h in Headers */,
+				824D0FDD2533F17A00D75261 /* CContactService.h in Headers */,
+				824D0FF225343BC200D75261 /* CJsonableUtil.h in Headers */,
 				8216FEEF2508C34A00028D32 /* CSubject.h in Headers */,
 				820FEE5325305D6300AD1519 /* CAuthService.h in Headers */,
 				8244B00A24F763D700958B71 /* CServiceSuite.h in Headers */,
+				82A0B42A254FB34200F884BE /* CMessagePipelineListener.h in Headers */,
 				8216FEF92508D3D000028D32 /* CSafeWeakRefArray.h in Headers */,
 				82085B502509D5AF00A9BFF0 /* CThreadSafeDictionary.h in Headers */,
 				8245BAA224FE2B53003631A2 /* CKernel.h in Headers */,
@@ -249,6 +439,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		820E2AFC25393C09007FFC3F /* CServiceSuiteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 820E2B0725393C0A007FFC3F /* Build configuration list for PBXNativeTarget "CServiceSuiteTests" */;
+			buildPhases = (
+				820E2AF925393C09007FFC3F /* Sources */,
+				820E2AFA25393C09007FFC3F /* Frameworks */,
+				820E2AFB25393C09007FFC3F /* Resources */,
+				820E2B1A25394490007FFC3F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				820E2B0425393C0A007FFC3F /* PBXTargetDependency */,
+			);
+			name = CServiceSuiteTests;
+			productName = CServiceSuiteTests;
+			productReference = 820E2AFD25393C09007FFC3F /* CServiceSuiteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8244B00424F763D700958B71 /* CServiceSuite */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8244B00D24F763D700958B71 /* Build configuration list for PBXNativeTarget "CServiceSuite" */;
@@ -277,6 +486,9 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Ashine;
 				TargetAttributes = {
+					820E2AFC25393C09007FFC3F = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					8244B00424F763D700958B71 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -296,11 +508,19 @@
 			projectRoot = "";
 			targets = (
 				8244B00424F763D700958B71 /* CServiceSuite */,
+				820E2AFC25393C09007FFC3F /* CServiceSuiteTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		820E2AFB25393C09007FFC3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8244B00324F763D700958B71 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -332,18 +552,35 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		820E2AF925393C09007FFC3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				820E2B0925393C89007FFC3F /* CKernelTests.m in Sources */,
+				820E2B1325393EF8007FFC3F /* CContactTests.m in Sources */,
+				820E2B0B25393CB5007FFC3F /* CPipelineTests.m in Sources */,
+				820E2B0025393C09007FFC3F /* CServiceSuiteTests.m in Sources */,
+				820E2B0F25393EBC007FFC3F /* CAuthTests.m in Sources */,
+				820E2B1525393F03007FFC3F /* CMessageTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8244B00124F763D700958B71 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82AD3FB5253844770072B40A /* CMessage.m in Sources */,
 				8216FEFE2508DC6500028D32 /* CSafeWeakRefDictionary.m in Sources */,
 				8245BAA324FE2B53003631A2 /* CKernel.m in Sources */,
 				8245BAB324FE39F8003631A2 /* CPluginSystem.m in Sources */,
 				8245BAA724FE2EB8003631A2 /* CPipeline.m in Sources */,
 				820C78FE24FF6C0E0021E494 /* CCellPipeline.m in Sources */,
 				8245BAB724FE3A03003631A2 /* CPlugin.m in Sources */,
+				824D0FEA253401FC00D75261 /* CDevice.m in Sources */,
 				8216FEF02508C34A00028D32 /* CSubject.m in Sources */,
-				820FEE5D25306C8F00AD1519 /* CToken.m in Sources */,
+				82A0B42B254FB34200F884BE /* CMessagePipelineListener.m in Sources */,
+				820FEE5D25306C8F00AD1519 /* CAuthToken.m in Sources */,
+				824D0FE62534012900D75261 /* CContact.m in Sources */,
 				820FEE5225305D6300AD1519 /* CAuthService.m in Sources */,
 				82085B4D2509D4E700A9BFF0 /* CThreadSafeArray.m in Sources */,
 				820F7697253155B0008E1164 /* CPrimaryDescription.m in Sources */,
@@ -352,13 +589,68 @@
 				820FEE5825305D6900AD1519 /* CMessageService.m in Sources */,
 				8216FEFA2508D3D000028D32 /* CSafeWeakRefArray.m in Sources */,
 				8245BAAB24FE2ECD003631A2 /* CModule.m in Sources */,
+				824D0FE22533F97200D75261 /* CEntity.m in Sources */,
+				824D0FDE2533F17A00D75261 /* CContactService.m in Sources */,
 				8245BABC24FE3A36003631A2 /* CEngine.m in Sources */,
+				824D0FF325343BC200D75261 /* CJsonableUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		820E2B0425393C0A007FFC3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8244B00424F763D700958B71 /* CServiceSuite */;
+			targetProxy = 820E2B0325393C0A007FFC3F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		820E2B0525393C0A007FFC3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 78K6LCL8HM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CServiceSuite/Frameworks",
+				);
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = CServiceSuiteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixincube.CServiceSuite.CServiceSuiteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		820E2B0625393C0A007FFC3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 78K6LCL8HM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CServiceSuite/Frameworks",
+				);
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = CServiceSuiteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixincube.CServiceSuite.CServiceSuiteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		8244B00B24F763D700958B71 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -488,6 +780,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CServiceSuite/Frameworks",
 				);
+				GCC_PREFIX_HEADER = "./CServiceSuite/Supporting files/PrefixHeader.pch";
 				INFOPLIST_FILE = CServiceSuite/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -516,6 +809,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CServiceSuite/Frameworks",
 				);
+				GCC_PREFIX_HEADER = "./CServiceSuite/Supporting files/PrefixHeader.pch";
 				INFOPLIST_FILE = CServiceSuite/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -534,6 +828,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		820E2B0725393C0A007FFC3F /* Build configuration list for PBXNativeTarget "CServiceSuiteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				820E2B0525393C0A007FFC3F /* Debug */,
+				820E2B0625393C0A007FFC3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8244AFFF24F763D700958B71 /* Build configuration list for PBXProject "CServiceSuite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

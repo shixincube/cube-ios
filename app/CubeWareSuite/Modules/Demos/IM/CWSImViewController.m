@@ -48,20 +48,16 @@
 - (void)setupNavigationItems {
     [super setupNavigationItems];
     self.title = @"IM";
-//    self.navigationItem.rightBarButtonItem = [UIBarButtonItem qmui_itemWithImage:UIImageMake(@"icon_nav_about") target:self action:@selector(handleAboutItemEvent)];
 }
 
 -(void)didSelectCellWithTitle:(NSString *)title{
     UIViewController *vc = nil;
     if ([title isEqualToString:@"Message"]) {
+        if (![[CEngine shareEngine] contactService].currentContact) {
+            [self _showAlertToSignIn];
+            return;
+        }
         
-        CKernelConfig *config = [[CKernelConfig alloc] init];
-        config.domain = @"shixincube.com";
-        config.appKey = @"shixin-cubeteam-opensource-appkey";
-        config.address = @"192.168.1.113";
-        [[CEngine shareEngine] startWithConfig:config];
-        
-        return;
         vc = [[CWSMessageViewController alloc] init];
     }
     else if ([title isEqualToString:@"Contact"]){
@@ -75,6 +71,12 @@
     }
     vc.title = title;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+- (void)_showAlertToSignIn{
+    UIView *parentView = self.view;
+    [QMUITips showInfo:@"您的联系人账户未登入" detailText:@"请去联系人模块设置账户登入" inView:parentView hideAfterDelay:2];
 }
 
 @end

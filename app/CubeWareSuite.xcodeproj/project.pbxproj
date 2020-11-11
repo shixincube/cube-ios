@@ -22,6 +22,7 @@
 		8208FB5C2507302D00C7617A /* QMUIConfigurationTemplateGrass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8208FB572507302D00C7617A /* QMUIConfigurationTemplateGrass.m */; };
 		8208FB5D2507302D00C7617A /* QMUIConfigurationTemplatePinkRose.m in Sources */ = {isa = PBXBuildFile; fileRef = 8208FB582507302D00C7617A /* QMUIConfigurationTemplatePinkRose.m */; };
 		820E3A962521906C00D4FEE2 /* MessageKitMessageKind.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E3A952521906C00D4FEE2 /* MessageKitMessageKind.m */; };
+		821143862553CE9300CA6FAE /* CWSEngineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 821143852553CE9300CA6FAE /* CWSEngineManager.m */; };
 		821180A6250085C2007FB70B /* CWSCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821180A5250085C2007FB70B /* CWSCommonViewController.m */; };
 		821180A825008757007FB70B /* QMUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 821180A725008757007FB70B /* QMUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		821180AD2500D42B007FB70B /* CWSCommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821180AC2500D42B007FB70B /* CWSCommonTableViewController.m */; };
@@ -42,7 +43,6 @@
 		82307C68251C91520006C1DD /* MessageKitDetectorType.m in Sources */ = {isa = PBXBuildFile; fileRef = 82307C67251C91520006C1DD /* MessageKitDetectorType.m */; };
 		82307C6B251C931E0006C1DD /* MessageKitAudioMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82307C6A251C931E0006C1DD /* MessageKitAudioMessageCell.m */; };
 		8244AFE424F7623300958B71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8244AFE324F7623300958B71 /* AppDelegate.m */; };
-		8244AFE724F7623300958B71 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8244AFE624F7623300958B71 /* SceneDelegate.m */; };
 		8244AFEF24F7623300958B71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8244AFEE24F7623300958B71 /* Assets.xcassets */; };
 		8244AFF224F7623300958B71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8244AFF024F7623300958B71 /* LaunchScreen.storyboard */; };
 		8244AFF524F7623300958B71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8244AFF424F7623300958B71 /* main.m */; };
@@ -54,6 +54,9 @@
 		8247A4AE250632CE00EE3FD4 /* CWSRtcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8247A4AD250632CE00EE3FD4 /* CWSRtcViewController.m */; };
 		8247A4B2250637D000EE3FD4 /* CWSLabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8247A4B1250637D000EE3FD4 /* CWSLabViewController.m */; };
 		8247A4B325063F0300EE3FD4 /* QMUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821180A725008757007FB70B /* QMUIKit.framework */; };
+		829B00062552B196006E5D54 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 829B00012552B196006E5D54 /* PromiseKit.framework */; };
+		829B00072552B196006E5D54 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 829B00012552B196006E5D54 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		829B000B2552DCA9006E5D54 /* CWSMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 829B000A2552DCA9006E5D54 /* CWSMessageTableViewCell.m */; };
 		82D375D72510AD6200A5F2C5 /* MessageKitMessageStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D375D62510AD6200A5F2C5 /* MessageKitMessageStyle.m */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +67,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 8244B00524F763D700958B71;
 			remoteInfo = CServiceSuite;
+		};
+		829B00042552B196006E5D54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8244B01824F77DD000958B71 /* CServiceSuite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 820E2AFD25393C09007FFC3F;
+			remoteInfo = CServiceSuiteTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -77,6 +87,7 @@
 				821180A825008757007FB70B /* QMUIKit.framework in Embed Frameworks */,
 				8208FB4C2507229400C7617A /* cell.framework in Embed Frameworks */,
 				8244B02424F77E9E00958B71 /* CServiceSuite.framework in Embed Frameworks */,
+				829B00072552B196006E5D54 /* PromiseKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +127,8 @@
 		820E3A942521906C00D4FEE2 /* MessageKitMessageKind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageKitMessageKind.h; sourceTree = "<group>"; };
 		820E3A952521906C00D4FEE2 /* MessageKitMessageKind.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageKitMessageKind.m; sourceTree = "<group>"; };
 		820E3A98252192EC00D4FEE2 /* MessageKitMediaItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageKitMediaItem.h; sourceTree = "<group>"; };
+		821143842553CE9300CA6FAE /* CWSEngineManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWSEngineManager.h; sourceTree = "<group>"; };
+		821143852553CE9300CA6FAE /* CWSEngineManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWSEngineManager.m; sourceTree = "<group>"; };
 		821180A4250085C2007FB70B /* CWSCommonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWSCommonViewController.h; sourceTree = "<group>"; };
 		821180A5250085C2007FB70B /* CWSCommonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWSCommonViewController.m; sourceTree = "<group>"; };
 		821180A725008757007FB70B /* QMUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QMUIKit.framework; sourceTree = "<group>"; };
@@ -159,8 +172,6 @@
 		8244AFDF24F7623300958B71 /* CubeWareSuite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeWareSuite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8244AFE224F7623300958B71 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8244AFE324F7623300958B71 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8244AFE524F7623300958B71 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		8244AFE624F7623300958B71 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		8244AFEE24F7623300958B71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8244AFF124F7623300958B71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8244AFF324F7623300958B71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,6 +188,9 @@
 		8247A4AD250632CE00EE3FD4 /* CWSRtcViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWSRtcViewController.m; sourceTree = "<group>"; };
 		8247A4B0250637D000EE3FD4 /* CWSLabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWSLabViewController.h; sourceTree = "<group>"; };
 		8247A4B1250637D000EE3FD4 /* CWSLabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWSLabViewController.m; sourceTree = "<group>"; };
+		829B00012552B196006E5D54 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = ../CServiceSuite/CServiceSuite/Frameworks/PromiseKit.framework; sourceTree = "<group>"; };
+		829B00092552DCA9006E5D54 /* CWSMessageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWSMessageTableViewCell.h; sourceTree = "<group>"; };
+		829B000A2552DCA9006E5D54 /* CWSMessageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWSMessageTableViewCell.m; sourceTree = "<group>"; };
 		82D375CD2510A11000A5F2C5 /* MessageKitLayoutDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageKitLayoutDelegate.h; sourceTree = "<group>"; };
 		82D375D12510A16700A5F2C5 /* MessageKitDisplayDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageKitDisplayDelegate.h; sourceTree = "<group>"; };
 		82D375D52510AD6200A5F2C5 /* MessageKitMessageStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageKitMessageStyle.h; sourceTree = "<group>"; };
@@ -191,6 +205,7 @@
 				8247A4B325063F0300EE3FD4 /* QMUIKit.framework in Frameworks */,
 				8208FB4B2507229400C7617A /* cell.framework in Frameworks */,
 				8244B02324F77E9E00958B71 /* CServiceSuite.framework in Frameworks */,
+				829B00062552B196006E5D54 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +304,15 @@
 			path = Qmui;
 			sourceTree = SOURCE_ROOT;
 		};
+		821143812553CE6400CA6FAE /* CSInfo */ = {
+			isa = PBXGroup;
+			children = (
+				821143842553CE9300CA6FAE /* CWSEngineManager.h */,
+				821143852553CE9300CA6FAE /* CWSEngineManager.m */,
+			);
+			path = CSInfo;
+			sourceTree = "<group>";
+		};
 		8211809C25007DF7007FB70B /* IM */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +348,7 @@
 		821180A1250080A0007FB70B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				821143812553CE6400CA6FAE /* CSInfo */,
 				8247A4A12505DF0700EE3FD4 /* Utils */,
 				822C82F025021CB000FD75B1 /* Configuration */,
 				821180A3250081B4007FB70B /* Controllers */,
@@ -369,6 +394,7 @@
 			children = (
 				8216FEDC25086E9000028D32 /* CWSMessageViewController.h */,
 				8216FEDD25086E9000028D32 /* CWSMessageViewController.m */,
+				829B00082552DC73006E5D54 /* View */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -494,8 +520,6 @@
 			children = (
 				8244AFE224F7623300958B71 /* AppDelegate.h */,
 				8244AFE324F7623300958B71 /* AppDelegate.m */,
-				8244AFE524F7623300958B71 /* SceneDelegate.h */,
-				8244AFE624F7623300958B71 /* SceneDelegate.m */,
 				8244AFEE24F7623300958B71 /* Assets.xcassets */,
 				8244AFF024F7623300958B71 /* LaunchScreen.storyboard */,
 				821180A9250087FB007FB70B /* Supporting files */,
@@ -508,6 +532,7 @@
 		8244B01024F764C800958B71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				829B00012552B196006E5D54 /* PromiseKit.framework */,
 				8208FB4A2507229300C7617A /* cell.framework */,
 				8244B01824F77DD000958B71 /* CServiceSuite.xcodeproj */,
 			);
@@ -518,6 +543,7 @@
 			isa = PBXGroup;
 			children = (
 				8244B01D24F77DD000958B71 /* CServiceSuite.framework */,
+				829B00052552B196006E5D54 /* CServiceSuiteTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -540,6 +566,15 @@
 				8247A4B1250637D000EE3FD4 /* CWSLabViewController.m */,
 			);
 			path = Lab;
+			sourceTree = "<group>";
+		};
+		829B00082552DC73006E5D54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				829B00092552DCA9006E5D54 /* CWSMessageTableViewCell.h */,
+				829B000A2552DCA9006E5D54 /* CWSMessageTableViewCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		82D375D42510AC7500A5F2C5 /* Models */ = {
@@ -631,6 +666,13 @@
 			remoteRef = 8244B01C24F77DD000958B71 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		829B00052552B196006E5D54 /* CServiceSuiteTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CServiceSuiteTests.xctest;
+			remoteRef = 829B00042552B196006E5D54 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -662,6 +704,7 @@
 				8208C37E251D82B900C9EA8F /* MessageKitAvatarPosition.m in Sources */,
 				8216FEEC250877FE00028D32 /* CWSFileViewController.m in Sources */,
 				8247A4A72505E2AE00EE3FD4 /* CWSUIHelper.m in Sources */,
+				829B000B2552DCA9006E5D54 /* CWSMessageTableViewCell.m in Sources */,
 				821180B02500D6C1007FB70B /* CWSCommonGridViewController.m in Sources */,
 				8216FEE6250877DD00028D32 /* CWSContactViewController.m in Sources */,
 				8208FB5C2507302D00C7617A /* QMUIConfigurationTemplateGrass.m in Sources */,
@@ -678,6 +721,7 @@
 				82307C58251C6D5A0006C1DD /* MessageKitTextMessageCell.m in Sources */,
 				820E3A962521906C00D4FEE2 /* MessageKitMessageKind.m in Sources */,
 				8247A4AE250632CE00EE3FD4 /* CWSRtcViewController.m in Sources */,
+				821143862553CE9300CA6FAE /* CWSEngineManager.m in Sources */,
 				8244AFE424F7623300958B71 /* AppDelegate.m in Sources */,
 				8247A4A42505DFEF00EE3FD4 /* CWSCommonUI.m in Sources */,
 				8244AFF524F7623300958B71 /* main.m in Sources */,
@@ -687,7 +731,6 @@
 				8216FEDE25086E9000028D32 /* CWSMessageViewController.m in Sources */,
 				82307C55251C6D2E0006C1DD /* MessageKitContentCell.m in Sources */,
 				82307C68251C91520006C1DD /* MessageKitDetectorType.m in Sources */,
-				8244AFE724F7623300958B71 /* SceneDelegate.m in Sources */,
 				8247A4AB250632B400EE3FD4 /* CWSImViewController.m in Sources */,
 				821180A6250085C2007FB70B /* CWSCommonViewController.m in Sources */,
 			);

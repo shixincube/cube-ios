@@ -19,3 +19,6 @@ FOUNDATION_EXPORT const unsigned char CServiceSuiteVersionString[];
 #import <CServiceSuite/CEngine.h>
 #import <CServiceSuite/CKernel.h>
 #import <CServiceSuite/CCore.h>
+#import <CServiceSuite/CMessageService.h>
+#import <CServiceSuite/CContactService.h>
+#import <CServiceSuite/CAuthService.h>
