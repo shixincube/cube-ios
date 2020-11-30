@@ -327,6 +327,8 @@
 		8244B00724F763D700958B71 /* CServiceSuite */ = {
 			isa = PBXGroup;
 			children = (
+				9B16A8EC25749F1B00C3DCC0 /* Email */,
+				9B16A8ED25749F1B00C3DCC0 /* File */,
 				8244B00824F763D700958B71 /* CServiceSuite.h */,
 				8244B00924F763D700958B71 /* Info.plist */,
 				8215FFCC2552A0AC00283FDA /* Supporting files */,
@@ -396,6 +398,20 @@
 				824D0FF125343BC200D75261 /* CJsonableUtil.m */,
 			);
 			path = Jsonable;
+			sourceTree = "<group>";
+		};
+		9B16A8EC25749F1B00C3DCC0 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		9B16A8ED25749F1B00C3DCC0 /* File */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = File;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
