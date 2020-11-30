@@ -70,6 +70,10 @@
 		82A0B42B254FB34200F884BE /* CMessagePipelineListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A0B429254FB34200F884BE /* CMessagePipelineListener.m */; };
 		82AD3FB4253844770072B40A /* CMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 82AD3FB2253844770072B40A /* CMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82AD3FB5253844770072B40A /* CMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AD3FB3253844770072B40A /* CMessage.m */; };
+		9B16A8F025749FA800C3DCC0 /* CFileService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B16A8EE25749FA800C3DCC0 /* CFileService.h */; };
+		9B16A8F125749FA800C3DCC0 /* CFileService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16A8EF25749FA800C3DCC0 /* CFileService.m */; };
+		9B16A8F425749FBA00C3DCC0 /* CEmailService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B16A8F225749FBA00C3DCC0 /* CEmailService.h */; };
+		9B16A8F525749FBA00C3DCC0 /* CEmailService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16A8F325749FBA00C3DCC0 /* CEmailService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +164,10 @@
 		82A0B429254FB34200F884BE /* CMessagePipelineListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessagePipelineListener.m; sourceTree = "<group>"; };
 		82AD3FB2253844770072B40A /* CMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessage.h; sourceTree = "<group>"; };
 		82AD3FB3253844770072B40A /* CMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessage.m; sourceTree = "<group>"; };
+		9B16A8EE25749FA800C3DCC0 /* CFileService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFileService.h; sourceTree = "<group>"; };
+		9B16A8EF25749FA800C3DCC0 /* CFileService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFileService.m; sourceTree = "<group>"; };
+		9B16A8F225749FBA00C3DCC0 /* CEmailService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEmailService.h; sourceTree = "<group>"; };
+		9B16A8F325749FBA00C3DCC0 /* CEmailService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEmailService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,8 +335,6 @@
 		8244B00724F763D700958B71 /* CServiceSuite */ = {
 			isa = PBXGroup;
 			children = (
-				9B16A8EC25749F1B00C3DCC0 /* Email */,
-				9B16A8ED25749F1B00C3DCC0 /* File */,
 				8244B00824F763D700958B71 /* CServiceSuite.h */,
 				8244B00924F763D700958B71 /* Info.plist */,
 				8215FFCC2552A0AC00283FDA /* Supporting files */,
@@ -336,6 +342,8 @@
 				820FEE5425305D6900AD1519 /* Message */,
 				824D0FDA2533F15600D75261 /* Contact */,
 				820FEE4F25305D6300AD1519 /* Auth */,
+				9B16A8EC25749F1B00C3DCC0 /* Email */,
+				9B16A8ED25749F1B00C3DCC0 /* File */,
 				820C78FA24FF6BF00021E494 /* Pipelines */,
 				8245BAB824FE3A28003631A2 /* Engine */,
 				8245BA9F24FE2AEA003631A2 /* Core */,
@@ -403,6 +411,8 @@
 		9B16A8EC25749F1B00C3DCC0 /* Email */ = {
 			isa = PBXGroup;
 			children = (
+				9B16A8F225749FBA00C3DCC0 /* CEmailService.h */,
+				9B16A8F325749FBA00C3DCC0 /* CEmailService.m */,
 			);
 			path = Email;
 			sourceTree = "<group>";
@@ -410,6 +420,8 @@
 		9B16A8ED25749F1B00C3DCC0 /* File */ = {
 			isa = PBXGroup;
 			children = (
+				9B16A8EE25749FA800C3DCC0 /* CFileService.h */,
+				9B16A8EF25749FA800C3DCC0 /* CFileService.m */,
 			);
 			path = File;
 			sourceTree = "<group>";
@@ -421,6 +433,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B16A8F025749FA800C3DCC0 /* CFileService.h in Headers */,
 				82085B4C2509D4E700A9BFF0 /* CThreadSafeArray.h in Headers */,
 				8245BABB24FE3A36003631A2 /* CEngine.h in Headers */,
 				82AD3FB4253844770072B40A /* CMessage.h in Headers */,
@@ -441,6 +454,7 @@
 				824D0FEE2534315100D75261 /* CJsonable.h in Headers */,
 				824D0FE12533F97200D75261 /* CEntity.h in Headers */,
 				824D0FDD2533F17A00D75261 /* CContactService.h in Headers */,
+				9B16A8F425749FBA00C3DCC0 /* CEmailService.h in Headers */,
 				824D0FF225343BC200D75261 /* CJsonableUtil.h in Headers */,
 				8216FEEF2508C34A00028D32 /* CSubject.h in Headers */,
 				820FEE5325305D6300AD1519 /* CAuthService.h in Headers */,
@@ -589,6 +603,7 @@
 				8216FEFE2508DC6500028D32 /* CSafeWeakRefDictionary.m in Sources */,
 				8245BAA324FE2B53003631A2 /* CKernel.m in Sources */,
 				8245BAB324FE39F8003631A2 /* CPluginSystem.m in Sources */,
+				9B16A8F525749FBA00C3DCC0 /* CEmailService.m in Sources */,
 				8245BAA724FE2EB8003631A2 /* CPipeline.m in Sources */,
 				820C78FE24FF6C0E0021E494 /* CCellPipeline.m in Sources */,
 				8245BAB724FE3A03003631A2 /* CPlugin.m in Sources */,
@@ -603,6 +618,7 @@
 				8245BAC124FE4632003631A2 /* CPacket.m in Sources */,
 				82085B512509D5AF00A9BFF0 /* CThreadSafeDictionary.m in Sources */,
 				820FEE5825305D6900AD1519 /* CMessageService.m in Sources */,
+				9B16A8F125749FA800C3DCC0 /* CFileService.m in Sources */,
 				8216FEFA2508D3D000028D32 /* CSafeWeakRefArray.m in Sources */,
 				8245BAAB24FE2ECD003631A2 /* CModule.m in Sources */,
 				824D0FE22533F97200D75261 /* CEntity.m in Sources */,
