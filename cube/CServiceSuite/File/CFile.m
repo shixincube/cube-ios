@@ -1,16 +1,13 @@
 //
-//  CFileService.h
+//  CFile.m
 //  CServiceSuite
 //
 //  Created by ShixinCloud on 2020/11/30.
 //  Copyright © 2020 Ashine. All rights reserved.
 //
 
-#import <CServiceSuite/CServiceSuite.h>
+#import "CFile.h"
 
-
-@interface CFileService : CModule
+@implementation CFile
 
 @end
-
-

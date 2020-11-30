@@ -8,10 +8,8 @@
 
 #import <CServiceSuite/CServiceSuite.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface CEmailService : CModule
 
 @end
 
-NS_ASSUME_NONNULL_END
+

@@ -74,6 +74,10 @@
 		9B16A8F125749FA800C3DCC0 /* CFileService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16A8EF25749FA800C3DCC0 /* CFileService.m */; };
 		9B16A8F425749FBA00C3DCC0 /* CEmailService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B16A8F225749FBA00C3DCC0 /* CEmailService.h */; };
 		9B16A8F525749FBA00C3DCC0 /* CEmailService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16A8F325749FBA00C3DCC0 /* CEmailService.m */; };
+		9B16A8F82574C38F00C3DCC0 /* CFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B16A8F62574C38F00C3DCC0 /* CFile.h */; };
+		9B16A8F92574C38F00C3DCC0 /* CFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16A8F72574C38F00C3DCC0 /* CFile.m */; };
+		9B16A8FC2574C4D900C3DCC0 /* CFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B16A8FA2574C4D900C3DCC0 /* CFileManager.h */; };
+		9B16A8FD2574C4D900C3DCC0 /* CFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16A8FB2574C4D900C3DCC0 /* CFileManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +172,10 @@
 		9B16A8EF25749FA800C3DCC0 /* CFileService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFileService.m; sourceTree = "<group>"; };
 		9B16A8F225749FBA00C3DCC0 /* CEmailService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEmailService.h; sourceTree = "<group>"; };
 		9B16A8F325749FBA00C3DCC0 /* CEmailService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEmailService.m; sourceTree = "<group>"; };
+		9B16A8F62574C38F00C3DCC0 /* CFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFile.h; sourceTree = "<group>"; };
+		9B16A8F72574C38F00C3DCC0 /* CFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFile.m; sourceTree = "<group>"; };
+		9B16A8FA2574C4D900C3DCC0 /* CFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFileManager.h; sourceTree = "<group>"; };
+		9B16A8FB2574C4D900C3DCC0 /* CFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFileManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,6 +430,10 @@
 			children = (
 				9B16A8EE25749FA800C3DCC0 /* CFileService.h */,
 				9B16A8EF25749FA800C3DCC0 /* CFileService.m */,
+				9B16A8F62574C38F00C3DCC0 /* CFile.h */,
+				9B16A8F72574C38F00C3DCC0 /* CFile.m */,
+				9B16A8FA2574C4D900C3DCC0 /* CFileManager.h */,
+				9B16A8FB2574C4D900C3DCC0 /* CFileManager.m */,
 			);
 			path = File;
 			sourceTree = "<group>";
@@ -435,11 +447,13 @@
 			files = (
 				9B16A8F025749FA800C3DCC0 /* CFileService.h in Headers */,
 				82085B4C2509D4E700A9BFF0 /* CThreadSafeArray.h in Headers */,
+				9B16A8FC2574C4D900C3DCC0 /* CFileManager.h in Headers */,
 				8245BABB24FE3A36003631A2 /* CEngine.h in Headers */,
 				82AD3FB4253844770072B40A /* CMessage.h in Headers */,
 				8216FEFD2508DC6500028D32 /* CSafeWeakRefDictionary.h in Headers */,
 				8245BAB224FE39F8003631A2 /* CPluginSystem.h in Headers */,
 				820FEE5C25306C8F00AD1519 /* CAuthToken.h in Headers */,
+				9B16A8F82574C38F00C3DCC0 /* CFile.h in Headers */,
 				820F7696253155B0008E1164 /* CPrimaryDescription.h in Headers */,
 				8245BAAE24FE2F2E003631A2 /* CCore.h in Headers */,
 				8245BAB624FE3A03003631A2 /* CPlugin.h in Headers */,
@@ -605,6 +619,7 @@
 				8245BAB324FE39F8003631A2 /* CPluginSystem.m in Sources */,
 				9B16A8F525749FBA00C3DCC0 /* CEmailService.m in Sources */,
 				8245BAA724FE2EB8003631A2 /* CPipeline.m in Sources */,
+				9B16A8F92574C38F00C3DCC0 /* CFile.m in Sources */,
 				820C78FE24FF6C0E0021E494 /* CCellPipeline.m in Sources */,
 				8245BAB724FE3A03003631A2 /* CPlugin.m in Sources */,
 				824D0FEA253401FC00D75261 /* CDevice.m in Sources */,
@@ -617,6 +632,7 @@
 				820F7697253155B0008E1164 /* CPrimaryDescription.m in Sources */,
 				8245BAC124FE4632003631A2 /* CPacket.m in Sources */,
 				82085B512509D5AF00A9BFF0 /* CThreadSafeDictionary.m in Sources */,
+				9B16A8FD2574C4D900C3DCC0 /* CFileManager.m in Sources */,
 				820FEE5825305D6900AD1519 /* CMessageService.m in Sources */,
 				9B16A8F125749FA800C3DCC0 /* CFileService.m in Sources */,
 				8216FEFA2508D3D000028D32 /* CSafeWeakRefArray.m in Sources */,
