@@ -4,6 +4,11 @@
 
 支持的操作系统有：Windows、Linux 、macOS 、Android、iOS 等，支持的浏览器有：Chrome、Firefox、Safari 等。
 
+## 简介
+
+TODO
+
+
 ## 功能列表
 
 Cube 包含以下协作功能：
@@ -21,6 +26,11 @@ Cube 包含以下协作功能：
 * 在线文档协作（Online Document Collaboration）。支持 Word、PowerPoint、Excel 等主流格式文多人在写协作。
 * 安全与运维管理（Operation and Maintenance management）。所有数据通道支持加密，可支持国密算法等。
 * 风控管理（Risk Management）。对系统内所有文本、图片、视频、文件等内容进行包括 NLP、OCR、IR 等技术手段的风险控制和预警等。
+
+
+## 快速开始
+
+TODO
 
 
 ## 功能展示
@@ -67,16 +77,6 @@ Cube 包含以下协作功能：
 |:----:|
 |![DocCollaboration](https://static.shixincube.com/cube/assets/showcase/doc_collaboration_excel.gif)|
 |![DocCollaboration](https://static.shixincube.com/cube/assets/showcase/doc_collaboration.gif)|
-
-
-## 简介
-
-TODO
-
-
-## 快速开始
-
-TODO
 
 
 ## 获得帮助
