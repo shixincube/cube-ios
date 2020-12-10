@@ -78,6 +78,10 @@
 		9B16A8F92574C38F00C3DCC0 /* CFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16A8F72574C38F00C3DCC0 /* CFile.m */; };
 		9B16A8FC2574C4D900C3DCC0 /* CFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B16A8FA2574C4D900C3DCC0 /* CFileManager.h */; };
 		9B16A8FD2574C4D900C3DCC0 /* CFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16A8FB2574C4D900C3DCC0 /* CFileManager.m */; };
+		9B5FE7022581B4CD00C7E17D /* CConferenceService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B5FE7002581B4CD00C7E17D /* CConferenceService.h */; };
+		9B5FE7032581B4CD00C7E17D /* CConferenceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5FE7012581B4CD00C7E17D /* CConferenceService.m */; };
+		9B5FE7062581B79600C7E17D /* CConference.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B5FE7042581B79600C7E17D /* CConference.h */; };
+		9B5FE7072581B79600C7E17D /* CConference.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5FE7052581B79600C7E17D /* CConference.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +180,10 @@
 		9B16A8F72574C38F00C3DCC0 /* CFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFile.m; sourceTree = "<group>"; };
 		9B16A8FA2574C4D900C3DCC0 /* CFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFileManager.h; sourceTree = "<group>"; };
 		9B16A8FB2574C4D900C3DCC0 /* CFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFileManager.m; sourceTree = "<group>"; };
+		9B5FE7002581B4CD00C7E17D /* CConferenceService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CConferenceService.h; sourceTree = "<group>"; };
+		9B5FE7012581B4CD00C7E17D /* CConferenceService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CConferenceService.m; sourceTree = "<group>"; };
+		9B5FE7042581B79600C7E17D /* CConference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CConference.h; sourceTree = "<group>"; };
+		9B5FE7052581B79600C7E17D /* CConference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CConference.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +353,7 @@
 			children = (
 				8244B00824F763D700958B71 /* CServiceSuite.h */,
 				8244B00924F763D700958B71 /* Info.plist */,
+				9B5FE6FF2581B49400C7E17D /* Conference */,
 				8215FFCC2552A0AC00283FDA /* Supporting files */,
 				820C790524FFA3190021E494 /* Frameworks */,
 				820FEE5425305D6900AD1519 /* Message */,
@@ -438,6 +447,17 @@
 			path = File;
 			sourceTree = "<group>";
 		};
+		9B5FE6FF2581B49400C7E17D /* Conference */ = {
+			isa = PBXGroup;
+			children = (
+				9B5FE7002581B4CD00C7E17D /* CConferenceService.h */,
+				9B5FE7012581B4CD00C7E17D /* CConferenceService.m */,
+				9B5FE7042581B79600C7E17D /* CConference.h */,
+				9B5FE7052581B79600C7E17D /* CConference.m */,
+			);
+			path = Conference;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -450,6 +470,7 @@
 				9B16A8FC2574C4D900C3DCC0 /* CFileManager.h in Headers */,
 				8245BABB24FE3A36003631A2 /* CEngine.h in Headers */,
 				82AD3FB4253844770072B40A /* CMessage.h in Headers */,
+				9B5FE7022581B4CD00C7E17D /* CConferenceService.h in Headers */,
 				8216FEFD2508DC6500028D32 /* CSafeWeakRefDictionary.h in Headers */,
 				8245BAB224FE39F8003631A2 /* CPluginSystem.h in Headers */,
 				820FEE5C25306C8F00AD1519 /* CAuthToken.h in Headers */,
@@ -458,6 +479,7 @@
 				8245BAAE24FE2F2E003631A2 /* CCore.h in Headers */,
 				8245BAB624FE3A03003631A2 /* CPlugin.h in Headers */,
 				8245BAAA24FE2ECD003631A2 /* CModule.h in Headers */,
+				9B5FE7062581B79600C7E17D /* CConference.h in Headers */,
 				8245BAC024FE4632003631A2 /* CPacket.h in Headers */,
 				820FEE5725305D6900AD1519 /* CMessageService.h in Headers */,
 				8215FFCE2552A0F200283FDA /* PrefixHeader.pch in Headers */,
@@ -618,6 +640,7 @@
 				8245BAA324FE2B53003631A2 /* CKernel.m in Sources */,
 				8245BAB324FE39F8003631A2 /* CPluginSystem.m in Sources */,
 				9B16A8F525749FBA00C3DCC0 /* CEmailService.m in Sources */,
+				9B5FE7072581B79600C7E17D /* CConference.m in Sources */,
 				8245BAA724FE2EB8003631A2 /* CPipeline.m in Sources */,
 				9B16A8F92574C38F00C3DCC0 /* CFile.m in Sources */,
 				820C78FE24FF6C0E0021E494 /* CCellPipeline.m in Sources */,
@@ -641,6 +664,7 @@
 				824D0FDE2533F17A00D75261 /* CContactService.m in Sources */,
 				8245BABC24FE3A36003631A2 /* CEngine.m in Sources */,
 				824D0FF325343BC200D75261 /* CJsonableUtil.m in Sources */,
+				9B5FE7032581B4CD00C7E17D /* CConferenceService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
