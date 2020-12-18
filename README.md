@@ -28,10 +28,50 @@ Cube 包含以下协作功能：
 * 风控管理（Risk Management）。对系统内所有文本、图片、视频、文件等内容进行包括 NLP、OCR、IR 等技术手段的风险控制和预警等。
 
 
-## 快速开始
+## 快速集成
 
-TODO
+1.下载cube源码工程到你本地,运行cube源码工程文件,找到工程Products文件夹CServiceSuite.framework右键show in finder找到编译完成的cube库.
 
+2.将上一步得到的cube库通过右键Add Files to "Your project"添加到你的工程文件中,然后选中project->target,找到Build phases栏使用“+”号增加Embed Frameworks Destination选择Frameworks使用下方的“+”号添加刚才加入到你工程文件中的cube库.
+
+
+## 如何使用
+
+你可以参照源码demo工程的方式引入并使用cube库.
+
+或者使用如下方式:
+
+在你的工程pch文件使用以下方式导入引擎库头文件
+
+```objc
+#import <CServiceSuite/CServiceSuite.h>
+```
+
+配置cube
+
+```objc
+CKernelConfig *config = [[CKernelConfig alloc] init];
+config.domain = @"shixincube.com";
+config.appKey = @"shixin-cubeteam-opensource-appkey";
+config.address = @"192.168.1.113";
+[[CEngine shareEngine] startWithConfig:config];
+```
+
+登入账户
+
+```objc
+[[CEngine shareEngine] signIn:@"102030405" name:@"MyApp用户的显示名"]; 
+```
+
+消息发送
+
+```objc
+CMessageService *messageService = (CMessageService *)[[CKernel shareKernel] getModule:CMessageService.mName];
+CMessage *message = [[CMessage alloc] initWithPayload:@{@"content":content}];
+[messageService sendToContact:@"908070605" message:message];
+```
+
+更多功能请参照Cube手册和api文档
 
 ## 功能展示
 
