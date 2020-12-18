@@ -8,6 +8,8 @@
 
 #import "CContactService.h"
 #import "CAuthService.h"
+#import "CContact.h"
+#import "CGroup.h"
 
 static NSString *_mName = @"Contact";
 
@@ -62,6 +64,17 @@ static NSString *_mName = @"Contact";
     
     // TODO: clear current contact while callback with success code.
     _currentContact = nil;
+}
+
+-(void)createGroup:(NSString *)groupName memebers:(NSArray<CContact*>*)memebers{
+        
+    CGroup *group = [CGroup new];
+    group.name = groupName;
+    group.members = memebers;
+    CPacket *packet = [[CPacket alloc] initWithName:@"createGroup" data:[group toJson] sn:0];
+    [(CCellPipeline *)self.pipeline send:CContactService.mName packet:packet response:^(CPacket *packet) {
+            
+    }];
 }
 
 

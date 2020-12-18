@@ -14,6 +14,7 @@
 @class CContactService;
 @class CMessageService;
 @class CAuthService;
+@class CConferenceService;
 
 #import "CKernel.h"
 
@@ -29,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (CContactService *)contactService;
 - (CMessageService *)messageService;
 - (CAuthService *)authService;
-
+- (CConferenceService *)confereneceService;
 
 @end
 

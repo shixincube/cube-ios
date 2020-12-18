@@ -32,6 +32,9 @@ static NSString *_name = @"conference";
 
 @implementation CConferenceService
 
++(NSString *)mName{
+    return _mName;
+}
 
 -(instancetype)init{
     if (self = [super initWithName:_name]) {

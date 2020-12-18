@@ -82,6 +82,10 @@
 		9B5FE7032581B4CD00C7E17D /* CConferenceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5FE7012581B4CD00C7E17D /* CConferenceService.m */; };
 		9B5FE7062581B79600C7E17D /* CConference.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B5FE7042581B79600C7E17D /* CConference.h */; };
 		9B5FE7072581B79600C7E17D /* CConference.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5FE7052581B79600C7E17D /* CConference.m */; };
+		9B690282258C4B5E00EA235A /* CGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B690280258C4B5E00EA235A /* CGroup.h */; };
+		9B690283258C4B5E00EA235A /* CGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B690281258C4B5E00EA235A /* CGroup.m */; };
+		9B690287258C92FE00EA235A /* CContactPipelineListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B690285258C92FE00EA235A /* CContactPipelineListener.h */; };
+		9B690288258C92FE00EA235A /* CContactPipelineListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B690286258C92FE00EA235A /* CContactPipelineListener.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +188,10 @@
 		9B5FE7012581B4CD00C7E17D /* CConferenceService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CConferenceService.m; sourceTree = "<group>"; };
 		9B5FE7042581B79600C7E17D /* CConference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CConference.h; sourceTree = "<group>"; };
 		9B5FE7052581B79600C7E17D /* CConference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CConference.m; sourceTree = "<group>"; };
+		9B690280258C4B5E00EA235A /* CGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGroup.h; sourceTree = "<group>"; };
+		9B690281258C4B5E00EA235A /* CGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGroup.m; sourceTree = "<group>"; };
+		9B690285258C92FE00EA235A /* CContactPipelineListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactPipelineListener.h; sourceTree = "<group>"; };
+		9B690286258C92FE00EA235A /* CContactPipelineListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactPipelineListener.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,6 +419,10 @@
 				824D0FE42534012900D75261 /* CContact.m */,
 				824D0FE7253401FC00D75261 /* CDevice.h */,
 				824D0FE8253401FC00D75261 /* CDevice.m */,
+				9B690280258C4B5E00EA235A /* CGroup.h */,
+				9B690281258C4B5E00EA235A /* CGroup.m */,
+				9B690285258C92FE00EA235A /* CContactPipelineListener.h */,
+				9B690286258C92FE00EA235A /* CContactPipelineListener.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -476,6 +488,7 @@
 				820FEE5C25306C8F00AD1519 /* CAuthToken.h in Headers */,
 				9B16A8F82574C38F00C3DCC0 /* CFile.h in Headers */,
 				820F7696253155B0008E1164 /* CPrimaryDescription.h in Headers */,
+				9B690287258C92FE00EA235A /* CContactPipelineListener.h in Headers */,
 				8245BAAE24FE2F2E003631A2 /* CCore.h in Headers */,
 				8245BAB624FE3A03003631A2 /* CPlugin.h in Headers */,
 				8245BAAA24FE2ECD003631A2 /* CModule.h in Headers */,
@@ -484,6 +497,7 @@
 				820FEE5725305D6900AD1519 /* CMessageService.h in Headers */,
 				8215FFCE2552A0F200283FDA /* PrefixHeader.pch in Headers */,
 				8245BAA624FE2EB8003631A2 /* CPipeline.h in Headers */,
+				9B690282258C4B5E00EA235A /* CGroup.h in Headers */,
 				820C78FD24FF6C0E0021E494 /* CCellPipeline.h in Headers */,
 				824D0FE9253401FC00D75261 /* CDevice.h in Headers */,
 				824D0FE52534012900D75261 /* CContact.h in Headers */,
@@ -635,6 +649,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B690288258C92FE00EA235A /* CContactPipelineListener.m in Sources */,
 				82AD3FB5253844770072B40A /* CMessage.m in Sources */,
 				8216FEFE2508DC6500028D32 /* CSafeWeakRefDictionary.m in Sources */,
 				8245BAA324FE2B53003631A2 /* CKernel.m in Sources */,
@@ -656,6 +671,7 @@
 				8245BAC124FE4632003631A2 /* CPacket.m in Sources */,
 				82085B512509D5AF00A9BFF0 /* CThreadSafeDictionary.m in Sources */,
 				9B16A8FD2574C4D900C3DCC0 /* CFileManager.m in Sources */,
+				9B690283258C4B5E00EA235A /* CGroup.m in Sources */,
 				820FEE5825305D6900AD1519 /* CMessageService.m in Sources */,
 				9B16A8F125749FA800C3DCC0 /* CFileService.m in Sources */,
 				8216FEFA2508D3D000028D32 /* CSafeWeakRefArray.m in Sources */,

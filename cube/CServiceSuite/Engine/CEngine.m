@@ -15,7 +15,7 @@
 #import "CMessageService.h"
 
 #import "CContactService.h"
-
+#import "CConferenceService.h"
 
 @interface CEngine ()
 
@@ -99,6 +99,9 @@ static CEngine *engine = nil;
 }
 
 
+-(CConferenceService *)confereneceService{
+    return (CConferenceService *)[self.kernel getModule:CConferenceService.mName];
+}
 
 
 

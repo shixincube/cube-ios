@@ -25,18 +25,35 @@
 */
 
 #import <CServiceSuite/CServiceSuite.h>
-@class CConference;
 
-typedef void(^ConferenceSuccessCallBack)(CConference *conference);
-typedef void(^ConferenceErrorCallBack)(int code,NSString *desc);
+typedef NS_ENUM(NSUInteger, CGroupState) {
+    CGroupStateNormal,        //普通
+    CGroupStateDismissed,    //解散
+    CGroupStateForbidden,   //禁用
+    CGroupStateHighRisk,   //高风险
+    CGroupStateDisabled,  //失效
+    CGroupStateOther,    //其他
+};
 
-@interface CConferenceService : CModule
 
-@property (nonatomic ,class , readonly) NSString *mName;
+@interface CGroup : CContact
 
--(void)createConference:(CConference*)conference success:(ConferenceSuccessCallBack)success error:(ConferenceErrorCallBack)error;
+//创建人
+@property (nonatomic ,strong) CContact *owner;
+//成员
+@property (nonatomic ,copy) NSArray<CContact*> *members;
+//创建时间
+@property (nonatomic ,strong) NSNumber *creationTime;
+//活跃时间
+@property (nonatomic ,strong) NSNumber *lastActiveTime;
+//状态
+@property (nonatomic ,assign) CGroupState state;
 
--(void)endConference:(CConference*)conference success:(ConferenceSuccessCallBack)success error:(ConferenceErrorCallBack)error;
+-(instancetype)createGroup:(NSString *)newName;
+-(void)modifyName:(NSString *)newName;
+-(void)changeOwner:(CContact*)newOwner;
+-(BOOL)isOwner:(CContact*)contact;
+-(void)addMmeber:(NSArray<CContact*> *)contacts;
 
 
 @end

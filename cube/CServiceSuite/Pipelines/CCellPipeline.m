@@ -83,12 +83,12 @@ static NSString *_pName = @"Cell";
 
 -(void)open{
     [super open];
-    [self.nucleus.talkService call:@"192.168.1.113" withPort:7000 withCellets:@[]];
+    [self.nucleus.talkService call:@"211.157.135.152" withPort:7000 withCellets:@[]];
 }
 
 -(void)close{
     [super close];
-    [self.nucleus.talkService hangup:@"192.168.1.113" withPort:7000 withNow:YES];
+    [self.nucleus.talkService hangup:@"211.157.135.152" withPort:7000 withNow:YES];
 }
 
 -(void)send:(NSString *)destination packet:(CPacket *)packet response:(void (^)(CPacket *packet))response{

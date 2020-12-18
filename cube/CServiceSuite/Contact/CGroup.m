@@ -24,21 +24,28 @@
 * SOFTWARE.
 */
 
-#import <CServiceSuite/CServiceSuite.h>
-@class CConference;
+#import "CGroup.h"
 
-typedef void(^ConferenceSuccessCallBack)(CConference *conference);
-typedef void(^ConferenceErrorCallBack)(int code,NSString *desc);
+@implementation CGroup
 
-@interface CConferenceService : CModule
-
-@property (nonatomic ,class , readonly) NSString *mName;
-
--(void)createConference:(CConference*)conference success:(ConferenceSuccessCallBack)success error:(ConferenceErrorCallBack)error;
-
--(void)endConference:(CConference*)conference success:(ConferenceSuccessCallBack)success error:(ConferenceErrorCallBack)error;
-
+-(instancetype)createGroup:(NSString *)newName{
+    CGroup *group = [CGroup new];
+    group.name = newName;
+    return group;
+}
+-(void)modifyName:(NSString *)newName{
+    self.name = newName;
+}
+-(void)changeOwner:(CContact*)newOwner{
+    self.owner = newOwner;
+}
+-(BOOL)isOwner:(CContact*)contact{
+    return  self.owner.contactId == contact.contactId;
+}
+-(void)addMmeber:(NSArray<CContact*> *)contacts{
+    NSMutableArray *currenMemebers = [self.members mutableCopy];
+    [currenMemebers addObjectsFromArray:contacts];
+    self.members = [currenMemebers copy];
+}
 
 @end
-
-
