@@ -57,7 +57,7 @@ static NSString *_name = @"MultipointComm";
 
 -(void)makeCall:(CContact*)target mediaConstraint:(CMediaConstraint*)mediaConstraint success:(MultipontSuccessCallBack)success error:(MultipontErrorCallBack)error{
     
-    CPacket *packet = [[CPacket alloc] initWithName:@"applyCall" data:[group toJson] sn:0];
+    CPacket *packet = [[CPacket alloc] initWithName:@"applyCall" data:nil sn:0];
     [(CCellPipeline *)self.pipeline send:CContactService.mName packet:packet response:^(CPacket *packet) {
             
     }];
