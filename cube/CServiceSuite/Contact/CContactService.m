@@ -11,7 +11,7 @@
 #import "CContact.h"
 #import "CGroup.h"
 
-static NSString *_mName = @"Contact";
+static NSString *_name = @"Contact";
 
 @implementation CContactService
 
@@ -22,7 +22,7 @@ static NSString *_mName = @"Contact";
 }
 
 +(NSString *)mName{
-    return _mName;
+    return _name;
 }
 
 -(CPipeline *)pipeline{

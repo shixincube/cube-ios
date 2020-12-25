@@ -86,6 +86,20 @@
 		9B690283258C4B5E00EA235A /* CGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B690281258C4B5E00EA235A /* CGroup.m */; };
 		9B690287258C92FE00EA235A /* CContactPipelineListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B690285258C92FE00EA235A /* CContactPipelineListener.h */; };
 		9B690288258C92FE00EA235A /* CContactPipelineListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B690286258C92FE00EA235A /* CContactPipelineListener.m */; };
+		9B69045D2595C33800EA235A /* CCommField.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B69045B2595C33800EA235A /* CCommField.h */; };
+		9B69045E2595C33800EA235A /* CCommField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B69045C2595C33800EA235A /* CCommField.m */; };
+		9B6904612595C46800EA235A /* RTCDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B69045F2595C46800EA235A /* RTCDevice.h */; };
+		9B6904622595C46800EA235A /* RTCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6904602595C46800EA235A /* RTCDevice.m */; };
+		9B6904662595CB9E00EA235A /* CCommFieldEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B6904642595CB9E00EA235A /* CCommFieldEndpoint.h */; };
+		9B6904672595CB9E00EA235A /* CCommFieldEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6904652595CB9E00EA235A /* CCommFieldEndpoint.m */; };
+		9B69046A2595D19500EA235A /* CMultipointComm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B6904682595D19500EA235A /* CMultipointComm.h */; };
+		9B69046B2595D19500EA235A /* CMultipointComm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6904692595D19500EA235A /* CMultipointComm.m */; };
+		9B69046E2595D8C300EA235A /* CSignaling.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B69046C2595D8C300EA235A /* CSignaling.h */; };
+		9B69046F2595D8C300EA235A /* CSignaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B69046D2595D8C300EA235A /* CSignaling.m */; };
+		9B6904722595DB0400EA235A /* CMediaConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B6904702595DB0400EA235A /* CMediaConstraint.h */; };
+		9B6904732595DB0400EA235A /* CMediaConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6904712595DB0400EA235A /* CMediaConstraint.m */; };
+		9B6904762595DDC800EA235A /* CCallRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B6904742595DDC800EA235A /* CCallRecord.h */; };
+		9B6904772595DDC800EA235A /* CCallRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6904752595DDC800EA235A /* CCallRecord.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +206,20 @@
 		9B690281258C4B5E00EA235A /* CGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGroup.m; sourceTree = "<group>"; };
 		9B690285258C92FE00EA235A /* CContactPipelineListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactPipelineListener.h; sourceTree = "<group>"; };
 		9B690286258C92FE00EA235A /* CContactPipelineListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactPipelineListener.m; sourceTree = "<group>"; };
+		9B69045B2595C33800EA235A /* CCommField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCommField.h; sourceTree = "<group>"; };
+		9B69045C2595C33800EA235A /* CCommField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCommField.m; sourceTree = "<group>"; };
+		9B69045F2595C46800EA235A /* RTCDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTCDevice.h; sourceTree = "<group>"; };
+		9B6904602595C46800EA235A /* RTCDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTCDevice.m; sourceTree = "<group>"; };
+		9B6904642595CB9E00EA235A /* CCommFieldEndpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCommFieldEndpoint.h; sourceTree = "<group>"; };
+		9B6904652595CB9E00EA235A /* CCommFieldEndpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCommFieldEndpoint.m; sourceTree = "<group>"; };
+		9B6904682595D19500EA235A /* CMultipointComm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMultipointComm.h; sourceTree = "<group>"; };
+		9B6904692595D19500EA235A /* CMultipointComm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMultipointComm.m; sourceTree = "<group>"; };
+		9B69046C2595D8C300EA235A /* CSignaling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSignaling.h; sourceTree = "<group>"; };
+		9B69046D2595D8C300EA235A /* CSignaling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSignaling.m; sourceTree = "<group>"; };
+		9B6904702595DB0400EA235A /* CMediaConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMediaConstraint.h; sourceTree = "<group>"; };
+		9B6904712595DB0400EA235A /* CMediaConstraint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMediaConstraint.m; sourceTree = "<group>"; };
+		9B6904742595DDC800EA235A /* CCallRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCallRecord.h; sourceTree = "<group>"; };
+		9B6904752595DDC800EA235A /* CCallRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCallRecord.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,6 +397,7 @@
 				820FEE4F25305D6300AD1519 /* Auth */,
 				9B16A8EC25749F1B00C3DCC0 /* Email */,
 				9B16A8ED25749F1B00C3DCC0 /* File */,
+				9B69045A2595BCF400EA235A /* Multipointcomm */,
 				820C78FA24FF6BF00021E494 /* Pipelines */,
 				8245BAB824FE3A28003631A2 /* Engine */,
 				8245BA9F24FE2AEA003631A2 /* Core */,
@@ -470,6 +499,27 @@
 			path = Conference;
 			sourceTree = "<group>";
 		};
+		9B69045A2595BCF400EA235A /* Multipointcomm */ = {
+			isa = PBXGroup;
+			children = (
+				9B69045B2595C33800EA235A /* CCommField.h */,
+				9B69045C2595C33800EA235A /* CCommField.m */,
+				9B69045F2595C46800EA235A /* RTCDevice.h */,
+				9B6904602595C46800EA235A /* RTCDevice.m */,
+				9B6904642595CB9E00EA235A /* CCommFieldEndpoint.h */,
+				9B6904652595CB9E00EA235A /* CCommFieldEndpoint.m */,
+				9B6904682595D19500EA235A /* CMultipointComm.h */,
+				9B6904692595D19500EA235A /* CMultipointComm.m */,
+				9B69046C2595D8C300EA235A /* CSignaling.h */,
+				9B69046D2595D8C300EA235A /* CSignaling.m */,
+				9B6904702595DB0400EA235A /* CMediaConstraint.h */,
+				9B6904712595DB0400EA235A /* CMediaConstraint.m */,
+				9B6904742595DDC800EA235A /* CCallRecord.h */,
+				9B6904752595DDC800EA235A /* CCallRecord.m */,
+			);
+			path = Multipointcomm;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -483,22 +533,28 @@
 				8245BABB24FE3A36003631A2 /* CEngine.h in Headers */,
 				82AD3FB4253844770072B40A /* CMessage.h in Headers */,
 				9B5FE7022581B4CD00C7E17D /* CConferenceService.h in Headers */,
+				9B69046E2595D8C300EA235A /* CSignaling.h in Headers */,
 				8216FEFD2508DC6500028D32 /* CSafeWeakRefDictionary.h in Headers */,
 				8245BAB224FE39F8003631A2 /* CPluginSystem.h in Headers */,
 				820FEE5C25306C8F00AD1519 /* CAuthToken.h in Headers */,
 				9B16A8F82574C38F00C3DCC0 /* CFile.h in Headers */,
 				820F7696253155B0008E1164 /* CPrimaryDescription.h in Headers */,
+				9B69046A2595D19500EA235A /* CMultipointComm.h in Headers */,
 				9B690287258C92FE00EA235A /* CContactPipelineListener.h in Headers */,
+				9B6904662595CB9E00EA235A /* CCommFieldEndpoint.h in Headers */,
 				8245BAAE24FE2F2E003631A2 /* CCore.h in Headers */,
 				8245BAB624FE3A03003631A2 /* CPlugin.h in Headers */,
 				8245BAAA24FE2ECD003631A2 /* CModule.h in Headers */,
 				9B5FE7062581B79600C7E17D /* CConference.h in Headers */,
 				8245BAC024FE4632003631A2 /* CPacket.h in Headers */,
 				820FEE5725305D6900AD1519 /* CMessageService.h in Headers */,
+				9B6904612595C46800EA235A /* RTCDevice.h in Headers */,
+				9B69045D2595C33800EA235A /* CCommField.h in Headers */,
 				8215FFCE2552A0F200283FDA /* PrefixHeader.pch in Headers */,
 				8245BAA624FE2EB8003631A2 /* CPipeline.h in Headers */,
 				9B690282258C4B5E00EA235A /* CGroup.h in Headers */,
 				820C78FD24FF6C0E0021E494 /* CCellPipeline.h in Headers */,
+				9B6904762595DDC800EA235A /* CCallRecord.h in Headers */,
 				824D0FE9253401FC00D75261 /* CDevice.h in Headers */,
 				824D0FE52534012900D75261 /* CContact.h in Headers */,
 				824D0FEE2534315100D75261 /* CJsonable.h in Headers */,
@@ -512,6 +568,7 @@
 				82A0B42A254FB34200F884BE /* CMessagePipelineListener.h in Headers */,
 				8216FEF92508D3D000028D32 /* CSafeWeakRefArray.h in Headers */,
 				82085B502509D5AF00A9BFF0 /* CThreadSafeDictionary.h in Headers */,
+				9B6904722595DB0400EA235A /* CMediaConstraint.h in Headers */,
 				8245BAA224FE2B53003631A2 /* CKernel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,7 +709,9 @@
 				9B690288258C92FE00EA235A /* CContactPipelineListener.m in Sources */,
 				82AD3FB5253844770072B40A /* CMessage.m in Sources */,
 				8216FEFE2508DC6500028D32 /* CSafeWeakRefDictionary.m in Sources */,
+				9B69046F2595D8C300EA235A /* CSignaling.m in Sources */,
 				8245BAA324FE2B53003631A2 /* CKernel.m in Sources */,
+				9B6904672595CB9E00EA235A /* CCommFieldEndpoint.m in Sources */,
 				8245BAB324FE39F8003631A2 /* CPluginSystem.m in Sources */,
 				9B16A8F525749FBA00C3DCC0 /* CEmailService.m in Sources */,
 				9B5FE7072581B79600C7E17D /* CConference.m in Sources */,
@@ -668,17 +727,22 @@
 				820FEE5225305D6300AD1519 /* CAuthService.m in Sources */,
 				82085B4D2509D4E700A9BFF0 /* CThreadSafeArray.m in Sources */,
 				820F7697253155B0008E1164 /* CPrimaryDescription.m in Sources */,
+				9B69046B2595D19500EA235A /* CMultipointComm.m in Sources */,
 				8245BAC124FE4632003631A2 /* CPacket.m in Sources */,
 				82085B512509D5AF00A9BFF0 /* CThreadSafeDictionary.m in Sources */,
 				9B16A8FD2574C4D900C3DCC0 /* CFileManager.m in Sources */,
 				9B690283258C4B5E00EA235A /* CGroup.m in Sources */,
 				820FEE5825305D6900AD1519 /* CMessageService.m in Sources */,
+				9B6904732595DB0400EA235A /* CMediaConstraint.m in Sources */,
+				9B69045E2595C33800EA235A /* CCommField.m in Sources */,
+				9B6904772595DDC800EA235A /* CCallRecord.m in Sources */,
 				9B16A8F125749FA800C3DCC0 /* CFileService.m in Sources */,
 				8216FEFA2508D3D000028D32 /* CSafeWeakRefArray.m in Sources */,
 				8245BAAB24FE2ECD003631A2 /* CModule.m in Sources */,
 				824D0FE22533F97200D75261 /* CEntity.m in Sources */,
 				824D0FDE2533F17A00D75261 /* CContactService.m in Sources */,
 				8245BABC24FE3A36003631A2 /* CEngine.m in Sources */,
+				9B6904622595C46800EA235A /* RTCDevice.m in Sources */,
 				824D0FF325343BC200D75261 /* CJsonableUtil.m in Sources */,
 				9B5FE7032581B4CD00C7E17D /* CConferenceService.m in Sources */,
 			);

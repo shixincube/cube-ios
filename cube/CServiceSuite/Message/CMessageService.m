@@ -67,7 +67,7 @@ static NSString *_name = @"message";
 }
 
 #pragma mark - cpipeline listener
-
+//接收消息
 -(void)onReceived:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet{
     if ([packet getStateCode] != 1000) {
         NSLog(@"get message pipeline error");
