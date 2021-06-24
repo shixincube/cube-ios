@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:CServiceSuite.xcodeproj">
+      location = "self:/Users/ambrose/Documents/Repositories/Cube3/cube-ios/cube/CubeEngine.xcodeproj">
    </FileRef>
 </Workspace>

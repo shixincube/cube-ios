@@ -15,7 +15,7 @@
 		820C78FE24FF6C0E0021E494 /* CCellPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 820C78FC24FF6C0E0021E494 /* CCellPipeline.m */; };
 		820C790824FFA6210021E494 /* cell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820C790624FFA34F0021E494 /* cell.framework */; };
 		820E2B0025393C09007FFC3F /* CServiceSuiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E2AFF25393C09007FFC3F /* CServiceSuiteTests.m */; };
-		820E2B0225393C0A007FFC3F /* CServiceSuite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8244B00524F763D700958B71 /* CServiceSuite.framework */; };
+		820E2B0225393C0A007FFC3F /* CubeEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8244B00524F763D700958B71 /* CubeEngine.framework */; };
 		820E2B0925393C89007FFC3F /* CKernelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E2B0825393C89007FFC3F /* CKernelTests.m */; };
 		820E2B0B25393CB5007FFC3F /* CPipelineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E2B0A25393CB5007FFC3F /* CPipelineTests.m */; };
 		820E2B0F25393EBC007FFC3F /* CAuthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 820E2B0E25393EBC007FFC3F /* CAuthTests.m */; };
@@ -39,7 +39,7 @@
 		8216FEFA2508D3D000028D32 /* CSafeWeakRefArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8216FEF82508D3D000028D32 /* CSafeWeakRefArray.m */; };
 		8216FEFD2508DC6500028D32 /* CSafeWeakRefDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 8216FEFB2508DC6500028D32 /* CSafeWeakRefDictionary.h */; };
 		8216FEFE2508DC6500028D32 /* CSafeWeakRefDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8216FEFC2508DC6500028D32 /* CSafeWeakRefDictionary.m */; };
-		8244B00A24F763D700958B71 /* CServiceSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = 8244B00824F763D700958B71 /* CServiceSuite.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8244B00A24F763D700958B71 /* CubeEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 8244B00824F763D700958B71 /* CubeEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8245BAA224FE2B53003631A2 /* CKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8245BAA024FE2B53003631A2 /* CKernel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8245BAA324FE2B53003631A2 /* CKernel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8245BAA124FE2B53003631A2 /* CKernel.m */; };
 		8245BAA624FE2EB8003631A2 /* CPipeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 8245BAA424FE2EB8003631A2 /* CPipeline.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -72,8 +72,6 @@
 		82AD3FB5253844770072B40A /* CMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AD3FB3253844770072B40A /* CMessage.m */; };
 		9B16A8F025749FA800C3DCC0 /* CFileService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B16A8EE25749FA800C3DCC0 /* CFileService.h */; };
 		9B16A8F125749FA800C3DCC0 /* CFileService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16A8EF25749FA800C3DCC0 /* CFileService.m */; };
-		9B16A8F425749FBA00C3DCC0 /* CEmailService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B16A8F225749FBA00C3DCC0 /* CEmailService.h */; };
-		9B16A8F525749FBA00C3DCC0 /* CEmailService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16A8F325749FBA00C3DCC0 /* CEmailService.m */; };
 		9B16A8F82574C38F00C3DCC0 /* CFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B16A8F62574C38F00C3DCC0 /* CFile.h */; };
 		9B16A8F92574C38F00C3DCC0 /* CFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16A8F72574C38F00C3DCC0 /* CFile.m */; };
 		9B16A8FC2574C4D900C3DCC0 /* CFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B16A8FA2574C4D900C3DCC0 /* CFileManager.h */; };
@@ -133,7 +131,7 @@
 		820C78FB24FF6C0E0021E494 /* CCellPipeline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCellPipeline.h; sourceTree = "<group>"; };
 		820C78FC24FF6C0E0021E494 /* CCellPipeline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCellPipeline.m; sourceTree = "<group>"; };
 		820C790624FFA34F0021E494 /* cell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = cell.framework; sourceTree = "<group>"; };
-		820E2AFD25393C09007FFC3F /* CServiceSuiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CServiceSuiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		820E2AFD25393C09007FFC3F /* CubeEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		820E2AFF25393C09007FFC3F /* CServiceSuiteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CServiceSuiteTests.m; sourceTree = "<group>"; };
 		820E2B0125393C0A007FFC3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		820E2B0825393C89007FFC3F /* CKernelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKernelTests.m; sourceTree = "<group>"; };
@@ -157,8 +155,8 @@
 		8216FEF82508D3D000028D32 /* CSafeWeakRefArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSafeWeakRefArray.m; sourceTree = "<group>"; };
 		8216FEFB2508DC6500028D32 /* CSafeWeakRefDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSafeWeakRefDictionary.h; sourceTree = "<group>"; };
 		8216FEFC2508DC6500028D32 /* CSafeWeakRefDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSafeWeakRefDictionary.m; sourceTree = "<group>"; };
-		8244B00524F763D700958B71 /* CServiceSuite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CServiceSuite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8244B00824F763D700958B71 /* CServiceSuite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CServiceSuite.h; sourceTree = "<group>"; };
+		8244B00524F763D700958B71 /* CubeEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CubeEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8244B00824F763D700958B71 /* CubeEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeEngine.h; sourceTree = "<group>"; };
 		8244B00924F763D700958B71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8245BAA024FE2B53003631A2 /* CKernel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKernel.h; sourceTree = "<group>"; };
 		8245BAA124FE2B53003631A2 /* CKernel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKernel.m; sourceTree = "<group>"; };
@@ -192,8 +190,6 @@
 		82AD3FB3253844770072B40A /* CMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessage.m; sourceTree = "<group>"; };
 		9B16A8EE25749FA800C3DCC0 /* CFileService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFileService.h; sourceTree = "<group>"; };
 		9B16A8EF25749FA800C3DCC0 /* CFileService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFileService.m; sourceTree = "<group>"; };
-		9B16A8F225749FBA00C3DCC0 /* CEmailService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEmailService.h; sourceTree = "<group>"; };
-		9B16A8F325749FBA00C3DCC0 /* CEmailService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEmailService.m; sourceTree = "<group>"; };
 		9B16A8F62574C38F00C3DCC0 /* CFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFile.h; sourceTree = "<group>"; };
 		9B16A8F72574C38F00C3DCC0 /* CFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFile.m; sourceTree = "<group>"; };
 		9B16A8FA2574C4D900C3DCC0 /* CFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFileManager.h; sourceTree = "<group>"; };
@@ -228,7 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				820E2B1725394282007FFC3F /* cell.framework in Frameworks */,
-				820E2B0225393C0A007FFC3F /* CServiceSuite.framework in Frameworks */,
+				820E2B0225393C0A007FFC3F /* CubeEngine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,7 +258,7 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
-		820E2AFE25393C09007FFC3F /* CServiceSuiteTests */ = {
+		820E2AFE25393C09007FFC3F /* CubeEngineTests */ = {
 			isa = PBXGroup;
 			children = (
 				820E2AFF25393C09007FFC3F /* CServiceSuiteTests.m */,
@@ -272,7 +268,7 @@
 				820E2B0C25393D4A007FFC3F /* CoreTests */,
 				820E2B0125393C0A007FFC3F /* Info.plist */,
 			);
-			path = CServiceSuiteTests;
+			path = CubeEngineTests;
 			sourceTree = "<group>";
 		};
 		820E2B0C25393D4A007FFC3F /* CoreTests */ = {
@@ -368,8 +364,8 @@
 		8244AFFB24F763D700958B71 = {
 			isa = PBXGroup;
 			children = (
-				8244B00724F763D700958B71 /* CServiceSuite */,
-				820E2AFE25393C09007FFC3F /* CServiceSuiteTests */,
+				8244B00724F763D700958B71 /* CubeEngine */,
+				820E2AFE25393C09007FFC3F /* CubeEngineTests */,
 				8244B00624F763D700958B71 /* Products */,
 				820E2B1625394282007FFC3F /* Frameworks */,
 			);
@@ -378,16 +374,16 @@
 		8244B00624F763D700958B71 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8244B00524F763D700958B71 /* CServiceSuite.framework */,
-				820E2AFD25393C09007FFC3F /* CServiceSuiteTests.xctest */,
+				8244B00524F763D700958B71 /* CubeEngine.framework */,
+				820E2AFD25393C09007FFC3F /* CubeEngineTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8244B00724F763D700958B71 /* CServiceSuite */ = {
+		8244B00724F763D700958B71 /* CubeEngine */ = {
 			isa = PBXGroup;
 			children = (
-				8244B00824F763D700958B71 /* CServiceSuite.h */,
+				8244B00824F763D700958B71 /* CubeEngine.h */,
 				8244B00924F763D700958B71 /* Info.plist */,
 				9B5FE6FF2581B49400C7E17D /* Conference */,
 				8215FFCC2552A0AC00283FDA /* Supporting files */,
@@ -395,14 +391,13 @@
 				820FEE5425305D6900AD1519 /* Message */,
 				824D0FDA2533F15600D75261 /* Contact */,
 				820FEE4F25305D6300AD1519 /* Auth */,
-				9B16A8EC25749F1B00C3DCC0 /* Email */,
 				9B16A8ED25749F1B00C3DCC0 /* File */,
 				9B69045A2595BCF400EA235A /* Multipointcomm */,
 				820C78FA24FF6BF00021E494 /* Pipelines */,
 				8245BAB824FE3A28003631A2 /* Engine */,
 				8245BA9F24FE2AEA003631A2 /* Core */,
 			);
-			path = CServiceSuite;
+			path = CubeEngine;
 			sourceTree = "<group>";
 		};
 		8245BA9F24FE2AEA003631A2 /* Core */ = {
@@ -464,15 +459,6 @@
 				824D0FF125343BC200D75261 /* CJsonableUtil.m */,
 			);
 			path = Jsonable;
-			sourceTree = "<group>";
-		};
-		9B16A8EC25749F1B00C3DCC0 /* Email */ = {
-			isa = PBXGroup;
-			children = (
-				9B16A8F225749FBA00C3DCC0 /* CEmailService.h */,
-				9B16A8F325749FBA00C3DCC0 /* CEmailService.m */,
-			);
-			path = Email;
 			sourceTree = "<group>";
 		};
 		9B16A8ED25749F1B00C3DCC0 /* File */ = {
@@ -560,11 +546,10 @@
 				824D0FEE2534315100D75261 /* CJsonable.h in Headers */,
 				824D0FE12533F97200D75261 /* CEntity.h in Headers */,
 				824D0FDD2533F17A00D75261 /* CContactService.h in Headers */,
-				9B16A8F425749FBA00C3DCC0 /* CEmailService.h in Headers */,
 				824D0FF225343BC200D75261 /* CJsonableUtil.h in Headers */,
 				8216FEEF2508C34A00028D32 /* CSubject.h in Headers */,
 				820FEE5325305D6300AD1519 /* CAuthService.h in Headers */,
-				8244B00A24F763D700958B71 /* CServiceSuite.h in Headers */,
+				8244B00A24F763D700958B71 /* CubeEngine.h in Headers */,
 				82A0B42A254FB34200F884BE /* CMessagePipelineListener.h in Headers */,
 				8216FEF92508D3D000028D32 /* CSafeWeakRefArray.h in Headers */,
 				82085B502509D5AF00A9BFF0 /* CThreadSafeDictionary.h in Headers */,
@@ -576,9 +561,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		820E2AFC25393C09007FFC3F /* CServiceSuiteTests */ = {
+		820E2AFC25393C09007FFC3F /* CubeEngineTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 820E2B0725393C0A007FFC3F /* Build configuration list for PBXNativeTarget "CServiceSuiteTests" */;
+			buildConfigurationList = 820E2B0725393C0A007FFC3F /* Build configuration list for PBXNativeTarget "CubeEngineTests" */;
 			buildPhases = (
 				820E2AF925393C09007FFC3F /* Sources */,
 				820E2AFA25393C09007FFC3F /* Frameworks */,
@@ -590,14 +575,14 @@
 			dependencies = (
 				820E2B0425393C0A007FFC3F /* PBXTargetDependency */,
 			);
-			name = CServiceSuiteTests;
+			name = CubeEngineTests;
 			productName = CServiceSuiteTests;
-			productReference = 820E2AFD25393C09007FFC3F /* CServiceSuiteTests.xctest */;
+			productReference = 820E2AFD25393C09007FFC3F /* CubeEngineTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8244B00424F763D700958B71 /* CServiceSuite */ = {
+		8244B00424F763D700958B71 /* CubeEngine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8244B00D24F763D700958B71 /* Build configuration list for PBXNativeTarget "CServiceSuite" */;
+			buildConfigurationList = 8244B00D24F763D700958B71 /* Build configuration list for PBXNativeTarget "CubeEngine" */;
 			buildPhases = (
 				8244B00024F763D700958B71 /* Headers */,
 				8244B00124F763D700958B71 /* Sources */,
@@ -609,9 +594,9 @@
 			);
 			dependencies = (
 			);
-			name = CServiceSuite;
+			name = CubeEngine;
 			productName = CServiceSuite;
-			productReference = 8244B00524F763D700958B71 /* CServiceSuite.framework */;
+			productReference = 8244B00524F763D700958B71 /* CubeEngine.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -631,7 +616,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8244AFFF24F763D700958B71 /* Build configuration list for PBXProject "CServiceSuite" */;
+			buildConfigurationList = 8244AFFF24F763D700958B71 /* Build configuration list for PBXProject "CubeEngine" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -644,8 +629,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8244B00424F763D700958B71 /* CServiceSuite */,
-				820E2AFC25393C09007FFC3F /* CServiceSuiteTests */,
+				8244B00424F763D700958B71 /* CubeEngine */,
+				820E2AFC25393C09007FFC3F /* CubeEngineTests */,
 			);
 		};
 /* End PBXProject section */
@@ -713,7 +698,6 @@
 				8245BAA324FE2B53003631A2 /* CKernel.m in Sources */,
 				9B6904672595CB9E00EA235A /* CCommFieldEndpoint.m in Sources */,
 				8245BAB324FE39F8003631A2 /* CPluginSystem.m in Sources */,
-				9B16A8F525749FBA00C3DCC0 /* CEmailService.m in Sources */,
 				9B5FE7072581B79600C7E17D /* CConference.m in Sources */,
 				8245BAA724FE2EB8003631A2 /* CPipeline.m in Sources */,
 				9B16A8F92574C38F00C3DCC0 /* CFile.m in Sources */,
@@ -753,7 +737,7 @@
 /* Begin PBXTargetDependency section */
 		820E2B0425393C0A007FFC3F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8244B00424F763D700958B71 /* CServiceSuite */;
+			target = 8244B00424F763D700958B71 /* CubeEngine */;
 			targetProxy = 820E2B0325393C0A007FFC3F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -924,7 +908,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 78K6LCL8HM;
+				DEVELOPMENT_TEAM = H9ZBM36KF6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -941,7 +925,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shixincube.CServiceSuite.CServiceSuite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixincube.engine;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -953,7 +937,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 78K6LCL8HM;
+				DEVELOPMENT_TEAM = H9ZBM36KF6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -970,7 +954,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shixincube.CServiceSuite.CServiceSuite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixincube.engine;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -980,7 +964,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		820E2B0725393C0A007FFC3F /* Build configuration list for PBXNativeTarget "CServiceSuiteTests" */ = {
+		820E2B0725393C0A007FFC3F /* Build configuration list for PBXNativeTarget "CubeEngineTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				820E2B0525393C0A007FFC3F /* Debug */,
@@ -989,7 +973,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8244AFFF24F763D700958B71 /* Build configuration list for PBXProject "CServiceSuite" */ = {
+		8244AFFF24F763D700958B71 /* Build configuration list for PBXProject "CubeEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8244B00B24F763D700958B71 /* Debug */,
@@ -998,7 +982,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8244B00D24F763D700958B71 /* Build configuration list for PBXNativeTarget "CServiceSuite" */ = {
+		8244B00D24F763D700958B71 /* Build configuration list for PBXNativeTarget "CubeEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8244B00E24F763D700958B71 /* Debug */,
