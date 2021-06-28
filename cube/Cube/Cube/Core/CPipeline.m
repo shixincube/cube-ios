@@ -47,4 +47,9 @@
     return FALSE;
 }
 
+- (void)setRemoteAddress:(NSString *)address withPort:(NSInteger)port {
+    _address = address;
+    _port = port;
+}
+
 @end

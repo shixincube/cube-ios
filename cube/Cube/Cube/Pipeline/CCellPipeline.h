@@ -27,10 +27,11 @@
 #ifndef CCellPipeline_h
 #define CCellPipeline_h
 
+#include <cell/Cell.h>
 
 #import "../Core/CPipeline.h"
 
-@interface CCellPipeline : CPipeline
+@interface CCellPipeline : CPipeline <CellTalkListener>
 
 @end
 

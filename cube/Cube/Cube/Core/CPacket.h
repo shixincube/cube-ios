@@ -24,43 +24,27 @@
  * SOFTWARE.
  */
 
-#import "CCellPipeline.h"
+#ifndef CPacket_h
+#define CPacket_h
 
-@interface CCellPipeline ()
+#import <Foundation/Foundation.h>
 
-@property (nonatomic, strong) CellNucleus * nucleus;
+@interface CPacket : NSObject
 
-@end
+/*! @brief 数据包包名。 */
+@property (nonatomic, strong) NSString * name;
 
+/*! @brief 数据包负载数据。 */
+@property (nonatomic, strong) NSDictionary * data;
 
-@implementation CCellPipeline
+/*! @brief 数据包序号。 */
+@property (nonatomic, assign) int64_t sn;
 
-- (id)init {
-    if (self = [super initWith:@"Cell"]) {
-        _nucleus = [[CellNucleus alloc] init];
-        _nucleus.talkService.delegate = self;
-
-        // 默认端口
-        self.port = 7000;
-    }
-
-    return self;
-}
-
-- (void)open {
-    [_nucleus.talkService call:self.address withPort:(int)self.port];
-}
-
-- (void)close {
-    [_nucleus.talkService hangup:self.address withPort:(int)self.port withNow:TRUE];
-}
-
-- (BOOL)isReady {
-    return [_nucleus.talkService isCalled:self.address withPort:(int)self.port];
-}
-
-- (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet {
-    
-}
+/*!
+ * @brief 指定数据包名和数据初始化。
+ */
+- (id)initWith:(NSString *)name data:(NSDictionary *)data;
 
 @end
+
+#endif /* CPacket_h */

@@ -24,43 +24,19 @@
  * SOFTWARE.
  */
 
-#import "CCellPipeline.h"
+#import "CPacket.h"
 
-@interface CCellPipeline ()
+#include <cell/Cell.h>
 
-@property (nonatomic, strong) CellNucleus * nucleus;
+@implementation CPacket
 
-@end
-
-
-@implementation CCellPipeline
-
-- (id)init {
-    if (self = [super initWith:@"Cell"]) {
-        _nucleus = [[CellNucleus alloc] init];
-        _nucleus.talkService.delegate = self;
-
-        // 默认端口
-        self.port = 7000;
+- (id)initWith:(NSString *)name data:(NSDictionary *)data {
+    if (self = [super init]) {
+        _name = name;
+        _data = data;
+        _sn = [CellUtil generateUnsignedSerialNumber];
     }
-
     return self;
-}
-
-- (void)open {
-    [_nucleus.talkService call:self.address withPort:(int)self.port];
-}
-
-- (void)close {
-    [_nucleus.talkService hangup:self.address withPort:(int)self.port withNow:TRUE];
-}
-
-- (BOOL)isReady {
-    return [_nucleus.talkService isCalled:self.address withPort:(int)self.port];
-}
-
-- (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet {
-    
 }
 
 @end

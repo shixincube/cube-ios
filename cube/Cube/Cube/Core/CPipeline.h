@@ -28,13 +28,42 @@
 #define CPipeline_h
 
 #import <Foundation/Foundation.h>
+#import "CPacket.h"
+
+@class CPipeline;
+
+/*!
+ * @brief 数据通道服务事件代理。
+ */
+@protocol CPipelineDelegate <NSObject>
+
+@required
+- (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet;
+
+@optional
+- (void)didOpen:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet;
+
+@optional
+- (void)didClose:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet;
+
+@optional
+- (void)faultOccurred:(CPipeline *)pipeline code:(NSInteger)code;
+
+@end
+
 
 /*!
  * @brief 数据通道服务接口。
  */
 @interface CPipeline : NSObject
 
-@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, strong, readonly) NSString * name;
+
+@property (nonatomic, strong) NSString * address;
+
+@property (nonatomic, assign) NSInteger port;
+
+@property (nonatomic, assign) id<CPipelineDelegate> delegate;
 
 /*!
  * @brief 通过指定管道名称初始化。
@@ -57,6 +86,13 @@
  * @return 如果就绪返回 @c true 。
  */
 - (BOOL)isReady;
+
+/*!
+ * @brief 设置服务的地址和端口。
+ * @param address 服务器访问地址。
+ * @param port 服务器访问端口。
+ */
+- (void)setRemoteAddress:(NSString *)address withPort:(NSInteger)port;
 
 @end
 
