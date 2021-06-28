@@ -10,8 +10,10 @@
 		C8F1A54F268985A70020F136 /* Cube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A545268985A70020F136 /* Cube.framework */; };
 		C8F1A554268985A70020F136 /* CubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A553268985A70020F136 /* CubeTests.m */; };
 		C8F1A556268985A70020F136 /* Cube.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1A548268985A70020F136 /* Cube.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C8F1A56526899B770020F136 /* CKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1A56426899B770020F136 /* CKernel.h */; };
 		C8F1A56926899B980020F136 /* CKernel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A56826899B980020F136 /* CKernel.m */; };
+		C8F1A56D26899F910020F136 /* CPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A56C26899F910020F136 /* CPipeline.m */; };
+		C8F1A57B2689A1E80020F136 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A57A2689A1E80020F136 /* PromiseKit.framework */; };
+		C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A57A2689A1E80020F136 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,6 +26,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C8F1A57D2689A1E80020F136 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		C8F1A545268985A70020F136 /* Cube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F1A548268985A70020F136 /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
@@ -33,6 +49,9 @@
 		C8F1A555268985A70020F136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8F1A56426899B770020F136 /* CKernel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKernel.h; sourceTree = "<group>"; };
 		C8F1A56826899B980020F136 /* CKernel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKernel.m; sourceTree = "<group>"; };
+		C8F1A56C26899F910020F136 /* CPipeline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPipeline.m; sourceTree = "<group>"; };
+		C8F1A57026899FB60020F136 /* CPipeline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPipeline.h; sourceTree = "<group>"; };
+		C8F1A57A2689A1E80020F136 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8F1A57B2689A1E80020F136 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +80,7 @@
 				C8F1A547268985A70020F136 /* Cube */,
 				C8F1A552268985A70020F136 /* CubeTests */,
 				C8F1A546268985A70020F136 /* Products */,
+				C8F1A5792689A1E80020F136 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,8 +117,18 @@
 			children = (
 				C8F1A56426899B770020F136 /* CKernel.h */,
 				C8F1A56826899B980020F136 /* CKernel.m */,
+				C8F1A56C26899F910020F136 /* CPipeline.m */,
+				C8F1A57026899FB60020F136 /* CPipeline.h */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		C8F1A5792689A1E80020F136 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C8F1A57A2689A1E80020F136 /* PromiseKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,7 +139,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8F1A556268985A70020F136 /* Cube.h in Headers */,
-				C8F1A56526899B770020F136 /* CKernel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +153,7 @@
 				C8F1A541268985A70020F136 /* Sources */,
 				C8F1A542268985A70020F136 /* Frameworks */,
 				C8F1A543268985A70020F136 /* Resources */,
+				C8F1A57D2689A1E80020F136 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -209,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8F1A56926899B980020F136 /* CKernel.m in Sources */,
+				C8F1A56D26899F910020F136 /* CPipeline.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

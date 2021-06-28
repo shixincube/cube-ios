@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:libs/PromiseKit-6/PromiseKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:cube/Cube/Cube.xcodeproj">
    </FileRef>
 </Workspace>
