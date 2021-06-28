@@ -29,11 +29,7 @@
 
 #import <Foundation/Foundation.h>
 
-
-
 @interface CKernel : NSObject
-
-
 
 @end
 

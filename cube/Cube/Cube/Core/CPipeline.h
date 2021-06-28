@@ -29,11 +29,34 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CPlugin : NSObject
+/*!
+ * @brief 数据通道服务接口。
+ */
+@interface CPipeline : NSObject
 
 @property (nonatomic, strong, readonly) NSString *name;
 
+/*!
+ * @brief 通过指定管道名称初始化。
+ * @param name 指定管道名。
+ */
 - (id)initWith:(NSString *)name;
+
+/*!
+ * @brief 开启管道。
+ */
+- (void)open;
+
+/*!
+ * @brief 关闭管道。
+ */
+- (void)close;
+
+/*!
+ * @brief 数据通道是否就绪。
+ * @return 如果就绪返回 @c true 。
+ */
+- (BOOL)isReady;
 
 @end
 

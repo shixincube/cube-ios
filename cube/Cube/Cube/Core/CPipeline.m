@@ -26,13 +26,25 @@
 
 #import "CPipeline.h"
 
-@implementation CPlugin
+@implementation CPipeline
 
 - (id)initWith:(NSString *)name {
     if (self = [super init]) {
         _name = name;
     }
     return self;
+}
+
+- (void)open {
+    // Nothing
+}
+
+- (void)close {
+    // Nothing
+}
+
+- (BOOL)isReady {
+    return FALSE;
 }
 
 @end

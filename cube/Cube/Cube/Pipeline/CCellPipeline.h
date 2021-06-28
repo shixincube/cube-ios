@@ -24,8 +24,14 @@
  * SOFTWARE.
  */
 
-#import "CKernel.h"
+#ifndef CCellPipeline_h
+#define CCellPipeline_h
 
-@implementation CKernel
+
+#import "../Core/CPipeline.h"
+
+@interface CCellPipeline : CPipeline
 
 @end
+
+#endif /* CCellPipeline_h */

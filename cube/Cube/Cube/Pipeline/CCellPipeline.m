@@ -24,8 +24,9 @@
  * SOFTWARE.
  */
 
-#import "CKernel.h"
+#import "CCellPipeline.h"
 
-@implementation CKernel
+@implementation CCellPipeline
+
 
 @end
