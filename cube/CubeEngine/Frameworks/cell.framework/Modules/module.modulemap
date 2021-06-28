@@ -1,6 +1,0 @@
-framework module cell {
-  umbrella header "cell.h"
-
-  export *
-  module * { export * }
-}
