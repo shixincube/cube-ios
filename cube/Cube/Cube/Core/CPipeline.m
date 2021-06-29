@@ -26,30 +26,99 @@
 
 #import "CPipeline.h"
 
+@interface CPipeline ()
+
+@property (nonatomic, strong) NSMutableDictionary <NSString *, __kindof NSMutableArray *> *listeners;
+
+- (__kindof NSMutableArray<id<CPipelineListener>> *)getOrCreateListeners:(NSString *)destination;
+
+- (__kindof NSMutableArray<id<CPipelineListener>> *)getListeners:(NSString *)destination;
+
+@end
+
+
 @implementation CPipeline
 
-- (id)initWith:(NSString *)name {
+- (id)initWithName:(NSString *)name {
     if (self = [super init]) {
         _name = name;
+        _tokenCode = nil;
+
+        self.listeners = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
 - (void)open {
-    // Nothing
+    // subclass hook override.
 }
 
 - (void)close {
-    // Nothing
+    // subclass hook override.
 }
 
 - (BOOL)isReady {
+    // subclass hook override.
     return FALSE;
+}
+
+- (void)send:(NSString *)destination withPacket:(CPacket *)packet handleResponse:(void (^)(CPacket *))handleResponse {
+    // subclass hook override.
 }
 
 - (void)setRemoteAddress:(NSString *)address withPort:(NSInteger)port {
     _address = address;
     _port = port;
+}
+
+- (void)addListener:(NSString *)destination listener:(id<CPipelineListener>)listener {
+    NSAssert(destination, @"Can't add listener with nil destination.");
+    NSAssert(listener, @"Can't add listener with nil listener.");
+
+    NSMutableArray * listeners = [self getOrCreateListeners:destination];
+    if ([listeners indexOfObject:listener] == NSNotFound) {
+        [listeners addObject:listener];
+    }
+}
+
+- (void)removeListener:(NSString *)destination listener:(id<CPipelineListener>)listener {
+    NSAssert(destination, @"Can't add listener with nil destination.");
+    NSAssert(listener, @"Can't add listener with nil listener.");
+
+    NSMutableArray * listeners = [self getListeners:destination];
+    if (listeners) {
+        [listeners removeObject:listener];
+    }
+}
+
+- (__kindof NSMutableArray<id<CPipelineListener>> *)getOrCreateListeners:(NSString *)destination {
+    NSMutableArray *listeners = [self.listeners objectForKey:destination];
+    if (!listeners) {
+        listeners = [NSMutableArray array];
+        [self.listeners setValue:listeners forKey:destination];
+    }
+    return listeners;
+}
+
+- (__kindof NSMutableArray<id<CPipelineListener>> *)getListeners:(NSString *)destination {
+    return [self.listeners objectForKey:destination];
+}
+
+- (void)triggerListener:(NSString *)destination packet:(CPacket *)packet {
+    NSMutableArray * listeners = [self getListeners:destination];
+    if (listeners) {
+        for (id<CPipelineListener> listener in listeners) {
+            if ([listener respondsToSelector:@selector(didReceive:source:packet:)]) {
+                [listener didReceive:self source:destination packet:packet];
+            }
+        }
+    }
+}
+
+- (CPipelineState *)extractState:(NSDictionary *)state {
+    unsigned int code = [state[@"code"] unsignedIntValue];
+    NSString * desc = [[state objectForKey:@"desc"] stringValue];
+    return [[CPipelineState alloc] initWithCode:code desc:desc];
 }
 
 @end

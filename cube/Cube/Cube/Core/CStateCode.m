@@ -24,20 +24,17 @@
  * SOFTWARE.
  */
 
-#ifndef CKernel_h
-#define CKernel_h
+#import "CStateCode.h"
 
-#import <Foundation/Foundation.h>
+@implementation CPipelineState
 
-@interface KernelConfig : NSObject
+- (id)initWithCode:(unsigned int)code desc:(NSString *)desc {
+    if (self = [super init]) {
+        self.code = code;
+        self.desc = desc;
+    }
 
-@property (nonatomic, strong) NSString * address;
+    return self;
+}
 
 @end
-
-
-@interface CKernel : NSObject
-
-@end
-
-#endif /* CKernel_h */

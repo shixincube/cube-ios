@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
 		C8F1A54F268985A70020F136 /* Cube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A545268985A70020F136 /* Cube.framework */; };
 		C8F1A554268985A70020F136 /* CubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A553268985A70020F136 /* CubeTests.m */; };
 		C8F1A556268985A70020F136 /* Cube.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1A548268985A70020F136 /* Cube.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,6 +47,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C8B755AF268ABA6300812A4C /* CStateCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CStateCode.h; sourceTree = "<group>"; };
+		C8B755B0268ABD1B00812A4C /* CStateCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CStateCode.m; sourceTree = "<group>"; };
 		C8F1A545268985A70020F136 /* Cube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F1A548268985A70020F136 /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 		C8F1A549268985A70020F136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				C8F1A56C26899F910020F136 /* CPipeline.m */,
 				C8F1A5B72689CE430020F136 /* CPacket.h */,
 				C8F1A5B42689CE350020F136 /* CPacket.m */,
+				C8B755AF268ABA6300812A4C /* CStateCode.h */,
+				C8B755B0268ABD1B00812A4C /* CStateCode.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8F1A56926899B980020F136 /* CKernel.m in Sources */,
+				C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */,
 				C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */,
 				C8F1A56D26899F910020F136 /* CPipeline.m in Sources */,
 				C8F1A5B52689CE350020F136 /* CPacket.m in Sources */,

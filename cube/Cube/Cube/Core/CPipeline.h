@@ -29,13 +29,14 @@
 
 #import <Foundation/Foundation.h>
 #import "CPacket.h"
+#import "CStateCode.h"
 
 @class CPipeline;
 
 /*!
- * @brief 数据通道服务事件代理。
+ * @brief 数据通道服务事件监听器。
  */
-@protocol CPipelineDelegate <NSObject>
+@protocol CPipelineListener <NSObject>
 
 @required
 - (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet;
@@ -63,13 +64,13 @@
 
 @property (nonatomic, assign) NSInteger port;
 
-@property (nonatomic, assign) id<CPipelineDelegate> delegate;
+@property (nonatomic, strong) NSString * tokenCode;
 
 /*!
  * @brief 通过指定管道名称初始化。
  * @param name 指定管道名。
  */
-- (id)initWith:(NSString *)name;
+- (id)initWithName:(NSString *)name;
 
 /*!
  * @brief 开启管道。
@@ -88,11 +89,47 @@
 - (BOOL)isReady;
 
 /*!
+ * @brief 发送数据。
+ * @param destination 指定通道的发送目标或接收端识别串。
+ * @param packet 指定待发送的数据包。
+ * @param handleResponse 本次数据发送对应的应答回调。
+ */
+- (void)send:(NSString *)destination withPacket:(CPacket *)packet handleResponse:(void(^)(CPacket *packet))handleResponse;
+
+/*!
  * @brief 设置服务的地址和端口。
  * @param address 服务器访问地址。
  * @param port 服务器访问端口。
  */
 - (void)setRemoteAddress:(NSString *)address withPort:(NSInteger)port;
+
+/*!
+ * @brief 添加监听器。
+ * @param destination 指定监听的目标或识别串。
+ * @param listener 指定通道监听器。
+ */
+- (void)addListener:(NSString *)destination listener:(id<CPipelineListener>)listener;
+
+/*!
+ * @brief 移除监听器。
+ * @param destination 指定监听的目标或识别串。
+ * @param listener 指定通道监听器。
+ */
+- (void)removeListener:(NSString *)destination listener:(id<CPipelineListener>)listener;
+
+/*!
+ * @brief 触发来自服务器的数据回调。
+ * @param destination 通道的描述串。
+ * @param packet 服务器的数据包。
+ */
+- (void)triggerListener:(NSString *)destination packet:(CPacket *)packet;
+
+/*!
+ * @brief 提取状态数据。
+ * @param state JSON 格式的状态描述。
+ * @return 返回通道状态。
+ */
+- (CPipelineState *)extractState:(NSDictionary *)state;
 
 @end
 

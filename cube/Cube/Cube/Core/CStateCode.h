@@ -24,20 +24,72 @@
  * SOFTWARE.
  */
 
-#ifndef CKernel_h
-#define CKernel_h
+#ifndef CStateCode_h
+#define CStateCode_h
 
 #import <Foundation/Foundation.h>
 
-@interface KernelConfig : NSObject
+/*!
+ * @brief 状态码。
+ */
+typedef enum _CStateCode {
+    /*!
+     * @brief 成功。
+     */
+    Ok = 1000,
 
-@property (nonatomic, strong) NSString * address;
+    /*!
+     * @brief 数据请求错误。
+     */
+    BadRequest = 1400,
+
+    /*!
+     * @brief 未知的请求命令。
+     */
+    NotFound = 1404,
+
+    /*!
+     * @brief 没有找到授权码。
+     */
+    NoAuthToken = 1501,
+
+    /*!
+     * @brief 请求服务超时。
+     */
+    ServiceTimeout = 2001,
+
+    /*!
+     * @brief 负载格式错误。
+     */
+    PayloadFormat = 2002,
+
+    /*!
+     * @brief 参数错误。
+     */
+    InvalidParameter = 2003,
+
+    /*!
+     * @brief 网关错误。
+     */
+    GatewayError = 2101
+
+} CStateCode;
+
+
+/*!
+ * @brief 通道状态描述。
+ */
+@interface CPipelineState : NSObject
+
+/*! @brief 状态码。  */
+@property (nonatomic, assign) unsigned int code;
+
+/*! @brief 状态描述。  */
+@property (nonatomic, strong) NSString * desc;
+
+
+- (id)initWithCode:(unsigned int)code desc:(NSString *)desc;
 
 @end
 
-
-@interface CKernel : NSObject
-
-@end
-
-#endif /* CKernel_h */
+#endif /* CStateCode_h */

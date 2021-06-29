@@ -28,6 +28,7 @@
 #define CPacket_h
 
 #import <Foundation/Foundation.h>
+#import "CStateCode.h"
 
 @interface CPacket : NSObject
 
@@ -40,10 +41,18 @@
 /*! @brief 数据包序号。 */
 @property (nonatomic, assign) int64_t sn;
 
+/*! @brief 数据包应答状态。 */
+@property (nonatomic, strong) CPipelineState * state;
+
 /*!
  * @brief 指定数据包名和数据初始化。
  */
-- (id)initWith:(NSString *)name data:(NSDictionary *)data;
+- (id)initWithName:(NSString *)name andData:(NSDictionary *)data;
+
+/*!
+ * @brief 指定数据包名和数据初始化。
+ */
+- (id)initWithName:(NSString *)name andData:(NSDictionary *)data andSN:(int64_t)sn;
 
 @end
 

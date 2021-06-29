@@ -30,12 +30,23 @@
 
 @implementation CPacket
 
-- (id)initWith:(NSString *)name data:(NSDictionary *)data {
+- (id)initWithName:(NSString *)name andData:(NSDictionary *)data {
     if (self = [super init]) {
         _name = name;
         _data = data;
         _sn = [CellUtil generateUnsignedSerialNumber];
     }
+
+    return self;
+}
+
+- (id)initWithName:(NSString *)name andData:(NSDictionary *)data andSN:(int64_t)sn {
+    if (self = [super init]) {
+        _name = name;
+        _data = data;
+        _sn = sn;
+    }
+
     return self;
 }
 
