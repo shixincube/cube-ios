@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
+		C8B755D4268B37B500812A4C /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B755D3268B37B500812A4C /* WebRTC.xcframework */; };
+		C8B755D5268B37B500812A4C /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8B755D3268B37B500812A4C /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8F1A54F268985A70020F136 /* Cube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A545268985A70020F136 /* Cube.framework */; };
 		C8F1A554268985A70020F136 /* CubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A553268985A70020F136 /* CubeTests.m */; };
 		C8F1A556268985A70020F136 /* Cube.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1A548268985A70020F136 /* Cube.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,6 +42,7 @@
 			files = (
 				C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */,
 				C8F1A5B22689C4FE0020F136 /* cell.xcframework in Embed Frameworks */,
+				C8B755D5268B37B500812A4C /* WebRTC.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,6 +52,7 @@
 /* Begin PBXFileReference section */
 		C8B755AF268ABA6300812A4C /* CStateCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CStateCode.h; sourceTree = "<group>"; };
 		C8B755B0268ABD1B00812A4C /* CStateCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CStateCode.m; sourceTree = "<group>"; };
+		C8B755D3268B37B500812A4C /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = ../../libs/WebRTC.xcframework; sourceTree = "<group>"; };
 		C8F1A545268985A70020F136 /* Cube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F1A548268985A70020F136 /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 		C8F1A549268985A70020F136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 			files = (
 				C8F1A57B2689A1E80020F136 /* PromiseKit.framework in Frameworks */,
 				C8F1A5B12689C4FE0020F136 /* cell.xcframework in Frameworks */,
+				C8B755D4268B37B500812A4C /* WebRTC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +150,7 @@
 		C8F1A5792689A1E80020F136 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8B755D3268B37B500812A4C /* WebRTC.xcframework */,
 				C8F1A5B02689C4FE0020F136 /* cell.xcframework */,
 				C8F1A57A2689A1E80020F136 /* PromiseKit.framework */,
 			);

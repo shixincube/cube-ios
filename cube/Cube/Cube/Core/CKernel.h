@@ -29,14 +29,61 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KernelConfig : NSObject
+/*!
+ * @brief 内核配置定义。
+ */
+@interface CKernelConfig : NSObject
 
+/*!
+ * @brief 管道服务器地址。
+ */
 @property (nonatomic, strong) NSString * address;
+
+/*!
+ * @brief 授权的指定域。
+ */
+@property (nonatomic, strong) NSString * domain;
+
+/*!
+ * @brief 当前应用申请到的 App Key 串。
+ */
+@property (nonatomic, strong) NSString * appKey;
+
+/*!
+ * @brief 管道服务器端口。
+ */
+@property (nonatomic, assign) NSUInteger port;
+
+/*!
+ * @brief 启动时不进行连接。
+ */
+@property (nonatomic, assign) BOOL unconnected;
+
+/*!
+ * @brief 内核是否等待通道就绪再回调。
+ */
+@property (nonatomic, assign) BOOL pipelineReady;
+
+/*!
+ * @brief 初始化。
+ * @param address 指定服务器地址。
+ * @param domain 指定所属域名称。
+ * @param appKey 指定该 App 的 Key 串。
+ */
+- (id)initWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey;
 
 @end
 
 
 @interface CKernel : NSObject
+
+- (void)startup:(CKernelConfig *)config completion:(void(^)(void))completion failure:(void(^)(void))failure;;
+
+- (void)shutdown;
+
+- (void)suspend;
+
+- (void)resume;
 
 @end
 

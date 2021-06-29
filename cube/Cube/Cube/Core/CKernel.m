@@ -25,7 +25,79 @@
  */
 
 #import "CKernel.h"
+#import "../Pipeline/CCellPipeline.h"
+
+@implementation CKernelConfig
+
+- (id)init {
+    if (self = [super init]) {
+        self.port = 7000;
+        self.pipelineReady = FALSE;
+        self.unconnected = FALSE;
+    }
+
+    return self;
+}
+
+- (id)initWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey {
+    if (self = [super init]) {
+        self.address = address;
+        self.domain = domain;
+        self.appKey = appKey;
+
+        self.port = 7000;
+        self.pipelineReady = FALSE;
+        self.unconnected = FALSE;
+    }
+
+    return self;
+}
+
+@end
+
+
+@interface CKernel ()
+
+@property (nonatomic, strong) CKernelConfig * config;
+
+@property (nonatomic, strong) CCellPipeline * cellPipeline;
+
+- (void)bundleDefault;
+
+@end
 
 @implementation CKernel
+
+- (id)init {
+    if (self = [super init]) {
+        self.cellPipeline = [[CCellPipeline alloc] init];
+    }
+    
+    return self;
+}
+
+- (void)startup:(CKernelConfig *)config completion:(void (^)(void))completion failure:(void (^)(void))failure {
+    self.config = config;
+    
+    
+}
+
+- (void)shutdown {
+    [self.cellPipeline close];
+}
+
+- (void)suspend {
+    
+}
+
+- (void)resume {
+    
+}
+
+#pragma mark Private
+
+- (void)bundleDefault {
+    
+}
 
 @end
