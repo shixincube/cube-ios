@@ -49,4 +49,8 @@
     
 }
 
+- (void)attachWithName:(NSString *)name observer:(CObserver *)observer {
+    
+}
+
 @end

@@ -38,6 +38,15 @@
  */
 - (void)attach:(CObserver *)observer;
 
+/*!
+ * @brief 添加无差别观察者。
+ * @param name 指定状态名称。
+ * @param observer 指定观察者对象。
+ */
+- (void)attachWithName:(NSString *)name observer:(CObserver *)observer;
+
+
+
 @end
 
 #endif /* CSubject_h */
