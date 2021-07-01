@@ -24,12 +24,25 @@
  * SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#ifndef CAuthService_h
+#define CAuthService_h
 
-//! Project version number for Cube.
-FOUNDATION_EXPORT double CubeVersionNumber;
+/*! @brief 模块名。 */
+#ifndef CUBE_MODULE_AUTH
+#define CUBE_MODULE_AUTH @"Auth"
+#endif
 
-//! Project version string for Cube.
-FOUNDATION_EXPORT const unsigned char CubeVersionString[];
+#import "../Core/CModule.h"
 
-#import <CAuthService.h>
+//extern const NSString * CAuthServiceName;
+
+
+@interface CAuthService : CModule
+
+@property (nonatomic, strong) NSString * domain;
+
+- (id)init;
+
+@end
+
+#endif /* CAuthService_h */

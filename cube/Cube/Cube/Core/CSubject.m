@@ -28,9 +28,9 @@
 
 @interface CSubject ()
 
-@property (nonatomic, strong) NSMutableArray <__kindof CObservableEvent *> * observers;
+@property (nonatomic, strong) NSMutableArray <__kindof CObserver *> * observers;
 
-@property (nonatomic, strong) NSMutableDictionary <NSString *, __kindof CObservableEvent *> * namedObservers;
+@property (nonatomic, strong) NSMutableDictionary <NSString *, __kindof NSMutableArray *> * namedObservers;
 
 @end
 
@@ -38,19 +38,81 @@
 
 - (id)init {
     if (self = [super init]) {
-        self.observers = nil;//[[NSMutableArray alloc] init];
-        self.namedObservers = nil;//[NSMutableDictionary alloc] init;
+        self.observers = nil;
+        self.namedObservers = nil;
     }
 
     return self;
 }
 
 - (void)attach:(CObserver *)observer {
+    if (nil == self.observers) {
+        self.observers = [[NSMutableArray alloc] init];
+    }
+
+    if ([self.observers containsObject:observer]) {
+        return;
+    }
     
+    [self.observers addObject:observer];
 }
 
 - (void)attachWithName:(NSString *)name observer:(CObserver *)observer {
+    if (nil == self.namedObservers) {
+        self.namedObservers = [[NSMutableDictionary alloc] init];
+    }
     
+    NSMutableArray * list = [self.namedObservers objectForKey:name];
+    
+    if (list) {
+        if (![list containsObject:observer]) {
+            [list addObject:observer];
+        }
+    }
+    else {
+        list = [[NSMutableArray alloc] init];
+        [list addObject:observer];
+        [self.namedObservers setObject:list forKey:name];
+    }
+}
+
+- (void)detach:(CObserver *)observer {
+    if (nil == self.observers) {
+        return;
+    }
+    
+    [self.observers removeObject:observer];
+}
+
+- (void)detachWithName:(NSString *)name observer:(CObserver *)observer {
+    if (nil == self.namedObservers) {
+        return;
+    }
+
+    NSMutableArray * list = [self.namedObservers objectForKey:name];
+
+    if (list) {
+        [list removeObject:observer];
+    }
+}
+
+- (void)notifyObservers:(CObservableEvent *)event {
+    event.subject = self;
+    
+    if (nil != self.observers) {
+        for (CObserver * obs in self.observers) {
+            [obs update:event];
+        }
+    }
+
+    if (nil != self.namedObservers) {
+        NSMutableArray * list = [self.namedObservers objectForKey:event.name];
+        if (list) {
+            for (CObserver * obs in list) {
+                [obs update:event];
+            }
+        }
+    }
 }
 
 @end

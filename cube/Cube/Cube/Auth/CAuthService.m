@@ -24,12 +24,18 @@
  * SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import "CAuthService.h"
 
-//! Project version number for Cube.
-FOUNDATION_EXPORT double CubeVersionNumber;
+//const NSString * CAuthServiceName = @"Auth";
 
-//! Project version string for Cube.
-FOUNDATION_EXPORT const unsigned char CubeVersionString[];
+@implementation CAuthService
 
-#import <CAuthService.h>
+- (id)init {
+    if (self = [super initWithName:CUBE_MODULE_AUTH]) {
+        
+    }
+    
+    return self;
+}
+
+@end

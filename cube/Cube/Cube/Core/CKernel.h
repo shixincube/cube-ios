@@ -28,6 +28,7 @@
 #define CKernel_h
 
 #import <Foundation/Foundation.h>
+#import "CModule.h"
 
 /*!
  * @brief 内核配置定义。
@@ -75,15 +76,46 @@
 @end
 
 
+/*!
+ * @brief 内核。内核管理所有的模块和通信管道。
+ */
 @interface CKernel : NSObject
 
-- (void)startup:(CKernelConfig *)config completion:(void(^)(void))completion failure:(void(^)(void))failure;;
+/*!
+ * @brief 启动内核。
+ * @param config 配置信息。
+ * @param completion 启动成功回调函数。
+ * @param failure 启动失败回调函数。
+ */
+- (void)startup:(CKernelConfig *)config completion:(void(^)(void))completion
+        failure:(void(^)(void))failure;
 
+/*!
+ * @brief 关闭内核。
+ */
 - (void)shutdown;
 
+/*!
+ * @brief 挂起内核。
+ */
 - (void)suspend;
 
+/*!
+ * @brief 恢复内核。
+ */
 - (void)resume;
+
+/*!
+ * @brief 安装模块。
+ * @param module 指定待安装的模块。
+ */
+- (void)installModule:(CModule *)module;
+
+/*!
+ * @brief 卸载模块。
+ * @param module 指定待卸载的模块。
+ */
+- (void)uninstallModule:(CModule *)module;
 
 @end
 

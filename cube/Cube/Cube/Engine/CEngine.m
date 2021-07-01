@@ -24,12 +24,5 @@
  * SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import "../Cube.h"
 
-//! Project version number for Cube.
-FOUNDATION_EXPORT double CubeVersionNumber;
-
-//! Project version string for Cube.
-FOUNDATION_EXPORT const unsigned char CubeVersionString[];
-
-#import <CAuthService.h>

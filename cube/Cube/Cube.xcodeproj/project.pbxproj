@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
-		C8B755D4268B37B500812A4C /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B755D3268B37B500812A4C /* WebRTC.xcframework */; };
-		C8B755D5268B37B500812A4C /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8B755D3268B37B500812A4C /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8B755D8268B384F00812A4C /* CModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755D7268B384F00812A4C /* CModule.m */; };
 		C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755DD268B393E00812A4C /* CObservableEvent.m */; };
 		C8B755E3268B3C4300812A4C /* CSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755E2268B3C4300812A4C /* CSubject.m */; };
 		C8B755E9268B3FC000812A4C /* CObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755E8268B3FC000812A4C /* CObserver.m */; };
+		C8DF88A7268D699C00399C99 /* cell.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8DF88A6268D699C00399C99 /* cell.xcframework */; };
+		C8DF88A8268D699C00399C99 /* cell.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8DF88A6268D699C00399C99 /* cell.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8DF88AB268D69A600399C99 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8DF88AA268D69A600399C99 /* WebRTC.xcframework */; };
+		C8DF88AC268D69A600399C99 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8DF88AA268D69A600399C99 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8DF88B2268DAD4D00399C99 /* CAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DF88B1268DAD4D00399C99 /* CAuthService.m */; };
+		C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DF88B8268DB2C300399C99 /* CEngine.m */; };
+		C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */ = {isa = PBXBuildFile; fileRef = C8DF88B5268DAD5B00399C99 /* CAuthService.h */; };
 		C8F1A54F268985A70020F136 /* Cube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A545268985A70020F136 /* Cube.framework */; };
 		C8F1A554268985A70020F136 /* CubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A553268985A70020F136 /* CubeTests.m */; };
 		C8F1A556268985A70020F136 /* Cube.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1A548268985A70020F136 /* Cube.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -22,8 +27,6 @@
 		C8F1A57B2689A1E80020F136 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A57A2689A1E80020F136 /* PromiseKit.framework */; };
 		C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A57A2689A1E80020F136 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A5812689AC230020F136 /* CCellPipeline.m */; };
-		C8F1A5B12689C4FE0020F136 /* cell.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A5B02689C4FE0020F136 /* cell.xcframework */; };
-		C8F1A5B22689C4FE0020F136 /* cell.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A5B02689C4FE0020F136 /* cell.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8F1A5B52689CE350020F136 /* CPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A5B42689CE350020F136 /* CPacket.m */; };
 /* End PBXBuildFile section */
 
@@ -45,8 +48,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */,
-				C8F1A5B22689C4FE0020F136 /* cell.xcframework in Embed Frameworks */,
-				C8B755D5268B37B500812A4C /* WebRTC.xcframework in Embed Frameworks */,
+				C8DF88A8268D699C00399C99 /* cell.xcframework in Embed Frameworks */,
+				C8DF88AC268D69A600399C99 /* WebRTC.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,7 +59,6 @@
 /* Begin PBXFileReference section */
 		C8B755AF268ABA6300812A4C /* CStateCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CStateCode.h; sourceTree = "<group>"; };
 		C8B755B0268ABD1B00812A4C /* CStateCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CStateCode.m; sourceTree = "<group>"; };
-		C8B755D3268B37B500812A4C /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = ../../libs/WebRTC.xcframework; sourceTree = "<group>"; };
 		C8B755D7268B384F00812A4C /* CModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CModule.m; sourceTree = "<group>"; };
 		C8B755DB268B385A00812A4C /* CModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CModule.h; sourceTree = "<group>"; };
 		C8B755DC268B393100812A4C /* CObservableEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CObservableEvent.h; sourceTree = "<group>"; };
@@ -65,6 +67,11 @@
 		C8B755E5268B3C4F00812A4C /* CSubject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSubject.h; sourceTree = "<group>"; };
 		C8B755E7268B3FB500812A4C /* CObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CObserver.h; sourceTree = "<group>"; };
 		C8B755E8268B3FC000812A4C /* CObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CObserver.m; sourceTree = "<group>"; };
+		C8DF88A6268D699C00399C99 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = ../../libs/cell.xcframework; sourceTree = "<group>"; };
+		C8DF88AA268D69A600399C99 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = ../../libs/WebRTC.xcframework; sourceTree = "<group>"; };
+		C8DF88B1268DAD4D00399C99 /* CAuthService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthService.m; sourceTree = "<group>"; };
+		C8DF88B5268DAD5B00399C99 /* CAuthService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthService.h; sourceTree = "<group>"; };
+		C8DF88B8268DB2C300399C99 /* CEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEngine.m; sourceTree = "<group>"; };
 		C8F1A545268985A70020F136 /* Cube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F1A548268985A70020F136 /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 		C8F1A549268985A70020F136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,7 +85,6 @@
 		C8F1A57A2689A1E80020F136 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F1A5802689AC090020F136 /* CCellPipeline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCellPipeline.h; sourceTree = "<group>"; };
 		C8F1A5812689AC230020F136 /* CCellPipeline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCellPipeline.m; sourceTree = "<group>"; };
-		C8F1A5B02689C4FE0020F136 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = ../../libs/cell.xcframework; sourceTree = "<group>"; };
 		C8F1A5B42689CE350020F136 /* CPacket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPacket.m; sourceTree = "<group>"; };
 		C8F1A5B72689CE430020F136 /* CPacket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPacket.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,8 +95,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8F1A57B2689A1E80020F136 /* PromiseKit.framework in Frameworks */,
-				C8F1A5B12689C4FE0020F136 /* cell.xcframework in Frameworks */,
-				C8B755D4268B37B500812A4C /* WebRTC.xcframework in Frameworks */,
+				C8DF88A7268D699C00399C99 /* cell.xcframework in Frameworks */,
+				C8DF88AB268D69A600399C99 /* WebRTC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +111,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C8DF88B0268DACB800399C99 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C8DF88B5268DAD5B00399C99 /* CAuthService.h */,
+				C8DF88B1268DAD4D00399C99 /* CAuthService.m */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C8DF88B7268DB29700399C99 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				C8DF88B8268DB2C300399C99 /* CEngine.m */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
 		C8F1A53B268985A70020F136 = {
 			isa = PBXGroup;
 			children = (
@@ -127,10 +150,12 @@
 		C8F1A547268985A70020F136 /* Cube */ = {
 			isa = PBXGroup;
 			children = (
-				C8F1A57F2689AB630020F136 /* Pipeline */,
+				C8DF88B7268DB29700399C99 /* Engine */,
+				C8DF88B0268DACB800399C99 /* Auth */,
 				C8F1A5632689989F0020F136 /* Core */,
 				C8F1A548268985A70020F136 /* Cube.h */,
 				C8F1A549268985A70020F136 /* Info.plist */,
+				C8F1A57F2689AB630020F136 /* Pipeline */,
 			);
 			path = Cube;
 			sourceTree = "<group>";
@@ -170,9 +195,9 @@
 		C8F1A5792689A1E80020F136 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C8F1A5B02689C4FE0020F136 /* cell.xcframework */,
-				C8B755D3268B37B500812A4C /* WebRTC.xcframework */,
 				C8F1A57A2689A1E80020F136 /* PromiseKit.framework */,
+				C8DF88A6268D699C00399C99 /* cell.xcframework */,
+				C8DF88AA268D69A600399C99 /* WebRTC.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,6 +218,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */,
 				C8F1A556268985A70020F136 /* Cube.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,8 +323,10 @@
 				C8B755E3268B3C4300812A4C /* CSubject.m in Sources */,
 				C8F1A56926899B980020F136 /* CKernel.m in Sources */,
 				C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */,
+				C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */,
 				C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */,
 				C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */,
+				C8DF88B2268DAD4D00399C99 /* CAuthService.m in Sources */,
 				C8F1A56D26899F910020F136 /* CPipeline.m in Sources */,
 				C8F1A5B52689CE350020F136 /* CPacket.m in Sources */,
 				C8B755E9268B3FC000812A4C /* CObserver.m in Sources */,

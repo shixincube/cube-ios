@@ -56,6 +56,10 @@
 }
 
 - (void)open {
+    if ([self isReady]) {
+        return;
+    }
+
     [_nucleus.talkService call:self.address withPort:(int)self.port];
 }
 

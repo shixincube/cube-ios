@@ -56,12 +56,23 @@
 @end
 
 
-@interface CKernel ()
+@interface CKernel () {
+    /*! @brief 是否已处于工作状态。 */
+    BOOL _working;
 
-@property (nonatomic, strong) CKernelConfig * config;
+    /*! @brief 配置。 */
+    CKernelConfig * _config;
 
-@property (nonatomic, strong) CCellPipeline * cellPipeline;
+    /*! @brief Cell 数据通道。 */
+    CCellPipeline * _cellPipeline;
 
+    /*! @brief 模块清单。 */
+    NSMutableDictionary <NSString *, __kindof CModule *> * _modules;
+}
+
+/*!
+ * @brief 进行默认规则配置。
+ */
 - (void)bundleDefault;
 
 @end
@@ -70,20 +81,33 @@
 
 - (id)init {
     if (self = [super init]) {
-        self.cellPipeline = [[CCellPipeline alloc] init];
+        _working = FALSE;
+        _cellPipeline = [[CCellPipeline alloc] init];
+        _modules = [[NSMutableDictionary alloc] init];
     }
-    
+
     return self;
 }
 
 - (void)startup:(CKernelConfig *)config completion:(void (^)(void))completion failure:(void (^)(void))failure {
-    self.config = config;
-    
-    
+    _config = config;
+
+    _working = TRUE;
+
+    // 配置默认规格
+    [self bundleDefault];
+
+    // 启动管道
+    [_cellPipeline setRemoteAddress:_config.address withPort:_config.port];
+    [_cellPipeline open];
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        
+    });
 }
 
 - (void)shutdown {
-    [self.cellPipeline close];
+    [_cellPipeline close];
 }
 
 - (void)suspend {
@@ -94,10 +118,24 @@
     
 }
 
-#pragma mark Private
+- (void)installModule:(CModule *)module {
+    [_modules setObject:module forKey:module.name];
+}
+
+- (void)uninstallModule:(CModule *)module {
+    [_modules removeObjectForKey:module.name];
+}
+
+#pragma mark - Private
 
 - (void)bundleDefault {
-    
+    NSEnumerator * enumerator = [_modules keyEnumerator];
+    NSString * key = nil;
+
+    while ((key = [enumerator nextObject])) {
+        CModule * module = [_modules objectForKey:key];
+        module.pipeline = _cellPipeline;
+    }
 }
 
 @end

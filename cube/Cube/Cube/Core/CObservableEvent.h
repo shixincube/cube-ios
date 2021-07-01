@@ -29,6 +29,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class CSubject;
+
 @interface CObservableEvent : NSObject
 
 /*! @brief 事件名称。 */
@@ -36,6 +38,9 @@
 
 /*! @brief 事件数据。 */
 @property (nonatomic, nullable, strong) NSObject * data;
+
+/*! @brief 事件发生时的主题。 */
+@property (nonatomic, nullable, weak) CSubject * subject;
 
 /*!
  * @brief 通过事件名和事件数据初始化。

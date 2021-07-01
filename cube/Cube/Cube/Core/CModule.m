@@ -25,3 +25,42 @@
  */
 
 #import "CModule.h"
+
+@implementation CModule
+
+- (id _Nonnull)initWithName:(NSString * _Nonnull)name {
+    if (self = [super init]) {
+        self.name = name;
+    }
+
+    return self;
+}
+
+- (BOOL)hasStarted {
+    // subclass hook override.
+    return FALSE;
+}
+
+- (BOOL)start {
+    // subclass hook override.
+    return FALSE;
+}
+
+- (void)stop {
+    // subclass hook override.
+}
+
+- (void)suspend {
+    // subclass hook override.
+}
+
+- (void)resume {
+    // subclass hook override.
+}
+
+- (BOOL)isReady {
+    // subclass hook override.
+    return TRUE;
+}
+
+@end

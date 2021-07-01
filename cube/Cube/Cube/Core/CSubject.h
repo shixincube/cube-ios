@@ -29,23 +29,41 @@
 
 #import <Foundation/Foundation.h>
 #import "CObserver.h"
+#import "CObservableEvent.h"
 
 @interface CSubject : NSObject
 
 /*!
- * @brief 添加无差别观察者。
+ * @brief 添加无事件观察者。
  * @param observer 指定观察者对象。
  */
 - (void)attach:(CObserver *)observer;
 
 /*!
- * @brief 添加无差别观察者。
- * @param name 指定状态名称。
+ * @brief 添加指定事件名观察者。
+ * @param name 指定事件名称。
  * @param observer 指定观察者对象。
  */
 - (void)attachWithName:(NSString *)name observer:(CObserver *)observer;
 
+/*!
+ * @brief 移除无事件观察者。
+ * @param observer 指定观察者对象。
+ */
+- (void)detach:(CObserver *)observer;
 
+/*!
+ * @brief 移除指定事件名观察者。
+ * @param name 指定事件名称。
+ * @param observer 指定观察者对象。
+ */
+- (void)detachWithName:(NSString *)name observer:(CObserver *)observer;
+
+/*!
+ * @brief 通知观察者有新事件更新。
+ * @param event 指定新的事件。
+ */
+- (void)notifyObservers:(CObservableEvent *)event;
 
 @end
 
