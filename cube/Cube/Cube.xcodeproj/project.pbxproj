@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF2268EB52700B1E15E /* CAuthToken.m */; };
+		C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF9268EBD7700B1E15E /* CJSONable.m */; };
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
 		C8B755D8268B384F00812A4C /* CModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755D7268B384F00812A4C /* CModule.m */; };
 		C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755DD268B393E00812A4C /* CObservableEvent.m */; };
@@ -57,6 +59,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C8361BF2268EB52700B1E15E /* CAuthToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthToken.m; sourceTree = "<group>"; };
+		C8361BF5268EB53300B1E15E /* CAuthToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthToken.h; sourceTree = "<group>"; };
+		C8361BF8268EBD6C00B1E15E /* CJSONable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJSONable.h; sourceTree = "<group>"; };
+		C8361BF9268EBD7700B1E15E /* CJSONable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJSONable.m; sourceTree = "<group>"; };
 		C8B755AF268ABA6300812A4C /* CStateCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CStateCode.h; sourceTree = "<group>"; };
 		C8B755B0268ABD1B00812A4C /* CStateCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CStateCode.m; sourceTree = "<group>"; };
 		C8B755D7268B384F00812A4C /* CModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CModule.m; sourceTree = "<group>"; };
@@ -111,11 +117,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C8361BF7268EBD4500B1E15E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C8361BF8268EBD6C00B1E15E /* CJSONable.h */,
+				C8361BF9268EBD7700B1E15E /* CJSONable.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		C8DF88B0268DACB800399C99 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				C8DF88B5268DAD5B00399C99 /* CAuthService.h */,
 				C8DF88B1268DAD4D00399C99 /* CAuthService.m */,
+				C8361BF5268EB53300B1E15E /* CAuthToken.h */,
+				C8361BF2268EB52700B1E15E /* CAuthToken.m */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -150,12 +167,13 @@
 		C8F1A547268985A70020F136 /* Cube */ = {
 			isa = PBXGroup;
 			children = (
-				C8DF88B7268DB29700399C99 /* Engine */,
-				C8DF88B0268DACB800399C99 /* Auth */,
-				C8F1A5632689989F0020F136 /* Core */,
 				C8F1A548268985A70020F136 /* Cube.h */,
 				C8F1A549268985A70020F136 /* Info.plist */,
+				C8DF88B0268DACB800399C99 /* Auth */,
+				C8F1A5632689989F0020F136 /* Core */,
+				C8DF88B7268DB29700399C99 /* Engine */,
 				C8F1A57F2689AB630020F136 /* Pipeline */,
+				C8361BF7268EBD4500B1E15E /* Util */,
 			);
 			path = Cube;
 			sourceTree = "<group>";
@@ -322,9 +340,11 @@
 			files = (
 				C8B755E3268B3C4300812A4C /* CSubject.m in Sources */,
 				C8F1A56926899B980020F136 /* CKernel.m in Sources */,
+				C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */,
 				C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */,
 				C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */,
 				C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */,
+				C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */,
 				C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */,
 				C8DF88B2268DAD4D00399C99 /* CAuthService.m in Sources */,
 				C8F1A56D26899F910020F136 /* CPipeline.m in Sources */,
