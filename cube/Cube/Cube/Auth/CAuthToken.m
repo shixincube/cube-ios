@@ -26,11 +26,18 @@
 
 #import "CAuthToken.h"
 
-#pragma mark - PrimaryDescription
+#pragma mark - CPrimaryDescription
 
 @implementation CPrimaryDescription
 
-
+- (id)initWithAddress:(NSString *)address primaryContent:(NSMutableDictionary *)primaryContent {
+    if (self = [super init]) {
+        self.address = address;
+        self.primaryContent = primaryContent;
+    }
+    
+    return self;
+}
 
 @end
 
@@ -39,6 +46,14 @@
 
 @implementation CAuthToken
 
+@dynamic description;
 
+- (CPrimaryDescription *)description {
+    return _description;
+}
+
+- (void)setDescription:(CPrimaryDescription *)description {
+    _description = description;
+}
 
 @end

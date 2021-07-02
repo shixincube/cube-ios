@@ -35,7 +35,19 @@
  */
 @interface CPrimaryDescription : CJSONable
 
+/*! @brief 主机主地址。 */
 @property (nonatomic, strong) NSString * address;
+
+/*! @brief 主要配置内容描述。 */
+@property (nonatomic, strong) NSMutableDictionary * primaryContent;
+
+/*!
+ * @brief 使用服务器地址和主内容初始化。
+ * @param address 主机主地址。
+ * @param primaryContent 主要配置内容描述。
+ * @return 返回实例。
+ */
+- (id)initWithAddress:(NSString *)address primaryContent:(NSMutableDictionary *)primaryContent;
 
 @end
 
@@ -43,7 +55,11 @@
 /*!
  * @brief 授权访问的令牌。
  */
-@interface CAuthToken : NSObject
+@interface CAuthToken : CJSONable
+{
+@private
+    CPrimaryDescription * _description;
+}
 
 @property (nonatomic, strong) NSString * code;
 
@@ -56,6 +72,8 @@
 @property (nonatomic, assign) int64_t issues;
 
 @property (nonatomic, assign) int64_t expiry;
+
+@property (nonatomic, strong) CPrimaryDescription * description;
 
 @end
 
