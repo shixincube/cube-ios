@@ -38,4 +38,9 @@
     return self;
 }
 
+- (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address {
+    
+    return nil;
+}
+
 @end

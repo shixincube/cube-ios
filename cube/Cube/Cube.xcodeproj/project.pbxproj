@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C82DB8BA26B39B0500813378 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82DB8B926B39B0500813378 /* FMDB.framework */; };
+		C82DB8BB26B39B0500813378 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C82DB8B926B39B0500813378 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF2268EB52700B1E15E /* CAuthToken.m */; };
 		C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF9268EBD7700B1E15E /* CJSONable.m */; };
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
@@ -52,6 +54,7 @@
 				C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */,
 				C8DF88A8268D699C00399C99 /* cell.xcframework in Embed Frameworks */,
 				C8DF88AC268D69A600399C99 /* WebRTC.xcframework in Embed Frameworks */,
+				C82DB8BB26B39B0500813378 /* FMDB.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C82DB8AD26B398F700813378 /* MagicalRecord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MagicalRecord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C82DB8B926B39B0500813378 /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8361BF2268EB52700B1E15E /* CAuthToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthToken.m; sourceTree = "<group>"; };
 		C8361BF5268EB53300B1E15E /* CAuthToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthToken.h; sourceTree = "<group>"; };
 		C8361BF8268EBD6C00B1E15E /* CJSONable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJSONable.h; sourceTree = "<group>"; };
@@ -103,6 +108,7 @@
 				C8F1A57B2689A1E80020F136 /* PromiseKit.framework in Frameworks */,
 				C8DF88A7268D699C00399C99 /* cell.xcframework in Frameworks */,
 				C8DF88AB268D69A600399C99 /* WebRTC.xcframework in Frameworks */,
+				C82DB8BA26B39B0500813378 /* FMDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,8 +156,8 @@
 			children = (
 				C8F1A547268985A70020F136 /* Cube */,
 				C8F1A552268985A70020F136 /* CubeTests */,
-				C8F1A546268985A70020F136 /* Products */,
 				C8F1A5792689A1E80020F136 /* Frameworks */,
+				C8F1A546268985A70020F136 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,6 +219,8 @@
 		C8F1A5792689A1E80020F136 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C82DB8B926B39B0500813378 /* FMDB.framework */,
+				C82DB8AD26B398F700813378 /* MagicalRecord.framework */,
 				C8F1A57A2689A1E80020F136 /* PromiseKit.framework */,
 				C8DF88A6268D699C00399C99 /* cell.xcframework */,
 				C8DF88AA268D69A600399C99 /* WebRTC.xcframework */,

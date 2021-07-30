@@ -26,6 +26,8 @@
 
 #import "CKernel.h"
 #import "../Pipeline/CCellPipeline.h"
+#import "../Auth/CAuthToken.h"
+#import "../Auth/CAuthService.h"
 
 @implementation CKernelConfig
 
@@ -74,6 +76,13 @@
  * @brief 进行默认规则配置。
  */
 - (void)bundleDefault;
+
+/*!
+ * @brief 检查授权。
+ * @param config 引擎配置。
+ * @return 返回令牌。
+ */
+- (CAuthToken *)checkAuth:(CKernelConfig *)config;
 
 @end
 
@@ -126,6 +135,14 @@
     [_modules removeObjectForKey:module.name];
 }
 
+- (CModule *)getModule:(NSString *)moduleName {
+    return [_modules objectForKey:moduleName];
+}
+
+- (BOOL)hasModule:(NSString *)moduleName {
+    return ([_modules objectForKey:moduleName]) ? TRUE : FALSE;
+}
+
 #pragma mark - Private
 
 - (void)bundleDefault {
@@ -136,6 +153,16 @@
         CModule * module = [_modules objectForKey:key];
         module.pipeline = _cellPipeline;
     }
+}
+
+- (CAuthToken *)checkAuth:(CKernelConfig *)config {
+    if (![self hasModule:CUBE_MODULE_AUTH]) {
+        return nil;
+    }
+    
+    CAuthService * atuhService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
+//    atuhService
+    return nil;
 }
 
 @end

@@ -33,6 +33,7 @@
 #endif
 
 #import "../Core/CModule.h"
+#import <PromiseKit/AnyPromise.h>
 
 //extern const NSString * CAuthServiceName;
 
@@ -42,6 +43,15 @@
 @property (nonatomic, strong) NSString * domain;
 
 - (id)init;
+
+/*!
+ * @brief 校验当前的令牌是否有效。该方法先从本地获取本地令牌进行校验，如果本地令牌失效或者未找到本地令牌，则尝试从授权服务器获取有效的令牌。
+ * @param domain 令牌对应的域。
+ * @param appKey 令牌指定的 App Key 串。
+ * @param address 授权服务器地址。
+ * @return 返回 Promise 异步执行实例。
+ */
+- (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address;
 
 @end
 
