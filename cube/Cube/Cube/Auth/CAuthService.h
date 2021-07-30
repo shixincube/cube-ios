@@ -35,9 +35,6 @@
 #import "../Core/CModule.h"
 #import <PromiseKit/AnyPromise.h>
 
-//extern const NSString * CAuthServiceName;
-
-
 @interface CAuthService : CModule
 
 @property (nonatomic, strong) NSString * domain;

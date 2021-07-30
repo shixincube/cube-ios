@@ -24,21 +24,11 @@
  * SOFTWARE.
  */
 
-#import "CAuthService.h"
+#import "CAuthStorage.h"
 
-@implementation CAuthService
 
-- (id)init {
-    if (self = [super initWithName:CUBE_MODULE_AUTH]) {
-        
-    }
-    
-    return self;
-}
+@implementation CAuthStorage
 
-- (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address {
-    
-    return nil;
-}
+
 
 @end
