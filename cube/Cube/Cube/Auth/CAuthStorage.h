@@ -28,10 +28,24 @@
 #define CAuthStorage_h
 
 #import <Foundation/Foundation.h>
+#import "CAuthToken.h"
 
 @interface CAuthStorage : NSObject
 
+/*!
+ * @brief 开启存储器。
+ */
+- (BOOL)open;
 
+/*!
+ * @brief 关闭存储器。
+ */
+- (void)close;
+
+/*!
+ * @brief 加载指定令牌。
+ */
+- (CAuthToken *)loadTokenWithDomain:(NSString *)domain appKey:(NSString *)appKey;
 
 @end
 

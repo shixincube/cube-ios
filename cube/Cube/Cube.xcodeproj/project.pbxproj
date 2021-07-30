@@ -67,6 +67,7 @@
 		C82DB8B926B39B0500813378 /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82DB8BD26B3AE7900813378 /* CAuthStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthStorage.m; sourceTree = "<group>"; };
 		C82DB8C026B3AE9300813378 /* CAuthStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthStorage.h; sourceTree = "<group>"; };
+		C82DB8EC26B3FC9C00813378 /* CAuthAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthAction.h; sourceTree = "<group>"; };
 		C8361BF2268EB52700B1E15E /* CAuthToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthToken.m; sourceTree = "<group>"; };
 		C8361BF5268EB53300B1E15E /* CAuthToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthToken.h; sourceTree = "<group>"; };
 		C8361BF8268EBD6C00B1E15E /* CJSONable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJSONable.h; sourceTree = "<group>"; };
@@ -138,6 +139,7 @@
 		C8DF88B0268DACB800399C99 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				C82DB8EC26B3FC9C00813378 /* CAuthAction.h */,
 				C8DF88B5268DAD5B00399C99 /* CAuthService.h */,
 				C8DF88B1268DAD4D00399C99 /* CAuthService.m */,
 				C82DB8C026B3AE9300813378 /* CAuthStorage.h */,

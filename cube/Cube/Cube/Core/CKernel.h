@@ -120,14 +120,14 @@
 /*!
  * @brief 获取指定模块。
  * @param moduleName 指定模块名称。
- * @return 返回指定名称的模块，如果没有找到模块返回 @code nil 。
+ * @return 返回指定名称的模块，如果没有找到模块返回 @c nil 。
  */
 - (CModule *)getModule:(NSString *)moduleName;
 
 /*!
  * @brief 是否已经安装指定模块。
  * @param moduleName 指定模块名称。
- * @return 如果已经安装指定模块返回 @code TRUE ，否则返回 @code FALSE 。
+ * @return 如果已经安装指定模块返回 @c TRUE ，否则返回 @c FALSE 。
  */
 - (BOOL)hasModule:(NSString *)moduleName;
 

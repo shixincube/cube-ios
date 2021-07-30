@@ -30,13 +30,32 @@
 
 @implementation CPrimaryDescription
 
-- (id)initWithAddress:(NSString *)address primaryContent:(NSMutableDictionary *)primaryContent {
+- (id)initWithAddress:(NSString *)address primaryContent:(NSDictionary *)primaryContent {
     if (self = [super init]) {
         self.address = address;
         self.primaryContent = primaryContent;
     }
     
     return self;
+}
+
+- (id)initWithJSON:(NSDictionary *)json {
+    if (self = [super init]) {
+        self.address = [json objectForKey:@"address"];
+        self.primaryContent = json[@"primaryContent"];
+    }
+    return self;
+}
+
+- (NSMutableDictionary *)toJSON {
+    NSMutableDictionary * json = [[NSMutableDictionary alloc] init];
+    [json setObject:self.address forKey:@"address"];
+    [json setObject:self.primaryContent forKey:@"primaryContent"];
+    return json;
+}
+
+- (NSMutableDictionary *)toCompactJSON {
+    return [self toJSON];
 }
 
 @end
@@ -54,6 +73,42 @@
 
 - (void)setDescription:(CPrimaryDescription *)description {
     _description = description;
+}
+
+- (id)initWithJSON:(NSDictionary *)json {
+    if (self = [super init]) {
+        self.code = [json objectForKey:@"code"];
+        self.domain = [json objectForKey:@"domain"];
+        self.appKey = [json objectForKey:@"appKey"];
+        self.cid = [[json objectForKey:@"cid"] unsignedLongLongValue];
+        self.issues = [[json objectForKey:@"issues"] unsignedLongLongValue];
+        self.expiry = [[json objectForKey:@"expiry"] unsignedLongLongValue];
+        self.description = [[CPrimaryDescription alloc] initWithJSON:json[@"description"]];
+    }
+
+    return self;
+}
+
+- (BOOL)isValid {
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970] * 1000;
+    int64_t timestamp = [[NSNumber numberWithDouble:time] unsignedLongLongValue];
+    return (timestamp < self.expiry);
+}
+
+- (NSMutableDictionary *)toJSON {
+    NSMutableDictionary * json = [[NSMutableDictionary alloc] init];
+    [json setObject:self.code forKey:@"code"];
+    [json setObject:self.domain forKey:@"domain"];
+    [json setObject:self.appKey forKey:@"appKey"];
+    [json setObject:[NSNumber numberWithUnsignedLongLong:self.cid] forKey:@"cid"];
+    [json setObject:[NSNumber numberWithUnsignedLongLong:self.issues] forKey:@"issues"];
+    [json setObject:[NSNumber numberWithUnsignedLongLong:self.expiry] forKey:@"expiry"];
+    [json setObject:[self.description toJSON] forKey:@"description"];
+    return json;
+}
+
+- (NSMutableDictionary *)toCompactJSON {
+    return [self toJSON];
 }
 
 @end

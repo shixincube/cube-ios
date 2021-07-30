@@ -24,37 +24,11 @@
  * SOFTWARE.
  */
 
-#ifndef CAuthService_h
-#define CAuthService_h
+#ifndef CAuthAction_h
+#define CAuthAction_h
 
-/*! @brief 模块名。 */
-#ifndef CUBE_MODULE_AUTH
-#define CUBE_MODULE_AUTH @"Auth"
+#ifndef CUBE_AUTH_APPLY_TOKEN
+#define CUBE_AUTH_APPLY_TOKEN @"applyToken"
 #endif
 
-#import "../Core/CModule.h"
-#import <PromiseKit/AnyPromise.h>
-
-@interface CAuthService : CModule
-
-@property (nonatomic, strong) NSString * domain;
-
-- (id)init;
-
-/*!
- * @brief 校验当前的令牌是否有效。该方法先从本地获取本地令牌进行校验，如果本地令牌失效或者未找到本地令牌，则尝试从授权服务器获取有效的令牌。
- * @param domain 令牌对应的域。
- * @param appKey 令牌指定的 App Key 串。
- * @param address 授权服务器地址。
- * @return 返回 Promise 异步执行实例。
- */
-- (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address;
-
-/*!
- * @brief 从服务器申请令牌。
- */
-- (AnyPromise *)applyToken:(NSString *)domain appKey:(NSString *)appKey;
-
-@end
-
-#endif /* CAuthService_h */
+#endif /* CAuthAction_h */

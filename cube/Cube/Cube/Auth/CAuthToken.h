@@ -39,7 +39,7 @@
 @property (nonatomic, strong) NSString * address;
 
 /*! @brief 主要配置内容描述。 */
-@property (nonatomic, strong) NSMutableDictionary * primaryContent;
+@property (nonatomic, strong) NSDictionary * primaryContent;
 
 /*!
  * @brief 使用服务器地址和主内容初始化。
@@ -47,7 +47,14 @@
  * @param primaryContent 主要配置内容描述。
  * @return 返回实例。
  */
-- (id)initWithAddress:(NSString *)address primaryContent:(NSMutableDictionary *)primaryContent;
+- (id)initWithAddress:(NSString *)address primaryContent:(NSDictionary *)primaryContent;
+
+/*!
+ * @brief 使用 JSON 数据初始化。
+ * @param json 指定 JSON 结构数据。
+ * @return 返回实例。
+ */
+- (id)initWithJSON:(NSDictionary *)json;
 
 @end
 
@@ -74,6 +81,17 @@
 @property (nonatomic, assign) int64_t expiry;
 
 @property (nonatomic, strong) CPrimaryDescription * description;
+
+/*!
+ * @brief 使用 JSON 结构初始化数据。
+ */
+- (id)initWithJSON:(NSDictionary *)json;
+
+/*!
+ * @brief 令牌是否有效。
+ * @return 如果令牌有效返回 @c TRUE ，否则返回 @c FALSE 。
+ */
+- (BOOL)isValid;
 
 @end
 

@@ -25,10 +25,82 @@
  */
 
 #import "CAuthStorage.h"
+#import <FMDB/FMDatabase.h>
 
+
+@interface CAuthStorage () {
+    FMDatabase * db;
+}
+
+/*!
+ * @brief 执行自检。
+ */
+- (void)execSelfChecking;
+
+@end
 
 @implementation CAuthStorage
 
+- (id)init {
+    if (self = [super init]) {
+        // 创建数据库文件
+        NSString * docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString * filename = [docPath stringByAppendingPathComponent:@"auth.db"];
+        db = [[FMDatabase alloc] initWithPath:filename];
+    }
 
+    return self;
+}
+
+- (BOOL)open {
+    // 自检，尝试创建表
+    if ([db open]) {
+        [self execSelfChecking];
+        return TRUE;
+    }
+    
+    return FALSE;
+}
+
+- (void)close {
+    [db close];
+}
+
+- (CAuthToken *)loadTokenWithDomain:(NSString *)domain appKey:(NSString *)appKey {
+    NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `token` WHERE `cid`=0 AND `domain`='%@' AND `app_key`='%@'", domain, appKey];
+    FMResultSet * result = [db executeQuery:sql];
+    if ([result next]) {
+        NSString * data = [result stringForColumn:@"data"];
+        NSData * jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+        NSError * error = nil;
+        NSDictionary * json = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                              options:NSJSONReadingMutableContainers
+                                                                error:&error];
+        if (error) {
+            // 错误
+            return nil;
+        }
+        else {
+            CAuthToken * token = [[CAuthToken alloc] initWithJSON:json];
+            return token;
+        }
+    }
+    else {
+        return nil;
+    }
+}
+
+#pragma mark - Private
+
+- (void)execSelfChecking {
+    NSString * sql = @"CREATE TABLE IF NOT EXISTS `token` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `domain` TEXT, `app_key` TEXT, `cid` BIGINT DEFAULT 0, `data` TEXT)";
+
+    if ([db executeUpdate:sql]) {
+        
+    }
+    else {
+        
+    }
+}
 
 @end
