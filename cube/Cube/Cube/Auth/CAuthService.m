@@ -29,6 +29,7 @@
 #import "CAuthStorage.h"
 #import "CPipeline.h"
 #import "CPacket.h"
+#import "CStateCode.h"
 
 typedef void (^wait_block_t)(void);
 
@@ -106,7 +107,12 @@ typedef void (^wait_block_t)(void);
         CPacket * packet = [[CPacket alloc] initWithName:CUBE_AUTH_APPLY_TOKEN andData:data];
 
         [self.pipeline send:CUBE_MODULE_AUTH withPacket:packet handleResponse:^(CPacket *packet) {
-                    
+            if (packet.state.code != Ok) {
+                resolver(nil);
+                return;
+            }
+            
+            
         }];
     }];
 }
