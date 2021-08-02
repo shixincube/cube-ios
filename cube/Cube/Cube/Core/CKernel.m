@@ -26,7 +26,6 @@
 
 #import "CKernel.h"
 #import "../Pipeline/CCellPipeline.h"
-#import "../Auth/CAuthToken.h"
 #import "../Auth/CAuthService.h"
 
 @implementation CKernelConfig
@@ -80,9 +79,9 @@
 /*!
  * @brief 检查授权。
  * @param config 引擎配置。
- * @return 返回令牌。
+ * @param handler 回调。
  */
-- (CAuthToken *)checkAuth:(CKernelConfig *)config;
+- (void)checkAuth:(CKernelConfig *)config handler:(void (^)(CAuthToken *))handler;
 
 @end
 
@@ -110,9 +109,17 @@
     [_cellPipeline setRemoteAddress:_config.address withPort:_config.port];
     [_cellPipeline open];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        
-    });
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+//    });
+    
+    [self checkAuth:config handler:^(CAuthToken * token) {
+        if (token) {
+            
+        }
+        else {
+            failure();
+        }
+    }];
 }
 
 - (void)shutdown {
@@ -125,6 +132,10 @@
 
 - (void)resume {
     
+}
+
+- (BOOL)isReady {
+    return _working && (self.authToken && [self.authToken isValid]);
 }
 
 - (void)installModule:(CModule *)module {
@@ -155,14 +166,23 @@
     }
 }
 
-- (CAuthToken *)checkAuth:(CKernelConfig *)config {
+- (void)checkAuth:(CKernelConfig *)config handler:(void (^)(CAuthToken *))handler {
     if (![self hasModule:CUBE_MODULE_AUTH]) {
-        return nil;
+        handler(nil);
+        return;
     }
     
     CAuthService * atuhService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
-//    atuhService
-    return nil;
+    [atuhService check:config.domain appKey:config.appKey address:config.address].then(^(id token) {
+        if (nil == token) {
+            handler(nil);
+        }
+        else {
+            handler((CAuthToken *) token);
+        }
+    }).catch(^(NSError *error) {
+        
+    });
 }
 
 @end

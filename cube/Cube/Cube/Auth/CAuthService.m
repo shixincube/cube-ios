@@ -126,15 +126,15 @@ typedef void (^wait_block_t)(void);
 
     dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, 1000 * NSEC_PER_MSEC);
     dispatch_after(delayInNanoSeconds,
-                   dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-                   ^(void) {
-        if ([self.pipeline isReady]) {
-            block();
-        }
-        else {
-            [self waitPipelineReady:block];
-        }
-    });
+                dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+                ^(void) {
+                    if ([self.pipeline isReady]) {
+                        block();
+                    }
+                    else {
+                        [self waitPipelineReady:block];
+                    }
+                });
 }
 
 @end

@@ -29,6 +29,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CModule.h"
+#import "../Auth/CAuthToken.h"
 
 /*!
  * @brief 内核配置定义。
@@ -82,6 +83,11 @@
 @interface CKernel : NSObject
 
 /*!
+ * @brief 有效的访问令牌。
+ */
+@property (nonatomic, strong) CAuthToken * authToken;
+
+/*!
  * @brief 启动内核。
  * @param config 配置信息。
  * @param completion 启动成功回调函数。
@@ -104,6 +110,12 @@
  * @brief 恢复内核。
  */
 - (void)resume;
+
+/*!
+ * @brief 是否就绪。
+ * @return 返回是否就绪。
+ */
+- (BOOL)isReady;
 
 /*!
  * @brief 安装模块。
