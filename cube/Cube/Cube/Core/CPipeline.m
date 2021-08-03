@@ -117,7 +117,7 @@
 
 - (CPipelineState *)extractState:(NSDictionary *)state {
     unsigned int code = [state[@"code"] unsignedIntValue];
-    NSString * desc = [[state objectForKey:@"desc"] stringValue];
+    NSString * desc = [state objectForKey:@"desc"];
     return [[CPipelineState alloc] initWithCode:code desc:desc];
 }
 

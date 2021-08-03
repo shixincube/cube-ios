@@ -44,8 +44,17 @@
 
 /*!
  * @brief 加载指定令牌。
+ * @param domain 指定域。
+ * @param appKey 指定 App Key 。
+ * @return 返回令牌实例。
  */
 - (CAuthToken *)loadTokenWithDomain:(NSString *)domain appKey:(NSString *)appKey;
+
+/*!
+ * @brief 保存令牌。
+ * @param authToken 指定令牌。
+ */
+- (void)saveToken:(CAuthToken *)authToken;
 
 @end
 

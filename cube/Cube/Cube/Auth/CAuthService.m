@@ -47,6 +47,7 @@ typedef void (^wait_block_t)(void);
 - (id)init {
     if (self = [super initWithName:CUBE_MODULE_AUTH]) {
         waitingCount = 0;
+        self.token = nil;
     }
 
     return self;
@@ -55,47 +56,57 @@ typedef void (^wait_block_t)(void);
 - (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address {
     return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolver) {
         CAuthStorage * storage = [[CAuthStorage alloc] init];
-        
+
         // 打开存储器
         if ([storage open]) {
             CAuthToken * token = [storage loadTokenWithDomain:domain appKey:appKey];
             if (nil != token && [token isValid]) {
                 // 关闭存储器
                 [storage close];
+                
+                self.token = token;
 
                 resolver(token);
             }
             else {
-                // 关闭存储器
-                [storage close];
-
-                if (nil != address) {
-                    self.pipeline.address = address;
-                }
-                
-                // 从服务器申请令牌
-                [self.pipeline open];
-
                 // 等待通道就绪
                 self->waitingCount = 0;
 
                 [self waitPipelineReady:^(void) {
-                    if (self->waitingCount >= 5) {
+                    if (self->waitingCount >= 3) {
                         // 超时
-                        NSLog(@"CAuthService #waitPipelineReady timeout");
+                        NSLog(@"CAuthService#waitPipelineReady timeout");
+
+                        // 关闭存储器
+                        [storage close];
+
                         resolver(nil);
                         return;
                     }
 
                     [self applyToken:domain appKey:appKey].then(^(id value) {
-                        
+                        if (value) {
+                            CAuthToken * token = value;
+                            [storage saveToken:token];
+                            self.token = token;
+
+                            NSLog(@"CAuthService#applyToken");
+                            // 关闭存储器
+                            [storage close];
+
+                            resolver(token);
+                        }
                     }).catch(^(NSError * error) {
-                        
+                        NSLog(@"CAuthService#applyToken : %@", error.localizedDescription);
+
+                        // 关闭存储器
+                        [storage close];
                     });
                 }];
             }
         }
         else {
+            // 开启存储错误
             resolver(nil);
         }
     }];
@@ -115,10 +126,12 @@ typedef void (^wait_block_t)(void);
 
             int state = [packet extractStateCode];
             if (state == CUBE_AUTH_SC_OK) {
-                
+                // 创建令牌数据
+                CAuthToken * authToken = [[CAuthToken alloc] initWithJSON:[packet extractData]];
+                resolver(authToken);
             }
             else {
-                
+                resolver(nil);
             }
         }];
     }];
@@ -129,9 +142,9 @@ typedef void (^wait_block_t)(void);
         block();
         return;
     }
-    
+
     ++waitingCount;
-    if (waitingCount >= 5) {
+    if (waitingCount >= 3) {
         block();
         return;
     }

@@ -33,11 +33,12 @@
 #endif
 
 #import "../Core/CModule.h"
+#import "CAuthToken.h"
 #import <PromiseKit/AnyPromise.h>
 
 @interface CAuthService : CModule
 
-@property (nonatomic, strong) NSString * domain;
+@property (nonatomic, strong) CAuthToken * token;
 
 - (id)init;
 

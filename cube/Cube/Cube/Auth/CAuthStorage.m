@@ -58,7 +58,7 @@
         [self execSelfChecking];
         return TRUE;
     }
-    
+
     return FALSE;
 }
 
@@ -67,7 +67,7 @@
 }
 
 - (CAuthToken *)loadTokenWithDomain:(NSString *)domain appKey:(NSString *)appKey {
-    NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `token` WHERE `cid`=0 AND `domain`='%@' AND `app_key`='%@'", domain, appKey];
+    NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `token` WHERE `cid`=0 AND `domain`='%@' AND `app_key`='%@' ORDER BY sn DESC", domain, appKey];
     FMResultSet * result = [db executeQuery:sql];
     if ([result next]) {
         NSString * data = [result stringForColumn:@"data"];
@@ -90,16 +90,32 @@
     }
 }
 
+- (void)saveToken:(CAuthToken *)authToken {
+    NSString * sql = @"INSERT INTO `token` (domain,app_key,cid,data) VALUES (?,?,?,?)";
+
+    NSError * error = nil;
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:[authToken toJSON] options:0 error:&error];
+    NSString * json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+    BOOL success = [db executeUpdate:sql, authToken.domain, authToken.appKey, authToken.cid, json];
+    if (success) {
+        NSLog(@"CAuthStorage#saveToken : Save token for %@", authToken.domain);
+    }
+    else {
+        NSLog(@"CAuthStorage#saveToken : Failed");
+    }
+}
+
 #pragma mark - Private
 
 - (void)execSelfChecking {
     NSString * sql = @"CREATE TABLE IF NOT EXISTS `token` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `domain` TEXT, `app_key` TEXT, `cid` BIGINT DEFAULT 0, `data` TEXT)";
 
     if ([db executeUpdate:sql]) {
-        
+        NSLog(@"CAuthStorage#execSelfChecking : create token table");
     }
     else {
-        
+        NSLog(@"CAuthStorage#execSelfChecking");
     }
 }
 

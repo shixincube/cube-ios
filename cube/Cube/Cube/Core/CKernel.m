@@ -114,7 +114,8 @@
 
     [self checkAuth:config handler:^(CAuthToken * token) {
         if (token) {
-            
+            self.authToken = token;
+            completion();
         }
         else {
             failure();
@@ -181,7 +182,7 @@
             handler((CAuthToken *) token);
         }
     }).catch(^(NSError *error) {
-        
+        handler(nil);
     });
 }
 

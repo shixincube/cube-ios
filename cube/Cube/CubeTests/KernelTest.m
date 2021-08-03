@@ -7,6 +7,7 @@
 
 #import <XCTest/XCTest.h>
 #import "CKernel.h"
+#import "CAuthService.h"
 
 @interface KernelTest : XCTestCase
 
@@ -19,6 +20,9 @@
 - (void)setUp {
     NSLog(@"setUp");
     self.kernel = [[CKernel alloc] init];
+    
+    CAuthService * auth = [[CAuthService alloc] init];
+    [self.kernel installModule:auth];
 }
 
 - (void)tearDown {
