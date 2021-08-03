@@ -26,7 +26,10 @@
 
 #import "CCellPipeline.h"
 
-@interface CCellPipeline ()
+@interface CCellPipeline () {
+    
+    BOOL _opening;
+}
 
 @property (nonatomic, strong) CellNucleus * nucleus;
 
@@ -43,6 +46,8 @@
 
 - (id)init {
     if (self = [super initWithName:@"Cell"]) {
+        _opening = FALSE;
+
         _nucleus = [[CellNucleus alloc] init];
         _nucleus.talkService.delegate = self;
 
@@ -59,6 +64,12 @@
     if ([self isReady]) {
         return;
     }
+
+    if (_opening) {
+        return;
+    }
+
+    _opening = TRUE;
 
     [_nucleus.talkService call:self.address withPort:(int)self.port];
 }
@@ -133,11 +144,11 @@
 }
 
 - (void)onContacted:(CellSpeaker *)speaker {
-    
+    _opening = FALSE;
 }
 
 - (void)onQuitted:(CellSpeaker *)speaker {
-    
+    _opening = FALSE;
 }
 
 - (void)onFailed:(CellSpeaker *)speaker error:(CellTalkError *)error {

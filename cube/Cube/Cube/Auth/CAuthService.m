@@ -63,7 +63,7 @@ typedef void (^wait_block_t)(void);
             if (nil != token && [token isValid]) {
                 // 关闭存储器
                 [storage close];
-                
+
                 self.token = token;
 
                 resolver(token);
@@ -95,6 +95,12 @@ typedef void (^wait_block_t)(void);
                             [storage close];
 
                             resolver(token);
+                        }
+                        else {
+                            // 关闭存储器
+                            [storage close];
+
+                            resolver(nil);
                         }
                     }).catch(^(NSError * error) {
                         NSLog(@"CAuthService#applyToken : %@", error.localizedDescription);

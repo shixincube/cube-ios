@@ -20,7 +20,7 @@
 - (void)setUp {
     NSLog(@"setUp");
     self.kernel = [[CKernel alloc] init];
-    
+
     CAuthService * auth = [[CAuthService alloc] init];
     [self.kernel installModule:auth];
 }

@@ -45,7 +45,7 @@
     if (self = [super init]) {
         // 创建数据库文件
         NSString * docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        NSString * filename = [docPath stringByAppendingPathComponent:@"auth.db"];
+        NSString * filename = [docPath stringByAppendingPathComponent:@"CubeAuth.db"];
         db = [[FMDatabase alloc] initWithPath:filename];
     }
 

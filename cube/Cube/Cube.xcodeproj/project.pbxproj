@@ -13,6 +13,7 @@
 		C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF2268EB52700B1E15E /* CAuthToken.m */; };
 		C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF9268EBD7700B1E15E /* CJSONable.m */; };
 		C88461E426B55A4B00A8A3C6 /* CError.m in Sources */ = {isa = PBXBuildFile; fileRef = C88461E326B55A4B00A8A3C6 /* CError.m */; };
+		C8ACAC8126B953530057740D /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = C8ACAC8026B953530057740D /* CEngine.h */; };
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
 		C8B755D8268B384F00812A4C /* CModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755D7268B384F00812A4C /* CModule.m */; };
 		C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755DD268B393E00812A4C /* CObservableEvent.m */; };
@@ -76,6 +77,7 @@
 		C8361BF9268EBD7700B1E15E /* CJSONable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJSONable.m; sourceTree = "<group>"; };
 		C88461E226B55A3A00A8A3C6 /* CError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CError.h; sourceTree = "<group>"; };
 		C88461E326B55A4B00A8A3C6 /* CError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CError.m; sourceTree = "<group>"; };
+		C8ACAC8026B953530057740D /* CEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEngine.h; sourceTree = "<group>"; };
 		C8B755AF268ABA6300812A4C /* CStateCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CStateCode.h; sourceTree = "<group>"; };
 		C8B755B0268ABD1B00812A4C /* CStateCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CStateCode.m; sourceTree = "<group>"; };
 		C8B755D7268B384F00812A4C /* CModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CModule.m; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		C8DF88B7268DB29700399C99 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				C8ACAC8026B953530057740D /* CEngine.h */,
 				C8DF88B8268DB2C300399C99 /* CEngine.m */,
 			);
 			path = Engine;
@@ -261,6 +264,7 @@
 			files = (
 				C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */,
 				C8F1A556268985A70020F136 /* Cube.h in Headers */,
+				C8ACAC8126B953530057740D /* CEngine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

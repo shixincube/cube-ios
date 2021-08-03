@@ -24,33 +24,37 @@
  * SOFTWARE.
  */
 
-#import "CEngine.h"
+#ifndef CEngine_h
+#define CEngine_h
 
-@implementation CEngine
+#import <Foundation/Foundation.h>
 
-- (id)init {
-    if (self = [super init]) {
-        
-    }
-    
-    return self;
-}
+#import "../Core/CKernel.h"
+#import "../Core/CError.h"
+#import "../Auth/CAuthService.h"
 
-- (void)start:(CKernelConfig *)config success:(void (^)(CKernel *))success failure:(void (^)(CError *))failure {
-    
-}
+@interface CEngine : NSObject
 
-- (void)stop {
-    
-}
+/*!
+ * @brief 启动魔方引擎。
+ */
+- (void)start:(CKernelConfig *)config success:(void(^)(CKernel *))success failure:(void(^)(CError *))failure;
 
-- (void)suspend {
-    
-}
+/*!
+ * @brief 停止魔方引擎。
+ */
+- (void)stop;
 
-- (void)resume {
-    
-}
+/*!
+ * @brief 挂起魔方引擎。用于应用程序退到后台。
+ */
+- (void)suspend;
+
+/*!
+ * @brief 恢复魔方引擎。用于应用程序回到前台。
+ */
+- (void)resume;
 
 @end
 
+#endif /* CEngine_h */
