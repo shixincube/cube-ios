@@ -50,4 +50,12 @@
     return self;
 }
 
+- (int)extractStateCode {
+    return [[_data objectForKey:@"code"] intValue];
+}
+
+- (NSDictionary *)extractData {
+    return [_data objectForKey:@"data"];
+}
+
 @end

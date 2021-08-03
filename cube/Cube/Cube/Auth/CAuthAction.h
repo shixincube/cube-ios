@@ -31,4 +31,8 @@
 #define CUBE_AUTH_APPLY_TOKEN @"applyToken"
 #endif
 
+#ifndef CUBE_AUTH_SC_OK
+#define CUBE_AUTH_SC_OK 0
+#endif
+
 #endif /* CAuthAction_h */

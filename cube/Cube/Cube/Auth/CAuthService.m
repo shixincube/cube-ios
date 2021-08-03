@@ -82,10 +82,11 @@ typedef void (^wait_block_t)(void);
                 [self waitPipelineReady:^(void) {
                     if (self->waitingCount >= 5) {
                         // 超时
+                        NSLog(@"CAuthService #waitPipelineReady timeout");
                         resolver(nil);
                         return;
                     }
-                    
+
                     [self applyToken:domain appKey:appKey].then(^(id value) {
                         
                     }).catch(^(NSError * error) {
@@ -111,13 +112,24 @@ typedef void (^wait_block_t)(void);
                 resolver(nil);
                 return;
             }
-            
-            
+
+            int state = [packet extractStateCode];
+            if (state == CUBE_AUTH_SC_OK) {
+                
+            }
+            else {
+                
+            }
         }];
     }];
 }
 
 - (void)waitPipelineReady:(wait_block_t)block {
+    if ([self.pipeline isReady]) {
+        block();
+        return;
+    }
+    
     ++waitingCount;
     if (waitingCount >= 5) {
         block();
@@ -128,12 +140,7 @@ typedef void (^wait_block_t)(void);
     dispatch_after(delayInNanoSeconds,
                 dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
                 ^(void) {
-                    if ([self.pipeline isReady]) {
-                        block();
-                    }
-                    else {
-                        [self waitPipelineReady:block];
-                    }
+                    [self waitPipelineReady:block];
                 });
 }
 

@@ -54,6 +54,16 @@
  */
 - (id)initWithName:(NSString *)name andData:(NSDictionary *)data andSN:(int64_t)sn;
 
+/*!
+ * @brief 提取包负载的状态码。
+ */
+- (int)extractStateCode;
+
+/*!
+ * @brief 提取包负载的数据。
+ */
+- (NSDictionary *)extractData;
+
 @end
 
 #endif /* CPacket_h */

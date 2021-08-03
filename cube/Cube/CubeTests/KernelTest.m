@@ -42,7 +42,7 @@
     }];
 
     [self waitForExpectationsWithTimeout:5.0f handler:^(NSError * error) {
-        NSLog(@"waitForExpectationsWithTimeout");
+        NSLog(@"Ready : %@", [self.kernel isReady] ? @"YES" : @"NO");
     }];
 }
 
