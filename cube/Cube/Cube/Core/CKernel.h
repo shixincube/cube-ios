@@ -29,6 +29,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CModule.h"
+#import "CError.h"
 #import "../Auth/CAuthToken.h"
 
 /*!

@@ -35,4 +35,15 @@
 #define CUBE_AUTH_SC_OK 0
 #endif
 
+#ifndef CUBE_AUTH_SC_FAILURE
+#define CUBE_AUTH_SC_FAILURE 9
+#endif
+
+/*!
+ * @brief 存储故障。
+ */
+#ifndef CUBE_AUTH_SC_STORAGE
+#define CUBE_AUTH_SC_STORAGE 20
+#endif
+
 #endif /* CAuthAction_h */

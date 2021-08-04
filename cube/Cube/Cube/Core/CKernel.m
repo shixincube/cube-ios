@@ -82,7 +82,7 @@
  * @param config 引擎配置。
  * @param handler 回调。
  */
-- (void)checkAuth:(CKernelConfig *)config handler:(void (^)(CAuthToken *))handler;
+- (void)checkAuth:(CKernelConfig *)config handler:(void (^)(CError *, CAuthToken *))handler;
 
 @end
 
@@ -113,7 +113,7 @@
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 //    });
 
-    [self checkAuth:config handler:^(CAuthToken * token) {
+    [self checkAuth:config handler:^(CError * error, CAuthToken * token) {
         if (token) {
             self.authToken = token;
             completion();
@@ -168,22 +168,22 @@
     }
 }
 
-- (void)checkAuth:(CKernelConfig *)config handler:(void (^)(CAuthToken *))handler {
+- (void)checkAuth:(CKernelConfig *)config handler:(void (^)(CError * error, CAuthToken *))handler {
     if (![self hasModule:CUBE_MODULE_AUTH]) {
-        handler(nil);
+        handler(nil, nil);
         return;
     }
     
     CAuthService * atuhService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
     [atuhService check:config.domain appKey:config.appKey address:config.address].then(^(id token) {
         if (nil == token) {
-            handler(nil);
+            handler(nil, nil);
         }
         else {
-            handler((CAuthToken *) token);
+            handler(nil, (CAuthToken *) token);
         }
     }).catch(^(NSError *error) {
-        handler(nil);
+        handler((CError *) error, nil);
     });
 }
 

@@ -41,7 +41,7 @@
     [_kernel startup:config completion:^{
         success(self->_kernel);
     } failure:^{
-        CError * error = nil;
+        CError * error = [[CError alloc] initWithModule:@"Kernel" code:1];
         failure(error);
     }];
 }

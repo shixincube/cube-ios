@@ -113,7 +113,7 @@ typedef void (^wait_block_t)(void);
         }
         else {
             // 开启存储错误
-            resolver(nil);
+            @throw [CError errorWithModule:CUBE_MODULE_AUTH code:CUBE_AUTH_SC_STORAGE];
         }
     }];
 }

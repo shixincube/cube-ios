@@ -32,8 +32,9 @@
 #define CUBE_MODULE_AUTH @"Auth"
 #endif
 
-#import "../Core/CModule.h"
+#import "CModule.h"
 #import "CAuthToken.h"
+#import "CError.h"
 #import <PromiseKit/AnyPromise.h>
 
 @interface CAuthService : CModule

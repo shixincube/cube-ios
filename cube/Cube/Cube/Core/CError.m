@@ -32,8 +32,13 @@
     if (self = [super initWithDomain:module code:code userInfo:nil]) {
         _module = module;
     }
-    
+
     return self;
+}
+
++ (instancetype)errorWithModule:(NSString *)module code:(NSInteger)code {
+    CError * error = [[CError alloc] initWithModule:module code:code];
+    return error;
 }
 
 @end
