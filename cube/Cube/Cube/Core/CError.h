@@ -31,6 +31,10 @@
 
 @interface CError : NSError
 
+@property (nonatomic, strong, readonly) NSString * module;
+
+- (id)initWithModule:(NSString *)module code:(NSInteger)code;
+
 @end
 
 #endif /* CError_h */

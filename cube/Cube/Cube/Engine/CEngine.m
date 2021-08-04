@@ -30,14 +30,20 @@
 
 - (id)init {
     if (self = [super init]) {
-        
+        _kernel = [[CKernel alloc] init];
+        [_kernel installModule:[[CAuthService alloc] init]];
     }
-    
+
     return self;
 }
 
 - (void)start:(CKernelConfig *)config success:(void (^)(CKernel *))success failure:(void (^)(CError *))failure {
-    
+    [_kernel startup:config completion:^{
+        success(self->_kernel);
+    } failure:^{
+        CError * error = nil;
+        failure(error);
+    }];
 }
 
 - (void)stop {

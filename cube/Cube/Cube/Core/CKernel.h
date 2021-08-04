@@ -67,6 +67,11 @@
 @property (nonatomic, assign) BOOL pipelineReady;
 
 /*!
+ * @brief 是否启用消息服务。
+ */
+@property (nonatomic, assign) BOOL enabledMessaging;
+
+/*!
  * @brief 初始化。
  * @param address 指定服务器地址。
  * @param domain 指定所属域名称。

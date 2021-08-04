@@ -35,6 +35,7 @@
         self.port = 7000;
         self.pipelineReady = FALSE;
         self.unconnected = FALSE;
+        self.enabledMessaging = FALSE;
     }
 
     return self;

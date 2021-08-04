@@ -36,6 +36,11 @@
 @interface CEngine : NSObject
 
 /*!
+ * @brief 内核实例。
+ */
+@property (nonatomic, strong, readonly) CKernel * kernel;
+
+/*!
  * @brief 启动魔方引擎。
  */
 - (void)start:(CKernelConfig *)config success:(void(^)(CKernel *))success failure:(void(^)(CError *))failure;
