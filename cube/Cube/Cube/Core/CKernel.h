@@ -32,6 +32,15 @@
 #import "CError.h"
 #import "../Auth/CAuthToken.h"
 
+#ifndef CUBE_KERNEL_SC_NO_MODULE
+#define CUBE_KERNEL_SC_NO_MODULE 300
+#endif
+
+#ifndef CUBE_KERNEL_SC_NO_TOKEN
+#define CUBE_KERNEL_SC_NO_TOKEN 305
+#endif
+
+
 /*!
  * @brief 内核配置定义。
  */
@@ -100,7 +109,7 @@
  * @param failure 启动失败回调函数。
  */
 - (void)startup:(CKernelConfig *)config completion:(void(^)(void))completion
-        failure:(void(^)(void))failure;
+        failure:(void(^)(CError *))failure;
 
 /*!
  * @brief 关闭内核。

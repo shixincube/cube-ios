@@ -80,13 +80,20 @@ typedef void (^wait_block_t)(void);
                         // 关闭存储器
                         [storage close];
 
-                        resolver(nil);
+                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CUBE_AUTH_SC_TIMEOUT]);
                         return;
                     }
 
                     [self applyToken:domain appKey:appKey].then(^(id value) {
-                        if (value) {
+                        if ([value isKindOfClass:[CError class]]) {
+                            // 关闭存储器
+                            [storage close];
+
+                            resolver(value);
+                        }
+                        else {
                             CAuthToken * token = value;
+                            // 保存令牌
                             [storage saveToken:token];
                             self.token = token;
 
@@ -96,17 +103,13 @@ typedef void (^wait_block_t)(void);
 
                             resolver(token);
                         }
-                        else {
-                            // 关闭存储器
-                            [storage close];
-
-                            resolver(nil);
-                        }
                     }).catch(^(NSError * error) {
                         NSLog(@"CAuthService#applyToken : %@", error.localizedDescription);
 
                         // 关闭存储器
                         [storage close];
+
+                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CUBE_AUTH_SC_FAILURE]);
                     });
                 }];
             }
@@ -126,7 +129,7 @@ typedef void (^wait_block_t)(void);
 
         [self.pipeline send:CUBE_MODULE_AUTH withPacket:packet handleResponse:^(CPacket *packet) {
             if (packet.state.code != Ok) {
-                resolver(nil);
+                resolver([CError errorWithModule:CUBE_MODULE_AUTH code:packet.state.code]);
                 return;
             }
 
@@ -137,7 +140,7 @@ typedef void (^wait_block_t)(void);
                 resolver(authToken);
             }
             else {
-                resolver(nil);
+                resolver([CError errorWithModule:CUBE_MODULE_AUTH code:state]);
             }
         }];
     }];

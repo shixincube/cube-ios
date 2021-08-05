@@ -38,10 +38,9 @@
 }
 
 - (void)start:(CKernelConfig *)config success:(void (^)(CKernel *))success failure:(void (^)(CError *))failure {
-    [_kernel startup:config completion:^{
+    [_kernel startup:config completion:^ {
         success(self->_kernel);
-    } failure:^{
-        CError * error = [[CError alloc] initWithModule:@"Kernel" code:1];
+    } failure:^(CError * error) {
         failure(error);
     }];
 }

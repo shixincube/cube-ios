@@ -37,6 +37,8 @@
 
 + (instancetype)errorWithModule:(NSString *)module code:(NSInteger)code;
 
++ (instancetype)errorWithError:(NSError *)error;
+
 @end
 
 #endif /* CError_h */

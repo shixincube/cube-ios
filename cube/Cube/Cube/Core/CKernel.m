@@ -98,7 +98,7 @@
     return self;
 }
 
-- (void)startup:(CKernelConfig *)config completion:(void (^)(void))completion failure:(void (^)(void))failure {
+- (void)startup:(CKernelConfig *)config completion:(void (^)(void))completion failure:(void (^)(CError *))failure {
     _config = config;
 
     _working = TRUE;
@@ -119,7 +119,7 @@
             completion();
         }
         else {
-            failure();
+            failure(error);
         }
     }];
 }
@@ -170,20 +170,25 @@
 
 - (void)checkAuth:(CKernelConfig *)config handler:(void (^)(CError * error, CAuthToken *))handler {
     if (![self hasModule:CUBE_MODULE_AUTH]) {
-        handler(nil, nil);
+        handler([CError errorWithModule:@"Kernel" code:CUBE_KERNEL_SC_NO_MODULE], nil);
         return;
     }
-    
+
     CAuthService * atuhService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
     [atuhService check:config.domain appKey:config.appKey address:config.address].then(^(id token) {
-        if (nil == token) {
-            handler(nil, nil);
+        if ([token isKindOfClass:[CError class]]) {
+            handler((CError *) token, nil);
         }
         else {
             handler(nil, (CAuthToken *) token);
         }
     }).catch(^(NSError *error) {
-        handler((CError *) error, nil);
+        if ([error isKindOfClass:[CError class]]) {
+            handler((CError *) error, nil);
+        }
+        else {
+            handler([CError errorWithError:error], nil);
+        }
     });
 }
 

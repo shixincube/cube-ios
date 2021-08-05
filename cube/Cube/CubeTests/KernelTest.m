@@ -39,9 +39,10 @@
                                                              domain:@"shixincube.com"
                                                              appKey:@"shixin-cubeteam-opensource-appkey"];
 
-    [self.kernel startup:config completion:^{
+    [self.kernel startup:config completion:^ {
         [expect fulfill];
-    } failure:^{
+    } failure:^(CError * error) {
+        NSLog(@"Error : %@ - %ld", error.module, error.code);
         [expect fulfill];
     }];
 

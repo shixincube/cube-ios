@@ -41,4 +41,9 @@
     return error;
 }
 
++ (instancetype)errorWithError:(NSError *)error {
+    CError * result = [[CError alloc] initWithModule:error.domain code:error.code];
+    return result;
+}
+
 @end

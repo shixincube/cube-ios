@@ -46,4 +46,11 @@
 #define CUBE_AUTH_SC_STORAGE 20
 #endif
 
+/*!
+ * @brief 本地任务超时。
+ */
+#ifndef CUBE_AUTH_SC_TIMEOUT
+#define CUBE_AUTH_SC_TIMEOUT 21
+#endif
+
 #endif /* CAuthAction_h */
