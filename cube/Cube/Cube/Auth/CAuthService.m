@@ -31,6 +31,8 @@
 #import "CPacket.h"
 #import "CStateCode.h"
 
+#define MAX_WAITING_COUNT 3
+
 typedef void (^wait_block_t)(void);
 
 @interface CAuthService () {
@@ -73,7 +75,7 @@ typedef void (^wait_block_t)(void);
                 self->waitingCount = 0;
 
                 [self waitPipelineReady:^(void) {
-                    if (self->waitingCount >= 3) {
+                    if (self->waitingCount >= MAX_WAITING_COUNT) {
                         // 超时
                         NSLog(@"CAuthService#waitPipelineReady timeout");
 
@@ -153,7 +155,7 @@ typedef void (^wait_block_t)(void);
     }
 
     ++waitingCount;
-    if (waitingCount >= 3) {
+    if (waitingCount >= MAX_WAITING_COUNT) {
         block();
         return;
     }

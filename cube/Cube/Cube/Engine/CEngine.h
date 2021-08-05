@@ -36,6 +36,11 @@
 @interface CEngine : NSObject
 
 /*!
+ * @brief 获取引擎单例。
+ */
++ (CEngine *)sharedInstance;
+
+/*!
  * @brief 内核实例。
  */
 @property (nonatomic, strong, readonly) CKernel * kernel;

@@ -107,8 +107,9 @@
  * @param config 配置信息。
  * @param completion 启动成功回调函数。
  * @param failure 启动失败回调函数。
+ * @return 返回是否允许启动。
  */
-- (void)startup:(CKernelConfig *)config completion:(void(^)(void))completion
+- (BOOL)startup:(CKernelConfig *)config completion:(void(^)(void))completion
         failure:(void(^)(CError *))failure;
 
 /*!

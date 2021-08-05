@@ -98,7 +98,11 @@
     return self;
 }
 
-- (void)startup:(CKernelConfig *)config completion:(void (^)(void))completion failure:(void (^)(CError *))failure {
+- (BOOL)startup:(CKernelConfig *)config completion:(void (^)(void))completion failure:(void (^)(CError *))failure {
+    if (_working) {
+        return FALSE;
+    }
+
     _config = config;
 
     _working = TRUE;
@@ -110,22 +114,25 @@
     [_cellPipeline setRemoteAddress:_config.address withPort:_config.port];
     [_cellPipeline open];
 
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-//    });
-
     [self checkAuth:config handler:^(CError * error, CAuthToken * token) {
         if (token) {
             self.authToken = token;
             completion();
         }
         else {
+            self->_working = FALSE;
+
             failure(error);
         }
     }];
+    
+    return TRUE;
 }
 
 - (void)shutdown {
     [_cellPipeline close];
+
+    _working = FALSE;
 }
 
 - (void)suspend {

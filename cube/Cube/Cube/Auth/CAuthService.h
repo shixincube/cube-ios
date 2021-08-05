@@ -54,6 +54,9 @@
 
 /*!
  * @brief 从服务器申请令牌。
+ * @param domain 令牌对应的域。
+ * @param appKey 令牌指定的 App Key 串。
+ * @return 返回 Promise 异步执行实例。
  */
 - (AnyPromise *)applyToken:(NSString *)domain appKey:(NSString *)appKey;
 

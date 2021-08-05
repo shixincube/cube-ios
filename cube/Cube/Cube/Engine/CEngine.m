@@ -28,6 +28,15 @@
 
 @implementation CEngine
 
++ (CEngine *)sharedInstance {
+    static CEngine *engine;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        engine = [[self alloc] init];
+    });
+    return engine;
+}
+
 - (id)init {
     if (self = [super init]) {
         _kernel = [[CKernel alloc] init];
@@ -46,15 +55,15 @@
 }
 
 - (void)stop {
-    
+    [_kernel shutdown];
 }
 
 - (void)suspend {
-    
+    [_kernel suspend];
 }
 
 - (void)resume {
-    
+    [_kernel resume];
 }
 
 @end
