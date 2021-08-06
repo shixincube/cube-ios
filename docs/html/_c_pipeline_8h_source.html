@@ -1,0 +1,175 @@
+<!-- HTML header for doxygen 1.8.18-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cube for iOS: CPipeline.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Cube for iOS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_c_pipeline_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CPipeline.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_c_pipeline_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="protocol_c_pipeline_listener-p.html#a6d231cd42d7e792654eeafded550db2f">    1</a></span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef CPipeline_h</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CPipeline_h</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_packet_8h.html">CPacket.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_state_code_8h.html">CStateCode.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_pipeline.html">CPipeline</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="protocol_c_pipeline_listener-p.html">   39</a></span>&#160;<span class="keyword">@protocol </span><a class="code" href="protocol_c_pipeline_listener-p.html">CPipelineListener</a> &lt;NSObject&gt;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">@required</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;- (void)didReceive:(<a class="code" href="interface_c_pipeline.html">CPipeline</a> *)pipeline source:(NSString *)source packet:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">@optional</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;- (void)didOpen:(<a class="code" href="interface_c_pipeline.html">CPipeline</a> *)pipeline source:(NSString *)source packet:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">@optional</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;- (void)didClose:(<a class="code" href="interface_c_pipeline.html">CPipeline</a> *)pipeline source:(NSString *)source packet:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">@optional</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;- (void)faultOccurred:(<a class="code" href="interface_c_pipeline.html">CPipeline</a> *)pipeline code:(NSInteger)code;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="interface_c_pipeline.html">   59</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_pipeline.html">CPipeline</a> : NSObject</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="interface_c_pipeline.html#a09f9697d6d8b6ff723bf8e77a32978ea">   61</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) NSString * <a class="code" href="interface_c_pipeline.html#a09f9697d6d8b6ff723bf8e77a32978ea">name</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="interface_c_pipeline.html#ae0364ac603968a5f966df3f4c3db0beb">   63</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) NSString * <a class="code" href="interface_c_pipeline.html#ae0364ac603968a5f966df3f4c3db0beb">address</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="interface_c_pipeline.html#a7feddb2d19b0fbbdedcae1c7f8a2ea53">   65</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign) NSInteger <a class="code" href="interface_c_pipeline.html#a7feddb2d19b0fbbdedcae1c7f8a2ea53">port</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="interface_c_pipeline.html#a8ee9641947d8274c687d03b04cf0cb3d">   67</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) NSString * <a class="code" href="interface_c_pipeline.html#a16a5fac140045bd2820a59e4a99b9160">tokenCode</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;- (instancetype)initWithName:(NSString *)name;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;- (void)<a class="code" href="interface_c_pipeline.html#a24da78693aa8e31d360cea84d208af98">open</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;- (void)<a class="code" href="interface_c_pipeline.html#ac7d44eb9e7bc23a13f72f431f51c00cb">close</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;- (BOOL)<a class="code" href="interface_c_pipeline.html#a1378ddd46892c462e9ca7c42d00d087f">isReady</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;- (void)send:(NSString *)destination withPacket:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet handleResponse:(<span class="keywordtype">void</span>(^)(<a class="code" href="interface_c_packet.html">CPacket</a> *packet))handleResponse;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;- (void)setRemoteAddress:(NSString *)address withPort:(NSInteger)port;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;- (void)addListener:(NSString *)destination listener:(<span class="keywordtype">id</span>&lt;<a class="code" href="protocol_c_pipeline_listener-p.html">CPipelineListener</a>&gt;)listener;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;- (void)removeListener:(NSString *)destination listener:(<span class="keywordtype">id</span>&lt;<a class="code" href="protocol_c_pipeline_listener-p.html">CPipelineListener</a>&gt;)listener;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;- (void)triggerListener:(NSString *)destination packet:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;- (<a class="code" href="interface_c_pipeline_state.html">CPipelineState</a> *)extractState:(NSDictionary *)state;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CPipeline_h */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_c_packet_8h_html"><div class="ttname"><a href="_c_packet_8h.html">CPacket.h</a></div></div>
+<div class="ttc" id="a_c_state_code_8h_html"><div class="ttname"><a href="_c_state_code_8h.html">CStateCode.h</a></div></div>
+<div class="ttc" id="ainterface_c_packet_html"><div class="ttname"><a href="interface_c_packet.html">CPacket</a></div><div class="ttdef"><b>Definition:</b> CPacket.h:34</div></div>
+<div class="ttc" id="ainterface_c_pipeline_html"><div class="ttname"><a href="interface_c_pipeline.html">CPipeline</a></div><div class="ttdoc">数据通道服务接口。</div><div class="ttdef"><b>Definition:</b> CPipeline.h:60</div></div>
+<div class="ttc" id="ainterface_c_pipeline_html_a09f9697d6d8b6ff723bf8e77a32978ea"><div class="ttname"><a href="interface_c_pipeline.html#a09f9697d6d8b6ff723bf8e77a32978ea">CPipeline::name</a></div><div class="ttdeci">NSString * name</div><div class="ttdef"><b>Definition:</b> CPipeline.h:61</div></div>
+<div class="ttc" id="ainterface_c_pipeline_html_a1378ddd46892c462e9ca7c42d00d087f"><div class="ttname"><a href="interface_c_pipeline.html#a1378ddd46892c462e9ca7c42d00d087f">-[CPipeline isReady]</a></div><div class="ttdeci">BOOL isReady()</div><div class="ttdoc">数据通道是否就绪。</div></div>
+<div class="ttc" id="ainterface_c_pipeline_html_a16a5fac140045bd2820a59e4a99b9160"><div class="ttname"><a href="interface_c_pipeline.html#a16a5fac140045bd2820a59e4a99b9160">CPipeline::tokenCode</a></div><div class="ttdeci">NSString * tokenCode</div><div class="ttdef"><b>Definition:</b> CPipeline.h:67</div></div>
+<div class="ttc" id="ainterface_c_pipeline_html_a24da78693aa8e31d360cea84d208af98"><div class="ttname"><a href="interface_c_pipeline.html#a24da78693aa8e31d360cea84d208af98">-[CPipeline open]</a></div><div class="ttdeci">void open()</div><div class="ttdoc">开启管道。</div></div>
+<div class="ttc" id="ainterface_c_pipeline_html_a7feddb2d19b0fbbdedcae1c7f8a2ea53"><div class="ttname"><a href="interface_c_pipeline.html#a7feddb2d19b0fbbdedcae1c7f8a2ea53">CPipeline::port</a></div><div class="ttdeci">NSInteger port</div><div class="ttdef"><b>Definition:</b> CPipeline.h:65</div></div>
+<div class="ttc" id="ainterface_c_pipeline_html_ac7d44eb9e7bc23a13f72f431f51c00cb"><div class="ttname"><a href="interface_c_pipeline.html#ac7d44eb9e7bc23a13f72f431f51c00cb">-[CPipeline close]</a></div><div class="ttdeci">void close()</div><div class="ttdoc">关闭管道。</div></div>
+<div class="ttc" id="ainterface_c_pipeline_html_ae0364ac603968a5f966df3f4c3db0beb"><div class="ttname"><a href="interface_c_pipeline.html#ae0364ac603968a5f966df3f4c3db0beb">CPipeline::address</a></div><div class="ttdeci">NSString * address</div><div class="ttdef"><b>Definition:</b> CPipeline.h:63</div></div>
+<div class="ttc" id="ainterface_c_pipeline_state_html"><div class="ttname"><a href="interface_c_pipeline_state.html">CPipelineState</a></div><div class="ttdoc">通道状态描述。</div><div class="ttdef"><b>Definition:</b> CStateCode.h:83</div></div>
+<div class="ttc" id="aprotocol_c_pipeline_listener-p_html"><div class="ttname"><a href="protocol_c_pipeline_listener-p.html">CPipelineListener-p</a></div><div class="ttdoc">数据通道服务事件监听器。</div><div class="ttdef"><b>Definition:</b> CPipeline.h:39</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.18-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_452bf2a1f165afdc57f378d186bca8c8.html">cube</a></li><li class="navelem"><a class="el" href="dir_170416ba8e842f45e64f4e38289ca8a1.html">Cube</a></li><li class="navelem"><a class="el" href="dir_87178645a19c09c8bd0356089af4ddcb.html">Core</a></li><li class="navelem"><a class="el" href="_c_pipeline_8h.html">CPipeline.h</a></li>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!-- HTML header for doxygen 1.8.18-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cube for iOS: CPacket.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Cube for iOS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_c_packet_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CPacket.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_c_packet_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef CPacket_h</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CPacket_h</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_state_code_8h.html">CStateCode.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="interface_c_packet.html">   33</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_packet.html">CPacket</a> : NSObject</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="interface_c_packet.html#ae2b6a858bd9abe27da0eb42ba11bca9b">   36</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) NSString * <a class="code" href="interface_c_packet.html#ae2b6a858bd9abe27da0eb42ba11bca9b">name</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="interface_c_packet.html#a20a30efc829a8cc14e14fbbf4528a5ad">   39</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) NSDictionary * <a class="code" href="interface_c_packet.html#a20a30efc829a8cc14e14fbbf4528a5ad">data</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="interface_c_packet.html#a69e517a0d179dd502f13eb48d18d6c15">   42</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign) int64_t <a class="code" href="interface_c_packet.html#a69e517a0d179dd502f13eb48d18d6c15">sn</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="interface_c_packet.html#af8264130b9d9cfdac44ca2fbf5d06878">   45</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) <a class="code" href="interface_c_pipeline_state.html">CPipelineState</a> * <a class="code" href="interface_c_packet.html#a06b32bc3f967f3423ac86093761cb624">state</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;- (instancetype)initWithName:(NSString *)name andData:(NSDictionary *)data;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;- (instancetype)initWithName:(NSString *)name andData:(NSDictionary *)data andSN:(int64_t)sn;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;- (int)<a class="code" href="interface_c_packet.html#a62f14beceeb2b881d5b046edd847deac">extractStateCode</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;- (NSDictionary *)<a class="code" href="interface_c_packet.html#af8264130b9d9cfdac44ca2fbf5d06878">extractData</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CPacket_h */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_c_state_code_8h_html"><div class="ttname"><a href="_c_state_code_8h.html">CStateCode.h</a></div></div>
+<div class="ttc" id="ainterface_c_packet_html"><div class="ttname"><a href="interface_c_packet.html">CPacket</a></div><div class="ttdef"><b>Definition:</b> CPacket.h:34</div></div>
+<div class="ttc" id="ainterface_c_packet_html_a06b32bc3f967f3423ac86093761cb624"><div class="ttname"><a href="interface_c_packet.html#a06b32bc3f967f3423ac86093761cb624">CPacket::state</a></div><div class="ttdeci">CPipelineState * state</div><div class="ttdoc">数据包应答状态。</div><div class="ttdef"><b>Definition:</b> CPacket.h:45</div></div>
+<div class="ttc" id="ainterface_c_packet_html_a20a30efc829a8cc14e14fbbf4528a5ad"><div class="ttname"><a href="interface_c_packet.html#a20a30efc829a8cc14e14fbbf4528a5ad">CPacket::data</a></div><div class="ttdeci">NSDictionary * data</div><div class="ttdoc">数据包负载数据。</div><div class="ttdef"><b>Definition:</b> CPacket.h:39</div></div>
+<div class="ttc" id="ainterface_c_packet_html_a62f14beceeb2b881d5b046edd847deac"><div class="ttname"><a href="interface_c_packet.html#a62f14beceeb2b881d5b046edd847deac">-[CPacket extractStateCode]</a></div><div class="ttdeci">int extractStateCode()</div><div class="ttdoc">提取包负载的状态码。</div></div>
+<div class="ttc" id="ainterface_c_packet_html_a69e517a0d179dd502f13eb48d18d6c15"><div class="ttname"><a href="interface_c_packet.html#a69e517a0d179dd502f13eb48d18d6c15">CPacket::sn</a></div><div class="ttdeci">int64_t sn</div><div class="ttdoc">数据包序号。</div><div class="ttdef"><b>Definition:</b> CPacket.h:42</div></div>
+<div class="ttc" id="ainterface_c_packet_html_ae2b6a858bd9abe27da0eb42ba11bca9b"><div class="ttname"><a href="interface_c_packet.html#ae2b6a858bd9abe27da0eb42ba11bca9b">CPacket::name</a></div><div class="ttdeci">NSString * name</div><div class="ttdoc">数据包包名。</div><div class="ttdef"><b>Definition:</b> CPacket.h:36</div></div>
+<div class="ttc" id="ainterface_c_packet_html_af8264130b9d9cfdac44ca2fbf5d06878"><div class="ttname"><a href="interface_c_packet.html#af8264130b9d9cfdac44ca2fbf5d06878">-[CPacket extractData]</a></div><div class="ttdeci">NSDictionary * extractData()</div><div class="ttdoc">提取包负载的数据。</div></div>
+<div class="ttc" id="ainterface_c_pipeline_state_html"><div class="ttname"><a href="interface_c_pipeline_state.html">CPipelineState</a></div><div class="ttdoc">通道状态描述。</div><div class="ttdef"><b>Definition:</b> CStateCode.h:83</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.18-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_452bf2a1f165afdc57f378d186bca8c8.html">cube</a></li><li class="navelem"><a class="el" href="dir_170416ba8e842f45e64f4e38289ca8a1.html">Cube</a></li><li class="navelem"><a class="el" href="dir_87178645a19c09c8bd0356089af4ddcb.html">Core</a></li><li class="navelem"><a class="el" href="_c_packet_8h.html">CPacket.h</a></li>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

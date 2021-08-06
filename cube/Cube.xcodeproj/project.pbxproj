@@ -1,0 +1,675 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C82DB8BA26B39B0500813378 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82DB8B926B39B0500813378 /* FMDB.framework */; };
+		C82DB8BB26B39B0500813378 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C82DB8B926B39B0500813378 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C82DB8BE26B3AE7900813378 /* CAuthStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C82DB8BD26B3AE7900813378 /* CAuthStorage.m */; };
+		C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF2268EB52700B1E15E /* CAuthToken.m */; };
+		C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF9268EBD7700B1E15E /* CJSONable.m */; };
+		C88461E426B55A4B00A8A3C6 /* CError.m in Sources */ = {isa = PBXBuildFile; fileRef = C88461E326B55A4B00A8A3C6 /* CError.m */; };
+		C8ACAC8126B953530057740D /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = C8ACAC8026B953530057740D /* CEngine.h */; };
+		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
+		C8B755D8268B384F00812A4C /* CModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755D7268B384F00812A4C /* CModule.m */; };
+		C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755DD268B393E00812A4C /* CObservableEvent.m */; };
+		C8B755E3268B3C4300812A4C /* CSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755E2268B3C4300812A4C /* CSubject.m */; };
+		C8B755E9268B3FC000812A4C /* CObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755E8268B3FC000812A4C /* CObserver.m */; };
+		C8BE85AD26B77FD9007E154E /* KernelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BE85AC26B77FD9007E154E /* KernelTest.m */; };
+		C8C384D626BCD7C8009CF806 /* CContactService.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384D526BCD7C8009CF806 /* CContactService.h */; };
+		C8C384DA26BCD7DA009CF806 /* CContactService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384D926BCD7DA009CF806 /* CContactService.m */; };
+		C8C384DD26BD0306009CF806 /* CContactStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384DC26BD0306009CF806 /* CContactStorage.m */; };
+		C8C384E226BD043A009CF806 /* CEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384E126BD043A009CF806 /* CEntity.h */; };
+		C8C384E526BD0448009CF806 /* CEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384E426BD0448009CF806 /* CEntity.m */; };
+		C8C384EB26BD182F009CF806 /* cell.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C384EA26BD182F009CF806 /* cell.xcframework */; };
+		C8C384EC26BD182F009CF806 /* cell.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8C384EA26BD182F009CF806 /* cell.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8C384F026BD1840009CF806 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C384EF26BD1840009CF806 /* WebRTC.xcframework */; };
+		C8C384F126BD1840009CF806 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8C384EF26BD1840009CF806 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8DF88B2268DAD4D00399C99 /* CAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DF88B1268DAD4D00399C99 /* CAuthService.m */; };
+		C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DF88B8268DB2C300399C99 /* CEngine.m */; };
+		C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */ = {isa = PBXBuildFile; fileRef = C8DF88B5268DAD5B00399C99 /* CAuthService.h */; };
+		C8F1A54F268985A70020F136 /* Cube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A545268985A70020F136 /* Cube.framework */; };
+		C8F1A554268985A70020F136 /* CubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A553268985A70020F136 /* CubeTests.m */; };
+		C8F1A556268985A70020F136 /* Cube.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1A548268985A70020F136 /* Cube.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8F1A56926899B980020F136 /* CKernel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A56826899B980020F136 /* CKernel.m */; };
+		C8F1A56D26899F910020F136 /* CPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A56C26899F910020F136 /* CPipeline.m */; };
+		C8F1A57B2689A1E80020F136 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A57A2689A1E80020F136 /* PromiseKit.framework */; };
+		C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A57A2689A1E80020F136 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A5812689AC230020F136 /* CCellPipeline.m */; };
+		C8F1A5B52689CE350020F136 /* CPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A5B42689CE350020F136 /* CPacket.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C8F1A550268985A70020F136 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8F1A53C268985A70020F136 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8F1A544268985A70020F136;
+			remoteInfo = Cube;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C8F1A57D2689A1E80020F136 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C8C384F126BD1840009CF806 /* WebRTC.xcframework in Embed Frameworks */,
+				C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */,
+				C82DB8BB26B39B0500813378 /* FMDB.framework in Embed Frameworks */,
+				C8C384EC26BD182F009CF806 /* cell.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C82DB8AD26B398F700813378 /* MagicalRecord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MagicalRecord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C82DB8B926B39B0500813378 /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C82DB8BD26B3AE7900813378 /* CAuthStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthStorage.m; sourceTree = "<group>"; };
+		C82DB8C026B3AE9300813378 /* CAuthStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthStorage.h; sourceTree = "<group>"; };
+		C82DB8EC26B3FC9C00813378 /* CAuthAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthAction.h; sourceTree = "<group>"; };
+		C8361BF2268EB52700B1E15E /* CAuthToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthToken.m; sourceTree = "<group>"; };
+		C8361BF5268EB53300B1E15E /* CAuthToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthToken.h; sourceTree = "<group>"; };
+		C8361BF8268EBD6C00B1E15E /* CJSONable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJSONable.h; sourceTree = "<group>"; };
+		C8361BF9268EBD7700B1E15E /* CJSONable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJSONable.m; sourceTree = "<group>"; };
+		C88461E226B55A3A00A8A3C6 /* CError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CError.h; sourceTree = "<group>"; };
+		C88461E326B55A4B00A8A3C6 /* CError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CError.m; sourceTree = "<group>"; };
+		C8ACAC8026B953530057740D /* CEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEngine.h; sourceTree = "<group>"; };
+		C8B755AF268ABA6300812A4C /* CStateCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CStateCode.h; sourceTree = "<group>"; };
+		C8B755B0268ABD1B00812A4C /* CStateCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CStateCode.m; sourceTree = "<group>"; };
+		C8B755D7268B384F00812A4C /* CModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CModule.m; sourceTree = "<group>"; };
+		C8B755DB268B385A00812A4C /* CModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CModule.h; sourceTree = "<group>"; };
+		C8B755DC268B393100812A4C /* CObservableEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CObservableEvent.h; sourceTree = "<group>"; };
+		C8B755DD268B393E00812A4C /* CObservableEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CObservableEvent.m; sourceTree = "<group>"; };
+		C8B755E2268B3C4300812A4C /* CSubject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSubject.m; sourceTree = "<group>"; };
+		C8B755E5268B3C4F00812A4C /* CSubject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSubject.h; sourceTree = "<group>"; };
+		C8B755E7268B3FB500812A4C /* CObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CObserver.h; sourceTree = "<group>"; };
+		C8B755E8268B3FC000812A4C /* CObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CObserver.m; sourceTree = "<group>"; };
+		C8BE85AC26B77FD9007E154E /* KernelTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KernelTest.m; sourceTree = "<group>"; };
+		C8C384D526BCD7C8009CF806 /* CContactService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactService.h; sourceTree = "<group>"; };
+		C8C384D926BCD7DA009CF806 /* CContactService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactService.m; sourceTree = "<group>"; };
+		C8C384DC26BD0306009CF806 /* CContactStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactStorage.m; sourceTree = "<group>"; };
+		C8C384DF26BD0322009CF806 /* CContactStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactStorage.h; sourceTree = "<group>"; };
+		C8C384E126BD043A009CF806 /* CEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEntity.h; sourceTree = "<group>"; };
+		C8C384E426BD0448009CF806 /* CEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEntity.m; sourceTree = "<group>"; };
+		C8C384EA26BD182F009CF806 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = ../libs/cell.xcframework; sourceTree = "<group>"; };
+		C8C384EF26BD1840009CF806 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = ../libs/WebRTC.xcframework; sourceTree = "<group>"; };
+		C8DF88A6268D699C00399C99 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = ../../libs/cell.xcframework; sourceTree = "<group>"; };
+		C8DF88AA268D69A600399C99 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = ../../libs/WebRTC.xcframework; sourceTree = "<group>"; };
+		C8DF88B1268DAD4D00399C99 /* CAuthService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthService.m; sourceTree = "<group>"; };
+		C8DF88B5268DAD5B00399C99 /* CAuthService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthService.h; sourceTree = "<group>"; };
+		C8DF88B8268DB2C300399C99 /* CEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEngine.m; sourceTree = "<group>"; };
+		C8F1A545268985A70020F136 /* Cube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8F1A548268985A70020F136 /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		C8F1A549268985A70020F136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8F1A54E268985A70020F136 /* CubeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8F1A553268985A70020F136 /* CubeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeTests.m; sourceTree = "<group>"; };
+		C8F1A555268985A70020F136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8F1A56426899B770020F136 /* CKernel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKernel.h; sourceTree = "<group>"; };
+		C8F1A56826899B980020F136 /* CKernel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKernel.m; sourceTree = "<group>"; };
+		C8F1A56C26899F910020F136 /* CPipeline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPipeline.m; sourceTree = "<group>"; };
+		C8F1A57026899FB60020F136 /* CPipeline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPipeline.h; sourceTree = "<group>"; };
+		C8F1A57A2689A1E80020F136 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8F1A5802689AC090020F136 /* CCellPipeline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCellPipeline.h; sourceTree = "<group>"; };
+		C8F1A5812689AC230020F136 /* CCellPipeline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCellPipeline.m; sourceTree = "<group>"; };
+		C8F1A5B42689CE350020F136 /* CPacket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPacket.m; sourceTree = "<group>"; };
+		C8F1A5B72689CE430020F136 /* CPacket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPacket.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C8F1A542268985A70020F136 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8C384F026BD1840009CF806 /* WebRTC.xcframework in Frameworks */,
+				C8F1A57B2689A1E80020F136 /* PromiseKit.framework in Frameworks */,
+				C82DB8BA26B39B0500813378 /* FMDB.framework in Frameworks */,
+				C8C384EB26BD182F009CF806 /* cell.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8F1A54B268985A70020F136 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8F1A54F268985A70020F136 /* Cube.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C8361BF7268EBD4500B1E15E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C8361BF8268EBD6C00B1E15E /* CJSONable.h */,
+				C8361BF9268EBD7700B1E15E /* CJSONable.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		C8C384D426BCD788009CF806 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				C8C384D526BCD7C8009CF806 /* CContactService.h */,
+				C8C384D926BCD7DA009CF806 /* CContactService.m */,
+				C8C384DF26BD0322009CF806 /* CContactStorage.h */,
+				C8C384DC26BD0306009CF806 /* CContactStorage.m */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		C8DF88B0268DACB800399C99 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C82DB8EC26B3FC9C00813378 /* CAuthAction.h */,
+				C8DF88B5268DAD5B00399C99 /* CAuthService.h */,
+				C8DF88B1268DAD4D00399C99 /* CAuthService.m */,
+				C82DB8C026B3AE9300813378 /* CAuthStorage.h */,
+				C82DB8BD26B3AE7900813378 /* CAuthStorage.m */,
+				C8361BF5268EB53300B1E15E /* CAuthToken.h */,
+				C8361BF2268EB52700B1E15E /* CAuthToken.m */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C8DF88B7268DB29700399C99 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				C8ACAC8026B953530057740D /* CEngine.h */,
+				C8DF88B8268DB2C300399C99 /* CEngine.m */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		C8F1A53B268985A70020F136 = {
+			isa = PBXGroup;
+			children = (
+				C8F1A547268985A70020F136 /* Cube */,
+				C8F1A552268985A70020F136 /* CubeTests */,
+				C8F1A5792689A1E80020F136 /* Frameworks */,
+				C8F1A546268985A70020F136 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C8F1A546268985A70020F136 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C8F1A545268985A70020F136 /* Cube.framework */,
+				C8F1A54E268985A70020F136 /* CubeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C8F1A547268985A70020F136 /* Cube */ = {
+			isa = PBXGroup;
+			children = (
+				C8F1A548268985A70020F136 /* Cube.h */,
+				C8F1A549268985A70020F136 /* Info.plist */,
+				C8DF88B0268DACB800399C99 /* Auth */,
+				C8C384D426BCD788009CF806 /* Contact */,
+				C8F1A5632689989F0020F136 /* Core */,
+				C8DF88B7268DB29700399C99 /* Engine */,
+				C8F1A57F2689AB630020F136 /* Pipeline */,
+				C8361BF7268EBD4500B1E15E /* Util */,
+			);
+			path = Cube;
+			sourceTree = "<group>";
+		};
+		C8F1A552268985A70020F136 /* CubeTests */ = {
+			isa = PBXGroup;
+			children = (
+				C8F1A553268985A70020F136 /* CubeTests.m */,
+				C8BE85AC26B77FD9007E154E /* KernelTest.m */,
+				C8F1A555268985A70020F136 /* Info.plist */,
+			);
+			path = CubeTests;
+			sourceTree = "<group>";
+		};
+		C8F1A5632689989F0020F136 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C8C384E126BD043A009CF806 /* CEntity.h */,
+				C8C384E426BD0448009CF806 /* CEntity.m */,
+				C88461E226B55A3A00A8A3C6 /* CError.h */,
+				C88461E326B55A4B00A8A3C6 /* CError.m */,
+				C8F1A56426899B770020F136 /* CKernel.h */,
+				C8F1A56826899B980020F136 /* CKernel.m */,
+				C8B755DB268B385A00812A4C /* CModule.h */,
+				C8B755D7268B384F00812A4C /* CModule.m */,
+				C8B755DC268B393100812A4C /* CObservableEvent.h */,
+				C8B755DD268B393E00812A4C /* CObservableEvent.m */,
+				C8B755E7268B3FB500812A4C /* CObserver.h */,
+				C8B755E8268B3FC000812A4C /* CObserver.m */,
+				C8F1A5B72689CE430020F136 /* CPacket.h */,
+				C8F1A5B42689CE350020F136 /* CPacket.m */,
+				C8F1A57026899FB60020F136 /* CPipeline.h */,
+				C8F1A56C26899F910020F136 /* CPipeline.m */,
+				C8B755AF268ABA6300812A4C /* CStateCode.h */,
+				C8B755B0268ABD1B00812A4C /* CStateCode.m */,
+				C8B755E5268B3C4F00812A4C /* CSubject.h */,
+				C8B755E2268B3C4300812A4C /* CSubject.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C8F1A5792689A1E80020F136 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C8C384EF26BD1840009CF806 /* WebRTC.xcframework */,
+				C8C384EA26BD182F009CF806 /* cell.xcframework */,
+				C82DB8B926B39B0500813378 /* FMDB.framework */,
+				C82DB8AD26B398F700813378 /* MagicalRecord.framework */,
+				C8F1A57A2689A1E80020F136 /* PromiseKit.framework */,
+				C8DF88A6268D699C00399C99 /* cell.xcframework */,
+				C8DF88AA268D69A600399C99 /* WebRTC.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C8F1A57F2689AB630020F136 /* Pipeline */ = {
+			isa = PBXGroup;
+			children = (
+				C8F1A5802689AC090020F136 /* CCellPipeline.h */,
+				C8F1A5812689AC230020F136 /* CCellPipeline.m */,
+			);
+			path = Pipeline;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C8F1A540268985A70020F136 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8C384E226BD043A009CF806 /* CEntity.h in Headers */,
+				C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */,
+				C8F1A556268985A70020F136 /* Cube.h in Headers */,
+				C8ACAC8126B953530057740D /* CEngine.h in Headers */,
+				C8C384D626BCD7C8009CF806 /* CContactService.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C8F1A544268985A70020F136 /* Cube */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8F1A559268985A70020F136 /* Build configuration list for PBXNativeTarget "Cube" */;
+			buildPhases = (
+				C8F1A540268985A70020F136 /* Headers */,
+				C8F1A541268985A70020F136 /* Sources */,
+				C8F1A542268985A70020F136 /* Frameworks */,
+				C8F1A543268985A70020F136 /* Resources */,
+				C8F1A57D2689A1E80020F136 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cube;
+			productName = Cube;
+			productReference = C8F1A545268985A70020F136 /* Cube.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C8F1A54D268985A70020F136 /* CubeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8F1A55C268985A70020F136 /* Build configuration list for PBXNativeTarget "CubeTests" */;
+			buildPhases = (
+				C8F1A54A268985A70020F136 /* Sources */,
+				C8F1A54B268985A70020F136 /* Frameworks */,
+				C8F1A54C268985A70020F136 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C8F1A551268985A70020F136 /* PBXTargetDependency */,
+			);
+			name = CubeTests;
+			productName = CubeTests;
+			productReference = C8F1A54E268985A70020F136 /* CubeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C8F1A53C268985A70020F136 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					C8F1A544268985A70020F136 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					C8F1A54D268985A70020F136 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = C8F1A53F268985A70020F136 /* Build configuration list for PBXProject "Cube" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C8F1A53B268985A70020F136;
+			productRefGroup = C8F1A546268985A70020F136 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C8F1A544268985A70020F136 /* Cube */,
+				C8F1A54D268985A70020F136 /* CubeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C8F1A543268985A70020F136 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8F1A54C268985A70020F136 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C8F1A541268985A70020F136 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8B755E3268B3C4300812A4C /* CSubject.m in Sources */,
+				C82DB8BE26B3AE7900813378 /* CAuthStorage.m in Sources */,
+				C8F1A56926899B980020F136 /* CKernel.m in Sources */,
+				C8C384DD26BD0306009CF806 /* CContactStorage.m in Sources */,
+				C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */,
+				C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */,
+				C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */,
+				C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */,
+				C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */,
+				C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */,
+				C8DF88B2268DAD4D00399C99 /* CAuthService.m in Sources */,
+				C8F1A56D26899F910020F136 /* CPipeline.m in Sources */,
+				C8F1A5B52689CE350020F136 /* CPacket.m in Sources */,
+				C8C384DA26BCD7DA009CF806 /* CContactService.m in Sources */,
+				C8C384E526BD0448009CF806 /* CEntity.m in Sources */,
+				C8B755E9268B3FC000812A4C /* CObserver.m in Sources */,
+				C8B755D8268B384F00812A4C /* CModule.m in Sources */,
+				C88461E426B55A4B00A8A3C6 /* CError.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8F1A54A268985A70020F136 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8BE85AD26B77FD9007E154E /* KernelTest.m in Sources */,
+				C8F1A554268985A70020F136 /* CubeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C8F1A551268985A70020F136 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C8F1A544268985A70020F136 /* Cube */;
+			targetProxy = C8F1A550268985A70020F136 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C8F1A557268985A70020F136 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C8F1A558268985A70020F136 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C8F1A55A268985A70020F136 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HU7B43T3L4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Cube/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixincube.cube;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C8F1A55B268985A70020F136 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HU7B43T3L4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Cube/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixincube.cube;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C8F1A55D268985A70020F136 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HU7B43T3L4;
+				INFOPLIST_FILE = CubeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cell.CubeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C8F1A55E268985A70020F136 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HU7B43T3L4;
+				INFOPLIST_FILE = CubeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cell.CubeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C8F1A53F268985A70020F136 /* Build configuration list for PBXProject "Cube" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8F1A557268985A70020F136 /* Debug */,
+				C8F1A558268985A70020F136 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8F1A559268985A70020F136 /* Build configuration list for PBXNativeTarget "Cube" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8F1A55A268985A70020F136 /* Debug */,
+				C8F1A55B268985A70020F136 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8F1A55C268985A70020F136 /* Build configuration list for PBXNativeTarget "CubeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8F1A55D268985A70020F136 /* Debug */,
+				C8F1A55E268985A70020F136 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C8F1A53C268985A70020F136 /* Project object */;
+}
