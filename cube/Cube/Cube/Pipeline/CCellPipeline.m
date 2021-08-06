@@ -44,7 +44,7 @@
 
 @implementation CCellPipeline
 
-- (id)init {
+- (instancetype)init {
     if (self = [super initWithName:@"Cell"]) {
         _opening = FALSE;
 

@@ -70,7 +70,7 @@
  * @brief 通过指定管道名称初始化。
  * @param name 指定管道名。
  */
-- (id)initWithName:(NSString *)name;
+- (instancetype)initWithName:(NSString *)name;
 
 /*!
  * @brief 开启管道。

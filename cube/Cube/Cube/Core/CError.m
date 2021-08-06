@@ -28,7 +28,7 @@
 
 @implementation CError
 
-- (id)initWithModule:(NSString *)module code:(NSInteger)code {
+- (instancetype)initWithModule:(NSString *)module code:(NSInteger)code {
     if (self = [super initWithDomain:module code:code userInfo:nil]) {
         _module = module;
     }

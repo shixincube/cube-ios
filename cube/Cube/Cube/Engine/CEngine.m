@@ -32,12 +32,12 @@
     static CEngine *engine;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        engine = [[self alloc] init];
+        engine = [[CEngine alloc] init];
     });
     return engine;
 }
 
-- (id)init {
+- (instancetype)init {
     if (self = [super init]) {
         _kernel = [[CKernel alloc] init];
         [_kernel installModule:[[CAuthService alloc] init]];

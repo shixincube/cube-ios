@@ -30,7 +30,7 @@
 
 @implementation CPacket
 
-- (id)initWithName:(NSString *)name andData:(NSDictionary *)data {
+- (instancetype)initWithName:(NSString *)name andData:(NSDictionary *)data {
     if (self = [super init]) {
         _name = name;
         _data = data;
@@ -40,7 +40,7 @@
     return self;
 }
 
-- (id)initWithName:(NSString *)name andData:(NSDictionary *)data andSN:(int64_t)sn {
+- (instancetype)initWithName:(NSString *)name andData:(NSDictionary *)data andSN:(int64_t)sn {
     if (self = [super init]) {
         _name = name;
         _data = data;

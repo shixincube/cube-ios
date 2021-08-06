@@ -47,14 +47,14 @@
  * @param primaryContent 主要配置内容描述。
  * @return 返回实例。
  */
-- (id)initWithAddress:(NSString *)address primaryContent:(NSDictionary *)primaryContent;
+- (instancetype)initWithAddress:(NSString *)address primaryContent:(NSDictionary *)primaryContent;
 
 /*!
  * @brief 使用 JSON 数据初始化。
  * @param json 指定 JSON 结构数据。
  * @return 返回实例。
  */
-- (id)initWithJSON:(NSDictionary *)json;
+- (instancetype)initWithJSON:(NSDictionary *)json;
 
 @end
 
@@ -85,7 +85,7 @@
 /*!
  * @brief 使用 JSON 结构初始化数据。
  */
-- (id)initWithJSON:(NSDictionary *)json;
+- (instancetype)initWithJSON:(NSDictionary *)json;
 
 /*!
  * @brief 令牌是否有效。

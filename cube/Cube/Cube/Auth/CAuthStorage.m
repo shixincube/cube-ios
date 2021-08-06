@@ -41,7 +41,7 @@
 
 @implementation CAuthStorage
 
-- (id)init {
+- (instancetype)init {
     if (self = [super init]) {
         // 创建数据库文件
         NSString * docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];

@@ -37,6 +37,11 @@
                BlueprintName = "CubeTests"
                ReferencedContainer = "container:Cube.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "CubeTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

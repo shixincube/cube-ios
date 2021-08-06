@@ -30,7 +30,7 @@
 
 @implementation CKernelConfig
 
-- (id)init {
+- (instancetype)init {
     if (self = [super init]) {
         self.port = 7000;
         self.pipelineReady = FALSE;
@@ -41,7 +41,7 @@
     return self;
 }
 
-- (id)initWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey {
+- (instancetype)initWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey {
     if (self = [super init]) {
         self.address = address;
         self.domain = domain;
@@ -88,7 +88,7 @@
 
 @implementation CKernel
 
-- (id)init {
+- (instancetype)init {
     if (self = [super init]) {
         _working = FALSE;
         _cellPipeline = [[CCellPipeline alloc] init];

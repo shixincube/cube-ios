@@ -30,7 +30,7 @@
 
 @implementation CPrimaryDescription
 
-- (id)initWithAddress:(NSString *)address primaryContent:(NSDictionary *)primaryContent {
+- (instancetype)initWithAddress:(NSString *)address primaryContent:(NSDictionary *)primaryContent {
     if (self = [super init]) {
         self.address = address;
         self.primaryContent = primaryContent;
@@ -39,7 +39,7 @@
     return self;
 }
 
-- (id)initWithJSON:(NSDictionary *)json {
+- (instancetype)initWithJSON:(NSDictionary *)json {
     if (self = [super init]) {
         self.address = [json objectForKey:@"address"];
         self.primaryContent = json[@"primaryContent"];
@@ -75,7 +75,7 @@
     _description = description;
 }
 
-- (id)initWithJSON:(NSDictionary *)json {
+- (instancetype)initWithJSON:(NSDictionary *)json {
     if (self = [super init]) {
         self.code = [json objectForKey:@"code"];
         self.domain = [json objectForKey:@"domain"];

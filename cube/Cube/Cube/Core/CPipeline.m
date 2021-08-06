@@ -39,7 +39,7 @@
 
 @implementation CPipeline
 
-- (id)initWithName:(NSString *)name {
+- (instancetype)initWithName:(NSString *)name {
     if (self = [super init]) {
         _name = name;
         _tokenCode = nil;

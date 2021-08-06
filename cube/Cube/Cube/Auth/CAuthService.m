@@ -46,7 +46,7 @@ typedef void (^wait_block_t)(void);
 
 @implementation CAuthService
 
-- (id)init {
+- (instancetype)init {
     if (self = [super initWithName:CUBE_MODULE_AUTH]) {
         waitingCount = 0;
         self.token = nil;

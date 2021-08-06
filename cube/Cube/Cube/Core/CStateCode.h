@@ -88,7 +88,7 @@ typedef enum _CStateCode {
 @property (nonatomic, strong) NSString * desc;
 
 
-- (id)initWithCode:(unsigned int)code desc:(NSString *)desc;
+- (instancetype)initWithCode:(unsigned int)code desc:(NSString *)desc;
 
 @end
 

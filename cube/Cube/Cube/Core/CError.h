@@ -33,7 +33,7 @@
 
 @property (nonatomic, strong, readonly) NSString * module;
 
-- (id)initWithModule:(NSString *)module code:(NSInteger)code;
+- (instancetype)initWithModule:(NSString *)module code:(NSInteger)code;
 
 + (instancetype)errorWithModule:(NSString *)module code:(NSInteger)code;
 

@@ -24,46 +24,15 @@
  * SOFTWARE.
  */
 
-#ifndef CPacket_h
-#define CPacket_h
+#import "CContactService.h"
 
-#import <Foundation/Foundation.h>
-#import "CStateCode.h"
+@implementation CContactService
 
-@interface CPacket : NSObject
-
-/*! @brief 数据包包名。 */
-@property (nonatomic, strong) NSString * name;
-
-/*! @brief 数据包负载数据。 */
-@property (nonatomic, strong) NSDictionary * data;
-
-/*! @brief 数据包序号。 */
-@property (nonatomic, assign) int64_t sn;
-
-/*! @brief 数据包应答状态。 */
-@property (nonatomic, strong) CPipelineState * state;
-
-/*!
- * @brief 指定数据包名和数据初始化。
- */
-- (instancetype)initWithName:(NSString *)name andData:(NSDictionary *)data;
-
-/*!
- * @brief 指定数据包名和数据初始化。
- */
-- (instancetype)initWithName:(NSString *)name andData:(NSDictionary *)data andSN:(int64_t)sn;
-
-/*!
- * @brief 提取包负载的状态码。
- */
-- (int)extractStateCode;
-
-/*!
- * @brief 提取包负载的数据。
- */
-- (NSDictionary *)extractData;
+- (instancetype)init {
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
 
 @end
-
-#endif /* CPacket_h */

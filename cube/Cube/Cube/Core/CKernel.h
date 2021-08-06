@@ -87,7 +87,7 @@
  * @param domain 指定所属域名称。
  * @param appKey 指定该 App 的 Key 串。
  */
-- (id)initWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey;
+- (instancetype)initWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey;
 
 @end
 

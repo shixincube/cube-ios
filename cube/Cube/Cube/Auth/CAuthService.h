@@ -41,7 +41,7 @@
 
 @property (nonatomic, strong) CAuthToken * token;
 
-- (id)init;
+- (instancetype)init;
 
 /*!
  * @brief 校验当前的令牌是否有效。该方法先从本地获取本地令牌进行校验，如果本地令牌失效或者未找到本地令牌，则尝试从授权服务器获取有效的令牌。
