@@ -31,9 +31,9 @@
 
 @interface CEntity : CJSONable
 
-@property (nonatomic, assign, readonly) int64_t identity;
+@property (nonatomic, assign, readonly) UInt64 identity;
 
-
+@property (nonatomic, assign, readonly) UInt64 timestamp;
 
 - (instancetype)init;
 

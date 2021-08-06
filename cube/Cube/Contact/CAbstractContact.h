@@ -24,22 +24,15 @@
  * SOFTWARE.
  */
 
+#ifndef CAbstractContact_h
+#define CAbstractContact_h
+
 #import "CEntity.h"
-#import "CUtils.h"
 
-@implementation CEntity
+@interface CAbstractContact : CEntity
 
-@synthesize identity;
 
-@synthesize timestamp;
-
-- (instancetype)init {
-    if (self = [super init]) {
-        identity = 0L;
-        timestamp = [CUtils currentTimeMillis];
-    }
-
-    return self;
-}
 
 @end
+
+#endif /* CAbstractContact_h */

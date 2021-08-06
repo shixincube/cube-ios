@@ -91,7 +91,7 @@
 
 - (BOOL)isValid {
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970] * 1000;
-    int64_t timestamp = [[NSNumber numberWithDouble:time] unsignedLongLongValue];
+    UInt64 timestamp = [[NSNumber numberWithDouble:time] unsignedLongLongValue];
     return (timestamp < self.expiry);
 }
 

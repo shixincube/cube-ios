@@ -24,22 +24,13 @@
  * SOFTWARE.
  */
 
-#import "CEntity.h"
 #import "CUtils.h"
 
-@implementation CEntity
+@implementation CUtils
 
-@synthesize identity;
-
-@synthesize timestamp;
-
-- (instancetype)init {
-    if (self = [super init]) {
-        identity = 0L;
-        timestamp = [CUtils currentTimeMillis];
-    }
-
-    return self;
++ (UInt64)currentTimeMillis {
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970] * 1000;
+    return [[NSNumber numberWithDouble:time] unsignedLongLongValue];
 }
 
 @end

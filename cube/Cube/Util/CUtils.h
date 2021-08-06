@@ -24,22 +24,19 @@
  * SOFTWARE.
  */
 
-#import "CEntity.h"
-#import "CUtils.h"
+#ifndef CUtils_h
+#define CUtils_h
 
-@implementation CEntity
+#import <Foundation/Foundation.h>
 
-@synthesize identity;
+@interface CUtils : NSObject
 
-@synthesize timestamp;
-
-- (instancetype)init {
-    if (self = [super init]) {
-        identity = 0L;
-        timestamp = [CUtils currentTimeMillis];
-    }
-
-    return self;
-}
+/*!
+ * @brief 获取当前时间快照的时间戳。
+ * @return 返回自1970年到当前时间快照的毫秒计数表示的时间戳。
+ */
++ (UInt64)currentTimeMillis;
 
 @end
+
+#endif /* CUtils_h */

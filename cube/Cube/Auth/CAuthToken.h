@@ -74,11 +74,11 @@
 
 @property (nonatomic, strong) NSString * appKey;
 
-@property (nonatomic, assign) int64_t cid;
+@property (nonatomic, assign) UInt64 cid;
 
-@property (nonatomic, assign) int64_t issues;
+@property (nonatomic, assign) UInt64 issues;
 
-@property (nonatomic, assign) int64_t expiry;
+@property (nonatomic, assign) UInt64 expiry;
 
 @property (nonatomic, strong) CPrimaryDescription * description;
 

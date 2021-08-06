@@ -39,7 +39,7 @@
 @property (nonatomic, strong) NSDictionary * data;
 
 /*! @brief 数据包序号。 */
-@property (nonatomic, assign) int64_t sn;
+@property (nonatomic, assign) UInt64 sn;
 
 /*! @brief 数据包应答状态。 */
 @property (nonatomic, strong) CPipelineState * state;
@@ -52,7 +52,7 @@
 /*!
  * @brief 指定数据包名和数据初始化。
  */
-- (instancetype)initWithName:(NSString *)name andData:(NSDictionary *)data andSN:(int64_t)sn;
+- (instancetype)initWithName:(NSString *)name andData:(NSDictionary *)data andSN:(UInt64)sn;
 
 /*!
  * @brief 提取包负载的状态码。

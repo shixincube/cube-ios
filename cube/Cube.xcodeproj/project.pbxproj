@@ -29,6 +29,10 @@
 		C8C384EC26BD182F009CF806 /* cell.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8C384EA26BD182F009CF806 /* cell.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8C384F026BD1840009CF806 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C384EF26BD1840009CF806 /* WebRTC.xcframework */; };
 		C8C384F126BD1840009CF806 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8C384EF26BD1840009CF806 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8C384F426BD1B68009CF806 /* CUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384F326BD1B68009CF806 /* CUtils.m */; };
+		C8C384FA26BD2380009CF806 /* CAbstractContact.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384F926BD2380009CF806 /* CAbstractContact.m */; };
+		C8C384FF26BD275C009CF806 /* CContact.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384FE26BD275C009CF806 /* CContact.m */; };
+		C8C3850226BD2775009CF806 /* CContact.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C3850126BD2775009CF806 /* CContact.h */; };
 		C8DF88B2268DAD4D00399C99 /* CAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DF88B1268DAD4D00399C99 /* CAuthService.m */; };
 		C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DF88B8268DB2C300399C99 /* CEngine.m */; };
 		C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */ = {isa = PBXBuildFile; fileRef = C8DF88B5268DAD5B00399C99 /* CAuthService.h */; };
@@ -102,6 +106,12 @@
 		C8C384E426BD0448009CF806 /* CEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEntity.m; sourceTree = "<group>"; };
 		C8C384EA26BD182F009CF806 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = ../libs/cell.xcframework; sourceTree = "<group>"; };
 		C8C384EF26BD1840009CF806 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = ../libs/WebRTC.xcframework; sourceTree = "<group>"; };
+		C8C384F326BD1B68009CF806 /* CUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CUtils.m; sourceTree = "<group>"; };
+		C8C384F626BD1B73009CF806 /* CUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CUtils.h; sourceTree = "<group>"; };
+		C8C384F826BD2373009CF806 /* CAbstractContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAbstractContact.h; sourceTree = "<group>"; };
+		C8C384F926BD2380009CF806 /* CAbstractContact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAbstractContact.m; sourceTree = "<group>"; };
+		C8C384FE26BD275C009CF806 /* CContact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContact.m; sourceTree = "<group>"; };
+		C8C3850126BD2775009CF806 /* CContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContact.h; sourceTree = "<group>"; };
 		C8DF88A6268D699C00399C99 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = ../../libs/cell.xcframework; sourceTree = "<group>"; };
 		C8DF88AA268D69A600399C99 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = ../../libs/WebRTC.xcframework; sourceTree = "<group>"; };
 		C8DF88B1268DAD4D00399C99 /* CAuthService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthService.m; sourceTree = "<group>"; };
@@ -152,6 +162,8 @@
 			children = (
 				C8361BF8268EBD6C00B1E15E /* CJSONable.h */,
 				C8361BF9268EBD7700B1E15E /* CJSONable.m */,
+				C8C384F626BD1B73009CF806 /* CUtils.h */,
+				C8C384F326BD1B68009CF806 /* CUtils.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -159,6 +171,10 @@
 		C8C384D426BCD788009CF806 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				C8C384F826BD2373009CF806 /* CAbstractContact.h */,
+				C8C384F926BD2380009CF806 /* CAbstractContact.m */,
+				C8C3850126BD2775009CF806 /* CContact.h */,
+				C8C384FE26BD275C009CF806 /* CContact.m */,
 				C8C384D526BCD7C8009CF806 /* CContactService.h */,
 				C8C384D926BCD7DA009CF806 /* CContactService.m */,
 				C8C384DF26BD0322009CF806 /* CContactStorage.h */,
@@ -292,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8C384E226BD043A009CF806 /* CEntity.h in Headers */,
+				C8C3850226BD2775009CF806 /* CContact.h in Headers */,
 				C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */,
 				C8F1A556268985A70020F136 /* Cube.h in Headers */,
 				C8ACAC8126B953530057740D /* CEngine.h in Headers */,
@@ -396,12 +413,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C384FA26BD2380009CF806 /* CAbstractContact.m in Sources */,
 				C8B755E3268B3C4300812A4C /* CSubject.m in Sources */,
 				C82DB8BE26B3AE7900813378 /* CAuthStorage.m in Sources */,
 				C8F1A56926899B980020F136 /* CKernel.m in Sources */,
 				C8C384DD26BD0306009CF806 /* CContactStorage.m in Sources */,
 				C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */,
 				C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */,
+				C8C384F426BD1B68009CF806 /* CUtils.m in Sources */,
+				C8C384FF26BD275C009CF806 /* CContact.m in Sources */,
 				C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */,
 				C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */,
 				C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */,

@@ -24,22 +24,10 @@
  * SOFTWARE.
  */
 
-#import "CEntity.h"
-#import "CUtils.h"
+#import "CContact.h"
 
-@implementation CEntity
+@implementation CContact
 
-@synthesize identity;
 
-@synthesize timestamp;
-
-- (instancetype)init {
-    if (self = [super init]) {
-        identity = 0L;
-        timestamp = [CUtils currentTimeMillis];
-    }
-
-    return self;
-}
 
 @end

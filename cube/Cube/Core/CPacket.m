@@ -40,7 +40,7 @@
     return self;
 }
 
-- (instancetype)initWithName:(NSString *)name andData:(NSDictionary *)data andSN:(int64_t)sn {
+- (instancetype)initWithName:(NSString *)name andData:(NSDictionary *)data andSN:(UInt64)sn {
     if (self = [super init]) {
         _name = name;
         _data = data;
