@@ -86,6 +86,7 @@
 		C8361BF9268EBD7700B1E15E /* CJSONable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJSONable.m; sourceTree = "<group>"; };
 		C88461E226B55A3A00A8A3C6 /* CError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CError.h; sourceTree = "<group>"; };
 		C88461E326B55A4B00A8A3C6 /* CError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CError.m; sourceTree = "<group>"; };
+		C89D151326BE712300C4A55F /* CContactAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactAction.h; sourceTree = "<group>"; };
 		C8ACAC8026B953530057740D /* CEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEngine.h; sourceTree = "<group>"; };
 		C8B755AF268ABA6300812A4C /* CStateCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CStateCode.h; sourceTree = "<group>"; };
 		C8B755B0268ABD1B00812A4C /* CStateCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CStateCode.m; sourceTree = "<group>"; };
@@ -175,6 +176,7 @@
 				C8C384F926BD2380009CF806 /* CAbstractContact.m */,
 				C8C3850126BD2775009CF806 /* CContact.h */,
 				C8C384FE26BD275C009CF806 /* CContact.m */,
+				C89D151326BE712300C4A55F /* CContactAction.h */,
 				C8C384D526BCD7C8009CF806 /* CContactService.h */,
 				C8C384D926BCD7DA009CF806 /* CContactService.m */,
 				C8C384DF26BD0322009CF806 /* CContactStorage.h */,
