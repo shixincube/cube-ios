@@ -27,5 +27,22 @@
 #ifndef CContactAction_h
 #define CContactAction_h
 
+/*!
+ * @brief 指定当前客户端对应的联系人信息并签入。
+ */
+#define CUBE_CONTACT_SIGNIN @"signIn"
+
+/*!
+ * @brief 指定当前客户端的联系人签出。
+ */
+#define CUBE_CONTACT_SIGNOUT @"signOut"
+
+#define CUBE_CONTACT_COMEBACK @"comeback"
+
+#define CUBE_CONTACT_LEAVE @"leave"
+
+#define CUBE_CONTACT_GETCONTACT @"getContact"
+
+#define CUBE_CONTACT_MODIFYCONTACT @"modifyContact"
 
 #endif /* CContactAction_h */

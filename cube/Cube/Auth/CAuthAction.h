@@ -27,30 +27,29 @@
 #ifndef CAuthAction_h
 #define CAuthAction_h
 
-#ifndef CUBE_AUTH_APPLY_TOKEN
+/*!
+ * @brief 申请令牌。
+ */
 #define CUBE_AUTH_APPLY_TOKEN @"applyToken"
-#endif
 
-#ifndef CUBE_AUTH_SC_OK
+/*!
+ * @brief 状态正常状态码。
+ */
 #define CUBE_AUTH_SC_OK 0
-#endif
 
-#ifndef CUBE_AUTH_SC_FAILURE
+/*!
+ * @brief 状态出现异常状态码。
+ */
 #define CUBE_AUTH_SC_FAILURE 9
-#endif
 
 /*!
- * @brief 存储故障。
+ * @brief 存储故障状态码。
  */
-#ifndef CUBE_AUTH_SC_STORAGE
 #define CUBE_AUTH_SC_STORAGE 20
-#endif
 
 /*!
- * @brief 本地任务超时。
+ * @brief 本地任务超时状态码。
  */
-#ifndef CUBE_AUTH_SC_TIMEOUT
 #define CUBE_AUTH_SC_TIMEOUT 21
-#endif
 
 #endif /* CAuthAction_h */
