@@ -37,12 +37,89 @@
  */
 #define CUBE_CONTACT_SIGNOUT @"signOut"
 
+/*!
+ * @brief 恢复终端当前连接。
+ */
 #define CUBE_CONTACT_COMEBACK @"comeback"
 
+/*!
+ * @brief 当前联系人的所有端都脱机。
+ */
 #define CUBE_CONTACT_LEAVE @"leave"
 
+/*!
+ * @brief 获取指定联系人的信息。
+ */
 #define CUBE_CONTACT_GETCONTACT @"getContact"
 
+/*!
+ * @brief 修改联系人信息。
+ */
 #define CUBE_CONTACT_MODIFYCONTACT @"modifyContact"
+
+/*!
+ * @brief 获取联系人分区。
+ */
+#define CUBE_CONTACT_GETCONTACTZONE @"getContactZone"
+
+/*!
+ * @brief 联系人是否在分区。
+ */
+#define CUBE_CONTACT_CONTAINSCONTACTINZONE @"containsContactInZone"
+
+/*!
+ * @brief 添加联系人到分区。
+ */
+#define CUBE_CONTACT_ADDCONTACTTOZONE @"addContactToZone"
+
+/*!
+ * @brief 从分区移除联系人。
+ */
+#define CUBE_CONTACT_REMOVECONTACTFROMZONE @"removeContactFromZone"
+
+/*!
+ * @brief 获取指定群组的信息。
+ */
+#define CUBE_CONTACT_GETGROUP @"getGroup"
+
+/*!
+ * @brief 列出所有本人相关的群组。
+ */
+#define CUBE_CONTACT_LISTGROUPS @"listGroups"
+
+/*!
+ * @brief 创建群组。
+ */
+#define CUBE_CONTACT_CREATEGROUP @"createGroup"
+
+/*!
+ * @brief 解散群组。
+ */
+#define CUBE_CONTACT_DISSOLVEGROUP @"dissolveGroup"
+
+/*!
+ * @brief 向群组添加成员。
+ */
+#define CUBE_CONTACT_ADDGROUPMEMBER @"addGroupMember"
+
+/*!
+ * @brief 从群组移除成员。
+ */
+#define CUBE_CONTACT_REMOVEGROUPMEMBER @"removeGroupMember"
+
+/*!
+ * @brief 修改群组信息。
+ */
+#define CUBE_CONTACT_MODIFYGROUP @"modifyGroup"
+
+/*!
+ * @brief 修改群组内成员的信息。
+ */
+#define CUBE_CONTACT_MODIFYGROUPMEMBER @"modifyGroupMember"
+
+/*!
+ * @brief 获取指定的附录。
+ */
+#define CUBE_CONTACT_GETAPPENDIX @"getAppendix"
 
 #endif /* CContactAction_h */
