@@ -1,5 +1,31 @@
 var files_dup =
 [
+    [ "CAbstractContact.h", "_c_abstract_contact_8h.html", [
+      [ "CAbstractContact", "interface_c_abstract_contact.html", null ]
+    ] ],
+    [ "CAuthAction.h", "_c_auth_action_8h.html", "_c_auth_action_8h" ],
+    [ "CAuthService.h", "_c_auth_service_8h.html", "_c_auth_service_8h" ],
+    [ "CAuthStorage.h", "_c_auth_storage_8h.html", [
+      [ "CAuthStorage", "interface_c_auth_storage.html", "interface_c_auth_storage" ]
+    ] ],
+    [ "CAuthToken.h", "_c_auth_token_8h.html", [
+      [ "CPrimaryDescription", "interface_c_primary_description.html", "interface_c_primary_description" ],
+      [ "CAuthToken", "interface_c_auth_token.html", "interface_c_auth_token" ]
+    ] ],
+    [ "CContact.h", "_c_contact_8h.html", [
+      [ "CContact", "interface_c_contact.html", null ]
+    ] ],
+    [ "CContactAction.h", "_c_contact_action_8h.html", "_c_contact_action_8h" ],
+    [ "CContactAppendix.h", "_c_contact_appendix_8h.html", [
+      [ "CContactAppendix", "interface_c_contact_appendix.html", null ]
+    ] ],
+    [ "CContactEvent.h", "_c_contact_event_8h.html", "_c_contact_event_8h" ],
+    [ "CContactService.h", "_c_contact_service_8h.html", [
+      [ "CContactService", "interface_c_contact_service.html", null ]
+    ] ],
+    [ "CContactStorage.h", "_c_contact_storage_8h.html", [
+      [ "CContactStorage", "interface_c_contact_storage.html", null ]
+    ] ],
     [ "CEntity.h", "_c_entity_8h.html", [
       [ "CEntity", "interface_c_entity.html", "interface_c_entity" ]
     ] ],

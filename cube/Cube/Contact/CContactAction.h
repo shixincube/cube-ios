@@ -1,4 +1,4 @@
-/**
+/*
  * This file is part of Cube.
  *
  * The MIT License (MIT)
@@ -121,5 +121,30 @@
  * @brief 获取指定的附录。
  */
 #define CUBE_CONTACT_GETAPPENDIX @"getAppendix"
+
+/*!
+ * @brief 更新附录。
+ */
+#define CUBE_CONTACT_UPDATEAPPENDIX @"updateAppendix"
+
+/*!
+ * @brief 群组的附录已更新。
+ */
+#define CUBE_CONTACT_GROUPAPPENDIXUPDATED @"groupAppendixUpdated"
+
+/*!
+ * @brief 联系人的阻止列表操作。
+ */
+#define CUBE_CONTACT_BLOCKLIST @"blockList"
+
+/*!
+ * @brief 置顶操作。
+ */
+#define CUBE_CONTACT_TOPLIST @"topList"
+
+/*!
+ * @brief 搜索联系人或群组。
+ */
+#define CUBE_CONTACT_SEARCH @"search"
 
 #endif /* CContactAction_h */

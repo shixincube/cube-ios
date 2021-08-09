@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['open_154',['open',['../interface_c_pipeline.html#a24da78693aa8e31d360cea84d208af98',1,'CPipeline']]]
+  ['notifyobservers_3a_247',['notifyObservers:',['../interface_c_subject.html#a95708a7cfe6231af9e284b4cbc1c70b8',1,'CSubject']]]
 ];

@@ -88,6 +88,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>addListener:listener:
 : <a class="el" href="interface_c_pipeline.html#a8ee9641947d8274c687d03b04cf0cb3d">CPipeline</a>
 </li>
+<li>applyToken:appKey:
+: <a class="el" href="interface_c_auth_service.html#ac9e6ea23b281de3b782b3c13b3e5acb8">CAuthService</a>
+</li>
 <li>attach:
 : <a class="el" href="interface_c_subject.html#a464e4e7d909912a5e701547932332235">CSubject</a>
 </li>
@@ -98,8 +101,12 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>check:appKey:address:
+: <a class="el" href="interface_c_auth_service.html#ab55dc46566b8a402ec4f5e290ff51779">CAuthService</a>
+</li>
 <li>close
-: <a class="el" href="interface_c_pipeline.html#ac7d44eb9e7bc23a13f72f431f51c00cb">CPipeline</a>
+: <a class="el" href="interface_c_auth_storage.html#a4898ace17aed2e8f73077a48c49e2e83">CAuthStorage</a>
+, <a class="el" href="interface_c_pipeline.html#ac7d44eb9e7bc23a13f72f431f51c00cb">CPipeline</a>
 </li>
 </ul>
 
@@ -168,13 +175,21 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>init
-: <a class="el" href="interface_c_entity.html#a9df56c58414ee99b2c6c40e400513831">CEntity</a>
+: <a class="el" href="interface_c_auth_service.html#a500561d94b5f0ff97f49546feee5ecc8">CAuthService</a>
+, <a class="el" href="interface_c_entity.html#a9df56c58414ee99b2c6c40e400513831">CEntity</a>
 </li>
 <li>initWithAddress:domain:appKey:
 : <a class="el" href="interface_c_kernel_config.html#a4e49fe4d255c3f8490d9b3c85e285fb6">CKernelConfig</a>
 </li>
+<li>initWithAddress:primaryContent:
+: <a class="el" href="interface_c_primary_description.html#ae79d0dea27e89aba368193330698e3de">CPrimaryDescription</a>
+</li>
 <li>initWithCode:desc:
 : <a class="el" href="interface_c_pipeline_state.html#ac8956e260fc2f440a2882d4b8e66bbc0">CPipelineState</a>
+</li>
+<li>initWithJSON:
+: <a class="el" href="interface_c_auth_token.html#a1244c257de4ef71175d8f6f38e92ce67">CAuthToken</a>
+, <a class="el" href="interface_c_primary_description.html#af5397016070badd7381de1d0f82d5bf5">CPrimaryDescription</a>
 </li>
 <li>initWithModule:code:
 : <a class="el" href="interface_c_error.html#aa6df7277ef7a03c936f5cf7328d7b2ac">CError</a>
@@ -187,7 +202,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="interface_c_packet.html#aa4f5a6d95100fbd00f6f4a46f0842f62">CPacket</a>
 </li>
 <li>initWithName:andData:andSN:
-: <a class="el" href="interface_c_packet.html#a902adc5943c584d8123c85b06b5e7db2">CPacket</a>
+: <a class="el" href="interface_c_packet.html#aa6aadfa7180b6bd81f43da5780a67cd6">CPacket</a>
 </li>
 <li>initWithName:data:
 : <a class="el" href="interface_c_observable_event.html#a2d343ba4379ed783d383e70c76beed7e">CObservableEvent</a>
@@ -199,6 +214,16 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="interface_c_kernel.html#af831b250b464968bdce63343aae0f120">CKernel</a>
 , <a class="el" href="interface_c_module.html#af14f87ab9be85cf00581109c98158e83">CModule</a>
 , <a class="el" href="interface_c_pipeline.html#a1378ddd46892c462e9ca7c42d00d087f">CPipeline</a>
+</li>
+<li>isValid
+: <a class="el" href="interface_c_auth_token.html#aeab4f04076701648b7c472b0e9567926">CAuthToken</a>
+</li>
+</ul>
+
+
+<h3><a id="index_l"></a>- l -</h3><ul>
+<li>loadTokenWithDomain:appKey:
+: <a class="el" href="interface_c_auth_storage.html#a759bdd4b95573fb80c41eae741ffe1d6">CAuthStorage</a>
 </li>
 </ul>
 
@@ -212,7 +237,8 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 <h3><a id="index_o"></a>- o -</h3><ul>
 <li>open
-: <a class="el" href="interface_c_pipeline.html#a24da78693aa8e31d360cea84d208af98">CPipeline</a>
+: <a class="el" href="interface_c_auth_storage.html#a7d4158237bc9ea73e2cd63c17ec04a19">CAuthStorage</a>
+, <a class="el" href="interface_c_pipeline.html#a24da78693aa8e31d360cea84d208af98">CPipeline</a>
 </li>
 </ul>
 
@@ -229,6 +255,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>saveToken:
+: <a class="el" href="interface_c_auth_storage.html#ae7343415758121305602dfb8c7d1c51e">CAuthStorage</a>
+</li>
 <li>send:withPacket:handleResponse:
 : <a class="el" href="interface_c_pipeline.html#a30f439dab6668985c98958e67adde00d">CPipeline</a>
 </li>

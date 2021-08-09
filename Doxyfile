@@ -825,7 +825,9 @@ WARN_LOGFILE           =
 
 INPUT                  = ./README.md \
                          ./cube/Cube/ \
-                         ./cube/Cube/Core
+                         ./cube/Cube/Core \
+                         ./cube/Cube/Auth \
+                         ./cube/Cube/Contact
 
 
 # This tag can be used to specify the character encoding of the source files

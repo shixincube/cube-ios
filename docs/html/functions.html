@@ -91,9 +91,14 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>address
 : <a class="el" href="interface_c_kernel_config.html#aba0b3481653f93df177693d669191089">CKernelConfig</a>
 , <a class="el" href="interface_c_pipeline.html#ae0364ac603968a5f966df3f4c3db0beb">CPipeline</a>
+, <a class="el" href="interface_c_primary_description.html#aace6ce347638cdfe7b971ca57abad60c">CPrimaryDescription</a>
 </li>
 <li>appKey
-: <a class="el" href="interface_c_kernel_config.html#abf1cca8180bd076eea9c218eb5e1c2ad">CKernelConfig</a>
+: <a class="el" href="interface_c_auth_token.html#af124989c7e73e032a903b21dffd6a9b0">CAuthToken</a>
+, <a class="el" href="interface_c_kernel_config.html#abf1cca8180bd076eea9c218eb5e1c2ad">CKernelConfig</a>
+</li>
+<li>applyToken:appKey:
+: <a class="el" href="interface_c_auth_service.html#ac9e6ea23b281de3b782b3c13b3e5acb8">CAuthService</a>
 </li>
 <li>attach:
 : <a class="el" href="interface_c_subject.html#a464e4e7d909912a5e701547932332235">CSubject</a>
@@ -108,11 +113,19 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>check:appKey:address:
+: <a class="el" href="interface_c_auth_service.html#ab55dc46566b8a402ec4f5e290ff51779">CAuthService</a>
+</li>
+<li>cid
+: <a class="el" href="interface_c_auth_token.html#aa4c542f14fd012b51c1d0ad9fe200930">CAuthToken</a>
+</li>
 <li>close
-: <a class="el" href="interface_c_pipeline.html#ac7d44eb9e7bc23a13f72f431f51c00cb">CPipeline</a>
+: <a class="el" href="interface_c_auth_storage.html#a4898ace17aed2e8f73077a48c49e2e83">CAuthStorage</a>
+, <a class="el" href="interface_c_pipeline.html#ac7d44eb9e7bc23a13f72f431f51c00cb">CPipeline</a>
 </li>
 <li>code
-: <a class="el" href="interface_c_pipeline_state.html#ac70ea2823bc6dd37de7f6774a69e5430">CPipelineState</a>
+: <a class="el" href="interface_c_auth_token.html#aa31feeee79da71fde6731565ff2078ae">CAuthToken</a>
+, <a class="el" href="interface_c_pipeline_state.html#ac70ea2823bc6dd37de7f6774a69e5430">CPipelineState</a>
 </li>
 </ul>
 
@@ -124,6 +137,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>desc
 : <a class="el" href="interface_c_pipeline_state.html#aa137f6d96fd5ebdcd62d3c6fdd3c5628">CPipelineState</a>
+</li>
+<li>description
+: <a class="el" href="interface_c_auth_token.html#ac135b7f65e7675ca99db8ba5da77190d">CAuthToken</a>
 </li>
 <li>detach:
 : <a class="el" href="interface_c_subject.html#a7e153c98eb2302a8648539a38fcc89ce">CSubject</a>
@@ -141,7 +157,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="protocol_c_pipeline_listener-p.html#aa7a38a666ee3a7cf49627b9eff77d556">&lt;CPipelineListener&gt;</a>
 </li>
 <li>domain
-: <a class="el" href="interface_c_kernel_config.html#addbbad1552ccc9777c7cb471bf78e8e8">CKernelConfig</a>
+: <a class="el" href="interface_c_auth_token.html#adbbb25d50ba7fe99b8bc51455a0bf787">CAuthToken</a>
+, <a class="el" href="interface_c_kernel_config.html#addbbad1552ccc9777c7cb471bf78e8e8">CKernelConfig</a>
 </li>
 </ul>
 
@@ -155,6 +172,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>errorWithModule:code:
 : <a class="el" href="interface_c_error.html#a268a64115e43ba248976817f2d0d96c1">CError</a>
+</li>
+<li>expiry
+: <a class="el" href="interface_c_auth_token.html#a8a22d892ef5f0d348eff57be39400632">CAuthToken</a>
 </li>
 <li>extractData
 : <a class="el" href="interface_c_packet.html#af8264130b9d9cfdac44ca2fbf5d06878">CPacket</a>
@@ -194,16 +214,24 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>identity
-: <a class="el" href="interface_c_entity.html#aa915327d51f1836ff77e2bbd89ea0767">CEntity</a>
+: <a class="el" href="interface_c_entity.html#abe3affde8e879755ff4fd411a29e97c8">CEntity</a>
 </li>
 <li>init
-: <a class="el" href="interface_c_entity.html#a9df56c58414ee99b2c6c40e400513831">CEntity</a>
+: <a class="el" href="interface_c_auth_service.html#a500561d94b5f0ff97f49546feee5ecc8">CAuthService</a>
+, <a class="el" href="interface_c_entity.html#a9df56c58414ee99b2c6c40e400513831">CEntity</a>
 </li>
 <li>initWithAddress:domain:appKey:
 : <a class="el" href="interface_c_kernel_config.html#a4e49fe4d255c3f8490d9b3c85e285fb6">CKernelConfig</a>
 </li>
+<li>initWithAddress:primaryContent:
+: <a class="el" href="interface_c_primary_description.html#ae79d0dea27e89aba368193330698e3de">CPrimaryDescription</a>
+</li>
 <li>initWithCode:desc:
 : <a class="el" href="interface_c_pipeline_state.html#ac8956e260fc2f440a2882d4b8e66bbc0">CPipelineState</a>
+</li>
+<li>initWithJSON:
+: <a class="el" href="interface_c_auth_token.html#a1244c257de4ef71175d8f6f38e92ce67">CAuthToken</a>
+, <a class="el" href="interface_c_primary_description.html#af5397016070badd7381de1d0f82d5bf5">CPrimaryDescription</a>
 </li>
 <li>initWithModule:code:
 : <a class="el" href="interface_c_error.html#aa6df7277ef7a03c936f5cf7328d7b2ac">CError</a>
@@ -216,7 +244,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="interface_c_packet.html#aa4f5a6d95100fbd00f6f4a46f0842f62">CPacket</a>
 </li>
 <li>initWithName:andData:andSN:
-: <a class="el" href="interface_c_packet.html#a902adc5943c584d8123c85b06b5e7db2">CPacket</a>
+: <a class="el" href="interface_c_packet.html#aa6aadfa7180b6bd81f43da5780a67cd6">CPacket</a>
 </li>
 <li>initWithName:data:
 : <a class="el" href="interface_c_observable_event.html#a2d343ba4379ed783d383e70c76beed7e">CObservableEvent</a>
@@ -229,12 +257,25 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 , <a class="el" href="interface_c_module.html#af14f87ab9be85cf00581109c98158e83">CModule</a>
 , <a class="el" href="interface_c_pipeline.html#a1378ddd46892c462e9ca7c42d00d087f">CPipeline</a>
 </li>
+<li>issues
+: <a class="el" href="interface_c_auth_token.html#ae31b13afd57f7ed846cc0f0190c734c2">CAuthToken</a>
+</li>
+<li>isValid
+: <a class="el" href="interface_c_auth_token.html#aeab4f04076701648b7c472b0e9567926">CAuthToken</a>
+</li>
 </ul>
 
 
 <h3><a id="index_k"></a>- k -</h3><ul>
 <li>kernel
 : <a class="el" href="interface_c_module.html#a00abb412b5ff41b42943714f58f5e757">CModule</a>
+</li>
+</ul>
+
+
+<h3><a id="index_l"></a>- l -</h3><ul>
+<li>loadTokenWithDomain:appKey:
+: <a class="el" href="interface_c_auth_storage.html#a759bdd4b95573fb80c41eae741ffe1d6">CAuthStorage</a>
 </li>
 </ul>
 
@@ -261,7 +302,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_o"></a>- o -</h3><ul>
 <li>open
-: <a class="el" href="interface_c_pipeline.html#a24da78693aa8e31d360cea84d208af98">CPipeline</a>
+: <a class="el" href="interface_c_auth_storage.html#a7d4158237bc9ea73e2cd63c17ec04a19">CAuthStorage</a>
+, <a class="el" href="interface_c_pipeline.html#a24da78693aa8e31d360cea84d208af98">CPipeline</a>
 </li>
 </ul>
 
@@ -276,6 +318,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>port
 : <a class="el" href="interface_c_kernel_config.html#a137501982230e47306ef58e8db4ab014">CKernelConfig</a>
 , <a class="el" href="interface_c_pipeline.html#a7feddb2d19b0fbbdedcae1c7f8a2ea53">CPipeline</a>
+</li>
+<li>primaryContent
+: <a class="el" href="interface_c_primary_description.html#a90ab39fbeb030e2c534c39c277f17115">CPrimaryDescription</a>
 </li>
 </ul>
 
@@ -292,6 +337,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>saveToken:
+: <a class="el" href="interface_c_auth_storage.html#ae7343415758121305602dfb8c7d1c51e">CAuthStorage</a>
+</li>
 <li>send:withPacket:handleResponse:
 : <a class="el" href="interface_c_pipeline.html#a30f439dab6668985c98958e67adde00d">CPipeline</a>
 </li>
@@ -302,7 +350,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="interface_c_kernel.html#a44e64d1d7158a361faa3afda13e21a3d">CKernel</a>
 </li>
 <li>sn
-: <a class="el" href="interface_c_packet.html#a69e517a0d179dd502f13eb48d18d6c15">CPacket</a>
+: <a class="el" href="interface_c_packet.html#aabe397f789d846c04364b45fae8899e1">CPacket</a>
 </li>
 <li>start
 : <a class="el" href="interface_c_module.html#a2e9a7f740dd2a8984f642a4f9d0dad7f">CModule</a>
@@ -327,6 +375,12 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
+<li>timestamp
+: <a class="el" href="interface_c_entity.html#a34ad2e7db0739633cb2f53f1d0ff64f2">CEntity</a>
+</li>
+<li>token
+: <a class="el" href="interface_c_auth_service.html#a40a222fb05f39620585ee39a6696b9c1">CAuthService</a>
+</li>
 <li>tokenCode
 : <a class="el" href="interface_c_pipeline.html#a16a5fac140045bd2820a59e4a99b9160">CPipeline</a>
 </li>

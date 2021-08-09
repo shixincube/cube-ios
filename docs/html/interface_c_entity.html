@@ -96,8 +96,12 @@ $(document).ready(function(){initNavTree('interface_c_entity.html',''); initResi
 类 CEntity 继承关系图:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="interface_c_entity.png" alt=""/>
- </div></div>
+  <img src="interface_c_entity.png" usemap="#CEntity_map" alt=""/>
+  <map id="CEntity_map" name="CEntity_map">
+<area href="interface_c_abstract_contact.html" alt="CAbstractContact" shape="rect" coords="0,112,111,136"/>
+<area href="interface_c_contact.html" alt="CContact" shape="rect" coords="0,168,111,192"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 构造函数</h2></td></tr>
@@ -106,17 +110,12 @@ $(document).ready(function(){initNavTree('interface_c_entity.html',''); initResi
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 属性</h2></td></tr>
-<tr class="memitem:aa915327d51f1836ff77e2bbd89ea0767"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_entity.html#aa915327d51f1836ff77e2bbd89ea0767">identity</a></td></tr>
-<tr class="separator:aa915327d51f1836ff77e2bbd89ea0767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe3affde8e879755ff4fd411a29e97c8"><td class="memItemLeft" align="right" valign="top">UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_entity.html#abe3affde8e879755ff4fd411a29e97c8">identity</a></td></tr>
+<tr class="separator:abe3affde8e879755ff4fd411a29e97c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34ad2e7db0739633cb2f53f1d0ff64f2"><td class="memItemLeft" align="right" valign="top">UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_entity.html#a34ad2e7db0739633cb2f53f1d0ff64f2">timestamp</a></td></tr>
+<tr class="separator:a34ad2e7db0739633cb2f53f1d0ff64f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p>This file is part of Cube.</p>
-<p>The MIT License (MIT)</p>
-<p>Copyright (c) 2020-2022 Shixin Cube Team.</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. </p>
-</div><h2 class="groupheader">函数文档</h2>
+<h2 class="groupheader">函数文档</h2>
 <a id="a9df56c58414ee99b2c6c40e400513831"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9df56c58414ee99b2c6c40e400513831">&#9670;&nbsp;</a></span>init</h2>
 
@@ -135,8 +134,8 @@ $(document).ready(function(){initNavTree('interface_c_entity.html',''); initResi
 </div>
 </div>
 <h2 class="groupheader">属性说明</h2>
-<a id="aa915327d51f1836ff77e2bbd89ea0767"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa915327d51f1836ff77e2bbd89ea0767">&#9670;&nbsp;</a></span>identity</h2>
+<a id="abe3affde8e879755ff4fd411a29e97c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe3affde8e879755ff4fd411a29e97c8">&#9670;&nbsp;</a></span>identity</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -145,7 +144,29 @@ $(document).ready(function(){initNavTree('interface_c_entity.html',''); initResi
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (int64_t) identity</td>
+          <td class="memname">- (UInt64) identity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34ad2e7db0739633cb2f53f1d0ff64f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34ad2e7db0739633cb2f53f1d0ff64f2">&#9670;&nbsp;</a></span>timestamp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (UInt64) timestamp</td>
         </tr>
       </table>
   </td>

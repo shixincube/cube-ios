@@ -1,4 +1,4 @@
-/**
+/*
  * This file is part of Cube.
  *
  * The MIT License (MIT)
@@ -27,8 +27,8 @@
 #ifndef CAuthService_h
 #define CAuthService_h
 
-/*! @brief 模块名。 */
 #ifndef CUBE_MODULE_AUTH
+/*! @brief 模块名。 */
 #define CUBE_MODULE_AUTH @"Auth"
 #endif
 
@@ -37,6 +37,10 @@
 #import "CError.h"
 #import <PromiseKit/AnyPromise.h>
 
+/*!
+ * @class
+ * @brief 授权服务。管理引擎的授权信息。
+ */
 @interface CAuthService : CModule
 
 @property (nonatomic, strong) CAuthToken * token;

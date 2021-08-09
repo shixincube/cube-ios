@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['notifyobservers_3a_153',['notifyObservers:',['../interface_c_subject.html#a95708a7cfe6231af9e284b4cbc1c70b8',1,'CSubject']]]
+  ['loadtokenwithdomain_3aappkey_3a_246',['loadTokenWithDomain:appKey:',['../interface_c_auth_storage.html#a759bdd4b95573fb80c41eae741ffe1d6',1,'CAuthStorage']]]
 ];

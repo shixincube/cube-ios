@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['module_71',['module',['../interface_c_error.html#a2ce21cae49e881270142e366d1e55af4',1,'CError']]]
+  ['loadtokenwithdomain_3aappkey_3a_132',['loadTokenWithDomain:appKey:',['../interface_c_auth_storage.html#a759bdd4b95573fb80c41eae741ffe1d6',1,'CAuthStorage']]]
 ];
