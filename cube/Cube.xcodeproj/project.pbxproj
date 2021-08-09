@@ -10,6 +10,9 @@
 		C817FE0726C12B6F0080D697 /* CContactAppendix.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE0626C12B6F0080D697 /* CContactAppendix.h */; };
 		C817FE0A26C12B7C0080D697 /* CContactAppendix.m in Sources */ = {isa = PBXBuildFile; fileRef = C817FE0926C12B7C0080D697 /* CContactAppendix.m */; };
 		C817FE0E26C12C460080D697 /* CContactEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE0D26C12C460080D697 /* CContactEvent.h */; };
+		C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1126C14E930080D697 /* CContactServiceState.h */; };
+		C817FE1626C153250080D697 /* CContactZone.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1526C153250080D697 /* CContactZone.h */; };
+		C817FE1A26C153320080D697 /* CContactZone.m in Sources */ = {isa = PBXBuildFile; fileRef = C817FE1926C153320080D697 /* CContactZone.m */; };
 		C82DB8BA26B39B0500813378 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82DB8B926B39B0500813378 /* FMDB.framework */; };
 		C82DB8BB26B39B0500813378 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C82DB8B926B39B0500813378 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C82DB8BE26B3AE7900813378 /* CAuthStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C82DB8BD26B3AE7900813378 /* CAuthStorage.m */; };
@@ -81,6 +84,9 @@
 		C817FE0626C12B6F0080D697 /* CContactAppendix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactAppendix.h; sourceTree = "<group>"; };
 		C817FE0926C12B7C0080D697 /* CContactAppendix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactAppendix.m; sourceTree = "<group>"; };
 		C817FE0D26C12C460080D697 /* CContactEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactEvent.h; sourceTree = "<group>"; };
+		C817FE1126C14E930080D697 /* CContactServiceState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactServiceState.h; sourceTree = "<group>"; };
+		C817FE1526C153250080D697 /* CContactZone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactZone.h; sourceTree = "<group>"; };
+		C817FE1926C153320080D697 /* CContactZone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactZone.m; sourceTree = "<group>"; };
 		C82DB8AD26B398F700813378 /* MagicalRecord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MagicalRecord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82DB8B926B39B0500813378 /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82DB8BD26B3AE7900813378 /* CAuthStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthStorage.m; sourceTree = "<group>"; };
@@ -188,8 +194,11 @@
 				C817FE0D26C12C460080D697 /* CContactEvent.h */,
 				C8C384D526BCD7C8009CF806 /* CContactService.h */,
 				C8C384D926BCD7DA009CF806 /* CContactService.m */,
+				C817FE1126C14E930080D697 /* CContactServiceState.h */,
 				C8C384DF26BD0322009CF806 /* CContactStorage.h */,
 				C8C384DC26BD0306009CF806 /* CContactStorage.m */,
+				C817FE1526C153250080D697 /* CContactZone.h */,
+				C817FE1926C153320080D697 /* CContactZone.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -321,9 +330,11 @@
 				C8C384E226BD043A009CF806 /* CEntity.h in Headers */,
 				C8C3850226BD2775009CF806 /* CContact.h in Headers */,
 				C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */,
+				C817FE1626C153250080D697 /* CContactZone.h in Headers */,
 				C817FE0726C12B6F0080D697 /* CContactAppendix.h in Headers */,
 				C8F1A556268985A70020F136 /* Cube.h in Headers */,
 				C8ACAC8126B953530057740D /* CEngine.h in Headers */,
+				C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */,
 				C817FE0E26C12C460080D697 /* CContactEvent.h in Headers */,
 				C8C384D626BCD7C8009CF806 /* CContactService.h in Headers */,
 			);
@@ -448,6 +459,7 @@
 				C817FE0A26C12B7C0080D697 /* CContactAppendix.m in Sources */,
 				C8B755D8268B384F00812A4C /* CModule.m in Sources */,
 				C88461E426B55A4B00A8A3C6 /* CError.m in Sources */,
+				C817FE1A26C153320080D697 /* CContactZone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

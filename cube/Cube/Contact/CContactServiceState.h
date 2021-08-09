@@ -24,44 +24,50 @@
  * SOFTWARE.
  */
 
-#ifndef CContactEvent_h
-#define CContactEvent_h
+#ifndef CContactServiceState_h
+#define CContactServiceState_h
 
 /*!
- * @brief 联系人模块的事件枚举。
+ * @brief 联系人服务状态码。
  */
-typedef enum _CContactEvent {
-
-    /*! 当前客户端的联系人签入。 */
-    SignIn = 1,
+typedef enum _CContactServiceState {
     
-    /*! 当前客户端的联系人签出。 */
-    SignOut,
+    /*! 成功。 */
+    Ok = 0,
     
-    /*! 当前客户端的联系人恢复连接。 */
-    Comeback,
+    /*! 无效的参数。 */
+    InvalidParameter = 5,
     
-    /*! 群组已更新。 */
-    GroupUpdated,
+    /*! 数据结构错误。 */
+    DataStructureError = 8,
     
-    /*! 群组被创建。 */
-    GroupCreated,
+    /*! 遇到故障。 */
+    Failure = 9,
     
-    /*! 群组已解散。 */
-    GroupDissolved,
+    /*! 无效域信息。 */
+    InvalidDomain = 11,
     
-    /*! 群成员加入。 */
-    GroupMemberAdded,
+    /*! 未签入联系人。 */
+    NoSignIn = 12,
     
-    /*! 群成员移除。 */
-    GroupMemberRemoved,
+    /*! 未找到群组。 */
+    NotFindGroup = 15,
     
-    /*! 群组的附录进行了实时更新。 */
-    GroupAppendixUpdated,
+    /*! 令牌不一致。 */
+    InconsistentToken = 21,
     
-    /*! 未知事件。 */
+    /*! 不被接受的非法操作。 */
+    IllegalOperation = 25,
+    
+    /*! 服务器错误。 */
+    ServerError = 101,
+    
+    /*! 不被允许的操作。 */
+    NotAllowed = 102,
+    
+    /*! 未知的状态。 */
     Unknown = 99
     
-} CContactEvent;
+} CContactServiceState
 
-#endif /* CContactEvent_h */
+#endif /* CContactServiceState_h */

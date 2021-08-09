@@ -24,44 +24,13 @@
  * SOFTWARE.
  */
 
-#ifndef CContactEvent_h
-#define CContactEvent_h
+#ifndef CContactZone_h
+#define CContactZone_h
 
-/*!
- * @brief 联系人模块的事件枚举。
- */
-typedef enum _CContactEvent {
+#import "CEntity.h"
 
-    /*! 当前客户端的联系人签入。 */
-    SignIn = 1,
-    
-    /*! 当前客户端的联系人签出。 */
-    SignOut,
-    
-    /*! 当前客户端的联系人恢复连接。 */
-    Comeback,
-    
-    /*! 群组已更新。 */
-    GroupUpdated,
-    
-    /*! 群组被创建。 */
-    GroupCreated,
-    
-    /*! 群组已解散。 */
-    GroupDissolved,
-    
-    /*! 群成员加入。 */
-    GroupMemberAdded,
-    
-    /*! 群成员移除。 */
-    GroupMemberRemoved,
-    
-    /*! 群组的附录进行了实时更新。 */
-    GroupAppendixUpdated,
-    
-    /*! 未知事件。 */
-    Unknown = 99
-    
-} CContactEvent;
+@interface CContactZone : CEntity
 
-#endif /* CContactEvent_h */
+@end
+
+#endif /* CContactZone_h */
