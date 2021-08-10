@@ -28,8 +28,20 @@
 #define CContactService_h
 
 #import "CModule.h"
+#import "CSelf.h"
+
+#ifndef CUBE_MODULE_CONTACT
+/*! @brief 模块名。 */
+#define CUBE_MODULE_CONTACT @"Contact"
+#endif
 
 @interface CContactService : CModule
+
+/*! @brief 当前有效的在线联系人。 */
+@property (nonatomic, strong, readonly) CSelf * oneself;
+
+
+- (instancetype)init;
 
 @end
 

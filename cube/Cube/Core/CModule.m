@@ -28,7 +28,7 @@
 
 @implementation CModule
 
-- (id _Nonnull)initWithName:(NSString * _Nonnull)name {
+- (instancetype _Nonnull)initWithName:(NSString * _Nonnull)name {
     if (self = [super init]) {
         self.name = name;
     }

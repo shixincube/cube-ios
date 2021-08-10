@@ -32,6 +32,9 @@
 
 - (__kindof NSMutableArray<id<CPipelineListener>> *)getOrCreateListeners:(NSString *)destination;
 
+/*!
+ * @brief 返回指定目标对应的监听器协议。
+ */
 - (__kindof NSMutableArray<id<CPipelineListener>> *)getListeners:(NSString *)destination;
 
 @end
@@ -89,6 +92,17 @@
     if (listeners) {
         [listeners removeObject:listener];
     }
+}
+
+- (__kindof NSMutableArray<id<CPipelineListener>> *)getAllListeners {
+    NSMutableArray<id<CPipelineListener>> * result = [[NSMutableArray alloc] init];
+    for (NSString * key in _listeners) {
+        NSMutableArray<id<CPipelineListener>> * list = [_listeners objectForKey:key];
+        for (id<CPipelineListener> listener in list) {
+            [result addObject:listener];
+        }
+    }
+    return result;
 }
 
 - (__kindof NSMutableArray<id<CPipelineListener>> *)getOrCreateListeners:(NSString *)destination {

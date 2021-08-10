@@ -28,6 +28,76 @@
 
 @implementation CContact
 
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain {
+    if (self = [super initWithId:identity name:name domain:domain]) {
+        _devices = [[NSMutableArray alloc] initWithCapacity:2];
+    }
 
+    return self;
+}
+
+- (NSString *)getPriorityName {
+    // TODO
+    return self.name;
+}
+
+- (void)addDevice:(CDevice *)device {
+    for (CDevice * dev in _devices) {
+        if ([dev isEqual:device]) {
+            return;
+        }
+    }
+
+    [_devices addObject:device];
+}
+
+- (void)removeDevice:(CDevice *)device {
+    for (NSUInteger i = 0; i < _devices.count; ++i) {
+        CDevice * dev = [_devices objectAtIndex:i];
+        if ([dev isEqual:device]) {
+            [_devices removeObjectAtIndex:i];
+            break;
+        }
+    }
+}
+
+- (CDevice *)getDevice {
+    if (_devices.count == 0) {
+        return [[CDevice alloc] initWithName:@"Unknown" platform:@"null"];
+    }
+    
+    return [_devices objectAtIndex:_devices.count - 1];
+}
+
+- (BOOL)isEqual:(id)object {
+    if (self == object) {
+        return TRUE;
+    }
+    
+    if (!object || ![object isKindOfClass:[self class]]) {
+        return FALSE;
+    }
+    
+    CContact * other = object;
+    return (other.identity == self.identity) &&
+            [other.domain isEqual:self.domain];
+}
+
+- (NSMutableDictionary *)toJSON {
+    NSMutableDictionary * json = [super toJSON];
+    
+    NSMutableArray * list = [[NSMutableArray alloc] initWithCapacity:_devices.count];
+    for (CDevice * dev in _devices) {
+        [list addObject:[dev toJSON]];
+    }
+    [json setValue:list forKey:@"devices"];
+    
+    return json;
+}
+
+- (NSMutableDictionary *)toCompactJSON {
+    NSMutableDictionary * json = [super toCompactJSON];
+    return json;
+}
 
 @end

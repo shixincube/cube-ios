@@ -27,6 +27,7 @@
 		C8400AC126C2175400C8FF48 /* CGroupState.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AC026C2175400C8FF48 /* CGroupState.h */; };
 		C8400AC426C21DC400C8FF48 /* CSelf.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AC326C21DC400C8FF48 /* CSelf.h */; };
 		C8400AC726C21DD000C8FF48 /* CSelf.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400AC626C21DD000C8FF48 /* CSelf.m */; };
+		C8400ACC26C2215400C8FF48 /* CContactPipelineListener.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400ACB26C2215400C8FF48 /* CContactPipelineListener.m */; };
 		C88461E426B55A4B00A8A3C6 /* CError.m in Sources */ = {isa = PBXBuildFile; fileRef = C88461E326B55A4B00A8A3C6 /* CError.m */; };
 		C8ACAC8126B953530057740D /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = C8ACAC8026B953530057740D /* CEngine.h */; };
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
@@ -114,6 +115,8 @@
 		C8400AC026C2175400C8FF48 /* CGroupState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGroupState.h; sourceTree = "<group>"; };
 		C8400AC326C21DC400C8FF48 /* CSelf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSelf.h; sourceTree = "<group>"; };
 		C8400AC626C21DD000C8FF48 /* CSelf.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSelf.m; sourceTree = "<group>"; };
+		C8400ACA26C2214800C8FF48 /* CContactPipelineListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactPipelineListener.h; sourceTree = "<group>"; };
+		C8400ACB26C2215400C8FF48 /* CContactPipelineListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactPipelineListener.m; sourceTree = "<group>"; };
 		C88461E226B55A3A00A8A3C6 /* CError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CError.h; sourceTree = "<group>"; };
 		C88461E326B55A4B00A8A3C6 /* CError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CError.m; sourceTree = "<group>"; };
 		C89D151326BE712300C4A55F /* CContactAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactAction.h; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				C817FE0626C12B6F0080D697 /* CContactAppendix.h */,
 				C817FE0926C12B7C0080D697 /* CContactAppendix.m */,
 				C817FE0D26C12C460080D697 /* CContactEvent.h */,
+				C8400ACA26C2214800C8FF48 /* CContactPipelineListener.h */,
+				C8400ACB26C2215400C8FF48 /* CContactPipelineListener.m */,
 				C8C384D526BCD7C8009CF806 /* CContactService.h */,
 				C8C384D926BCD7DA009CF806 /* CContactService.m */,
 				C817FE1126C14E930080D697 /* CContactServiceState.h */,
@@ -493,6 +498,7 @@
 				C8B755E9268B3FC000812A4C /* CObserver.m in Sources */,
 				C817FE0A26C12B7C0080D697 /* CContactAppendix.m in Sources */,
 				C8B755D8268B384F00812A4C /* CModule.m in Sources */,
+				C8400ACC26C2215400C8FF48 /* CContactPipelineListener.m in Sources */,
 				C88461E426B55A4B00A8A3C6 /* CError.m in Sources */,
 				C817FE1A26C153320080D697 /* CContactZone.m in Sources */,
 				C8400AB626C20DC100C8FF48 /* CGroup.m in Sources */,

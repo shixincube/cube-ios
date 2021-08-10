@@ -140,19 +140,38 @@
 }
 
 - (void)onSpoke:(CellSpeaker *)speaker cellet:(NSString *)cellet primitive:(CellPrimitive *)primitive {
-    
+    // Nothing
 }
 
 - (void)onContacted:(CellSpeaker *)speaker {
     _opening = FALSE;
+
+    NSMutableArray<id<CPipelineListener>> * listeners = [self getAllListeners];
+    for (id<CPipelineListener> listener in listeners) {
+        if ([listener respondsToSelector:@selector(didOpen:)]) {
+            [listener didOpen:self];
+        }
+    }
 }
 
 - (void)onQuitted:(CellSpeaker *)speaker {
     _opening = FALSE;
+    
+    NSMutableArray<id<CPipelineListener>> * listeners = [self getAllListeners];
+    for (id<CPipelineListener> listener in listeners) {
+        if ([listener respondsToSelector:@selector(didClose:)]) {
+            [listener didClose:self];
+        }
+    }
 }
 
 - (void)onFailed:(CellSpeaker *)speaker error:(CellTalkError *)error {
-    
+    NSMutableArray<id<CPipelineListener>> * listeners = [self getAllListeners];
+    for (id<CPipelineListener> listener in listeners) {
+        if ([listener respondsToSelector:@selector(faultOccurred:code:desc:)]) {
+            [listener faultOccurred:self code:error.errorCode desc:error.desc];
+        }
+    }
 }
 
 @end

@@ -26,20 +26,49 @@
 
 #import "CEntity.h"
 #import "CUtils.h"
+#import <cell/CellUtil.h>
 
 @implementation CEntity
 
-@synthesize identity;
-
-@synthesize timestamp;
-
 - (instancetype)init {
     if (self = [super init]) {
-        identity = 0L;
-        timestamp = [CUtils currentTimeMillis];
+        _identity = [CellUtil generateUnsignedSerialNumber];
+        _timestamp = [CUtils currentTimeMillis];
+        _expiry = _timestamp + 60 * 60 * 1000;
+        self.context = nil;
     }
 
     return self;
+}
+
+- (instancetype)initWithId:(UInt64)identity {
+    if (self = [super init]) {
+        _identity = identity;
+        _timestamp = [CUtils currentTimeMillis];
+        _expiry = _timestamp + 60 * 60 * 1000;
+        self.context = nil;
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithId:(UInt64)identity timestamp:(UInt64)timestamp {
+    if (self = [super init]) {
+        _identity = identity;
+        _timestamp = timestamp;
+        _expiry = _timestamp + 60 * 60 * 1000;
+        self.context = nil;
+    }
+
+    return self;
+}
+
+- (NSMutableDictionary *)toJSON {
+    return [[NSMutableDictionary alloc] init];
+}
+
+- (NSMutableDictionary *)toCompactJSON {
+    return [[NSMutableDictionary alloc] init];
 }
 
 @end

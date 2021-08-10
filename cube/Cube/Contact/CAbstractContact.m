@@ -28,5 +28,30 @@
 
 @implementation CAbstractContact
 
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain {
+    if (self = [super initWithId:identity]) {
+        self.name = name;
+        self.domain = domain;
+    }
+
+    return self;
+}
+
+- (NSMutableDictionary *)toJSON {
+    NSMutableDictionary * json = [super toJSON];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:self.identity] forKey:@"id"];
+    [json setValue:self.name forKey:@"name"];
+    [json setValue:self.domain forKey:@"domain"];
+
+    if (nil != self.context) {
+        [json setValue:self.context forKey:@"context"];
+    }
+    
+    return json;
+}
+
+- (NSMutableDictionary *)toCompactJSON {
+    return [self toJSON];
+}
 
 @end

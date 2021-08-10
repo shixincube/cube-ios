@@ -29,7 +29,40 @@
 
 #import "CJSONable.h"
 
+/*!
+ * @brief 设备描述。
+ */
 @interface CDevice : CJSONable
+
+/*! 设备名。 */
+@property (nonatomic, strong, readonly) NSString * name;
+
+/*! 设备平台描述。 */
+@property (nonatomic, strong, readonly) NSString * platform;
+
+/*!
+ * @brief 使用当前设备信息初始化。
+ */
+- (instancetype)init;
+
+/*!
+ * @brief 使用指定设备信息初始化。
+ * @param name 指定设备名称。
+ * @param platform 指定设备平台信息。
+ */
+- (instancetype)initWithName:(NSString *)name platform:(NSString *)platform;
+
+/*!
+ * @brief 从 JSON 数据格式创建设备对象实例。
+ * @param json 指定设备的 JSON 数据。
+ */
+- (instancetype)initWithJSON:(NSDictionary *)json;
+
+/*!
+ * @brief 判断数据是否相同。
+ * @return 如果数据相同返回 @c TRUE ，否则返回 @c FALSE 。
+ */
+- (BOOL)isEqual:(id)object;
 
 @end
 

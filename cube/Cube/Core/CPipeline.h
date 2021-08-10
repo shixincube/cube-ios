@@ -42,13 +42,13 @@
 - (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet;
 
 @optional
-- (void)didOpen:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet;
+- (void)didOpen:(CPipeline *)pipeline;
 
 @optional
-- (void)didClose:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet;
+- (void)didClose:(CPipeline *)pipeline;
 
 @optional
-- (void)faultOccurred:(CPipeline *)pipeline code:(NSInteger)code;
+- (void)faultOccurred:(CPipeline *)pipeline code:(NSInteger)code desc:(NSString *)desc;
 
 @end
 
@@ -116,6 +116,12 @@
  * @param listener 指定通道监听器。
  */
 - (void)removeListener:(NSString *)destination listener:(id<CPipelineListener>)listener;
+
+/*!
+ * @brief 获取所有监听器。
+ * @return 返回所有监听器。
+ */
+- (__kindof NSMutableArray<id<CPipelineListener>> *)getAllListeners;
 
 /*!
  * @brief 触发来自服务器的数据回调。

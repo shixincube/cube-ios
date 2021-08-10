@@ -64,6 +64,11 @@
  */
 - (AnyPromise *)applyToken:(NSString *)domain appKey:(NSString *)appKey;
 
+/*!
+ * @brief 获取当前配置的域。
+ */
++ (NSString *)domain;
+
 @end
 
 #endif /* CAuthService_h */

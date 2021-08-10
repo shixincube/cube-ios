@@ -25,9 +25,60 @@
  */
 
 #import "CDevice.h"
+#import <UIKit/UIDevice.h>
 
 @implementation CDevice
 
+- (instancetype)init {
+    if (self = [super init]) {
+        UIDevice * device = [UIDevice currentDevice];
+        _name = [NSString stringWithString:[device model]];
+        _platform = [NSString stringWithFormat:@"%@/%@", [device systemName], [device systemVersion]];
+    }
 
+    return self;
+}
+
+- (instancetype)initWithName:(NSString *)name platform:(NSString *)platform {
+    if (self = [super init]) {
+        _name = name;
+        _platform = platform;
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithJSON:(NSDictionary *)json {
+    if (self = [super init]) {
+        _name = [json valueForKey:@"name"];
+        _platform = [json valueForKey:@"platform"];
+    }
+
+    return self;
+}
+
+- (BOOL)isEqual:(id)object {
+    if (self == object) {
+        return TRUE;
+    }
+
+    if (!object || ![object isKindOfClass:[self class]]) {
+        return FALSE;
+    }
+
+    CDevice * other = object;
+    return [_name isEqual:other.name] && [_platform isEqual:other.platform];
+}
+
+- (NSMutableDictionary *)toJSON {
+    NSMutableDictionary * json = [[NSMutableDictionary alloc] init];
+    [json setValue:_name forKey:@"name"];
+    [json setValue:_platform forKey:@"platform"];
+    return json;
+}
+
+- (NSMutableDictionary *)toCompactJSON {
+    return [self toJSON];
+}
 
 @end

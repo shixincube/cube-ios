@@ -35,6 +35,8 @@
 
 typedef void (^wait_block_t)(void);
 
+static NSString * sCubeDomain = @"shixincube.com";
+
 @interface CAuthService () {
     
     int waitingCount;
@@ -56,6 +58,8 @@ typedef void (^wait_block_t)(void);
 }
 
 - (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address {
+    sCubeDomain = domain;
+
     return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolver) {
         CAuthStorage * storage = [[CAuthStorage alloc] init];
 
@@ -166,6 +170,10 @@ typedef void (^wait_block_t)(void);
                 ^(void) {
                     [self waitPipelineReady:block];
                 });
+}
+
++ (NSString *)domain {
+    return sCubeDomain;
 }
 
 @end

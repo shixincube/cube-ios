@@ -25,9 +25,18 @@
  */
 
 #import "CSelf.h"
+#import "CAuthService.h"
 
 @implementation CSelf
 
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name {
+    if (self = [super initWithId:identity name:name domain:[CAuthService domain]]) {
+        _device = [[CDevice alloc] init];
 
+        [self addDevice:_device];
+    }
+
+    return self;
+}
 
 @end

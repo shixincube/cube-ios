@@ -29,10 +29,31 @@
 @implementation CContactService
 
 - (instancetype)init {
-    if (self = [super init]) {
+    if (self = [super initWithName:CUBE_MODULE_CONTACT]) {
         
     }
+    
     return self;
+}
+
+- (BOOL)start {
+    return FALSE;
+}
+
+- (void)stop {
+    
+}
+
+- (void)suspend {
+    
+}
+
+- (void)resume {
+    
+}
+
+- (BOOL)isReady {
+    return FALSE;
 }
 
 @end

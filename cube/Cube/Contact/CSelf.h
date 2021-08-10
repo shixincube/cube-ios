@@ -28,8 +28,17 @@
 #define CSelf_h
 
 #import "CContact.h"
+#import "CDevice.h"
 
+/*!
+ * @brief 用户描述自己的账号。
+ */
 @interface CSelf : CContact
+
+/*! 当前设备。 */
+@property (nonatomic, strong, readonly) CDevice * device;
+
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name;
 
 @end
 
