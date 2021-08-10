@@ -18,6 +18,15 @@
 		C82DB8BE26B3AE7900813378 /* CAuthStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C82DB8BD26B3AE7900813378 /* CAuthStorage.m */; };
 		C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF2268EB52700B1E15E /* CAuthToken.m */; };
 		C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF9268EBD7700B1E15E /* CJSONable.m */; };
+		C8400AAC26C1F98B00C8FF48 /* CDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400AAB26C1F98B00C8FF48 /* CDevice.m */; };
+		C8400AAF26C1F99900C8FF48 /* CDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AAE26C1F99900C8FF48 /* CDevice.h */; };
+		C8400AB326C20DB600C8FF48 /* CGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AB226C20DB600C8FF48 /* CGroup.h */; };
+		C8400AB626C20DC100C8FF48 /* CGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400AB526C20DC100C8FF48 /* CGroup.m */; };
+		C8400ABA26C20EAB00C8FF48 /* CGroupAppendix.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400AB926C20EAB00C8FF48 /* CGroupAppendix.m */; };
+		C8400ABD26C20EBB00C8FF48 /* CGroupAppendix.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400ABC26C20EBB00C8FF48 /* CGroupAppendix.h */; };
+		C8400AC126C2175400C8FF48 /* CGroupState.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AC026C2175400C8FF48 /* CGroupState.h */; };
+		C8400AC426C21DC400C8FF48 /* CSelf.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AC326C21DC400C8FF48 /* CSelf.h */; };
+		C8400AC726C21DD000C8FF48 /* CSelf.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400AC626C21DD000C8FF48 /* CSelf.m */; };
 		C88461E426B55A4B00A8A3C6 /* CError.m in Sources */ = {isa = PBXBuildFile; fileRef = C88461E326B55A4B00A8A3C6 /* CError.m */; };
 		C8ACAC8126B953530057740D /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = C8ACAC8026B953530057740D /* CEngine.h */; };
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
@@ -96,6 +105,15 @@
 		C8361BF5268EB53300B1E15E /* CAuthToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthToken.h; sourceTree = "<group>"; };
 		C8361BF8268EBD6C00B1E15E /* CJSONable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJSONable.h; sourceTree = "<group>"; };
 		C8361BF9268EBD7700B1E15E /* CJSONable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJSONable.m; sourceTree = "<group>"; };
+		C8400AAB26C1F98B00C8FF48 /* CDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDevice.m; sourceTree = "<group>"; };
+		C8400AAE26C1F99900C8FF48 /* CDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDevice.h; sourceTree = "<group>"; };
+		C8400AB226C20DB600C8FF48 /* CGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGroup.h; sourceTree = "<group>"; };
+		C8400AB526C20DC100C8FF48 /* CGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGroup.m; sourceTree = "<group>"; };
+		C8400AB926C20EAB00C8FF48 /* CGroupAppendix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGroupAppendix.m; sourceTree = "<group>"; };
+		C8400ABC26C20EBB00C8FF48 /* CGroupAppendix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGroupAppendix.h; sourceTree = "<group>"; };
+		C8400AC026C2175400C8FF48 /* CGroupState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGroupState.h; sourceTree = "<group>"; };
+		C8400AC326C21DC400C8FF48 /* CSelf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSelf.h; sourceTree = "<group>"; };
+		C8400AC626C21DD000C8FF48 /* CSelf.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSelf.m; sourceTree = "<group>"; };
 		C88461E226B55A3A00A8A3C6 /* CError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CError.h; sourceTree = "<group>"; };
 		C88461E326B55A4B00A8A3C6 /* CError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CError.m; sourceTree = "<group>"; };
 		C89D151326BE712300C4A55F /* CContactAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactAction.h; sourceTree = "<group>"; };
@@ -199,6 +217,15 @@
 				C8C384DC26BD0306009CF806 /* CContactStorage.m */,
 				C817FE1526C153250080D697 /* CContactZone.h */,
 				C817FE1926C153320080D697 /* CContactZone.m */,
+				C8400AAE26C1F99900C8FF48 /* CDevice.h */,
+				C8400AAB26C1F98B00C8FF48 /* CDevice.m */,
+				C8400AB226C20DB600C8FF48 /* CGroup.h */,
+				C8400AB526C20DC100C8FF48 /* CGroup.m */,
+				C8400ABC26C20EBB00C8FF48 /* CGroupAppendix.h */,
+				C8400AB926C20EAB00C8FF48 /* CGroupAppendix.m */,
+				C8400AC026C2175400C8FF48 /* CGroupState.h */,
+				C8400AC326C21DC400C8FF48 /* CSelf.h */,
+				C8400AC626C21DD000C8FF48 /* CSelf.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -332,9 +359,14 @@
 				C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */,
 				C817FE1626C153250080D697 /* CContactZone.h in Headers */,
 				C817FE0726C12B6F0080D697 /* CContactAppendix.h in Headers */,
+				C8400ABD26C20EBB00C8FF48 /* CGroupAppendix.h in Headers */,
 				C8F1A556268985A70020F136 /* Cube.h in Headers */,
+				C8400AB326C20DB600C8FF48 /* CGroup.h in Headers */,
 				C8ACAC8126B953530057740D /* CEngine.h in Headers */,
 				C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */,
+				C8400AC126C2175400C8FF48 /* CGroupState.h in Headers */,
+				C8400AAF26C1F99900C8FF48 /* CDevice.h in Headers */,
+				C8400AC426C21DC400C8FF48 /* CSelf.h in Headers */,
 				C817FE0E26C12C460080D697 /* CContactEvent.h in Headers */,
 				C8C384D626BCD7C8009CF806 /* CContactService.h in Headers */,
 			);
@@ -449,9 +481,12 @@
 				C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */,
 				C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */,
 				C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */,
+				C8400AC726C21DD000C8FF48 /* CSelf.m in Sources */,
+				C8400ABA26C20EAB00C8FF48 /* CGroupAppendix.m in Sources */,
 				C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */,
 				C8DF88B2268DAD4D00399C99 /* CAuthService.m in Sources */,
 				C8F1A56D26899F910020F136 /* CPipeline.m in Sources */,
+				C8400AAC26C1F98B00C8FF48 /* CDevice.m in Sources */,
 				C8F1A5B52689CE350020F136 /* CPacket.m in Sources */,
 				C8C384DA26BCD7DA009CF806 /* CContactService.m in Sources */,
 				C8C384E526BD0448009CF806 /* CEntity.m in Sources */,
@@ -460,6 +495,7 @@
 				C8B755D8268B384F00812A4C /* CModule.m in Sources */,
 				C88461E426B55A4B00A8A3C6 /* CError.m in Sources */,
 				C817FE1A26C153320080D697 /* CContactZone.m in Sources */,
+				C8400AB626C20DC100C8FF48 /* CGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
