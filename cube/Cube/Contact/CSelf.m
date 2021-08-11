@@ -39,4 +39,16 @@
     return self;
 }
 
+- (NSMutableDictionary *)toJSON {
+    NSMutableDictionary * json = [super toJSON];
+    [json setValue:[_device toJSON] forKey:@"device"];
+    return json;
+}
+
+- (NSMutableDictionary *)toCompactJSON {
+    NSMutableDictionary * json = [super toCompactJSON];
+    [json setValue:[_device toJSON] forKey:@"device"];
+    return json;
+}
+
 @end

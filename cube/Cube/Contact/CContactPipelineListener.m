@@ -26,17 +26,31 @@
 
 #import "CContactPipelineListener.h"
 
+@interface CContactPipelineListener () {
+    CContactService * _service;
+}
+
+@end
+
 @implementation CContactPipelineListener
 
-- (instancetype)init {
+- (instancetype)initWithService:(CContactService *)service {
     if (self = [super init]) {
-        
+        _service = service;
     }
-    
+
     return self;
 }
 
 - (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet {
+    
+}
+
+- (void)didOpen:(CPipeline *)pipeline {
+    
+}
+
+- (void)didClose:(CPipeline *)pipeline {
     
 }
 

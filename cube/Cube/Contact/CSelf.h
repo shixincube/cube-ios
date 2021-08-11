@@ -38,6 +38,11 @@
 /*! 当前设备。 */
 @property (nonatomic, strong, readonly) CDevice * device;
 
+/*!
+ * @brief 初始化。
+ * @param identity 指定联系人 ID 。
+ * @param name 指定名称。
+ */
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name;
 
 @end

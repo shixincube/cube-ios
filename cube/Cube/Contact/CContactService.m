@@ -25,14 +25,23 @@
  */
 
 #import "CContactService.h"
+#import "CContactPipelineListener.h"
+
+@interface CContactService () {
+    
+    CContactPipelineListener * _pipelineListener;
+}
+
+@end
+
 
 @implementation CContactService
 
 - (instancetype)init {
     if (self = [super initWithName:CUBE_MODULE_CONTACT]) {
-        
+        _pipelineListener = [[CContactPipelineListener alloc] initWithService:self];
     }
-    
+
     return self;
 }
 

@@ -40,7 +40,9 @@
 /*! @brief 当前有效的在线联系人。 */
 @property (nonatomic, strong, readonly) CSelf * oneself;
 
-
+/*!
+ * @brief 初始化。
+ */
 - (instancetype)init;
 
 @end

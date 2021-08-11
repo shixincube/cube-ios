@@ -28,8 +28,14 @@
 #define CContactPipelineListener_h
 
 #import "CPipeline.h"
+#import "CContactService.h"
 
 @interface CContactPipelineListener : NSObject <CPipelineListener>
+
+/*!
+ * @brief 初始化。
+ */
+- (instancetype)initWithService:(CContactService *)service;
 
 @end
 
