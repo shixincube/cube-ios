@@ -26,28 +26,45 @@
 
 #import "CModule.h"
 
+@interface CModule () {
+    
+    BOOL _started;
+}
+
+@end
+
+
 @implementation CModule
 
 - (instancetype _Nonnull)initWithName:(NSString * _Nonnull)name {
     if (self = [super init]) {
         self.name = name;
+        _started = FALSE;
     }
 
     return self;
 }
 
 - (BOOL)hasStarted {
-    // subclass hook override.
-    return FALSE;
+    return _started;
 }
 
 - (BOOL)start {
     // subclass hook override.
-    return FALSE;
+    
+    if (_started) {
+        return FALSE;
+    }
+    
+    _started = TRUE;
+
+    return _started;
 }
 
 - (void)stop {
     // subclass hook override.
+
+    _started = FALSE;
 }
 
 - (void)suspend {

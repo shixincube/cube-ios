@@ -26,7 +26,32 @@
 
 #import "CContactAppendix.h"
 
+@interface CContactAppendix () {
+    /*! 不对当前联系人进行提示的联系人。 */
+    NSMutableArray * _noNoticeContacts;
+    
+    /*! 不对当前联系人进行提示的群组。 */
+    NSMutableArray * _noNoticeGroups;
+}
+
+@property (nonatomic, weak) CContact * contact;
+
+@end
+
+
 @implementation CContactAppendix
 
+- (instancetype)initWithContact:(CContact *)contact json:(NSDictionary *)json {
+    if (self = [super init]) {
+        _remarkName = nil;
+        self.contact = contact;
+    }
+    
+    return self;
+}
+
+- (BOOL)hasRemarkName {
+    return (nil != _remarkName && _remarkName.length > 0);
+}
 
 @end

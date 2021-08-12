@@ -27,7 +27,6 @@
 #import "CAuthStorage.h"
 #import <FMDB/FMDatabase.h>
 
-
 @interface CAuthStorage () {
     FMDatabase * db;
 }
@@ -112,7 +111,7 @@
     NSString * sql = @"CREATE TABLE IF NOT EXISTS `token` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `domain` TEXT, `app_key` TEXT, `cid` BIGINT DEFAULT 0, `data` TEXT)";
 
     if ([db executeUpdate:sql]) {
-        NSLog(@"CAuthStorage#execSelfChecking : create token table");
+        NSLog(@"CAuthStorage#execSelfChecking : `token` table OK");
     }
     else {
         NSLog(@"CAuthStorage#execSelfChecking");

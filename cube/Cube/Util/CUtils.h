@@ -37,6 +37,8 @@
  */
 + (UInt64)currentTimeMillis;
 
++ (NSDictionary *)toJSONWithString:(NSString *)jsonString;
+
 @end
 
 #endif /* CUtils_h */

@@ -29,7 +29,29 @@
 
 #import <Foundation/Foundation.h>
 
+@class CContact;
+
+/*!
+ * @brief 联系人附录。
+ */
 @interface CContactAppendix : NSObject
+
+/*! 该联系人针对当前签入联系人的备注名。 */
+@property (nonatomic, strong, readonly) NSString * remarkName;
+
+/*!
+ * @brief 初始化。
+ * @param contact 该附录关联的联系人。
+ * @param json 包含数据的 JSON 结构。
+ * @return 返回对象实例。
+ */
+- (instancetype)initWithContact:(CContact *)contact json:(NSDictionary *)json;
+
+/*!
+ * @brief 是否设置了备注名。
+ * @return 如果设置了备注名返回 @c TRUE 。
+ */
+- (BOOL)hasRemarkName;
 
 @end
 

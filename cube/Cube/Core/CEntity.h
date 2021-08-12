@@ -44,7 +44,7 @@
 @property (nonatomic, assign, readonly) UInt64 expiry;
 
 /*! 关联上下文数据。 */
-@property (nonatomic, strong) NSMutableDictionary * context;
+@property (nonatomic, strong) NSDictionary * context;
 
 
 /*!

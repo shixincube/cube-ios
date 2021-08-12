@@ -33,4 +33,13 @@
     return [[NSNumber numberWithDouble:time] unsignedLongLongValue];
 }
 
++ (NSDictionary *)toJSONWithString:(NSString *)jsonString {
+    NSData * data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError * error = nil;
+    NSDictionary * json = [NSJSONSerialization JSONObjectWithData:data
+                                                          options:NSJSONReadingMutableContainers
+                                                            error:&error];
+    return json;
+}
+
 @end

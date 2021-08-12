@@ -26,10 +26,13 @@
 
 #import "CContactService.h"
 #import "CContactPipelineListener.h"
+#import "CContactStorage.h"
 
 @interface CContactService () {
     
     CContactPipelineListener * _pipelineListener;
+    
+    CContactStorage * _storage;
 }
 
 @end
@@ -40,25 +43,34 @@
 - (instancetype)init {
     if (self = [super initWithName:CUBE_MODULE_CONTACT]) {
         _pipelineListener = [[CContactPipelineListener alloc] initWithService:self];
+        _storage = [[CContactStorage alloc] init];
     }
 
     return self;
 }
 
 - (BOOL)start {
-    return FALSE;
+    if (![super start]) {
+        return FALSE;
+    }
+
+    [self.pipeline addListener:CUBE_MODULE_CONTACT listener:_pipelineListener];
+
+    return TRUE;
 }
 
 - (void)stop {
-    
+    [super stop];
+
+    [self.pipeline removeListener:CUBE_MODULE_CONTACT listener:_pipelineListener];
 }
 
 - (void)suspend {
-    
+    [super suspend];
 }
 
 - (void)resume {
-    
+    [super resume];
 }
 
 - (BOOL)isReady {

@@ -27,9 +27,33 @@
 #ifndef CContactStorage_h
 #define CContactStorage_h
 
-#import <Foundation/Foundation.h>
+#import "CContact.h"
 
+/*!
+ * @brief 联系人模块存储器。
+ */
 @interface CContactStorage : NSObject
+
+/*!
+ * @brief 初始化。
+ */
+- (instancetype)init;
+
+/*!
+ * @brief 开启存储器。
+ * @param contactId 指定联系人 ID 。
+ * @param domain 指定域。
+ * @return 开启成功返回 @c TRUE ，否则返回 @c FALSE 。
+ */
+- (BOOL)open:(UInt64)contactId domain:(NSString *)domain;
+
+/*!
+ * @brief 关闭存储器。
+ */
+- (void)close;
+
+
+- (CContact *)readContact:(UInt64)contactId;
 
 @end
 
