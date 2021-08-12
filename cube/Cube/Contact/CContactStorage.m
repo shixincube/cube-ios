@@ -26,9 +26,12 @@
 
 #import "CContactStorage.h"
 #import "CUtils.h"
+#import "CContactService.h"
 #import <FMDB/FMDatabase.h>
 
 @interface CContactStorage () {
+    
+    CContactService * _service;
     
     NSString * _domain;
     
@@ -41,8 +44,9 @@
 
 @implementation CContactStorage
 
-- (instancetype)init {
+- (instancetype)initWithService:(CContactService *)service {
     if (self = [super init]) {
+        _service = service;
         _db = nil;
     }
 
@@ -81,33 +85,87 @@
 
 - (CContact *)readContact:(UInt64)contactId {
     CContact * contact = nil;
-    
+
     NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `contact` WHERE `id`=%lld", contactId];
     FMResultSet * result = [_db executeQuery:sql];
     if ([result next]) {
         NSString * name = [result stringForColumn:@"name"];
-        
-        NSString * context = [result stringForColumn:@"context"];
+
+        NSString * contextString = [result stringForColumn:@"context"];
         NSDictionary * contextData = nil;
-        if (context) {
-            contextData = [CUtils toJSONWithString:context];
+        if (contextString && contextString.length > 1) {
+            contextData = [CUtils toJSONWithString:contextString];
         }
 
         contact = [[CContact alloc] initWithId:contactId name:name domain:_domain];
         if (contextData) {
             contact.context = contextData;
         }
-        
+
         // 查询附件
         sql = [NSString stringWithFormat:@"SELECT * FROM `appendix` WHERE `id`=%lld", contactId];
         FMResultSet * appendixResult = [_db executeQuery:sql];
         if ([appendixResult next]) {
             NSString * appendixString = [appendixResult stringForColumn:@"appendix"];
             NSDictionary * json = [CUtils toJSONWithString:appendixString];
+
+            // 实例化附录
+            CContactAppendix * appendix = [[CContactAppendix alloc] initWithService:_service Contact:contact json:json];
+            // 关联附录
+            contact.appendix = appendix;
+        }
+    }
+
+    return contact;
+}
+
+- (BOOL)writeContact:(CContact *)contact {
+    BOOL ret = FALSE;
+
+    NSString * sql = [NSString stringWithFormat:@"SELECT `sn` FROM `contact` WHERE `id`=%lld", contact.identity];
+    FMResultSet * result = [_db executeQuery:sql];
+    if ([result next]) {
+        // 已经有数据进行更新
+        sql = @"UPDATE `contact` SET `name`=?, `context`=? WHERE `id`=?";
+
+        NSString * contextString = nil;
+        if (contact.context) {
+            contextString = [CUtils toStringWithJSON:contact.context];
+        }
+        else {
+            contextString = @"";
+        }
+        // 执行 SQL
+        ret = [_db executeUpdate:sql, contact.name, contextString, contact.identity];
+
+        if (ret) {
+            // 更新附录
+            sql = @"UPDATE `appendix` SET `appendix`=? WHERE `id`=?";
+
+            NSString * appendixString = [CUtils toStringWithJSON:[contact.appendix toJSON]];
+
+            ret = [_db executeUpdate:sql, appendixString, contact.identity];
+        }
+    }
+    else {
+        // 没有数据进行插入
+        sql = @"INSERT INTO `contact`(id,name,context) VALUES (?,?,?)";
+        
+        NSString * contextString = contact.context ?
+                [CUtils toStringWithJSON:contact.context] : @"";
+        // 执行 SQL
+        ret = [_db executeUpdate:sql, contact.identity, contact.name, contextString];
+        
+        if (ret) {
+            // 插入附录
+            sql = @"INSERT INTO `appendix`(id,appendix) VALUES (?,?)";
+            
+            ret = [_db executeUpdate:sql, contact.identity,
+                   [CUtils toStringWithJSON:[contact.appendix toJSON]]];
         }
     }
     
-    return contact;
+    return ret;
 }
 
 #pragma mark - Private

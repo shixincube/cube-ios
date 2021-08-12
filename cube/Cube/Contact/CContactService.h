@@ -35,15 +35,19 @@
 #define CUBE_MODULE_CONTACT @"Contact"
 #endif
 
+typedef void (^sign_block_t)(CSelf *);
+
 @interface CContactService : CModule
 
 /*! @brief 当前有效的在线联系人。 */
-@property (nonatomic, strong, readonly) CSelf * oneself;
+@property (nonatomic, strong, readonly) CSelf * myself;
 
 /*!
  * @brief 初始化。
  */
 - (instancetype)init;
+
+- (void)signIn:(CSelf *)mySelf handleSuccess:(sign_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
 
 @end
 

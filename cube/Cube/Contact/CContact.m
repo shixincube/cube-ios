@@ -80,7 +80,7 @@
     
     CContact * other = object;
     return (other.identity == self.identity) &&
-            [other.domain isEqual:self.domain];
+            [other.domain isEqualToString:self.domain];
 }
 
 - (NSMutableDictionary *)toJSON {

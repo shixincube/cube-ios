@@ -165,6 +165,10 @@
     return ([_modules objectForKey:moduleName]) ? TRUE : FALSE;
 }
 
+- (void)activeToken:(UInt64)contactId handler:(void (^)(CAuthToken *))handler {
+    handler(self.authToken);
+}
+
 #pragma mark - Private
 
 - (void)bundleDefault {

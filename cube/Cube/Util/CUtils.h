@@ -29,6 +29,9 @@
 
 #import <Foundation/Foundation.h>
 
+/*!
+ * @brief 辅助函数库。
+ */
 @interface CUtils : NSObject
 
 /*!
@@ -37,7 +40,19 @@
  */
 + (UInt64)currentTimeMillis;
 
+/*!
+ * @brief 将 JSON 格式字符串转为字典形式。
+ * @param jsonString 指定 JSON 格式字符串。
+ * @return 返回字典实例。
+ */
 + (NSDictionary *)toJSONWithString:(NSString *)jsonString;
+
+/*!
+ * @brief 将字典形式 JSON 转为字符串形式。
+ * @param json 指定字典形式。
+ * @return 返回 JSON 格式的字符串。
+ */
++ (NSString *)toStringWithJSON:(NSDictionary *)json;
 
 @end
 

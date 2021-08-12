@@ -31,6 +31,10 @@
 
 @class CKernel;
 @class CPipeline;
+@class CError;
+
+/*! 回调错误事件的 Block 定义。 */
+typedef void (^cube_failure_block_t)(CError * _Nonnull);
 
 /*!
  * @brief 内核模块。

@@ -25,8 +25,10 @@
  */
 
 #import "CContactPipelineListener.h"
+#import "CContactAction.h"
 
 @interface CContactPipelineListener () {
+    
     CContactService * _service;
 }
 
@@ -43,7 +45,14 @@
 }
 
 - (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet {
-    
+    if (packet.state.code != CSC_Ok) {
+        NSLog(@"CContactPipelineListener#didReceive code : %d", packet.state.code);
+        return;
+    }
+
+    if ([packet.name isEqualToString:CUBE_CONTACT_SIGNIN]) {
+        [_service triggerSignIn:packet.data];
+    }
 }
 
 - (void)didOpen:(CPipeline *)pipeline {

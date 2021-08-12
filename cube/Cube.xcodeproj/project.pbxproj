@@ -61,6 +61,7 @@
 		C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A57A2689A1E80020F136 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A5812689AC230020F136 /* CCellPipeline.m */; };
 		C8F1A5B52689CE350020F136 /* CPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A5B42689CE350020F136 /* CPacket.m */; };
+		C8F4596326C4B66000CC4E13 /* CContactService+Core.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F4596226C4B66000CC4E13 /* CContactService+Core.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +167,8 @@
 		C8F1A5812689AC230020F136 /* CCellPipeline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCellPipeline.m; sourceTree = "<group>"; };
 		C8F1A5B42689CE350020F136 /* CPacket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPacket.m; sourceTree = "<group>"; };
 		C8F1A5B72689CE430020F136 /* CPacket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPacket.h; sourceTree = "<group>"; };
+		C8F4596226C4B66000CC4E13 /* CContactService+Core.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CContactService+Core.m"; sourceTree = "<group>"; };
+		C8F4596526C4B66C00CC4E13 /* CContactService+Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CContactService+Core.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +220,8 @@
 				C8400ACB26C2215400C8FF48 /* CContactPipelineListener.m */,
 				C8C384D526BCD7C8009CF806 /* CContactService.h */,
 				C8C384D926BCD7DA009CF806 /* CContactService.m */,
+				C8F4596526C4B66C00CC4E13 /* CContactService+Core.h */,
+				C8F4596226C4B66000CC4E13 /* CContactService+Core.m */,
 				C817FE1126C14E930080D697 /* CContactServiceState.h */,
 				C8C384DF26BD0322009CF806 /* CContactStorage.h */,
 				C8C384DC26BD0306009CF806 /* CContactStorage.m */,
@@ -483,6 +488,7 @@
 				C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */,
 				C8C384F426BD1B68009CF806 /* CUtils.m in Sources */,
 				C8C384FF26BD275C009CF806 /* CContact.m in Sources */,
+				C8F4596326C4B66000CC4E13 /* CContactService+Core.m in Sources */,
 				C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */,
 				C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */,
 				C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */,

@@ -49,8 +49,8 @@
 
 - (NSMutableDictionary *)toJSON {
     NSMutableDictionary * json = [[NSMutableDictionary alloc] init];
-    [json setObject:self.address forKey:@"address"];
-    [json setObject:self.primaryContent forKey:@"primaryContent"];
+    [json setValue:self.address forKey:@"address"];
+    [json setValue:self.primaryContent forKey:@"primaryContent"];
     return json;
 }
 
@@ -92,18 +92,18 @@
 - (BOOL)isValid {
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970] * 1000;
     UInt64 timestamp = [[NSNumber numberWithDouble:time] unsignedLongLongValue];
-    return (timestamp < self.expiry);
+    return ((timestamp + 60000) < self.expiry);
 }
 
 - (NSMutableDictionary *)toJSON {
     NSMutableDictionary * json = [[NSMutableDictionary alloc] init];
-    [json setObject:self.code forKey:@"code"];
-    [json setObject:self.domain forKey:@"domain"];
-    [json setObject:self.appKey forKey:@"appKey"];
-    [json setObject:[NSNumber numberWithUnsignedLongLong:self.cid] forKey:@"cid"];
-    [json setObject:[NSNumber numberWithUnsignedLongLong:self.issues] forKey:@"issues"];
-    [json setObject:[NSNumber numberWithUnsignedLongLong:self.expiry] forKey:@"expiry"];
-    [json setObject:[self.description toJSON] forKey:@"description"];
+    [json setValue:self.code forKey:@"code"];
+    [json setValue:self.domain forKey:@"domain"];
+    [json setValue:self.appKey forKey:@"appKey"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:self.cid] forKey:@"cid"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:self.issues] forKey:@"issues"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:self.expiry] forKey:@"expiry"];
+    [json setValue:[self.description toJSON] forKey:@"description"];
     return json;
 }
 

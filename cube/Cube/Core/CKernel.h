@@ -159,6 +159,8 @@
  */
 - (BOOL)hasModule:(NSString *)moduleName;
 
+- (void)activeToken:(UInt64)contactId handler:(void(^)(CAuthToken *))handler;
+
 @end
 
 #endif /* CKernel_h */

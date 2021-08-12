@@ -36,45 +36,44 @@ typedef enum _CStateCode {
     /*!
      * @brief 成功。
      */
-    Ok = 1000,
+    CSC_Ok = 1000,
 
     /*!
      * @brief 数据请求错误。
      */
-    BadRequest = 1400,
+    CSC_BadRequest = 1400,
 
     /*!
      * @brief 未知的请求命令。
      */
-    NotFound = 1404,
+    CSC_NotFound = 1404,
 
     /*!
      * @brief 没有找到授权码。
      */
-    NoAuthToken = 1501,
+    CSC_NoAuthToken = 1501,
 
     /*!
      * @brief 请求服务超时。
      */
-    ServiceTimeout = 2001,
+    CSC_ServiceTimeout = 2001,
 
     /*!
      * @brief 负载格式错误。
      */
-    PayloadFormat = 2002,
+    CSC_PayloadFormat = 2002,
 
     /*!
      * @brief 参数错误。
      */
-    InvalidParameter = 2003,
+    CSC_InvalidParameter = 2003,
 
     /*!
      * @brief 网关错误。
      */
-    GatewayError = 2101
+    CSC_GatewayError = 2101
 
 } CStateCode;
-
 
 /*!
  * @brief 通道状态描述。

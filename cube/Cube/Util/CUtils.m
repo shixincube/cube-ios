@@ -42,4 +42,11 @@
     return json;
 }
 
++ (NSString *)toStringWithJSON:(NSDictionary *)json {
+    NSError * error = nil;
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:json options:0 error:&error];
+    NSString * jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return jsonString;
+}
+
 @end

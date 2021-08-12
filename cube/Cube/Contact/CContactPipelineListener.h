@@ -28,7 +28,7 @@
 #define CContactPipelineListener_h
 
 #import "CPipeline.h"
-#import "CContactService.h"
+#import "CContactService+Core.h"
 
 @interface CContactPipelineListener : NSObject <CPipelineListener>
 

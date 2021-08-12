@@ -24,53 +24,15 @@
  * SOFTWARE.
  */
 
-#ifndef CContactServiceState_h
-#define CContactServiceState_h
+#ifndef CContactService_Core_h
+#define CContactService_Core_h
 
-/*!
- * @brief 联系人服务状态码。
- */
-typedef enum _CContactServiceState {
+#import "CContactService.h"
 
-    /*! 成功。 */
-    CSC_Contact_Ok = 0,
+@interface CContactService (Core)
 
-    /*! 无效的参数。 */
-    CSC_Contact_InvalidParameter = 5,
+- (void)triggerSignIn:(NSDictionary *)payload;
 
-    /*! 数据结构错误。 */
-    CSC_Contact_DataStructureError = 8,
+@end
 
-    /*! 遇到故障。 */
-    CSC_Contact_Failure = 9,
-
-    /*! 无效域信息。 */
-    CSC_Contact_InvalidDomain = 11,
-
-    /*! 未签入联系人。 */
-    CSC_Contact_NoSignIn = 12,
-
-    /*! 未找到群组。 */
-    CSC_Contact_NotFindGroup = 15,
-
-    /*! 令牌不一致。 */
-    CSC_Contact_InconsistentToken = 21,
-
-    /*! 不被接受的非法操作。 */
-    CSC_Contact_IllegalOperation = 25,
-
-    /*! 服务器错误。 */
-    CSC_Contact_ServerError = 101,
-
-    /*! 不被允许的操作。 */
-    CSC_Contact_NotAllowed = 102,
-
-    /*! 无网络连接。 */
-    CSC_Contact_NoNetwork = 103,
-
-    /*! 未知的状态。 */
-    CSC_Contact_Unknown = 99
-
-} CContactServiceState;
-
-#endif /* CContactServiceState_h */
+#endif /* CContactService_Core_h */

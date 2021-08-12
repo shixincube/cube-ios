@@ -29,6 +29,8 @@
 
 #import "CContact.h"
 
+@class CContactService;
+
 /*!
  * @brief 联系人模块存储器。
  */
@@ -37,7 +39,7 @@
 /*!
  * @brief 初始化。
  */
-- (instancetype)init;
+- (instancetype)initWithService:(CContactService *)service;
 
 /*!
  * @brief 开启存储器。
@@ -52,8 +54,19 @@
  */
 - (void)close;
 
-
+/*!
+ * @brief 读取指定 ID 的联系人。
+ * @param contactId 指定联系人 ID 。
+ * @return 找到指定联系人返回 @c CContact 实例，否则返回 @c nil 值。
+ */
 - (CContact *)readContact:(UInt64)contactId;
+
+/*!
+ * @brief 写入指定联系人数据。
+ * @param contact 指定联系人数据实例。
+ * @return 写入成功返回 @c TRUE ，否则返回 @c FALSE 。
+ */
+- (BOOL)writeContact:(CContact *)contact;
 
 @end
 

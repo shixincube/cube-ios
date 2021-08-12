@@ -67,7 +67,7 @@
     }
 
     CDevice * other = object;
-    return [_name isEqual:other.name] && [_platform isEqual:other.platform];
+    return [_name isEqualToString:other.name] && [_platform isEqualToString:other.platform];
 }
 
 - (NSMutableDictionary *)toJSON {

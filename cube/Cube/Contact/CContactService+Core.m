@@ -24,56 +24,12 @@
  * SOFTWARE.
  */
 
-#import "CContactAppendix.h"
-#import "CContact.h"
 #import "CContactService+Core.h"
 
-@interface CContactAppendix () {
-    /*! 不对当前联系人进行提示的联系人。 */
-    NSMutableArray * _noNoticeContacts;
+@implementation CContactService (Core)
+
+- (void)triggerSignIn:(NSDictionary *)payload {
     
-    /*! 不对当前联系人进行提示的群组。 */
-    NSMutableArray * _noNoticeGroups;
-}
-
-@property (nonatomic, weak) CContact * contact;
-
-@property (nonatomic, weak) CContactService * service;
-
-@end
-
-
-@implementation CContactAppendix
-
-- (instancetype)initWithService:(CContactService *)service Contact:(CContact *)contact json:(NSDictionary *)json {
-    if (self = [super init]) {
-        self.service = service;
-        self.contact = contact;
-        
-        _remarkName = nil;
-
-        if ([json objectForKey:@"remarkName"]) {
-            _remarkName = [json valueForKey:@"remarkName"];
-        }
-    }
-
-    return self;
-}
-
-- (BOOL)hasRemarkName {
-    return (nil != _remarkName && _remarkName.length > 0);
-}
-
-- (NSMutableDictionary *)toJSON {
-    NSMutableDictionary * json = [[NSMutableDictionary alloc] init];
-    if ([self hasRemarkName]) {
-        [json setValue:_remarkName forKey:@"remarkName"];
-    }
-    return json;
-}
-
-- (NSMutableDictionary *)toCompactJSON {
-    return [self toJSON];
 }
 
 @end
