@@ -166,6 +166,7 @@
 }
 
 - (void)activeToken:(UInt64)contactId handler:(void (^)(CAuthToken *))handler {
+    // TODO
     handler(self.authToken);
 }
 

@@ -47,7 +47,7 @@
  * @param name 事件名。
  * @param data 事件数据。
  */
-- (id _Nonnull )initWithName:( NSString * _Nonnull )name data:( NSObject * _Nullable )data;
+- (instancetype _Nonnull)initWithName:( NSString * _Nonnull )name data:( NSObject * _Nullable )data;
 
 @end
 

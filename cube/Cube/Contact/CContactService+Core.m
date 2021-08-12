@@ -25,10 +25,20 @@
  */
 
 #import "CContactService+Core.h"
+#import "CContactServiceState.h"
+#import "CContactEvent.h"
+#import "CError.h"
+#import "CSelf.h"
 
 @implementation CContactService (Core)
 
-- (void)triggerSignIn:(NSDictionary *)payload {
+- (void)triggerSignIn:(int)code payload:(NSDictionary *)payload {
+    if (code != CSC_Contact_Ok) {
+        CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventFault data:[CError errorWithModule:CUBE_MODULE_CONTACT code:code]];
+        [self notifyObservers:event];
+        return;
+    }
+    
     
 }
 

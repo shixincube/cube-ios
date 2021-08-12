@@ -28,12 +28,12 @@
 
 @implementation CObservableEvent
 
-- (id _Nonnull )initWithName:( NSString * _Nonnull )name data:( NSObject * _Nullable )data {
+- (instancetype _Nonnull)initWithName:( NSString * _Nonnull )name data:( NSObject * _Nullable )data {
     if (self = [super init]) {
         self.name = name;
         self.data = data;
     }
-    
+
     return self;
 }
 

@@ -62,6 +62,7 @@
 		C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A5812689AC230020F136 /* CCellPipeline.m */; };
 		C8F1A5B52689CE350020F136 /* CPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A5B42689CE350020F136 /* CPacket.m */; };
 		C8F4596326C4B66000CC4E13 /* CContactService+Core.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F4596226C4B66000CC4E13 /* CContactService+Core.m */; };
+		C8F4596826C5346900CC4E13 /* CContactEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F4596726C5346900CC4E13 /* CContactEvent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,7 @@
 		C8F1A5B72689CE430020F136 /* CPacket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPacket.h; sourceTree = "<group>"; };
 		C8F4596226C4B66000CC4E13 /* CContactService+Core.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CContactService+Core.m"; sourceTree = "<group>"; };
 		C8F4596526C4B66C00CC4E13 /* CContactService+Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CContactService+Core.h"; sourceTree = "<group>"; };
+		C8F4596726C5346900CC4E13 /* CContactEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactEvent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				C817FE0626C12B6F0080D697 /* CContactAppendix.h */,
 				C817FE0926C12B7C0080D697 /* CContactAppendix.m */,
 				C817FE0D26C12C460080D697 /* CContactEvent.h */,
+				C8F4596726C5346900CC4E13 /* CContactEvent.m */,
 				C8400ACA26C2214800C8FF48 /* CContactPipelineListener.h */,
 				C8400ACB26C2215400C8FF48 /* CContactPipelineListener.m */,
 				C8C384D526BCD7C8009CF806 /* CContactService.h */,
@@ -486,6 +489,7 @@
 				C8C384DD26BD0306009CF806 /* CContactStorage.m in Sources */,
 				C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */,
 				C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */,
+				C8F4596826C5346900CC4E13 /* CContactEvent.m in Sources */,
 				C8C384F426BD1B68009CF806 /* CUtils.m in Sources */,
 				C8C384FF26BD275C009CF806 /* CContact.m in Sources */,
 				C8F4596326C4B66000CC4E13 /* CContactService+Core.m in Sources */,

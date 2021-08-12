@@ -24,46 +24,26 @@
  * SOFTWARE.
  */
 
-#ifndef CContactEvent_h
-#define CContactEvent_h
+#import "CContactEvent.h"
 
-#import <Foundation/Foundation.h>
+NSString * CContactEventSignIn = @"SignIn";
 
-/*
- * @brief 联系人模块的事件。
- */
+NSString * CContactEventSignOut = @"SignOut";
 
-/*! 当前客户端的联系人签入。 */
-extern NSString * CContactEventSignIn;
+NSString * CContactEventComeback = @"Comeback";
 
-/*! 当前客户端的联系人签出。 */
-extern NSString * CContactEventSignOut;
+NSString * CContactEventGroupUpdated = @"GroupUpdated";
 
-/*! 当前客户端的联系人恢复连接。 */
-extern NSString * CContactEventComeback;
+NSString * CContactEventGroupCreated = @"GroupCreated";
 
-/*! 群组已更新。 */
-extern NSString * CContactEventGroupUpdated;
+NSString * CContactEventGroupDissolved = @"GroupDissolved";
 
-/*! 群组被创建。 */
-extern NSString * CContactEventGroupCreated;
+NSString * CContactEventGroupMemberAdded = @"GroupMemberAdded";
 
-/*! 群组已解散。 */
-extern NSString * CContactEventGroupDissolved;
+NSString * CContactEventGroupMemberRemoved = @"GroupMemberRemoved";
 
-/*! 群成员加入。 */
-extern NSString * CContactEventGroupMemberAdded;
+NSString * CContactEventGroupAppendixUpdated = @"GroupAppendixUpdated";
 
-/*! 群成员移除。 */
-extern NSString * CContactEventGroupMemberRemoved;
+NSString * CContactEventFault = @"Fault";
 
-/*! 群组的附录进行了实时更新。 */
-extern NSString * CContactEventGroupAppendixUpdated;
-
-/*! 遇到程序故障。 */
-extern NSString * CContactEventFault;
-
-/*! 未知事件。 */
-extern NSString * CContactEventUnknown;
-
-#endif /* CContactEvent_h */
+NSString * CContactEventUnknown = @"Unknown";

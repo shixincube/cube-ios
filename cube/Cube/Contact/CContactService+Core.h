@@ -31,7 +31,7 @@
 
 @interface CContactService (Core)
 
-- (void)triggerSignIn:(NSDictionary *)payload;
+- (void)triggerSignIn:(int)code payload:(NSDictionary *)payload;
 
 @end
 

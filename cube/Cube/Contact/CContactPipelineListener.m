@@ -51,7 +51,7 @@
     }
 
     if ([packet.name isEqualToString:CUBE_CONTACT_SIGNIN]) {
-        [_service triggerSignIn:packet.data];
+        [_service triggerSignIn:[packet extractStateCode] payload:[packet extractData]];
     }
 }
 
