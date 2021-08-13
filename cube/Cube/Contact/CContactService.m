@@ -105,6 +105,8 @@
 
     [self.kernel activeToken:mySelf.identity handler:^(CAuthToken * token) {
         if (token) {
+            self->_myself = mySelf;
+
             // 打包数据
             NSMutableDictionary * data = [[NSMutableDictionary alloc] init];
             [data setValue:[mySelf toJSON] forKey:@"self"];
@@ -127,6 +129,37 @@
             handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CSC_Contact_InconsistentToken]);
         }
     }];
+}
+
+- (void)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(sign_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
+    CSelf * mySelf = [[CSelf alloc] initWithId:identity name:name];
+    [self signIn:mySelf handleSuccess:handleSuccess handleFailure:handleFailure];
+}
+
+- (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact *, CContactAppendix *))handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
+    NSNumber * contactId = [NSNumber numberWithUnsignedLongLong:contact.identity];
+    NSDictionary * data = [NSDictionary dictionaryWithObjectsAndKeys:contactId, @"contactId", nil];
+    CPacket * request = [[CPacket alloc] initWithName:CUBE_CONTACT_GETAPPENDIX andData:data];
+    // 发送请求
+    [self.pipeline send:CUBE_MODULE_CONTACT withPacket:request handleResponse:^(CPacket *packet) {
+        if (packet.state.code != CSC_Ok) {
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:packet.state.code];
+            handleFailure(error);
+            return;
+        }
+        
+        
+    }];
+}
+
+- (void)getAppendixWithGroup:(CGroup *)group handleSuccess:(void(^)(CGroup *, CGroupAppendix *))handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
+    
+}
+
+- (void)listGroups:(UInt64)beginning ending:(UInt64)ending handler:(void (^)(NSArray *))handler {
+    // TODO
+    NSMutableArray * list = [[NSMutableArray alloc] init];
+    handler(list);
 }
 
 #pragma mark - Private

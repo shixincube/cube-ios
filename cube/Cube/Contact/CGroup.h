@@ -28,8 +28,11 @@
 #define CGroup_h
 
 #import "CAbstractContact.h"
+#import "CGroupAppendix.h"
 
 @interface CGroup : CAbstractContact
+
+@property (nonatomic, strong) CGroupAppendix * appendix;
 
 @end
 

@@ -31,6 +31,19 @@
 
 @interface CContactService (Core)
 
+/*!
+ * @brief 从服务更新阻止清单列表。
+ */
+- (void)listBlockList:(void(^)(NSArray *))handler;
+
+/*!
+ * @brief 从服务器更新置顶列表数据。
+ */
+- (void)listTopList:(void(^)(NSArray *))handler;
+
+/*!
+ * @brief 触发联系人签入。
+ */
 - (void)triggerSignIn:(int)code payload:(NSDictionary *)payload;
 
 @end

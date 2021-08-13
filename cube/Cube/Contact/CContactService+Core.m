@@ -32,6 +32,18 @@
 
 @implementation CContactService (Core)
 
+- (void)listBlockList:(void (^)(NSArray *))handler {
+    // TODO
+    NSMutableArray * list = [[NSMutableArray alloc] init];
+    handler(list);
+}
+
+- (void)listTopList:(void (^)(NSArray *))handler {
+    // TODO
+    NSMutableArray * list = [[NSMutableArray alloc] init];
+    handler(list);
+}
+
 - (void)triggerSignIn:(int)code payload:(NSDictionary *)payload {
     if (code != CSC_Contact_Ok) {
         CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventFault data:[CError errorWithModule:CUBE_MODULE_CONTACT code:code]];

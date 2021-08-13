@@ -29,6 +29,7 @@
 
 #import "CModule.h"
 #import "CSelf.h"
+#import "CGroup.h"
 
 #ifndef CUBE_MODULE_CONTACT
 /*! @brief 模块名。 */
@@ -37,6 +38,9 @@
 
 typedef void (^sign_block_t)(CSelf *);
 
+/*!
+ * @brief 联系人模块。
+ */
 @interface CContactService : CModule
 
 /*! @brief 当前有效的在线联系人。 */
@@ -47,7 +51,46 @@ typedef void (^sign_block_t)(CSelf *);
  */
 - (instancetype)init;
 
+/*!
+ * @brief 签入当前终端的联系人。
+ * @param mySelf 指定签入的 CSelf 对象。
+ * @param handleSuccess 操作成功回调。
+ * @param handleFailure 操作失败回调。
+ */
 - (void)signIn:(CSelf *)mySelf handleSuccess:(sign_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
+
+/*!
+ * @brief 签入当前终端的联系人。
+ * @param identity 指定签入的联系人 ID 。
+ * @param name 指定签入联系人名称。
+ * @param handleSuccess 操作成功回调。
+ * @param handleFailure 操作失败回调。
+ */
+- (void)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(sign_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
+
+/*!
+ * @brief 获取联系人的附录。
+ * @param contact 指定联系人。
+ * @param handleSuccess 操作成功时回调。
+ * @param handleFailure 操作故障时回调。
+ */
+- (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact *, CContactAppendix *))handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
+
+/*!
+ * @brief 获取群组的附录。
+ * @param group 指定群组。
+ * @param handleSuccess 操作成功时回调。
+ * @param handleFailure 操作故障时回调。
+ */
+- (void)getAppendixWithGroup:(CGroup *)group handleSuccess:(void(^)(CGroup *, CGroupAppendix *))handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
+
+/*!
+ * @brief 获取当前联系人所在的所有群。
+ * @param beginning 指定查询群的起始的最近一次活跃时间戳，单位：毫秒。
+ * @param ending 指定查询群的截止的最近一次活跃时间戳，单位：毫秒。
+ * @param handler 获取到数据后的回调函数。
+ */
+- (void)listGroups:(UInt64)beginning ending:(UInt64)ending handler:(void(^)(NSArray *))handler;
 
 @end
 

@@ -116,7 +116,11 @@
 
     [self checkAuth:config handler:^(CError * error, CAuthToken * token) {
         if (token) {
+            // 设置访问令牌
             self.authToken = token;
+            // 设置数据通道的访问令牌码
+            self->_cellPipeline.tokenCode = token.code;
+
             completion();
         }
         else {
