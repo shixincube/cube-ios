@@ -39,6 +39,20 @@
     return self;
 }
 
+- (instancetype)initWithJSON:(NSDictionary *)json {
+    if (self = [super initWithId:[[json valueForKey:@"id"] unsignedLongLongValue] name:[json valueForKey:@"name"] domain:[CAuthService domain]]) {
+        _device = [[CDevice alloc] init];
+
+        [self addDevice:_device];
+        
+        // TODO devices
+        
+        // TODO context
+    }
+
+    return self;
+}
+
 - (NSMutableDictionary *)toJSON {
     NSMutableDictionary * json = [super toJSON];
     [json setValue:[_device toJSON] forKey:@"device"];

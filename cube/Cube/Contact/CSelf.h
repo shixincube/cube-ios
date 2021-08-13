@@ -42,8 +42,12 @@
  * @brief 初始化。
  * @param identity 指定联系人 ID 。
  * @param name 指定名称。
+ * @return 返回实例。
  */
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name;
+
+
+- (instancetype)initWithJSON:(NSDictionary *)json;
 
 @end
 

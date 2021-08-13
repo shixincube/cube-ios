@@ -50,8 +50,13 @@
         [self notifyObservers:event];
         return;
     }
-    
-    
+
+    if (self.myself) {
+        
+    }
+    else {
+        self.myself = [[CSelf alloc] initWithJSON:payload];
+    }
 }
 
 @end

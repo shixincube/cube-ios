@@ -110,7 +110,7 @@
             NSDictionary * json = [CUtils toJSONWithString:appendixString];
 
             // 实例化附录
-            CContactAppendix * appendix = [[CContactAppendix alloc] initWithService:_service Contact:contact json:json];
+            CContactAppendix * appendix = [[CContactAppendix alloc] initWithService:_service contact:contact json:json];
             // 关联附录
             contact.appendix = appendix;
         }
@@ -163,6 +163,29 @@
             ret = [_db executeUpdate:sql, contact.identity,
                    [CUtils toStringWithJSON:[contact.appendix toJSON]]];
         }
+    }
+    
+    return ret;
+}
+
+- (BOOL)writeContactAppendix:(CContactAppendix *)appendix {
+    BOOL ret = FALSE;
+    NSString * sql = [NSString stringWithFormat:@"SELECT id FROM `appendix` WHERE `id`=%llu", appendix.owner.identity];
+    FMResultSet * result = [_db executeQuery:sql];
+    if ([result next]) {
+        // 有数据，更新
+        sql = @"UPDATE `appendix` SET `appendix`=? WHERE `id`=?";
+        
+        NSString * appendixString = [CUtils toStringWithJSON:[appendix toJSON]];
+
+        ret = [_db executeUpdate:sql, appendixString, appendix.owner.identity];
+    }
+    else {
+        // 无数据，插入
+        sql = @"INSERT INTO `appendix`(id,appendix) VALUES (?,?)";
+
+        ret = [_db executeUpdate:sql, appendix.owner.identity,
+               [CUtils toStringWithJSON:[appendix toJSON]]];
     }
     
     return ret;

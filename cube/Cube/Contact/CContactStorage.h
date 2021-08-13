@@ -68,6 +68,11 @@
  */
 - (BOOL)writeContact:(CContact *)contact;
 
+/*!
+ * @brief 写入联系人附件数据。
+ */
+- (BOOL)writeContactAppendix:(CContactAppendix *)appendix;
+
 @end
 
 #endif /* CContactStorage_h */

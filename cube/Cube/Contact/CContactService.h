@@ -44,7 +44,7 @@ typedef void (^sign_block_t)(CSelf *);
 @interface CContactService : CModule
 
 /*! @brief 当前有效的在线联系人。 */
-@property (nonatomic, strong, readonly) CSelf * myself;
+@property (nonatomic, strong) CSelf * myself;
 
 /*!
  * @brief 初始化。

@@ -37,7 +37,10 @@
 }
 
 - (NSString *)getPriorityName {
-    // TODO
+    if (self.appendix && [self.appendix hasRemarkName]) {
+        return self.appendix.remarkName;
+    }
+
     return self.name;
 }
 

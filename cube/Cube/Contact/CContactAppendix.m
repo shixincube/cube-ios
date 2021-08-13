@@ -36,8 +36,6 @@
     NSMutableArray * _noNoticeGroups;
 }
 
-@property (nonatomic, weak) CContact * contact;
-
 @property (nonatomic, weak) CContactService * service;
 
 @end
@@ -45,16 +43,18 @@
 
 @implementation CContactAppendix
 
-- (instancetype)initWithService:(CContactService *)service Contact:(CContact *)contact json:(NSDictionary *)json {
+- (instancetype)initWithService:(CContactService *)service contact:(CContact *)contact json:(NSDictionary *)json {
     if (self = [super init]) {
         self.service = service;
-        self.contact = contact;
+        _owner = contact;
         
         _remarkName = nil;
 
         if ([json objectForKey:@"remarkName"]) {
             _remarkName = [json valueForKey:@"remarkName"];
         }
+
+        contact.appendix = self;
     }
 
     return self;

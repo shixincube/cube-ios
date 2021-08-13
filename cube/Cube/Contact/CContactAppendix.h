@@ -37,6 +37,9 @@
  */
 @interface CContactAppendix : CJSONable
 
+/*! 该附录对应的联系人。 */
+@property (nonatomic, weak, readonly) CContact * owner;
+
 /*! 该联系人针对当前签入联系人的备注名。 */
 @property (nonatomic, strong, readonly) NSString * remarkName;
 
@@ -47,7 +50,7 @@
  * @param json 包含数据的 JSON 结构。
  * @return 返回对象实例。
  */
-- (instancetype)initWithService:(CContactService *)service Contact:(CContact *)contact json:(NSDictionary *)json;
+- (instancetype)initWithService:(CContactService *)service contact:(CContact *)contact json:(NSDictionary *)json;
 
 /*!
  * @brief 是否设置了备注名。

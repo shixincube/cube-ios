@@ -105,7 +105,8 @@
 
     [self.kernel activeToken:mySelf.identity handler:^(CAuthToken * token) {
         if (token) {
-            self->_myself = mySelf;
+            // 设置 MySelf 实例
+            self.myself = mySelf;
 
             // 打包数据
             NSMutableDictionary * data = [[NSMutableDictionary alloc] init];
@@ -147,8 +148,20 @@
             handleFailure(error);
             return;
         }
-        
-        
+
+        int stateCode = [packet extractStateCode];
+        if (stateCode != CSC_Contact_Ok) {
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:stateCode];
+            handleFailure(error);
+            return;
+        }
+
+        CContactAppendix * appendix = [[CContactAppendix alloc] initWithService:self contact:contact json:[packet extractData]];
+
+        // 更新存储
+        [self->_storage writeContactAppendix:appendix];
+
+        handleSuccess(contact, appendix);
     }];
 }
 
