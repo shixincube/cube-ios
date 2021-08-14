@@ -55,6 +55,8 @@
         _pipelineListener = [[CContactPipelineListener alloc] initWithService:self];
         _storage = [[CContactStorage alloc] initWithService:self];
         _selfReady = FALSE;
+
+        self.defaultRetrospect = 30 * 24 * 60 * 60000L;
     }
 
     return self;

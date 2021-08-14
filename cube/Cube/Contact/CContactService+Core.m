@@ -29,6 +29,7 @@
 #import "CContactEvent.h"
 #import "CError.h"
 #import "CSelf.h"
+#import "CUtils.h"
 
 @implementation CContactService (Core)
 
@@ -52,11 +53,37 @@
     }
 
     if (self.myself) {
-        
+        [self.myself updateWithJSON:payload];
     }
     else {
         self.myself = [[CSelf alloc] initWithJSON:payload];
     }
+    
+    __block BOOL gotAppendix = FALSE;
+    __block BOOL gotGroups = FALSE;
+    __block BOOL gotBlockList = FALSE;
+    __block BOOL gotTopList = FALSE;
+    
+    [self getAppendixWithContact:self.myself handleSuccess:^(CContact * contact, CContactAppendix * appendix) {
+        gotAppendix = TRUE;
+        if (gotGroups && gotBlockList && gotTopList) {
+            [self fireSignIn];
+        }
+    } handleFailure:^(CError * error) {
+        // TODO
+    }];
+    
+    UInt64 now = [CUtils currentTimeMillis];
+    [self listGroups:(now - self.defaultRetrospect) ending:now handler:^(NSArray * list) {
+            gotGroups = TRUE;
+            if (gotAppendix && gotBlockList && gotTopList) {
+                [self fireSignIn];
+            }
+    }];
+}
+
+- (void)fireSignIn {
+    
 }
 
 @end

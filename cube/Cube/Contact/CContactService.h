@@ -43,8 +43,11 @@ typedef void (^sign_block_t)(CSelf *);
  */
 @interface CContactService : CModule
 
-/*! @brief 当前有效的在线联系人。 */
+/*! 当前有效的在线联系人。 */
 @property (nonatomic, strong) CSelf * myself;
+
+/*! 默认回溯时长，默认值：30个自然天。 */
+@property (nonatomic, assign) UInt64 defaultRetrospect;
 
 /*!
  * @brief 初始化。

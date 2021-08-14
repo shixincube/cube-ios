@@ -46,8 +46,14 @@
  */
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name;
 
-
+/*!
+ * @brief 初始化。
+ * @param json 指定 JSON 格式的数据 。
+ * @return 返回实例。
+ */
 - (instancetype)initWithJSON:(NSDictionary *)json;
+
+- (void)updateWithJSON:(NSDictionary *)json;
 
 @end
 

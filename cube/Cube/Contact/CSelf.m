@@ -53,6 +53,10 @@
     return self;
 }
 
+- (void)updateWithJSON:(NSDictionary *)json {
+    
+}
+
 - (NSMutableDictionary *)toJSON {
     NSMutableDictionary * json = [super toJSON];
     [json setValue:[_device toJSON] forKey:@"device"];
