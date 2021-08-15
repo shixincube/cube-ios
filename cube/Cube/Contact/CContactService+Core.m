@@ -67,23 +67,35 @@
     [self getAppendixWithContact:self.myself handleSuccess:^(CContact * contact, CContactAppendix * appendix) {
         gotAppendix = TRUE;
         if (gotGroups && gotBlockList && gotTopList) {
-            [self fireSignIn];
+            [self fireSignInCompleted];
         }
     } handleFailure:^(CError * error) {
-        // TODO
+        if (gotGroups && gotBlockList && gotTopList) {
+            [self fireSignInCompleted];
+        }
     }];
     
     UInt64 now = [CUtils currentTimeMillis];
     [self listGroups:(now - self.defaultRetrospect) ending:now handler:^(NSArray * list) {
-            gotGroups = TRUE;
-            if (gotAppendix && gotBlockList && gotTopList) {
-                [self fireSignIn];
-            }
+        gotGroups = TRUE;
+        if (gotAppendix && gotBlockList && gotTopList) {
+            [self fireSignInCompleted];
+        }
     }];
-}
-
-- (void)fireSignIn {
     
+    [self listBlockList:^(NSArray * list) {
+        gotBlockList = TRUE;
+        if (gotAppendix && gotGroups && gotTopList) {
+            [self fireSignInCompleted];
+        }
+    }];
+    
+    [self listTopList:^(NSArray * list) {
+        gotTopList = TRUE;
+        if (gotAppendix && gotBlockList && gotGroups) {
+            [self fireSignInCompleted];
+        }
+    }];
 }
 
 @end

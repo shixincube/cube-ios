@@ -28,6 +28,7 @@
 #import "CContactPipelineListener.h"
 #import "CContactStorage.h"
 #import "CContactAction.h"
+#import "CContactEvent.h"
 #import "CContactServiceState.h"
 #import "CError.h"
 #import "CKernel.h"
@@ -79,6 +80,8 @@
     
     // 关闭存储
     [_storage close];
+    
+    _selfReady = FALSE;
 }
 
 - (void)suspend {
@@ -199,6 +202,13 @@
                 ^(void) {
                     [self waitReady:handler];
                 });
+}
+
+- (void)fireSignInCompleted {
+    _selfReady = TRUE;
+
+    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSignIn data:self.myself];
+    [self notifyObservers:event];
 }
 
 @end

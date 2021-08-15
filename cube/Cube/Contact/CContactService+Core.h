@@ -46,11 +46,6 @@
  */
 - (void)triggerSignIn:(int)code payload:(NSDictionary *)payload;
 
-/*!
- * @brief 激活签入。
- */
-- (void)fireSignIn;
-
 @end
 
 #endif /* CContactService_Core_h */

@@ -44,17 +44,37 @@
         _device = [[CDevice alloc] init];
 
         [self addDevice:_device];
-        
-        // TODO devices
-        
-        // TODO context
+
+        if ([json objectForKey:@"devices"]) {
+            NSArray * devices = [json objectForKey:@"devices"];
+            for (NSDictionary * devJson in devices) {
+                CDevice * device = [[CDevice alloc] initWithJSON:devJson];
+                [self addDevice:device];
+            }
+        }
+
+        if ([json objectForKey:@"context"]) {
+            self.context = [json valueForKey:@"context"];
+        }
     }
 
     return self;
 }
 
 - (void)updateWithJSON:(NSDictionary *)json {
+    self.name = [[json valueForKey:@"name"] stringValue];
+
+    if ([json objectForKey:@"context"]) {
+        self.context = [json valueForKey:@"context"];
+    }
     
+    if ([json objectForKey:@"devices"]) {
+        NSArray * devices = [json objectForKey:@"devices"];
+        for (NSDictionary * devJson in devices) {
+            CDevice * device = [[CDevice alloc] initWithJSON:devJson];
+            [self addDevice:device];
+        }
+    }
 }
 
 - (NSMutableDictionary *)toJSON {

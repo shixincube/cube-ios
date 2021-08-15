@@ -95,6 +95,11 @@ typedef void (^sign_block_t)(CSelf *);
  */
 - (void)listGroups:(UInt64)beginning ending:(UInt64)ending handler:(void(^)(NSArray *))handler;
 
+/*!
+ * @private
+ */
+- (void)fireSignInCompleted;
+
 @end
 
 #endif /* CContactService_h */
