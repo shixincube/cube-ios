@@ -68,6 +68,12 @@
  */
 - (instancetype)initWithId:(UInt64)identity timestamp:(UInt64)timestamp;
 
+/*!
+ * @brief 获取实体 ID 。
+ * @return 返回实体 ID 。
+ */
+- (UInt64)getId;
+
 @end
 
 #endif /* CEntity_h */

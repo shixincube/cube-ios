@@ -63,6 +63,10 @@
     return self;
 }
 
+- (UInt64)getId {
+    return self.identity;
+}
+
 - (NSMutableDictionary *)toJSON {
     return [[NSMutableDictionary alloc] init];
 }

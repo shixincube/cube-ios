@@ -71,6 +71,8 @@ typedef void (^sign_block_t)(CSelf *);
  */
 - (void)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(sign_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
 
+- (BOOL)signOut:(sign_block_t)handle;
+
 /*!
  * @brief 获取联系人的附录。
  * @param contact 指定联系人。

@@ -142,6 +142,34 @@
     [self signIn:mySelf handleSuccess:handleSuccess handleFailure:handleFailure];
 }
 
+- (BOOL)signOut:(sign_block_t)handle {
+    if (!_selfReady) {
+        return FALSE;
+    }
+
+    if (![self.pipeline isReady]) {
+        return FALSE;
+    }
+
+    NSMutableDictionary * data = [self.myself toJSON];
+    CPacket * signOutPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_SIGNOUT andData:data];
+
+    [self.pipeline send:CUBE_MODULE_CONTACT withPacket:signOutPacket handleResponse:^(CPacket * packet) {
+        if (packet.state.code != CSC_Ok) {
+            return;
+        }
+
+        int stateCode = [packet extractStateCode];
+        if (stateCode != CSC_Contact_Ok) {
+            return;
+        }
+
+        handle(self.myself);
+    }];
+
+    return TRUE;
+}
+
 - (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact *, CContactAppendix *))handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
     NSNumber * contactId = [NSNumber numberWithUnsignedLongLong:contact.identity];
     NSDictionary * data = [NSDictionary dictionaryWithObjectsAndKeys:contactId, @"contactId", nil];
