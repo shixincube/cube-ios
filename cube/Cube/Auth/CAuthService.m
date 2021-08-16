@@ -86,7 +86,7 @@ static NSString * sCubeDomain = @"shixincube.com";
                         // 关闭存储器
                         [storage close];
 
-                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CUBE_AUTH_SC_TIMEOUT]);
+                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CSC_Auth_Timeout]);
                         return;
                     }
 
@@ -115,14 +115,14 @@ static NSString * sCubeDomain = @"shixincube.com";
                         // 关闭存储器
                         [storage close];
 
-                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CUBE_AUTH_SC_FAILURE]);
+                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CSC_Auth_Failure]);
                     });
                 }];
             }
         }
         else {
             // 开启存储错误
-            @throw [CError errorWithModule:CUBE_MODULE_AUTH code:CUBE_AUTH_SC_STORAGE];
+            @throw [CError errorWithModule:CUBE_MODULE_AUTH code:CSC_Auth_Storage];
         }
     }];
 }
@@ -140,7 +140,7 @@ static NSString * sCubeDomain = @"shixincube.com";
             }
 
             int state = [packet extractStateCode];
-            if (state == CUBE_AUTH_SC_OK) {
+            if (state == CSC_Auth_Ok) {
                 // 创建令牌数据
                 CAuthToken * authToken = [[CAuthToken alloc] initWithJSON:[packet extractData]];
                 resolver(authToken);
@@ -149,6 +149,28 @@ static NSString * sCubeDomain = @"shixincube.com";
                 resolver([CError errorWithModule:CUBE_MODULE_AUTH code:state]);
             }
         }];
+    }];
+}
+
+- (AnyPromise *)allocToken:(UInt64)contactId {
+    return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolver) {
+        if (self.token.cid != contactId) {
+            // 修改令牌 CID
+            self.token.cid = contactId;
+
+            CAuthStorage * storage = [[CAuthStorage alloc] init];
+            if ([storage open]) {
+                // 更新令牌
+                [storage updateToken:self.token];
+
+                [storage close];
+            }
+            else {
+                @throw [CError errorWithModule:CUBE_MODULE_AUTH code:CSC_Auth_Storage];
+            }
+        }
+
+        resolver(self.token);
     }];
 }
 

@@ -33,23 +33,22 @@
 #define CUBE_AUTH_APPLY_TOKEN @"applyToken"
 
 /*!
- * @brief 状态正常状态码。
+ * @brief 授权服务状态枚举。
  */
-#define CUBE_AUTH_SC_OK 0
-
-/*!
- * @brief 状态出现异常状态码。
- */
-#define CUBE_AUTH_SC_FAILURE 9
-
-/*!
- * @brief 存储故障状态码。
- */
-#define CUBE_AUTH_SC_STORAGE 20
-
-/*!
- * @brief 本地任务超时状态码。
- */
-#define CUBE_AUTH_SC_TIMEOUT 21
+typedef enum _CAuthServiceState {
+    
+    /*! 状态正常状态码。 */
+    CSC_Auth_Ok = 0,
+    
+    /*! 状态出现异常状态码。 */
+    CSC_Auth_Failure = 9,
+    
+    /*! 存储故障状态码。 */
+    CSC_Auth_Storage = 20,
+    
+    /*! 本地任务超时状态码。 */
+    CSC_Auth_Timeout = 21
+    
+} CAuthServiceState;
 
 #endif /* CAuthAction_h */

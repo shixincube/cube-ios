@@ -30,7 +30,7 @@
     
     BOOL _opening;
     
-    BOOL _opened;
+    BOOL _enabled;
 }
 
 @property (nonatomic, strong) CellNucleus * nucleus;
@@ -49,7 +49,7 @@
 - (instancetype)init {
     if (self = [super initWithName:@"Cell"]) {
         _opening = FALSE;
-        _opened = FALSE;
+        _enabled = FALSE;
 
         _nucleus = [[CellNucleus alloc] init];
         _nucleus.talkService.delegate = self;
@@ -73,12 +73,14 @@
     }
 
     _opening = TRUE;
+    
+    _enabled = TRUE;
 
     [_nucleus.talkService call:self.address withPort:(int)self.port];
 }
 
 - (void)close {
-    _opened = FALSE;
+    _enabled = FALSE;
 
     [_nucleus.talkService hangup:self.address withPort:(int)self.port withNow:TRUE];
 }
@@ -150,7 +152,6 @@
 
 - (void)onContacted:(CellSpeaker *)speaker {
     _opening = FALSE;
-    _opened = TRUE;
 
     NSMutableArray<id<CPipelineListener>> * listeners = [self getAllListeners];
     for (id<CPipelineListener> listener in listeners) {
@@ -179,7 +180,7 @@
         }
     }
 
-    if (_opened) {
+    if (_enabled) {
         NSLog(@"Retry connect : %@:%d", self.address, (int)self.port);
         
         // 尝试重连

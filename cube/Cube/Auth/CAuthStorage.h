@@ -56,6 +56,13 @@
  */
 - (void)saveToken:(CAuthToken *)authToken;
 
+/*!
+ * @brief 更新令牌。
+ * @param authToken 指定令牌。
+ * @return 更新成功返回 @c TRUE ，否则返回 @c FALSE 。
+ */
+- (BOOL)updateToken:(CAuthToken *)authToken;
+
 @end
 
 #endif /* CAuthStorage_h */

@@ -26,6 +26,7 @@
 
 #import "CAuthStorage.h"
 #import <FMDB/FMDatabase.h>
+#import "CUtils.h"
 
 @interface CAuthStorage () {
     FMDatabase * db;
@@ -90,7 +91,7 @@
 }
 
 - (void)saveToken:(CAuthToken *)authToken {
-    NSString * sql = @"INSERT INTO `token` (domain,app_key,cid,data) VALUES (?,?,?,?)";
+    NSString * sql = @"INSERT INTO `token` (domain,app_key,cid,code,data) VALUES (?,?,?,?,?)";
 
     NSError * error = nil;
     NSData * jsonData = [NSJSONSerialization dataWithJSONObject:[authToken toJSON] options:0 error:&error];
@@ -98,7 +99,7 @@
 
     BOOL success = [db executeUpdate:sql, authToken.domain, authToken.appKey,
                     [NSNumber numberWithUnsignedLongLong:authToken.cid],
-                    json];
+                    authToken.code, json];
     if (success) {
         NSLog(@"CAuthStorage#saveToken : Save token for %@", authToken.domain);
     }
@@ -107,10 +108,18 @@
     }
 }
 
+- (BOOL)updateToken:(CAuthToken *)authToken {
+    NSString * sql = @"UPDATE `token` SET `cid`=?, `data`=? WHERE `code`=?";
+
+    NSString * jsonString = [CUtils toStringWithJSON: [authToken toJSON]];
+    return [db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:authToken.cid],
+        jsonString, authToken.code];
+}
+
 #pragma mark - Private
 
 - (void)execSelfChecking {
-    NSString * sql = @"CREATE TABLE IF NOT EXISTS `token` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `domain` TEXT, `app_key` TEXT, `cid` BIGINT DEFAULT 0, `data` TEXT)";
+    NSString * sql = @"CREATE TABLE IF NOT EXISTS `token` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `domain` TEXT, `app_key` TEXT, `cid` BIGINT DEFAULT 0, `code` TEXT, `data` TEXT)";
 
     if ([db executeUpdate:sql]) {
         NSLog(@"CAuthStorage#execSelfChecking : `token` table OK");

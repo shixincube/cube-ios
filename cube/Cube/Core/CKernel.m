@@ -25,6 +25,7 @@
  */
 
 #import "CKernel.h"
+#import <PromiseKit/AnyPromise.h>
 #import "../Pipeline/CCellPipeline.h"
 #import "../Auth/CAuthService.h"
 
@@ -169,9 +170,13 @@
     return ([_modules objectForKey:moduleName]) ? TRUE : FALSE;
 }
 
-- (void)activeToken:(UInt64)contactId handler:(void (^)(CAuthToken *))handler {
-    // TODO
-    handler(self.authToken);
+- (void)activeToken:(UInt64)contactId handler:(void (^)(CAuthToken * authToken))handler {
+    CAuthService * authService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
+    [authService allocToken:contactId].then(^(id token) {
+        handler((CAuthToken *) token);
+    }).catch(^(NSError *error) {
+        handler(nil);
+    });
 }
 
 #pragma mark - Private
@@ -192,8 +197,8 @@
         return;
     }
 
-    CAuthService * atuhService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
-    [atuhService check:config.domain appKey:config.appKey address:config.address].then(^(id token) {
+    CAuthService * authService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
+    [authService check:config.domain appKey:config.appKey address:config.address].then(^(id token) {
         if ([token isKindOfClass:[CError class]]) {
             handler((CError *) token, nil);
         }

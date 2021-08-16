@@ -65,6 +65,13 @@
 - (AnyPromise *)applyToken:(NSString *)domain appKey:(NSString *)appKey;
 
 /*!
+ * @brief 将当前令牌分配给指定的联系人。
+ * @param contactId 指定联系人 ID 。
+ * @return 返回 Promise 异步执行实例。
+ */
+- (AnyPromise *)allocToken:(UInt64)contactId;
+
+/*!
  * @brief 获取当前配置的域。
  */
 + (NSString *)domain;
