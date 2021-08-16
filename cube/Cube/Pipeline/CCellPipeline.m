@@ -29,6 +29,8 @@
 @interface CCellPipeline () {
     
     BOOL _opening;
+    
+    BOOL _opened;
 }
 
 @property (nonatomic, strong) CellNucleus * nucleus;
@@ -47,6 +49,7 @@
 - (instancetype)init {
     if (self = [super initWithName:@"Cell"]) {
         _opening = FALSE;
+        _opened = FALSE;
 
         _nucleus = [[CellNucleus alloc] init];
         _nucleus.talkService.delegate = self;
@@ -75,6 +78,8 @@
 }
 
 - (void)close {
+    _opened = FALSE;
+
     [_nucleus.talkService hangup:self.address withPort:(int)self.port withNow:TRUE];
 }
 
@@ -145,6 +150,7 @@
 
 - (void)onContacted:(CellSpeaker *)speaker {
     _opening = FALSE;
+    _opened = TRUE;
 
     NSMutableArray<id<CPipelineListener>> * listeners = [self getAllListeners];
     for (id<CPipelineListener> listener in listeners) {
@@ -171,6 +177,20 @@
         if ([listener respondsToSelector:@selector(faultOccurred:code:desc:)]) {
             [listener faultOccurred:self code:error.errorCode desc:error.desc];
         }
+    }
+
+    if (_opened) {
+        NSLog(@"Retry connect : %@:%d", self.address, (int)self.port);
+        
+        // 尝试重连
+        [_nucleus.talkService hangup:self.address withPort:(int)self.port withNow:TRUE];
+
+        // 3 秒后重连
+        dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, 3000 * NSEC_PER_MSEC);
+        dispatch_after(delayInNanoSeconds,
+            dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                [self->_nucleus.talkService call:self.address withPort:(int)self.port];
+        });
     }
 }
 

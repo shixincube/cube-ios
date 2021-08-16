@@ -96,7 +96,9 @@
     NSData * jsonData = [NSJSONSerialization dataWithJSONObject:[authToken toJSON] options:0 error:&error];
     NSString * json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 
-    BOOL success = [db executeUpdate:sql, authToken.domain, authToken.appKey, authToken.cid, json];
+    BOOL success = [db executeUpdate:sql, authToken.domain, authToken.appKey,
+                    [NSNumber numberWithUnsignedLongLong:authToken.cid],
+                    json];
     if (success) {
         NSLog(@"CAuthStorage#saveToken : Save token for %@", authToken.domain);
     }

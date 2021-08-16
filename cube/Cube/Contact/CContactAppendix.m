@@ -66,6 +66,9 @@
 
 - (NSMutableDictionary *)toJSON {
     NSMutableDictionary * json = [[NSMutableDictionary alloc] init];
+
+    [json setValue:[_owner toCompactJSON] forKey:@"owner"];
+
     if ([self hasRemarkName]) {
         [json setValue:_remarkName forKey:@"remarkName"];
     }

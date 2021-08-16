@@ -62,7 +62,7 @@
 }
 
 - (void)updateWithJSON:(NSDictionary *)json {
-    self.name = [[json valueForKey:@"name"] stringValue];
+    self.name = [json valueForKey:@"name"];
 
     if ([json objectForKey:@"context"]) {
         self.context = [json valueForKey:@"context"];

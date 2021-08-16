@@ -106,7 +106,7 @@
         sql = [NSString stringWithFormat:@"SELECT * FROM `appendix` WHERE `id`=%lld", contactId];
         FMResultSet * appendixResult = [_db executeQuery:sql];
         if ([appendixResult next]) {
-            NSString * appendixString = [appendixResult stringForColumn:@"appendix"];
+            NSString * appendixString = [appendixResult stringForColumn:@"data"];
             NSDictionary * json = [CUtils toJSONWithString:appendixString];
 
             // 实例化附录
@@ -136,15 +136,16 @@
             contextString = @"";
         }
         // 执行 SQL
-        ret = [_db executeUpdate:sql, contact.name, contextString, contact.identity];
+        ret = [_db executeUpdate:sql, contact.name, contextString,
+               [NSNumber numberWithUnsignedLongLong:contact.identity]];
 
         if (ret) {
             // 更新附录
-            sql = @"UPDATE `appendix` SET `appendix`=? WHERE `id`=?";
+            sql = @"UPDATE `appendix` SET `data`=? WHERE `id`=?";
 
             NSString * appendixString = [CUtils toStringWithJSON:[contact.appendix toJSON]];
 
-            ret = [_db executeUpdate:sql, appendixString, contact.identity];
+            ret = [_db executeUpdate:sql, appendixString, [NSNumber numberWithUnsignedLongLong:contact.identity]];
         }
     }
     else {
@@ -154,13 +155,14 @@
         NSString * contextString = contact.context ?
                 [CUtils toStringWithJSON:contact.context] : @"";
         // 执行 SQL
-        ret = [_db executeUpdate:sql, contact.identity, contact.name, contextString];
+        ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:contact.identity],
+               contact.name, contextString];
         
         if (ret) {
             // 插入附录
-            sql = @"INSERT INTO `appendix`(id,appendix) VALUES (?,?)";
+            sql = @"INSERT INTO `appendix`(id,data) VALUES (?,?)";
             
-            ret = [_db executeUpdate:sql, contact.identity,
+            ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:contact.identity],
                    [CUtils toStringWithJSON:[contact.appendix toJSON]]];
         }
     }
@@ -174,18 +176,21 @@
     FMResultSet * result = [_db executeQuery:sql];
     if ([result next]) {
         // 有数据，更新
-        sql = @"UPDATE `appendix` SET `appendix`=? WHERE `id`=?";
+        sql = @"UPDATE `appendix` SET `data`=? WHERE `id`=?";
         
         NSString * appendixString = [CUtils toStringWithJSON:[appendix toJSON]];
 
-        ret = [_db executeUpdate:sql, appendixString, appendix.owner.identity];
+        ret = [_db executeUpdate:sql, appendixString,
+               [NSNumber numberWithUnsignedLongLong:appendix.owner.identity]];
     }
     else {
         // 无数据，插入
-        sql = @"INSERT INTO `appendix`(id,appendix) VALUES (?,?)";
+        sql = @"INSERT INTO `appendix`(id,data) VALUES (?,?)";
 
-        ret = [_db executeUpdate:sql, appendix.owner.identity,
-               [CUtils toStringWithJSON:[appendix toJSON]]];
+        NSString * appendixString = [CUtils toStringWithJSON:[appendix toJSON]];
+        
+        ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:appendix.owner.identity],
+               appendixString];
     }
     
     return ret;
@@ -216,7 +221,7 @@
     }
     
     // 附录表
-    sql = @"CREATE TABLE IF NOT EXISTS `appendix` (`id` BIGINT PRIMARY KEY, `appendix` TEXT)";
+    sql = @"CREATE TABLE IF NOT EXISTS `appendix` (`id` BIGINT PRIMARY KEY, `data` TEXT)";
     
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `appendix` table OK");

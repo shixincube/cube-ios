@@ -43,9 +43,9 @@
     [self.kernel shutdown];
 }
 
-- (void)testStartup {
-    NSLog(@"testStartup");
-    
+- (void)testSignIn {
+    NSLog(@"testSignIn");
+
     XCTestExpectation* expect = [self expectationWithDescription:@"Startup"];
 
     CKernelConfig * config = [[CKernelConfig alloc] initWithAddress:self.address
@@ -62,16 +62,13 @@
     [self waitForExpectationsWithTimeout:5.0f handler:^(NSError * error) {
         NSLog(@"Ready : %@", [self.kernel isReady] ? @"YES" : @"NO");
     }];
-}
 
-- (void)testSignIn {
-    NSLog(@"testSignIn");
-    
-    NSAssert([self.kernel isReady], @"Kernel is NOT ready");
-    
     CContactService * service = (CContactService *) [self.kernel getModule:CUBE_MODULE_CONTACT];
     
-    XCTestExpectation* expect = [self expectationWithDescription:@"SignIn"];
+    // 启动
+    [service start];
+
+    expect = [self expectationWithDescription:@"SignIn"];
 
     __block CError * cbueError = nil;
 
@@ -81,8 +78,8 @@
         cbueError = error;
         [expect fulfill];
     }];
-    
-    [self waitForExpectationsWithTimeout:10.0f handler:^(NSError * error) {
+
+    [self waitForExpectationsWithTimeout:5.0f handler:^(NSError * error) {
         if (cbueError) {
             NSLog(@"Error : %d", (int)cbueError.code);
         }
