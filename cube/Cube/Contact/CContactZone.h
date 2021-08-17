@@ -27,9 +27,24 @@
 #ifndef CContactZone_h
 #define CContactZone_h
 
-#import "CEntity.h"
+#import "CJSONable.h"
 
-@interface CContactZone : CEntity
+/*!
+ * @brief 联系人分区数据。
+ */
+@interface CContactZone : CJSONable
+
+@property (nonatomic, assign, readonly) UInt64 ownerId;
+
+@property (nonatomic, strong, readonly) NSString * name;
+
+@property (nonatomic, assign, readonly) BOOL pending;
+
+@property (nonatomic, strong, readonly) NSArray<__kindof NSNumber *> * contacts;
+
+- (instancetype)initWithJSON:(NSDictionary *)json;
+
+- (NSString *)getPostscript:(UInt64)contactId;
 
 @end
 

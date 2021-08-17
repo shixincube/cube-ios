@@ -205,13 +205,14 @@
 
     // 从数据库读取
     CContact * contact = [_storage readContact:contactId];
-
-    // 判断是否过期
-    UInt64 now = [CUtils currentTimeMillis];
-    if (now < contact.expiry) {
-        // 没有过期
-        handleSuccess(contact);
-        return;
+    if (contact) {
+        // 判断是否过期
+        UInt64 now = [CUtils currentTimeMillis];
+        if (now < contact.expiry) {
+            // 没有过期
+            handleSuccess(contact);
+            return;
+        }
     }
 
     NSMutableDictionary * packetData = [[NSMutableDictionary alloc] init];

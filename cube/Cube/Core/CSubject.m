@@ -40,6 +40,7 @@
     if (self = [super init]) {
         self.observers = nil;
         self.namedObservers = nil;
+        self.inMainQueue = TRUE;
     }
 
     return self;
@@ -98,18 +99,38 @@
 
 - (void)notifyObservers:(CObservableEvent *)event {
     event.subject = self;
-    
-    if (nil != self.observers) {
-        for (CObserver * obs in self.observers) {
-            [obs update:event];
-        }
-    }
 
-    if (nil != self.namedObservers) {
-        NSMutableArray * list = [self.namedObservers objectForKey:event.name];
-        if (list) {
-            for (CObserver * obs in list) {
+    if (self.inMainQueue) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (nil != self.observers) {
+                for (CObserver * obs in self.observers) {
+                    [obs update:event];
+                }
+            }
+
+            if (nil != self.namedObservers) {
+                NSMutableArray * list = [self.namedObservers objectForKey:event.name];
+                if (list) {
+                    for (CObserver * obs in list) {
+                        [obs update:event];
+                    }
+                }
+            }
+        });
+    }
+    else {
+        if (nil != self.observers) {
+            for (CObserver * obs in self.observers) {
                 [obs update:event];
+            }
+        }
+
+        if (nil != self.namedObservers) {
+            NSMutableArray * list = [self.namedObservers objectForKey:event.name];
+            if (list) {
+                for (CObserver * obs in list) {
+                    [obs update:event];
+                }
             }
         }
     }

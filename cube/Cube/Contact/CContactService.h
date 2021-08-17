@@ -30,6 +30,7 @@
 #import "CModule.h"
 #import "CSelf.h"
 #import "CGroup.h"
+#import "CContactZone.h"
 
 #ifndef CUBE_MODULE_CONTACT
 /*! @brief 模块名。 */
@@ -41,6 +42,8 @@ typedef void (^sign_block_t)(CSelf * myself);
 typedef void (^contact_block_t)(CContact * contact);
 
 typedef void (^group_block_t)(CGroup * group);
+
+typedef void (^contact_zone_block_t)(CContactZone * contactZone);
 
 /*!
  * @brief 联系人模块。
@@ -94,6 +97,8 @@ typedef void (^group_block_t)(CGroup * group);
  * @param handleFailure 获取数据时故障回调该函数。
  */
 - (void)getContact:(UInt64)contactId handleSuccess:(contact_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
+
+//- (void)getContactZone:(NSString *)zoneName handleSuccess
 
 /*!
  * @brief 获取联系人的附录。

@@ -28,6 +28,18 @@
 
 @implementation CContactZone
 
+- (instancetype)initWithJSON:(NSDictionary *)json {
+    if (self = [super init]) {
+        _ownerId = [[json valueForKey:@"owner"] unsignedLongLongValue];
+        _name = [json valueForKey:@"name"];
+        _pending = [[json valueForKey:@"pending"] boolValue];
+    }
 
+    return self;
+}
+
+- (NSString *)getPostscript:(UInt64)contactId {
+    return nil;
+}
 
 @end
