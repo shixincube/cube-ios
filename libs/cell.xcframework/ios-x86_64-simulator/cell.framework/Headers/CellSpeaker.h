@@ -176,4 +176,9 @@ SOFTWARE.
  */
 - (void)setAckTimeout:(NSTimeInterval)timeout;
 
+/*!
+ * @brief 是否已连接。
+ */
+- (BOOL)isConnected;
+
 @end
