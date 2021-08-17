@@ -34,7 +34,7 @@
 @class CError;
 
 /*! 回调错误事件的 Block 定义。 */
-typedef void (^cube_failure_block_t)(CError * _Nonnull);
+typedef void (^cube_failure_block_t)(CError * _Nonnull error);
 
 /*!
  * @brief 内核模块。

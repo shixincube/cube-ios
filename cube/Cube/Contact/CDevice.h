@@ -64,6 +64,13 @@
  */
 - (BOOL)isEqual:(id)object;
 
+/*!
+ * @brief 从 JSON 数据格式创建设备对象实例。
+ * @param json 指定设备的 JSON 数据。
+ * @return 返回 @c CDevice 实例。
+ */
++ (CDevice *)deviceWithJSON:(NSDictionary *)json;
+
 @end
 
 #endif /* CDevice_h */

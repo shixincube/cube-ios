@@ -96,8 +96,10 @@
         if (contextString && contextString.length > 1) {
             contextData = [CUtils toJSONWithString:contextString];
         }
+        
+        UInt64 timestamp = [result unsignedLongLongIntForColumn:@"timestamp"];
 
-        contact = [[CContact alloc] initWithId:contactId name:name domain:_domain];
+        contact = [[CContact alloc] initWithId:contactId name:name domain:_domain timestamp:timestamp];
         if (contextData) {
             contact.context = contextData;
         }
@@ -126,7 +128,7 @@
     FMResultSet * result = [_db executeQuery:sql];
     if ([result next]) {
         // 已经有数据进行更新
-        sql = @"UPDATE `contact` SET `name`=?, `context`=? WHERE `id`=?";
+        sql = @"UPDATE `contact` SET `name`=?, `context`=?, `timestamp`=? WHERE `id`=?";
 
         NSString * contextString = nil;
         if (contact.context) {
@@ -137,9 +139,10 @@
         }
         // 执行 SQL
         ret = [_db executeUpdate:sql, contact.name, contextString,
+               [NSNumber numberWithUnsignedLongLong:contact.timestamp],
                [NSNumber numberWithUnsignedLongLong:contact.identity]];
 
-        if (ret) {
+        if (ret && contact.appendix) {
             // 更新附录
             sql = @"UPDATE `appendix` SET `data`=? WHERE `id`=?";
 
@@ -150,23 +153,23 @@
     }
     else {
         // 没有数据进行插入
-        sql = @"INSERT INTO `contact`(id,name,context) VALUES (?,?,?)";
-        
+        sql = @"INSERT INTO `contact`(id,name,context,timestamp) VALUES (?,?,?,?)";
+
         NSString * contextString = contact.context ?
                 [CUtils toStringWithJSON:contact.context] : @"";
         // 执行 SQL
         ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:contact.identity],
-               contact.name, contextString];
-        
-        if (ret) {
+               contact.name, contextString, [NSNumber numberWithUnsignedLongLong:contact.timestamp]];
+
+        if (ret && contact.appendix) {
             // 插入附录
             sql = @"INSERT INTO `appendix`(id,data) VALUES (?,?)";
-            
+
             ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:contact.identity],
                    [CUtils toStringWithJSON:[contact.appendix toJSON]]];
         }
     }
-    
+
     return ret;
 }
 
@@ -200,7 +203,7 @@
 
 - (void)execSelfChecking {
     // 联系人表
-    NSString * sql = @"CREATE TABLE IF NOT EXISTS `contact` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `id` BIGINT, `name` TEXT, `context` TEXT)";
+    NSString * sql = @"CREATE TABLE IF NOT EXISTS `contact` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `id` BIGINT, `name` TEXT, `context` TEXT, `timestamp` BIGINT)";
 
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `contact` table OK");

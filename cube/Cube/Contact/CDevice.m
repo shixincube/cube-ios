@@ -81,4 +81,8 @@
     return [self toJSON];
 }
 
++ (CDevice *)deviceWithJSON:(NSDictionary *)json {
+    return [[CDevice alloc] initWithJSON:json];
+}
+
 @end

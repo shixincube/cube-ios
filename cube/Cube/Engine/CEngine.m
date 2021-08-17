@@ -41,6 +41,7 @@
     if (self = [super init]) {
         _kernel = [[CKernel alloc] init];
         [_kernel installModule:[[CAuthService alloc] init]];
+        [_kernel installModule:[[CContactService alloc] init]];
     }
 
     return self;

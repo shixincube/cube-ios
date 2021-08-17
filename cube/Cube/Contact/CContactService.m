@@ -32,6 +32,7 @@
 #import "CContactServiceState.h"
 #import "CError.h"
 #import "CKernel.h"
+#import "CUtils.h"
 
 @interface CContactService () {
     
@@ -164,10 +165,86 @@
             return;
         }
 
+        self->_selfReady = FALSE;
+
         handle(self.myself);
     }];
 
     return TRUE;
+}
+
+- (void)comeback {
+    if ([self.pipeline isReady]) {
+        // 发送 comeback
+        if (self.myself) {
+            NSDictionary * data = [self.myself toJSON];
+            CPacket * requestPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_COMEBACK andData:data];
+            [self.pipeline send:CUBE_MODULE_CONTACT withPacket:requestPacket handleResponse:^(CPacket *packet) {
+                if (packet.state.code == CSC_Ok && [packet extractStateCode] == CSC_Contact_Ok) {
+                    NSLog(@"CContactService self comeback");
+                    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventComeback data:self.myself];
+                    [self notifyObservers:event];
+                }
+            }];
+        }
+    }
+}
+
+- (void)getContact:(UInt64)contactId handleSuccess:(contact_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
+    if (![self.pipeline isReady]) {
+        CContact * contact = [_storage readContact:contactId];
+        if (contact) {
+            handleSuccess(contact);
+        }
+        else {
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CSC_Contact_NotFindContact];
+            handleFailure(error);
+        }
+        return;
+    }
+
+    // 从数据库读取
+    CContact * contact = [_storage readContact:contactId];
+
+    // 判断是否过期
+    UInt64 now = [CUtils currentTimeMillis];
+    if (now < contact.expiry) {
+        // 没有过期
+        handleSuccess(contact);
+        return;
+    }
+
+    NSMutableDictionary * packetData = [[NSMutableDictionary alloc] init];
+    [packetData setValue:[NSNumber numberWithUnsignedLongLong:contactId] forKey:@"id"];
+    [packetData setValue:self.kernel.authToken.domain forKey:@"domain"];
+
+    CPacket * requestPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_GETCONTACT andData:packetData];
+    [self.pipeline send:CUBE_MODULE_CONTACT withPacket:requestPacket handleResponse:^(CPacket *packet) {
+        if (packet.state.code != CSC_Ok) {
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CSC_Contact_ServerError];
+            handleFailure(error);
+            return;
+        }
+
+        int stateCode = [packet extractStateCode];
+        if (stateCode != CSC_Contact_Ok) {
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:stateCode];
+            handleFailure(error);
+            return;
+        }
+
+        CContact * contact = [[CContact alloc] initWithJSON:[packet extractData] domain:self.kernel.authToken.domain];
+
+        // 写入数据库
+        [self->_storage writeContact:contact];
+
+        // 获取附录
+        [self getAppendixWithContact:contact handleSuccess:^(CContact * contact, CContactAppendix * appendix) {
+            handleSuccess(contact);
+        } handleFailure:^(CError * error) {
+            handleFailure(error);
+        }];
+    }];
 }
 
 - (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact *, CContactAppendix *))handleSuccess handleFailure:(cube_failure_block_t)handleFailure {

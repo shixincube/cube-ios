@@ -49,6 +49,9 @@ typedef enum _CContactServiceState {
 
     /*! 未签入联系人。 */
     CSC_Contact_NoSignIn = 12,
+    
+    /*! 未找到联系人。 */
+    CSC_Contact_NotFindContact = 14,
 
     /*! 未找到群组。 */
     CSC_Contact_NotFindGroup = 15,

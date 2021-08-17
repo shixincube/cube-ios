@@ -46,6 +46,11 @@
  */
 - (void)triggerSignIn:(int)code payload:(NSDictionary *)payload;
 
+/*!
+ * @brief 触发联系人签出。
+ */
+- (void)triggerSignOut;
+
 @end
 
 #endif /* CContactService_Core_h */

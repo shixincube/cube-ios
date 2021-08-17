@@ -36,7 +36,11 @@
 #define CUBE_MODULE_CONTACT @"Contact"
 #endif
 
-typedef void (^sign_block_t)(CSelf *);
+typedef void (^sign_block_t)(CSelf * myself);
+
+typedef void (^contact_block_t)(CContact * contact);
+
+typedef void (^group_block_t)(CGroup * group);
 
 /*!
  * @brief 联系人模块。
@@ -71,7 +75,25 @@ typedef void (^sign_block_t)(CSelf *);
  */
 - (void)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(sign_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
 
+/*!
+ * @brief 将当前设置的联系人签出。
+ * @param handle 指定签出操作处理回调。
+ * @return 是否执行了签出操作。
+ */
 - (BOOL)signOut:(sign_block_t)handle;
+
+/*!
+ * @brief 通过向服务发送状态信息验证自身连接状态。
+ */
+- (void)comeback;
+
+/*!
+ * @brief 获取指定 ID 的联系人信息。
+ * @param contactId 指定联系人 ID 。
+ * @param handleSuccess 成功获取到数据回调该函数。
+ * @param handleFailure 获取数据时故障回调该函数。
+ */
+- (void)getContact:(UInt64)contactId handleSuccess:(contact_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
 
 /*!
  * @brief 获取联系人的附录。
@@ -79,7 +101,7 @@ typedef void (^sign_block_t)(CSelf *);
  * @param handleSuccess 操作成功时回调。
  * @param handleFailure 操作故障时回调。
  */
-- (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact *, CContactAppendix *))handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
+- (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact * contact, CContactAppendix * appendix))handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
 
 /*!
  * @brief 获取群组的附录。
@@ -87,7 +109,7 @@ typedef void (^sign_block_t)(CSelf *);
  * @param handleSuccess 操作成功时回调。
  * @param handleFailure 操作故障时回调。
  */
-- (void)getAppendixWithGroup:(CGroup *)group handleSuccess:(void(^)(CGroup *, CGroupAppendix *))handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
+- (void)getAppendixWithGroup:(CGroup *)group handleSuccess:(void(^)(CGroup * contact, CGroupAppendix * appendix))handleSuccess handleFailure:(cube_failure_block_t)handleFailure;
 
 /*!
  * @brief 获取当前联系人所在的所有群。

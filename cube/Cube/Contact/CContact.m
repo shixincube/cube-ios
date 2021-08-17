@@ -36,6 +36,37 @@
     return self;
 }
 
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain timestamp:(UInt64)timestamp {
+    if (self = [super initWithId:identity name:name domain:domain timestamp:timestamp]) {
+        _devices = [[NSMutableArray alloc] initWithCapacity:2];
+    }
+
+    return self;
+}
+
+- (instancetype)initWithJSON:(NSDictionary *)json domain:(NSString *)domain {
+    if (self = [super initWithId:[[json valueForKey:@"id"] unsignedLongLongValue]
+                            name:[json valueForKey:@"name"]
+                          domain:domain]) {
+        _devices = [[NSMutableArray alloc] initWithCapacity:2];
+
+        if ([json objectForKey:@"devices"]) {
+            NSArray * list = [json valueForKey:@"devices"];
+            for (NSDictionary * devJson in list) {
+                CDevice * device = [CDevice deviceWithJSON:devJson];
+                [self addDevice:device];
+            }
+        }
+
+        if ([json objectForKey:@"context"]) {
+            NSDictionary * context = [json valueForKey:@"context"];
+            self.context = context;
+        }
+    }
+
+    return self;
+}
+
 - (NSString *)getPriorityName {
     if (self.appendix && [self.appendix hasRemarkName]) {
         return self.appendix.remarkName;

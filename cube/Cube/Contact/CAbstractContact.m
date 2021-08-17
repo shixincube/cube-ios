@@ -37,6 +37,15 @@
     return self;
 }
 
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain timestamp:(UInt64)timestamp {
+    if (self = [super initWithId:identity timestamp:timestamp]) {
+        self.name = name;
+        self.domain = domain;
+    }
+
+    return self;
+}
+
 - (NSMutableDictionary *)toJSON {
     NSMutableDictionary * json = [super toJSON];
     [json setValue:[NSNumber numberWithUnsignedLongLong:self.identity] forKey:@"id"];

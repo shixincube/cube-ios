@@ -53,6 +53,9 @@
     if ([packet.name isEqualToString:CUBE_CONTACT_SIGNIN]) {
         [_service triggerSignIn:[packet extractStateCode] payload:[packet extractData]];
     }
+    else if ([packet.name isEqualToString:CUBE_CONTACT_SIGNOUT]) {
+        [_service triggerSignOut];
+    }
 }
 
 - (void)didOpen:(CPipeline *)pipeline {

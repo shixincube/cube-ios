@@ -98,4 +98,9 @@
     }];
 }
 
+- (void)triggerSignOut {
+    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSignOut data:self.myself];
+    [self notifyObservers:event];
+}
+
 @end

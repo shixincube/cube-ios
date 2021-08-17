@@ -53,6 +53,24 @@
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain;
 
 /*!
+ * @brief 初始化联系人。
+ * @param identity 指定联系人 ID 。
+ * @param name 指定联系人名称。
+ * @param domain 指定联系人所在的域。
+ * @param timestamp 指定联系人的时间戳。
+ * @return 返回对象实例。
+ */
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain timestamp:(UInt64)timestamp;
+
+/*!
+ * @brief 初始化联系人。
+ * @param json 指定 JSON 结构的数据。
+ * @param domain 指定联系人所在的域。
+ * @return 返回对象实例。
+ */
+- (instancetype)initWithJSON:(NSDictionary *)json domain:(NSString *)domain;
+
+/*!
  * @brief 获取联系人优先显示的名称。
  * @return 返回联系人优先显示的名称。
  */

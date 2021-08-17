@@ -49,6 +49,16 @@
  */
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain;
 
+/*!
+ * @brief 初始化抽象联系人。
+ * @param identity 指定联系人 ID 。
+ * @param name 指定联系人名称。
+ * @param domain 指定联系人所在的域。
+ * @param timestamp 指定时间戳。
+ * @return 返回对象实例。
+ */
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain timestamp:(UInt64)timestamp;
+
 @end
 
 #endif /* CAbstractContact_h */

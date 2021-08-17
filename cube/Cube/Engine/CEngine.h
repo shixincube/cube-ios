@@ -32,6 +32,7 @@
 #import "../Core/CKernel.h"
 #import "../Core/CError.h"
 #import "../Auth/CAuthService.h"
+#import "../Contact/CContactService.h"
 
 @interface CEngine : NSObject
 

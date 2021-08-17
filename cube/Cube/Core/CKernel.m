@@ -28,6 +28,7 @@
 #import <PromiseKit/AnyPromise.h>
 #import "../Pipeline/CCellPipeline.h"
 #import "../Auth/CAuthService.h"
+#import "../Contact/CContactService.h"
 
 @implementation CKernelConfig
 
@@ -145,7 +146,16 @@
 }
 
 - (void)resume {
-    
+    if (_working) {
+        if ([self hasModule:CUBE_MODULE_CONTACT]) {
+            CContactService * contact = (CContactService *) [self getModule:CUBE_MODULE_CONTACT];
+            [contact comeback];
+        }
+
+        if (![_cellPipeline isReady]) {
+            [_cellPipeline open];
+        }
+    }
 }
 
 - (BOOL)isReady {
