@@ -31,7 +31,7 @@
 #import "CPacket.h"
 #import "CStateCode.h"
 
-#define MAX_WAITING_COUNT 3
+#define MAX_WAITING_COUNT 30
 
 typedef void (^wait_block_t)(void);
 
@@ -55,6 +55,21 @@ static NSString * sCubeDomain = @"shixincube.com";
     }
 
     return self;
+}
+
+- (CAuthToken *)checkLocalToken:(NSString *)domain appKey:(NSString *)appKey {
+    sCubeDomain = domain;
+
+    CAuthStorage * storage = [[CAuthStorage alloc] init];
+    if ([storage open]) {
+        CAuthToken * token = [storage loadTokenWithDomain:domain appKey:appKey];
+
+        [storage close];
+
+        return token;
+    }
+
+    return nil;
 }
 
 - (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address {
@@ -186,10 +201,9 @@ static NSString * sCubeDomain = @"shixincube.com";
         return;
     }
 
-    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, 1000 * NSEC_PER_MSEC);
+    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, 100 * NSEC_PER_MSEC);
     dispatch_after(delayInNanoSeconds,
-                dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-                ^(void) {
+                dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
                     [self waitPipelineReady:block];
                 });
 }

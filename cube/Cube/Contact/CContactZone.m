@@ -26,6 +26,13 @@
 
 #import "CContactZone.h"
 
+@interface CContactZone () {
+    NSMutableArray * _postscripts;
+}
+
+@end
+
+
 @implementation CContactZone
 
 - (instancetype)initWithJSON:(NSDictionary *)json {
@@ -33,6 +40,11 @@
         _ownerId = [[json valueForKey:@"owner"] unsignedLongLongValue];
         _name = [json valueForKey:@"name"];
         _pending = [[json valueForKey:@"pending"] boolValue];
+
+        _contacts = [[NSMutableArray alloc] init];
+        _postscripts = [[NSMutableArray alloc] init];
+
+        // TODO postscript
     }
 
     return self;

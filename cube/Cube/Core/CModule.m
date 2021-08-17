@@ -50,20 +50,16 @@
 }
 
 - (BOOL)start {
-    // subclass hook override.
-    
     if (_started) {
         return FALSE;
     }
-    
+
     _started = TRUE;
 
     return _started;
 }
 
 - (void)stop {
-    // subclass hook override.
-
     _started = FALSE;
 }
 

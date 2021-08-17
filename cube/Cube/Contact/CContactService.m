@@ -54,6 +54,7 @@
 
 - (instancetype)init {
     if (self = [super initWithName:CUBE_MODULE_CONTACT]) {
+        _myself = nil;
         _pipelineListener = [[CContactPipelineListener alloc] initWithService:self];
         _storage = [[CContactStorage alloc] initWithService:self];
         _selfReady = FALSE;
@@ -94,13 +95,41 @@
 }
 
 - (BOOL)isReady {
-    return _selfReady;
+    if (self.kernel.config.unconnected) {
+        return (nil != self.myself);
+    }
+    else {
+        return _selfReady;
+    }
 }
 
 - (void)signIn:(CSelf *)mySelf handleSuccess:(sign_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
+    // 检查是否已经启动模块
+    if (![self hasStarted]) {
+        [self start];
+    }
+
     // 开启存储
     [_storage open:mySelf.identity domain:mySelf.domain];
-    
+
+    // 是否允许未连接状态下签入
+    if (self.kernel.config.unconnected) {
+        CContact * myselfContact = [_storage readContact:mySelf.identity];
+
+        if (myselfContact) {
+            self.myself = mySelf;
+            self.myself.context = myselfContact.context;
+            self.myself.appendix = myselfContact.appendix;
+
+            handleSuccess(self.myself);
+
+            return;
+        }
+    }
+
+    // 设置 MySelf 实例
+    self.myself = mySelf;
+
     if (![self.pipeline isReady]) {
         handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CSC_Contact_NoNetwork]);
         return;
@@ -111,9 +140,6 @@
 
     [self.kernel activeToken:mySelf.identity handler:^(CAuthToken * token) {
         if (token) {
-            // 设置 MySelf 实例
-            self.myself = mySelf;
-
             // 打包数据
             NSMutableDictionary * data = [[NSMutableDictionary alloc] init];
             [data setValue:[mySelf toJSON] forKey:@"self"];
@@ -311,6 +337,9 @@
 }
 
 - (void)fireSignInCompleted {
+    // 写入数据到存储
+    [_storage writeContact:self.myself];
+
     _selfReady = TRUE;
 
     CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSignIn data:self.myself];

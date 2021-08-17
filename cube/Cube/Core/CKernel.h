@@ -67,7 +67,7 @@
 @property (nonatomic, assign) NSUInteger port;
 
 /*!
- * @brief 启动时不进行连接。
+ * @brief 启动时不等待连接。
  */
 @property (nonatomic, assign) BOOL unconnected;
 
@@ -97,10 +97,11 @@
  */
 @interface CKernel : NSObject
 
-/*!
- * @brief 有效的访问令牌。
- */
+/*! @brief 有效的访问令牌。 */
 @property (nonatomic, strong) CAuthToken * authToken;
+
+/*! @brief 配置。 */
+@property (nonatomic, strong, readonly) CKernelConfig * config;
 
 /*!
  * @brief 启动内核。
@@ -159,6 +160,9 @@
  */
 - (BOOL)hasModule:(NSString *)moduleName;
 
+/*!
+ * @brief 使用指定联系人 ID 绑定已生效的令牌。
+ */
 - (void)activeToken:(UInt64)contactId handler:(void(^)(CAuthToken *))handler;
 
 @end

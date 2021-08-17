@@ -57,6 +57,11 @@
 - (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address;
 
 /*!
+ * @brief 加载令牌。
+ */
+- (CAuthToken *)checkLocalToken:(NSString *)domain appKey:(NSString *)appKey;
+
+/*!
  * @brief 从服务器申请令牌。
  * @param domain 令牌对应的域。
  * @param appKey 令牌指定的 App Key 串。

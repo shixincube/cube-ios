@@ -59,7 +59,16 @@
 }
 
 - (void)didOpen:(CPipeline *)pipeline {
-    
+    // 如果用户请求签入但是签入失败（在签入时可能没有网络），则在连接建立后尝试自动签入
+    if (_service.myself && ![_service isReady]) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self->_service signIn:self->_service.myself handleSuccess:^(CSelf *myself) {
+                // Nothing
+            } handleFailure:^(CError * _Nonnull error) {
+                // Nothing
+            }];
+        });
+    }
 }
 
 - (void)didClose:(CPipeline *)pipeline {

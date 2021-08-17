@@ -64,9 +64,6 @@
     }];
 
     CContactService * service = (CContactService *) [self.kernel getModule:CUBE_MODULE_CONTACT];
-    
-    // 启动
-    [service start];
 
     expect = [self expectationWithDescription:@"SignIn"];
 

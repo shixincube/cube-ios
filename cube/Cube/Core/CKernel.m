@@ -64,9 +64,6 @@
     /*! @brief 是否已处于工作状态。 */
     BOOL _working;
 
-    /*! @brief 配置。 */
-    CKernelConfig * _config;
-
     /*! @brief Cell 数据通道。 */
     CCellPipeline * _cellPipeline;
 
@@ -115,7 +112,7 @@
     // 启动管道
     [_cellPipeline setRemoteAddress:_config.address withPort:_config.port];
     [_cellPipeline open];
-
+ 
     [self checkAuth:config handler:^(CError * error, CAuthToken * token) {
         if (token) {
             // 设置访问令牌
@@ -208,6 +205,15 @@
     }
 
     CAuthService * authService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
+
+    if (config.unconnected) {
+        CAuthToken * token = [authService checkLocalToken:config.domain appKey:config.appKey];
+        if (token && [token isValid]) {
+            handler(nil, token);
+            return;
+        }
+    }
+
     [authService check:config.domain appKey:config.appKey address:config.address].then(^(id token) {
         if ([token isKindOfClass:[CError class]]) {
             handler((CError *) token, nil);
