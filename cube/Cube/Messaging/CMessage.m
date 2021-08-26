@@ -31,11 +31,16 @@
 @interface CMessage ()
 
 /*!
+ * @brief 消息持有者 ID 。
+ */
+@property (nonatomic, assign) UInt64 owner;
+
+/*!
  * @brief 消息作用域。
  * 0 - 无限制
  * 1 - 仅作用于发件人
  */
-@property (atomic, assign) NSInteger scope;
+@property (nonatomic, assign) NSInteger scope;
 
 @end
 
@@ -52,6 +57,9 @@
 @synthesize localTS = _localTS;
 @synthesize remoteTS = _remoteTS;
 @synthesize payload = _payload;
+@synthesize state = _state;
+@synthesize owner = _owner;
+@synthesize scope = _scope;
 
 - (instancetype)initWithPayload:(NSDictionary *)payload {
     if (self = [super init]) {
@@ -62,6 +70,28 @@
         _from = 0;
         _to = 0;
         _source = 0;
+        _owner = 0;
+        _scope = 0;
+    }
+
+    return self;
+}
+
+- (instancetype)initWithJSON:(NSDictionary *)json {
+    if (self = [super initWithId:[[json valueForKey:@"id"] unsignedLongLongValue]]) {
+        _domain = [json valueForKey:@"domain"];
+        _from = [[json valueForKey:@"from"] unsignedLongLongValue];
+        _to = [[json valueForKey:@"to"] unsignedLongLongValue];
+        _source = [[json valueForKey:@"source"] unsignedLongLongValue];
+        _owner = [[json valueForKey:@"owner"] unsignedLongLongValue];
+        _localTS = [[json valueForKey:@"lts"] unsignedLongLongValue];
+        _remoteTS = [[json valueForKey:@"rts"] unsignedLongLongValue];
+        _state = [[json valueForKey:@"state"] integerValue];
+        _scope = [[json valueForKey:@"scope"] integerValue];
+
+        if ([json objectForKey:@"payload"]) {
+            _payload = [json valueForKey:@"payload"];
+        }
     }
 
     return self;
@@ -71,7 +101,7 @@
     return (_source > 0);
 }
 
-- (void)setRoute:(UInt64)from  sender:(CContact *)sender
+- (void)bind:(UInt64)from  sender:(CContact *)sender
               to:(UInt64)to receiver:(CContact *)receiver
           source:(UInt64)source sourceGroup:(CGroup *)sourceGroup {
     _from = from;
@@ -82,15 +112,31 @@
     _sourceGroup = sourceGroup;
 }
 
+- (void)assign:(CContact *)sender receiver:(CContact *)receiver
+   sourceGroup:(CGroup *)sourceGroup {
+    _sender = sender;
+    _receiver = receiver;
+    _sourceGroup = sourceGroup;
+}
+
 - (NSMutableDictionary *)toJSON {
     NSMutableDictionary * json = [super toJSON];
-    
+    [json setValue:[NSNumber numberWithUnsignedLongLong:self.identity] forKey:@"id"];
+    [json setValue:_domain forKey:@"domain"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_from] forKey:@"from"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_to] forKey:@"to"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_source] forKey:@"source"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_owner] forKey:@"owner"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_localTS] forKey:@"lts"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_remoteTS] forKey:@"rts"];
+    [json setValue:[NSNumber numberWithInteger:_state] forKey:@"state"];
+    [json setValue:[NSNumber numberWithInteger:_scope] forKey:@"scope"];
+    [json setValue:_payload forKey:@"payload"];
     return json;
 }
 
 - (NSMutableDictionary *)toCompactJSON {
-    NSMutableDictionary * json = [super toCompactJSON];
-    return json;
+    return [self toJSON];
 }
 
 @end

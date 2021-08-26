@@ -81,6 +81,11 @@
 - (instancetype)initWithPayload:(NSDictionary *)payload;
 
 /*!
+ * @brief 使用 JSON 数据初始化消息实体。
+ */
+- (instancetype)initWithJSON:(NSDictionary *)json;
+
+/*!
  * @brief 是否来自群组。
  * @return 如果消息来自群组返回 @c TRUE ，否则返回 @c FALSE 。
  */
@@ -91,9 +96,16 @@
  * @brief 设置消息路由相关数据。
  * @private
  */
-- (void)setRoute:(UInt64)from sender:(CContact *)sender
+- (void)bind:(UInt64)from sender:(CContact *)sender
               to:(UInt64)to receiver:(CContact *)receiver
           source:(UInt64)source sourceGroup:(CGroup *)sourceGroup;
+
+/*!
+ * @brief 设置实体关联数据。
+ * @private
+ */
+- (void)assign:(CContact *)sender receiver:(CContact *)receiver
+   sourceGroup:(CGroup *)sourceGroup;
 
 @end
 

@@ -63,7 +63,7 @@
     NSString * dbName = [NSString stringWithFormat:@"CubeContact_%@_%lld.db", domain, contactId];
 
     // 创建数据库文件
-    NSString * docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)     objectAtIndex:0];
+    NSString * docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString * filename = [docPath stringByAppendingPathComponent:dbName];
     _db = [[FMDatabase alloc] initWithPath:filename];
 
