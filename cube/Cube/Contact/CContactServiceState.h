@@ -33,46 +33,46 @@
 typedef enum _CContactServiceState {
 
     /*! 成功。 */
-    CSC_Contact_Ok = 0,
+    CContactServiceStateOk = 0,
 
     /*! 无效的参数。 */
-    CSC_Contact_InvalidParameter = 5,
+    CContactServiceStateInvalidParameter = 5,
 
     /*! 数据结构错误。 */
-    CSC_Contact_DataStructureError = 8,
+    CContactServiceStateDataStructureError = 8,
 
     /*! 遇到故障。 */
-    CSC_Contact_Failure = 9,
+    CContactServiceStateFailure = 9,
 
     /*! 无效域信息。 */
-    CSC_Contact_InvalidDomain = 11,
+    CContactServiceStateInvalidDomain = 11,
 
     /*! 未签入联系人。 */
-    CSC_Contact_NoSignIn = 12,
+    CContactServiceStateNoSignIn = 12,
     
     /*! 未找到联系人。 */
-    CSC_Contact_NotFindContact = 14,
+    CContactServiceStateNotFindContact = 14,
 
     /*! 未找到群组。 */
-    CSC_Contact_NotFindGroup = 15,
+    CContactServiceStateNotFindGroup = 15,
 
     /*! 令牌不一致。 */
-    CSC_Contact_InconsistentToken = 21,
+    CContactServiceStateInconsistentToken = 21,
 
     /*! 不被接受的非法操作。 */
-    CSC_Contact_IllegalOperation = 25,
+    CContactServiceStateIllegalOperation = 25,
 
     /*! 服务器错误。 */
-    CSC_Contact_ServerError = 101,
+    CContactServiceStateServerError = 101,
 
     /*! 不被允许的操作。 */
-    CSC_Contact_NotAllowed = 102,
+    CContactServiceStateNotAllowed = 102,
 
     /*! 无网络连接。 */
-    CSC_Contact_NoNetwork = 103,
+    CContactServiceStateNoNetwork = 103,
 
     /*! 未知的状态。 */
-    CSC_Contact_Unknown = 99
+    CContactServiceStateUnknown = 99
 
 } CContactServiceState;
 

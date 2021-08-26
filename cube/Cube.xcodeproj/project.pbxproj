@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C80A208226D71C7D00255B11 /* CMessagingService.m in Sources */ = {isa = PBXBuildFile; fileRef = C80A208126D71C7D00255B11 /* CMessagingService.m */; };
+		C80A208626D71C8A00255B11 /* CMessagingService.h in Headers */ = {isa = PBXBuildFile; fileRef = C80A208526D71C8A00255B11 /* CMessagingService.h */; };
+		C80A208A26D725AE00255B11 /* CMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = C80A208926D725AE00255B11 /* CMessage.h */; };
+		C80A208D26D725BB00255B11 /* CMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C80A208C26D725BB00255B11 /* CMessage.m */; };
+		C80A209126D7379600255B11 /* CMessageState.h in Headers */ = {isa = PBXBuildFile; fileRef = C80A209026D7379600255B11 /* CMessageState.h */; };
+		C80A209526D7390200255B11 /* CMessagingServiceState.h in Headers */ = {isa = PBXBuildFile; fileRef = C80A209426D7390200255B11 /* CMessagingServiceState.h */; };
+		C80A209926D7410600255B11 /* CMessagingStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C80A209826D7410600255B11 /* CMessagingStorage.m */; };
 		C817FE0726C12B6F0080D697 /* CContactAppendix.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE0626C12B6F0080D697 /* CContactAppendix.h */; };
 		C817FE0A26C12B7C0080D697 /* CContactAppendix.m in Sources */ = {isa = PBXBuildFile; fileRef = C817FE0926C12B7C0080D697 /* CContactAppendix.m */; };
 		C817FE0E26C12C460080D697 /* CContactEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE0D26C12C460080D697 /* CContactEvent.h */; };
@@ -93,6 +100,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C80A208126D71C7D00255B11 /* CMessagingService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessagingService.m; sourceTree = "<group>"; };
+		C80A208526D71C8A00255B11 /* CMessagingService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessagingService.h; sourceTree = "<group>"; };
+		C80A208926D725AE00255B11 /* CMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessage.h; sourceTree = "<group>"; };
+		C80A208C26D725BB00255B11 /* CMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessage.m; sourceTree = "<group>"; };
+		C80A208F26D7278800255B11 /* CMessagingAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessagingAction.h; sourceTree = "<group>"; };
+		C80A209026D7379600255B11 /* CMessageState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessageState.h; sourceTree = "<group>"; };
+		C80A209426D7390200255B11 /* CMessagingServiceState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessagingServiceState.h; sourceTree = "<group>"; };
+		C80A209726D740F800255B11 /* CMessagingStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessagingStorage.h; sourceTree = "<group>"; };
+		C80A209826D7410600255B11 /* CMessagingStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessagingStorage.m; sourceTree = "<group>"; };
 		C817FE0626C12B6F0080D697 /* CContactAppendix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactAppendix.h; sourceTree = "<group>"; };
 		C817FE0926C12B7C0080D697 /* CContactAppendix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactAppendix.m; sourceTree = "<group>"; };
 		C817FE0D26C12C460080D697 /* CContactEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactEvent.h; sourceTree = "<group>"; };
@@ -196,6 +212,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C80A208026D718BF00255B11 /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				C80A208926D725AE00255B11 /* CMessage.h */,
+				C80A208C26D725BB00255B11 /* CMessage.m */,
+				C80A209026D7379600255B11 /* CMessageState.h */,
+				C80A208F26D7278800255B11 /* CMessagingAction.h */,
+				C80A208526D71C8A00255B11 /* CMessagingService.h */,
+				C80A208126D71C7D00255B11 /* CMessagingService.m */,
+				C80A209426D7390200255B11 /* CMessagingServiceState.h */,
+				C80A209726D740F800255B11 /* CMessagingStorage.h */,
+				C80A209826D7410600255B11 /* CMessagingStorage.m */,
+			);
+			path = Messaging;
+			sourceTree = "<group>";
+		};
 		C8361BF7268EBD4500B1E15E /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +326,7 @@
 				C8C384D426BCD788009CF806 /* Contact */,
 				C8F1A5632689989F0020F136 /* Core */,
 				C8DF88B7268DB29700399C99 /* Engine */,
+				C80A208026D718BF00255B11 /* Messaging */,
 				C8F1A57F2689AB630020F136 /* Pipeline */,
 				C8361BF7268EBD4500B1E15E /* Util */,
 			);
@@ -369,15 +402,19 @@
 			files = (
 				C8C384E226BD043A009CF806 /* CEntity.h in Headers */,
 				C8C3850226BD2775009CF806 /* CContact.h in Headers */,
+				C80A209526D7390200255B11 /* CMessagingServiceState.h in Headers */,
 				C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */,
 				C817FE1626C153250080D697 /* CContactZone.h in Headers */,
 				C817FE0726C12B6F0080D697 /* CContactAppendix.h in Headers */,
 				C8400ABD26C20EBB00C8FF48 /* CGroupAppendix.h in Headers */,
 				C8F1A556268985A70020F136 /* Cube.h in Headers */,
 				C8400AB326C20DB600C8FF48 /* CGroup.h in Headers */,
+				C80A209126D7379600255B11 /* CMessageState.h in Headers */,
 				C8ACAC8126B953530057740D /* CEngine.h in Headers */,
 				C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */,
 				C8400AC126C2175400C8FF48 /* CGroupState.h in Headers */,
+				C80A208A26D725AE00255B11 /* CMessage.h in Headers */,
+				C80A208626D71C8A00255B11 /* CMessagingService.h in Headers */,
 				C8400AAF26C1F99900C8FF48 /* CDevice.h in Headers */,
 				C8400AC426C21DC400C8FF48 /* CSelf.h in Headers */,
 				C817FE0E26C12C460080D697 /* CContactEvent.h in Headers */,
@@ -495,10 +532,13 @@
 				C8F4596326C4B66000CC4E13 /* CContactService+Core.m in Sources */,
 				C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */,
 				C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */,
+				C80A208D26D725BB00255B11 /* CMessage.m in Sources */,
 				C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */,
 				C8400AC726C21DD000C8FF48 /* CSelf.m in Sources */,
 				C8400ABA26C20EAB00C8FF48 /* CGroupAppendix.m in Sources */,
+				C80A209926D7410600255B11 /* CMessagingStorage.m in Sources */,
 				C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */,
+				C80A208226D71C7D00255B11 /* CMessagingService.m in Sources */,
 				C8DF88B2268DAD4D00399C99 /* CAuthService.m in Sources */,
 				C8F1A56D26899F910020F136 /* CPipeline.m in Sources */,
 				C8400AAC26C1F98B00C8FF48 /* CDevice.m in Sources */,

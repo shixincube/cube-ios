@@ -46,7 +46,7 @@
 }
 
 - (void)triggerSignIn:(int)code payload:(NSDictionary *)payload {
-    if (code != CSC_Contact_Ok) {
+    if (code != CContactServiceStateOk) {
         CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventFault data:[CError errorWithModule:CUBE_MODULE_CONTACT code:code]];
         [self notifyObservers:event];
         return;
@@ -58,7 +58,7 @@
     else {
         self.myself = [[CSelf alloc] initWithJSON:payload];
     }
-    
+
     __block BOOL gotAppendix = FALSE;
     __block BOOL gotGroups = FALSE;
     __block BOOL gotBlockList = FALSE;

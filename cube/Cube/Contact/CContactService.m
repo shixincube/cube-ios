@@ -117,9 +117,9 @@
         CContact * myselfContact = [_storage readContact:mySelf.identity];
 
         if (myselfContact) {
-            self.myself = mySelf;
-            self.myself.context = myselfContact.context;
-            self.myself.appendix = myselfContact.appendix;
+            _myself = mySelf;
+            _myself.context = myselfContact.context;
+            _myself.appendix = myselfContact.appendix;
 
             handleSuccess(self.myself);
 
@@ -128,10 +128,10 @@
     }
 
     // 设置 MySelf 实例
-    self.myself = mySelf;
+    _myself = mySelf;
 
     if (![self.pipeline isReady]) {
-        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CSC_Contact_NoNetwork]);
+        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNoNetwork]);
         return;
     }
 
@@ -150,7 +150,7 @@
                 [self waitReady:^(BOOL timeout) {
                     if (timeout) {
                         // 超时
-                        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CSC_Contact_ServerError]);
+                        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateServerError]);
                     }
                     else {
                         handleSuccess(self.myself);
@@ -159,7 +159,7 @@
             }];
         }
         else {
-            handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CSC_Contact_InconsistentToken]);
+            handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateInconsistentToken]);
         }
     }];
 }
@@ -187,7 +187,7 @@
         }
 
         int stateCode = [packet extractStateCode];
-        if (stateCode != CSC_Contact_Ok) {
+        if (stateCode != CContactServiceStateOk) {
             return;
         }
 
@@ -206,7 +206,7 @@
             NSDictionary * data = [self.myself toJSON];
             CPacket * requestPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_COMEBACK andData:data];
             [self.pipeline send:CUBE_MODULE_CONTACT withPacket:requestPacket handleResponse:^(CPacket *packet) {
-                if (packet.state.code == CSC_Ok && [packet extractStateCode] == CSC_Contact_Ok) {
+                if (packet.state.code == CSC_Ok && [packet extractStateCode] == CContactServiceStateOk) {
                     NSLog(@"CContactService self comeback");
                     CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventComeback data:self.myself];
                     [self notifyObservers:event];
@@ -223,7 +223,7 @@
             handleSuccess(contact);
         }
         else {
-            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CSC_Contact_NotFindContact];
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNotFindContact];
             handleFailure(error);
         }
         return;
@@ -248,13 +248,13 @@
     CPacket * requestPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_GETCONTACT andData:packetData];
     [self.pipeline send:CUBE_MODULE_CONTACT withPacket:requestPacket handleResponse:^(CPacket *packet) {
         if (packet.state.code != CSC_Ok) {
-            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CSC_Contact_ServerError];
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateServerError];
             handleFailure(error);
             return;
         }
 
         int stateCode = [packet extractStateCode];
-        if (stateCode != CSC_Contact_Ok) {
+        if (stateCode != CContactServiceStateOk) {
             CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:stateCode];
             handleFailure(error);
             return;
@@ -287,7 +287,7 @@
         }
 
         int stateCode = [packet extractStateCode];
-        if (stateCode != CSC_Contact_Ok) {
+        if (stateCode != CContactServiceStateOk) {
             CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:stateCode];
             handleFailure(error);
             return;
