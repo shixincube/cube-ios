@@ -73,7 +73,10 @@
 }
 
 - (void)close {
-    
+    if (_db) {
+        [_db close];
+        _db = nil;
+    }
 }
 
 #pragma mark - Private
@@ -81,13 +84,24 @@
 - (void)execSelfChecking {
     // 配置信息表
     NSString * sql = @"CREATE TABLE IF NOT EXISTS `config` (`item` TEXT, `value` TEXT)";
-
     if ([_db executeUpdate:sql]) {
         NSLog(@"CMessagingStorage#execSelfChecking : `config` table OK");
     }
     
     // 消息表
-    sql = @"CREATE TABLE IF NOT EXISTS `message` (`id` BIGINT PRIMARY KEY, `from` BIGINT, `to` BIGINT)";
+    sql = @"CREATE TABLE IF NOT EXISTS `message` (`id` BIGINT PRIMARY KEY, `from` BIGINT, `to` BIGINT, `source` BIGINT, `lts` BIGINT, `rts` BIGINT, `state` INT, `scope` INT, `data` TEXT)";
+    if ([_db executeUpdate:sql]) {
+        NSLog(@"CMessagingStorage#execSelfChecking : `message` table OK");
+    }
+    
+    // 最近消息表，当前联系人和其他每一个联系人的最近消息
+    sql = @"CREATE TABLE IF NOT EXISTS `recent_messager` (`messager_id` BIGINT PRIMARY KEY, `time` BIGINT, `message_id` BIGINT, `is_group` INT)";
+    if ([_db executeUpdate:sql]) {
+        NSLog(@"CMessagingStorage#execSelfChecking : `recent_messager` table OK");
+    }
+    
+    // 消息草稿表
+    // TODO
 }
 
 @end

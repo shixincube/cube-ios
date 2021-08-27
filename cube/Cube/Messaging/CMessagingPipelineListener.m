@@ -24,37 +24,37 @@
  * SOFTWARE.
  */
 
-#ifndef CMessagingAction_h
-#define CMessagingAction_h
+#import "CMessagingPipelineListener.h"
+#import "CMessagingAction.h"
 
-/*!
- * @brief 向服务器发送消息。
- */
-#define CUBE_MESSAGING_PUSH @"push"
+@interface CMessagingPipelineListener () {
+    CMessagingService * _service;
+}
 
-/*!
- * @brief 从服务器拉取消息。
- */
-#define CUBE_MESSAGING_PULL @"pull"
+@end
 
-/*!
- * @brief 收到在线消息。
- */
-#define CUBE_MESSAGING_NOTIFY @"notify"
 
-/*!
- * @brief 撤回消息。
- */
-#define CUBE_MESSAGING_RECALL @"recall"
+@implementation CMessagingPipelineListener
 
-/*!
- * @brief 删除消息。
- */
-#define CUBE_MESSAGING_DELETE @"delete"
+- (instancetype)initWithService:(CMessagingService *)service {
+    if (self = [super init]) {
+        _service = service;
+    }
+    
+    return self;
+}
 
-/*!
- * @brief 标记已读。
- */
-#define CUBE_MESSAGING_READ @"read"
+- (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet {
+    if (packet.state.code != CSC_Ok) {
+        NSLog(@"CMessagingPipelineListener#didReceive code : %d", packet.state.code);
+        return;
+    }
 
-#endif /* CMessagingAction_h */
+    if ([packet.name isEqualToString:CUBE_MESSAGING_NOTIFY]) {
+//        [_service triggerSignIn:[packet extractStateCode] payload:[packet extractData]];
+    }
+}
+
+
+
+@end

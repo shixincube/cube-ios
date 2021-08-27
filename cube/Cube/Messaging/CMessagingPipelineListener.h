@@ -24,37 +24,19 @@
  * SOFTWARE.
  */
 
-#ifndef CMessagingAction_h
-#define CMessagingAction_h
+#ifndef CMessagingPipelineListener_h
+#define CMessagingPipelineListener_h
+
+#import "CPipeline.h"
+#import "CMessagingService+Core.h"
+
+@interface CMessagingPipelineListener : NSObject <CPipelineListener>
 
 /*!
- * @brief 向服务器发送消息。
+ * @brief 初始化。
  */
-#define CUBE_MESSAGING_PUSH @"push"
+- (instancetype)initWithService:(CMessagingService *)service;
 
-/*!
- * @brief 从服务器拉取消息。
- */
-#define CUBE_MESSAGING_PULL @"pull"
+@end
 
-/*!
- * @brief 收到在线消息。
- */
-#define CUBE_MESSAGING_NOTIFY @"notify"
-
-/*!
- * @brief 撤回消息。
- */
-#define CUBE_MESSAGING_RECALL @"recall"
-
-/*!
- * @brief 删除消息。
- */
-#define CUBE_MESSAGING_DELETE @"delete"
-
-/*!
- * @brief 标记已读。
- */
-#define CUBE_MESSAGING_READ @"read"
-
-#endif /* CMessagingAction_h */
+#endif /* CMessagingPipelineListener_h */

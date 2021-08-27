@@ -24,37 +24,8 @@
  * SOFTWARE.
  */
 
-#ifndef CMessagingAction_h
-#define CMessagingAction_h
+#import "CMessagingService+Core.h"
 
-/*!
- * @brief 向服务器发送消息。
- */
-#define CUBE_MESSAGING_PUSH @"push"
+@implementation CMessagingService (Core)
 
-/*!
- * @brief 从服务器拉取消息。
- */
-#define CUBE_MESSAGING_PULL @"pull"
-
-/*!
- * @brief 收到在线消息。
- */
-#define CUBE_MESSAGING_NOTIFY @"notify"
-
-/*!
- * @brief 撤回消息。
- */
-#define CUBE_MESSAGING_RECALL @"recall"
-
-/*!
- * @brief 删除消息。
- */
-#define CUBE_MESSAGING_DELETE @"delete"
-
-/*!
- * @brief 标记已读。
- */
-#define CUBE_MESSAGING_READ @"read"
-
-#endif /* CMessagingAction_h */
+@end
