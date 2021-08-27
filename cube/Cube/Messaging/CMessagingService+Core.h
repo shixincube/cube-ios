@@ -34,6 +34,10 @@
 
 - (void)fireContactEvent:(CObservableEvent *)event;
 
+- (void)triggerNotify:(NSDictionary *)messageJson;
+
+- (void)triggerPull:(int)code payload:(NSDictionary *)payload;
+
 @end
 
 #endif /* CMessagingService_Core_h */

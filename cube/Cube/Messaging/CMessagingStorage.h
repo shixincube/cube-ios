@@ -51,6 +51,12 @@
  */
 - (void)close;
 
+/*!
+ * @brief 查询最近一条消息的时间戳。
+ * @return 返回本地最近一条消息的时间戳。
+ */
+- (UInt64)queryLastMessageTime;
+
 @end
 
 #endif /* CMessagingStorage_h */

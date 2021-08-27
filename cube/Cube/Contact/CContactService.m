@@ -103,7 +103,7 @@
     }
 }
 
-- (void)signIn:(CSelf *)mySelf handleSuccess:(sign_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
+- (void)signIn:(CSelf *)mySelf handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
     // 不允许重复签入
     if (_selfReady) {
         handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateIllegalOperation]);
@@ -170,12 +170,12 @@
     }];
 }
 
-- (void)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(sign_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
+- (void)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
     CSelf * mySelf = [[CSelf alloc] initWithId:identity name:name];
     [self signIn:mySelf handleSuccess:handleSuccess handleFailure:handleFailure];
 }
 
-- (BOOL)signOut:(sign_block_t)handle {
+- (BOOL)signOut:(CubeSignBlock)handle {
     if (!_selfReady) {
         return FALSE;
     }
@@ -222,7 +222,7 @@
     }
 }
 
-- (void)getContact:(UInt64)contactId handleSuccess:(contact_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
+- (void)getContact:(UInt64)contactId handleSuccess:(CubeContactBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
     if (![self.pipeline isReady]) {
         CContact * contact = [_storage readContact:contactId];
         if (contact) {
@@ -280,7 +280,7 @@
     }];
 }
 
-- (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact *, CContactAppendix *))handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
+- (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact *, CContactAppendix *))handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
     NSNumber * contactId = [NSNumber numberWithUnsignedLongLong:contact.identity];
     NSDictionary * data = [NSDictionary dictionaryWithObjectsAndKeys:contactId, @"contactId", nil];
     CPacket * request = [[CPacket alloc] initWithName:CUBE_CONTACT_GETAPPENDIX andData:data];
@@ -308,7 +308,7 @@
     }];
 }
 
-- (void)getAppendixWithGroup:(CGroup *)group handleSuccess:(void(^)(CGroup *, CGroupAppendix *))handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
+- (void)getAppendixWithGroup:(CGroup *)group handleSuccess:(void(^)(CGroup *, CGroupAppendix *))handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
     
 }
 

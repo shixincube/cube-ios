@@ -94,7 +94,14 @@
  * @param packet 指定待发送的数据包。
  * @param handleResponse 本次数据发送对应的应答回调。
  */
-- (void)send:(NSString *)destination withPacket:(CPacket *)packet handleResponse:(void(^)(CPacket *packet))handleResponse;
+- (void)send:(NSString *)destination withPacket:(CPacket *)packet handleResponse:(void(^)(CPacket * packet))handleResponse;
+
+/*!
+ * @brief 发送数据。
+ * @param destination 指定通道的发送目标或接收端识别串。
+ * @param packet 指定待发送的数据包。
+ */
+- (void)send:(NSString *)destination withPacket:(CPacket *)packet;
 
 /*!
  * @brief 设置服务的地址和端口。

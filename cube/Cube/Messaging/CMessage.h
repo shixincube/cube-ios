@@ -107,6 +107,8 @@
 - (void)assign:(CContact *)sender receiver:(CContact *)receiver
    sourceGroup:(CGroup *)sourceGroup;
 
+- (void)assignSender:(CContact *)sender;
+
 @end
 
 #endif /* CMessage_h */

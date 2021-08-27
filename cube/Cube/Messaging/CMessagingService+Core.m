@@ -25,22 +25,56 @@
  */
 
 #import "CMessagingService+Core.h"
-#import "CMessagingStorage.h"
+#import "CMessagingEvent.h"
 #import "CContactEvent.h"
 #import "CContactService.h"
+#import "CMessage.h"
 
 @implementation CMessagingService (Core)
 
 - (void)fireContactEvent:(CObservableEvent *)event {
     if ([event.name isEqualToString:CContactEventSignIn]) {
         // 准备数据
-        [self prepare:(CContactService *)event.subject];
+        [self prepare:(CContactService *)event.subject completedHandler:^ {
+            // 服务就绪
+            self->_serviceReady = TRUE;
 
-        // 服务就绪
-        _serviceReady = TRUE;
+            // 事件通知
+            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
+            [self notifyObservers:event];
+        }];
     }
     else if ([event.name isEqualToString:CContactEventSignOut]) {
         _serviceReady = FALSE;
+    }
+}
+
+- (void)triggerNotify:(NSDictionary *)messageJson {
+    CMessage * message = [[CMessage alloc] initWithJSON:messageJson];
+    
+}
+
+- (void)triggerPull:(int)code payload:(NSDictionary *)payload {
+    if (nil != _pullTimer) {
+        [_pullTimer invalidate];
+    }
+
+    int total = [[payload valueForKey:@"total"] intValue];
+    UInt64 beginning = [[payload valueForKey:@"beginning"] unsignedLongLongValue];
+    UInt64 ending = [[payload valueForKey:@"ending"] unsignedLongLongValue];
+    NSArray * messages = [payload valueForKey:@"messages"];
+
+    NSLog(@"Pull messages total: %d # %llu - %llu", total, beginning, ending);
+
+    for (NSDictionary * json in messages) {
+        [self triggerNotify:json];
+    }
+
+    if (nil != _pullTimer) {
+        // 触发回调，通知应用已收到服务器数据
+        [self firePullCompletedHandler];
+
+        _pullTimer = nil;
     }
 }
 

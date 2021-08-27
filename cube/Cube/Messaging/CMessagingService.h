@@ -29,6 +29,7 @@
 
 #import "CModule.h"
 #import "CContactService.h"
+#import "CMessage.h"
 
 #ifndef CUBE_MODULE_MESSAGING
 /*! @brief 模块名。 */
@@ -57,7 +58,12 @@
     CMessagingObserver * _observer;
     
     BOOL _serviceReady;
+    
+    NSTimer * _pullTimer;
 }
+
+/*! 默认回溯时长，默认值：14个自然天。 */
+@property (nonatomic, assign) UInt64 defaultRetrospect;
 
 
 /*!
@@ -68,10 +74,31 @@
 
 
 /*!
- * @brief 进行数据加载。
  * @private
+ * @brief 进行数据加载。
  */
-- (void)prepare:(CContactService *)contactService;
+- (void)prepare:(CContactService *)contactService completedHandler:(void(^)(void))completedHandler;
+
+/*!
+ * @private
+ * @brief 从服务器上下载指定时间段内的数据，数据将直接写入本地存储。
+ * @param beginning 指定获取消息的起始时间。
+ * @param ending 指定获取消息的截止时间。
+ * @param completedHandler 指定本次查询回调，该回调函数仅用于通知该次查询结束，不携带任何消息数据。
+ */
+- (void)queryRemoteMessage:(UInt64)beginning ending:(UInt64)ending completedHandler:(void(^)(void))completedHandler;
+
+/*!
+ * @private
+ * @brief 触发拉取消息完成回调句柄。
+ */
+- (void)firePullCompletedHandler;
+
+/*!
+ * @private
+ * @brief 填充消息。
+ */
+- (void)fillMessage:(CMessage *)message;
 
 @end
 

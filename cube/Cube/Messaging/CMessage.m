@@ -38,7 +38,7 @@
 /*!
  * @brief 消息作用域。
  * 0 - 无限制
- * 1 - 仅作用于发件人
+ * 1 - 仅作用于发件人，用于管理本地消息通知。
  */
 @property (nonatomic, assign) NSInteger scope;
 
@@ -117,6 +117,10 @@
     _sender = sender;
     _receiver = receiver;
     _sourceGroup = sourceGroup;
+}
+
+- (void)assignSender:(CContact *)sender {
+    _sender = sender;
 }
 
 - (NSMutableDictionary *)toJSON {

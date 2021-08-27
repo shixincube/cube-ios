@@ -90,17 +90,20 @@
 }
 
 - (void)send:(NSString *)destination withPacket:(CPacket *)packet handleResponse:(void (^)(CPacket *))handleResponse {
-    if (handleResponse) {
-        // 时间戳
-        UInt64 timestamp = [[NSDate date] timeIntervalSince1970] * 1000;
+    // 时间戳
+    UInt64 timestamp = [[NSDate date] timeIntervalSince1970] * 1000;
 
-        [self.responseMap setObject:@{
-            @"destination": destination,
-            @"handle": handleResponse,
-            @"timestamp": [NSNumber numberWithUnsignedLongLong:timestamp]
-        } forKey:[NSString stringWithFormat:@"%llu", packet.sn]];
-    }
+    [self.responseMap setObject:@{
+        @"destination": destination,
+        @"handle": handleResponse,
+        @"timestamp": [NSNumber numberWithUnsignedLongLong:timestamp]
+    } forKey:[NSString stringWithFormat:@"%llu", packet.sn]];
 
+    CellActionDialect * dialect = [self convertPacketToPrimitive:packet];
+    [self.nucleus.talkService speak:destination withPrimitive:dialect];
+}
+
+- (void)send:(NSString *)destination withPacket:(CPacket *)packet {
     CellActionDialect * dialect = [self convertPacketToPrimitive:packet];
     [self.nucleus.talkService speak:destination withPrimitive:dialect];
 }

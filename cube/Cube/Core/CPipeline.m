@@ -69,6 +69,10 @@
     // subclass hook override.
 }
 
+- (void)send:(NSString *)destination withPacket:(CPacket *)packet {
+    // subclass hook override.
+}
+
 - (void)setRemoteAddress:(NSString *)address withPort:(NSInteger)port {
     _address = address;
     _port = port;

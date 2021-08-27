@@ -24,40 +24,16 @@
  * SOFTWARE.
  */
 
-#import "CMessagingPipelineListener.h"
-#import "CMessagingAction.h"
+#ifndef CMessagingEvent_h
+#define CMessagingEvent_h
 
-@interface CMessagingPipelineListener () {
-    CMessagingService * _service;
-}
+#import <Foundation/Foundation.h>
 
-@end
+/*
+ * @brief 消息模块的事件。
+ */
 
+/*! 当消息模块就绪时。 */
+extern NSString * CMessagingEventReady;
 
-@implementation CMessagingPipelineListener
-
-- (instancetype)initWithService:(CMessagingService *)service {
-    if (self = [super init]) {
-        _service = service;
-    }
-    
-    return self;
-}
-
-- (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet {
-    if (packet.state.code != CSC_Ok) {
-        NSLog(@"CMessagingPipelineListener#didReceive code : %d", packet.state.code);
-        return;
-    }
-
-    if ([packet.name isEqualToString:CUBE_MESSAGING_NOTIFY]) {
-//        [_service triggerNotify:[packet extractStateCode] payload:[packet extractData]];
-    }
-    else if ([packet.name isEqualToString:CUBE_MESSAGING_PULL]) {
-        [_service triggerPull:[packet extractStateCode] payload:[packet extractData]];
-    }
-}
-
-
-
-@end
+#endif /* CMessagingEvent_h */
