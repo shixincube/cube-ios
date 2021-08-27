@@ -24,16 +24,25 @@
  * SOFTWARE.
  */
 
-#ifndef CMessagingService_Core_h
-#define CMessagingService_Core_h
+#import "CMessagingObserver.h"
+#import "CContactService.h"
+#import "CModule.h"
 
-#import "CMessagingService.h"
-#import "CObservableEvent.h"
+@implementation CMessagingObserver
 
-@interface CMessagingService (Core)
+- (instancetype)initWithService:(CMessagingService *)service {
+    if (self = [super init]) {
+        _service = service;
+    }
+    
+    return self;
+}
 
-- (void)fireContactEvent:(CObservableEvent *)event;
+- (void)update:(CObservableEvent *)event {
+    CModule * module = (CModule *) event.subject;
+    if ([module.name isEqualToString:CUBE_MODULE_CONTACT]) {
+        [_service fireContactEvent:event];
+    }
+}
 
 @end
-
-#endif /* CMessagingService_Core_h */

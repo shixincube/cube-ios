@@ -24,16 +24,21 @@
  * SOFTWARE.
  */
 
-#ifndef CMessagingService_Core_h
-#define CMessagingService_Core_h
+#ifndef CMessagingObserver_h
+#define CMessagingObserver_h
 
-#import "CMessagingService.h"
-#import "CObservableEvent.h"
+#import "CObserver.h"
+#import "CMessagingService+Core.h"
 
-@interface CMessagingService (Core)
+@interface CMessagingObserver : CObserver
 
-- (void)fireContactEvent:(CObservableEvent *)event;
+@property (nonatomic, strong, readonly) CMessagingService * service;
+
+/*!
+ * @brief 初始化。
+ */
+- (instancetype)initWithService:(CMessagingService *)service;
 
 @end
 
-#endif /* CMessagingService_Core_h */
+#endif /* CMessagingObserver_h */

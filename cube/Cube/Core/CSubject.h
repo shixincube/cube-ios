@@ -27,7 +27,6 @@
 #ifndef CSubject_h
 #define CSubject_h
 
-#import <Foundation/Foundation.h>
 #import "CObserver.h"
 #import "CObservableEvent.h"
 

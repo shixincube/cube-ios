@@ -28,15 +28,50 @@
 #define CMessagingService_h
 
 #import "CModule.h"
+#import "CContactService.h"
 
 #ifndef CUBE_MODULE_MESSAGING
 /*! @brief 模块名。 */
 #define CUBE_MODULE_MESSAGING @"Messaging"
 #endif
 
-@interface CMessagingService : CModule
+
+@class CMessagingPipelineListener;
+@class CMessagingStorage;
+@class CMessagingObserver;
 
 
+/*!
+ * @brief 消息模块。
+ */
+@interface CMessagingService : CModule {
+
+@protected
+    /*! 管道监听器。 */
+    CMessagingPipelineListener * _pipelineListener;
+
+    /*! 本地存储器。 */
+    CMessagingStorage * _storage;
+    
+    /*! 其他模块的观察者。 */
+    CMessagingObserver * _observer;
+    
+    BOOL _serviceReady;
+}
+
+
+/*!
+ * @brief 初始化。
+ */
+- (instancetype)init;
+
+
+
+/*!
+ * @brief 进行数据加载。
+ * @private
+ */
+- (void)prepare:(CContactService *)contactService;
 
 @end
 

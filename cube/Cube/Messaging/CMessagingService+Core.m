@@ -25,7 +25,23 @@
  */
 
 #import "CMessagingService+Core.h"
+#import "CMessagingStorage.h"
+#import "CContactEvent.h"
+#import "CContactService.h"
 
 @implementation CMessagingService (Core)
+
+- (void)fireContactEvent:(CObservableEvent *)event {
+    if ([event.name isEqualToString:CContactEventSignIn]) {
+        // 准备数据
+        [self prepare:(CContactService *)event.subject];
+
+        // 服务就绪
+        _serviceReady = TRUE;
+    }
+    else if ([event.name isEqualToString:CContactEventSignOut]) {
+        _serviceReady = FALSE;
+    }
+}
 
 @end

@@ -104,6 +104,12 @@
 }
 
 - (void)signIn:(CSelf *)mySelf handleSuccess:(sign_block_t)handleSuccess handleFailure:(cube_failure_block_t)handleFailure {
+    // 不允许重复签入
+    if (_selfReady) {
+        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateIllegalOperation]);
+        return;
+    }
+    
     // 检查是否已经启动模块
     if (![self hasStarted]) {
         [self start];

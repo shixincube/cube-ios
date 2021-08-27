@@ -25,8 +25,77 @@
  */
 
 #import "CMessagingService.h"
+#import "CMessagingPipelineListener.h"
+#import "CMessagingStorage.h"
+#import "CMessagingObserver.h"
+#import "CContactEvent.h"
+#import "CKernel.h"
 
 @implementation CMessagingService
 
+- (instancetype)init {
+    if (self = [super initWithName:CUBE_MODULE_MESSAGING]) {
+        _pipelineListener = [[CMessagingPipelineListener alloc] initWithService:self];
+        _storage = [[CMessagingStorage alloc] init];
+        _observer = [[CMessagingObserver alloc] initWithService:self];
+        _serviceReady = FALSE;
+    }
+
+    return self;
+}
+
+- (BOOL)start {
+    if (![super start]) {
+        return FALSE;
+    }
+
+    // 监听联系人模块
+    CContactService * contactService = (CContactService *) [self.kernel getModule:CUBE_MODULE_CONTACT];
+    [contactService attachWithName:CContactEventSignIn observer:_observer];
+
+    if ([contactService isReady]) {
+        [self prepare:contactService];
+
+        _serviceReady = TRUE;
+    }
+
+    [self.pipeline addListener:CUBE_MODULE_MESSAGING listener:_pipelineListener];
+
+    return TRUE;
+}
+
+- (void)stop {
+    [super stop];
+
+    [self.pipeline removeListener:CUBE_MODULE_MESSAGING listener:_pipelineListener];
+    
+    // 关闭存储
+    [_storage close];
+    
+    _serviceReady = FALSE;
+}
+
+- (void)suspend {
+    [super suspend];
+}
+
+- (void)resume {
+    [super resume];
+}
+
+- (BOOL)isReady {
+    return _serviceReady;
+}
+
+#pragma mark - Private
+
+- (void)prepare:(CContactService *)contactService {
+    CSelf * myself = contactService.myself;
+    // 开启存储器
+    [_storage open:myself.identity domain:myself.domain];
+
+    // 查询本地最近消息时间
+    
+}
 
 @end
