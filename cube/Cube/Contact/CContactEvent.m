@@ -32,6 +32,8 @@ NSString * CContactEventSignOut = @"SignOut";
 
 NSString * CContactEventComeback = @"Comeback";
 
+NSString * CContactEventSelfReady = @"SelfReady";
+
 NSString * CContactEventGroupUpdated = @"GroupUpdated";
 
 NSString * CContactEventGroupCreated = @"GroupCreated";

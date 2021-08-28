@@ -75,7 +75,7 @@ typedef void (^PullCompletedHandler)(void);
     [_contactService attachWithName:CContactEventSignIn observer:_observer];
     [_contactService attachWithName:CContactEventSignOut observer:_observer];
 
-    if ([_contactService isReady]) {
+    if (_contactService.myself && !_serviceReady) {
         [self prepare:_contactService completedHandler:^ {
             self->_serviceReady = TRUE;
 
@@ -176,9 +176,10 @@ typedef void (^PullCompletedHandler)(void);
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_async(group, queue, ^{
         [self->_contactService getContact:message.from handleSuccess:^(CContact *contact) {
-    //        message
+            // 发件人赋值
+            [message assignSender:contact];
         } handleFailure:^(CError * _Nonnull error) {
-            
+            // Nothing
         }];
     });
 

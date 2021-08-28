@@ -42,6 +42,9 @@ extern NSString * CContactEventSignOut;
 /*! 当前客户端的联系人恢复连接。 */
 extern NSString * CContactEventComeback;
 
+/*! 当前客户端的联系人数据就绪。 */
+extern NSString * CContactEventSelfReady;
+
 /*! 群组已更新。 */
 extern NSString * CContactEventGroupUpdated;
 

@@ -36,7 +36,6 @@
     if (self = [super init]) {
         self.port = 7000;
         self.pipelineReady = FALSE;
-        self.unconnected = FALSE;
         self.enabledMessaging = FALSE;
     }
 
@@ -51,7 +50,6 @@
 
         self.port = 7000;
         self.pipelineReady = FALSE;
-        self.unconnected = FALSE;
     }
 
     return self;
@@ -206,12 +204,10 @@
 
     CAuthService * authService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
 
-    if (config.unconnected) {
-        CAuthToken * token = [authService checkLocalToken:config.domain appKey:config.appKey];
-        if (token && [token isValid]) {
-            handler(nil, token);
-            return;
-        }
+    CAuthToken * token = [authService checkLocalToken:config.domain appKey:config.appKey];
+    if (token && [token isValid]) {
+        handler(nil, token);
+        return;
     }
 
     [authService check:config.domain appKey:config.appKey address:config.address].then(^(id token) {

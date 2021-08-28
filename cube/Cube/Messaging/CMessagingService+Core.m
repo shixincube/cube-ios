@@ -33,16 +33,19 @@
 @implementation CMessagingService (Core)
 
 - (void)fireContactEvent:(CObservableEvent *)event {
-    if ([event.name isEqualToString:CContactEventSignIn]) {
-        // 准备数据
-        [self prepare:(CContactService *)event.subject completedHandler:^ {
-            // 服务就绪
-            self->_serviceReady = TRUE;
+    if ([event.name isEqualToString:CContactEventSignIn] ||
+        [event.name isEqualToString:CContactEventSelfReady]) {
+        if (!_serviceReady) {
+            // 准备数据
+            [self prepare:(CContactService *)event.subject completedHandler:^ {
+                // 服务就绪
+                self->_serviceReady = TRUE;
 
-            // 事件通知
-            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
-            [self notifyObservers:event];
-        }];
+                // 事件通知
+                CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
+                [self notifyObservers:event];
+            }];
+        }
     }
     else if ([event.name isEqualToString:CContactEventSignOut]) {
         _serviceReady = FALSE;

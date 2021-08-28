@@ -95,12 +95,7 @@
 }
 
 - (BOOL)isReady {
-    if (self.kernel.config.unconnected) {
-        return (nil != self.myself);
-    }
-    else {
-        return _selfReady;
-    }
+    return _selfReady && (nil != self.myself);
 }
 
 - (void)signIn:(CSelf *)mySelf handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
@@ -118,8 +113,11 @@
     // 开启存储
     [_storage open:mySelf.identity domain:mySelf.domain];
 
-    // 是否允许未连接状态下签入
-    if (self.kernel.config.unconnected) {
+    // 设置 MySelf 实例
+    _myself = mySelf;
+
+    if (![self.pipeline isReady]) {
+        // 允许未连接状态下签入
         CContact * myselfContact = [_storage readContact:mySelf.identity];
 
         if (myselfContact) {
@@ -129,15 +127,15 @@
 
             handleSuccess(self.myself);
 
-            return;
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_myself];
+                [self notifyObservers:event];
+            });
         }
-    }
+        else {
+            handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNoNetwork]);
+        }
 
-    // 设置 MySelf 实例
-    _myself = mySelf;
-
-    if (![self.pipeline isReady]) {
-        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNoNetwork]);
         return;
     }
 

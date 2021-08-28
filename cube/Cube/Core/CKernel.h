@@ -67,11 +67,6 @@
 @property (nonatomic, assign) NSUInteger port;
 
 /*!
- * @brief 启动时不等待连接。
- */
-@property (nonatomic, assign) BOOL unconnected;
-
-/*!
  * @brief 内核是否等待通道就绪再回调。
  */
 @property (nonatomic, assign) BOOL pipelineReady;
