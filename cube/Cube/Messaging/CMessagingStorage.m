@@ -25,9 +25,13 @@
  */
 
 #import "CMessagingStorage.h"
+#import "CMessagingService+Core.h"
+#import "CUtils.h"
 #import <FMDB/FMDatabase.h>
 
 @interface CMessagingStorage () {
+    
+    CMessagingService * _service;
     
     NSString * _domain;
 
@@ -41,11 +45,12 @@
 
 @implementation CMessagingStorage
 
-- (instancetype)init {
+- (instancetype)initWithService:(CMessagingService *)service {
     if (self = [super init]) {
+        _service = service;
         _db = nil;
     }
-    
+
     return self;
 }
 
@@ -53,9 +58,9 @@
     if (_db) {
         return TRUE;
     }
-    
+
     _domain = domain;
-    
+
     NSString * dbName = [NSString stringWithFormat:@"CubeMessaging_%@_%lld.db", domain, contactId];
 
     // 创建数据库文件
@@ -87,6 +92,62 @@
     }
 
     return 0;
+}
+
+- (void)updateMessage:(CMessage *)message {
+    NSString * sql = [NSString stringWithFormat:@"SELECT `id` FROM `message` WHERE `id`=%lld", message.identity];
+    FMResultSet * result = [_db executeQuery:sql];
+    if ([result next]) {
+        // 更新消息状态
+        return;
+    }
+    
+    NSString * jsonString = [CUtils toStringWithJSON:[message toJSON]];
+    
+    // 写入新消息
+    sql = [NSString stringWithFormat:@"INSERT INTO `message` (id,from,to,source,lts,rts,state,scope,data) VALUES (%lld,%lld,%lld,%lld,%lld,%lld,%d,%d,?)",
+           message.identity,
+           message.from,
+           message.to,
+           message.source,
+           message.localTS,
+           message.remoteTS,
+           message.state,
+           [message getScope]];
+    
+    BOOL ret = [_db executeUpdate:sql, jsonString];
+    if (ret) {
+        UInt64 messagerId = 0;
+        
+        // 更新最近消息
+        if ([message isFromGroup]) {
+            // TODO
+        }
+        else {
+            if ([_service isSender:message]) {
+                messagerId = message.to;
+            }
+            else {
+                messagerId = message.from;
+            }
+        }
+        
+        sql = [NSString stringWithFormat:@"SELECT `time` FROM `recent_messager` WHERE `messager_id`=%lld", messagerId];
+        result = [_db executeQuery:sql];
+        if ([result next]) {
+            // 更新记录
+            [_db executeUpdate:@"UPDATE `recent_messager` SET `time`=? `message_id`=? `is_group`=? WHERE `messager_id`=?",
+                [NSNumber numberWithUnsignedLongLong:message.remoteTS],
+                [NSNumber numberWithUnsignedLongLong:message.identity],
+                [NSNumber numberWithInt:([message isFromGroup] ? 1 : 0)],
+                [NSNumber numberWithUnsignedLongLong:messagerId]
+            ];
+        }
+        else {
+            // 新记录
+            
+        }
+    }
 }
 
 #pragma mark - Private

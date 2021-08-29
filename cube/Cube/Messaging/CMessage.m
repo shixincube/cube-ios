@@ -25,6 +25,7 @@
  */
 
 #import "CMessage.h"
+#import "CMessageState.h"
 #import "CAuthService.h"
 #import "CUtils.h"
 
@@ -40,7 +41,7 @@
  * 0 - 无限制
  * 1 - 仅作用于发件人，用于管理本地消息通知。
  */
-@property (nonatomic, assign) NSInteger scope;
+@property (nonatomic, assign) int scope;
 
 @end
 
@@ -71,6 +72,7 @@
         _to = 0;
         _source = 0;
         _owner = 0;
+        _state = CMessageStateUnknown;
         _scope = 0;
     }
 
@@ -86,8 +88,8 @@
         _owner = [[json valueForKey:@"owner"] unsignedLongLongValue];
         _localTS = [[json valueForKey:@"lts"] unsignedLongLongValue];
         _remoteTS = [[json valueForKey:@"rts"] unsignedLongLongValue];
-        _state = [[json valueForKey:@"state"] integerValue];
-        _scope = [[json valueForKey:@"scope"] integerValue];
+        _state = [[json valueForKey:@"state"] intValue];
+        _scope = [[json valueForKey:@"scope"] intValue];
 
         if ([json objectForKey:@"payload"]) {
             _payload = [json valueForKey:@"payload"];
@@ -95,6 +97,10 @@
     }
 
     return self;
+}
+
+- (int)getScope {
+    return _scope;
 }
 
 - (BOOL)isFromGroup {
@@ -121,6 +127,14 @@
 
 - (void)assignSender:(CContact *)sender {
     _sender = sender;
+}
+
+- (void)assignReceiver:(CContact *)receiver {
+    _receiver = receiver;
+}
+
+- (void)assignSourceGroup:(CGroup *)group {
+    _sourceGroup = group;
 }
 
 - (NSMutableDictionary *)toJSON {

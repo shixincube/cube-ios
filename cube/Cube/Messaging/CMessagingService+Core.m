@@ -29,6 +29,7 @@
 #import "CContactEvent.h"
 #import "CContactService.h"
 #import "CMessage.h"
+#import "CMessagingStorage.h"
 
 @implementation CMessagingService (Core)
 
@@ -54,7 +55,16 @@
 
 - (void)triggerNotify:(NSDictionary *)messageJson {
     CMessage * message = [[CMessage alloc] initWithJSON:messageJson];
-    
+
+    // 填充消息相关实体对象
+    [self fillMessage:message];
+
+    // 数据写入数据库
+    [_storage updateMessage:message];
+
+    if (message.remoteTS > _lastMessageTime) {
+        _lastMessageTime = message.remoteTS;
+    }
 }
 
 - (void)triggerPull:(int)code payload:(NSDictionary *)payload {

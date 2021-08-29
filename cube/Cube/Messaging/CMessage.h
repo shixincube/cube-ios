@@ -70,7 +70,7 @@
  * @brief 消息状态描述。
  * @see CMessageState
  */
-@property (nonatomic, assign) NSInteger state;
+@property (nonatomic, assign) int state;
 
 //@property (nonatomic, strong, readonly) FileAttachment * attachment;
 
@@ -84,6 +84,9 @@
  * @brief 使用 JSON 数据初始化消息实体。
  */
 - (instancetype)initWithJSON:(NSDictionary *)json;
+
+
+- (int)getScope;
 
 /*!
  * @brief 是否来自群组。
@@ -108,6 +111,10 @@
    sourceGroup:(CGroup *)sourceGroup;
 
 - (void)assignSender:(CContact *)sender;
+
+- (void)assignReceiver:(CContact *)receiver;
+
+- (void)assignSourceGroup:(CGroup *)group;
 
 @end
 

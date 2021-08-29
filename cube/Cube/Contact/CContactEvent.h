@@ -42,7 +42,7 @@ extern NSString * CContactEventSignOut;
 /*! 当前客户端的联系人恢复连接。 */
 extern NSString * CContactEventComeback;
 
-/*! 当前客户端的联系人数据就绪。 */
+/*! 当前客户端的联系人数据就绪。该事件依据网络连通情况和签入账号情况可能被多次触发。 */
 extern NSString * CContactEventSelfReady;
 
 /*! 群组已更新。 */

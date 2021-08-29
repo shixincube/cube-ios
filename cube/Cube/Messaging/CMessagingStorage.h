@@ -36,7 +36,7 @@
 /*!
  * @brief 初始化存储器。
  */
-- (instancetype)init;
+- (instancetype)initWithService:(CMessagingService *)service;
 
 /*!
  * @brief 开启存储器。
@@ -56,6 +56,12 @@
  * @return 返回本地最近一条消息的时间戳。
  */
 - (UInt64)queryLastMessageTime;
+
+/*!
+ * @brief 更新消息。该方法将同时更新消息表和最近消息表。
+ * @param message 指定消息实体。
+ */
+- (void)updateMessage:(CMessage *)message;
 
 @end
 

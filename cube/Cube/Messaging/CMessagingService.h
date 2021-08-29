@@ -57,7 +57,11 @@
     /*! 其他模块的观察者。 */
     CMessagingObserver * _observer;
     
+    /*! 服务是否就绪。 */
     BOOL _serviceReady;
+    
+    /*! 当前最近一条消息时间戳。 */
+    UInt64 _lastMessageTime;
     
     NSTimer * _pullTimer;
 }
@@ -71,6 +75,12 @@
  */
 - (instancetype)init;
 
+/*!
+ * @brief 消息是否是当前签入的联系人账号发出的。 即当前账号是否是指定消息的发件人。
+ * @param message 指定消息实例。
+ * @return 如果是当前签入人发出的返回 @c TRUE 。
+ */
+- (BOOL)isSender:(CMessage *)message;
 
 
 /*!

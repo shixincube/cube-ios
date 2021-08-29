@@ -143,6 +143,12 @@
     _waitReadyCount = 100;
 
     [self.kernel activeToken:mySelf.identity handler:^(CAuthToken * token) {
+        // 通知系统 Self 实例就绪
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_myself];
+            [self notifyObservers:event];
+        });
+
         if (token) {
             // 打包数据
             NSMutableDictionary * data = [[NSMutableDictionary alloc] init];

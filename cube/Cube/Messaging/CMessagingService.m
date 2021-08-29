@@ -38,9 +38,6 @@ typedef void (^PullCompletedHandler)(void);
 
 @interface CMessagingService () {
     
-    /*! 当前最近一条消息时间戳。 */
-    UInt64 _lastMessageTime;
-    
     CContactService * _contactService;
 }
 
@@ -53,7 +50,7 @@ typedef void (^PullCompletedHandler)(void);
 - (instancetype)init {
     if (self = [super initWithName:CUBE_MODULE_MESSAGING]) {
         _pipelineListener = [[CMessagingPipelineListener alloc] initWithService:self];
-        _storage = [[CMessagingStorage alloc] init];
+        _storage = [[CMessagingStorage alloc] initWithService:self];
         _observer = [[CMessagingObserver alloc] initWithService:self];
         _serviceReady = FALSE;
 
@@ -116,6 +113,15 @@ typedef void (^PullCompletedHandler)(void);
     return _serviceReady;
 }
 
+- (BOOL)isSender:(CMessage *)message {
+    CSelf * owner = _contactService.myself;
+    if (nil == owner) {
+        return FALSE;
+    }
+
+    return (message.from == owner.identity);
+}
+
 #pragma mark - Private
 
 - (void)prepare:(CContactService *)contactService completedHandler:(void(^)(void))completedHandler {
@@ -174,18 +180,41 @@ typedef void (^PullCompletedHandler)(void);
 - (void)fillMessage:(CMessage *)message {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_group_t group = dispatch_group_create();
-    dispatch_group_async(group, queue, ^{
+
+    dispatch_group_enter(group);
+    dispatch_async(queue, ^{
         [self->_contactService getContact:message.from handleSuccess:^(CContact *contact) {
             // 发件人赋值
             [message assignSender:contact];
+            dispatch_group_leave(group);
         } handleFailure:^(CError * _Nonnull error) {
-            // Nothing
+            dispatch_group_leave(group);
         }];
+    });
+
+    dispatch_group_enter(group);
+    dispatch_async(queue, ^{
+        if (message.source > 0) {
+            // TODO
+            dispatch_group_leave(group);
+        }
+        else {
+            [self->_contactService getContact:message.to handleSuccess:^(CContact *contact) {
+                // 收件人赋值
+                [message assignReceiver:contact];
+                dispatch_group_leave(group);
+            } handleFailure:^(CError * _Nonnull error) {
+                dispatch_group_leave(group);
+            }];
+        }
     });
 
     dispatch_group_notify(group, queue, ^{
         // Nothing
     });
+    
+    // 阻塞线程
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 }
 
 @end
