@@ -101,9 +101,9 @@
         // 更新消息状态
         return;
     }
-    
+
     NSString * jsonString = [CUtils toStringWithJSON:[message toJSON]];
-    
+
     // 写入新消息
     sql = [NSString stringWithFormat:@"INSERT INTO `message` (id,from,to,source,lts,rts,state,scope,data) VALUES (%lld,%lld,%lld,%lld,%lld,%lld,%d,%d,?)",
            message.identity,
@@ -145,7 +145,12 @@
         }
         else {
             // 新记录
-            
+            [_db executeUpdate:@"INSERT INTO `recent_messager`(messager_id,time,message_id,is_group) VALUES (?,?,?,?)",
+                [NSNumber numberWithUnsignedLongLong:messagerId],
+                [NSNumber numberWithUnsignedLongLong:message.remoteTS],
+                [NSNumber numberWithUnsignedLongLong:message.identity],
+                [NSNumber numberWithInt:([message isFromGroup] ? 1 : 0)]
+            ];
         }
     }
 }
@@ -166,6 +171,10 @@
     }
 
     // 最近消息表，当前联系人和其他每一个联系人的最近消息
+    // messager_id - 消息相关发件人或收件人 ID
+    // time        - 消息是时间戳
+    // message_id  - 消息 ID
+    // is_group    - 是否来自群组
     sql = @"CREATE TABLE IF NOT EXISTS `recent_messager` (`messager_id` BIGINT PRIMARY KEY, `time` BIGINT, `message_id` BIGINT, `is_group` INT)";
     if ([_db executeUpdate:sql]) {
         NSLog(@"CMessagingStorage#execSelfChecking : `recent_messager` table OK");
