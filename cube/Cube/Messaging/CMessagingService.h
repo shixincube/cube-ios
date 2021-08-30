@@ -62,7 +62,7 @@
     
     /*! 当前最近一条消息时间戳。 */
     UInt64 _lastMessageTime;
-    
+
     NSTimer * _pullTimer;
 }
 

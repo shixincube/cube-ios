@@ -33,13 +33,20 @@
 #import "../Core/CError.h"
 #import "../Auth/CAuthService.h"
 #import "../Contact/CContactService.h"
+#import "../Messaging/CMessagingService.h"
 
 @interface CEngine : NSObject
 
 /*!
  * @brief 获取引擎单例。
+ * @return 返回魔方引擎的实例。
  */
 + (CEngine *)sharedInstance;
+
+/*!
+ * @brief 内核实例。
+ */
+@property (nonatomic, strong, readonly) NSString * version;
 
 /*!
  * @brief 内核实例。
@@ -48,8 +55,11 @@
 
 /*!
  * @brief 启动魔方引擎。
+ * @param config 内核配置。
+ * @param success 启动成功回调函数。
+ * @param failure 启动故障回调函数。
  */
-- (void)start:(CKernelConfig *)config success:(void(^)(CKernel *))success failure:(void(^)(CError *))failure;
+- (void)start:(CKernelConfig *)config success:(void(^)(CEngine * engine))success failure:(void(^)(CError * error))failure;
 
 /*!
  * @brief 停止魔方引擎。
@@ -65,6 +75,28 @@
  * @brief 恢复魔方引擎。用于应用程序回到前台。
  */
 - (void)resume;
+
+/*!
+ * @brief 是否已启动。
+ * @return 引擎已启动返回 @c TRUE ，否则返回 @c FALSE 。
+ */
+- (BOOL)hasStarted;
+
+- (CSelf *)signInWithId:(UInt64)contactId;
+
+- (CSelf *)signInWithId:(UInt64)contactId andName:(NSString *)name andContext:(NSDictionary *)context;
+
+/*!
+ * @brief 获取联系人服务模块。
+ * @return 返回联系人服务模块实例。
+ */
+- (CContactService *)getContactService;
+
+/*!
+ * @brief 获取消息服务模块。
+ * @return 返回消息服务模块实例。
+ */
+- (CMessagingService *)getMessagingService;
 
 @end
 

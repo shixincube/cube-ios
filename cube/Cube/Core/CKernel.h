@@ -32,6 +32,10 @@
 #import "CError.h"
 #import "../Auth/CAuthToken.h"
 
+#ifndef CUBE_KERNEL_VERSION
+#define CUBE_KERNEL_VERSION @"3.0.0"
+#endif
+
 #ifndef CUBE_KERNEL_SC_NO_MODULE
 #define CUBE_KERNEL_SC_NO_MODULE 300
 #endif
@@ -83,6 +87,15 @@
  * @param appKey 指定该 App 的 Key 串。
  */
 - (instancetype)initWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey;
+
+/*!
+ * @brief 指定基础配置信息创建配置实例。
+ * @param address 指定服务器地址。
+ * @param domain 指定所属域名称。
+ * @param appKey 指定该 App 的 Key 串。
+ * @return 返回内核配置实例。
+ */
++ (CKernelConfig *)configWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey;
 
 @end
 

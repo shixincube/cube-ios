@@ -67,28 +67,30 @@ typedef void (^PullCompletedHandler)(void);
         return FALSE;
     }
 
+    [self.pipeline addListener:CUBE_MODULE_MESSAGING listener:_pipelineListener];
+
     // 监听联系人模块
     _contactService = (CContactService *) [self.kernel getModule:CUBE_MODULE_CONTACT];
     [_contactService attachWithName:CContactEventSignIn observer:_observer];
     [_contactService attachWithName:CContactEventSignOut observer:_observer];
 
-    if (_contactService.myself && !_serviceReady) {
-        [self prepare:_contactService completedHandler:^ {
-            self->_serviceReady = TRUE;
+    @synchronized (self) {
+        if (_contactService.myself && !_serviceReady) {
+            [self prepare:_contactService completedHandler:^ {
+                self->_serviceReady = TRUE;
 
-            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
-            [self notifyObservers:event];
-        }];
+                CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
+                [self notifyObservers:event];
+            }];
+        }
     }
-
-    [self.pipeline addListener:CUBE_MODULE_MESSAGING listener:_pipelineListener];
 
     return TRUE;
 }
 
 - (void)stop {
     [super stop];
-    
+
     CContactService * contactService = (CContactService *) [self.kernel getModule:CUBE_MODULE_CONTACT];
     [contactService detachWithName:CContactEventSignIn observer:_observer];
     [contactService detachWithName:CContactEventSignOut observer:_observer];

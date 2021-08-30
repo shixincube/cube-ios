@@ -99,6 +99,11 @@
     FMResultSet * result = [_db executeQuery:sql];
     if ([result next]) {
         // 更新消息状态
+        NSString * jsonString = [CUtils toStringWithJSON:[message toJSON]];
+        [_db executeUpdate:@"UPDATE `message` SET `state`=? `data`=? WHERE `id`=?",
+            [NSNumber numberWithInt:message.state],
+            jsonString,
+            [NSNumber numberWithUnsignedLongLong:message.identity]];
         return;
     }
 
@@ -140,8 +145,7 @@
                 [NSNumber numberWithUnsignedLongLong:message.remoteTS],
                 [NSNumber numberWithUnsignedLongLong:message.identity],
                 [NSNumber numberWithInt:([message isFromGroup] ? 1 : 0)],
-                [NSNumber numberWithUnsignedLongLong:messagerId]
-            ];
+                [NSNumber numberWithUnsignedLongLong:messagerId]];
         }
         else {
             // 新记录
@@ -149,8 +153,7 @@
                 [NSNumber numberWithUnsignedLongLong:messagerId],
                 [NSNumber numberWithUnsignedLongLong:message.remoteTS],
                 [NSNumber numberWithUnsignedLongLong:message.identity],
-                [NSNumber numberWithInt:([message isFromGroup] ? 1 : 0)]
-            ];
+                [NSNumber numberWithInt:([message isFromGroup] ? 1 : 0)]];
         }
     }
 }

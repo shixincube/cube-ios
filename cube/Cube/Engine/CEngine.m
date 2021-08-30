@@ -42,14 +42,17 @@
         _kernel = [[CKernel alloc] init];
         [_kernel installModule:[[CAuthService alloc] init]];
         [_kernel installModule:[[CContactService alloc] init]];
+        [_kernel installModule:[[CMessagingService alloc] init]];
+
+        _version = CUBE_KERNEL_VERSION;
     }
 
     return self;
 }
 
-- (void)start:(CKernelConfig *)config success:(void (^)(CKernel *))success failure:(void (^)(CError *))failure {
+- (void)start:(CKernelConfig *)config success:(void (^)(CEngine *))success failure:(void (^)(CError *))failure {
     [_kernel startup:config completion:^ {
-        success(self->_kernel);
+        success(self);
     } failure:^(CError * error) {
         failure(error);
     }];
@@ -65,6 +68,26 @@
 
 - (void)resume {
     [_kernel resume];
+}
+
+- (BOOL)hasStarted {
+    return [_kernel isReady];
+}
+
+- (CSelf *)signInWithId:(UInt64)contactId {
+    return nil;
+}
+
+- (CSelf *)signInWithId:(UInt64)contactId andName:(NSString *)name andContext:(NSDictionary *)context {
+    return nil;
+}
+
+- (CContactService *)getContactService {
+    return (CContactService *) [_kernel getModule:CUBE_MODULE_CONTACT];
+}
+
+- (CMessagingService *)getMessagingService {
+    return (CMessagingService *) [_kernel getModule:CUBE_MODULE_MESSAGING];
 }
 
 @end

@@ -36,7 +36,7 @@
     if (self = [super init]) {
         self.port = 7000;
         self.pipelineReady = FALSE;
-        self.enabledMessaging = FALSE;
+        self.enabledMessaging = TRUE;
     }
 
     return self;
@@ -50,9 +50,15 @@
 
         self.port = 7000;
         self.pipelineReady = FALSE;
+        self.enabledMessaging = TRUE;
     }
 
     return self;
+}
+
++ (CKernelConfig *)configWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey {
+    CKernelConfig * config = [[CKernelConfig alloc] initWithAddress:address domain:domain appKey:appKey];
+    return config;
 }
 
 @end

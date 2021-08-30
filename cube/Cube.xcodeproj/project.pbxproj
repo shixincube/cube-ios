@@ -42,6 +42,7 @@
 		C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755DD268B393E00812A4C /* CObservableEvent.m */; };
 		C8B755E3268B3C4300812A4C /* CSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755E2268B3C4300812A4C /* CSubject.m */; };
 		C8B755E9268B3FC000812A4C /* CObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755E8268B3FC000812A4C /* CObserver.m */; };
+		C8B885F026DC67B000E678B2 /* MessagingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B885EF26DC67B000E678B2 /* MessagingTest.m */; };
 		C8BE510426D8749500935149 /* CMessagingPipelineListener.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BE510326D8749500935149 /* CMessagingPipelineListener.m */; };
 		C8BE510926D8754400935149 /* CMessagingService+Core.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BE510826D8754400935149 /* CMessagingService+Core.m */; };
 		C8BE510E26D87DCE00935149 /* CMessagingObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BE510D26D87DCE00935149 /* CMessagingObserver.m */; };
@@ -154,6 +155,7 @@
 		C8B755E5268B3C4F00812A4C /* CSubject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSubject.h; sourceTree = "<group>"; };
 		C8B755E7268B3FB500812A4C /* CObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CObserver.h; sourceTree = "<group>"; };
 		C8B755E8268B3FC000812A4C /* CObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CObserver.m; sourceTree = "<group>"; };
+		C8B885EF26DC67B000E678B2 /* MessagingTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessagingTest.m; sourceTree = "<group>"; };
 		C8BE510326D8749500935149 /* CMessagingPipelineListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessagingPipelineListener.m; sourceTree = "<group>"; };
 		C8BE510626D874A000935149 /* CMessagingPipelineListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessagingPipelineListener.h; sourceTree = "<group>"; };
 		C8BE510726D8753500935149 /* CMessagingService+Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CMessagingService+Core.h"; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			children = (
 				C8F1A553268985A70020F136 /* CubeTests.m */,
 				C8BE85AC26B77FD9007E154E /* KernelTest.m */,
+				C8B885EF26DC67B000E678B2 /* MessagingTest.m */,
 				C8F1A555268985A70020F136 /* Info.plist */,
 			);
 			path = CubeTests;
@@ -587,6 +590,7 @@
 			files = (
 				C8BE85AD26B77FD9007E154E /* KernelTest.m in Sources */,
 				C8F1A554268985A70020F136 /* CubeTests.m in Sources */,
+				C8B885F026DC67B000E678B2 /* MessagingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
