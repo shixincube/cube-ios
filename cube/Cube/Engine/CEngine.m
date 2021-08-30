@@ -28,7 +28,7 @@
 
 @implementation CEngine
 
-+ (CEngine *)sharedInstance {
++ (CEngine * _Nonnull)sharedInstance {
     static CEngine *engine;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -50,7 +50,7 @@
     return self;
 }
 
-- (void)start:(CKernelConfig *)config success:(void (^)(CEngine *))success failure:(void (^)(CError *))failure {
+- (void)start:(CKernelConfig * _Nonnull)config success:(void (^)(CEngine * _Nullable))success failure:(void (^)(CError * _Nonnull))failure {
     [_kernel startup:config completion:^ {
         success(self);
     } failure:^(CError * error) {
@@ -74,19 +74,53 @@
     return [_kernel isReady];
 }
 
-- (CSelf *)signInWithId:(UInt64)contactId {
-    return nil;
+- (CSelf * _Nullable)signInWithId:(UInt64)contactId {
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+
+    CContactService * contactService = [self getContactService];
+    BOOL ret = [contactService signInWith:contactId name:@"Cube" handleSuccess:^(CSelf * owner) {
+        dispatch_semaphore_signal(semaphore);
+    } handleFailure:^(CError * _Nonnull error) {
+        dispatch_semaphore_signal(semaphore);
+    }];
+
+    if (!ret) {
+        return nil;
+    }
+
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+    return contactService.owner;
 }
 
-- (CSelf *)signInWithId:(UInt64)contactId andName:(NSString *)name andContext:(NSDictionary *)context {
-    return nil;
+- (CSelf * _Nullable)signInWithId:(UInt64)contactId andName:(NSString * _Nonnull)name andContext:(NSDictionary * _Nullable)context {
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+
+    CContactService * contactService = [self getContactService];
+    CSelf * me = [[CSelf alloc] initWithId:contactId name:name];
+    BOOL ret = [contactService signIn:me handleSuccess:^(CSelf *owner) {
+        if (context) {
+            owner.context = context;
+        }
+        dispatch_semaphore_signal(semaphore);
+    } handleFailure:^(CError * _Nonnull error) {
+        dispatch_semaphore_signal(semaphore);
+    }];
+
+    if (!ret) {
+        return nil;
+    }
+
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+    return contactService.owner;
 }
 
-- (CContactService *)getContactService {
+- (CContactService * _Nullable)getContactService {
     return (CContactService *) [_kernel getModule:CUBE_MODULE_CONTACT];
 }
 
-- (CMessagingService *)getMessagingService {
+- (CMessagingService * _Nullable)getMessagingService {
     return (CMessagingService *) [_kernel getModule:CUBE_MODULE_MESSAGING];
 }
 

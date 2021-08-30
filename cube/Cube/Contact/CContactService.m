@@ -54,7 +54,7 @@
 
 - (instancetype)init {
     if (self = [super initWithName:CUBE_MODULE_CONTACT]) {
-        _myself = nil;
+        _owner = nil;
         _pipelineListener = [[CContactPipelineListener alloc] initWithService:self];
         _storage = [[CContactStorage alloc] initWithService:self];
         _selfReady = FALSE;
@@ -95,14 +95,14 @@
 }
 
 - (BOOL)isReady {
-    return _selfReady && (nil != self.myself);
+    return _selfReady && (nil != self.owner);
 }
 
-- (void)signIn:(CSelf *)mySelf handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
+- (BOOL)signIn:(CSelf *)me handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
     // 不允许重复签入
     if (_selfReady) {
         handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateIllegalOperation]);
-        return;
+        return FALSE;
     }
     
     // 检查是否已经启动模块
@@ -111,24 +111,24 @@
     }
 
     // 开启存储
-    [_storage open:mySelf.identity domain:mySelf.domain];
+    [_storage open:me.identity domain:me.domain];
 
-    // 设置 MySelf 实例
-    _myself = mySelf;
+    // 设置 Owner 实例
+    _owner = me;
 
     if (![self.pipeline isReady]) {
         // 允许未连接状态下签入
-        CContact * myselfContact = [_storage readContact:mySelf.identity];
+        CContact * myselfContact = [_storage readContact:me.identity];
 
         if (myselfContact) {
-            _myself = mySelf;
-            _myself.context = myselfContact.context;
-            _myself.appendix = myselfContact.appendix;
+            _owner = me;
+            _owner.context = myselfContact.context;
+            _owner.appendix = myselfContact.appendix;
 
-            handleSuccess(self.myself);
+            handleSuccess(self.owner);
 
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_myself];
+                CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
                 [self notifyObservers:event];
             });
         }
@@ -136,23 +136,23 @@
             handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNoNetwork]);
         }
 
-        return;
+        return TRUE;
     }
 
     // 10 秒
     _waitReadyCount = 100;
 
-    [self.kernel activeToken:mySelf.identity handler:^(CAuthToken * token) {
+    [self.kernel activeToken:me.identity handler:^(CAuthToken * token) {
         // 通知系统 Self 实例就绪
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_myself];
+            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
             [self notifyObservers:event];
         });
 
         if (token) {
             // 打包数据
             NSMutableDictionary * data = [[NSMutableDictionary alloc] init];
-            [data setValue:[mySelf toJSON] forKey:@"self"];
+            [data setValue:[me toJSON] forKey:@"self"];
             [data setValue:[token toJSON] forKey:@"token"];
 
             CPacket * signInPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_SIGNIN andData:data];
@@ -163,7 +163,7 @@
                         handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateServerError]);
                     }
                     else {
-                        handleSuccess(self.myself);
+                        handleSuccess(self.owner);
                     }
                 }];
             }];
@@ -172,11 +172,13 @@
             handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateInconsistentToken]);
         }
     }];
+    
+    return TRUE;
 }
 
-- (void)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
-    CSelf * mySelf = [[CSelf alloc] initWithId:identity name:name];
-    [self signIn:mySelf handleSuccess:handleSuccess handleFailure:handleFailure];
+- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
+    CSelf * owner = [[CSelf alloc] initWithId:identity name:name];
+    return [self signIn:owner handleSuccess:handleSuccess handleFailure:handleFailure];
 }
 
 - (BOOL)signOut:(CubeSignBlock)handle {
@@ -188,7 +190,7 @@
         return FALSE;
     }
 
-    NSMutableDictionary * data = [self.myself toJSON];
+    NSMutableDictionary * data = [self.owner toJSON];
     CPacket * signOutPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_SIGNOUT andData:data];
 
     [self.pipeline send:CUBE_MODULE_CONTACT withPacket:signOutPacket handleResponse:^(CPacket * packet) {
@@ -203,7 +205,7 @@
 
         self->_selfReady = FALSE;
 
-        handle(self.myself);
+        handle(self.owner);
     }];
 
     return TRUE;
@@ -212,13 +214,13 @@
 - (void)comeback {
     if ([self.pipeline isReady]) {
         // 发送 comeback
-        if (self.myself) {
-            NSDictionary * data = [self.myself toJSON];
+        if (self.owner) {
+            NSDictionary * data = [self.owner toJSON];
             CPacket * requestPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_COMEBACK andData:data];
             [self.pipeline send:CUBE_MODULE_CONTACT withPacket:requestPacket handleResponse:^(CPacket *packet) {
                 if (packet.state.code == CSC_Ok && [packet extractStateCode] == CContactServiceStateOk) {
                     NSLog(@"CContactService self comeback");
-                    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventComeback data:self.myself];
+                    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventComeback data:self.owner];
                     [self notifyObservers:event];
                 }
             }];
@@ -348,11 +350,11 @@
 
 - (void)fireSignInCompleted {
     // 写入数据到存储
-    [_storage writeContact:self.myself];
+    [_storage writeContact:self.owner];
 
     _selfReady = TRUE;
 
-    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSignIn data:self.myself];
+    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSignIn data:self.owner];
     [self notifyObservers:event];
 }
 

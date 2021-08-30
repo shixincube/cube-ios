@@ -69,7 +69,7 @@
 
     __block CError * cbueError = nil;
 
-    [service signInWith:self.selfId name:@"CubeiOSTest" handleSuccess:^(CSelf * myself) {
+    [service signInWith:self.selfId name:@"CubeiOSTest" handleSuccess:^(CSelf * owner) {
         [expect fulfill];
     } handleFailure:^(CError * error) {
         cbueError = error;
@@ -81,7 +81,7 @@
             NSLog(@"Error : %d", (int)cbueError.code);
         }
         else {
-            NSLog(@"SignIn is OK : %lld - %@", [service.myself getId], service.myself.name);
+            NSLog(@"SignIn is OK : %lld - %@", [service.owner getId], service.owner.name);
         }
     }];
 }

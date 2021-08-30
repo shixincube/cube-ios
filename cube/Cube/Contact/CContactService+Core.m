@@ -52,11 +52,11 @@
         return;
     }
 
-    if (self.myself) {
-        [self.myself updateWithJSON:payload];
+    if (self.owner) {
+        [self.owner updateWithJSON:payload];
     }
     else {
-        self.myself = [[CSelf alloc] initWithJSON:payload];
+        self.owner = [[CSelf alloc] initWithJSON:payload];
     }
 
     __block BOOL gotAppendix = FALSE;
@@ -64,7 +64,7 @@
     __block BOOL gotBlockList = FALSE;
     __block BOOL gotTopList = FALSE;
 
-    [self getAppendixWithContact:self.myself handleSuccess:^(CContact * contact, CContactAppendix * appendix) {
+    [self getAppendixWithContact:self.owner handleSuccess:^(CContact * contact, CContactAppendix * appendix) {
         gotAppendix = TRUE;
         if (gotGroups && gotBlockList && gotTopList) {
             [self fireSignInCompleted];
@@ -99,8 +99,10 @@
 }
 
 - (void)triggerSignOut {
-    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSignOut data:self.myself];
+    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSignOut data:self.owner];
     [self notifyObservers:event];
+
+    self.owner = nil;
 }
 
 @end

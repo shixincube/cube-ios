@@ -41,17 +41,17 @@
  * @brief 获取引擎单例。
  * @return 返回魔方引擎的实例。
  */
-+ (CEngine *)sharedInstance;
++ (CEngine * _Nonnull)sharedInstance;
 
 /*!
  * @brief 内核实例。
  */
-@property (nonatomic, strong, readonly) NSString * version;
+@property (nonatomic, strong, readonly) NSString * _Nonnull version;
 
 /*!
  * @brief 内核实例。
  */
-@property (nonatomic, strong, readonly) CKernel * kernel;
+@property (nonatomic, strong, readonly) CKernel * _Nonnull kernel;
 
 /*!
  * @brief 启动魔方引擎。
@@ -59,7 +59,7 @@
  * @param success 启动成功回调函数。
  * @param failure 启动故障回调函数。
  */
-- (void)start:(CKernelConfig *)config success:(void(^)(CEngine * engine))success failure:(void(^)(CError * error))failure;
+- (void)start:(CKernelConfig * _Nonnull)config success:(void(^ _Nonnull)(CEngine * _Nullable engine))success failure:(void(^ _Nonnull)(CError * _Nonnull error))failure;
 
 /*!
  * @brief 停止魔方引擎。
@@ -82,21 +82,33 @@
  */
 - (BOOL)hasStarted;
 
-- (CSelf *)signInWithId:(UInt64)contactId;
+/*!
+ * @brief 签入指定 ID 的联系人。
+ * @param contactId 指定联系人 ID 。
+ * @return 返回当前签入的 @c CSelf 实例。
+ */
+- (CSelf * _Nullable)signInWithId:(UInt64)contactId;
 
-- (CSelf *)signInWithId:(UInt64)contactId andName:(NSString *)name andContext:(NSDictionary *)context;
+/*!
+ * @brief 签入指定的联系人。
+ * @param contactId 指定联系人 ID 。
+ * @param name 指定联系人名称。
+ * @param context 指定联系人的上下文数据。
+ * @return 返回当前签入的 @c CSelf 实例。
+ */
+- (CSelf * _Nullable)signInWithId:(UInt64)contactId andName:(NSString * _Nonnull)name andContext:(NSDictionary * _Nullable)context;
 
 /*!
  * @brief 获取联系人服务模块。
  * @return 返回联系人服务模块实例。
  */
-- (CContactService *)getContactService;
+- (CContactService * _Nullable)getContactService;
 
 /*!
  * @brief 获取消息服务模块。
  * @return 返回消息服务模块实例。
  */
-- (CMessagingService *)getMessagingService;
+- (CMessagingService * _Nullable)getMessagingService;
 
 @end
 

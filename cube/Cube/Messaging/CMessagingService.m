@@ -75,7 +75,7 @@ typedef void (^PullCompletedHandler)(void);
     [_contactService attachWithName:CContactEventSignOut observer:_observer];
 
     @synchronized (self) {
-        if (_contactService.myself && !_serviceReady) {
+        if (_contactService.owner && !_serviceReady) {
             [self prepare:_contactService completedHandler:^ {
                 self->_serviceReady = TRUE;
 
@@ -116,7 +116,7 @@ typedef void (^PullCompletedHandler)(void);
 }
 
 - (BOOL)isSender:(CMessage *)message {
-    CSelf * owner = _contactService.myself;
+    CSelf * owner = _contactService.owner;
     if (nil == owner) {
         return FALSE;
     }
@@ -127,9 +127,9 @@ typedef void (^PullCompletedHandler)(void);
 #pragma mark - Private
 
 - (void)prepare:(CContactService *)contactService completedHandler:(void(^)(void))completedHandler {
-    CSelf * myself = contactService.myself;
+    CSelf * owner = contactService.owner;
     // 开启存储器
-    [_storage open:myself.identity domain:myself.domain];
+    [_storage open:owner.identity domain:owner.domain];
 
     UInt64 now = [CUtils currentTimeMillis];
     
@@ -160,12 +160,12 @@ typedef void (^PullCompletedHandler)(void);
 
     self.pullCompletedHandler = completedHandler;
 
-    CSelf * myself = _contactService.myself;
+    CSelf * owner = _contactService.owner;
 
     NSMutableDictionary * payload = [[NSMutableDictionary alloc] init];
-    [payload setValue:[NSNumber numberWithUnsignedLongLong:myself.identity] forKey:@"id"];
-    [payload setValue:myself.domain forKey:@"domain"];
-    [payload setValue:[myself.device toJSON] forKey:@"device"];
+    [payload setValue:[NSNumber numberWithUnsignedLongLong:owner.identity] forKey:@"id"];
+    [payload setValue:owner.domain forKey:@"domain"];
+    [payload setValue:[owner.device toJSON] forKey:@"device"];
     [payload setValue:[NSNumber numberWithUnsignedLongLong:beginning] forKey:@"beginning"];
     [payload setValue:[NSNumber numberWithUnsignedLongLong:ending] forKey:@"ending"];
 

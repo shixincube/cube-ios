@@ -37,7 +37,7 @@
 #define CUBE_MODULE_CONTACT @"Contact"
 #endif
 
-typedef void (^CubeSignBlock)(CSelf * myself);
+typedef void (^CubeSignBlock)(CSelf * owner);
 
 typedef void (^CubeContactBlock)(CContact * contact);
 
@@ -50,8 +50,8 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  */
 @interface CContactService : CModule
 
-/*! 当前有效的在线联系人。 */
-@property (nonatomic, strong) CSelf * myself;
+/*! 当前有效的在线联系人，即当前引擎签入的联系人。 */
+@property (nonatomic, strong) CSelf * owner;
 
 /*! 默认回溯时长，默认值：30个自然天。 */
 @property (nonatomic, assign) UInt64 defaultRetrospect;
@@ -63,11 +63,12 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
 
 /*!
  * @brief 签入当前终端的联系人。
- * @param mySelf 指定签入的 CSelf 对象。
+ * @param me 指定签入的 @c CSelf 对象。
  * @param handleSuccess 操作成功回调。
  * @param handleFailure 操作失败回调。
+ * @return 返回当次操作是否被执行。
  */
-- (void)signIn:(CSelf *)mySelf handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure;
+- (BOOL)signIn:(CSelf *)me handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure;
 
 /*!
  * @brief 签入当前终端的联系人。
@@ -75,8 +76,9 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  * @param name 指定签入联系人名称。
  * @param handleSuccess 操作成功回调。
  * @param handleFailure 操作失败回调。
+ * @return 返回当次操作是否被执行。
  */
-- (void)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure;
+- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure;
 
 /*!
  * @brief 将当前设置的联系人签出。

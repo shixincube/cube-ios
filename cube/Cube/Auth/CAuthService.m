@@ -31,7 +31,7 @@
 #import "CPacket.h"
 #import "CStateCode.h"
 
-#define MAX_WAITING_COUNT 30
+#define MAX_WAITING_COUNT 50
 
 typedef void (^wait_block_t)(void);
 
@@ -73,6 +73,7 @@ static NSString * sCubeDomain = @"shixincube.com";
 }
 
 - (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address {
+    // 赋值 Domain 数据
     sCubeDomain = domain;
 
     return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolver) {

@@ -41,6 +41,9 @@
                <Test
                   Identifier = "CubeTests">
                </Test>
+               <Test
+                  Identifier = "KernelTest">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>
