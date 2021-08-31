@@ -8,7 +8,9 @@
 #import <XCTest/XCTest.h>
 #import "../Cube/Engine/CEngine.h"
 
-@interface MessagingTest : XCTestCase
+@interface MessagingTest : XCTestCase <CMessagingNotifyDelegate> {
+    XCTestExpectation * _notifyExpect;
+}
 
 @property (strong) CMessagingService * messaging;
 
@@ -37,6 +39,9 @@
         // 启动消息模块
         self.messaging = [engine getMessagingService];
         [self.messaging start];
+        
+        // 添加事件
+        self.messaging.notifyDelegate = self;
 
         // 签入联系人
         CSelf * me = [engine signInWithId:self.myId];
@@ -62,16 +67,28 @@
 
 - (void)testMessaging {
     NSLog(@"testMessaging");
-    
+
     BOOL ready = [self.messaging isReady];
     while (!ready) {
         [NSThread sleepForTimeInterval:0.1f];
         ready = [self.messaging isReady];
     }
-    
-    
 
-    NSLog(@"Messaging service is ready");
+    NSLog(@"Messaging service is ready, wait for notify event");
+
+    _notifyExpect = [self expectationWithDescription:@"testMessaging"];
+
+    [self waitForExpectationsWithTimeout:30.0f handler:^(NSError * error) {
+        NSLog(@"End");
+    }];
+}
+
+- (void)notify:(CMessage *)message service:(CMessagingService *)service {
+    NSDictionary * payload = message.payload;
+    NSString * jsonString = [CUtils toStringWithJSON:payload];
+    NSLog(@"Message : %@", jsonString);
+
+    [_notifyExpect fulfill];
 }
 
 @end

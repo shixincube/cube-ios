@@ -36,10 +36,20 @@
 #define CUBE_MODULE_MESSAGING @"Messaging"
 #endif
 
-
+@class CMessagingService;
 @class CMessagingPipelineListener;
 @class CMessagingStorage;
 @class CMessagingObserver;
+
+
+/*!
+ * @brief 消息实时通知的代理协议。
+ */
+@protocol CMessagingNotifyDelegate <NSObject>
+
+- (void)notify:(CMessage *)message service:(CMessagingService *)service;
+
+@end
 
 
 /*!
@@ -69,6 +79,9 @@
 /*! 默认回溯时长，默认值：14个自然天。 */
 @property (nonatomic, assign) UInt64 defaultRetrospect;
 
+/*! 消息实时接收的代理。 */
+@property (retain) id<CMessagingNotifyDelegate> notifyDelegate;
+
 
 /*!
  * @brief 初始化。
@@ -81,7 +94,6 @@
  * @return 如果是当前签入人发出的返回 @c TRUE 。
  */
 - (BOOL)isSender:(CMessage *)message;
-
 
 /*!
  * @private

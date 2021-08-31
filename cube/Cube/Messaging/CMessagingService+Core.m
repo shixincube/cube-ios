@@ -67,11 +67,23 @@
     if (message.remoteTS > _lastMessageTime) {
         _lastMessageTime = message.remoteTS;
     }
+
+    if (self.notifyDelegate) {
+        [self.notifyDelegate notify:message service:self];
+    }
+
+    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventNotify data:message];
+    [self notifyObservers:event];
 }
 
 - (void)triggerPull:(int)code payload:(NSDictionary *)payload {
     if (nil != _pullTimer) {
         [_pullTimer invalidate];
+
+        // 触发回调，通知应用已收到服务器数据
+        [self firePullCompletedHandler];
+
+        _pullTimer = nil;
     }
 
     int total = [[payload valueForKey:@"total"] intValue];
@@ -83,13 +95,6 @@
 
     for (NSDictionary * json in messages) {
         [self triggerNotify:json];
-    }
-
-    if (nil != _pullTimer) {
-        // 触发回调，通知应用已收到服务器数据
-        [self firePullCompletedHandler];
-
-        _pullTimer = nil;
     }
 }
 

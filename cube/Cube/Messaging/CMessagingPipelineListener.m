@@ -51,7 +51,7 @@
     }
 
     if ([packet.name isEqualToString:CUBE_MESSAGING_NOTIFY]) {
-//        [_service triggerNotify:[packet extractStateCode] payload:[packet extractData]];
+        [_service triggerNotify:[packet extractData]];
     }
     else if ([packet.name isEqualToString:CUBE_MESSAGING_PULL]) {
         [_service triggerPull:[packet extractStateCode] payload:[packet extractData]];

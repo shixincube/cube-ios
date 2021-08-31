@@ -27,3 +27,27 @@
 #import "CMessagingEvent.h"
 
 NSString * CMessagingEventReady = @"Ready";
+
+NSString * CMessagingEventNotify = @"Notify";
+
+NSString * CMessagingEventSent = @"Sent";
+
+NSString * CMessagingEventSending = @"Sending";
+
+NSString * CMessagingEventProcessing = @"Processing";
+
+NSString * CMessagingEventRecall = @"Recall";
+
+NSString * CMessagingEventDelete = @"Delete";
+
+NSString * CMessagingEventRead = @"Read";
+
+NSString * CMessagingEventMarkOnlyOwner = @"MarkOnlyOwner";
+
+NSString * CMessagingEventSendBlocked = @"SendBlocked";
+
+NSString * CMessagingEventReceiveBlocked = @"ReceiveBlocked";
+
+NSString * CMessagingEventFault = @"Fault";
+
+NSString * CMessagingEventUnknown = @"Unknown";

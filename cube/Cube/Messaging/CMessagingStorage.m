@@ -119,11 +119,11 @@
            message.remoteTS,
            message.state,
            [message getScope]];
-    
+
     BOOL ret = [_db executeUpdate:sql, jsonString];
     if (ret) {
         UInt64 messagerId = 0;
-        
+
         // 更新最近消息
         if ([message isFromGroup]) {
             // TODO
@@ -136,7 +136,7 @@
                 messagerId = message.from;
             }
         }
-        
+
         sql = [NSString stringWithFormat:@"SELECT `time` FROM `recent_messager` WHERE `messager_id`=%lld", messagerId];
         result = [_db executeQuery:sql];
         if ([result next]) {

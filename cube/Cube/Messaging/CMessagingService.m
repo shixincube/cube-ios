@@ -96,10 +96,10 @@ typedef void (^PullCompletedHandler)(void);
     [contactService detachWithName:CContactEventSignOut observer:_observer];
 
     [self.pipeline removeListener:CUBE_MODULE_MESSAGING listener:_pipelineListener];
-    
+
     // 关闭存储
     [_storage close];
-    
+
     _serviceReady = FALSE;
 }
 
@@ -149,6 +149,12 @@ typedef void (^PullCompletedHandler)(void);
 }
 
 - (void)queryRemoteMessage:(UInt64)beginning ending:(UInt64)ending completedHandler:(void (^)(void))completedHandler {
+    // 如果没有网络直接回调函数
+    if (![self.pipeline isReady]) {
+        completedHandler();
+        return;
+    }
+
     if (nil != _pullTimer) {
         return;
     }

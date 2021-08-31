@@ -86,7 +86,7 @@
 - (CContact *)readContact:(UInt64)contactId {
     CContact * contact = nil;
 
-    NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `contact` WHERE `id`=%lld", contactId];
+    NSString * sql = [NSString stringWithFormat:@"SELECT * FROM \"contact\" WHERE id=%llu", contactId];
     FMResultSet * result = [_db executeQuery:sql];
     if ([result next]) {
         NSString * name = [result stringForColumn:@"name"];
@@ -153,17 +153,18 @@
     }
     else {
         // 没有数据进行插入
-        sql = @"INSERT INTO `contact`(id,name,context,timestamp) VALUES (?,?,?,?)";
+        sql = @"INSERT INTO `contact`(`id`,`name`,`context`,`timestamp`) VALUES (?,?,?,?)";
 
         NSString * contextString = contact.context ?
                 [CUtils toStringWithJSON:contact.context] : @"";
+
         // 执行 SQL
         ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:contact.identity],
                contact.name, contextString, [NSNumber numberWithUnsignedLongLong:contact.timestamp]];
 
         if (ret && contact.appendix) {
             // 插入附录
-            sql = @"INSERT INTO `appendix`(id,data) VALUES (?,?)";
+            sql = @"INSERT INTO `appendix`(`id`,`data`) VALUES (?,?)";
 
             ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:contact.identity],
                    [CUtils toStringWithJSON:[contact.appendix toJSON]]];
@@ -188,7 +189,7 @@
     }
     else {
         // 无数据，插入
-        sql = @"INSERT INTO `appendix`(id,data) VALUES (?,?)";
+        sql = @"INSERT INTO `appendix`(`id`,`data`) VALUES (?,?)";
 
         NSString * appendixString = [CUtils toStringWithJSON:[appendix toJSON]];
         
