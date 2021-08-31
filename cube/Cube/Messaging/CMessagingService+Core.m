@@ -30,6 +30,8 @@
 #import "CContactService.h"
 #import "CMessage.h"
 #import "CMessagingStorage.h"
+#import "CPluginSystem.h"
+#import "CInstantiateHook.h"
 
 @implementation CMessagingService (Core)
 
@@ -67,6 +69,12 @@
     if (message.remoteTS > _lastMessageTime) {
         _lastMessageTime = message.remoteTS;
     }
+    
+    // TODO 标准 Token
+    
+    // 获取事件钩子
+    CHook * hook = [self.pluginSystem getHook:CInstantiateHookName];
+    message = [hook apply:message];
 
     if (self.notifyDelegate) {
         [self.notifyDelegate notify:message service:self];
