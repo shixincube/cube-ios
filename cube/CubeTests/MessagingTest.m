@@ -63,7 +63,15 @@
 - (void)testMessaging {
     NSLog(@"testMessaging");
     
+    BOOL ready = [self.messaging isReady];
+    while (!ready) {
+        [NSThread sleepForTimeInterval:0.1f];
+        ready = [self.messaging isReady];
+    }
     
+    
+
+    NSLog(@"Messaging service is ready");
 }
 
 @end

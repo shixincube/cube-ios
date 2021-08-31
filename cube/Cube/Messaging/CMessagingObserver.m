@@ -34,7 +34,7 @@
     if (self = [super init]) {
         _service = service;
     }
-    
+
     return self;
 }
 

@@ -42,6 +42,8 @@
 /*! @brief 事件发生时的主题。 */
 @property (nonatomic, nullable, weak) CSubject * subject;
 
+@property (atomic, assign) BOOL inMainQueue;
+
 /*!
  * @brief 通过事件名和事件数据初始化。
  * @param name 事件名。

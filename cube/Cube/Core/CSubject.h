@@ -32,8 +32,6 @@
 
 @interface CSubject : NSObject
 
-@property (atomic, assign) BOOL inMainQueue;
-
 /*!
  * @brief 添加无事件观察者。
  * @param observer 指定观察者对象。

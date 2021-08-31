@@ -38,16 +38,16 @@
 typedef enum _CAuthServiceState {
     
     /*! 状态正常状态码。 */
-    CSC_Auth_Ok = 0,
+    CAuthServiceStateOk = 0,
     
     /*! 状态出现异常状态码。 */
-    CSC_Auth_Failure = 9,
+    CAuthServiceStateFailure = 9,
     
     /*! 存储故障状态码。 */
-    CSC_Auth_Storage = 20,
+    CAuthServiceStateStorage = 20,
     
     /*! 本地任务超时状态码。 */
-    CSC_Auth_Timeout = 21
+    CAuthServiceStateTimeout = 21
     
 } CAuthServiceState;
 

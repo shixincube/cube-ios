@@ -124,6 +124,7 @@
 
 - (void)triggerListener:(NSString *)destination packet:(CPacket *)packet {
     NSMutableArray * listeners = [self getListeners:destination];
+
     if (listeners) {
         for (id<CPipelineListener> listener in listeners) {
             if ([listener respondsToSelector:@selector(didReceive:source:packet:)]) {

@@ -181,13 +181,10 @@
     return ([_modules objectForKey:moduleName]) ? TRUE : FALSE;
 }
 
-- (void)activeToken:(UInt64)contactId handler:(void (^)(CAuthToken * authToken))handler {
+- (void)activeToken:(UInt64)contactId handler:(void (^)(CAuthToken *))handler {
     CAuthService * authService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
-    [authService allocToken:contactId].then(^(id token) {
-        handler((CAuthToken *) token);
-    }).catch(^(NSError *error) {
-        handler(nil);
-    });
+    CAuthToken * token = [authService allocToken:contactId];
+    handler(token);
 }
 
 #pragma mark - Private

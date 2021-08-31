@@ -32,6 +32,7 @@
     if (self = [super init]) {
         self.name = name;
         self.data = data;
+        self.inMainQueue = FALSE;
     }
 
     return self;

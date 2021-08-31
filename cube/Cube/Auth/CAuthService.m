@@ -102,7 +102,7 @@ static NSString * sCubeDomain = @"shixincube.com";
                         // 关闭存储器
                         [storage close];
 
-                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CSC_Auth_Timeout]);
+                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateTimeout]);
                         return;
                     }
 
@@ -131,14 +131,14 @@ static NSString * sCubeDomain = @"shixincube.com";
                         // 关闭存储器
                         [storage close];
 
-                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CSC_Auth_Failure]);
+                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateFailure]);
                     });
                 }];
             }
         }
         else {
             // 开启存储错误
-            @throw [CError errorWithModule:CUBE_MODULE_AUTH code:CSC_Auth_Storage];
+            @throw [CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateStorage];
         }
     }];
 }
@@ -156,7 +156,7 @@ static NSString * sCubeDomain = @"shixincube.com";
             }
 
             int state = [packet extractStateCode];
-            if (state == CSC_Auth_Ok) {
+            if (state == CAuthServiceStateOk) {
                 // 创建令牌数据
                 CAuthToken * authToken = [[CAuthToken alloc] initWithJSON:[packet extractData]];
                 resolver(authToken);
@@ -168,26 +168,41 @@ static NSString * sCubeDomain = @"shixincube.com";
     }];
 }
 
-- (AnyPromise *)allocToken:(UInt64)contactId {
-    return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolver) {
-        if (self.token.cid != contactId) {
-            // 修改令牌 CID
-            self.token.cid = contactId;
+- (CAuthToken *)allocToken:(UInt64)contactId {
+    if (self.token.cid != contactId) {
+        // 修改令牌 CID
+        self.token.cid = contactId;
 
-            CAuthStorage * storage = [[CAuthStorage alloc] init];
-            if ([storage open]) {
-                // 更新令牌
-                [storage updateToken:self.token];
+        CAuthStorage * storage = [[CAuthStorage alloc] init];
+        if ([storage open]) {
+            // 更新令牌
+            [storage updateToken:self.token];
 
-                [storage close];
-            }
-            else {
-                @throw [CError errorWithModule:CUBE_MODULE_AUTH code:CSC_Auth_Storage];
-            }
+            [storage close];
         }
+    }
 
-        resolver(self.token);
-    }];
+    return self.token;
+
+//    return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolver) {
+//        if (self.token.cid != contactId) {
+//            // 修改令牌 CID
+//            self.token.cid = contactId;
+//
+//            CAuthStorage * storage = [[CAuthStorage alloc] init];
+//            if ([storage open]) {
+//                // 更新令牌
+//                [storage updateToken:self.token];
+//
+//                [storage close];
+//            }
+//            else {
+//                @throw [CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateStorage];
+//            }
+//        }
+//
+//        resolver(self.token);
+//    }];
 }
 
 - (void)waitPipelineReady:(wait_block_t)block {

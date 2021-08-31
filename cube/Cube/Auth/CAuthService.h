@@ -72,9 +72,9 @@
 /*!
  * @brief 将当前令牌分配给指定的联系人。
  * @param contactId 指定联系人 ID 。
- * @return 返回 Promise 异步执行实例。
+ * @return 返回令牌。
  */
-- (AnyPromise *)allocToken:(UInt64)contactId;
+- (CAuthToken *)allocToken:(UInt64)contactId;
 
 /*!
  * @brief 获取当前配置的域。

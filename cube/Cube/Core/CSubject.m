@@ -40,7 +40,6 @@
     if (self = [super init]) {
         self.observers = nil;
         self.namedObservers = nil;
-        self.inMainQueue = TRUE;
     }
 
     return self;
@@ -100,7 +99,7 @@
 - (void)notifyObservers:(CObservableEvent *)event {
     event.subject = self;
 
-    if (self.inMainQueue) {
+    if (event.inMainQueue) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (nil != self.observers) {
                 for (CObserver * obs in self.observers) {

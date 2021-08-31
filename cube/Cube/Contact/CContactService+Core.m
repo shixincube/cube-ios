@@ -46,6 +46,8 @@
 }
 
 - (void)triggerSignIn:(int)code payload:(NSDictionary *)payload {
+//    NSLog(@"Trigger sign-in state: %d", code);
+
     if (code != CContactServiceStateOk) {
         CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventFault data:[CError errorWithModule:CUBE_MODULE_CONTACT code:code]];
         [self notifyObservers:event];
@@ -66,6 +68,7 @@
 
     [self getAppendixWithContact:self.owner handleSuccess:^(CContact * contact, CContactAppendix * appendix) {
         gotAppendix = TRUE;
+        NSLog(@"Got appendix");
         if (gotGroups && gotBlockList && gotTopList) {
             [self fireSignInCompleted];
         }
@@ -78,6 +81,7 @@
     UInt64 now = [CUtils currentTimeMillis];
     [self listGroups:(now - self.defaultRetrospect) ending:now handler:^(NSArray * list) {
         gotGroups = TRUE;
+        NSLog(@"List groups");
         if (gotAppendix && gotBlockList && gotTopList) {
             [self fireSignInCompleted];
         }
@@ -85,6 +89,7 @@
 
     [self listBlockList:^(NSArray * list) {
         gotBlockList = TRUE;
+        NSLog(@"Got block list");
         if (gotAppendix && gotGroups && gotTopList) {
             [self fireSignInCompleted];
         }
@@ -92,6 +97,7 @@
 
     [self listTopList:^(NSArray * list) {
         gotTopList = TRUE;
+        NSLog(@"Got top list");
         if (gotAppendix && gotBlockList && gotGroups) {
             [self fireSignInCompleted];
         }
