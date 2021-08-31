@@ -32,6 +32,7 @@
 @class CKernel;
 @class CPipeline;
 @class CError;
+@class CPluginSystem;
 
 /*! 回调错误事件的 Block 定义。 */
 typedef void (^CubeFailureBlock)(CError * _Nonnull error);
@@ -49,6 +50,9 @@ typedef void (^CubeFailureBlock)(CError * _Nonnull error);
 
 /*! @brief 模块使用的默认数据管道。 */
 @property (nonatomic, nullable, strong) CPipeline * pipeline;
+
+/*! @brief 插件系统。 */
+@property (nonatomic, nonnull, strong, readonly) CPluginSystem * pluginSystem;
 
 /*!
  * @brief 使用模块名初始化。

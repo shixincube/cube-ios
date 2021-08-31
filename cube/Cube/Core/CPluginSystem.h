@@ -24,58 +24,66 @@
  * SOFTWARE.
  */
 
-#import "CModule.h"
-#import "CPluginSystem.h"
+#ifndef CPluginSystem_h
+#define CPluginSystem_h
 
-@interface CModule () {
-    
-    BOOL _started;
-}
+#import "CHook.h"
+#import "CPlugin.h"
+
+/*!
+ * @brief 插件系统。
+ */
+@interface CPluginSystem : NSObject
+
+/*!
+ * @brief 添加事件钩子。
+ * @param hook 指定钩子实例。
+ */
+- (void)addHook:(CHook *)hook;
+
+/*!
+ * @brief 移除事件钩子。
+ * @param hook 指定钩子实例。
+ */
+- (void)removeHook:(CHook *)hook;
+
+/*!
+ * @brief 获取指定事件名的钩子。
+ * @param name 指定事件名。
+ * @return 返回指定事件名的钩子。
+ */
+- (CHook *)getHook:(NSString *)name;
+
+/*!
+ * @brief 清空钩子。
+ */
+- (void)clearHooks;
+
+/*!
+ * @brief 注册插件。
+ * @param name 钩子事件名。
+ * @param plugin 插件实例。
+ */
+- (void)registerPlugin:(NSString *)name plugin:(id<CPlugin>)plugin;
+
+/*!
+ * @brief 注销插件。
+ * @param name 钩子事件名。
+ * @param plugin 插件实例。
+ */
+- (void)deregisterPlugin:(NSString *)name plugin:(id<CPlugin>)plugin;
+
+/*!
+ * @brief 清空插件。
+ */
+- (void)clearPlugins;
+
+
+/*!
+ * @brief 同步方式进行数据处理。
+ */
+- (id)syncApply:(NSString *)name data:(id)data;
 
 @end
 
-
-@implementation CModule
-
-- (instancetype _Nonnull)initWithName:(NSString * _Nonnull)name {
-    if (self = [super init]) {
-        self.name = name;
-        _started = FALSE;
-        _pluginSystem = [[CPluginSystem alloc] init];
-    }
-
-    return self;
-}
-
-- (BOOL)hasStarted {
-    return _started;
-}
-
-- (BOOL)start {
-    if (_started) {
-        return FALSE;
-    }
-
-    _started = TRUE;
-
-    return _started;
-}
-
-- (void)stop {
-    _started = FALSE;
-}
-
-- (void)suspend {
-    // subclass hook override.
-}
-
-- (void)resume {
-    // subclass hook override.
-}
-
-- (BOOL)isReady {
-    // subclass hook override.
-    return TRUE;
-}
-
-@end
+#endif /* CPluginSystem_h */

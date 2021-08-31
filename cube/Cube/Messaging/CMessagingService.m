@@ -31,17 +31,22 @@
 #import "CMessagingEvent.h"
 #import "CMessagingAction.h"
 #import "CContactEvent.h"
+#import "CPluginSystem.h"
+#import "CInstantiateHook.h"
+#import "CMessageTypePlugin.h"
 #import "CKernel.h"
 #import "CUtils.h"
 
 typedef void (^PullCompletedHandler)(void);
 
 @interface CMessagingService () {
-    
+
     CContactService * _contactService;
 }
 
 @property (nonatomic, copy) PullCompletedHandler pullCompletedHandler;
+
+- (void)assemble;
 
 @end
 
@@ -57,6 +62,8 @@ typedef void (^PullCompletedHandler)(void);
         self.defaultRetrospect = 14 * 24 * 60 * 60000L;
         
         _pullTimer = nil;
+
+        _notifyDelegate = nil;
     }
 
     return self;
@@ -66,6 +73,9 @@ typedef void (^PullCompletedHandler)(void);
     if (![super start]) {
         return FALSE;
     }
+    
+    // 组装插件
+    [self assemble];
 
     [self.pipeline addListener:CUBE_MODULE_MESSAGING listener:_pipelineListener];
 
@@ -100,7 +110,12 @@ typedef void (^PullCompletedHandler)(void);
     // 关闭存储
     [_storage close];
 
+    [self.pluginSystem clearHooks];
+    [self.pluginSystem clearPlugins];
+
     _serviceReady = FALSE;
+
+    _notifyDelegate = nil;
 }
 
 - (void)suspend {
@@ -126,13 +141,20 @@ typedef void (^PullCompletedHandler)(void);
 
 #pragma mark - Private
 
+- (void)assemble {
+    [self.pluginSystem addHook:[[CInstantiateHook alloc] init]];
+
+    // 注册插件
+    [self.pluginSystem registerPlugin:CInstantiateHookName plugin:[[CMessageTypePlugin alloc] init]];
+}
+
 - (void)prepare:(CContactService *)contactService completedHandler:(void(^)(void))completedHandler {
     CSelf * owner = contactService.owner;
     // 开启存储器
     [_storage open:owner.identity domain:owner.domain];
 
     UInt64 now = [CUtils currentTimeMillis];
-    
+
     // 查询本地最近消息时间
     UInt64 time = [_storage queryLastMessageTime];
     if (0 == time) {
@@ -141,7 +163,7 @@ typedef void (^PullCompletedHandler)(void);
     else {
         _lastMessageTime = time;
     }
-    
+
     // 从服务器上拉取自上一次时间戳之后的所有消息
     [self queryRemoteMessage:_lastMessageTime ending:now completedHandler:^ {
         completedHandler();

@@ -35,6 +35,12 @@
 		C8400AC426C21DC400C8FF48 /* CSelf.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AC326C21DC400C8FF48 /* CSelf.h */; };
 		C8400AC726C21DD000C8FF48 /* CSelf.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400AC626C21DD000C8FF48 /* CSelf.m */; };
 		C8400ACC26C2215400C8FF48 /* CContactPipelineListener.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400ACB26C2215400C8FF48 /* CContactPipelineListener.m */; };
+		C842BDCD26DE070B008A8517 /* CHook.m in Sources */ = {isa = PBXBuildFile; fileRef = C842BDCC26DE070B008A8517 /* CHook.m */; };
+		C842BDD026DE071C008A8517 /* CPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = C842BDCF26DE071C008A8517 /* CPlugin.h */; };
+		C842BDD526DE085A008A8517 /* CPluginSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = C842BDD426DE085A008A8517 /* CPluginSystem.h */; };
+		C842BDD926DE0865008A8517 /* CPluginSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = C842BDD826DE0865008A8517 /* CPluginSystem.m */; };
+		C842BDDD26DE33E4008A8517 /* CInstantiateHook.m in Sources */ = {isa = PBXBuildFile; fileRef = C842BDDC26DE33E4008A8517 /* CInstantiateHook.m */; };
+		C842BDE426DE3901008A8517 /* CMessageTypePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C842BDE326DE3901008A8517 /* CMessageTypePlugin.m */; };
 		C88461E426B55A4B00A8A3C6 /* CError.m in Sources */ = {isa = PBXBuildFile; fileRef = C88461E326B55A4B00A8A3C6 /* CError.m */; };
 		C8ACAC8126B953530057740D /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = C8ACAC8026B953530057740D /* CEngine.h */; };
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
@@ -141,6 +147,15 @@
 		C8400AC626C21DD000C8FF48 /* CSelf.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSelf.m; sourceTree = "<group>"; };
 		C8400ACA26C2214800C8FF48 /* CContactPipelineListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactPipelineListener.h; sourceTree = "<group>"; };
 		C8400ACB26C2215400C8FF48 /* CContactPipelineListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactPipelineListener.m; sourceTree = "<group>"; };
+		C842BDCC26DE070B008A8517 /* CHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHook.m; sourceTree = "<group>"; };
+		C842BDCF26DE071C008A8517 /* CPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPlugin.h; sourceTree = "<group>"; };
+		C842BDD226DE07C7008A8517 /* CHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHook.h; sourceTree = "<group>"; };
+		C842BDD426DE085A008A8517 /* CPluginSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPluginSystem.h; sourceTree = "<group>"; };
+		C842BDD826DE0865008A8517 /* CPluginSystem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPluginSystem.m; sourceTree = "<group>"; };
+		C842BDDC26DE33E4008A8517 /* CInstantiateHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CInstantiateHook.m; sourceTree = "<group>"; };
+		C842BDDF26DE33F2008A8517 /* CInstantiateHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CInstantiateHook.h; sourceTree = "<group>"; };
+		C842BDE226DE38F5008A8517 /* CMessageTypePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessageTypePlugin.h; sourceTree = "<group>"; };
+		C842BDE326DE3901008A8517 /* CMessageTypePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessageTypePlugin.m; sourceTree = "<group>"; };
 		C88461E226B55A3A00A8A3C6 /* CError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CError.h; sourceTree = "<group>"; };
 		C88461E326B55A4B00A8A3C6 /* CError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CError.m; sourceTree = "<group>"; };
 		C89D151326BE712300C4A55F /* CContactAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactAction.h; sourceTree = "<group>"; };
@@ -230,6 +245,9 @@
 		C80A208026D718BF00255B11 /* Messaging */ = {
 			isa = PBXGroup;
 			children = (
+				C842BDE126DE37C3008A8517 /* Extension */,
+				C842BDDF26DE33F2008A8517 /* CInstantiateHook.h */,
+				C842BDDC26DE33E4008A8517 /* CInstantiateHook.m */,
 				C80A208926D725AE00255B11 /* CMessage.h */,
 				C80A208C26D725BB00255B11 /* CMessage.m */,
 				C80A209026D7379600255B11 /* CMessageState.h */,
@@ -260,6 +278,15 @@
 				C8C384F326BD1B68009CF806 /* CUtils.m */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		C842BDE126DE37C3008A8517 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C842BDE226DE38F5008A8517 /* CMessageTypePlugin.h */,
+				C842BDE326DE3901008A8517 /* CMessageTypePlugin.m */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		C8C384D426BCD788009CF806 /* Contact */ = {
@@ -374,6 +401,8 @@
 				C8C384E426BD0448009CF806 /* CEntity.m */,
 				C88461E226B55A3A00A8A3C6 /* CError.h */,
 				C88461E326B55A4B00A8A3C6 /* CError.m */,
+				C842BDD226DE07C7008A8517 /* CHook.h */,
+				C842BDCC26DE070B008A8517 /* CHook.m */,
 				C8F1A56426899B770020F136 /* CKernel.h */,
 				C8F1A56826899B980020F136 /* CKernel.m */,
 				C8B755DB268B385A00812A4C /* CModule.h */,
@@ -386,6 +415,9 @@
 				C8F1A5B42689CE350020F136 /* CPacket.m */,
 				C8F1A57026899FB60020F136 /* CPipeline.h */,
 				C8F1A56C26899F910020F136 /* CPipeline.m */,
+				C842BDCF26DE071C008A8517 /* CPlugin.h */,
+				C842BDD426DE085A008A8517 /* CPluginSystem.h */,
+				C842BDD826DE0865008A8517 /* CPluginSystem.m */,
 				C8B755AF268ABA6300812A4C /* CStateCode.h */,
 				C8B755B0268ABD1B00812A4C /* CStateCode.m */,
 				C8B755E5268B3C4F00812A4C /* CSubject.h */,
@@ -426,6 +458,7 @@
 			files = (
 				C8C384E226BD043A009CF806 /* CEntity.h in Headers */,
 				C8C3850226BD2775009CF806 /* CContact.h in Headers */,
+				C842BDD026DE071C008A8517 /* CPlugin.h in Headers */,
 				C80A209526D7390200255B11 /* CMessagingServiceState.h in Headers */,
 				C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */,
 				C817FE1626C153250080D697 /* CContactZone.h in Headers */,
@@ -435,6 +468,7 @@
 				C8400AB326C20DB600C8FF48 /* CGroup.h in Headers */,
 				C80A209126D7379600255B11 /* CMessageState.h in Headers */,
 				C8ACAC8126B953530057740D /* CEngine.h in Headers */,
+				C842BDD526DE085A008A8517 /* CPluginSystem.h in Headers */,
 				C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */,
 				C8400AC126C2175400C8FF48 /* CGroupState.h in Headers */,
 				C80A208A26D725AE00255B11 /* CMessage.h in Headers */,
@@ -560,16 +594,19 @@
 				C80A208D26D725BB00255B11 /* CMessage.m in Sources */,
 				C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */,
 				C8400AC726C21DD000C8FF48 /* CSelf.m in Sources */,
+				C842BDCD26DE070B008A8517 /* CHook.m in Sources */,
 				C8BE510E26D87DCE00935149 /* CMessagingObserver.m in Sources */,
 				C8400ABA26C20EAB00C8FF48 /* CGroupAppendix.m in Sources */,
 				C8BE510926D8754400935149 /* CMessagingService+Core.m in Sources */,
 				C80A209926D7410600255B11 /* CMessagingStorage.m in Sources */,
 				C8BE511626D896A500935149 /* CMessagingEvent.m in Sources */,
+				C842BDE426DE3901008A8517 /* CMessageTypePlugin.m in Sources */,
 				C8BE510426D8749500935149 /* CMessagingPipelineListener.m in Sources */,
 				C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */,
 				C80A208226D71C7D00255B11 /* CMessagingService.m in Sources */,
 				C8DF88B2268DAD4D00399C99 /* CAuthService.m in Sources */,
 				C8F1A56D26899F910020F136 /* CPipeline.m in Sources */,
+				C842BDD926DE0865008A8517 /* CPluginSystem.m in Sources */,
 				C8400AAC26C1F98B00C8FF48 /* CDevice.m in Sources */,
 				C8F1A5B52689CE350020F136 /* CPacket.m in Sources */,
 				C8C384DA26BCD7DA009CF806 /* CContactService.m in Sources */,
@@ -579,6 +616,7 @@
 				C8B755D8268B384F00812A4C /* CModule.m in Sources */,
 				C8400ACC26C2215400C8FF48 /* CContactPipelineListener.m in Sources */,
 				C88461E426B55A4B00A8A3C6 /* CError.m in Sources */,
+				C842BDDD26DE33E4008A8517 /* CInstantiateHook.m in Sources */,
 				C817FE1A26C153320080D697 /* CContactZone.m in Sources */,
 				C8400AB626C20DC100C8FF48 /* CGroup.m in Sources */,
 			);

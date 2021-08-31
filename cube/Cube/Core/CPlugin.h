@@ -24,58 +24,24 @@
  * SOFTWARE.
  */
 
-#import "CModule.h"
-#import "CPluginSystem.h"
+#ifndef CPlugin_h
+#define CPlugin_h
 
-@interface CModule () {
-    
-    BOOL _started;
-}
+#import <Foundation/Foundation.h>
 
-@end
+/*!
+ * @brief 插件协议。
+ */
+@protocol CPlugin <NSObject>
 
-
-@implementation CModule
-
-- (instancetype _Nonnull)initWithName:(NSString * _Nonnull)name {
-    if (self = [super init]) {
-        self.name = name;
-        _started = FALSE;
-        _pluginSystem = [[CPluginSystem alloc] init];
-    }
-
-    return self;
-}
-
-- (BOOL)hasStarted {
-    return _started;
-}
-
-- (BOOL)start {
-    if (_started) {
-        return FALSE;
-    }
-
-    _started = TRUE;
-
-    return _started;
-}
-
-- (void)stop {
-    _started = FALSE;
-}
-
-- (void)suspend {
-    // subclass hook override.
-}
-
-- (void)resume {
-    // subclass hook override.
-}
-
-- (BOOL)isReady {
-    // subclass hook override.
-    return TRUE;
-}
+/*!
+ * @brief 当指定的钩子事件发生时回调该函数。
+ * @param name 事件名称。
+ * @param data 事件发生时的数据。
+ * @return 返回处理后的数据。
+ */
+- (id)onEvent:(NSString *)name data:(id)data;
 
 @end
+
+#endif /* CPlugin_h */

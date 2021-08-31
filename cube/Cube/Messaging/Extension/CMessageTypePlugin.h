@@ -24,58 +24,24 @@
  * SOFTWARE.
  */
 
-#import "CModule.h"
-#import "CPluginSystem.h"
+#ifndef CMessagePlugin_h
+#define CMessagePlugin_h
 
-@interface CModule () {
-    
-    BOOL _started;
-}
+#import "CPlugin.h"
+#import "CMessage.h"
 
-@end
+/*!
+ * @brief 消息插件。
+ */
+@interface CMessageTypePlugin : NSObject<CPlugin>
 
-
-@implementation CModule
-
-- (instancetype _Nonnull)initWithName:(NSString * _Nonnull)name {
-    if (self = [super init]) {
-        self.name = name;
-        _started = FALSE;
-        _pluginSystem = [[CPluginSystem alloc] init];
-    }
-
-    return self;
-}
-
-- (BOOL)hasStarted {
-    return _started;
-}
-
-- (BOOL)start {
-    if (_started) {
-        return FALSE;
-    }
-
-    _started = TRUE;
-
-    return _started;
-}
-
-- (void)stop {
-    _started = FALSE;
-}
-
-- (void)suspend {
-    // subclass hook override.
-}
-
-- (void)resume {
-    // subclass hook override.
-}
-
-- (BOOL)isReady {
-    // subclass hook override.
-    return TRUE;
-}
+/*!
+ * @brief 当消息需要实例化（分化）时调用该回调。
+ * @param message 原始消息实例。
+ * @return 消息实例。
+ */
+- (CMessage *)onInstantiate:(CMessage *)message;
 
 @end
+
+#endif /* CMessagePlugin_h */

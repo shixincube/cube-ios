@@ -24,58 +24,32 @@
  * SOFTWARE.
  */
 
-#import "CModule.h"
-#import "CPluginSystem.h"
+#ifndef CInstantiateHook_h
+#define CInstantiateHook_h
 
-@interface CModule () {
-    
-    BOOL _started;
-}
+#import "CHook.h"
 
-@end
+#define CUBE_INSTANTIATE_HOOK @"Instantiate"
+
+static NSString * CInstantiateHookName = CUBE_INSTANTIATE_HOOK;
 
 
-@implementation CModule
+/*!
+ * @brief 实例化消息钩子。
+ */
+@interface CInstantiateHook : CHook
 
-- (instancetype _Nonnull)initWithName:(NSString * _Nonnull)name {
-    if (self = [super init]) {
-        self.name = name;
-        _started = FALSE;
-        _pluginSystem = [[CPluginSystem alloc] init];
-    }
+/*!
+ * @brief 默认初始化。
+ */
+- (instancetype)init;
 
-    return self;
-}
-
-- (BOOL)hasStarted {
-    return _started;
-}
-
-- (BOOL)start {
-    if (_started) {
-        return FALSE;
-    }
-
-    _started = TRUE;
-
-    return _started;
-}
-
-- (void)stop {
-    _started = FALSE;
-}
-
-- (void)suspend {
-    // subclass hook override.
-}
-
-- (void)resume {
-    // subclass hook override.
-}
-
-- (BOOL)isReady {
-    // subclass hook override.
-    return TRUE;
-}
+/*!
+ * @brief 获取钩子事件名。
+ * @return 返回钩子事件名。
+ */
++ (NSString *)name;
 
 @end
+
+#endif /* CInstantiateHook_h */

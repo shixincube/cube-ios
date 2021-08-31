@@ -24,58 +24,38 @@
  * SOFTWARE.
  */
 
-#import "CModule.h"
-#import "CPluginSystem.h"
+#ifndef CHook_h
+#define CHook_h
 
-@interface CModule () {
-    
-    BOOL _started;
-}
+#import <Foundation/Foundation.h>
 
-@end
+@class CPluginSystem;
 
+/*!
+ * @brief 事件钩子。
+ */
+@interface CHook : NSObject
 
-@implementation CModule
+/*! 插件系统。 */
+@property (nonatomic, weak) CPluginSystem * system;
 
-- (instancetype _Nonnull)initWithName:(NSString * _Nonnull)name {
-    if (self = [super init]) {
-        self.name = name;
-        _started = FALSE;
-        _pluginSystem = [[CPluginSystem alloc] init];
-    }
+/*! 钩子的事件名。 */
+@property (nonatomic, strong, readonly) NSString * name;
 
-    return self;
-}
+/*!
+ * @brief 使用触发的事件名初始化。
+ * @param name 触发的事件名。
+ * @return 返回 @c CHook 实例。
+ */
+- (instancetype)initWithName:(NSString *)name;
 
-- (BOOL)hasStarted {
-    return _started;
-}
-
-- (BOOL)start {
-    if (_started) {
-        return FALSE;
-    }
-
-    _started = TRUE;
-
-    return _started;
-}
-
-- (void)stop {
-    _started = FALSE;
-}
-
-- (void)suspend {
-    // subclass hook override.
-}
-
-- (void)resume {
-    // subclass hook override.
-}
-
-- (BOOL)isReady {
-    // subclass hook override.
-    return TRUE;
-}
+/*!
+ * @brief 触发钩子，从系统里找到对应的插件进行数据处理，并返回处理后的数据。
+ * @param data 指定触发事件时的数据。
+ * @return 返回处理后的数据。
+ */
+- (id)apply:(id)data;
 
 @end
+
+#endif /* CHook_h */

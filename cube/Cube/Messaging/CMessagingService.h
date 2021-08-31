@@ -95,6 +95,8 @@
  */
 - (BOOL)isSender:(CMessage *)message;
 
+
+
 /*!
  * @private
  * @brief 进行数据加载。

@@ -24,58 +24,18 @@
  * SOFTWARE.
  */
 
-#import "CModule.h"
-#import "CPluginSystem.h"
+#import "CInstantiateHook.h"
 
-@interface CModule () {
-    
-    BOOL _started;
-}
+@implementation CInstantiateHook
 
-@end
-
-
-@implementation CModule
-
-- (instancetype _Nonnull)initWithName:(NSString * _Nonnull)name {
-    if (self = [super init]) {
-        self.name = name;
-        _started = FALSE;
-        _pluginSystem = [[CPluginSystem alloc] init];
+- (instancetype)init {
+    if (self = [super initWithName:CUBE_INSTANTIATE_HOOK]) {
     }
-
     return self;
 }
 
-- (BOOL)hasStarted {
-    return _started;
-}
-
-- (BOOL)start {
-    if (_started) {
-        return FALSE;
-    }
-
-    _started = TRUE;
-
-    return _started;
-}
-
-- (void)stop {
-    _started = FALSE;
-}
-
-- (void)suspend {
-    // subclass hook override.
-}
-
-- (void)resume {
-    // subclass hook override.
-}
-
-- (BOOL)isReady {
-    // subclass hook override.
-    return TRUE;
++ (NSString *)name {
+    return CInstantiateHookName;
 }
 
 @end
