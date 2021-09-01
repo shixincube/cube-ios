@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('interface_c_kernel_config.html',''); i
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">构造函数</a> &#124;
+<a href="#pub-static-methods">类方法</a> &#124;
 <a href="#properties">属性</a> &#124;
 <a href="interface_c_kernel_config-members.html">所有成员列表</a>  </div>
   <div class="headertitle">
@@ -108,6 +109,12 @@ $(document).ready(function(){initNavTree('interface_c_kernel_config.html',''); i
 <tr class="memdesc:a4e49fe4d255c3f8490d9b3c85e285fb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化。  <a href="interface_c_kernel_config.html#a4e49fe4d255c3f8490d9b3c85e285fb6">更多...</a><br /></td></tr>
 <tr class="separator:a4e49fe4d255c3f8490d9b3c85e285fb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+类方法</h2></td></tr>
+<tr class="memitem:a1c88ddb3333cf2e48efe0ff5c2a7d13a"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_c_kernel_config.html">CKernelConfig</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_c_kernel_config.html#a1c88ddb3333cf2e48efe0ff5c2a7d13a">configWithAddress:domain:appKey:</a></td></tr>
+<tr class="memdesc:a1c88ddb3333cf2e48efe0ff5c2a7d13a"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定基础配置信息创建配置实例。  <a href="interface_c_kernel_config.html#a1c88ddb3333cf2e48efe0ff5c2a7d13a">更多...</a><br /></td></tr>
+<tr class="separator:a1c88ddb3333cf2e48efe0ff5c2a7d13a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 属性</h2></td></tr>
 <tr class="memitem:aba0b3481653f93df177693d669191089"><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_kernel_config.html#aba0b3481653f93df177693d669191089">address</a></td></tr>
@@ -122,9 +129,6 @@ $(document).ready(function(){initNavTree('interface_c_kernel_config.html',''); i
 <tr class="memitem:a137501982230e47306ef58e8db4ab014"><td class="memItemLeft" align="right" valign="top">NSUInteger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_kernel_config.html#a137501982230e47306ef58e8db4ab014">port</a></td></tr>
 <tr class="memdesc:a137501982230e47306ef58e8db4ab014"><td class="mdescLeft">&#160;</td><td class="mdescRight">管道服务器端口。  <a href="interface_c_kernel_config.html#a137501982230e47306ef58e8db4ab014">更多...</a><br /></td></tr>
 <tr class="separator:a137501982230e47306ef58e8db4ab014"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acce20a192e585df110d5365bd0414950"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_kernel_config.html#acce20a192e585df110d5365bd0414950">unconnected</a></td></tr>
-<tr class="memdesc:acce20a192e585df110d5365bd0414950"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动时不进行连接。  <a href="interface_c_kernel_config.html#acce20a192e585df110d5365bd0414950">更多...</a><br /></td></tr>
-<tr class="separator:acce20a192e585df110d5365bd0414950"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7f4167733a501b20323545b12e38582"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_kernel_config.html#ab7f4167733a501b20323545b12e38582">pipelineReady</a></td></tr>
 <tr class="memdesc:ab7f4167733a501b20323545b12e38582"><td class="mdescLeft">&#160;</td><td class="mdescRight">内核是否等待通道就绪再回调。  <a href="interface_c_kernel_config.html#ab7f4167733a501b20323545b12e38582">更多...</a><br /></td></tr>
 <tr class="separator:ab7f4167733a501b20323545b12e38582"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,6 +139,51 @@ $(document).ready(function(){initNavTree('interface_c_kernel_config.html',''); i
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>内核配置定义。 </p>
 </div><h2 class="groupheader">函数文档</h2>
+<a id="a1c88ddb3333cf2e48efe0ff5c2a7d13a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c88ddb3333cf2e48efe0ff5c2a7d13a">&#9670;&nbsp;</a></span>configWithAddress:domain:appKey:</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (<a class="el" href="interface_c_kernel_config.html">CKernelConfig</a> *) configWithAddress: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>address</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">domain:</td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>domain</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">appKey:</td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>appKey</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定基础配置信息创建配置实例。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>指定服务器地址。 </td></tr>
+    <tr><td class="paramname">domain</td><td>指定所属域名称。 </td></tr>
+    <tr><td class="paramname">appKey</td><td>指定该 App 的 Key 串。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回内核配置实例。 </dd></dl>
+
+</div>
+</div>
 <a id="a4e49fe4d255c3f8490d9b3c85e285fb6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4e49fe4d255c3f8490d9b3c85e285fb6">&#9670;&nbsp;</a></span>initWithAddress:domain:appKey:</h2>
 
@@ -321,30 +370,6 @@ $(document).ready(function(){initNavTree('interface_c_kernel_config.html',''); i
 </div><div class="memdoc">
 
 <p>管道服务器端口。 </p>
-
-</div>
-</div>
-<a id="acce20a192e585df110d5365bd0414950"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acce20a192e585df110d5365bd0414950">&#9670;&nbsp;</a></span>unconnected</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (BOOL) unconnected</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>启动时不进行连接。 </p>
 
 </div>
 </div>

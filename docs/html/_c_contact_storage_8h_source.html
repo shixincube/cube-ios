@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('_c_contact_storage_8h_source.html','')
 <div class="title">CContactStorage.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_c_contact_storage_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="_c_contact_storage_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="interface_c_contact_storage.html#a42ed4d1478a386979736c81289169d03">    1</a></span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * This file is part of Cube.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * The MIT License (MIT)</span></div>
@@ -115,14 +115,33 @@ $(document).ready(function(){initNavTree('_c_contact_storage_8h_source.html','')
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef CContactStorage_h</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CContactStorage_h</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_contact_8h.html">CContact.h</a>&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="interface_c_contact_storage.html">   32</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_contact_storage.html">CContactStorage</a> : NSObject</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_contact_service.html">CContactService</a>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CContactStorage_h */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="ainterface_c_contact_storage_html"><div class="ttname"><a href="interface_c_contact_storage.html">CContactStorage</a></div><div class="ttdef"><b>Definition:</b> CContactStorage.h:33</div></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="interface_c_contact_storage.html">   37</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_contact_storage.html">CContactStorage</a> : NSObject</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;- (instancetype)initWithService:(<a class="code" href="interface_c_contact_service.html">CContactService</a> *)service;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;- (BOOL)open:(UInt64)contactId domain:(NSString *)domain;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;- (void)<a class="code" href="interface_c_contact_storage.html#a42ed4d1478a386979736c81289169d03">close</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;- (<a class="code" href="interface_c_contact.html">CContact</a> *)readContact:(UInt64)contactId;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;- (BOOL)writeContact:(<a class="code" href="interface_c_contact.html">CContact</a> *)contact;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;- (BOOL)writeContactAppendix:(<a class="code" href="interface_c_contact_appendix.html">CContactAppendix</a> *)appendix;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CContactStorage_h */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_c_contact_8h_html"><div class="ttname"><a href="_c_contact_8h.html">CContact.h</a></div></div>
+<div class="ttc" id="ainterface_c_contact_appendix_html"><div class="ttname"><a href="interface_c_contact_appendix.html">CContactAppendix</a></div><div class="ttdoc">联系人附录。</div><div class="ttdef"><b>Definition:</b> CContactAppendix.h:39</div></div>
+<div class="ttc" id="ainterface_c_contact_html"><div class="ttname"><a href="interface_c_contact.html">CContact</a></div><div class="ttdoc">联系人实体。</div><div class="ttdef"><b>Definition:</b> CContact.h:38</div></div>
+<div class="ttc" id="ainterface_c_contact_service_html"><div class="ttname"><a href="interface_c_contact_service.html">CContactService</a></div><div class="ttdoc">联系人模块。</div><div class="ttdef"><b>Definition:</b> CContactService.h:52</div></div>
+<div class="ttc" id="ainterface_c_contact_storage_html"><div class="ttname"><a href="interface_c_contact_storage.html">CContactStorage</a></div><div class="ttdoc">联系人模块存储器。</div><div class="ttdef"><b>Definition:</b> CContactStorage.h:38</div></div>
+<div class="ttc" id="ainterface_c_contact_storage_html_a42ed4d1478a386979736c81289169d03"><div class="ttname"><a href="interface_c_contact_storage.html#a42ed4d1478a386979736c81289169d03">-[CContactStorage close]</a></div><div class="ttdeci">void close()</div><div class="ttdoc">关闭存储器。</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.18-->

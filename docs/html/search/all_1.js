@@ -1,10 +1,20 @@
 var searchData=
 [
-  ['addlistener_3alistener_3a_2',['addListener:listener:',['../interface_c_pipeline.html#a8ee9641947d8274c687d03b04cf0cb3d',1,'CPipeline']]],
-  ['address_3',['address',['../interface_c_kernel_config.html#aba0b3481653f93df177693d669191089',1,'CKernelConfig::address()'],['../interface_c_pipeline.html#ae0364ac603968a5f966df3f4c3db0beb',1,'CPipeline::address()'],['../interface_c_primary_description.html#aace6ce347638cdfe7b971ca57abad60c',1,'CPrimaryDescription::address()']]],
-  ['appkey_4',['appKey',['../interface_c_kernel_config.html#abf1cca8180bd076eea9c218eb5e1c2ad',1,'CKernelConfig::appKey()'],['../interface_c_auth_token.html#af124989c7e73e032a903b21dffd6a9b0',1,'CAuthToken::appKey()']]],
-  ['applytoken_3aappkey_3a_5',['applyToken:appKey:',['../interface_c_auth_service.html#ac9e6ea23b281de3b782b3c13b3e5acb8',1,'CAuthService']]],
-  ['attach_3a_6',['attach:',['../interface_c_subject.html#a464e4e7d909912a5e701547932332235',1,'CSubject']]],
-  ['attachwithname_3aobserver_3a_7',['attachWithName:observer:',['../interface_c_subject.html#aeb959799b4ddf75248bc580b55fe4299',1,'CSubject']]],
-  ['authtoken_8',['authToken',['../interface_c_kernel.html#ad6c87819e5e66757a9cdf71fd05ef732',1,'CKernel']]]
+  ['activetoken_3ahandler_3a_12',['activeToken:handler:',['../interface_c_kernel.html#a6d6a5175cdbb6ffc92fd47b8dc1cac7f',1,'CKernel']]],
+  ['adddevice_3a_13',['addDevice:',['../interface_c_contact.html#aebefe3c25676becce51590a2b72041e9',1,'CContact']]],
+  ['addhook_3a_14',['addHook:',['../interface_c_plugin_system.html#a51d5f3433f5dfb40722ce1b1cddb1ff9',1,'CPluginSystem']]],
+  ['addlistener_3alistener_3a_15',['addListener:listener:',['../interface_c_pipeline.html#a8ee9641947d8274c687d03b04cf0cb3d',1,'CPipeline']]],
+  ['address_16',['address',['../interface_c_kernel_config.html#aba0b3481653f93df177693d669191089',1,'CKernelConfig::address()'],['../interface_c_pipeline.html#ae0364ac603968a5f966df3f4c3db0beb',1,'CPipeline::address()'],['../interface_c_primary_description.html#aace6ce347638cdfe7b971ca57abad60c',1,'CPrimaryDescription::address()']]],
+  ['alloctoken_3a_17',['allocToken:',['../interface_c_auth_service.html#afd59de06f19b989c124212cb99c12016',1,'CAuthService']]],
+  ['appendix_18',['appendix',['../interface_c_contact.html#afec51988ab3f9241e5b50a40eb30addb',1,'CContact::appendix()'],['../interface_c_group.html#ac1bfe48a44668e4c3d74815d98260d44',1,'CGroup::appendix()']]],
+  ['appkey_19',['appKey',['../interface_c_kernel_config.html#abf1cca8180bd076eea9c218eb5e1c2ad',1,'CKernelConfig::appKey()'],['../interface_c_auth_token.html#af124989c7e73e032a903b21dffd6a9b0',1,'CAuthToken::appKey()']]],
+  ['apply_3a_20',['apply:',['../interface_c_hook.html#a68bdd6642df797634f18b69a0c3d980d',1,'CHook']]],
+  ['applytoken_3aappkey_3a_21',['applyToken:appKey:',['../interface_c_auth_service.html#ac9e6ea23b281de3b782b3c13b3e5acb8',1,'CAuthService']]],
+  ['assign_3areceiver_3asourcegroup_3a_22',['assign:receiver:sourceGroup:',['../interface_c_message.html#ab88cf4dcb51b40b2fd1e525c757bfad2',1,'CMessage']]],
+  ['assignreceiver_3a_23',['assignReceiver:',['../interface_c_message.html#a7b38a85a00d2af4ea44fb296b886f8d5',1,'CMessage']]],
+  ['assignsender_3a_24',['assignSender:',['../interface_c_message.html#aa1d458183dbdeed50f5f764175f29d22',1,'CMessage']]],
+  ['assignsourcegroup_3a_25',['assignSourceGroup:',['../interface_c_message.html#ac5fa8071e51003688b7ae442bfd420cc',1,'CMessage']]],
+  ['attach_3a_26',['attach:',['../interface_c_subject.html#a464e4e7d909912a5e701547932332235',1,'CSubject']]],
+  ['attachwithname_3aobserver_3a_27',['attachWithName:observer:',['../interface_c_subject.html#aeb959799b4ddf75248bc580b55fe4299',1,'CSubject']]],
+  ['authtoken_28',['authToken',['../interface_c_kernel.html#ad6c87819e5e66757a9cdf71fd05ef732',1,'CKernel']]]
 ];

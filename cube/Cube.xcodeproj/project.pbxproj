@@ -42,6 +42,8 @@
 		C842BDDD26DE33E4008A8517 /* CInstantiateHook.m in Sources */ = {isa = PBXBuildFile; fileRef = C842BDDC26DE33E4008A8517 /* CInstantiateHook.m */; };
 		C842BDE426DE3901008A8517 /* CMessageTypePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C842BDE326DE3901008A8517 /* CMessageTypePlugin.m */; };
 		C842BDE926DE45DF008A8517 /* CTypeableMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C842BDE826DE45DF008A8517 /* CTypeableMessage.m */; };
+		C859CF3C26DF0BBF003040CC /* CHyperTextMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = C859CF3B26DF0BBF003040CC /* CHyperTextMessage.h */; };
+		C859CF3F26DF0C04003040CC /* CHyperTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C859CF3E26DF0C04003040CC /* CHyperTextMessage.m */; };
 		C88461E426B55A4B00A8A3C6 /* CError.m in Sources */ = {isa = PBXBuildFile; fileRef = C88461E326B55A4B00A8A3C6 /* CError.m */; };
 		C8ACAC8126B953530057740D /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = C8ACAC8026B953530057740D /* CEngine.h */; };
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
@@ -159,6 +161,8 @@
 		C842BDE326DE3901008A8517 /* CMessageTypePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessageTypePlugin.m; sourceTree = "<group>"; };
 		C842BDE826DE45DF008A8517 /* CTypeableMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTypeableMessage.m; sourceTree = "<group>"; };
 		C842BDEB26DE45EC008A8517 /* CTypeableMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTypeableMessage.h; sourceTree = "<group>"; };
+		C859CF3B26DF0BBF003040CC /* CHyperTextMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHyperTextMessage.h; sourceTree = "<group>"; };
+		C859CF3E26DF0C04003040CC /* CHyperTextMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHyperTextMessage.m; sourceTree = "<group>"; };
 		C88461E226B55A3A00A8A3C6 /* CError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CError.h; sourceTree = "<group>"; };
 		C88461E326B55A4B00A8A3C6 /* CError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CError.m; sourceTree = "<group>"; };
 		C89D151326BE712300C4A55F /* CContactAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactAction.h; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 		C842BDE126DE37C3008A8517 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C859CF3B26DF0BBF003040CC /* CHyperTextMessage.h */,
+				C859CF3E26DF0C04003040CC /* CHyperTextMessage.m */,
 				C842BDE226DE38F5008A8517 /* CMessageTypePlugin.h */,
 				C842BDE326DE3901008A8517 /* CMessageTypePlugin.m */,
 				C842BDEB26DE45EC008A8517 /* CTypeableMessage.h */,
@@ -477,6 +483,7 @@
 				C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */,
 				C8400AC126C2175400C8FF48 /* CGroupState.h in Headers */,
 				C80A208A26D725AE00255B11 /* CMessage.h in Headers */,
+				C859CF3C26DF0BBF003040CC /* CHyperTextMessage.h in Headers */,
 				C8BE511326D8969900935149 /* CMessagingEvent.h in Headers */,
 				C80A208626D71C8A00255B11 /* CMessagingService.h in Headers */,
 				C8400AAF26C1F99900C8FF48 /* CDevice.h in Headers */,
@@ -605,6 +612,7 @@
 				C8BE510926D8754400935149 /* CMessagingService+Core.m in Sources */,
 				C80A209926D7410600255B11 /* CMessagingStorage.m in Sources */,
 				C8BE511626D896A500935149 /* CMessagingEvent.m in Sources */,
+				C859CF3F26DF0C04003040CC /* CHyperTextMessage.m in Sources */,
 				C842BDE426DE3901008A8517 /* CMessageTypePlugin.m in Sources */,
 				C8BE510426D8749500935149 /* CMessagingPipelineListener.m in Sources */,
 				C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */,

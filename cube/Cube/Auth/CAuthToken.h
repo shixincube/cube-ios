@@ -68,6 +68,7 @@
     CPrimaryDescription * _description;
 }
 
+/*! @brief 授权码。 */
 @property (nonatomic, strong) NSString * code;
 
 @property (nonatomic, strong) NSString * domain;

@@ -39,7 +39,7 @@ typedef enum _CAuthServiceState {
     
     /*! 状态正常状态码。 */
     CAuthServiceStateOk = 0,
-    
+
     /*! 状态出现异常状态码。 */
     CAuthServiceStateFailure = 9,
     

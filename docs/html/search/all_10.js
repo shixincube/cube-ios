@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['readme_2emd_145',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['removelistener_3alistener_3a_146',['removeListener:listener:',['../interface_c_pipeline.html#aad825dbad01afdfea0eec8af5658e78f',1,'CPipeline']]],
-  ['resume_147',['resume',['../interface_c_kernel.html#acb91983b0f402fb2c4c0d607932e7580',1,'CKernel::resume()'],['../interface_c_module.html#ab9c36fdba0fbd7bd0fb204c65be99ceb',1,'CModule::resume()']]]
+  ['querylastmessagetime_358',['queryLastMessageTime',['../interface_c_messaging_storage.html#a7f86214e89f78d2b19077ca0b5de8360',1,'CMessagingStorage']]],
+  ['queryremotemessage_3aending_3acompletedhandler_3a_359',['queryRemoteMessage:ending:completedHandler:',['../interface_c_messaging_service.html#a78a92df07edae3a9baa911d99b86f9ba',1,'CMessagingService']]]
 ];

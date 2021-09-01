@@ -101,17 +101,18 @@ $(document).ready(function(){initNavTree('interface_c_module.html',''); initResi
  <div class="center">
   <img src="interface_c_module.png" usemap="#CModule_map" alt=""/>
   <map id="CModule_map" name="CModule_map">
-<area href="interface_c_subject.html" alt="CSubject" shape="rect" coords="59,56,167,80"/>
-<area href="interface_c_auth_service.html" alt="CAuthService" shape="rect" coords="0,168,108,192"/>
-<area href="interface_c_contact_service.html" alt="CContactService" shape="rect" coords="118,168,226,192"/>
+<area href="interface_c_subject.html" alt="CSubject" shape="rect" coords="136,56,262,80"/>
+<area href="interface_c_auth_service.html" title="授权服务。管理引擎的授权信息。" alt="CAuthService" shape="rect" coords="0,168,126,192"/>
+<area href="interface_c_contact_service.html" title="联系人模块。" alt="CContactService" shape="rect" coords="136,168,262,192"/>
+<area href="interface_c_messaging_service.html" title="消息模块。" alt="CMessagingService" shape="rect" coords="272,168,398,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 构造函数</h2></td></tr>
-<tr class="memitem:aa5f002812eeacef13452855e2ae435a5"><td class="memItemLeft" align="right" valign="top">(id _Nonnull)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_module.html#aa5f002812eeacef13452855e2ae435a5">initWithName:</a></td></tr>
-<tr class="memdesc:aa5f002812eeacef13452855e2ae435a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用模块名初始化。  <a href="interface_c_module.html#aa5f002812eeacef13452855e2ae435a5">更多...</a><br /></td></tr>
-<tr class="separator:aa5f002812eeacef13452855e2ae435a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a708ecec5a6bbb9958aa41857925b5b89"><td class="memItemLeft" align="right" valign="top">(instancetype _Nonnull)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_module.html#a708ecec5a6bbb9958aa41857925b5b89">initWithName:</a></td></tr>
+<tr class="memdesc:a708ecec5a6bbb9958aa41857925b5b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用模块名初始化。  <a href="interface_c_module.html#a708ecec5a6bbb9958aa41857925b5b89">更多...</a><br /></td></tr>
+<tr class="separator:a708ecec5a6bbb9958aa41857925b5b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10a5247388b573f5488e28c912a0c474"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_module.html#a10a5247388b573f5488e28c912a0c474">hasStarted</a></td></tr>
 <tr class="memdesc:a10a5247388b573f5488e28c912a0c474"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否已启动过该模块。  <a href="interface_c_module.html#a10a5247388b573f5488e28c912a0c474">更多...</a><br /></td></tr>
 <tr class="separator:a10a5247388b573f5488e28c912a0c474"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,6 +159,9 @@ $(document).ready(function(){initNavTree('interface_c_module.html',''); initResi
 <tr class="memitem:a7344ea3306b194db08416214f94f7ad4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_c_pipeline.html">CPipeline</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_module.html#a7344ea3306b194db08416214f94f7ad4">pipeline</a></td></tr>
 <tr class="memdesc:a7344ea3306b194db08416214f94f7ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">模块使用的默认数据管道。  <a href="interface_c_module.html#a7344ea3306b194db08416214f94f7ad4">更多...</a><br /></td></tr>
 <tr class="separator:a7344ea3306b194db08416214f94f7ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ad669d6fb45cfaa0a27b1ee52ef1426"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_c_plugin_system.html">CPluginSystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_module.html#a7ad669d6fb45cfaa0a27b1ee52ef1426">pluginSystem</a></td></tr>
+<tr class="memdesc:a7ad669d6fb45cfaa0a27b1ee52ef1426"><td class="mdescLeft">&#160;</td><td class="mdescRight">插件系统。  <a href="interface_c_module.html#a7ad669d6fb45cfaa0a27b1ee52ef1426">更多...</a><br /></td></tr>
+<tr class="separator:a7ad669d6fb45cfaa0a27b1ee52ef1426"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>内核模块。 </p>
@@ -182,14 +186,14 @@ $(document).ready(function(){initNavTree('interface_c_module.html',''); initResi
 
 </div>
 </div>
-<a id="aa5f002812eeacef13452855e2ae435a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5f002812eeacef13452855e2ae435a5">&#9670;&nbsp;</a></span>initWithName:</h2>
+<a id="a708ecec5a6bbb9958aa41857925b5b89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a708ecec5a6bbb9958aa41857925b5b89">&#9670;&nbsp;</a></span>initWithName:</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (id _Nonnull) initWithName: </td>
+          <td class="memname">- (instancetype _Nonnull) initWithName: </td>
           <td></td>
           <td class="paramtype">(NSString *_Nonnull)&#160;</td>
           <td class="paramname"><em>name</em></td>
@@ -376,6 +380,30 @@ $(document).ready(function(){initNavTree('interface_c_module.html',''); initResi
 </div><div class="memdoc">
 
 <p>模块使用的默认数据管道。 </p>
+
+</div>
+</div>
+<a id="a7ad669d6fb45cfaa0a27b1ee52ef1426"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ad669d6fb45cfaa0a27b1ee52ef1426">&#9670;&nbsp;</a></span>pluginSystem</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="interface_c_plugin_system.html">CPluginSystem</a>*) pluginSystem</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>插件系统。 </p>
 
 </div>
 </div>

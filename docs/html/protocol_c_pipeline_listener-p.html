@@ -98,25 +98,29 @@ $(document).ready(function(){initNavTree('protocol_c_pipeline_listener-p.html','
 类 &lt;CPipelineListener&gt; 继承关系图:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="protocol_c_pipeline_listener-p.png" alt=""/>
- </div></div>
+  <img src="protocol_c_pipeline_listener-p.png" usemap="#_3CCPipelineListener_3E_map" alt=""/>
+  <map id="_3CCPipelineListener_3E_map" name="_3CCPipelineListener_3E_map">
+<area href="interface_c_contact_pipeline_listener.html" alt="CContactPipelineListener" shape="rect" coords="0,112,172,136"/>
+<area href="interface_c_messaging_pipeline_listener.html" alt="CMessagingPipelineListener" shape="rect" coords="182,112,354,136"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 构造函数</h2></td></tr>
 <tr class="memitem:aa7a38a666ee3a7cf49627b9eff77d556"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_c_pipeline_listener-p.html#aa7a38a666ee3a7cf49627b9eff77d556">didReceive:source:packet:</a></td></tr>
 <tr class="separator:aa7a38a666ee3a7cf49627b9eff77d556"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4af573785cb30051844c98bdbdc0cde4"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_c_pipeline_listener-p.html#a4af573785cb30051844c98bdbdc0cde4">didOpen:source:packet:</a></td></tr>
-<tr class="separator:a4af573785cb30051844c98bdbdc0cde4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d231cd42d7e792654eeafded550db2f"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_c_pipeline_listener-p.html#a6d231cd42d7e792654eeafded550db2f">didClose:source:packet:</a></td></tr>
-<tr class="separator:a6d231cd42d7e792654eeafded550db2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e99a0af57c2bdb0386356993e87429a"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_c_pipeline_listener-p.html#a4e99a0af57c2bdb0386356993e87429a">faultOccurred:code:</a></td></tr>
-<tr class="separator:a4e99a0af57c2bdb0386356993e87429a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7436796137ca4a8a2071b7a44e5c6ef"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_c_pipeline_listener-p.html#ac7436796137ca4a8a2071b7a44e5c6ef">didOpen:</a></td></tr>
+<tr class="separator:ac7436796137ca4a8a2071b7a44e5c6ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35de9b65fda3e7f00e55fa53fd651274"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_c_pipeline_listener-p.html#a35de9b65fda3e7f00e55fa53fd651274">didClose:</a></td></tr>
+<tr class="separator:a35de9b65fda3e7f00e55fa53fd651274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc1a9c6a84bb6ae2af6674d8d04df1e6"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_c_pipeline_listener-p.html#abc1a9c6a84bb6ae2af6674d8d04df1e6">faultOccurred:code:desc:</a></td></tr>
+<tr class="separator:abc1a9c6a84bb6ae2af6674d8d04df1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>数据通道服务事件监听器。 </p>
 </div><h2 class="groupheader">函数文档</h2>
-<a id="a6d231cd42d7e792654eeafded550db2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d231cd42d7e792654eeafded550db2f">&#9670;&nbsp;</a></span>didClose:source:packet:</h2>
+<a id="a35de9b65fda3e7f00e55fa53fd651274"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35de9b65fda3e7f00e55fa53fd651274">&#9670;&nbsp;</a></span>didClose:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,23 +133,7 @@ $(document).ready(function(){initNavTree('protocol_c_pipeline_listener-p.html','
           <td></td>
           <td class="paramtype">(<a class="el" href="interface_c_pipeline.html">CPipeline</a> *)&#160;</td>
           <td class="paramname"><em>pipeline</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">source:</td>
           <td></td>
-          <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>source</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">packet:</td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interface_c_packet.html">CPacket</a> *)&#160;</td>
-          <td class="paramname"><em>packet</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -157,8 +145,8 @@ $(document).ready(function(){initNavTree('protocol_c_pipeline_listener-p.html','
 
 </div>
 </div>
-<a id="a4af573785cb30051844c98bdbdc0cde4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4af573785cb30051844c98bdbdc0cde4">&#9670;&nbsp;</a></span>didOpen:source:packet:</h2>
+<a id="ac7436796137ca4a8a2071b7a44e5c6ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7436796137ca4a8a2071b7a44e5c6ef">&#9670;&nbsp;</a></span>didOpen:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,23 +159,7 @@ $(document).ready(function(){initNavTree('protocol_c_pipeline_listener-p.html','
           <td></td>
           <td class="paramtype">(<a class="el" href="interface_c_pipeline.html">CPipeline</a> *)&#160;</td>
           <td class="paramname"><em>pipeline</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">source:</td>
           <td></td>
-          <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>source</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">packet:</td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interface_c_packet.html">CPacket</a> *)&#160;</td>
-          <td class="paramname"><em>packet</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -241,8 +213,8 @@ $(document).ready(function(){initNavTree('protocol_c_pipeline_listener-p.html','
 
 </div>
 </div>
-<a id="a4e99a0af57c2bdb0386356993e87429a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e99a0af57c2bdb0386356993e87429a">&#9670;&nbsp;</a></span>faultOccurred:code:</h2>
+<a id="abc1a9c6a84bb6ae2af6674d8d04df1e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc1a9c6a84bb6ae2af6674d8d04df1e6">&#9670;&nbsp;</a></span>faultOccurred:code:desc:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -260,7 +232,13 @@ $(document).ready(function(){initNavTree('protocol_c_pipeline_listener-p.html','
           <td class="paramkey">code:</td>
           <td></td>
           <td class="paramtype">(NSInteger)&#160;</td>
-          <td class="paramname"><em>code</em>&#160;</td>
+          <td class="paramname"><em>code</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">desc:</td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>desc</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

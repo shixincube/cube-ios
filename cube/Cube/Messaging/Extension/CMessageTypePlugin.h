@@ -30,6 +30,8 @@
 #import "CPlugin.h"
 #import "CMessage.h"
 
+extern NSString * CMessageTypeHypertext;
+
 /*!
  * @brief 消息插件。
  */

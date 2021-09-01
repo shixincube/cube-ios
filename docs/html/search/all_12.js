@@ -1,7 +1,24 @@
 var searchData=
 [
-  ['timestamp_162',['timestamp',['../interface_c_entity.html#a34ad2e7db0739633cb2f53f1d0ff64f2',1,'CEntity']]],
-  ['token_163',['token',['../interface_c_auth_service.html#a40a222fb05f39620585ee39a6696b9c1',1,'CAuthService']]],
-  ['tokencode_164',['tokenCode',['../interface_c_pipeline.html#a16a5fac140045bd2820a59e4a99b9160',1,'CPipeline']]],
-  ['triggerlistener_3apacket_3a_165',['triggerListener:packet:',['../interface_c_pipeline.html#aa78717b160b5c27d575bed0dfb6790fb',1,'CPipeline']]]
+  ['savetoken_3a_370',['saveToken:',['../interface_c_auth_storage.html#ae7343415758121305602dfb8c7d1c51e',1,'CAuthStorage']]],
+  ['send_3awithpacket_3a_371',['send:withPacket:',['../interface_c_pipeline.html#a219d66a3a90af3d6df21e8ff933b1ef3',1,'CPipeline']]],
+  ['send_3awithpacket_3ahandleresponse_3a_372',['send:withPacket:handleResponse:',['../interface_c_pipeline.html#a30f439dab6668985c98958e67adde00d',1,'CPipeline']]],
+  ['sender_373',['sender',['../interface_c_message.html#a25318155835ecb71f77b185b45044766',1,'CMessage']]],
+  ['service_374',['service',['../interface_c_messaging_observer.html#a475ac335ae3f4aef5188e64905b3d33c',1,'CMessagingObserver']]],
+  ['setremoteaddress_3awithport_3a_375',['setRemoteAddress:withPort:',['../interface_c_pipeline.html#a1c3eb087cd8c277972589a4e5c46f573',1,'CPipeline']]],
+  ['shutdown_376',['shutdown',['../interface_c_kernel.html#a44e64d1d7158a361faa3afda13e21a3d',1,'CKernel']]],
+  ['signin_3ahandlesuccess_3ahandlefailure_3a_377',['signIn:handleSuccess:handleFailure:',['../interface_c_contact_service.html#ae70fa85a4ad2284e2a11d01f8b0d468b',1,'CContactService']]],
+  ['signinwith_3aname_3ahandlesuccess_3ahandlefailure_3a_378',['signInWith:name:handleSuccess:handleFailure:',['../interface_c_contact_service.html#a65e7107281294c202e3ef36ccccade25',1,'CContactService']]],
+  ['signout_3a_379',['signOut:',['../interface_c_contact_service.html#a1eaf1c57fe81b40b46b44a53f72dbafb',1,'CContactService']]],
+  ['sn_380',['sn',['../interface_c_packet.html#aabe397f789d846c04364b45fae8899e1',1,'CPacket']]],
+  ['source_381',['source',['../interface_c_message.html#a75bd049584abb7542fe22e7ad4ea05c1',1,'CMessage']]],
+  ['sourcegroup_382',['sourceGroup',['../interface_c_message.html#a269d082fdeaa697ecb3fc3092a8f737a',1,'CMessage']]],
+  ['start_383',['start',['../interface_c_module.html#a2e9a7f740dd2a8984f642a4f9d0dad7f',1,'CModule']]],
+  ['startup_3acompletion_3afailure_3a_384',['startup:completion:failure:',['../interface_c_kernel.html#a84d92cf6525e986a5ba6763cadb3750f',1,'CKernel']]],
+  ['state_385',['state',['../interface_c_packet.html#a06b32bc3f967f3423ac86093761cb624',1,'CPacket::state()'],['../interface_c_message.html#a931f936c7c5225b8785fd0365e445688',1,'CMessage::state()']]],
+  ['stop_386',['stop',['../interface_c_module.html#ac23c831eec40d2ecc7a9ebb2306073bf',1,'CModule']]],
+  ['subject_387',['subject',['../interface_c_observable_event.html#aa10d299b0c0e62beccaecc7065855c46',1,'CObservableEvent']]],
+  ['suspend_388',['suspend',['../interface_c_kernel.html#a83866d93e0bbee52629fdec4ee52baba',1,'CKernel::suspend()'],['../interface_c_module.html#a9d060627c5f1c17f5cd7d18aa0dce8c0',1,'CModule::suspend()']]],
+  ['syncapply_3adata_3a_389',['syncApply:data:',['../interface_c_plugin_system.html#a445aa6ac370c972d98e616649e008859',1,'CPluginSystem']]],
+  ['system_390',['system',['../interface_c_hook.html#a5a1adf29537d1b603617a7d3680d5571',1,'CHook']]]
 ];

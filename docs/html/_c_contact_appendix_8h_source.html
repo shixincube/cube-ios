@@ -115,14 +115,30 @@ $(document).ready(function(){initNavTree('_c_contact_appendix_8h_source.html',''
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef CContactAppendix_h</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CContactAppendix_h</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &quot;CJSONable.h&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="interface_c_contact_appendix.html">   32</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_contact_appendix.html">CContactAppendix</a> : NSObject</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CContactAppendix_h */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="ainterface_c_contact_appendix_html"><div class="ttname"><a href="interface_c_contact_appendix.html">CContactAppendix</a></div><div class="ttdef"><b>Definition:</b> CContactAppendix.h:33</div></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_contact.html">CContact</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_contact_service.html">CContactService</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="interface_c_contact_appendix.html">   38</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_contact_appendix.html">CContactAppendix</a> : CJSONable</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="interface_c_contact_appendix.html#a92b024fedb6942efd3b73cbff7424860">   41</a></span>&#160;<span class="keyword">@property</span> (nonatomic, weak, readonly) <a class="code" href="interface_c_contact.html">CContact</a> * <a class="code" href="interface_c_contact_appendix.html#a92b024fedb6942efd3b73cbff7424860">owner</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="interface_c_contact_appendix.html#a7fcbea2cb5d7bc0bc77feee42d0668e7">   44</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) NSString * <a class="code" href="interface_c_contact_appendix.html#a4a2bb8337fc4778f21c3fcd506260e97">remarkName</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;- (instancetype)initWithService:(<a class="code" href="interface_c_contact_service.html">CContactService</a> *)service contact:(<a class="code" href="interface_c_contact.html">CContact</a> *)contact json:(NSDictionary *)json;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;- (BOOL)<a class="code" href="interface_c_contact_appendix.html#a7fcbea2cb5d7bc0bc77feee42d0668e7">hasRemarkName</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CContactAppendix_h */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="ainterface_c_contact_appendix_html"><div class="ttname"><a href="interface_c_contact_appendix.html">CContactAppendix</a></div><div class="ttdoc">联系人附录。</div><div class="ttdef"><b>Definition:</b> CContactAppendix.h:39</div></div>
+<div class="ttc" id="ainterface_c_contact_appendix_html_a4a2bb8337fc4778f21c3fcd506260e97"><div class="ttname"><a href="interface_c_contact_appendix.html#a4a2bb8337fc4778f21c3fcd506260e97">CContactAppendix::remarkName</a></div><div class="ttdeci">NSString * remarkName</div><div class="ttdef"><b>Definition:</b> CContactAppendix.h:44</div></div>
+<div class="ttc" id="ainterface_c_contact_appendix_html_a7fcbea2cb5d7bc0bc77feee42d0668e7"><div class="ttname"><a href="interface_c_contact_appendix.html#a7fcbea2cb5d7bc0bc77feee42d0668e7">-[CContactAppendix hasRemarkName]</a></div><div class="ttdeci">BOOL hasRemarkName()</div><div class="ttdoc">是否设置了备注名。</div></div>
+<div class="ttc" id="ainterface_c_contact_appendix_html_a92b024fedb6942efd3b73cbff7424860"><div class="ttname"><a href="interface_c_contact_appendix.html#a92b024fedb6942efd3b73cbff7424860">CContactAppendix::owner</a></div><div class="ttdeci">CContact * owner</div><div class="ttdef"><b>Definition:</b> CContactAppendix.h:41</div></div>
+<div class="ttc" id="ainterface_c_contact_html"><div class="ttname"><a href="interface_c_contact.html">CContact</a></div><div class="ttdoc">联系人实体。</div><div class="ttdef"><b>Definition:</b> CContact.h:38</div></div>
+<div class="ttc" id="ainterface_c_contact_service_html"><div class="ttname"><a href="interface_c_contact_service.html">CContactService</a></div><div class="ttdoc">联系人模块。</div><div class="ttdef"><b>Definition:</b> CContactService.h:52</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.18-->

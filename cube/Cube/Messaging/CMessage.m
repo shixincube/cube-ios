@@ -99,6 +99,26 @@
     return self;
 }
 
+- (instancetype)initWithMessage:(CMessage *)message {
+    if (self = [super initWithId:message.identity]) {
+        _domain = message.domain;
+        _from = message.from;
+        _sender = message.sender;
+        _to = message.to;
+        _receiver = message.receiver;
+        _source = message.source;
+        _sourceGroup = message.sourceGroup;
+        _localTS = message.localTS;
+        _remoteTS = message.remoteTS;
+        _payload = message.payload;
+        _state = message.state;
+        _owner = message.owner;
+        _scope = message.scope;
+    }
+
+    return self;
+}
+
 - (int)getScope {
     return _scope;
 }

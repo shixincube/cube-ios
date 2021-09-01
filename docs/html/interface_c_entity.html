@@ -91,6 +91,9 @@ $(document).ready(function(){initNavTree('interface_c_entity.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
+<p>信息实体对象。所有实体对象的基类。  
+ <a href="interface_c_entity.html#details">更多...</a></p>
+
 <p><code>#import &lt;<a class="el" href="_c_entity_8h_source.html">CEntity.h</a>&gt;</code></p>
 <div class="dynheader">
 类 CEntity 继承关系图:</div>
@@ -98,15 +101,28 @@ $(document).ready(function(){initNavTree('interface_c_entity.html',''); initResi
  <div class="center">
   <img src="interface_c_entity.png" usemap="#CEntity_map" alt=""/>
   <map id="CEntity_map" name="CEntity_map">
-<area href="interface_c_abstract_contact.html" alt="CAbstractContact" shape="rect" coords="0,112,111,136"/>
-<area href="interface_c_contact.html" alt="CContact" shape="rect" coords="0,168,111,192"/>
+<area href="interface_c_abstract_contact.html" title="抽象联系人。" alt="CAbstractContact" shape="rect" coords="60,112,171,136"/>
+<area href="interface_c_message.html" title="消息实体。" alt="CMessage" shape="rect" coords="181,112,292,136"/>
+<area href="interface_c_contact.html" title="联系人实体。" alt="CContact" shape="rect" coords="0,168,111,192"/>
+<area href="interface_c_group.html" alt="CGroup" shape="rect" coords="121,168,232,192"/>
+<area href="interface_c_self.html" title="用户描述自己的账号。" alt="CSelf" shape="rect" coords="0,224,111,248"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 构造函数</h2></td></tr>
 <tr class="memitem:a9df56c58414ee99b2c6c40e400513831"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_entity.html#a9df56c58414ee99b2c6c40e400513831">init</a></td></tr>
+<tr class="memdesc:a9df56c58414ee99b2c6c40e400513831"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认初始化。  <a href="interface_c_entity.html#a9df56c58414ee99b2c6c40e400513831">更多...</a><br /></td></tr>
 <tr class="separator:a9df56c58414ee99b2c6c40e400513831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a94ac312167c8438992a124374d24a4"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_entity.html#a2a94ac312167c8438992a124374d24a4">initWithId:</a></td></tr>
+<tr class="memdesc:a2a94ac312167c8438992a124374d24a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用 ID 初始化。  <a href="interface_c_entity.html#a2a94ac312167c8438992a124374d24a4">更多...</a><br /></td></tr>
+<tr class="separator:a2a94ac312167c8438992a124374d24a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c9742800966519c33c2b9dd73a5dd21"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_entity.html#a8c9742800966519c33c2b9dd73a5dd21">initWithId:timestamp:</a></td></tr>
+<tr class="memdesc:a8c9742800966519c33c2b9dd73a5dd21"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用 ID 和实体时间戳初始化。  <a href="interface_c_entity.html#a8c9742800966519c33c2b9dd73a5dd21">更多...</a><br /></td></tr>
+<tr class="separator:a8c9742800966519c33c2b9dd73a5dd21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac291eeedc2a27e8d04d14a83fba7ee53"><td class="memItemLeft" align="right" valign="top">(UInt64)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_entity.html#ac291eeedc2a27e8d04d14a83fba7ee53">getId</a></td></tr>
+<tr class="memdesc:ac291eeedc2a27e8d04d14a83fba7ee53"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取实体 ID 。  <a href="interface_c_entity.html#ac291eeedc2a27e8d04d14a83fba7ee53">更多...</a><br /></td></tr>
+<tr class="separator:ac291eeedc2a27e8d04d14a83fba7ee53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 属性</h2></td></tr>
@@ -114,8 +130,34 @@ $(document).ready(function(){initNavTree('interface_c_entity.html',''); initResi
 <tr class="separator:abe3affde8e879755ff4fd411a29e97c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34ad2e7db0739633cb2f53f1d0ff64f2"><td class="memItemLeft" align="right" valign="top">UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_entity.html#a34ad2e7db0739633cb2f53f1d0ff64f2">timestamp</a></td></tr>
 <tr class="separator:a34ad2e7db0739633cb2f53f1d0ff64f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba5eabe443e92b85a344c52b384344b6"><td class="memItemLeft" align="right" valign="top">UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_entity.html#aba5eabe443e92b85a344c52b384344b6">expiry</a></td></tr>
+<tr class="separator:aba5eabe443e92b85a344c52b384344b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe484cd3eb439c354bc0b106f20baa4"><td class="memItemLeft" align="right" valign="top">NSDictionary *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_entity.html#a7fe484cd3eb439c354bc0b106f20baa4">context</a></td></tr>
+<tr class="separator:a7fe484cd3eb439c354bc0b106f20baa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">函数文档</h2>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>信息实体对象。所有实体对象的基类。 </p>
+</div><h2 class="groupheader">函数文档</h2>
+<a id="ac291eeedc2a27e8d04d14a83fba7ee53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac291eeedc2a27e8d04d14a83fba7ee53">&#9670;&nbsp;</a></span>getId</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (UInt64) getId </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取实体 ID 。 </p>
+<dl class="section return"><dt>返回</dt><dd>返回实体 ID 。 </dd></dl>
+
+</div>
+</div>
 <a id="a9df56c58414ee99b2c6c40e400513831"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9df56c58414ee99b2c6c40e400513831">&#9670;&nbsp;</a></span>init</h2>
 
@@ -131,9 +173,123 @@ $(document).ready(function(){initNavTree('interface_c_entity.html',''); initResi
       </table>
 </div><div class="memdoc">
 
+<p>默认初始化。 </p>
+<dl class="section return"><dt>返回</dt><dd>返回实体实例。 </dd></dl>
+
+</div>
+</div>
+<a id="a2a94ac312167c8438992a124374d24a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a94ac312167c8438992a124374d24a4">&#9670;&nbsp;</a></span>initWithId:</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (instancetype) initWithId: </td>
+          <td></td>
+          <td class="paramtype">(UInt64)&#160;</td>
+          <td class="paramname"><em>identity</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>使用 ID 初始化。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identity</td><td>指定实体 ID 。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回实体实例。 </dd></dl>
+
+</div>
+</div>
+<a id="a8c9742800966519c33c2b9dd73a5dd21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c9742800966519c33c2b9dd73a5dd21">&#9670;&nbsp;</a></span>initWithId:timestamp:</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (instancetype) <a class="el" href="interface_c_entity.html#a2a94ac312167c8438992a124374d24a4">initWithId:</a> </td>
+          <td></td>
+          <td class="paramtype">(UInt64)&#160;</td>
+          <td class="paramname"><em>identity</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">timestamp:</td>
+          <td></td>
+          <td class="paramtype">(UInt64)&#160;</td>
+          <td class="paramname"><em>timestamp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>使用 ID 和实体时间戳初始化。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identity</td><td>指定实体 ID 。 </td></tr>
+    <tr><td class="paramname">timestamp</td><td>指定时间戳。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回实体实例。 </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">属性说明</h2>
+<a id="a7fe484cd3eb439c354bc0b106f20baa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fe484cd3eb439c354bc0b106f20baa4">&#9670;&nbsp;</a></span>context</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSDictionary*) context</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>关联上下文数据。 </p>
+
+</div>
+</div>
+<a id="aba5eabe443e92b85a344c52b384344b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba5eabe443e92b85a344c52b384344b6">&#9670;&nbsp;</a></span>expiry</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (UInt64) expiry</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>实体的到期时间。 </p>
+
+</div>
+</div>
 <a id="abe3affde8e879755ff4fd411a29e97c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abe3affde8e879755ff4fd411a29e97c8">&#9670;&nbsp;</a></span>identity</h2>
 
@@ -153,6 +309,7 @@ $(document).ready(function(){initNavTree('interface_c_entity.html',''); initResi
   </tr>
 </table>
 </div><div class="memdoc">
+<p>实体 ID 。 </p>
 
 </div>
 </div>
@@ -175,6 +332,7 @@ $(document).ready(function(){initNavTree('interface_c_entity.html',''); initResi
   </tr>
 </table>
 </div><div class="memdoc">
+<p>实体创建时的时间戳。 </p>
 
 </div>
 </div>

@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['detach_3a_219',['detach:',['../interface_c_subject.html#a7e153c98eb2302a8648539a38fcc89ce',1,'CSubject']]],
-  ['detachwithname_3aobserver_3a_220',['detachWithName:observer:',['../interface_c_subject.html#a970454d975a515f7540358ecde107fc9',1,'CSubject']]],
-  ['didclose_3asource_3apacket_3a_221',['didClose:source:packet:',['../protocol_c_pipeline_listener-p.html#a6d231cd42d7e792654eeafded550db2f',1,'CPipelineListener-p']]],
-  ['didopen_3asource_3apacket_3a_222',['didOpen:source:packet:',['../protocol_c_pipeline_listener-p.html#a4af573785cb30051844c98bdbdc0cde4',1,'CPipelineListener-p']]],
-  ['didreceive_3asource_3apacket_3a_223',['didReceive:source:packet:',['../protocol_c_pipeline_listener-p.html#aa7a38a666ee3a7cf49627b9eff77d556',1,'CPipelineListener-p']]]
+  ['check_3aappkey_3aaddress_3a_507',['check:appKey:address:',['../interface_c_auth_service.html#ab55dc46566b8a402ec4f5e290ff51779',1,'CAuthService']]],
+  ['checklocaltoken_3aappkey_3a_508',['checkLocalToken:appKey:',['../interface_c_auth_service.html#ace6b0eaf46d3e6159ba0d950b96ec44b',1,'CAuthService']]],
+  ['clearhooks_509',['clearHooks',['../interface_c_plugin_system.html#a8ee078fb2aaae1c041b9dec8453f4bc3',1,'CPluginSystem']]],
+  ['clearplugins_510',['clearPlugins',['../interface_c_plugin_system.html#adb99574c37969ee1932ac56648c7ee8d',1,'CPluginSystem']]],
+  ['close_511',['close',['../interface_c_pipeline.html#ac7d44eb9e7bc23a13f72f431f51c00cb',1,'CPipeline::close()'],['../interface_c_auth_storage.html#a4898ace17aed2e8f73077a48c49e2e83',1,'CAuthStorage::close()'],['../interface_c_contact_storage.html#a42ed4d1478a386979736c81289169d03',1,'CContactStorage::close()'],['../interface_c_messaging_storage.html#ad7d64cfedf149016d35b0687801c3542',1,'CMessagingStorage::close()']]],
+  ['comeback_512',['comeback',['../interface_c_contact_service.html#aa934c2b9e0f518fd95171f40ee6814cb',1,'CContactService']]],
+  ['configwithaddress_3adomain_3aappkey_3a_513',['configWithAddress:domain:appKey:',['../interface_c_kernel_config.html#a1c88ddb3333cf2e48efe0ff5c2a7d13a',1,'CKernelConfig']]]
 ];

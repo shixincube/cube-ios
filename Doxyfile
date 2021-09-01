@@ -827,7 +827,8 @@ INPUT                  = ./README.md \
                          ./cube/Cube/ \
                          ./cube/Cube/Core \
                          ./cube/Cube/Auth \
-                         ./cube/Cube/Contact
+                         ./cube/Cube/Contact \
+                         ./cube/Cube/Messaging
 
 
 # This tag can be used to specify the character encoding of the source files

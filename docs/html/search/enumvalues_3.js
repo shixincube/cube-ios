@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['noauthtoken_271',['NoAuthToken',['../_c_state_code_8h.html#a2bd5fcffcd33884a7504c5627b30fc16a19009f89e2f93cc37ddae9473340ecf2',1,'CStateCode.h']]],
-  ['notfound_272',['NotFound',['../_c_state_code_8h.html#a2bd5fcffcd33884a7504c5627b30fc16a70e76b0dfeca4f7119d1da36d948697f',1,'CStateCode.h']]]
+  ['highrisk_724',['HighRisk',['../_c_group_state_8h.html#a61d1f8f2dafc5b42fa6de478690d8f99a577ad6c5a2bd7bf30827b0138f6dc7db',1,'CGroupState.h']]]
 ];

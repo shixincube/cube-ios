@@ -117,15 +117,25 @@ $(document).ready(function(){initNavTree('_c_auth_action_8h_source.html',''); in
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="_c_auth_action_8h.html#a1cc9c4924ee2cb3f0404035df8e32767">   33</a></span>&#160;<span class="preprocessor">#define CUBE_AUTH_APPLY_TOKEN @&quot;applyToken&quot;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="_c_auth_action_8h.html#ac960a566e06d1f36e546139dba37065a">   38</a></span>&#160;<span class="preprocessor">#define CUBE_AUTH_SC_OK 0</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="_c_auth_action_8h.html#a2d058059f6b2c0d90bebfa700157fa26">   43</a></span>&#160;<span class="preprocessor">#define CUBE_AUTH_SC_FAILURE 9</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="_c_auth_action_8h.html#a9801796f27dda9db0d601f746c511400">   48</a></span>&#160;<span class="preprocessor">#define CUBE_AUTH_SC_STORAGE 20</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="_c_auth_action_8h.html#a82f343064ab6381da85bb061a80b4dd7">   53</a></span>&#160;<span class="preprocessor">#define CUBE_AUTH_SC_TIMEOUT 21</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CAuthAction_h */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7">_CAuthServiceState</a> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7afdb4ad8cb209d3342b635336ce6e70fe">   41</a></span>&#160;    <a class="code" href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7afdb4ad8cb209d3342b635336ce6e70fe">CAuthServiceStateOk</a> = 0,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7a70734881255f2886e663c15a51a9afec">   44</a></span>&#160;    <a class="code" href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7a70734881255f2886e663c15a51a9afec">CAuthServiceStateFailure</a> = 9,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7a0c05337c8fe366e4a6c68f8a5ee095ea">   47</a></span>&#160;    <a class="code" href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7a0c05337c8fe366e4a6c68f8a5ee095ea">CAuthServiceStateStorage</a> = 20,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7ad36af21c0d5efdaf6b85be98cce2211b">CAuthServiceStateTimeout</a> = 21</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="_c_auth_action_8h.html#a8f2bbec49ab9cb318841bace81512640">   52</a></span>&#160;} <a class="code" href="_c_auth_action_8h.html#a8f2bbec49ab9cb318841bace81512640">CAuthServiceState</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CAuthAction_h */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_c_auth_action_8h_html_a03ec4895fcb6dcb21dcd17232b474ac7"><div class="ttname"><a href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7">_CAuthServiceState</a></div><div class="ttdeci">_CAuthServiceState</div><div class="ttdoc">授权服务状态枚举。</div><div class="ttdef"><b>Definition:</b> CAuthAction.h:38</div></div>
+<div class="ttc" id="a_c_auth_action_8h_html_a03ec4895fcb6dcb21dcd17232b474ac7a0c05337c8fe366e4a6c68f8a5ee095ea"><div class="ttname"><a href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7a0c05337c8fe366e4a6c68f8a5ee095ea">CAuthServiceStateStorage</a></div><div class="ttdeci">@ CAuthServiceStateStorage</div><div class="ttdef"><b>Definition:</b> CAuthAction.h:47</div></div>
+<div class="ttc" id="a_c_auth_action_8h_html_a03ec4895fcb6dcb21dcd17232b474ac7a70734881255f2886e663c15a51a9afec"><div class="ttname"><a href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7a70734881255f2886e663c15a51a9afec">CAuthServiceStateFailure</a></div><div class="ttdeci">@ CAuthServiceStateFailure</div><div class="ttdef"><b>Definition:</b> CAuthAction.h:44</div></div>
+<div class="ttc" id="a_c_auth_action_8h_html_a03ec4895fcb6dcb21dcd17232b474ac7ad36af21c0d5efdaf6b85be98cce2211b"><div class="ttname"><a href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7ad36af21c0d5efdaf6b85be98cce2211b">CAuthServiceStateTimeout</a></div><div class="ttdeci">@ CAuthServiceStateTimeout</div><div class="ttdef"><b>Definition:</b> CAuthAction.h:50</div></div>
+<div class="ttc" id="a_c_auth_action_8h_html_a03ec4895fcb6dcb21dcd17232b474ac7afdb4ad8cb209d3342b635336ce6e70fe"><div class="ttname"><a href="_c_auth_action_8h.html#a03ec4895fcb6dcb21dcd17232b474ac7afdb4ad8cb209d3342b635336ce6e70fe">CAuthServiceStateOk</a></div><div class="ttdeci">@ CAuthServiceStateOk</div><div class="ttdef"><b>Definition:</b> CAuthAction.h:41</div></div>
+<div class="ttc" id="a_c_auth_action_8h_html_a8f2bbec49ab9cb318841bace81512640"><div class="ttname"><a href="_c_auth_action_8h.html#a8f2bbec49ab9cb318841bace81512640">CAuthServiceState</a></div><div class="ttdeci">enum _CAuthServiceState CAuthServiceState</div><div class="ttdoc">授权服务状态枚举。</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.18-->

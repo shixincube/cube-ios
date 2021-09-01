@@ -1,12 +1,19 @@
 var searchData=
 [
-  ['data_94',['data',['../interface_c_observable_event.html#a22696d228311b7abd913e10fec33eeb8',1,'CObservableEvent::data()'],['../interface_c_packet.html#a20a30efc829a8cc14e14fbbf4528a5ad',1,'CPacket::data()']]],
-  ['desc_95',['desc',['../interface_c_pipeline_state.html#aa137f6d96fd5ebdcd62d3c6fdd3c5628',1,'CPipelineState']]],
-  ['description_96',['description',['../interface_c_auth_token.html#ac135b7f65e7675ca99db8ba5da77190d',1,'CAuthToken']]],
-  ['detach_3a_97',['detach:',['../interface_c_subject.html#a7e153c98eb2302a8648539a38fcc89ce',1,'CSubject']]],
-  ['detachwithname_3aobserver_3a_98',['detachWithName:observer:',['../interface_c_subject.html#a970454d975a515f7540358ecde107fc9',1,'CSubject']]],
-  ['didclose_3asource_3apacket_3a_99',['didClose:source:packet:',['../protocol_c_pipeline_listener-p.html#a6d231cd42d7e792654eeafded550db2f',1,'CPipelineListener-p']]],
-  ['didopen_3asource_3apacket_3a_100',['didOpen:source:packet:',['../protocol_c_pipeline_listener-p.html#a4af573785cb30051844c98bdbdc0cde4',1,'CPipelineListener-p']]],
-  ['didreceive_3asource_3apacket_3a_101',['didReceive:source:packet:',['../protocol_c_pipeline_listener-p.html#aa7a38a666ee3a7cf49627b9eff77d556',1,'CPipelineListener-p']]],
-  ['domain_102',['domain',['../interface_c_kernel_config.html#addbbad1552ccc9777c7cb471bf78e8e8',1,'CKernelConfig::domain()'],['../interface_c_auth_token.html#adbbb25d50ba7fe99b8bc51455a0bf787',1,'CAuthToken::domain()']]]
+  ['data_256',['data',['../interface_c_observable_event.html#a22696d228311b7abd913e10fec33eeb8',1,'CObservableEvent::data()'],['../interface_c_packet.html#a20a30efc829a8cc14e14fbbf4528a5ad',1,'CPacket::data()']]],
+  ['defaultretrospect_257',['defaultRetrospect',['../interface_c_contact_service.html#a3005b70d3dcadb9b2fc29156efba7d2f',1,'CContactService::defaultRetrospect()'],['../interface_c_messaging_service.html#a0b638518bb10be8740b9dbbb59e86495',1,'CMessagingService::defaultRetrospect()']]],
+  ['deregisterplugin_3aplugin_3a_258',['deregisterPlugin:plugin:',['../interface_c_plugin_system.html#abbf5f063333feffabfa23d1ce27c3552',1,'CPluginSystem']]],
+  ['desc_259',['desc',['../interface_c_pipeline_state.html#aa137f6d96fd5ebdcd62d3c6fdd3c5628',1,'CPipelineState']]],
+  ['description_260',['description',['../interface_c_auth_token.html#ac135b7f65e7675ca99db8ba5da77190d',1,'CAuthToken']]],
+  ['detach_3a_261',['detach:',['../interface_c_subject.html#a7e153c98eb2302a8648539a38fcc89ce',1,'CSubject']]],
+  ['detachwithname_3aobserver_3a_262',['detachWithName:observer:',['../interface_c_subject.html#a970454d975a515f7540358ecde107fc9',1,'CSubject']]],
+  ['device_263',['device',['../interface_c_self.html#a64694a259fcb6b668425dcc065130d9c',1,'CSelf']]],
+  ['devices_264',['devices',['../interface_c_contact.html#a115e84959877a5c1ffa661858cb23179',1,'CContact']]],
+  ['devicewithjson_3a_265',['deviceWithJSON:',['../interface_c_device.html#a702eb18e198997c90ca7102b49725ae6',1,'CDevice']]],
+  ['didclose_3a_266',['didClose:',['../protocol_c_pipeline_listener-p.html#a35de9b65fda3e7f00e55fa53fd651274',1,'CPipelineListener-p']]],
+  ['didopen_3a_267',['didOpen:',['../protocol_c_pipeline_listener-p.html#ac7436796137ca4a8a2071b7a44e5c6ef',1,'CPipelineListener-p']]],
+  ['didreceive_3asource_3apacket_3a_268',['didReceive:source:packet:',['../protocol_c_pipeline_listener-p.html#aa7a38a666ee3a7cf49627b9eff77d556',1,'CPipelineListener-p']]],
+  ['disabled_269',['Disabled',['../_c_group_state_8h.html#a61d1f8f2dafc5b42fa6de478690d8f99af31108c24daa76e574c8259d9fe46c09',1,'CGroupState.h']]],
+  ['dismissed_270',['Dismissed',['../_c_group_state_8h.html#a61d1f8f2dafc5b42fa6de478690d8f99a5f5bbca284f6a8773f22cdec8d6c7759',1,'CGroupState.h']]],
+  ['domain_271',['domain',['../interface_c_kernel_config.html#addbbad1552ccc9777c7cb471bf78e8e8',1,'CKernelConfig::domain()'],['../interface_c_auth_token.html#adbbb25d50ba7fe99b8bc51455a0bf787',1,'CAuthToken::domain()'],['../interface_c_abstract_contact.html#a4a7adf2ba644453d97a90168719dab08',1,'CAbstractContact::domain()'],['../interface_c_message.html#af025a2510142b49502fbae22ebe05a0c',1,'CMessage::domain()'],['../interface_c_auth_service.html#a438b79828906560746014c513f6f2d3f',1,'CAuthService::domain()']]]
 ];

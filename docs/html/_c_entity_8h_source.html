@@ -117,21 +117,35 @@ $(document).ready(function(){initNavTree('_c_entity_8h_source.html',''); initRes
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &quot;CJSONable.h&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="interface_c_entity.html">   32</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_entity.html">CEntity</a> : CJSONable</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="interface_c_entity.html#abe3affde8e879755ff4fd411a29e97c8">   34</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_entity.html#abe3affde8e879755ff4fd411a29e97c8">identity</a>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="interface_c_entity.html#a9df56c58414ee99b2c6c40e400513831">   36</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_entity.html#a34ad2e7db0739633cb2f53f1d0ff64f2">timestamp</a>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;- (instancetype)<a class="code" href="interface_c_entity.html#a9df56c58414ee99b2c6c40e400513831">init</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="interface_c_entity.html">   35</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_entity.html">CEntity</a> : CJSONable</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="interface_c_entity.html#abe3affde8e879755ff4fd411a29e97c8">   38</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_entity.html#abe3affde8e879755ff4fd411a29e97c8">identity</a>;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CEntity_h */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="ainterface_c_entity_html"><div class="ttname"><a href="interface_c_entity.html">CEntity</a></div><div class="ttdef"><b>Definition:</b> CEntity.h:33</div></div>
-<div class="ttc" id="ainterface_c_entity_html_a34ad2e7db0739633cb2f53f1d0ff64f2"><div class="ttname"><a href="interface_c_entity.html#a34ad2e7db0739633cb2f53f1d0ff64f2">CEntity::timestamp</a></div><div class="ttdeci">UInt64 timestamp</div><div class="ttdef"><b>Definition:</b> CEntity.h:36</div></div>
-<div class="ttc" id="ainterface_c_entity_html_a9df56c58414ee99b2c6c40e400513831"><div class="ttname"><a href="interface_c_entity.html#a9df56c58414ee99b2c6c40e400513831">-[CEntity init]</a></div><div class="ttdeci">instancetype init()</div></div>
-<div class="ttc" id="ainterface_c_entity_html_abe3affde8e879755ff4fd411a29e97c8"><div class="ttname"><a href="interface_c_entity.html#abe3affde8e879755ff4fd411a29e97c8">CEntity::identity</a></div><div class="ttdeci">UInt64 identity</div><div class="ttdef"><b>Definition:</b> CEntity.h:34</div></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="interface_c_entity.html#a34ad2e7db0739633cb2f53f1d0ff64f2">   41</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_entity.html#a34ad2e7db0739633cb2f53f1d0ff64f2">timestamp</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="interface_c_entity.html#aba5eabe443e92b85a344c52b384344b6">   44</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_entity.html#aba5eabe443e92b85a344c52b384344b6">expiry</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="interface_c_entity.html#a7fe484cd3eb439c354bc0b106f20baa4">   47</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) NSDictionary * <a class="code" href="interface_c_entity.html#a7fe484cd3eb439c354bc0b106f20baa4">context</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;- (instancetype)<a class="code" href="interface_c_entity.html#a9df56c58414ee99b2c6c40e400513831">init</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;- (instancetype)initWithId:(UInt64)identity;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;- (instancetype)initWithId:(UInt64)identity timestamp:(UInt64)timestamp;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;- (UInt64)<a class="code" href="interface_c_entity.html#ac291eeedc2a27e8d04d14a83fba7ee53">getId</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CEntity_h */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="ainterface_c_entity_html"><div class="ttname"><a href="interface_c_entity.html">CEntity</a></div><div class="ttdoc">信息实体对象。所有实体对象的基类。</div><div class="ttdef"><b>Definition:</b> CEntity.h:36</div></div>
+<div class="ttc" id="ainterface_c_entity_html_a34ad2e7db0739633cb2f53f1d0ff64f2"><div class="ttname"><a href="interface_c_entity.html#a34ad2e7db0739633cb2f53f1d0ff64f2">CEntity::timestamp</a></div><div class="ttdeci">UInt64 timestamp</div><div class="ttdef"><b>Definition:</b> CEntity.h:41</div></div>
+<div class="ttc" id="ainterface_c_entity_html_a7fe484cd3eb439c354bc0b106f20baa4"><div class="ttname"><a href="interface_c_entity.html#a7fe484cd3eb439c354bc0b106f20baa4">CEntity::context</a></div><div class="ttdeci">NSDictionary * context</div><div class="ttdef"><b>Definition:</b> CEntity.h:47</div></div>
+<div class="ttc" id="ainterface_c_entity_html_a9df56c58414ee99b2c6c40e400513831"><div class="ttname"><a href="interface_c_entity.html#a9df56c58414ee99b2c6c40e400513831">-[CEntity init]</a></div><div class="ttdeci">instancetype init()</div><div class="ttdoc">默认初始化。</div></div>
+<div class="ttc" id="ainterface_c_entity_html_aba5eabe443e92b85a344c52b384344b6"><div class="ttname"><a href="interface_c_entity.html#aba5eabe443e92b85a344c52b384344b6">CEntity::expiry</a></div><div class="ttdeci">UInt64 expiry</div><div class="ttdef"><b>Definition:</b> CEntity.h:44</div></div>
+<div class="ttc" id="ainterface_c_entity_html_abe3affde8e879755ff4fd411a29e97c8"><div class="ttname"><a href="interface_c_entity.html#abe3affde8e879755ff4fd411a29e97c8">CEntity::identity</a></div><div class="ttdeci">UInt64 identity</div><div class="ttdef"><b>Definition:</b> CEntity.h:38</div></div>
+<div class="ttc" id="ainterface_c_entity_html_ac291eeedc2a27e8d04d14a83fba7ee53"><div class="ttname"><a href="interface_c_entity.html#ac291eeedc2a27e8d04d14a83fba7ee53">-[CEntity getId]</a></div><div class="ttdeci">UInt64 getId()</div><div class="ttdoc">获取实体 ID 。</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.18-->

@@ -124,27 +124,34 @@ $(document).ready(function(){initNavTree('_c_auth_service_8h_source.html',''); i
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_error_8h.html">CError.h</a>&quot;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#import &lt;PromiseKit/AnyPromise.h&gt;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="interface_c_auth_service.html">   44</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_auth_service.html">CAuthService</a> : <a class="code" href="interface_c_module.html">CModule</a></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="interface_c_auth_service.html#ac9e6ea23b281de3b782b3c13b3e5acb8">   46</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) <a class="code" href="interface_c_auth_token.html">CAuthToken</a> * <a class="code" href="interface_c_auth_service.html#a40a222fb05f39620585ee39a6696b9c1">token</a>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;- (instancetype)<a class="code" href="interface_c_auth_service.html#a500561d94b5f0ff97f49546feee5ecc8">init</a>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;- (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;- (AnyPromise *)applyToken:(NSString *)domain appKey:(NSString *)appKey;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CAuthService_h */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="interface_c_auth_service.html">   43</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_auth_service.html">CAuthService</a> : <a class="code" href="interface_c_module.html">CModule</a></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="interface_c_auth_service.html#afd59de06f19b989c124212cb99c12016">   45</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) <a class="code" href="interface_c_auth_token.html">CAuthToken</a> * <a class="code" href="interface_c_auth_service.html#a40a222fb05f39620585ee39a6696b9c1">token</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;- (instancetype)<a class="code" href="interface_c_auth_service.html#a500561d94b5f0ff97f49546feee5ecc8">init</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;- (AnyPromise *)check:(NSString *)<a class="code" href="interface_c_auth_service.html#a438b79828906560746014c513f6f2d3f">domain</a> appKey:(NSString *)appKey address:(NSString *)address;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;- (<a class="code" href="interface_c_auth_token.html">CAuthToken</a> *)checkLocalToken:(NSString *)<a class="code" href="interface_c_auth_service.html#a438b79828906560746014c513f6f2d3f">domain</a> appKey:(NSString *)appKey;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;- (AnyPromise *)applyToken:(NSString *)<a class="code" href="interface_c_auth_service.html#a438b79828906560746014c513f6f2d3f">domain</a> appKey:(NSString *)appKey;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;- (<a class="code" href="interface_c_auth_token.html">CAuthToken</a> *)allocToken:(UInt64)contactId;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;+ (NSString *)<a class="code" href="interface_c_auth_service.html#a438b79828906560746014c513f6f2d3f">domain</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CAuthService_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a_c_auth_token_8h_html"><div class="ttname"><a href="_c_auth_token_8h.html">CAuthToken.h</a></div></div>
 <div class="ttc" id="a_c_error_8h_html"><div class="ttname"><a href="_c_error_8h.html">CError.h</a></div></div>
 <div class="ttc" id="a_c_module_8h_html"><div class="ttname"><a href="_c_module_8h.html">CModule.h</a></div></div>
-<div class="ttc" id="ainterface_c_auth_service_html"><div class="ttname"><a href="interface_c_auth_service.html">CAuthService</a></div><div class="ttdef"><b>Definition:</b> CAuthService.h:45</div></div>
-<div class="ttc" id="ainterface_c_auth_service_html_a40a222fb05f39620585ee39a6696b9c1"><div class="ttname"><a href="interface_c_auth_service.html#a40a222fb05f39620585ee39a6696b9c1">CAuthService::token</a></div><div class="ttdeci">CAuthToken * token</div><div class="ttdef"><b>Definition:</b> CAuthService.h:46</div></div>
+<div class="ttc" id="ainterface_c_auth_service_html"><div class="ttname"><a href="interface_c_auth_service.html">CAuthService</a></div><div class="ttdoc">授权服务。管理引擎的授权信息。</div><div class="ttdef"><b>Definition:</b> CAuthService.h:44</div></div>
+<div class="ttc" id="ainterface_c_auth_service_html_a40a222fb05f39620585ee39a6696b9c1"><div class="ttname"><a href="interface_c_auth_service.html#a40a222fb05f39620585ee39a6696b9c1">CAuthService::token</a></div><div class="ttdeci">CAuthToken * token</div><div class="ttdef"><b>Definition:</b> CAuthService.h:45</div></div>
+<div class="ttc" id="ainterface_c_auth_service_html_a438b79828906560746014c513f6f2d3f"><div class="ttname"><a href="interface_c_auth_service.html#a438b79828906560746014c513f6f2d3f">+[CAuthService domain]</a></div><div class="ttdeci">NSString * domain()</div><div class="ttdoc">获取当前配置的域。</div></div>
 <div class="ttc" id="ainterface_c_auth_service_html_a500561d94b5f0ff97f49546feee5ecc8"><div class="ttname"><a href="interface_c_auth_service.html#a500561d94b5f0ff97f49546feee5ecc8">-[CAuthService init]</a></div><div class="ttdeci">instancetype init()</div></div>
 <div class="ttc" id="ainterface_c_auth_token_html"><div class="ttname"><a href="interface_c_auth_token.html">CAuthToken</a></div><div class="ttdoc">授权访问的令牌。</div><div class="ttdef"><b>Definition:</b> CAuthToken.h:66</div></div>
-<div class="ttc" id="ainterface_c_module_html"><div class="ttname"><a href="interface_c_module.html">CModule</a></div><div class="ttdoc">内核模块。</div><div class="ttdef"><b>Definition:</b> CModule.h:39</div></div>
+<div class="ttc" id="ainterface_c_module_html"><div class="ttname"><a href="interface_c_module.html">CModule</a></div><div class="ttdoc">内核模块。</div><div class="ttdef"><b>Definition:</b> CModule.h:44</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.18-->

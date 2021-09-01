@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['errorwitherror_3a_224',['errorWithError:',['../interface_c_error.html#a12afb38df5a48d20216610a213eab2e5',1,'CError']]],
-  ['errorwithmodule_3acode_3a_225',['errorWithModule:code:',['../interface_c_error.html#a268a64115e43ba248976817f2d0d96c1',1,'CError']]],
-  ['extractdata_226',['extractData',['../interface_c_packet.html#af8264130b9d9cfdac44ca2fbf5d06878',1,'CPacket']]],
-  ['extractstate_3a_227',['extractState:',['../interface_c_pipeline.html#a8d8e4053e04523e528e2a2721c5d8514',1,'CPipeline']]],
-  ['extractstatecode_228',['extractStateCode',['../interface_c_packet.html#a62f14beceeb2b881d5b046edd847deac',1,'CPacket']]]
+  ['deregisterplugin_3aplugin_3a_514',['deregisterPlugin:plugin:',['../interface_c_plugin_system.html#abbf5f063333feffabfa23d1ce27c3552',1,'CPluginSystem']]],
+  ['detach_3a_515',['detach:',['../interface_c_subject.html#a7e153c98eb2302a8648539a38fcc89ce',1,'CSubject']]],
+  ['detachwithname_3aobserver_3a_516',['detachWithName:observer:',['../interface_c_subject.html#a970454d975a515f7540358ecde107fc9',1,'CSubject']]],
+  ['devicewithjson_3a_517',['deviceWithJSON:',['../interface_c_device.html#a702eb18e198997c90ca7102b49725ae6',1,'CDevice']]],
+  ['didclose_3a_518',['didClose:',['../protocol_c_pipeline_listener-p.html#a35de9b65fda3e7f00e55fa53fd651274',1,'CPipelineListener-p']]],
+  ['didopen_3a_519',['didOpen:',['../protocol_c_pipeline_listener-p.html#ac7436796137ca4a8a2071b7a44e5c6ef',1,'CPipelineListener-p']]],
+  ['didreceive_3asource_3apacket_3a_520',['didReceive:source:packet:',['../protocol_c_pipeline_listener-p.html#aa7a38a666ee3a7cf49627b9eff77d556',1,'CPipelineListener-p']]],
+  ['domain_521',['domain',['../interface_c_auth_service.html#a438b79828906560746014c513f6f2d3f',1,'CAuthService']]]
 ];

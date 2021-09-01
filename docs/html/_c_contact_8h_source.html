@@ -116,15 +116,46 @@ $(document).ready(function(){initNavTree('_c_contact_8h_source.html',''); initRe
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CContact_h</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_abstract_contact_8h.html">CAbstractContact.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="interface_c_contact.html">   32</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_contact.html">CContact</a> : <a class="code" href="interface_c_abstract_contact.html">CAbstractContact</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_device_8h.html">CDevice.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_contact_appendix_8h.html">CContactAppendix.h</a>&quot;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CContact_h */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="interface_c_contact.html">   37</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_contact.html">CContact</a> : <a class="code" href="interface_c_abstract_contact.html">CAbstractContact</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="interface_c_contact.html#a115e84959877a5c1ffa661858cb23179">   40</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) NSMutableArray&lt;__kindof CDevice *&gt; * <a class="code" href="interface_c_contact.html#a115e84959877a5c1ffa661858cb23179">devices</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="interface_c_contact.html#aebefe3c25676becce51590a2b72041e9">   43</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) <a class="code" href="interface_c_contact_appendix.html">CContactAppendix</a> * <a class="code" href="interface_c_contact.html#afec51988ab3f9241e5b50a40eb30addb">appendix</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;- (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;- (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain timestamp:(UInt64)timestamp;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;- (instancetype)initWithJSON:(NSDictionary *)json domain:(NSString *)domain;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;- (NSString *)<a class="code" href="interface_c_contact.html#af688ac15f661464d47f2e844844fa80c">getPriorityName</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;- (void)addDevice:(<a class="code" href="interface_c_device.html">CDevice</a> *)device;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;- (void)removeDevice:(<a class="code" href="interface_c_device.html">CDevice</a> *)device;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;- (<a class="code" href="interface_c_device.html">CDevice</a> *)<a class="code" href="interface_c_contact.html#a5b0308712fde3f4bb67fbfc41a43a7db">getDevice</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;- (BOOL)isEqual:(<span class="keywordtype">id</span>)object;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CContact_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a_c_abstract_contact_8h_html"><div class="ttname"><a href="_c_abstract_contact_8h.html">CAbstractContact.h</a></div></div>
-<div class="ttc" id="ainterface_c_abstract_contact_html"><div class="ttname"><a href="interface_c_abstract_contact.html">CAbstractContact</a></div><div class="ttdef"><b>Definition:</b> CAbstractContact.h:33</div></div>
-<div class="ttc" id="ainterface_c_contact_html"><div class="ttname"><a href="interface_c_contact.html">CContact</a></div><div class="ttdef"><b>Definition:</b> CContact.h:33</div></div>
+<div class="ttc" id="a_c_contact_appendix_8h_html"><div class="ttname"><a href="_c_contact_appendix_8h.html">CContactAppendix.h</a></div></div>
+<div class="ttc" id="a_c_device_8h_html"><div class="ttname"><a href="_c_device_8h.html">CDevice.h</a></div></div>
+<div class="ttc" id="ainterface_c_abstract_contact_html"><div class="ttname"><a href="interface_c_abstract_contact.html">CAbstractContact</a></div><div class="ttdoc">抽象联系人。</div><div class="ttdef"><b>Definition:</b> CAbstractContact.h:36</div></div>
+<div class="ttc" id="ainterface_c_contact_appendix_html"><div class="ttname"><a href="interface_c_contact_appendix.html">CContactAppendix</a></div><div class="ttdoc">联系人附录。</div><div class="ttdef"><b>Definition:</b> CContactAppendix.h:39</div></div>
+<div class="ttc" id="ainterface_c_contact_html"><div class="ttname"><a href="interface_c_contact.html">CContact</a></div><div class="ttdoc">联系人实体。</div><div class="ttdef"><b>Definition:</b> CContact.h:38</div></div>
+<div class="ttc" id="ainterface_c_contact_html_a115e84959877a5c1ffa661858cb23179"><div class="ttname"><a href="interface_c_contact.html#a115e84959877a5c1ffa661858cb23179">CContact::devices</a></div><div class="ttdeci">NSMutableArray&lt; __kindof CDevice * &gt; * devices</div><div class="ttdef"><b>Definition:</b> CContact.h:40</div></div>
+<div class="ttc" id="ainterface_c_contact_html_a5b0308712fde3f4bb67fbfc41a43a7db"><div class="ttname"><a href="interface_c_contact.html#a5b0308712fde3f4bb67fbfc41a43a7db">-[CContact getDevice]</a></div><div class="ttdeci">CDevice * getDevice()</div><div class="ttdoc">获取联系人的最近一次使用的设备。</div></div>
+<div class="ttc" id="ainterface_c_contact_html_af688ac15f661464d47f2e844844fa80c"><div class="ttname"><a href="interface_c_contact.html#af688ac15f661464d47f2e844844fa80c">-[CContact getPriorityName]</a></div><div class="ttdeci">NSString * getPriorityName()</div><div class="ttdoc">获取联系人优先显示的名称。</div></div>
+<div class="ttc" id="ainterface_c_contact_html_afec51988ab3f9241e5b50a40eb30addb"><div class="ttname"><a href="interface_c_contact.html#afec51988ab3f9241e5b50a40eb30addb">CContact::appendix</a></div><div class="ttdeci">CContactAppendix * appendix</div><div class="ttdef"><b>Definition:</b> CContact.h:43</div></div>
+<div class="ttc" id="ainterface_c_device_html"><div class="ttname"><a href="interface_c_device.html">CDevice</a></div><div class="ttdoc">设备描述。</div><div class="ttdef"><b>Definition:</b> CDevice.h:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.18-->

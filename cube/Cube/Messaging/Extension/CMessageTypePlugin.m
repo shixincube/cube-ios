@@ -26,6 +26,10 @@
 
 #import "CMessageTypePlugin.h"
 #import "CInstantiateHook.h"
+#import "CHyperTextMessage.h"
+
+NSString * CMessageTypeHypertext = @"hypertext";
+
 
 @implementation CMessageTypePlugin
 
@@ -38,7 +42,13 @@
 }
 
 - (CMessage *)onInstantiate:(CMessage *)message {
-    
+    NSString * type = [message.payload objectForKey:@"type"];
+    if (type) {
+        if ([type isEqualToString:CMessageTypeHypertext]) {
+            return [[CHyperTextMessage alloc] initWithMessage:message];
+        }
+    }
+
     return message;
 }
 

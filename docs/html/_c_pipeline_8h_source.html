@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('_c_pipeline_8h_source.html',''); initR
 <div class="title">CPipeline.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_c_pipeline_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="protocol_c_pipeline_listener-p.html#a6d231cd42d7e792654eeafded550db2f">    1</a></span>&#160;<span class="comment">/*</span></div>
+<a href="_c_pipeline_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="protocol_c_pipeline_listener-p.html#a35de9b65fda3e7f00e55fa53fd651274">    1</a></span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * This file is part of Cube.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * The MIT License (MIT)</span></div>
@@ -127,13 +127,13 @@ $(document).ready(function(){initNavTree('_c_pipeline_8h_source.html',''); initR
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;- (void)didReceive:(<a class="code" href="interface_c_pipeline.html">CPipeline</a> *)pipeline source:(NSString *)source packet:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">@optional</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;- (void)didOpen:(<a class="code" href="interface_c_pipeline.html">CPipeline</a> *)pipeline source:(NSString *)source packet:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;- (void)didOpen:(<a class="code" href="interface_c_pipeline.html">CPipeline</a> *)pipeline;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">@optional</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;- (void)didClose:(<a class="code" href="interface_c_pipeline.html">CPipeline</a> *)pipeline source:(NSString *)source packet:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;- (void)didClose:(<a class="code" href="interface_c_pipeline.html">CPipeline</a> *)pipeline;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">@optional</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;- (void)faultOccurred:(<a class="code" href="interface_c_pipeline.html">CPipeline</a> *)pipeline code:(NSInteger)code;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;- (void)faultOccurred:(<a class="code" href="interface_c_pipeline.html">CPipeline</a> *)pipeline code:(NSInteger)code desc:(NSString *)desc;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">@end</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
@@ -156,21 +156,25 @@ $(document).ready(function(){initNavTree('_c_pipeline_8h_source.html',''); initR
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;- (BOOL)<a class="code" href="interface_c_pipeline.html#a1378ddd46892c462e9ca7c42d00d087f">isReady</a>;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;- (void)send:(NSString *)destination withPacket:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet handleResponse:(<span class="keywordtype">void</span>(^)(<a class="code" href="interface_c_packet.html">CPacket</a> *packet))handleResponse;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;- (void)send:(NSString *)destination withPacket:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet handleResponse:(<span class="keywordtype">void</span>(^)(<a class="code" href="interface_c_packet.html">CPacket</a> * packet))handleResponse;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;- (void)setRemoteAddress:(NSString *)address withPort:(NSInteger)port;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;- (void)send:(NSString *)destination withPacket:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;- (void)addListener:(NSString *)destination listener:(<span class="keywordtype">id</span>&lt;<a class="code" href="protocol_c_pipeline_listener-p.html">CPipelineListener</a>&gt;)listener;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;- (void)setRemoteAddress:(NSString *)address withPort:(NSInteger)port;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;- (void)removeListener:(NSString *)destination listener:(<span class="keywordtype">id</span>&lt;<a class="code" href="protocol_c_pipeline_listener-p.html">CPipelineListener</a>&gt;)listener;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;- (void)addListener:(NSString *)destination listener:(<span class="keywordtype">id</span>&lt;<a class="code" href="protocol_c_pipeline_listener-p.html">CPipelineListener</a>&gt;)listener;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;- (void)triggerListener:(NSString *)destination packet:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;- (void)removeListener:(NSString *)destination listener:(<span class="keywordtype">id</span>&lt;<a class="code" href="protocol_c_pipeline_listener-p.html">CPipelineListener</a>&gt;)listener;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;- (<a class="code" href="interface_c_pipeline_state.html">CPipelineState</a> *)extractState:(NSDictionary *)state;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CPipeline_h */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;- (__kindof NSMutableArray&lt;id&lt;<a class="code" href="protocol_c_pipeline_listener-p.html">CPipelineListener</a>&gt;&gt; *)<a class="code" href="interface_c_pipeline.html#a637c280c813375e43382c158b06ce32d">getAllListeners</a>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;- (void)triggerListener:(NSString *)destination packet:(<a class="code" href="interface_c_packet.html">CPacket</a> *)packet;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;- (<a class="code" href="interface_c_pipeline_state.html">CPipelineState</a> *)extractState:(NSDictionary *)state;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CPipeline_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a_c_packet_8h_html"><div class="ttname"><a href="_c_packet_8h.html">CPacket.h</a></div></div>
 <div class="ttc" id="a_c_state_code_8h_html"><div class="ttname"><a href="_c_state_code_8h.html">CStateCode.h</a></div></div>
 <div class="ttc" id="ainterface_c_packet_html"><div class="ttname"><a href="interface_c_packet.html">CPacket</a></div><div class="ttdef"><b>Definition:</b> CPacket.h:34</div></div>
@@ -179,10 +183,11 @@ $(document).ready(function(){initNavTree('_c_pipeline_8h_source.html',''); initR
 <div class="ttc" id="ainterface_c_pipeline_html_a1378ddd46892c462e9ca7c42d00d087f"><div class="ttname"><a href="interface_c_pipeline.html#a1378ddd46892c462e9ca7c42d00d087f">-[CPipeline isReady]</a></div><div class="ttdeci">BOOL isReady()</div><div class="ttdoc">数据通道是否就绪。</div></div>
 <div class="ttc" id="ainterface_c_pipeline_html_a16a5fac140045bd2820a59e4a99b9160"><div class="ttname"><a href="interface_c_pipeline.html#a16a5fac140045bd2820a59e4a99b9160">CPipeline::tokenCode</a></div><div class="ttdeci">NSString * tokenCode</div><div class="ttdef"><b>Definition:</b> CPipeline.h:67</div></div>
 <div class="ttc" id="ainterface_c_pipeline_html_a24da78693aa8e31d360cea84d208af98"><div class="ttname"><a href="interface_c_pipeline.html#a24da78693aa8e31d360cea84d208af98">-[CPipeline open]</a></div><div class="ttdeci">void open()</div><div class="ttdoc">开启管道。</div></div>
+<div class="ttc" id="ainterface_c_pipeline_html_a637c280c813375e43382c158b06ce32d"><div class="ttname"><a href="interface_c_pipeline.html#a637c280c813375e43382c158b06ce32d">-[CPipeline getAllListeners]</a></div><div class="ttdeci">__kindof NSMutableArray&lt; id&lt; CPipelineListener &gt;&gt; * getAllListeners()</div><div class="ttdoc">获取所有监听器。</div></div>
 <div class="ttc" id="ainterface_c_pipeline_html_a7feddb2d19b0fbbdedcae1c7f8a2ea53"><div class="ttname"><a href="interface_c_pipeline.html#a7feddb2d19b0fbbdedcae1c7f8a2ea53">CPipeline::port</a></div><div class="ttdeci">NSInteger port</div><div class="ttdef"><b>Definition:</b> CPipeline.h:65</div></div>
 <div class="ttc" id="ainterface_c_pipeline_html_ac7d44eb9e7bc23a13f72f431f51c00cb"><div class="ttname"><a href="interface_c_pipeline.html#ac7d44eb9e7bc23a13f72f431f51c00cb">-[CPipeline close]</a></div><div class="ttdeci">void close()</div><div class="ttdoc">关闭管道。</div></div>
 <div class="ttc" id="ainterface_c_pipeline_html_ae0364ac603968a5f966df3f4c3db0beb"><div class="ttname"><a href="interface_c_pipeline.html#ae0364ac603968a5f966df3f4c3db0beb">CPipeline::address</a></div><div class="ttdeci">NSString * address</div><div class="ttdef"><b>Definition:</b> CPipeline.h:63</div></div>
-<div class="ttc" id="ainterface_c_pipeline_state_html"><div class="ttname"><a href="interface_c_pipeline_state.html">CPipelineState</a></div><div class="ttdoc">通道状态描述。</div><div class="ttdef"><b>Definition:</b> CStateCode.h:83</div></div>
+<div class="ttc" id="ainterface_c_pipeline_state_html"><div class="ttname"><a href="interface_c_pipeline_state.html">CPipelineState</a></div><div class="ttdoc">通道状态描述。</div><div class="ttdef"><b>Definition:</b> CStateCode.h:82</div></div>
 <div class="ttc" id="aprotocol_c_pipeline_listener-p_html"><div class="ttname"><a href="protocol_c_pipeline_listener-p.html">CPipelineListener-p</a></div><div class="ttdoc">数据通道服务事件监听器。</div><div class="ttdef"><b>Definition:</b> CPipeline.h:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

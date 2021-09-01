@@ -72,18 +72,30 @@
  */
 @property (nonatomic, assign) int state;
 
+
 //@property (nonatomic, strong, readonly) FileAttachment * attachment;
 
 
 /*!
  * @brief 初始化消息。
+ * @param payload 消息的负载数据。
+ * @return 返回 @c CMessage 实例。
  */
 - (instancetype)initWithPayload:(NSDictionary *)payload;
 
 /*!
  * @brief 使用 JSON 数据初始化消息实体。
+ * @param json 消息的 JSON 结构。
+ * @return 返回 @c CMessage 实例。
  */
 - (instancetype)initWithJSON:(NSDictionary *)json;
+
+/*!
+ * @brief 使用其他消息实例数据初始化消息实体。
+ * @param message 源消息实例。
+ * @return 返回 @c CMessage 实例。
+ */
+- (instancetype)initWithMessage:(CMessage *)message;
 
 
 - (int)getScope;

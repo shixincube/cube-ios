@@ -117,16 +117,24 @@ $(document).ready(function(){initNavTree('_c_abstract_contact_8h_source.html',''
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_entity_8h.html">CEntity.h</a>&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="interface_c_abstract_contact.html">   32</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_abstract_contact.html">CAbstractContact</a> : <a class="code" href="interface_c_entity.html">CEntity</a></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CAbstractContact_h */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="interface_c_abstract_contact.html">   35</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_abstract_contact.html">CAbstractContact</a> : <a class="code" href="interface_c_entity.html">CEntity</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="interface_c_abstract_contact.html#a826c1aaa3d53b4aab1714a9ecf89e7fc">   38</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) NSString * <a class="code" href="interface_c_abstract_contact.html#a826c1aaa3d53b4aab1714a9ecf89e7fc">name</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="interface_c_abstract_contact.html#a4a7adf2ba644453d97a90168719dab08">   41</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) NSString * <a class="code" href="interface_c_abstract_contact.html#a4a7adf2ba644453d97a90168719dab08">domain</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;- (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;- (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain timestamp:(UInt64)timestamp;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CAbstractContact_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a_c_entity_8h_html"><div class="ttname"><a href="_c_entity_8h.html">CEntity.h</a></div></div>
-<div class="ttc" id="ainterface_c_abstract_contact_html"><div class="ttname"><a href="interface_c_abstract_contact.html">CAbstractContact</a></div><div class="ttdef"><b>Definition:</b> CAbstractContact.h:33</div></div>
-<div class="ttc" id="ainterface_c_entity_html"><div class="ttname"><a href="interface_c_entity.html">CEntity</a></div><div class="ttdef"><b>Definition:</b> CEntity.h:33</div></div>
+<div class="ttc" id="ainterface_c_abstract_contact_html"><div class="ttname"><a href="interface_c_abstract_contact.html">CAbstractContact</a></div><div class="ttdoc">抽象联系人。</div><div class="ttdef"><b>Definition:</b> CAbstractContact.h:36</div></div>
+<div class="ttc" id="ainterface_c_abstract_contact_html_a4a7adf2ba644453d97a90168719dab08"><div class="ttname"><a href="interface_c_abstract_contact.html#a4a7adf2ba644453d97a90168719dab08">CAbstractContact::domain</a></div><div class="ttdeci">NSString * domain</div><div class="ttdef"><b>Definition:</b> CAbstractContact.h:41</div></div>
+<div class="ttc" id="ainterface_c_abstract_contact_html_a826c1aaa3d53b4aab1714a9ecf89e7fc"><div class="ttname"><a href="interface_c_abstract_contact.html#a826c1aaa3d53b4aab1714a9ecf89e7fc">CAbstractContact::name</a></div><div class="ttdeci">NSString * name</div><div class="ttdef"><b>Definition:</b> CAbstractContact.h:38</div></div>
+<div class="ttc" id="ainterface_c_entity_html"><div class="ttname"><a href="interface_c_entity.html">CEntity</a></div><div class="ttdoc">信息实体对象。所有实体对象的基类。</div><div class="ttdef"><b>Definition:</b> CEntity.h:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.18-->

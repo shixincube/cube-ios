@@ -38,11 +38,11 @@
 #import <PromiseKit/AnyPromise.h>
 
 /*!
- * @class
  * @brief 授权服务。管理引擎的授权信息。
  */
 @interface CAuthService : CModule
 
+/*! @brief 当前使用的访问令牌。 */
 @property (nonatomic, strong) CAuthToken * token;
 
 - (instancetype)init;
@@ -58,6 +58,9 @@
 
 /*!
  * @brief 加载令牌。
+ * @param domain 指定域。
+ * @param appKey 指定 App Key 数据。
+ * @return 返回有效的令牌。
  */
 - (CAuthToken *)checkLocalToken:(NSString *)domain appKey:(NSString *)appKey;
 
@@ -78,6 +81,7 @@
 
 /*!
  * @brief 获取当前配置的域。
+ * @return 返回当前工作的域。
  */
 + (NSString *)domain;
 

@@ -1,0 +1,211 @@
+<!-- HTML header for doxygen 1.8.18-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cube for iOS: CMessage.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Cube for iOS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_c_message_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CMessage.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_c_message_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * This file is part of Cube.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * The MIT License (MIT)</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Copyright (c) 2020-2022 Shixin Cube Team.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * Permission is hereby granted, free of charge, to any person obtaining a copy</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * of this software and associated documentation files (the &quot;Software&quot;), to deal</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * in the Software without restriction, including without limitation the rights</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * copies of the Software, and to permit persons to whom the Software is</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * furnished to do so, subject to the following conditions:</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * The above copyright notice and this permission notice shall be included in all</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * copies or substantial portions of the Software.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * SOFTWARE.</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef CMessage_h</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CMessage_h</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_entity_8h.html">CEntity.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_contact_8h.html">CContact.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_group_8h.html">CGroup.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="interface_c_message.html">   37</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_message.html">CMessage</a> : <a class="code" href="interface_c_entity.html">CEntity</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="interface_c_message.html#af025a2510142b49502fbae22ebe05a0c">   40</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) NSString * <a class="code" href="interface_c_message.html#af025a2510142b49502fbae22ebe05a0c">domain</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="interface_c_message.html#af08fe5b466bc522fcc92dd67fe56587e">   43</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#af08fe5b466bc522fcc92dd67fe56587e">from</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="interface_c_message.html#a25318155835ecb71f77b185b45044766">   46</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_contact.html">CContact</a> * <a class="code" href="interface_c_message.html#a25318155835ecb71f77b185b45044766">sender</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="interface_c_message.html#ac14ad3b88b6ed5fff1fe3ab7e198937b">   49</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#ac14ad3b88b6ed5fff1fe3ab7e198937b">to</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="interface_c_message.html#a40b5439080a740bcb9171e68c652f215">   52</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_contact.html">CContact</a> * <a class="code" href="interface_c_message.html#a40b5439080a740bcb9171e68c652f215">receiver</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="interface_c_message.html#a75bd049584abb7542fe22e7ad4ea05c1">   55</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#a75bd049584abb7542fe22e7ad4ea05c1">source</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="interface_c_message.html#a269d082fdeaa697ecb3fc3092a8f737a">   58</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_group.html">CGroup</a> * <a class="code" href="interface_c_message.html#a269d082fdeaa697ecb3fc3092a8f737a">sourceGroup</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="interface_c_message.html#a030d53b540670d5fee79fac04f34f20b">   61</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#a030d53b540670d5fee79fac04f34f20b">localTS</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="interface_c_message.html#a7d7965e991d09d7f9d444a5ab9950228">   64</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#a7d7965e991d09d7f9d444a5ab9950228">remoteTS</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="interface_c_message.html#a41027c218e2ecd4b40df5db194bee6f1">   67</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) NSDictionary * <a class="code" href="interface_c_message.html#a41027c218e2ecd4b40df5db194bee6f1">payload</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="interface_c_message.html#ab88cf4dcb51b40b2fd1e525c757bfad2">   73</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign) <span class="keywordtype">int</span> <a class="code" href="interface_c_message.html#a931f936c7c5225b8785fd0365e445688">state</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">//@property (nonatomic, strong, readonly) FileAttachment * attachment;</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;- (instancetype)initWithPayload:(NSDictionary *)payload;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;- (instancetype)initWithJSON:(NSDictionary *)json;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;- (instancetype)initWithMessage:(<a class="code" href="interface_c_message.html">CMessage</a> *)message;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;- (int)<a class="code" href="interface_c_message.html#aaeebd76caea398c5f06dbd8dac671760">getScope</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;- (BOOL)<a class="code" href="interface_c_message.html#ae3451cbfa3d73a663c88f241c8f3be65">isFromGroup</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;- (void)bind:(UInt64)from sender:(<a class="code" href="interface_c_contact.html">CContact</a> *)sender</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;              to:(UInt64)to receiver:(<a class="code" href="interface_c_contact.html">CContact</a> *)receiver</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;          source:(UInt64)source sourceGroup:(<a class="code" href="interface_c_group.html">CGroup</a> *)sourceGroup;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;- (void)assign:(<a class="code" href="interface_c_contact.html">CContact</a> *)sender receiver:(<a class="code" href="interface_c_contact.html">CContact</a> *)receiver</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;   sourceGroup:(<a class="code" href="interface_c_group.html">CGroup</a> *)sourceGroup;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;- (void)assignSender:(<a class="code" href="interface_c_contact.html">CContact</a> *)sender;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;- (void)assignReceiver:(<a class="code" href="interface_c_contact.html">CContact</a> *)receiver;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;- (void)assignSourceGroup:(<a class="code" href="interface_c_group.html">CGroup</a> *)group;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CMessage_h */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_c_contact_8h_html"><div class="ttname"><a href="_c_contact_8h.html">CContact.h</a></div></div>
+<div class="ttc" id="a_c_entity_8h_html"><div class="ttname"><a href="_c_entity_8h.html">CEntity.h</a></div></div>
+<div class="ttc" id="a_c_group_8h_html"><div class="ttname"><a href="_c_group_8h.html">CGroup.h</a></div></div>
+<div class="ttc" id="ainterface_c_contact_html"><div class="ttname"><a href="interface_c_contact.html">CContact</a></div><div class="ttdoc">联系人实体。</div><div class="ttdef"><b>Definition:</b> CContact.h:38</div></div>
+<div class="ttc" id="ainterface_c_entity_html"><div class="ttname"><a href="interface_c_entity.html">CEntity</a></div><div class="ttdoc">信息实体对象。所有实体对象的基类。</div><div class="ttdef"><b>Definition:</b> CEntity.h:36</div></div>
+<div class="ttc" id="ainterface_c_group_html"><div class="ttname"><a href="interface_c_group.html">CGroup</a></div><div class="ttdef"><b>Definition:</b> CGroup.h:34</div></div>
+<div class="ttc" id="ainterface_c_message_html"><div class="ttname"><a href="interface_c_message.html">CMessage</a></div><div class="ttdoc">消息实体。</div><div class="ttdef"><b>Definition:</b> CMessage.h:38</div></div>
+<div class="ttc" id="ainterface_c_message_html_a030d53b540670d5fee79fac04f34f20b"><div class="ttname"><a href="interface_c_message.html#a030d53b540670d5fee79fac04f34f20b">CMessage::localTS</a></div><div class="ttdeci">UInt64 localTS</div><div class="ttdoc">本地时间戳。</div><div class="ttdef"><b>Definition:</b> CMessage.h:61</div></div>
+<div class="ttc" id="ainterface_c_message_html_a25318155835ecb71f77b185b45044766"><div class="ttname"><a href="interface_c_message.html#a25318155835ecb71f77b185b45044766">CMessage::sender</a></div><div class="ttdeci">CContact * sender</div><div class="ttdoc">消息发件人。</div><div class="ttdef"><b>Definition:</b> CMessage.h:46</div></div>
+<div class="ttc" id="ainterface_c_message_html_a269d082fdeaa697ecb3fc3092a8f737a"><div class="ttname"><a href="interface_c_message.html#a269d082fdeaa697ecb3fc3092a8f737a">CMessage::sourceGroup</a></div><div class="ttdeci">CGroup * sourceGroup</div><div class="ttdoc">消息的收发群组。</div><div class="ttdef"><b>Definition:</b> CMessage.h:58</div></div>
+<div class="ttc" id="ainterface_c_message_html_a40b5439080a740bcb9171e68c652f215"><div class="ttname"><a href="interface_c_message.html#a40b5439080a740bcb9171e68c652f215">CMessage::receiver</a></div><div class="ttdeci">CContact * receiver</div><div class="ttdoc">消息收件人。</div><div class="ttdef"><b>Definition:</b> CMessage.h:52</div></div>
+<div class="ttc" id="ainterface_c_message_html_a41027c218e2ecd4b40df5db194bee6f1"><div class="ttname"><a href="interface_c_message.html#a41027c218e2ecd4b40df5db194bee6f1">CMessage::payload</a></div><div class="ttdeci">NSDictionary * payload</div><div class="ttdoc">消息负载数据。</div><div class="ttdef"><b>Definition:</b> CMessage.h:67</div></div>
+<div class="ttc" id="ainterface_c_message_html_a75bd049584abb7542fe22e7ad4ea05c1"><div class="ttname"><a href="interface_c_message.html#a75bd049584abb7542fe22e7ad4ea05c1">CMessage::source</a></div><div class="ttdeci">UInt64 source</div><div class="ttdoc">消息的收发源。该属性表示消息在一个广播域里的域标识或者域 ID 。</div><div class="ttdef"><b>Definition:</b> CMessage.h:55</div></div>
+<div class="ttc" id="ainterface_c_message_html_a7d7965e991d09d7f9d444a5ab9950228"><div class="ttname"><a href="interface_c_message.html#a7d7965e991d09d7f9d444a5ab9950228">CMessage::remoteTS</a></div><div class="ttdeci">UInt64 remoteTS</div><div class="ttdoc">服务器端时间戳。</div><div class="ttdef"><b>Definition:</b> CMessage.h:64</div></div>
+<div class="ttc" id="ainterface_c_message_html_a931f936c7c5225b8785fd0365e445688"><div class="ttname"><a href="interface_c_message.html#a931f936c7c5225b8785fd0365e445688">CMessage::state</a></div><div class="ttdeci">int state</div><div class="ttdoc">消息状态描述。</div><div class="ttdef"><b>Definition:</b> CMessage.h:73</div></div>
+<div class="ttc" id="ainterface_c_message_html_aaeebd76caea398c5f06dbd8dac671760"><div class="ttname"><a href="interface_c_message.html#aaeebd76caea398c5f06dbd8dac671760">-[CMessage getScope]</a></div><div class="ttdeci">int getScope()</div></div>
+<div class="ttc" id="ainterface_c_message_html_ac14ad3b88b6ed5fff1fe3ab7e198937b"><div class="ttname"><a href="interface_c_message.html#ac14ad3b88b6ed5fff1fe3ab7e198937b">CMessage::to</a></div><div class="ttdeci">UInt64 to</div><div class="ttdoc">消息接收方 ID 。</div><div class="ttdef"><b>Definition:</b> CMessage.h:49</div></div>
+<div class="ttc" id="ainterface_c_message_html_ae3451cbfa3d73a663c88f241c8f3be65"><div class="ttname"><a href="interface_c_message.html#ae3451cbfa3d73a663c88f241c8f3be65">-[CMessage isFromGroup]</a></div><div class="ttdeci">BOOL isFromGroup()</div><div class="ttdoc">是否来自群组。</div></div>
+<div class="ttc" id="ainterface_c_message_html_af025a2510142b49502fbae22ebe05a0c"><div class="ttname"><a href="interface_c_message.html#af025a2510142b49502fbae22ebe05a0c">CMessage::domain</a></div><div class="ttdeci">NSString * domain</div><div class="ttdoc">消息所在的域。</div><div class="ttdef"><b>Definition:</b> CMessage.h:40</div></div>
+<div class="ttc" id="ainterface_c_message_html_af08fe5b466bc522fcc92dd67fe56587e"><div class="ttname"><a href="interface_c_message.html#af08fe5b466bc522fcc92dd67fe56587e">CMessage::from</a></div><div class="ttdeci">UInt64 from</div><div class="ttdoc">消息发送方 ID 。</div><div class="ttdef"><b>Definition:</b> CMessage.h:43</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.18-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_452bf2a1f165afdc57f378d186bca8c8.html">cube</a></li><li class="navelem"><a class="el" href="dir_170416ba8e842f45e64f4e38289ca8a1.html">Cube</a></li><li class="navelem"><a class="el" href="dir_d3ab812fa79df3352ce5468f0199798c.html">Messaging</a></li><li class="navelem"><a class="el" href="_c_message_8h.html">CMessage.h</a></li>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -125,18 +125,21 @@ $(document).ready(function(){initNavTree('_c_observable_event_8h_source.html',''
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="interface_c_observable_event.html#a22696d228311b7abd913e10fec33eeb8">   40</a></span>&#160;<span class="keyword">@property</span> (nonatomic, nullable, strong) NSObject * <a class="code" href="interface_c_observable_event.html#a22696d228311b7abd913e10fec33eeb8">data</a>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="interface_c_observable_event.html#a2d343ba4379ed783d383e70c76beed7e">   43</a></span>&#160;<span class="keyword">@property</span> (nonatomic, nullable, weak) <a class="code" href="interface_c_subject.html">CSubject</a> * <a class="code" href="interface_c_observable_event.html#aa10d299b0c0e62beccaecc7065855c46">subject</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="interface_c_observable_event.html#aa10d299b0c0e62beccaecc7065855c46">   43</a></span>&#160;<span class="keyword">@property</span> (nonatomic, nullable, weak) <a class="code" href="interface_c_subject.html">CSubject</a> * <a class="code" href="interface_c_observable_event.html#aa10d299b0c0e62beccaecc7065855c46">subject</a>;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;- (<span class="keywordtype">id</span> _Nonnull )initWithName:( NSString * _Nonnull )name data:( NSObject * _Nullable )data;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="interface_c_observable_event.html#ab299f51a419c4ead0a6497ad76c3c560">   45</a></span>&#160;<span class="keyword">@property</span> (atomic, assign) BOOL <a class="code" href="interface_c_observable_event.html#ad4e089cf17e1132ac1ebdcf43cebf36d">inMainQueue</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;- (instancetype _Nonnull)initWithName:( NSString * _Nonnull )name data:( NSObject * _Nullable )data;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CObservableEvent_h */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CObservableEvent_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="ainterface_c_observable_event_html"><div class="ttname"><a href="interface_c_observable_event.html">CObservableEvent</a></div><div class="ttdef"><b>Definition:</b> CObservableEvent.h:35</div></div>
 <div class="ttc" id="ainterface_c_observable_event_html_a22696d228311b7abd913e10fec33eeb8"><div class="ttname"><a href="interface_c_observable_event.html#a22696d228311b7abd913e10fec33eeb8">CObservableEvent::data</a></div><div class="ttdeci">NSObject * data</div><div class="ttdoc">事件数据。</div><div class="ttdef"><b>Definition:</b> CObservableEvent.h:40</div></div>
 <div class="ttc" id="ainterface_c_observable_event_html_aa10d299b0c0e62beccaecc7065855c46"><div class="ttname"><a href="interface_c_observable_event.html#aa10d299b0c0e62beccaecc7065855c46">CObservableEvent::subject</a></div><div class="ttdeci">CSubject * subject</div><div class="ttdoc">事件发生时的主题。</div><div class="ttdef"><b>Definition:</b> CObservableEvent.h:43</div></div>
 <div class="ttc" id="ainterface_c_observable_event_html_aac97cd8debaefd8f021800b7e1102fa8"><div class="ttname"><a href="interface_c_observable_event.html#aac97cd8debaefd8f021800b7e1102fa8">CObservableEvent::name</a></div><div class="ttdeci">NSString * name</div><div class="ttdoc">事件名称。</div><div class="ttdef"><b>Definition:</b> CObservableEvent.h:37</div></div>
-<div class="ttc" id="ainterface_c_subject_html"><div class="ttname"><a href="interface_c_subject.html">CSubject</a></div><div class="ttdef"><b>Definition:</b> CSubject.h:35</div></div>
+<div class="ttc" id="ainterface_c_observable_event_html_ad4e089cf17e1132ac1ebdcf43cebf36d"><div class="ttname"><a href="interface_c_observable_event.html#ad4e089cf17e1132ac1ebdcf43cebf36d">CObservableEvent::inMainQueue</a></div><div class="ttdeci">BOOL inMainQueue</div><div class="ttdef"><b>Definition:</b> CObservableEvent.h:45</div></div>
+<div class="ttc" id="ainterface_c_subject_html"><div class="ttname"><a href="interface_c_subject.html">CSubject</a></div><div class="ttdef"><b>Definition:</b> CSubject.h:34</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.18-->

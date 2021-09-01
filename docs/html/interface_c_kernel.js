@@ -1,5 +1,6 @@
 var interface_c_kernel =
 [
+    [ "activeToken:handler:", "interface_c_kernel.html#a6d6a5175cdbb6ffc92fd47b8dc1cac7f", null ],
     [ "getModule:", "interface_c_kernel.html#ad22cbb0f429efbc7bc7bcb9911b940fa", null ],
     [ "hasModule:", "interface_c_kernel.html#a12b459e1a3772c77486812e77824d11b", null ],
     [ "installModule:", "interface_c_kernel.html#acc9840e4cf6a8c2405891fe6ecb8b3dc", null ],
@@ -9,5 +10,6 @@ var interface_c_kernel =
     [ "startup:completion:failure:", "interface_c_kernel.html#a84d92cf6525e986a5ba6763cadb3750f", null ],
     [ "suspend", "interface_c_kernel.html#a83866d93e0bbee52629fdec4ee52baba", null ],
     [ "uninstallModule:", "interface_c_kernel.html#abfb6b7e7e4d144159bd4feb205e416d0", null ],
-    [ "authToken", "interface_c_kernel.html#ad6c87819e5e66757a9cdf71fd05ef732", null ]
+    [ "authToken", "interface_c_kernel.html#ad6c87819e5e66757a9cdf71fd05ef732", null ],
+    [ "config", "interface_c_kernel.html#a630bae31e56940e32ea5b0423670926a", null ]
 ];
