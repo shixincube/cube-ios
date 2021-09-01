@@ -39,10 +39,10 @@
             </BuildableReference>
             <SkippedTests>
                <Test
-                  Identifier = "CubeTests">
+                  Identifier = "KernelTest">
                </Test>
                <Test
-                  Identifier = "KernelTest">
+                  Identifier = "MessagingTest">
                </Test>
             </SkippedTests>
          </TestableReference>

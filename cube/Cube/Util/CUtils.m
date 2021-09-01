@@ -49,4 +49,13 @@
     return jsonString;
 }
 
++ (NSString *)byteBufferToString:(CellByteBuffer *)buffer {
+    char * buf = malloc(buffer.limit + 1);
+    memset(buf, 0x0, buffer.limit + 1);
+    memcpy(buf, [buffer bytes], buffer.limit);
+    NSString * result = [NSString stringWithUTF8String:buf];
+    free(buf);
+    return result;
+}
+
 @end

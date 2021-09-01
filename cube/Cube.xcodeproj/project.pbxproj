@@ -44,6 +44,7 @@
 		C842BDE926DE45DF008A8517 /* CTypeableMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C842BDE826DE45DF008A8517 /* CTypeableMessage.m */; };
 		C859CF3C26DF0BBF003040CC /* CHyperTextMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = C859CF3B26DF0BBF003040CC /* CHyperTextMessage.h */; };
 		C859CF3F26DF0C04003040CC /* CHyperTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C859CF3E26DF0C04003040CC /* CHyperTextMessage.m */; };
+		C859CF4426DF2647003040CC /* NSString+Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = C859CF4326DF2647003040CC /* NSString+Cube.m */; };
 		C88461E426B55A4B00A8A3C6 /* CError.m in Sources */ = {isa = PBXBuildFile; fileRef = C88461E326B55A4B00A8A3C6 /* CError.m */; };
 		C8ACAC8126B953530057740D /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = C8ACAC8026B953530057740D /* CEngine.h */; };
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
@@ -163,6 +164,8 @@
 		C842BDEB26DE45EC008A8517 /* CTypeableMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTypeableMessage.h; sourceTree = "<group>"; };
 		C859CF3B26DF0BBF003040CC /* CHyperTextMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHyperTextMessage.h; sourceTree = "<group>"; };
 		C859CF3E26DF0C04003040CC /* CHyperTextMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHyperTextMessage.m; sourceTree = "<group>"; };
+		C859CF4226DF263D003040CC /* NSString+Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Cube.h"; sourceTree = "<group>"; };
+		C859CF4326DF2647003040CC /* NSString+Cube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Cube.m"; sourceTree = "<group>"; };
 		C88461E226B55A3A00A8A3C6 /* CError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CError.h; sourceTree = "<group>"; };
 		C88461E326B55A4B00A8A3C6 /* CError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CError.m; sourceTree = "<group>"; };
 		C89D151326BE712300C4A55F /* CContactAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactAction.h; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 				C8361BF9268EBD7700B1E15E /* CJSONable.m */,
 				C8C384F626BD1B73009CF806 /* CUtils.h */,
 				C8C384F326BD1B68009CF806 /* CUtils.m */,
+				C859CF4226DF263D003040CC /* NSString+Cube.h */,
+				C859CF4326DF2647003040CC /* NSString+Cube.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -626,6 +631,7 @@
 				C8C384E526BD0448009CF806 /* CEntity.m in Sources */,
 				C8B755E9268B3FC000812A4C /* CObserver.m in Sources */,
 				C817FE0A26C12B7C0080D697 /* CContactAppendix.m in Sources */,
+				C859CF4426DF2647003040CC /* NSString+Cube.m in Sources */,
 				C8B755D8268B384F00812A4C /* CModule.m in Sources */,
 				C8400ACC26C2215400C8FF48 /* CContactPipelineListener.m in Sources */,
 				C88461E426B55A4B00A8A3C6 /* CError.m in Sources */,

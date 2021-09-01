@@ -24,44 +24,19 @@
  * SOFTWARE.
  */
 
-#ifndef CUtils_h
-#define CUtils_h
+#ifndef NSString_Cube_h
+#define NSString_Cube_h
 
 #import <Foundation/Foundation.h>
-#import <cell/CellByteBuffer.h>
 
-/*!
- * @brief 辅助函数库。
- */
-@interface CUtils : NSObject
+#ifndef NotFound
+#define NotFound -1
+#endif
 
-/*!
- * @brief 获取当前时间快照的时间戳。
- * @return 返回自1970年到当前时间快照的毫秒计数表示的时间戳。
- */
-+ (UInt64)currentTimeMillis;
+@interface NSString (Cube)
 
-/*!
- * @brief 将 JSON 格式字符串转为字典形式。
- * @param jsonString 指定 JSON 格式字符串。
- * @return 返回字典实例。
- */
-+ (NSDictionary *)toJSONWithString:(NSString *)jsonString;
-
-/*!
- * @brief 将字典形式 JSON 转为字符串形式。
- * @param json 指定字典形式。
- * @return 返回 JSON 格式的字符串。
- */
-+ (NSString *)toStringWithJSON:(NSDictionary *)json;
-
-/*!
- * @brief 将 @c CellByteBuffer 类型字节缓存数据转为字符串 @c NSString 实例。
- * @param buffer 字节缓存。
- * @return 返回字符串实例。
- */
-+ (NSString *)byteBufferToString:(CellByteBuffer *)buffer;
+- (NSInteger)lastIndexOfChar:(char)ch;
 
 @end
 
-#endif /* CUtils_h */
+#endif /* NSString_Cube_h */

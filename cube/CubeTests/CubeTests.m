@@ -6,6 +6,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "../Cube/Util/NSString+Cube.h"
+#import "../Cube/Messaging/Extension/CHyperTextMessage.h"
 
 @interface CubeTests : XCTestCase
 
@@ -17,6 +19,16 @@
 }
 
 - (void)tearDown {
+}
+
+- (void)testParse {
+    NSString * c1 = @"ABCD中国";
+    CHyperTextMessage * message = [[CHyperTextMessage alloc] initWithText:c1];
+    NSLog(@"%@ - |%@| %ld", c1, message.plaintext, message.formattedContents.count);
+
+    NSString * c2 = @"时信魔方[E微笑#1007]";
+    message = [[CHyperTextMessage alloc] initWithText:c2];
+    NSLog(@"%@ - |%@| %ld", c2, message.plaintext, message.formattedContents.count);
 }
 
 - (void)testPerformanceExample {

@@ -47,7 +47,7 @@ extern NSString * CFormattedContentEmoji;
 @property (nonatomic, strong) NSString * format;
 
 /*! @brief 内容。 */
-@property (nonatomic, strong) NSString * content;
+@property (nonatomic, strong) NSDictionary * content;
 
 /*!
  * @brief 使用格式化内容初始化。
@@ -55,7 +55,7 @@ extern NSString * CFormattedContentEmoji;
  * @param content 指定内容。
  * @return 返回 @c CFormattedContent 实例。
  */
-- (instancetype)initWithFormat:(NSString *)format content:(NSString *)content;
+- (instancetype)initWithFormat:(NSString *)format content:(NSDictionary *)content;
 
 @end
 
