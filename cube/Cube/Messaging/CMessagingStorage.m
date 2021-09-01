@@ -95,21 +95,54 @@
 }
 
 - (void)updateMessage:(CMessage *)message {
-    NSString * sql = [NSString stringWithFormat:@"SELECT `id` FROM `message` WHERE `id`=%lld", message.identity];
+    // 先查询是否有该消息记录
+    NSString * sql = [NSString stringWithFormat:@"SELECT `id` FROM `message` WHERE `id`=%llu", message.identity];
     FMResultSet * result = [_db executeQuery:sql];
     if ([result next]) {
         // 更新消息状态
         NSString * jsonString = [CUtils toStringWithJSON:[message toJSON]];
-        [_db executeUpdate:@"UPDATE `message` SET `state`=? `data`=? WHERE `id`=?",
+        [_db executeUpdate:@"UPDATE `message` SET `rts`=? `state`=? `data`=? WHERE `id`=?",
+            [NSNumber numberWithUnsignedLongLong:message.remoteTS],
             [NSNumber numberWithInt:message.state],
             jsonString,
             [NSNumber numberWithUnsignedLongLong:message.identity]];
+
+        UInt64 messagerId = 0;
+
+        // 更新最近消息
+        if ([message isFromGroup]) {
+            // TODO
+        }
+        else {
+            if ([_service isSender:message]) {
+                messagerId = message.to;
+            }
+            else {
+                messagerId = message.from;
+            }
+        }
+
+        sql = [NSString stringWithFormat:@"SELECT `time` FROM `recent_messager` WHERE `messager_id`=%llu", messagerId];
+        result = [_db executeQuery:sql];
+        if ([result next]) {
+            UInt64 time = [result unsignedLongLongIntForColumn:@"time"];
+            if (message.remoteTS > time) {
+                // 更新记录
+                [_db executeUpdate:@"UPDATE `recent_messager` SET `time`=? `message_id`=? `is_group`=? WHERE `messager_id`=?",
+                    [NSNumber numberWithUnsignedLongLong:message.remoteTS],
+                    [NSNumber numberWithUnsignedLongLong:message.identity],
+                    [NSNumber numberWithInt:([message isFromGroup] ? 1 : 0)],
+                    [NSNumber numberWithUnsignedLongLong:messagerId]];
+            }
+        }
+
         return;
     }
 
-    NSString * jsonString = [CUtils toStringWithJSON:[message toJSON]];
-
     // 写入新消息
+    
+    NSString * jsonString = [CUtils toStringWithJSON:[message toJSON]];
+    
     sql = [NSString stringWithFormat:@"INSERT INTO `message` (id,from,to,source,lts,rts,state,scope,data) VALUES (%lld,%lld,%lld,%lld,%lld,%lld,%d,%d,?)",
            message.identity,
            message.from,

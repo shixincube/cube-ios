@@ -77,7 +77,7 @@
     message = [hook apply:message];
 
     if (self.notifyDelegate) {
-        [self.notifyDelegate notify:message service:self];
+        [self.notifyDelegate notified:message service:self];
     }
 
     CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventNotify data:message];

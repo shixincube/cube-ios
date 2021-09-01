@@ -71,16 +71,22 @@
 /*! @brief 授权码。 */
 @property (nonatomic, strong) NSString * code;
 
+/*! @brief 工作的域。 */
 @property (nonatomic, strong) NSString * domain;
 
+/*! @brief 工作的 App Key 。 */
 @property (nonatomic, strong) NSString * appKey;
 
+/*! @brief 令牌绑定的联系人 ID 。 */
 @property (nonatomic, assign) UInt64 cid;
 
+/*! @brief 令牌发布时间戳。 */
 @property (nonatomic, assign) UInt64 issues;
 
+/*! @brief 令牌过期时间戳。 */
 @property (nonatomic, assign) UInt64 expiry;
 
+/*! @brief 引擎的主描述内容。 */
 @property (nonatomic, strong) CPrimaryDescription * description;
 
 /*!

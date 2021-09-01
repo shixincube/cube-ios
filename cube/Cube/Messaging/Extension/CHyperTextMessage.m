@@ -86,7 +86,7 @@ NSString * CFormattedContentEmoji = @"emoji";
 
         _plaintext = text;
 
-        [self parse:_plaintext];
+        [self parse:text];
     }
     
     return self;

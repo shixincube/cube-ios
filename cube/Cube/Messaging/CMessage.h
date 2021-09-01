@@ -97,7 +97,9 @@
  */
 - (instancetype)initWithMessage:(CMessage *)message;
 
-
+/*!
+ * @brief 获取消息范围。
+ */
 - (int)getScope;
 
 /*!
@@ -111,14 +113,12 @@
  * @brief 设置消息路由相关数据。
  * @private
  */
-- (void)bind:(UInt64)from sender:(CContact *)sender
-              to:(UInt64)to receiver:(CContact *)receiver
-          source:(UInt64)source sourceGroup:(CGroup *)sourceGroup;
+- (void)bind:(UInt64)from
+          to:(UInt64)to
+      source:(UInt64)source;
 
-/*!
- * @brief 设置实体关联数据。
- * @private
- */
+- (void)assignTS:(UInt64)localTS remoteTS:(UInt64)remoteTS;
+
 - (void)assign:(CContact *)sender receiver:(CContact *)receiver
    sourceGroup:(CGroup *)sourceGroup;
 

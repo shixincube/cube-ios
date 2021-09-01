@@ -30,6 +30,8 @@
 #import "CModule.h"
 #import "CContactService.h"
 #import "CMessage.h"
+#import "CMessageState.h"
+#import "CMessagingServiceState.h"
 
 #ifndef CUBE_MODULE_MESSAGING
 /*! @brief 模块名。 */
@@ -47,7 +49,7 @@
  */
 @protocol CMessagingNotifyDelegate <NSObject>
 
-- (void)notify:(CMessage *)message service:(CMessagingService *)service;
+- (void)notified:(CMessage *)message service:(CMessagingService *)service;
 
 @end
 
@@ -95,7 +97,21 @@
  */
 - (BOOL)isSender:(CMessage *)message;
 
+/*!
+ * @brief 向指定联系人发送消息。
+ * @param conatct 指定联系人。
+ * @param message 指定消息实例。
+ * @return 如果消息被正确处理返回 @c TRUE ，否则返回 @c FALSE 。
+ */
+- (BOOL)sendToContact:(CContact *)conatct message:(CMessage *)message;
 
+/*!
+ * @brief 向指定联系人发送消息。
+ * @param contactId 指定联系人 ID 。
+ * @param message 指定消息实例。
+ * @return 如果消息被正确处理返回 @c TRUE ，否则返回 @c FALSE 。
+ */
+- (BOOL)sendToContactId:(UInt64)contactId message:(CMessage *)message;
 
 /*!
  * @private

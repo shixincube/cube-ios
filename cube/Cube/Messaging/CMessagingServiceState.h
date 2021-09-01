@@ -33,7 +33,7 @@
 typedef enum _CMessagingServiceState {
 
     /*! 成功。 */
-    CMessagingServiceStateOk = 0
+    CMessagingServiceStateOk = 0,
 
     /*! 无效参数。 */
     CMessagingServiceStateInvalidParameter = 5,

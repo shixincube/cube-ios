@@ -58,6 +58,8 @@
     }
 }
 
-
+- (void)didOpen:(CPipeline *)pipeline {
+    // 处理在 sending map 里的待发送的数据
+}
 
 @end

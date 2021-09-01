@@ -42,11 +42,17 @@ typedef void (^PullCompletedHandler)(void);
 @interface CMessagingService () {
 
     CContactService * _contactService;
+    
+    NSMutableDictionary * _sendingMap;
 }
 
 @property (nonatomic, copy) PullCompletedHandler pullCompletedHandler;
 
 - (void)assemble;
+
+- (void)processSend:(CMessage *)message;
+
+- (void)processPushResult:(CMessage *)message responsePacket:(CPacket *)responsePacket;
 
 @end
 
@@ -60,10 +66,12 @@ typedef void (^PullCompletedHandler)(void);
         _serviceReady = FALSE;
 
         self.defaultRetrospect = 14 * 24 * 60 * 60000L;
-        
+
         _pullTimer = nil;
 
         _notifyDelegate = nil;
+
+        _sendingMap = [[NSMutableDictionary alloc] init];
     }
 
     return self;
@@ -139,6 +147,38 @@ typedef void (^PullCompletedHandler)(void);
     return (message.from == owner.identity);
 }
 
+- (BOOL)sendToContact:(CContact *)conatct message:(CMessage *)message {
+    return [self sendToContactId:conatct.identity message:message];
+}
+
+- (BOOL)sendToContactId:(UInt64)contactId message:(CMessage *)message {
+    if (![self hasStarted]) {
+        [self start];
+    }
+
+    CSelf * owner = _contactService.owner;
+
+    // 更新消息状态
+    message.state = CMessageStateSending;
+    
+    // 更新数据
+    [message bind:owner.identity to:contactId source:0];
+
+    UInt64 now = [CUtils currentTimeMillis];
+    [message assignTS:now remoteTS:now];
+    
+    [self fillMessage:message];
+    
+    // 写入数据库
+    [_storage updateMessage:message];
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [self processSend:message];
+    });
+
+    return TRUE;
+}
+
 #pragma mark - Private
 
 - (void)assemble {
@@ -146,6 +186,103 @@ typedef void (^PullCompletedHandler)(void);
 
     // 注册插件
     [self.pluginSystem registerPlugin:CInstantiateHookName plugin:[[CMessageTypePlugin alloc] init]];
+}
+
+- (void)processSend:(CMessage *)message {
+    [_sendingMap setValue:message forKey:[NSString stringWithFormat:@"%llu", message.identity]];
+    
+    if (![self.pipeline isReady]) {
+        return;
+    }
+    
+    // TODO 处理文件附件
+    
+    // 事件通知
+    if (0 == [message getScope]) {
+        CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventSending data:message];
+        [self notifyObservers:event];
+    }
+    
+    // 发送到服务器
+    CPacket * packet = [[CPacket alloc] initWithName:CUBE_MESSAGING_PUSH andData:[message toJSON]];
+    [self.pipeline send:CUBE_MODULE_MESSAGING withPacket:packet handleResponse:^(CPacket * responsePacket) {
+        [self processPushResult:message responsePacket:responsePacket];
+    }];
+}
+
+- (void)processPushResult:(CMessage *)message responsePacket:(CPacket *)responsePacket {
+    if (responsePacket.state.code != CSC_Ok) {
+        NSLog(@"CMessagingService pipeline error : %d", responsePacket.state.code);
+        
+        [_sendingMap removeObjectForKey:[NSString stringWithFormat:@"%llu", message.identity]];
+        
+        message.state = CMessageStateFault;
+        
+        // 更新消息状态
+        [_storage updateMessage:message];
+        
+        // 事件回调
+        CError * error = [CError errorWithModule:CUBE_MODULE_MESSAGING code:CMessagingServiceStateServerFault];
+        CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventFault data:error];
+        [self notifyObservers:event];
+
+        return;
+    }
+
+    int stateCode = [responsePacket extractStateCode];
+    NSDictionary * data = [responsePacket extractData];
+    
+    // 移除正在发送数据
+    [_sendingMap removeObjectForKey:[NSString stringWithFormat:@"%llu", message.identity]];
+    
+    CMessage * responseMessage = [[CMessage alloc] initWithJSON:data];
+
+    // 更新时间戳
+    [message assignTS:responseMessage.localTS remoteTS:responseMessage.remoteTS];
+    
+    // 更新状态
+    message.state = responseMessage.state;
+
+    if (message.remoteTS > _lastMessageTime) {
+        _lastMessageTime = message.remoteTS;
+    }
+
+    // 更新数据库
+    [_storage updateMessage:message];
+    
+    if (stateCode == CMessagingServiceStateOk) {
+        // TODO 更新附件
+
+        if ([message getScope] == 0) {
+            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventSent data:message];
+            [self notifyObservers:event];
+        }
+        else {
+            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventMarkOnlyOwner data:message];
+            [self notifyObservers:event];
+        }
+    }
+    else if (stateCode == CMessagingServiceStateBeBlocked) {
+        if (message.state == CMessageStateSendBlocked) {
+            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventSendBlocked data:message];
+            [self notifyObservers:event];
+        }
+        else if (message.state == CMessageStateReceiveBlocked) {
+            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReceiveBlocked data:message];
+            [self notifyObservers:event];
+        }
+        else {
+            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventFault data:message];
+            [self notifyObservers:event];
+        }
+    }
+    else {
+        NSLog(@"CMessagingService send failed: %d", stateCode);
+
+        CError * error = [CError errorWithModule:CUBE_MODULE_MESSAGING code:stateCode];
+        CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventFault data:error];
+        [self notifyObservers:event];
+    }
 }
 
 - (void)prepare:(CContactService *)contactService completedHandler:(void(^)(void))completedHandler {

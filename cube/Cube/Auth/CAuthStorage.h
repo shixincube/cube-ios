@@ -30,10 +30,14 @@
 #import <Foundation/Foundation.h>
 #import "CAuthToken.h"
 
+/*!
+ * @brief 授权模块存储器。
+ */
 @interface CAuthStorage : NSObject
 
 /*!
  * @brief 开启存储器。
+ * @return 返回是否成功开启。
  */
 - (BOOL)open;
 

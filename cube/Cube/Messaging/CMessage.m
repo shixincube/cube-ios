@@ -127,15 +127,17 @@
     return (_source > 0);
 }
 
-- (void)bind:(UInt64)from  sender:(CContact *)sender
-              to:(UInt64)to receiver:(CContact *)receiver
-          source:(UInt64)source sourceGroup:(CGroup *)sourceGroup {
+- (void)bind:(UInt64)from
+          to:(UInt64)to
+      source:(UInt64)source {
     _from = from;
-    _sender = sender;
     _to = to;
-    _receiver = receiver;
     _source = source;
-    _sourceGroup = sourceGroup;
+}
+
+- (void)assignTS:(UInt64)localTS remoteTS:(UInt64)remoteTS {
+    _localTS = localTS;
+    _remoteTS = remoteTS;
 }
 
 - (void)assign:(CContact *)sender receiver:(CContact *)receiver
