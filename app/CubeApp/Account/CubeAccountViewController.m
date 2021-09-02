@@ -24,18 +24,10 @@
  * SOFTWARE.
  */
 
-#ifndef CubeViewController_h
-#define CubeViewController_h
+#import "CubeAccountViewController.h"
 
-#import <UIKit/UIKit.h>
+@implementation CubeAccountViewController
 
-@interface CubeViewController : UIViewController
 
-@property (nonatomic, strong) NSString * analyzeTitle;
-
-/*! 当前 VC Status Bar 的状态，仅在 viewWillAppear 时生效，默认 LightContent 。 */
-@property (nonatomic, assign) UIStatusBarStyle statusBarStyle;
 
 @end
-
-#endif /* CubeViewController_h */

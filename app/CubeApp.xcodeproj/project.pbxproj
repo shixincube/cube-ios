@@ -73,6 +73,8 @@
 		C8E3267B26E0DBFF005CA08A /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3266F26E0DBFF005CA08A /* MASViewConstraint.m */; };
 		C8E3267C26E0DBFF005CA08A /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3267026E0DBFF005CA08A /* MASViewAttribute.m */; };
 		C8E3267D26E0DC00005CA08A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C8E3267126E0DBFF005CA08A /* README.md */; };
+		C8E3268226E0E567005CA08A /* UIColor+Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3268126E0E567005CA08A /* UIColor+Cube.m */; };
+		C8E3268A26E0F29E005CA08A /* CubeAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3268926E0F29E005CA08A /* CubeAccountViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -215,6 +217,11 @@
 		C8E3266F26E0DBFF005CA08A /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
 		C8E3267026E0DBFF005CA08A /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
 		C8E3267126E0DBFF005CA08A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C8E3268026E0E54E005CA08A /* UIColor+Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Cube.h"; sourceTree = "<group>"; };
+		C8E3268126E0E567005CA08A /* UIColor+Cube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Cube.m"; sourceTree = "<group>"; };
+		C8E3268526E0E800005CA08A /* CubeShortcutMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeShortcutMacros.h; sourceTree = "<group>"; };
+		C8E3268826E0F293005CA08A /* CubeAccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAccountViewController.h; sourceTree = "<group>"; };
+		C8E3268926E0F29E005CA08A /* CubeAccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeAccountViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,7 +255,9 @@
 			isa = PBXGroup;
 			children = (
 				C8E325A626E0D352005CA08A /* Launcher */,
+				C8E3268726E0F25F005CA08A /* Account */,
 				C8E3264F26E0DAD4005CA08A /* Components */,
+				C8E3267F26E0E4EE005CA08A /* Utilities */,
 				C8E325AE26E0D9BD005CA08A /* Frameworks */,
 				C8E3259C26E0CF98005CA08A /* Info.plist */,
 				C8E3259D26E0CF98005CA08A /* main.m */,
@@ -573,6 +582,25 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
+		C8E3267F26E0E4EE005CA08A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C8E3268026E0E54E005CA08A /* UIColor+Cube.h */,
+				C8E3268126E0E567005CA08A /* UIColor+Cube.m */,
+				C8E3268526E0E800005CA08A /* CubeShortcutMacros.h */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C8E3268726E0F25F005CA08A /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C8E3268826E0F293005CA08A /* CubeAccountViewController.h */,
+				C8E3268926E0F29E005CA08A /* CubeAccountViewController.m */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -646,11 +674,13 @@
 			files = (
 				C8E3264726E0DAA3005CA08A /* ZZMutableAttributeStringChainModel.m in Sources */,
 				C8E3264A26E0DAA3005CA08A /* NSMutableParagraphStyle+ZZFLEX.m in Sources */,
+				C8E3268226E0E567005CA08A /* UIColor+Cube.m in Sources */,
 				C8E3264126E0DAA3005CA08A /* UIControl+ZZEvent.m in Sources */,
 				C8E3262226E0DAA3005CA08A /* ZZFLEXSectionModel.m in Sources */,
 				C8E3263626E0DAA3005CA08A /* ZZBaseViewChainModel.m in Sources */,
 				C8E325AA26E0D665005CA08A /* CubeLaunchManager.m in Sources */,
 				C8E3267C26E0DBFF005CA08A /* MASViewAttribute.m in Sources */,
+				C8E3268A26E0F29E005CA08A /* CubeAccountViewController.m in Sources */,
 				C8E3264B26E0DAA3005CA08A /* ZZFLEXEditModel.m in Sources */,
 				C8E3264426E0DAA3005CA08A /* ZZFLEXRequestQueue.m in Sources */,
 				C8E3262B26E0DAA3005CA08A /* ZZFLEXAngel.m in Sources */,

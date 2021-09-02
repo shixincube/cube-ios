@@ -47,7 +47,7 @@
 - (void)launchInWindow:(id)window {
     self.window = window;
 
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     
 }
