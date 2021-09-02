@@ -149,10 +149,10 @@ typedef void (^PullCompletedHandler)(void);
 }
 
 - (BOOL)sendToContact:(CContact *)conatct message:(CMessage *)message {
-    return [self sendToContactId:conatct.identity message:message];
+    return [self sendToContactWithId:conatct.identity message:message];
 }
 
-- (BOOL)sendToContactId:(UInt64)contactId message:(CMessage *)message {
+- (BOOL)sendToContactWithId:(UInt64)contactId message:(CMessage *)message {
     if (![self hasStarted]) {
         [self start];
     }
@@ -169,7 +169,7 @@ typedef void (^PullCompletedHandler)(void);
     [message assignTS:now remoteTS:now];
     
     [self fillMessage:message];
-    
+
     // 写入数据库
     [_storage updateMessage:message];
 
@@ -195,7 +195,7 @@ typedef void (^PullCompletedHandler)(void);
     if (![self.pipeline isReady]) {
         return;
     }
-    
+
     // TODO 处理文件附件
     
     // 事件通知
@@ -233,16 +233,21 @@ typedef void (^PullCompletedHandler)(void);
     int stateCode = [responsePacket extractStateCode];
     NSDictionary * data = [responsePacket extractData];
     
+    NSString * s = [CUtils toStringWithJSON:data];
+    NSLog(@"XJW:data:%@", s);
+    
     // 移除正在发送数据
     [_sendingMap removeObjectForKey:[NSString stringWithFormat:@"%llu", message.identity]];
-    
-    CMessage * responseMessage = [[CMessage alloc] initWithJSON:data];
+
+    // 提取应答的数据
+    UInt64 responseRTS = [[data valueForKey:@"rts"] unsignedLongLongValue];
+    int responseState = [[data valueForKey:@"state"] intValue];
 
     // 更新时间戳
-    [message assignTS:responseMessage.localTS remoteTS:responseMessage.remoteTS];
-    
+    [message assignTS:message.localTS remoteTS:responseRTS];
+
     // 更新状态
-    message.state = responseMessage.state;
+    message.state = responseState;
 
     if (message.remoteTS > _lastMessageTime) {
         _lastMessageTime = message.remoteTS;
@@ -303,7 +308,7 @@ typedef void (^PullCompletedHandler)(void);
     }
 
     // 从服务器上拉取自上一次时间戳之后的所有消息
-    [self queryRemoteMessage:_lastMessageTime ending:now completedHandler:^ {
+    [self queryRemoteMessage:(_lastMessageTime + 1) ending:now completedHandler:^ {
         completedHandler();
     }];
 }
@@ -397,8 +402,13 @@ typedef void (^PullCompletedHandler)(void);
             }
         }
         else if ([event.name isEqualToString:CMessagingEventSending]) {
+            if ([self.eventDelegate respondsToSelector:@selector(messageSending:service:)]) {
+                [self.eventDelegate messageSending:(CMessage *)event.data service:self];
+            }
+        }
+        else if ([event.name isEqualToString:CMessagingEventSent]) {
             if ([self.eventDelegate respondsToSelector:@selector(messageSent:service:)]) {
-                
+                [self.eventDelegate messageSent:(CMessage *)event.data service:self];
             }
         }
     }

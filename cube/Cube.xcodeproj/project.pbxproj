@@ -75,6 +75,7 @@
 		C8DF88B2268DAD4D00399C99 /* CAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DF88B1268DAD4D00399C99 /* CAuthService.m */; };
 		C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DF88B8268DB2C300399C99 /* CEngine.m */; };
 		C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */ = {isa = PBXBuildFile; fileRef = C8DF88B5268DAD5B00399C99 /* CAuthService.h */; };
+		C8E3257C26E0A40B005CA08A /* CMessagingExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = C8E3257B26E0A40B005CA08A /* CMessagingExtension.h */; };
 		C8F1A54F268985A70020F136 /* Cube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A545268985A70020F136 /* Cube.framework */; };
 		C8F1A554268985A70020F136 /* CubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A553268985A70020F136 /* CubeTests.m */; };
 		C8F1A556268985A70020F136 /* Cube.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1A548268985A70020F136 /* Cube.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -209,6 +210,7 @@
 		C8DF88B1268DAD4D00399C99 /* CAuthService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthService.m; sourceTree = "<group>"; };
 		C8DF88B5268DAD5B00399C99 /* CAuthService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthService.h; sourceTree = "<group>"; };
 		C8DF88B8268DB2C300399C99 /* CEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEngine.m; sourceTree = "<group>"; };
+		C8E3257B26E0A40B005CA08A /* CMessagingExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessagingExtension.h; sourceTree = "<group>"; };
 		C8F1A545268985A70020F136 /* Cube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F1A548268985A70020F136 /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 		C8F1A549268985A70020F136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -255,7 +257,6 @@
 		C80A208026D718BF00255B11 /* Messaging */ = {
 			isa = PBXGroup;
 			children = (
-				C842BDE126DE37C3008A8517 /* Extension */,
 				C842BDDF26DE33F2008A8517 /* CInstantiateHook.h */,
 				C842BDDC26DE33E4008A8517 /* CInstantiateHook.m */,
 				C80A208926D725AE00255B11 /* CMessage.h */,
@@ -264,6 +265,7 @@
 				C80A208F26D7278800255B11 /* CMessagingAction.h */,
 				C8BE511226D8969900935149 /* CMessagingEvent.h */,
 				C8BE511526D896A500935149 /* CMessagingEvent.m */,
+				C8E3257B26E0A40B005CA08A /* CMessagingExtension.h */,
 				C8BE511026D87DD700935149 /* CMessagingObserver.h */,
 				C8BE510D26D87DCE00935149 /* CMessagingObserver.m */,
 				C8BE510626D874A000935149 /* CMessagingPipelineListener.h */,
@@ -275,6 +277,7 @@
 				C80A209426D7390200255B11 /* CMessagingServiceState.h */,
 				C80A209726D740F800255B11 /* CMessagingStorage.h */,
 				C80A209826D7410600255B11 /* CMessagingStorage.m */,
+				C842BDE126DE37C3008A8517 /* Extension */,
 			);
 			path = Messaging;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				C8400AC126C2175400C8FF48 /* CGroupState.h in Headers */,
 				C80A208A26D725AE00255B11 /* CMessage.h in Headers */,
 				C859CF3C26DF0BBF003040CC /* CHyperTextMessage.h in Headers */,
+				C8E3257C26E0A40B005CA08A /* CMessagingExtension.h in Headers */,
 				C8BE511326D8969900935149 /* CMessagingEvent.h in Headers */,
 				C80A208626D71C8A00255B11 /* CMessagingService.h in Headers */,
 				C8400AAF26C1F99900C8FF48 /* CDevice.h in Headers */,

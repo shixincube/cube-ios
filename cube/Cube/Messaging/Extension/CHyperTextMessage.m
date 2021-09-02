@@ -67,8 +67,10 @@ NSString * CFormattedContentEmoji = @"emoji";
 - (instancetype)initWithMessage:(CMessage *)message {
     if (self = [super initWithMessage:message]) {
         _formattedContents = [[NSMutableArray alloc] init];
-        
-        [self.payload setValue:@"hypertext" forKey:@"type"];
+
+        if (![self.payload objectForKey:@"type"]) {
+            [self.payload setValue:@"hypertext" forKey:@"type"];
+        }
         
         _plaintext = [self.payload valueForKey:@"content"];
 
@@ -90,6 +92,10 @@ NSString * CFormattedContentEmoji = @"emoji";
     }
     
     return self;
+}
+
++ (CHyperTextMessage *)messageWithText:(NSString *)text {
+    return [[CHyperTextMessage alloc] initWithText:text];
 }
 
 - (void)parse:(NSString *)input {

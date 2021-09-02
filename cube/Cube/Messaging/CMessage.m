@@ -92,7 +92,7 @@
         _scope = [[json valueForKey:@"scope"] intValue];
 
         if ([json objectForKey:@"payload"]) {
-            _payload = [json valueForKey:@"payload"];
+            _payload = [json objectForKey:@"payload"];
         }
     }
 

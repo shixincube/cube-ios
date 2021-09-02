@@ -53,11 +53,22 @@
 /*!
  * @brief 消息正在发送。
  * @param message 消息实体。
+ * @param service 消息服务。
  */
 - (void)messageSending:(CMessage *)message service:(CMessagingService *)service;
 
+/*!
+ * @brief 消息已经发送。
+ * @param message 消息实体。
+ * @param service 消息服务。
+ */
 - (void)messageSent:(CMessage *)message service:(CMessagingService *)service;
 
+/*!
+ * @brief 接收到新消息。
+ * @param message 消息实体。
+ * @param service 消息服务。
+ */
 - (void)messageReceived:(CMessage *)message service:(CMessagingService *)service;
 
 @end
@@ -120,7 +131,7 @@
  * @param message 指定消息实例。
  * @return 如果消息被正确处理返回 @c TRUE ，否则返回 @c FALSE 。
  */
-- (BOOL)sendToContactId:(UInt64)contactId message:(CMessage *)message;
+- (BOOL)sendToContactWithId:(UInt64)contactId message:(CMessage *)message;
 
 /*!
  * @private

@@ -74,7 +74,12 @@
         ready = [self.messaging isReady];
     }
 
-    NSLog(@"Messaging service is ready, wait for notify event");
+    NSLog(@"Messaging service is read");
+    
+    // 发送消息
+//    UInt64 to = 63045555L;
+//    CHyperTextMessage * textMessage = [CHyperTextMessage messageWithText:@"今天上午不热"];
+//    [self.messaging sendToContactWithId:to message:textMessage];
 
     _notifyExpect = [self expectationWithDescription:@"testMessaging"];
 
@@ -83,12 +88,24 @@
     }];
 }
 
+- (void)messageSending:(CMessage *)message service:(CMessagingService *)service {
+    NSDictionary * payload = message.payload;
+    NSString * jsonString = [CUtils toStringWithJSON:payload];
+    NSLog(@"[EVENT] Sending : %@", jsonString);
+}
+
+- (void)messageSent:(CMessage *)message service:(CMessagingService *)service {
+    NSDictionary * payload = message.payload;
+    NSString * jsonString = [CUtils toStringWithJSON:payload];
+    NSLog(@"[EVENT] Sent : %@", jsonString);
+    
+    [_notifyExpect fulfill];
+}
+
 - (void)messageReceived:(CMessage *)message service:(CMessagingService *)service {
     NSDictionary * payload = message.payload;
     NSString * jsonString = [CUtils toStringWithJSON:payload];
-    NSLog(@"Message : %@", jsonString);
-
-    [_notifyExpect fulfill];
+    NSLog(@"[EVENT] Received : %@", jsonString);
 }
 
 @end

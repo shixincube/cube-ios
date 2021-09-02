@@ -60,8 +60,9 @@
 /*!
  * @brief 更新消息。该方法将同时更新消息表和最近消息表。
  * @param message 指定消息实体。
+ * @return 如果更新的消息是已存在的返回 @c TRUE ，如果消息未找到，插入新数据时返回 @c FALSE 。
  */
-- (void)updateMessage:(CMessage *)message;
+- (BOOL)updateMessage:(CMessage *)message;
 
 @end
 

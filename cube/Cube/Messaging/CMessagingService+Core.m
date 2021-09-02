@@ -32,6 +32,7 @@
 #import "CMessagingStorage.h"
 #import "CPluginSystem.h"
 #import "CInstantiateHook.h"
+#import "CUtils.h"
 
 @implementation CMessagingService (Core)
 
@@ -64,20 +65,22 @@
     [self fillMessage:message];
 
     // 数据写入数据库
-    [_storage updateMessage:message];
+    BOOL exists = [_storage updateMessage:message];
 
     if (message.remoteTS > _lastMessageTime) {
         _lastMessageTime = message.remoteTS;
     }
-    
-    // TODO 标准 Token
-    
-    // 获取事件钩子
-    CHook * hook = [self.pluginSystem getHook:CInstantiateHookName];
-    message = [hook apply:message];
 
-    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventNotify data:message];
-    [self notifyObservers:event];
+    // TODO 标准 Token
+
+    if (!exists) {
+        // 获取事件钩子
+        CHook * hook = [self.pluginSystem getHook:CInstantiateHookName];
+        CMessage * compMessage = [hook apply:message];
+
+        CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventNotify data:compMessage];
+        [self notifyObservers:event];
+    }
 }
 
 - (void)triggerPull:(int)code payload:(NSDictionary *)payload {

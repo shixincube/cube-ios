@@ -78,6 +78,14 @@ extern NSString * CFormattedContentEmoji;
  */
 - (instancetype)initWithText:(NSString *)text;
 
+
+/*!
+ * @brief 使用文本内容作为数据初始化超文本消息。
+ * @param text 指定文本内容。
+ * @return 返回 @c CHyperTextMessage 实例。
+ */
++ (CHyperTextMessage *)messageWithText:(NSString *)text;
+
 @end
 
 #endif /* CHyperTextMessage_h */

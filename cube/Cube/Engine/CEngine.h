@@ -34,6 +34,7 @@
 #import "CAuthService.h"
 #import "CContactService.h"
 #import "CMessagingService.h"
+#import "CMessagingExtension.h"
 #import "CUtils.h"
 
 @interface CEngine : NSObject
