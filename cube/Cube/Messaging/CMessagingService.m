@@ -36,6 +36,7 @@
 #import "CMessageTypePlugin.h"
 #import "CKernel.h"
 #import "CUtils.h"
+#import "CObservableEvent.h"
 
 typedef void (^PullCompletedHandler)(void);
 
@@ -69,7 +70,7 @@ typedef void (^PullCompletedHandler)(void);
 
         _pullTimer = nil;
 
-        _notifyDelegate = nil;
+        _eventDelegate = nil;
 
         _sendingMap = [[NSMutableDictionary alloc] init];
     }
@@ -123,7 +124,7 @@ typedef void (^PullCompletedHandler)(void);
 
     _serviceReady = FALSE;
 
-    _notifyDelegate = nil;
+    _eventDelegate = nil;
 }
 
 - (void)suspend {
@@ -382,6 +383,25 @@ typedef void (^PullCompletedHandler)(void);
     
     // 阻塞线程
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+}
+
+#pragma mark - Events
+
+- (void)notifyObservers:(CObservableEvent *)event {
+    [super notifyObservers:event];
+
+    if (self.eventDelegate) {
+        if ([event.name isEqualToString:CMessagingEventNotify]) {
+            if ([self.eventDelegate respondsToSelector:@selector(messageReceived:service:)]) {
+                [self.eventDelegate messageReceived:(CMessage *)event.data service:self];
+            }
+        }
+        else if ([event.name isEqualToString:CMessagingEventSending]) {
+            if ([self.eventDelegate respondsToSelector:@selector(messageSent:service:)]) {
+                
+            }
+        }
+    }
 }
 
 @end

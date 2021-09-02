@@ -76,10 +76,6 @@
     CHook * hook = [self.pluginSystem getHook:CInstantiateHookName];
     message = [hook apply:message];
 
-    if (self.notifyDelegate) {
-        [self.notifyDelegate notified:message service:self];
-    }
-
     CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventNotify data:message];
     [self notifyObservers:event];
 }

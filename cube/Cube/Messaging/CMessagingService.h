@@ -43,13 +43,22 @@
 @class CMessagingStorage;
 @class CMessagingObserver;
 
+/*!
+ * @brief 消息模块事件的代理协议。
+ */
+@protocol CMessagingEventDelegate <NSObject>
+
+@optional
 
 /*!
- * @brief 消息实时通知的代理协议。
+ * @brief 消息正在发送。
+ * @param message 消息实体。
  */
-@protocol CMessagingNotifyDelegate <NSObject>
+- (void)messageSending:(CMessage *)message service:(CMessagingService *)service;
 
-- (void)notified:(CMessage *)message service:(CMessagingService *)service;
+- (void)messageSent:(CMessage *)message service:(CMessagingService *)service;
+
+- (void)messageReceived:(CMessage *)message service:(CMessagingService *)service;
 
 @end
 
@@ -78,11 +87,11 @@
     NSTimer * _pullTimer;
 }
 
-/*! 默认回溯时长，默认值：14个自然天。 */
+/*! @brief 默认回溯时长，默认值：14个自然天。 */
 @property (nonatomic, assign) UInt64 defaultRetrospect;
 
-/*! 消息实时接收的代理。 */
-@property (retain) id<CMessagingNotifyDelegate> notifyDelegate;
+/*! @brief 消息服务的事件代理。 */
+@property (retain) id<CMessagingEventDelegate> eventDelegate;
 
 
 /*!

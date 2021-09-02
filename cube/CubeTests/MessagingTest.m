@@ -8,7 +8,7 @@
 #import <XCTest/XCTest.h>
 #import "../Cube/Engine/CEngine.h"
 
-@interface MessagingTest : XCTestCase <CMessagingNotifyDelegate> {
+@interface MessagingTest : XCTestCase <CMessagingEventDelegate> {
     XCTestExpectation * _notifyExpect;
 }
 
@@ -41,7 +41,7 @@
         [self.messaging start];
         
         // 添加事件
-        self.messaging.notifyDelegate = self;
+        self.messaging.eventDelegate = self;
 
         // 签入联系人
         CSelf * me = [engine signInWithId:self.myId];
@@ -83,7 +83,7 @@
     }];
 }
 
-- (void)notify:(CMessage *)message service:(CMessagingService *)service {
+- (void)messageReceived:(CMessage *)message service:(CMessagingService *)service {
     NSDictionary * payload = message.payload;
     NSString * jsonString = [CUtils toStringWithJSON:payload];
     NSLog(@"Message : %@", jsonString);
