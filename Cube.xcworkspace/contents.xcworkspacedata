@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:app/CubeApp.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:cube/Cube.xcodeproj">
    </FileRef>
    <Group

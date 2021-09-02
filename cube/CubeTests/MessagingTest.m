@@ -75,11 +75,11 @@
     }
 
     NSLog(@"Messaging service is read");
-    
+
     // 发送消息
-//    UInt64 to = 63045555L;
-//    CHyperTextMessage * textMessage = [CHyperTextMessage messageWithText:@"今天上午不热"];
-//    [self.messaging sendToContactWithId:to message:textMessage];
+    UInt64 to = 63045555L;
+    CHyperTextMessage * textMessage = [CHyperTextMessage messageWithText:@"今天下午可能下雨"];
+    [self.messaging sendToContactWithId:to message:textMessage];
 
     _notifyExpect = [self expectationWithDescription:@"testMessaging"];
 
@@ -98,7 +98,7 @@
     NSDictionary * payload = message.payload;
     NSString * jsonString = [CUtils toStringWithJSON:payload];
     NSLog(@"[EVENT] Sent : %@", jsonString);
-    
+
     [_notifyExpect fulfill];
 }
 
