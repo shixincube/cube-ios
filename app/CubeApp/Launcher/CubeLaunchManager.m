@@ -25,10 +25,13 @@
  */
 
 #import "CubeLaunchManager.h"
+#import "CubeAccountViewController.h"
 
 @interface CubeLaunchManager ()
 
 @property (nonatomic, weak) UIWindow * window;
+
+- (void)setRootVC:(__kindof UIViewController *)rootVC;
 
 @end
 
@@ -44,12 +47,28 @@
     return manager;
 }
 
+- (instancetype)init {
+    if (self = [super init]) {
+    }
+    return self;
+}
+
 - (void)launchInWindow:(id)window {
     self.window = window;
 
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    
+    CubeAccountViewController * accountVC = [[CubeAccountViewController alloc] init];
+
+    [self setRootVC:accountVC];
+}
+
+- (void)setRootVC:(__kindof UIViewController *)rootVC {
+    _rootVC = rootVC;
+
+    UIWindow * window = self.window ? self.window : [[UIApplication sharedApplication] windows][0];
+    [window removeAllSubviews];
+    [window setRootViewController:rootVC];
+    [window addSubview:rootVC.view];
+    [window makeKeyAndVisible];
 }
 
 @end

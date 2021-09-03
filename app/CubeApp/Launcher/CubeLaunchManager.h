@@ -27,7 +27,6 @@
 #ifndef CubeLaunchManager_h
 #define CubeLaunchManager_h
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 /*!
@@ -38,6 +37,8 @@
 @property (nonatomic, strong, readonly) UIViewController * rootVC;
 
 + (CubeLaunchManager *)sharedInstance;
+
+- (instancetype)init NS_UNAVAILABLE;
 
 - (void)launchInWindow:(UIWindow *)window;
 

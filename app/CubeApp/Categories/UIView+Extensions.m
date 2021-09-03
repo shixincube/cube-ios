@@ -24,11 +24,14 @@
  * SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import "UIView+Extensions.h"
 
-//! 项目版本号。
-FOUNDATION_EXPORT double CubeVersionNumber;
+@implementation UIView (Extensions)
 
-//! 项目版本名称。
-FOUNDATION_EXPORT const unsigned char CubeVersionString[];
+- (void)removeAllSubviews {
+    for (UIView * view in self.subviews) {
+        [view removeFromSuperview];
+    }
+}
 
+@end

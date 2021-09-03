@@ -24,11 +24,18 @@
  * SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#ifndef UIView_Extensions_h
+#define UIView_Extensions_h
 
-//! 项目版本号。
-FOUNDATION_EXPORT double CubeVersionNumber;
+#import <UIKit/UIKit.h>
 
-//! 项目版本名称。
-FOUNDATION_EXPORT const unsigned char CubeVersionString[];
+@interface UIView (Extensions)
 
+/*!
+ * @brief 移除所有子视图
+ */
+- (void)removeAllSubviews;
+
+@end
+
+#endif /* UIView_Extensions_h */

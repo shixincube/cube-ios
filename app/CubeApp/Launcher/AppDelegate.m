@@ -38,16 +38,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-    // 初始化 UI
-    [[CubeLaunchManager sharedInstance] launchInWindow:self.window];
+    // 适配 iOS 13/12
+    if (@available(iOS 13, *)) {
+        return YES;
+    }
+    else {
+        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
-    // 紧急方法，可使用JSPatch重写
-    [self urgentHandler];
-    
-    return YES;
+        // 初始化 UI
+        [[CubeLaunchManager sharedInstance] launchInWindow:self.window];
+
+        // 紧急方法，可使用JSPatch重写
+        [self urgentHandler];
+
+        return YES;
+    }
 }
 
 - (void)urgentHandler {
@@ -57,7 +62,6 @@
 
 #pragma mark - UISceneSession lifecycle
 
-/*
  
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
     // Called when a new scene session is being created.
@@ -65,7 +69,7 @@
     return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
 }
 
-
+/*
 - (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
     // Called when the user discards a scene session.
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.

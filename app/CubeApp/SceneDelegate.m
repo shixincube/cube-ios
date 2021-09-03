@@ -6,8 +6,11 @@
 //
 
 #import "SceneDelegate.h"
+#import "CubeLaunchManager.h"
 
 @interface SceneDelegate ()
+
+- (void)urgentHandler;
 
 @end
 
@@ -18,6 +21,15 @@
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.windowScene = (UIWindowScene *)scene;
+
+    // 初始化 UI
+    [[CubeLaunchManager sharedInstance] launchInWindow:self.window];
+
+    // 紧急方法，可使用JSPatch重写
+    [self urgentHandler];
 }
 
 
@@ -53,5 +65,8 @@
     // to restore the scene back to its current state.
 }
 
+- (void)urgentHandler {
+    // Nothing
+}
 
 @end
