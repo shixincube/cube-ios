@@ -25,9 +25,16 @@
  */
 
 #import "CubeAccountViewController.h"
+#import "CubeShortcutMacros.h"
 
 @implementation CubeAccountViewController
 
-
+- (void)loadView {
+    [super loadView];
+    
+    CGSize viewSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
+    NSString *viewOrientation = @"Portrait";
+    
+}
 
 @end

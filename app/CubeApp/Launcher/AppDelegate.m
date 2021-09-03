@@ -29,9 +29,10 @@
 
 @interface AppDelegate ()
 
-- (void)urgentMethod;
+- (void)urgentHandler;
 
 @end
+
 
 @implementation AppDelegate
 
@@ -44,12 +45,12 @@
     [[CubeLaunchManager sharedInstance] launchInWindow:self.window];
 
     // 紧急方法，可使用JSPatch重写
-    [self urgentMethod];
+    [self urgentHandler];
     
     return YES;
 }
 
-- (void)urgentMethod {
+- (void)urgentHandler {
     // Nothing
 }
 
