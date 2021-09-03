@@ -40,6 +40,8 @@
 
 - (instancetype)init NS_UNAVAILABLE;
 
+- (void)launchInWindowScene:(UIWindowScene *)windowScene;
+
 - (void)launchInWindow:(UIWindow *)window;
 
 @end

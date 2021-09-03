@@ -16,4 +16,6 @@
 #import "Frameworks/Masonry/Masonry/Masonry.h"
 #import "Frameworks/ZZFLEX/ZZFLEX.h"
 
+#import <Cube/Cube.h>
+
 #endif /* PrefixHeader_pch */

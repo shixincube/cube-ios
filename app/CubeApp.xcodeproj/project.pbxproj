@@ -16,6 +16,8 @@
 		C8A0DA1426E1D0440032A9D5 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0E26E1D0440032A9D5 /* PromiseKit.framework */; };
 		C8A0DA1526E1D0440032A9D5 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0E26E1D0440032A9D5 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8A0DA3526E1D6C40032A9D5 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3426E1D6C40032A9D5 /* UIView+Extensions.m */; };
+		C8A0DA3826E20BFD0032A9D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */; };
+		C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */; };
 		C8E3258D26E0CF95005CA08A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3258C26E0CF95005CA08A /* AppDelegate.m */; };
 		C8E3259026E0CF95005CA08A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3258F26E0CF95005CA08A /* SceneDelegate.m */; };
 		C8E3259326E0CF95005CA08A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3259226E0CF95005CA08A /* ViewController.m */; };
@@ -112,6 +114,9 @@
 		C8A0DA3326E1D6B80032A9D5 /* UIView+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		C8A0DA3426E1D6C40032A9D5 /* UIView+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		C8A0DA3626E1D74A0032A9D5 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C8A0DA3926E2252F0032A9D5 /* CubeLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeLoginViewController.h; sourceTree = "<group>"; };
+		C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeLoginViewController.m; sourceTree = "<group>"; };
 		C8E3258826E0CF95005CA08A /* CubeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E3258B26E0CF95005CA08A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C8E3258C26E0CF95005CA08A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -598,6 +603,7 @@
 			children = (
 				C8E3265326E0DB0C005CA08A /* CubeViewController.h */,
 				C8E3265026E0DB02005CA08A /* CubeViewController.m */,
+				C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -659,6 +665,8 @@
 			children = (
 				C8E3268826E0F293005CA08A /* CubeAccountViewController.h */,
 				C8E3268926E0F29E005CA08A /* CubeAccountViewController.m */,
+				C8A0DA3926E2252F0032A9D5 /* CubeLoginViewController.h */,
+				C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -723,6 +731,7 @@
 				C8E3259B26E0CF98005CA08A /* LaunchScreen.storyboard in Resources */,
 				C8E3259826E0CF98005CA08A /* Assets.xcassets in Resources */,
 				C8E3267D26E0DC00005CA08A /* README.md in Resources */,
+				C8A0DA3826E20BFD0032A9D5 /* Images.xcassets in Resources */,
 				C8E3267226E0DBFF005CA08A /* LICENSE in Resources */,
 				C8E3259626E0CF95005CA08A /* Main.storyboard in Resources */,
 			);
@@ -782,6 +791,7 @@
 				C8E3267A26E0DBFF005CA08A /* MASConstraint.m in Sources */,
 				C8E3263126E0DAA3005CA08A /* UIView+ZZFLEX.m in Sources */,
 				C8E3264226E0DAA3005CA08A /* UIView+ZZSeparator.m in Sources */,
+				C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */,
 				C8E3264926E0DAA3005CA08A /* NSMutableAttributedString+ZZFLEX.m in Sources */,
 				C8E3267926E0DBFF005CA08A /* View+MASAdditions.m in Sources */,
 				C8E3263D26E0DAA3005CA08A /* ZZViewChainModel.m in Sources */,

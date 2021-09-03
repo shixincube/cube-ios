@@ -26,9 +26,4 @@
 
 #import <Foundation/Foundation.h>
 
-//! 项目版本号。
-FOUNDATION_EXPORT double CubeVersionNumber;
-
-//! 项目版本名称。
-FOUNDATION_EXPORT const unsigned char CubeVersionString[];
-
+#import <Cube/CUtils.h>

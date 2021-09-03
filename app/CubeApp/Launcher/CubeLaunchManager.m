@@ -26,8 +26,11 @@
 
 #import "CubeLaunchManager.h"
 #import "CubeAccountViewController.h"
+#import "SceneDelegate.h"
 
 @interface CubeLaunchManager ()
+
+@property (nonatomic, weak) UIWindowScene * windowScene;
 
 @property (nonatomic, weak) UIWindow * window;
 
@@ -53,6 +56,14 @@
     return self;
 }
 
+- (void)launchInWindowScene:(UIWindowScene *)windowScene {
+    self.windowScene = windowScene;
+    
+    CubeAccountViewController * accountVC = [[CubeAccountViewController alloc] init];
+    
+    [self setRootVC:accountVC];
+}
+
 - (void)launchInWindow:(id)window {
     self.window = window;
 
@@ -64,7 +75,15 @@
 - (void)setRootVC:(__kindof UIViewController *)rootVC {
     _rootVC = rootVC;
 
-    UIWindow * window = self.window ? self.window : [[UIApplication sharedApplication] windows][0];
+    UIWindow * window = nil;
+    if (self.window) {
+        window = self.window;
+    }
+    else {
+        SceneDelegate * sceneDelegate = (SceneDelegate *)[[UIApplication sharedApplication].connectedScenes allObjects][0].delegate;
+        window = sceneDelegate.window;
+    }
+
     [window removeAllSubviews];
     [window setRootViewController:rootVC];
     [window addSubview:rootVC.view];

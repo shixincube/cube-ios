@@ -25,8 +25,7 @@
  */
 
 #import "CubeAccountViewController.h"
-#import "CubeShortcutMacros.h"
-#import <Cube/CUtils.h>
+#import "CubeLoginViewController.h"
 
 #define HEIGHT_BUTTON  50
 #define EDGE_BUTTON    35
@@ -45,11 +44,13 @@ typedef NS_ENUM(NSInteger, CubeAccountButtonTag) {
 
 - (void)loadView {
     [super loadView];
-    
-//    CGSize viewSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
-//    NSString * viewOrientation = @"Portrait";
-//    NSDictionary * dic = [[NSBundle mainBundle] infoDictionary];
-    
+
+    UIImage * image = [UIImage imageNamed:@"AccountBG"];
+    self.view.addImageView(1).image(image).masonry(^(__kindof UIView *sender, MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(0);
+        make.centerY.mas_equalTo(0);
+    });
+
     UIButton * (^createButton)(NSString *title, UIColor *bgColor, NSInteger tag) = ^UIButton * (NSString *title, UIColor *bgColor, NSInteger tag) {
         UIButton * button = UIButton.zz_create(tag)
             .backgroundColor(bgColor)
@@ -70,13 +71,30 @@ typedef NS_ENUM(NSInteger, CubeAccountButtonTag) {
         make.width.mas_equalTo((SCREEN_WIDTH - EDGE_BUTTON * 3) / 2);
         make.height.mas_equalTo(HEIGHT_BUTTON);
     }];
+    
+    // 登录按钮
+    UIButton *loginButton = createButton(@"登 录", [UIColor colorGreenDefault], CubeAccountButtonTagLogin);
+    [self.view addSubview:loginButton];
+    [loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-EDGE_BUTTON);
+        make.size.and.bottom.mas_equalTo(registerButton);
+    }];
 }
 
 
-#pragma mark - # Event Response
+#pragma mark - Event Response
 
 - (void)buttonClicked:(UIButton *)sender {
-    
+    if (sender.tag == CubeAccountButtonTagRegister) {
+        
+    }
+    else if (sender.tag == CubeAccountButtonTagLogin) {
+        CubeLoginViewController * loginVC = [[CubeLoginViewController alloc] init];
+//        CWeakSelf(self);
+//        CWeakSelf(loginVC);
+        // TODO
+        [self presentViewController:loginVC animated:YES completion:nil];
+    }
 }
 
 @end

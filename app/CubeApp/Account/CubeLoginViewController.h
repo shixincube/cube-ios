@@ -24,11 +24,13 @@
  * SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
+#ifndef CubeLoginViewController_h
+#define CubeLoginViewController_h
 
-@interface SceneDelegate : UIResponder <UIWindowSceneDelegate>
+#import "CubeViewController.h"
 
-@property (strong, nonatomic) UIWindow * window;
+@interface CubeLoginViewController : CubeViewController
 
 @end
 
+#endif /* CubeLoginViewController_h */
