@@ -39,6 +39,17 @@
 
 @property (nonatomic, strong) UILabel * titleLabel;
 
+@property (nonatomic, strong) UILabel * originTitleLabel;
+@property (nonatomic, strong) UILabel * originLabel;
+
+@property (nonatomic, strong) UILabel * districtNumberLabel;
+@property (nonatomic, strong) UITextField * phoneNumberTextField;
+
+@property (nonatomic, strong) UILabel * passwordTitleLabel;
+@property (nonatomic, strong) UITextField * passwordTextField;
+
+@property (nonatomic, strong) UIButton * loginButton;
+
 - (void)makeMasonry;
 
 @end
@@ -122,6 +133,17 @@
     }
     
     return _titleLabel;
+}
+
+- (UILabel *)originTitleLabel {
+    if (!_originTitleLabel) {
+        _originTitleLabel = UILabel.zz_create(3)
+           .text(@"国家/地区")
+           .font([UIFont systemFontOfSize:17])
+           .view;
+    }
+
+    return _originTitleLabel;
 }
 
 @end
