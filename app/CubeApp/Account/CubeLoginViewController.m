@@ -65,7 +65,9 @@
     [self.view addSubview:self.scrollView];
     [self.view addSubview:self.cancelButton];
     [self.scrollView addSubview:self.titleLabel];
-    
+    [self.scrollView addSubview:self.originTitleLabel];
+    [self.scrollView addSubview:self.originLabel];
+
     [self makeMasonry];
 }
 
@@ -144,6 +146,17 @@
     }
 
     return _originTitleLabel;
+}
+
+- (UILabel *)originLabel {
+    if (!_originLabel) {
+        _originLabel = UILabel.zz_create(4)
+            .text(@"中国")
+            .font([UIFont systemFontOfSize:17])
+            .view;
+    }
+    
+    return _originLabel;
 }
 
 @end
