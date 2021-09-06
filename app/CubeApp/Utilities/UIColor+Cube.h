@@ -46,9 +46,9 @@
 
 
 
-#pragma mark - 绿色
-+ (UIColor *)colorGreenDefault;
-+ (UIColor *)colorGreenHL;
+#pragma mark - 主题色
++ (UIColor *)colorBlueDefault;
++ (UIColor *)colorBlueHL;
 
 
 #pragma mark - 蓝色

@@ -63,16 +63,13 @@
     return RGBAColor(243.0, 243.0, 245.0, 1.0);
 }
 
-
-
-
-#pragma mark - 绿色
-+ (UIColor *)colorGreenDefault {
-    return RGBAColor(2.0, 187.0, 0.0, 1.0f);
+#pragma mark - 主题色
++ (UIColor *)colorBlueDefault {
+    return RGBAColor(40.0, 125.0, 246.0, 1.0f);
 }
 
-+ (UIColor *)colorGreenHL {
-    return RGBAColor(46, 139, 46, 1.0f);
++ (UIColor *)colorBlueHL {
+    return RGBAColor(9, 84, 230, 1.0f);
 }
 
 #pragma mark - 蓝色

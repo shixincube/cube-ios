@@ -50,6 +50,8 @@
 
 @property (nonatomic, strong) UIButton * loginButton;
 
+@property (nonatomic, strong) NSMutableArray * countryArray;
+
 - (void)makeMasonry;
 
 @end
@@ -59,7 +61,9 @@
 
 - (void)loadView {
     [super loadView];
-    
+
+    self.countryArray = [NSMutableArray arrayWithObjects:@"中国", @"巴基斯坦", @"马来西亚", @"美国", @"英国", nil];
+
     self.statusBarStyle = UIStatusBarStyleDefault;
     
     [self.view addSubview:self.scrollView];
@@ -67,6 +71,7 @@
     [self.scrollView addSubview:self.titleLabel];
     [self.scrollView addSubview:self.originTitleLabel];
     [self.scrollView addSubview:self.originLabel];
+    [self.scrollView addSubview:self.districtNumberLabel];
 
     [self makeMasonry];
 }
@@ -94,11 +99,46 @@
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
-    
+
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(NAVBAR_HEIGHT + STATUSBAR_HEIGHT + 10);
         make.centerX.mas_equalTo(0);
         make.width.mas_lessThanOrEqualTo(self.scrollView);
+    }];
+    
+    UIView *(^createLine)(void) = ^UIView *() {
+        UIView *view = [[UIView alloc] init];
+        [view setBackgroundColor:[UIColor colorGrayLine]];
+        return view;
+    };
+
+    [self.originTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(EDGE_LINE);
+        make.height.mas_equalTo(HEIGHT_ITEM);
+        make.top.mas_equalTo(self.titleLabel.mas_bottom).mas_equalTo(55);
+        make.width.mas_equalTo(WIDTH_TITLE);
+    }];
+    [self.originLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.originTitleLabel.mas_right).mas_offset(EDGE_DETAIL);
+        make.centerY.mas_equalTo(self.originTitleLabel);
+        make.height.mas_equalTo(HEIGHT_ITEM);
+        make.right.mas_equalTo(self.view).mas_offset(-EDGE_LINE);
+    }];
+    
+    // 区号提示线
+    UIView * dnLine = createLine();
+    [self.scrollView addSubview:dnLine];
+    [dnLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.originTitleLabel.mas_bottom);
+        make.left.mas_equalTo(EDGE_LINE);
+        make.width.mas_equalTo(self.scrollView).mas_offset(-EDGE_LINE * 2);
+        make.height.mas_equalTo(BORDER_WIDTH_1PX);
+    }];
+    [self.districtNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(dnLine.mas_bottom);
+        make.left.mas_equalTo(dnLine);
+        make.height.mas_equalTo(HEIGHT_ITEM);
+        make.width.mas_equalTo(WIDTH_TITLE);
     }];
 }
 
@@ -115,7 +155,7 @@
 - (UIButton *)cancelButton {
     if (!_cancelButton) {
         _cancelButton = UIButton.zz_create(1)
-            .backgroundColor([UIColor colorGreenDefault])
+            .backgroundColor([UIColor colorBlueDefault])
             .title(@"取消")
             .titleFont([UIFont systemFontOfSize:16])
             .cornerRadius(3.0f)
@@ -155,8 +195,22 @@
             .font([UIFont systemFontOfSize:17])
             .view;
     }
-    
+
     return _originLabel;
 }
+
+- (UILabel *)districtNumberLabel {
+    if (!_districtNumberLabel) {
+        _districtNumberLabel = UILabel.zz_create(5)
+            .text(@"+86")
+            .font([UIFont systemFontOfSize:17])
+            .view;
+    }
+
+    return _districtNumberLabel;
+}
+
+
+
 
 @end
