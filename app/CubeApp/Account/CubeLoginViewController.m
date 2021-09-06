@@ -72,8 +72,18 @@
     [self.scrollView addSubview:self.originTitleLabel];
     [self.scrollView addSubview:self.originLabel];
     [self.scrollView addSubview:self.districtNumberLabel];
+    [self.scrollView addSubview:self.phoneNumberTextField];
+    [self.scrollView addSubview:self.passwordTitleLabel];
+    [self.scrollView addSubview:self.passwordTextField];
+    [self.scrollView addSubview:self.loginButton];
 
     [self makeMasonry];
+    
+    // 键盘控制
+    UITapGestureRecognizer * tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView)];
+    [self.scrollView addGestureRecognizer:tapGR];
+
+    [self.scrollView setContentSize:CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT + BORDER_WIDTH_1PX)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -84,6 +94,15 @@
 
 - (void)cancelButtonClicked:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)loginButtonClicked:(UIButton *)sender {
+    NSString *phoneNumber = self.phoneNumberTextField.text;
+}
+
+- (void)didTapView {
+    [self.phoneNumberTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
 }
 
 #pragma mark - Private
@@ -125,7 +144,7 @@
         make.right.mas_equalTo(self.view).mas_offset(-EDGE_LINE);
     }];
     
-    // 区号提示线
+    // 地区和号码的分隔线
     UIView * dnLine = createLine();
     [self.scrollView addSubview:dnLine];
     [dnLine mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -139,6 +158,59 @@
         make.left.mas_equalTo(dnLine);
         make.height.mas_equalTo(HEIGHT_ITEM);
         make.width.mas_equalTo(WIDTH_TITLE);
+    }];
+    
+    // 区号和号码的分隔线
+    UIView * phLine = createLine();
+    [self.scrollView addSubview:phLine];
+    [phLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.and.height.mas_equalTo(self.districtNumberLabel);
+        make.left.mas_equalTo(self.districtNumberLabel.mas_right);
+        make.width.mas_equalTo(BORDER_WIDTH_1PX);
+    }];
+    [self.phoneNumberTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.originLabel);
+        make.centerY.mas_equalTo(self.districtNumberLabel);
+        make.height.mas_equalTo(HEIGHT_ITEM);
+        make.right.mas_equalTo(self.view).mas_offset(-EDGE_LINE);
+    }];
+    
+    // 密码分隔线
+    UIView * pwdLine = createLine();
+    [self.scrollView addSubview:pwdLine];
+    [pwdLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.districtNumberLabel.mas_bottom);
+        make.left.mas_equalTo(EDGE_LINE);
+        make.width.mas_equalTo(self.scrollView).mas_offset(-EDGE_LINE * 2);
+        make.height.mas_equalTo(BORDER_WIDTH_1PX);
+    }];
+    
+    [self.passwordTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(pwdLine);
+        make.top.mas_equalTo(pwdLine.mas_bottom);
+        make.height.mas_equalTo(HEIGHT_ITEM);
+        make.width.mas_equalTo(self.districtNumberLabel);
+    }];
+    [self.passwordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.originLabel);
+        make.centerY.mas_equalTo(self.passwordTitleLabel);
+        make.height.mas_equalTo(HEIGHT_ITEM);
+        make.right.mas_equalTo(self.view).mas_offset(-EDGE_LINE);
+    }];
+    
+    UIView * btnLine = createLine();
+    [self.scrollView addSubview:btnLine];
+    [btnLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.passwordTitleLabel.mas_bottom);
+        make.left.mas_equalTo(EDGE_LINE);
+        make.width.mas_equalTo(self.scrollView).mas_offset(-EDGE_LINE * 2);
+        make.height.mas_equalTo(BORDER_WIDTH_1PX);
+    }];
+
+    [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.mas_equalTo(btnLine);
+        make.height.mas_equalTo(HEIGHT_ITEM);
+        make.top.mas_equalTo(btnLine.mas_bottom).mas_offset(HEIGHT_ITEM);
     }];
 }
 
@@ -210,7 +282,55 @@
     return _districtNumberLabel;
 }
 
+- (UITextField *)phoneNumberTextField {
+    if (!_phoneNumberTextField) {
+        _phoneNumberTextField = UITextField.zz_create(6)
+            .placeholder(@"请填写手机号码")
+            .clearButtonMode(UITextFieldViewModeWhileEditing)
+            .keyboardType(UIKeyboardTypePhonePad)
+            .view;
+    }
 
+    return _phoneNumberTextField;
+}
 
+- (UILabel *)passwordTitleLabel {
+    if (!_passwordTitleLabel) {
+        _passwordTitleLabel = UILabel.zz_create(7)
+            .text(@"密码")
+            .font([UIFont systemFontOfSize:17])
+            .view;
+    }
+
+    return _passwordTitleLabel;
+}
+
+- (UITextField *)passwordTextField {
+    if (!_passwordTextField) {
+        _passwordTextField = UITextField.zz_create(8)
+            .placeholder(@"请填写密码")
+            .clearButtonMode(UITextFieldViewModeWhileEditing)
+            .view;
+        [_passwordTextField setSecureTextEntry:YES];
+    }
+
+    return _passwordTextField;
+}
+
+- (UIButton *)loginButton {
+    if (!_loginButton) {
+        _loginButton = UIButton.zz_create(9)
+            .masksToBounds(YES)
+            .cornerRadius(4.0f)
+            .borderWidth(BORDER_WIDTH_1PX)
+            .backgroundColor([UIColor colorBlueDefault])
+            .titleFont([UIFont systemFontOfSize:16.0f])
+            .title(@"登录")
+            .view;
+        [_loginButton addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
+
+    return _loginButton;
+}
 
 @end

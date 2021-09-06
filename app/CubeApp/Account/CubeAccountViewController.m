@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, CubeAccountButtonTag) {
         make.width.mas_equalTo((SCREEN_WIDTH - EDGE_BUTTON * 3) / 2);
         make.height.mas_equalTo(HEIGHT_BUTTON);
     }];
-    
+
     // 登录按钮
     UIButton *loginButton = createButton(@"登 录", [UIColor colorBlueDefault], CubeAccountButtonTagLogin);
     [self.view addSubview:loginButton];

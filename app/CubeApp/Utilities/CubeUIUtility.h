@@ -24,17 +24,31 @@
  * SOFTWARE.
  */
 
-#ifndef CubeLoginViewController_h
-#define CubeLoginViewController_h
+#ifndef CubeUIUtility_h
+#define CubeUIUtility_h
 
-#import "CubeViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface CubeLoginViewController : CubeViewController
+@interface CubeUIUtility : NSObject
 
-@property (nonatomic, copy) void (^loginSuccess)(void);
++ (void)showLoading:(NSString *)title;
 
-@property (nonatomic, copy) void (^loginFailure)(void);
++ (void)hideLoading;
+
++ (void)hideLoadingWithDelay:(NSTimeInterval)delay;
+
++ (void)hideLoadingWithCompletion:(void (^)(void))completion;
+
++ (void)hideLoadingWithDelay:(NSTimeInterval)delay completion:(void (^)(void))completion;
+
++ (BOOL)isLoadingVisible;
+
++ (void)showSuccessHint:(NSString *)hintText;
+
++ (void)showErrorHint:(NSString *)hintText;
+
++ (void)showInfoHint:(NSString *)hintText;
 
 @end
 
-#endif /* CubeLoginViewController_h */
+#endif /* CubeUIUtility_h */

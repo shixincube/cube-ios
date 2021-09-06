@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C80B4FE726E5E86B00AD90B2 /* CubeAccountExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FE626E5E86B00AD90B2 /* CubeAccountExplorer.m */; };
+		C80B4FF426E5EA5A00AD90B2 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FEA26E5EA5A00AD90B2 /* SVRadialGradientLayer.m */; };
+		C80B4FF526E5EA5A00AD90B2 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FED26E5EA5A00AD90B2 /* SVProgressAnimatedView.m */; };
+		C80B4FF626E5EA5A00AD90B2 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FF026E5EA5A00AD90B2 /* SVProgressHUD.m */; };
+		C80B4FF726E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FF126E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m */; };
+		C80B4FF826E5EA5A00AD90B2 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C80B4FF226E5EA5A00AD90B2 /* SVProgressHUD.bundle */; };
+		C80B4FFB26E5EADB00AD90B2 /* CubeUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FFA26E5EADB00AD90B2 /* CubeUIUtility.m */; };
 		C8A0DA0226E1C86F0032A9D5 /* Cube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0126E1C86F0032A9D5 /* Cube.framework */; };
 		C8A0DA0326E1C86F0032A9D5 /* Cube.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0126E1C86F0032A9D5 /* Cube.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8A0DA0F26E1D0440032A9D5 /* cell.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0B26E1D0440032A9D5 /* cell.xcframework */; };
@@ -106,6 +113,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C80B4FE626E5E86B00AD90B2 /* CubeAccountExplorer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeAccountExplorer.m; sourceTree = "<group>"; };
+		C80B4FE826E5E87E00AD90B2 /* CubeAccountExplorer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAccountExplorer.h; sourceTree = "<group>"; };
+		C80B4FEA26E5EA5A00AD90B2 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		C80B4FEB26E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		C80B4FEC26E5EA5A00AD90B2 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		C80B4FED26E5EA5A00AD90B2 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		C80B4FEE26E5EA5A00AD90B2 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		C80B4FEF26E5EA5A00AD90B2 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		C80B4FF026E5EA5A00AD90B2 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		C80B4FF126E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		C80B4FF226E5EA5A00AD90B2 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		C80B4FF326E5EA5A00AD90B2 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		C80B4FF926E5EACE00AD90B2 /* CubeUIUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeUIUtility.h; sourceTree = "<group>"; };
+		C80B4FFA26E5EADB00AD90B2 /* CubeUIUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeUIUtility.m; sourceTree = "<group>"; };
 		C8A0DA0126E1C86F0032A9D5 /* Cube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A0DA0B26E1D0440032A9D5 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = "/Users/ambrose/Documents/Repositories/Cube3/cube-ios/cube/../libs/cell.xcframework"; sourceTree = "<absolute>"; };
 		C8A0DA0C26E1D0440032A9D5 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = "/Users/ambrose/Documents/Repositories/Cube3/cube-ios/cube/../libs/WebRTC.xcframework"; sourceTree = "<absolute>"; };
@@ -278,6 +299,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C80B4FE926E5EA5A00AD90B2 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C80B4FEA26E5EA5A00AD90B2 /* SVRadialGradientLayer.m */,
+				C80B4FEB26E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.h */,
+				C80B4FEC26E5EA5A00AD90B2 /* SVProgressHUD.h */,
+				C80B4FED26E5EA5A00AD90B2 /* SVProgressAnimatedView.m */,
+				C80B4FEE26E5EA5A00AD90B2 /* SVProgressHUD-Prefix.pch */,
+				C80B4FEF26E5EA5A00AD90B2 /* SVRadialGradientLayer.h */,
+				C80B4FF026E5EA5A00AD90B2 /* SVProgressHUD.m */,
+				C80B4FF126E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m */,
+				C80B4FF226E5EA5A00AD90B2 /* SVProgressHUD.bundle */,
+				C80B4FF326E5EA5A00AD90B2 /* SVProgressAnimatedView.h */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		C8A0DA0026E1C86F0032A9D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +399,7 @@
 		C8E325AE26E0D9BD005CA08A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C80B4FE926E5EA5A00AD90B2 /* SVProgressHUD */,
 				C8E3265526E0DBFF005CA08A /* Masonry */,
 				C8E325B026E0DAA3005CA08A /* ZZFLEX */,
 			);
@@ -653,9 +692,11 @@
 		C8E3267F26E0E4EE005CA08A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C8E3268526E0E800005CA08A /* CubeShortcutMacros.h */,
+				C80B4FF926E5EACE00AD90B2 /* CubeUIUtility.h */,
+				C80B4FFA26E5EADB00AD90B2 /* CubeUIUtility.m */,
 				C8E3268026E0E54E005CA08A /* UIColor+Cube.h */,
 				C8E3268126E0E567005CA08A /* UIColor+Cube.m */,
-				C8E3268526E0E800005CA08A /* CubeShortcutMacros.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -663,6 +704,8 @@
 		C8E3268726E0F25F005CA08A /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				C80B4FE826E5E87E00AD90B2 /* CubeAccountExplorer.h */,
+				C80B4FE626E5E86B00AD90B2 /* CubeAccountExplorer.m */,
 				C8E3268826E0F293005CA08A /* CubeAccountViewController.h */,
 				C8E3268926E0F29E005CA08A /* CubeAccountViewController.m */,
 				C8A0DA3926E2252F0032A9D5 /* CubeLoginViewController.h */,
@@ -728,6 +771,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C80B4FF826E5EA5A00AD90B2 /* SVProgressHUD.bundle in Resources */,
 				C8E3259B26E0CF98005CA08A /* LaunchScreen.storyboard in Resources */,
 				C8E3259826E0CF98005CA08A /* Assets.xcassets in Resources */,
 				C8E3267D26E0DC00005CA08A /* README.md in Resources */,
@@ -747,9 +791,12 @@
 				C8E3264726E0DAA3005CA08A /* ZZMutableAttributeStringChainModel.m in Sources */,
 				C8E3264A26E0DAA3005CA08A /* NSMutableParagraphStyle+ZZFLEX.m in Sources */,
 				C8A0DA3526E1D6C40032A9D5 /* UIView+Extensions.m in Sources */,
+				C80B4FE726E5E86B00AD90B2 /* CubeAccountExplorer.m in Sources */,
 				C8E3268226E0E567005CA08A /* UIColor+Cube.m in Sources */,
+				C80B4FF726E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m in Sources */,
 				C8E3264126E0DAA3005CA08A /* UIControl+ZZEvent.m in Sources */,
 				C8E3262226E0DAA3005CA08A /* ZZFLEXSectionModel.m in Sources */,
+				C80B4FFB26E5EADB00AD90B2 /* CubeUIUtility.m in Sources */,
 				C8E3263626E0DAA3005CA08A /* ZZBaseViewChainModel.m in Sources */,
 				C8E325AA26E0D665005CA08A /* CubeLaunchManager.m in Sources */,
 				C8E3267C26E0DBFF005CA08A /* MASViewAttribute.m in Sources */,
@@ -786,9 +833,11 @@
 				C8E3258D26E0CF95005CA08A /* AppDelegate.m in Sources */,
 				C8E3265126E0DB02005CA08A /* CubeViewController.m in Sources */,
 				C8E3263326E0DAA3005CA08A /* ZZLabelChainModel.m in Sources */,
+				C80B4FF526E5EA5A00AD90B2 /* SVProgressAnimatedView.m in Sources */,
 				C8E3263E26E0DAA3005CA08A /* UIButton+ZZExtension.m in Sources */,
 				C8E3262726E0DAA3005CA08A /* ZZFLEXAngelViewBatchChainModel.m in Sources */,
 				C8E3267A26E0DBFF005CA08A /* MASConstraint.m in Sources */,
+				C80B4FF426E5EA5A00AD90B2 /* SVRadialGradientLayer.m in Sources */,
 				C8E3263126E0DAA3005CA08A /* UIView+ZZFLEX.m in Sources */,
 				C8E3264226E0DAA3005CA08A /* UIView+ZZSeparator.m in Sources */,
 				C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */,
@@ -797,6 +846,7 @@
 				C8E3263D26E0DAA3005CA08A /* ZZViewChainModel.m in Sources */,
 				C8E3267326E0DBFF005CA08A /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				C8E3264C26E0DAA3005CA08A /* ZZFLEXAngel+EditExtension.m in Sources */,
+				C80B4FF626E5EA5A00AD90B2 /* SVProgressHUD.m in Sources */,
 				C8E3262A26E0DAA3005CA08A /* ZZFLEXAngelSectionChainModel.m in Sources */,
 				C8E3259E26E0CF98005CA08A /* main.m in Sources */,
 				C8E3264826E0DAA3005CA08A /* ZZMutableParagraphStyleChainModel.m in Sources */,

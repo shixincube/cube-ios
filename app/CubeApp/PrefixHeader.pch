@@ -15,6 +15,7 @@
 
 #import "Frameworks/Masonry/Masonry/Masonry.h"
 #import "Frameworks/ZZFLEX/ZZFLEX.h"
+#import "Frameworks/SVProgressHUD/SVProgressHUD.h"
 
 #import <Cube/Cube.h>
 

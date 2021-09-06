@@ -24,17 +24,44 @@
  * SOFTWARE.
  */
 
-#ifndef CubeLoginViewController_h
-#define CubeLoginViewController_h
+#import "CubeUIUtility.h"
 
-#import "CubeViewController.h"
+@implementation CubeUIUtility
 
-@interface CubeLoginViewController : CubeViewController
++ (void)showLoading:(NSString *)title {
+    [SVProgressHUD showWithStatus:title];
+}
 
-@property (nonatomic, copy) void (^loginSuccess)(void);
++ (void)hideLoading {
+    [CubeUIUtility hideLoadingWithCompletion:nil];
+}
 
-@property (nonatomic, copy) void (^loginFailure)(void);
++ (void)hideLoadingWithDelay:(NSTimeInterval)delay {
+    [CubeUIUtility hideLoadingWithDelay:delay completion:nil];
+}
+
++ (void)hideLoadingWithCompletion:(void (^)(void))completion {
+    [SVProgressHUD dismissWithCompletion:completion];
+}
+
++ (void)hideLoadingWithDelay:(NSTimeInterval)delay completion:(void (^)(void))completion {
+    [SVProgressHUD dismissWithDelay:delay completion:completion];
+}
+
++ (BOOL)isLoadingVisible {
+    return [SVProgressHUD isVisible];
+}
+
++ (void)showSuccessHint:(NSString *)hintText {
+    [SVProgressHUD showSuccessWithStatus:hintText];
+}
+
++ (void)showErrorHint:(NSString *)hintText {
+    [SVProgressHUD showErrorWithStatus:hintText];
+}
+
++ (void)showInfoHint:(NSString *)hintText {
+    [SVProgressHUD showInfoWithStatus:hintText];
+}
 
 @end
-
-#endif /* CubeLoginViewController_h */
