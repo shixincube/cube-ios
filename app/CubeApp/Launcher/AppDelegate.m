@@ -38,7 +38,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // 适配 iOS 13/12
+    // 适配 iOS 13
     if (@available(iOS 13, *)) {
         return YES;
     }

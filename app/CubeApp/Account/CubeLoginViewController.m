@@ -98,9 +98,15 @@
 
 - (void)loginButtonClicked:(UIButton *)sender {
     NSString *phoneNumber = self.phoneNumberTextField.text;
+    if (phoneNumber.length != 11 && ![phoneNumber hasPrefix:@"1"]) {
+        [CubeUIUtility showErrorHint:LOCSTR(@"请输入正确的手机号码")];
+        return;
+    }
 }
 
 - (void)didTapView {
+    [CubeUIUtility hideLoading];
+
     [self.phoneNumberTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
 }
