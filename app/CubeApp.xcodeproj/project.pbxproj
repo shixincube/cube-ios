@@ -14,6 +14,10 @@
 		C80B4FF726E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FF126E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m */; };
 		C80B4FF826E5EA5A00AD90B2 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C80B4FF226E5EA5A00AD90B2 /* SVProgressHUD.bundle */; };
 		C80B4FFB26E5EADB00AD90B2 /* CubeUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FFA26E5EADB00AD90B2 /* CubeUIUtility.m */; };
+		C84CC1AC26E9F2010004A9CB /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */; };
+		C84CC1AD26E9F2010004A9CB /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C84CC1B026E9F2940004A9CB /* CubeAppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CC1AF26E9F2940004A9CB /* CubeAppUtil.m */; };
+		C84CC1B326EA0B110004A9CB /* NSObject+CubeKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */; };
 		C8A0DA0226E1C86F0032A9D5 /* Cube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0126E1C86F0032A9D5 /* Cube.framework */; };
 		C8A0DA0326E1C86F0032A9D5 /* Cube.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0126E1C86F0032A9D5 /* Cube.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8A0DA0F26E1D0440032A9D5 /* cell.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0B26E1D0440032A9D5 /* cell.xcframework */; };
@@ -103,6 +107,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C8A0DA0326E1C86F0032A9D5 /* Cube.framework in Embed Frameworks */,
+				C84CC1AD26E9F2010004A9CB /* AFNetworking.framework in Embed Frameworks */,
 				C8A0DA1026E1D0440032A9D5 /* cell.xcframework in Embed Frameworks */,
 				C8A0DA1226E1D0440032A9D5 /* WebRTC.xcframework in Embed Frameworks */,
 				C8A0DA1526E1D0440032A9D5 /* PromiseKit.framework in Embed Frameworks */,
@@ -127,6 +132,12 @@
 		C80B4FF326E5EA5A00AD90B2 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		C80B4FF926E5EACE00AD90B2 /* CubeUIUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeUIUtility.h; sourceTree = "<group>"; };
 		C80B4FFA26E5EADB00AD90B2 /* CubeUIUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeUIUtility.m; sourceTree = "<group>"; };
+		C84CC1A326E9EAB60004A9CB /* CubeAppMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAppMacros.h; sourceTree = "<group>"; };
+		C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C84CC1AE26E9F28A0004A9CB /* CubeAppUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAppUtil.h; sourceTree = "<group>"; };
+		C84CC1AF26E9F2940004A9CB /* CubeAppUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeAppUtil.m; sourceTree = "<group>"; };
+		C84CC1B126EA0B080004A9CB /* NSObject+CubeKeyValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CubeKeyValue.h"; sourceTree = "<group>"; };
+		C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CubeKeyValue.m"; sourceTree = "<group>"; };
 		C8A0DA0126E1C86F0032A9D5 /* Cube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A0DA0B26E1D0440032A9D5 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = "/Users/ambrose/Documents/Repositories/Cube3/cube-ios/cube/../libs/cell.xcframework"; sourceTree = "<absolute>"; };
 		C8A0DA0C26E1D0440032A9D5 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = "/Users/ambrose/Documents/Repositories/Cube3/cube-ios/cube/../libs/WebRTC.xcframework"; sourceTree = "<absolute>"; };
@@ -290,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8A0DA0226E1C86F0032A9D5 /* Cube.framework in Frameworks */,
+				C84CC1AC26E9F2010004A9CB /* AFNetworking.framework in Frameworks */,
 				C8A0DA1426E1D0440032A9D5 /* PromiseKit.framework in Frameworks */,
 				C8A0DA0F26E1D0440032A9D5 /* cell.xcframework in Frameworks */,
 				C8A0DA1126E1D0440032A9D5 /* WebRTC.xcframework in Frameworks */,
@@ -319,6 +331,7 @@
 		C8A0DA0026E1C86F0032A9D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */,
 				C8A0DA0B26E1D0440032A9D5 /* cell.xcframework */,
 				C8A0DA0C26E1D0440032A9D5 /* WebRTC.xcframework */,
 				C8A0DA0D26E1D0440032A9D5 /* libFMDB-IOS.a */,
@@ -331,6 +344,8 @@
 		C8A0DA3226E1D6940032A9D5 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				C84CC1B126EA0B080004A9CB /* NSObject+CubeKeyValue.h */,
+				C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */,
 				C8A0DA3326E1D6B80032A9D5 /* UIView+Extensions.h */,
 				C8A0DA3426E1D6C40032A9D5 /* UIView+Extensions.m */,
 			);
@@ -692,6 +707,9 @@
 		C8E3267F26E0E4EE005CA08A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C84CC1A326E9EAB60004A9CB /* CubeAppMacros.h */,
+				C84CC1AE26E9F28A0004A9CB /* CubeAppUtil.h */,
+				C84CC1AF26E9F2940004A9CB /* CubeAppUtil.m */,
 				C8E3268526E0E800005CA08A /* CubeShortcutMacros.h */,
 				C80B4FF926E5EACE00AD90B2 /* CubeUIUtility.h */,
 				C80B4FFA26E5EADB00AD90B2 /* CubeUIUtility.m */,
@@ -810,10 +828,12 @@
 				C8E3262326E0DAA3005CA08A /* ZZFlexibleLayoutSeperatorCell.m in Sources */,
 				C8E3264526E0DAA3005CA08A /* ZZFLEXTableViewController.m in Sources */,
 				C8E3263C26E0DAA3005CA08A /* ZZSwitchChainModel.m in Sources */,
+				C84CC1B026E9F2940004A9CB /* CubeAppUtil.m in Sources */,
 				C8E3267B26E0DBFF005CA08A /* MASViewConstraint.m in Sources */,
 				C8E3263726E0DAA3005CA08A /* ZZButtonChainModel.m in Sources */,
 				C8E3262D26E0DAA3005CA08A /* ZZFLEXAngel+Private.m in Sources */,
 				C8E3264326E0DAA3005CA08A /* ZZFLEXRequestModel.m in Sources */,
+				C84CC1B326EA0B110004A9CB /* NSObject+CubeKeyValue.m in Sources */,
 				C8E3262926E0DAA3005CA08A /* ZZFLEXAngelViewChainModel.m in Sources */,
 				C8E3262C26E0DAA3005CA08A /* ZZFLEXAngel+UICollectionView.m in Sources */,
 				C8E3267826E0DBFF005CA08A /* NSArray+MASAdditions.m in Sources */,
@@ -936,7 +956,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -992,7 +1012,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

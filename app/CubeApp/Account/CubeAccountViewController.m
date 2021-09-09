@@ -58,7 +58,7 @@ typedef NS_ENUM(NSInteger, CubeAccountButtonTag) {
             .titleFont([UIFont systemFontOfSize:19])
             .cornerRadius(5.0f)
             .view;
-        [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(buttonTouchUp:) forControlEvents:UIControlEventTouchUpInside];
         return button;
     };
 
@@ -84,7 +84,7 @@ typedef NS_ENUM(NSInteger, CubeAccountButtonTag) {
 
 #pragma mark - Event Response
 
-- (void)buttonClicked:(UIButton *)sender {
+- (void)buttonTouchUp:(UIButton *)sender {
     if (sender.tag == CubeAccountButtonTagRegister) {
         
     }

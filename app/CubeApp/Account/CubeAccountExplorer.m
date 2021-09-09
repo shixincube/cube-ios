@@ -25,8 +25,62 @@
  */
 
 #import "CubeAccountExplorer.h"
+#import <AFNetworking/AFNetworking.h>
+
+#define URL_LOGIN    @"/account/login/"
+#define URL_LOGOUT   @"/account/logout/"
+#define URL_REGISTER @"/account/register/"
+
+@interface CubeAccountExplorer ()
+
+@property (nonatomic, strong) AFHTTPSessionManager * httpManager;
+
+@end
 
 @implementation CubeAccountExplorer
 
+- (void)loginWithPhoneNumber:(NSString *)phoneNumber
+                    password:(NSString *)password
+                     success:(CubeBlockRequestSuccessWithData)success
+                     failure:(CubeBlockRequestFailureWithError)failure {
+    UIDevice * dev = [UIDevice currentDevice];
+    NSString * device = [NSString stringWithFormat:@"%@/%@ %@/%@", dev.model, dev.systemName, dev.systemVersion,
+                         dev.identifierForVendor.UUIDString];
+
+    NSString * url = [HOST_URL stringByAppendingString:URL_LOGIN];
+    NSDictionary * params = @{
+        @"phone": phoneNumber,
+        @"password" : password,
+        @"device" : device };
+
+    [self.httpManager POST:url parameters:params headers:nil progress:nil
+               success:^(NSURLSessionDataTask * task, id responseObject) {
+        // 请求成功
+        NSDictionary * json = [responseObject toJSONObject];
+    }
+               failure:^(NSURLSessionDataTask * task, NSError * error) {
+        // 请求失败
+        failure(error);
+    }];
+}
+
+#pragma mark - Getter
+
+- (AFHTTPSessionManager *)httpManager {
+    if (!_httpManager) {
+        _httpManager = [AFHTTPSessionManager manager];
+        
+        NSSet * acceptableContentTypes = [NSSet setWithObjects:@"application/json",
+                                             @"text/html",
+                                             @"text/json",
+                                             @"text/javascript",
+                                             @"text/plain", nil];
+        _httpManager.operationQueue.maxConcurrentOperationCount = 5;
+        _httpManager.requestSerializer.timeoutInterval = 3;
+        _httpManager.responseSerializer.acceptableContentTypes = acceptableContentTypes;
+    }
+    
+    return _httpManager;
+}
 
 @end

@@ -31,6 +31,11 @@
 
 @interface CubeAccountExplorer : NSObject
 
+- (void)loginWithPhoneNumber:(NSString *)phoneNumber
+                    password:(NSString *)password
+                     success:(CubeBlockRequestSuccessWithData)success
+                     failure:(CubeBlockRequestFailureWithError)failure;
+
 @end
 
 #endif /* CubeAccountExplorer_h */

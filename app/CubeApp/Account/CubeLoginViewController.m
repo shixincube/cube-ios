@@ -25,6 +25,7 @@
  */
 
 #import "CubeLoginViewController.h"
+#import "CubeAppUtil.h"
 
 #define     HEIGHT_ITEM     45.0f
 #define     EDGE_LINE       20.0f
@@ -92,16 +93,24 @@
 
 #pragma mark - Event Response
 
-- (void)cancelButtonClicked:(UIButton *)sender {
+- (void)cancelButtonTouchUp:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)loginButtonClicked:(UIButton *)sender {
+- (void)loginButtonTouchUp:(UIButton *)sender {
     NSString *phoneNumber = self.phoneNumberTextField.text;
     if (phoneNumber.length != 11 && ![phoneNumber hasPrefix:@"1"]) {
-        [CubeUIUtility showErrorHint:LOCSTR(@"请输入正确的手机号码")];
+        [CubeUIUtility showErrorHint:@"请输入正确的手机号码"];
         return;
     }
+    
+    // 密码
+    NSString * password = self.passwordTextField.text;
+    // 密码 MD5
+    NSString * passwordMD5 = [CubeAppUtil makeMD5:password];
+
+//    [CubeUIUtility showLoading:nil];
+    
 }
 
 - (void)didTapView {
@@ -238,7 +247,7 @@
             .titleFont([UIFont systemFontOfSize:16])
             .cornerRadius(3.0f)
             .view;
-        [_cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_cancelButton addTarget:self action:@selector(cancelButtonTouchUp:) forControlEvents:UIControlEventTouchUpInside];
     }
 
     return _cancelButton;
@@ -333,7 +342,7 @@
             .titleFont([UIFont systemFontOfSize:16.0f])
             .title(@"登录")
             .view;
-        [_loginButton addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_loginButton addTarget:self action:@selector(loginButtonTouchUp:) forControlEvents:UIControlEventTouchUpInside];
     }
 
     return _loginButton;
