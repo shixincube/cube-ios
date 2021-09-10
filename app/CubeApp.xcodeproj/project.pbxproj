@@ -99,6 +99,14 @@
 		C8E3268A26E0F29E005CA08A /* CubeAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3268926E0F29E005CA08A /* CubeAccountViewController.m */; };
 		C8EAB74526EAF6070044A085 /* CubeRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB74426EAF6070044A085 /* CubeRegisterViewController.m */; };
 		C8EAB74926EB0BF90044A085 /* CubeAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB74826EB0BF90044A085 /* CubeAccount.m */; };
+		C8EAB74C26EB46B10044A085 /* CubeAccountHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB74B26EB46B10044A085 /* CubeAccountHelper.m */; };
+		C8EAB75F26EB4A2B0044A085 /* TLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75326EB4A2B0044A085 /* TLTabBarController.m */; };
+		C8EAB76026EB4A2B0044A085 /* UITabBarItem+TLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75426EB4A2B0044A085 /* UITabBarItem+TLExtension.m */; };
+		C8EAB76126EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75726EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m */; };
+		C8EAB76226EB4A2B0044A085 /* TLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75826EB4A2B0044A085 /* TLBadge.m */; };
+		C8EAB76326EB4A2B0044A085 /* TLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75A26EB4A2B0044A085 /* TLTabBar.m */; };
+		C8EAB76426EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */; };
+		C8EAB76526EB4A2B0044A085 /* UITabBar+TLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -299,6 +307,23 @@
 		C8EAB74626EAF6100044A085 /* CubeRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeRegisterViewController.h; sourceTree = "<group>"; };
 		C8EAB74726EB0BEA0044A085 /* CubeAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAccount.h; sourceTree = "<group>"; };
 		C8EAB74826EB0BF90044A085 /* CubeAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeAccount.m; sourceTree = "<group>"; };
+		C8EAB74B26EB46B10044A085 /* CubeAccountHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeAccountHelper.m; sourceTree = "<group>"; };
+		C8EAB74D26EB46BA0044A085 /* CubeAccountHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAccountHelper.h; sourceTree = "<group>"; };
+		C8EAB74F26EB4A2B0044A085 /* UITabBarItem+TLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarItem+TLExtension.h"; sourceTree = "<group>"; };
+		C8EAB75026EB4A2B0044A085 /* TLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTabBarController.h; sourceTree = "<group>"; };
+		C8EAB75126EB4A2B0044A085 /* TLTabBarControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTabBarControllerProtocol.h; sourceTree = "<group>"; };
+		C8EAB75226EB4A2B0044A085 /* UITabBar+TLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+TLExtension.h"; sourceTree = "<group>"; };
+		C8EAB75326EB4A2B0044A085 /* TLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTabBarController.m; sourceTree = "<group>"; };
+		C8EAB75426EB4A2B0044A085 /* UITabBarItem+TLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+TLExtension.m"; sourceTree = "<group>"; };
+		C8EAB75626EB4A2B0044A085 /* TLTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTabBar.h; sourceTree = "<group>"; };
+		C8EAB75726EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+TLPrivateExtension.m"; sourceTree = "<group>"; };
+		C8EAB75826EB4A2B0044A085 /* TLBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLBadge.m; sourceTree = "<group>"; };
+		C8EAB75926EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLTabBar+iOS12_1Fix.h"; sourceTree = "<group>"; };
+		C8EAB75A26EB4A2B0044A085 /* TLTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTabBar.m; sourceTree = "<group>"; };
+		C8EAB75B26EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarItem+TLPrivateExtension.h"; sourceTree = "<group>"; };
+		C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLTabBar+iOS12_1Fix.m"; sourceTree = "<group>"; };
+		C8EAB75D26EB4A2B0044A085 /* TLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLBadge.h; sourceTree = "<group>"; };
+		C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+TLExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,16 +345,16 @@
 		C80B4FE926E5EA5A00AD90B2 /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				C80B4FEA26E5EA5A00AD90B2 /* SVRadialGradientLayer.m */,
 				C80B4FEB26E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.h */,
-				C80B4FEC26E5EA5A00AD90B2 /* SVProgressHUD.h */,
+				C80B4FF126E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m */,
+				C80B4FF326E5EA5A00AD90B2 /* SVProgressAnimatedView.h */,
 				C80B4FED26E5EA5A00AD90B2 /* SVProgressAnimatedView.m */,
 				C80B4FEE26E5EA5A00AD90B2 /* SVProgressHUD-Prefix.pch */,
-				C80B4FEF26E5EA5A00AD90B2 /* SVRadialGradientLayer.h */,
-				C80B4FF026E5EA5A00AD90B2 /* SVProgressHUD.m */,
-				C80B4FF126E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m */,
 				C80B4FF226E5EA5A00AD90B2 /* SVProgressHUD.bundle */,
-				C80B4FF326E5EA5A00AD90B2 /* SVProgressAnimatedView.h */,
+				C80B4FEC26E5EA5A00AD90B2 /* SVProgressHUD.h */,
+				C80B4FF026E5EA5A00AD90B2 /* SVProgressHUD.m */,
+				C80B4FEF26E5EA5A00AD90B2 /* SVRadialGradientLayer.h */,
+				C80B4FEA26E5EA5A00AD90B2 /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
 			sourceTree = "<group>";
@@ -421,8 +446,9 @@
 		C8E325AE26E0D9BD005CA08A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C80B4FE926E5EA5A00AD90B2 /* SVProgressHUD */,
 				C8E3265526E0DBFF005CA08A /* Masonry */,
+				C80B4FE926E5EA5A00AD90B2 /* SVProgressHUD */,
+				C8EAB74E26EB4A2B0044A085 /* TLTabBarController */,
 				C8E325B026E0DAA3005CA08A /* ZZFLEX */,
 			);
 			path = Frameworks;
@@ -431,13 +457,13 @@
 		C8E325B026E0DAA3005CA08A /* ZZFLEX */ = {
 			isa = PBXGroup;
 			children = (
+				C8E3260D26E0DAA3005CA08A /* ZZFLEX.h */,
 				C8E325B126E0DAA3005CA08A /* ZZFLEXAngel */,
-				C8E325D626E0DAA3005CA08A /* ZZFLEXViewExtension */,
+				C8E3261926E0DAA3005CA08A /* ZZFLEXEditExtension */,
+				C8E3260E26E0DAA3005CA08A /* ZZFLEXFoundationExtension */,
 				C8E3260326E0DAA3005CA08A /* ZZFLEXRequestQueue */,
 				C8E3260826E0DAA3005CA08A /* ZZFLEXViewController */,
-				C8E3260D26E0DAA3005CA08A /* ZZFLEX.h */,
-				C8E3260E26E0DAA3005CA08A /* ZZFLEXFoundationExtension */,
-				C8E3261926E0DAA3005CA08A /* ZZFLEXEditExtension */,
+				C8E325D626E0DAA3005CA08A /* ZZFLEXViewExtension */,
 			);
 			path = ZZFLEX;
 			sourceTree = "<group>";
@@ -733,6 +759,8 @@
 				C8EAB74826EB0BF90044A085 /* CubeAccount.m */,
 				C80B4FE826E5E87E00AD90B2 /* CubeAccountExplorer.h */,
 				C80B4FE626E5E86B00AD90B2 /* CubeAccountExplorer.m */,
+				C8EAB74D26EB46BA0044A085 /* CubeAccountHelper.h */,
+				C8EAB74B26EB46B10044A085 /* CubeAccountHelper.m */,
 				C8E3268826E0F293005CA08A /* CubeAccountViewController.h */,
 				C8E3268926E0F29E005CA08A /* CubeAccountViewController.m */,
 				C8A0DA3926E2252F0032A9D5 /* CubeLoginViewController.h */,
@@ -748,6 +776,36 @@
 			children = (
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C8EAB74E26EB4A2B0044A085 /* TLTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				C8EAB75526EB4A2B0044A085 /* Private */,
+				C8EAB75026EB4A2B0044A085 /* TLTabBarController.h */,
+				C8EAB75326EB4A2B0044A085 /* TLTabBarController.m */,
+				C8EAB75126EB4A2B0044A085 /* TLTabBarControllerProtocol.h */,
+				C8EAB75226EB4A2B0044A085 /* UITabBar+TLExtension.h */,
+				C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */,
+				C8EAB74F26EB4A2B0044A085 /* UITabBarItem+TLExtension.h */,
+				C8EAB75426EB4A2B0044A085 /* UITabBarItem+TLExtension.m */,
+			);
+			path = TLTabBarController;
+			sourceTree = "<group>";
+		};
+		C8EAB75526EB4A2B0044A085 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				C8EAB75626EB4A2B0044A085 /* TLTabBar.h */,
+				C8EAB75726EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m */,
+				C8EAB75826EB4A2B0044A085 /* TLBadge.m */,
+				C8EAB75926EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.h */,
+				C8EAB75A26EB4A2B0044A085 /* TLTabBar.m */,
+				C8EAB75B26EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.h */,
+				C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */,
+				C8EAB75D26EB4A2B0044A085 /* TLBadge.h */,
+			);
+			path = Private;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -840,28 +898,33 @@
 				C8E3268A26E0F29E005CA08A /* CubeAccountViewController.m in Sources */,
 				C8E3264B26E0DAA3005CA08A /* ZZFLEXEditModel.m in Sources */,
 				C8E3264426E0DAA3005CA08A /* ZZFLEXRequestQueue.m in Sources */,
+				C8EAB76026EB4A2B0044A085 /* UITabBarItem+TLExtension.m in Sources */,
 				C8E3262B26E0DAA3005CA08A /* ZZFLEXAngel.m in Sources */,
 				C8E3262126E0DAA3005CA08A /* ZZFLEXViewModel.m in Sources */,
 				C8E3259326E0CF95005CA08A /* ViewController.m in Sources */,
 				C8E3263F26E0DAA3005CA08A /* UIView+ZZFrame.m in Sources */,
 				C8E3262326E0DAA3005CA08A /* ZZFlexibleLayoutSeperatorCell.m in Sources */,
 				C8E3264526E0DAA3005CA08A /* ZZFLEXTableViewController.m in Sources */,
+				C8EAB76326EB4A2B0044A085 /* TLTabBar.m in Sources */,
 				C8E3263C26E0DAA3005CA08A /* ZZSwitchChainModel.m in Sources */,
 				C84CC1B026E9F2940004A9CB /* CubeAppUtil.m in Sources */,
 				C8E3267B26E0DBFF005CA08A /* MASViewConstraint.m in Sources */,
 				C8E3263726E0DAA3005CA08A /* ZZButtonChainModel.m in Sources */,
 				C8E3262D26E0DAA3005CA08A /* ZZFLEXAngel+Private.m in Sources */,
 				C8EAB74926EB0BF90044A085 /* CubeAccount.m in Sources */,
+				C8EAB76526EB4A2B0044A085 /* UITabBar+TLExtension.m in Sources */,
 				C8E3264326E0DAA3005CA08A /* ZZFLEXRequestModel.m in Sources */,
 				C84CC1B326EA0B110004A9CB /* NSObject+CubeKeyValue.m in Sources */,
 				C8E3262926E0DAA3005CA08A /* ZZFLEXAngelViewChainModel.m in Sources */,
 				C8E3262C26E0DAA3005CA08A /* ZZFLEXAngel+UICollectionView.m in Sources */,
+				C8EAB76426EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m in Sources */,
 				C8E3267826E0DBFF005CA08A /* NSArray+MASAdditions.m in Sources */,
 				C8E3264026E0DAA3005CA08A /* ZZFlexibleLayoutFlowLayout.m in Sources */,
 				C8E3262526E0DAA3005CA08A /* ZZFlexibleLayoutEmptyHeaderFooterView.m in Sources */,
 				C8E3267526E0DBFF005CA08A /* MASCompositeConstraint.m in Sources */,
 				C8E3262426E0DAA3005CA08A /* ZZFLEXTableViewHeaderFooterView.m in Sources */,
 				C8E3263526E0DAA3005CA08A /* ZZTableViewChainModel.m in Sources */,
+				C8EAB76226EB4A2B0044A085 /* TLBadge.m in Sources */,
 				C8E3263426E0DAA3005CA08A /* ZZCollectionViewChainModel.m in Sources */,
 				C8E3262826E0DAA3005CA08A /* ZZFLEXAngelViewEditChainModel.m in Sources */,
 				C8E3267426E0DBFF005CA08A /* ViewController+MASAdditions.m in Sources */,
@@ -877,6 +940,8 @@
 				C8E3263E26E0DAA3005CA08A /* UIButton+ZZExtension.m in Sources */,
 				C8E3262726E0DAA3005CA08A /* ZZFLEXAngelViewBatchChainModel.m in Sources */,
 				C8E3267A26E0DBFF005CA08A /* MASConstraint.m in Sources */,
+				C8EAB76126EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m in Sources */,
+				C8EAB75F26EB4A2B0044A085 /* TLTabBarController.m in Sources */,
 				C80B4FF426E5EA5A00AD90B2 /* SVRadialGradientLayer.m in Sources */,
 				C8E3263126E0DAA3005CA08A /* UIView+ZZFLEX.m in Sources */,
 				C8E3264226E0DAA3005CA08A /* UIView+ZZSeparator.m in Sources */,
@@ -890,6 +955,7 @@
 				C8E3262A26E0DAA3005CA08A /* ZZFLEXAngelSectionChainModel.m in Sources */,
 				C8E3259E26E0CF98005CA08A /* main.m in Sources */,
 				C8E3264826E0DAA3005CA08A /* ZZMutableParagraphStyleChainModel.m in Sources */,
+				C8EAB74C26EB46B10044A085 /* CubeAccountHelper.m in Sources */,
 				C8E3263B26E0DAA3005CA08A /* ZZTextViewChainModel.m in Sources */,
 				C8E3264626E0DAA3005CA08A /* ZZFLEXCollectionViewController.m in Sources */,
 				C8E3259026E0CF95005CA08A /* SceneDelegate.m in Sources */,

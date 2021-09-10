@@ -26,6 +26,7 @@
 
 #import "CubeRegisterViewController.h"
 #import "CubeAppUtil.h"
+#import "CubeAccount.h"
 
 #define     HEIGHT_ITEM     45.0f
 #define     EDGE_LINE       20.0f
@@ -119,9 +120,33 @@
     // 密码 MD5
     NSString * passwordMD5 = [CubeAppUtil makeMD5:password];
 
+    // 随机名称
+    NSString * name = [CubeAppUtil desensitizePhoneNumber:phoneNumber];
+    // 默认头像
+    NSString * avatar = [self.explorer defaultAvatar];
+
     [CubeUIUtility showLoading:nil];
-    
-    
+
+    CWeakSelf(self);
+    [self.explorer registerWithPhoneNumber:phoneNumber
+                                  password:passwordMD5
+                                  nickname:name
+                                    avatar:avatar
+                                   success:^(id data) {
+        [CubeUIUtility hideLoading];
+
+        if (weak_self.registerSuccess) {
+            weak_self.registerSuccess((CubeAccount *)data);
+        }
+    }
+                                   failure:^(NSError *error) {
+        NSString * hint = [NSString stringWithFormat:@"注册账号失败，请稍候再试: %ld", error.code];
+        [CubeUIUtility showErrorHint:hint];
+
+        if (weak_self.registerFailure) {
+            weak_self.registerFailure(error);
+        }
+    }];
 }
 
 - (void)didTapView {

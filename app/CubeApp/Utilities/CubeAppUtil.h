@@ -33,6 +33,11 @@
 
 + (NSString *)makeMD5:(NSString *)input;
 
+/*!
+ * @brief 手机号码脱敏。
+ */
++ (NSString *)desensitizePhoneNumber:(NSString *)phoneNumber;
+
 + (NSURLSessionDataTask *)postURL:(NSString *)url
                        parameters:(id)parameters
                           success:(void (^)(NSURLSessionDataTask * task, id responseObject))success

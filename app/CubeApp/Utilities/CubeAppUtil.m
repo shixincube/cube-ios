@@ -29,6 +29,7 @@
 
 @implementation CubeAppUtil
 
+
 + (NSString *)makeMD5:(NSString *)input {
     const char *cStr = [input UTF8String];
     unsigned char digest[CC_MD5_DIGEST_LENGTH];
@@ -41,6 +42,27 @@
     }
     return output;
 }
+
+
++ (NSString *)desensitizePhoneNumber:(NSString *)phoneNumber {
+    if (phoneNumber.length == 11) {
+        return [NSString stringWithFormat:@"%@****%@",
+                [phoneNumber substringToIndex:3],
+                [phoneNumber substringFromIndex:7]];
+    }
+    else if (phoneNumber.length == 0) {
+        return @"";
+    }
+    else {
+        NSMutableString * buf = [[NSMutableString alloc] initWithString:[phoneNumber substringToIndex:2]];
+        for (NSInteger i = 0, len = phoneNumber.length - 4; i < len; ++i) {
+            [buf appendString:@"*"];
+        }
+        [buf appendString: [phoneNumber substringFromIndex: phoneNumber.length - 2]];
+        return buf;
+    }
+}
+
 
 + (NSURLSessionDataTask *)postURL:(NSString *)url
                        parameters:(id)parameters

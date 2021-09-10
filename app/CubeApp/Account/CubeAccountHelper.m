@@ -24,30 +24,31 @@
  * SOFTWARE.
  */
 
-#ifndef CubeAccount_h
-#define CubeAccount_h
+#import "CubeAccountHelper.h"
+#import "CubeAccount.h"
 
-#import <Foundation/Foundation.h>
+@implementation CubeAccountHelper
 
-@interface CubeAccount : NSObject
+@synthesize tokenCode = _tokenCode;
 
-@property (nonatomic, assign, readonly) NSUInteger identity;
++ (CubeAccountHelper *)sharedInstance {
+    static CubeAccountHelper *helper;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        helper = [[CubeAccountHelper alloc] init];
+    });
+    return helper;
+}
 
-@property (nonatomic, strong, readonly) NSString * accountName;
+#pragma mark - Getters
 
-@property (nonatomic, strong, readonly) NSString * phoneNumber;
-
-@property (nonatomic, strong, readonly) NSString * displayName;
-
-@property (nonatomic, strong, readonly) NSString * avatar;
-
-@property (nonatomic, assign, readonly) NSInteger state;
-
-
-+ (CubeAccount *)accountWithJSON:(NSDictionary *)json;
-
-- (instancetype)initWithJSON:(NSDictionary *)accountJSON;
+- (NSString *)tokenCode {
+    if (!_tokenCode) {
+        // 尝试读取令牌数据
+        
+    }
+    
+    return _tokenCode;
+}
 
 @end
-
-#endif /* CubeAccount_h */

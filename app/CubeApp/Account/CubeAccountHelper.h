@@ -24,30 +24,22 @@
  * SOFTWARE.
  */
 
-#ifndef CubeAccount_h
-#define CubeAccount_h
+#ifndef CubeAccountHelper_h
+#define CubeAccountHelper_h
 
 #import <Foundation/Foundation.h>
 
-@interface CubeAccount : NSObject
+@class CubeAccount;
 
-@property (nonatomic, assign, readonly) NSUInteger identity;
+/*!
+ * @brief 用于管理账号本地数据的辅助库。
+ */
+@interface CubeAccountHelper : NSObject
 
-@property (nonatomic, strong, readonly) NSString * accountName;
+@property (nonatomic, strong) NSString * tokenCode;
 
-@property (nonatomic, strong, readonly) NSString * phoneNumber;
-
-@property (nonatomic, strong, readonly) NSString * displayName;
-
-@property (nonatomic, strong, readonly) NSString * avatar;
-
-@property (nonatomic, assign, readonly) NSInteger state;
-
-
-+ (CubeAccount *)accountWithJSON:(NSDictionary *)json;
-
-- (instancetype)initWithJSON:(NSDictionary *)accountJSON;
++ (CubeAccountHelper *)sharedInstance;
 
 @end
 
-#endif /* CubeAccount_h */
+#endif /* CubeAccountHelper_h */

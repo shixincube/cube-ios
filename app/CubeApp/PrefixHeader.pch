@@ -19,6 +19,7 @@
 #import "Frameworks/Masonry/Masonry/Masonry.h"
 #import "Frameworks/ZZFLEX/ZZFLEX.h"
 #import "Frameworks/SVProgressHUD/SVProgressHUD.h"
+#import "Frameworks/TLTabBarController/TLTabBarController.h"
 
 #import <Cube/Cube.h>
 

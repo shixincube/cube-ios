@@ -28,6 +28,21 @@
 
 @implementation CubeAccount
 
++ (CubeAccount *)accountWithJSON:(NSDictionary *)json {
+    return [[CubeAccount alloc] initWithJSON:json];
+}
 
+- (instancetype)initWithJSON:(NSDictionary *)accountJSON {
+    if (self = [super init]) {
+        _identity = [[accountJSON valueForKey:@"id"] unsignedLongValue];
+        _accountName = [accountJSON valueForKey:@"account"];
+        _phoneNumber = [accountJSON valueForKey:@"phone"];
+        _displayName = [accountJSON valueForKey:@"name"];
+        _avatar = [accountJSON valueForKey:@"avatar"];
+        _state = [[accountJSON valueForKey:@"state"] integerValue];
+    }
+    
+    return self;
+}
 
 @end

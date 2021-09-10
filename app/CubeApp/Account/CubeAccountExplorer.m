@@ -26,6 +26,7 @@
 
 #import "CubeAccountExplorer.h"
 #import <AFNetworking/AFNetworking.h>
+#import "CubeAccount.h"
 
 #define URL_LOGIN    @"/account/login/"
 #define URL_LOGOUT   @"/account/logout/"
@@ -57,8 +58,11 @@
         @"password" : password,
         @"device" : device };
 
-    [self.httpManager POST:url parameters:params headers:nil progress:nil
-               success:^(NSURLSessionDataTask * task, id responseObject) {
+    [self.httpManager POST:url
+                parameters:params
+                   headers:nil
+                  progress:nil
+                   success:^(NSURLSessionDataTask * task, id responseObject) {
         // 请求成功
         NSDictionary * json = [responseObject toJSONObject];
         NSInteger code = [[json valueForKey:@"code"] integerValue];
@@ -70,7 +74,7 @@
             failure(error);
         }
     }
-               failure:^(NSURLSessionDataTask * task, NSError * error) {
+                   failure:^(NSURLSessionDataTask * task, NSError * error) {
         // 请求失败
         failure(error);
     }];
@@ -88,8 +92,30 @@
         @"password" : password,
         @"nickname" : nickname,
         @"avatar" : avatar };
-    
-    
+
+    [self.httpManager POST:url
+                parameters:params
+                   headers:nil
+                  progress:nil
+                   success:^(NSURLSessionDataTask * task, id responseObject) {
+        // 请求成功
+        NSDictionary * json = [responseObject toJSONObject];
+        NSInteger code = [[json valueForKey:@"code"] integerValue];
+        if (code == CubeAccountStateCodeSuccess) {
+            // 回调成功
+            CubeAccount * account = [CubeAccount accountWithJSON:[json valueForKey:@"account"]];
+            success(account);
+        }
+        else {
+            // 回调故障
+            NSError * error = [NSError errorWithDomain:@"CubeAccountExplorer" code:code userInfo:nil];
+            failure(error);
+        }
+    }
+                   failure:^(NSURLSessionDataTask * task, NSError * error) {
+        // 请求失败
+        failure(error);
+    }];
 }
 
 #pragma mark - Getter

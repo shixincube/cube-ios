@@ -29,7 +29,8 @@
 
 #import "CubeViewController.h"
 #import "CubeAccountExplorer.h"
-#import "CubeAccount.h"
+
+@class CubeAccount;
 
 @interface CubeRegisterViewController : CubeViewController
 

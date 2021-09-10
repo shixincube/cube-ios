@@ -27,6 +27,7 @@
 #import "CubeLaunchManager.h"
 #import "CubeAccountViewController.h"
 #import "SceneDelegate.h"
+#import "CubeAccountHelper.h"
 
 @interface CubeLaunchManager ()
 
@@ -34,14 +35,19 @@
 
 @property (nonatomic, weak) UIWindow * window;
 
+@property (nonatomic, strong, readonly) TLTabBarController * tabBarController;
+
+- (void)launch;
+
 - (void)setRootVC:(__kindof UIViewController *)rootVC;
 
 @end
 
 @implementation CubeLaunchManager
 
-+ (CubeLaunchManager *)sharedInstance
-{
+@synthesize tabBarController = _tabBarController;
+
++ (CubeLaunchManager *)sharedInstance {
     static CubeLaunchManager *manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -58,18 +64,29 @@
 
 - (void)launchInWindowScene:(UIWindowScene *)windowScene {
     self.windowScene = windowScene;
-    
-    CubeAccountViewController * accountVC = [[CubeAccountViewController alloc] init];
-    
-    [self setRootVC:accountVC];
+
+    [self launch];
 }
 
 - (void)launchInWindow:(id)window {
     self.window = window;
 
-    CubeAccountViewController * accountVC = [[CubeAccountViewController alloc] init];
+    [self launch];
+}
 
-    [self setRootVC:accountVC];
+#pragma mark - Private
+
+- (void)launch {
+    NSString * tokenCode = [CubeAccountHelper sharedInstance].tokenCode;
+    if (tokenCode) {
+        // 有 Token Code，尝试使用 Token Code 进行登录
+    }
+    else {
+        // 未登录
+        CubeAccountViewController * accountVC = [[CubeAccountViewController alloc] init];
+
+        [self setRootVC:accountVC];
+    }
 }
 
 - (void)setRootVC:(__kindof UIViewController *)rootVC {
@@ -88,6 +105,19 @@
     [window setRootViewController:rootVC];
     [window addSubview:rootVC.view];
     [window makeKeyAndVisible];
+}
+
+#pragma mark - Getters
+
+- (TLTabBarController *)tabBarController {
+    if (!_tabBarController) {
+        TLTabBarController * tabBarController = [[TLTabBarController alloc] init];
+        [tabBarController.tabBar setBackgroundColor:[UIColor colorGrayBG]];
+        [tabBarController.tabBar setTintColor:[UIColor colorBlueDefault]];
+        _tabBarController = tabBarController;
+    }
+
+    return _tabBarController;
 }
 
 @end
