@@ -24,7 +24,7 @@
  * SOFTWARE.
  */
 
-#import "CubeLoginViewController.h"
+#import "CubeRegisterViewController.h"
 #import "CubeAppUtil.h"
 
 #define     HEIGHT_ITEM     45.0f
@@ -32,7 +32,7 @@
 #define     WIDTH_TITLE     90.0f
 #define     EDGE_DETAIL     15.0f
 
-@interface CubeLoginViewController ()
+@interface CubeRegisterViewController ()
 
 @property (nonatomic, strong) UIScrollView * scrollView;
 
@@ -49,22 +49,18 @@
 @property (nonatomic, strong) UILabel * passwordTitleLabel;
 @property (nonatomic, strong) UITextField * passwordTextField;
 
-@property (nonatomic, strong) UIButton * loginButton;
+@property (nonatomic, strong) UILabel * repeatPasswordTitleLabel;
+@property (nonatomic, strong) UITextField * repeatPasswordTextField;
 
-@property (nonatomic, strong) NSMutableArray * countryArray;
-
-- (void)makeMasonry;
+@property (nonatomic, strong) UIButton * registerButton;
 
 @end
 
-
-@implementation CubeLoginViewController
+@implementation CubeRegisterViewController
 
 - (void)loadView {
     [super loadView];
-
-    self.countryArray = [NSMutableArray arrayWithObjects:@"中国", @"巴基斯坦", @"马来西亚", @"美国", @"英国", nil];
-
+    
     self.statusBarStyle = UIStatusBarStyleDefault;
     
     [self.view addSubview:self.scrollView];
@@ -76,10 +72,12 @@
     [self.scrollView addSubview:self.phoneNumberTextField];
     [self.scrollView addSubview:self.passwordTitleLabel];
     [self.scrollView addSubview:self.passwordTextField];
-    [self.scrollView addSubview:self.loginButton];
+    [self.scrollView addSubview:self.repeatPasswordTitleLabel];
+    [self.scrollView addSubview:self.repeatPasswordTextField];
+    [self.scrollView addSubview:self.registerButton];
 
     [self makeMasonry];
-    
+
     // 键盘控制
     UITapGestureRecognizer * tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView)];
     [self.scrollView addGestureRecognizer:tapGR];
@@ -99,17 +97,22 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)loginButtonTouchUp:(UIButton *)sender {
+- (void)registerButtonTouchUp:(UIButton *)sender {
     NSString *phoneNumber = self.phoneNumberTextField.text;
     if (phoneNumber.length != 11 || ![phoneNumber hasPrefix:@"1"]) {
         [CubeUIUtility showErrorHint:@"请输入正确的手机号码"];
         return;
     }
-    
+
     // 密码
     NSString * password = self.passwordTextField.text;
+    NSString * reptPassword = self.repeatPasswordTextField.text;
     if (password.length < 8) {
-        [CubeUIUtility showErrorHint:@"请输入至少8位的登录密码"];
+        [CubeUIUtility showErrorHint:@"请输入至少8位密码"];
+        return;
+    }
+    else if (![password isEqualToString:reptPassword]) {
+        [CubeUIUtility showErrorHint:@"两次输入的密码不一致"];
         return;
     }
 
@@ -118,19 +121,7 @@
 
     [CubeUIUtility showLoading:nil];
     
-    CWeakSelf(self);
-    [self.explorer loginWithPhoneNumber:phoneNumber password:passwordMD5 success:^(id data) {
-        if (weak_self.loginSuccess) {
-            weak_self.loginSuccess((NSString *)data);
-        }
-    } failure:^(NSError *error) {
-        NSString * hint = [NSString stringWithFormat:@"登录失败: %ld", error.code];
-        [CubeUIUtility showErrorHint:hint];
-
-        if (weak_self.loginFailure) {
-            weak_self.loginFailure(error);
-        }
-    }];
+    
 }
 
 - (void)didTapView {
@@ -138,6 +129,7 @@
 
     [self.phoneNumberTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
+    [self.repeatPasswordTextField resignFirstResponder];
 }
 
 #pragma mark - Private
@@ -149,11 +141,11 @@
         make.height.mas_equalTo(40);
         make.width.mas_equalTo(80);
     }];
-
+    
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
-
+    
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(NAVBAR_HEIGHT + STATUSBAR_HEIGHT + 10);
         make.centerX.mas_equalTo(0);
@@ -165,7 +157,7 @@
         [view setBackgroundColor:[UIColor colorGrayLine]];
         return view;
     };
-
+    
     [self.originTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(EDGE_LINE);
         make.height.mas_equalTo(HEIGHT_ITEM);
@@ -233,16 +225,41 @@
         make.right.mas_equalTo(self.view).mas_offset(-EDGE_LINE);
     }];
     
-    UIView * btnLine = createLine();
-    [self.scrollView addSubview:btnLine];
-    [btnLine mas_makeConstraints:^(MASConstraintMaker *make) {
+    // 重复密码分隔线
+    UIView * reptLine = createLine();
+    [self.scrollView addSubview:reptLine];
+    [reptLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.passwordTitleLabel.mas_bottom);
         make.left.mas_equalTo(EDGE_LINE);
         make.width.mas_equalTo(self.scrollView).mas_offset(-EDGE_LINE * 2);
         make.height.mas_equalTo(BORDER_WIDTH_1PX);
     }];
 
-    [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.repeatPasswordTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(reptLine);
+        make.top.mas_equalTo(reptLine.mas_bottom);
+        make.height.mas_equalTo(HEIGHT_ITEM);
+        make.width.mas_equalTo(self.districtNumberLabel);
+    }];
+    
+    [self.repeatPasswordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.originLabel);
+        make.centerY.mas_equalTo(self.repeatPasswordTitleLabel);
+        make.height.mas_equalTo(HEIGHT_ITEM);
+        make.right.mas_equalTo(self.view).mas_offset(-EDGE_LINE);
+    }];
+    
+    // 按钮分隔线
+    UIView * btnLine = createLine();
+    [self.scrollView addSubview:btnLine];
+    [btnLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.repeatPasswordTitleLabel.mas_bottom);
+        make.left.mas_equalTo(EDGE_LINE);
+        make.width.mas_equalTo(self.scrollView).mas_offset(-EDGE_LINE * 2);
+        make.height.mas_equalTo(BORDER_WIDTH_1PX);
+    }];
+    
+    [self.registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(btnLine);
         make.height.mas_equalTo(HEIGHT_ITEM);
         make.top.mas_equalTo(btnLine.mas_bottom).mas_offset(HEIGHT_ITEM);
@@ -276,11 +293,11 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = UILabel.zz_create(2)
-            .text(@"使用手机号码登录")
+            .text(@"使用手机号码注册")
             .font([UIFont systemFontOfSize:28])
             .view;
     }
-    
+
     return _titleLabel;
 }
 
@@ -352,20 +369,43 @@
     return _passwordTextField;
 }
 
-- (UIButton *)loginButton {
-    if (!_loginButton) {
-        _loginButton = UIButton.zz_create(9)
+- (UILabel *)repeatPasswordTitleLabel {
+    if (!_repeatPasswordTitleLabel) {
+        _repeatPasswordTitleLabel = UILabel.zz_create(9)
+           .text(@"确认密码")
+           .font([UIFont systemFontOfSize:17])
+           .view;
+    }
+    
+    return _repeatPasswordTitleLabel;
+}
+
+- (UITextField *)repeatPasswordTextField {
+    if (!_repeatPasswordTextField) {
+        _repeatPasswordTextField = UITextField.zz_create(10)
+            .placeholder(@"请再填写一次密码")
+            .clearButtonMode(UITextFieldViewModeWhileEditing)
+            .view;
+        [_repeatPasswordTextField setSecureTextEntry:YES];
+    }
+
+    return _repeatPasswordTextField;
+}
+
+- (UIButton *)registerButton {
+    if (!_registerButton) {
+        _registerButton = UIButton.zz_create(11)
             .masksToBounds(YES)
             .cornerRadius(4.0f)
             .borderWidth(BORDER_WIDTH_1PX)
             .backgroundColor([UIColor colorBlueDefault])
             .titleFont([UIFont systemFontOfSize:16.0f])
-            .title(@"登录")
+            .title(@"注册")
             .view;
-        [_loginButton addTarget:self action:@selector(loginButtonTouchUp:) forControlEvents:UIControlEventTouchUpInside];
+        [_registerButton addTarget:self action:@selector(registerButtonTouchUp:) forControlEvents:UIControlEventTouchUpInside];
     }
 
-    return _loginButton;
+    return _registerButton;
 }
 
 @end

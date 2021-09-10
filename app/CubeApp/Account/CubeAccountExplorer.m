@@ -39,6 +39,10 @@
 
 @implementation CubeAccountExplorer
 
+- (NSString *)defaultAvatar {
+    return @"default";
+}
+
 - (void)loginWithPhoneNumber:(NSString *)phoneNumber
                     password:(NSString *)password
                      success:(CubeBlockRequestSuccessWithData)success
@@ -49,7 +53,7 @@
 
     NSString * url = [HOST_URL stringByAppendingString:URL_LOGIN];
     NSDictionary * params = @{
-        @"phone": phoneNumber,
+        @"phone" : phoneNumber,
         @"password" : password,
         @"device" : device };
 
@@ -57,11 +61,35 @@
                success:^(NSURLSessionDataTask * task, id responseObject) {
         // 请求成功
         NSDictionary * json = [responseObject toJSONObject];
+        NSInteger code = [[json valueForKey:@"code"] integerValue];
+        if (code == CubeAccountStateCodeSuccess) {
+            success((NSString *) [json valueForKey:@"token"]);
+        }
+        else {
+            NSError * error = [NSError errorWithDomain:@"CubeFailure" code:code userInfo:nil];
+            failure(error);
+        }
     }
                failure:^(NSURLSessionDataTask * task, NSError * error) {
         // 请求失败
         failure(error);
     }];
+}
+
+- (void)registerWithPhoneNumber:(NSString *)phoneNumber
+                       password:(NSString *)password
+                       nickname:(NSString *)nickname
+                         avatar:(NSString *)avatar
+                        success:(CubeBlockRequestSuccessWithData)success
+                        failure:(CubeBlockRequestFailureWithError)failure {
+    NSString * url = [HOST_URL stringByAppendingString:URL_REGISTER];
+    NSDictionary * params = @{
+        @"phone" : phoneNumber,
+        @"password" : password,
+        @"nickname" : nickname,
+        @"avatar" : avatar };
+    
+    
 }
 
 #pragma mark - Getter

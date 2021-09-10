@@ -47,6 +47,8 @@
 
 + (void)showErrorHint:(NSString *)hintText;
 
++ (void)hideErrorHint;
+
 + (void)showInfoHint:(NSString *)hintText;
 
 @end

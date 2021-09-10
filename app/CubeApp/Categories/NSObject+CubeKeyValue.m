@@ -29,12 +29,16 @@
 @implementation NSObject (CubeKeyValue)
 
 - (id)toJSONObject {
-    if ([self isKindOfClass:[NSString class]]) {
+    if ([self isKindOfClass:[NSDictionary class]]) {
+        return self;
+    }
+    else if ([self isKindOfClass:[NSString class]]) {
         return [NSJSONSerialization JSONObjectWithData:[((NSString *)self) dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
-    } else if ([self isKindOfClass:[NSData class]]) {
+    }
+    else if ([self isKindOfClass:[NSData class]]) {
         return [NSJSONSerialization JSONObjectWithData:(NSData *)self options:kNilOptions error:nil];
     }
-    
+
     return [[NSDictionary alloc] init];
 }
 

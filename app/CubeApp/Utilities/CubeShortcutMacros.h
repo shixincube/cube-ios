@@ -140,8 +140,8 @@
         #endif
     #endif
 #endif
-#define     CWeakSelf(type)            __weak typeof(type) weak##type = type;
-#define     CStrongSelf(type)          __strong typeof(type) strong##type = type;
+#define     CWeakSelf(type)            __weak typeof(type) weak_##type = type;
+#define     CStrongSelf(type)          __strong typeof(type) strong_##type = type;
 
 #pragma mark - # XCode
 #define     XCODE_VERSION_8_LATER       __has_include(<UserNotifications/UserNotifications.h>)

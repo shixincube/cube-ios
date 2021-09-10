@@ -233,9 +233,6 @@ typedef void (^PullCompletedHandler)(void);
     int stateCode = [responsePacket extractStateCode];
     NSDictionary * data = [responsePacket extractData];
     
-    NSString * s = [CUtils toStringWithJSON:data];
-    NSLog(@"XJW:data:%@", s);
-    
     // 移除正在发送数据
     [_sendingMap removeObjectForKey:[NSString stringWithFormat:@"%llu", message.identity]];
 

@@ -26,6 +26,7 @@
 
 #import "CubeAccountViewController.h"
 #import "CubeLoginViewController.h"
+#import "CubeRegisterViewController.h"
 
 #define HEIGHT_BUTTON  50
 #define EDGE_BUTTON    35
@@ -44,6 +45,8 @@ typedef NS_ENUM(NSInteger, CubeAccountButtonTag) {
 
 - (void)loadView {
     [super loadView];
+    
+    self.explorer = [[CubeAccountExplorer alloc] init];
 
     UIImage * image = [UIImage imageNamed:@"AccountBG"];
     self.view.addImageView(1).image(image).masonry(^(__kindof UIView *sender, MASConstraintMaker *make) {
@@ -86,10 +89,25 @@ typedef NS_ENUM(NSInteger, CubeAccountButtonTag) {
 
 - (void)buttonTouchUp:(UIButton *)sender {
     if (sender.tag == CubeAccountButtonTagRegister) {
+        CubeRegisterViewController * registerVC = [[CubeRegisterViewController alloc] init];
+        registerVC.explorer = self.explorer;
         
+        CWeakSelf(registerVC);
+        CWeakSelf(self);
+        
+        [registerVC setRegisterSuccess:^(CubeAccount *account) {
+            [weak_registerVC dismissViewControllerAnimated:YES completion:nil];
+        }];
+        
+        [registerVC setRegisterFailure:^(NSError *error) {
+            // 注册失败
+        }];
+
+        [self presentViewController:registerVC animated:YES completion:nil];
     }
     else if (sender.tag == CubeAccountButtonTagLogin) {
         CubeLoginViewController * loginVC = [[CubeLoginViewController alloc] init];
+        loginVC.explorer = self.explorer;
 //        CWeakSelf(self);
 //        CWeakSelf(loginVC);
         // TODO

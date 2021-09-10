@@ -33,11 +33,11 @@
 }
 
 + (void)hideLoading {
-    [CubeUIUtility hideLoadingWithCompletion:nil];
+    [SVProgressHUD dismiss];
 }
 
 + (void)hideLoadingWithDelay:(NSTimeInterval)delay {
-    [CubeUIUtility hideLoadingWithDelay:delay completion:nil];
+    [SVProgressHUD dismissWithDelay:delay];
 }
 
 + (void)hideLoadingWithCompletion:(void (^)(void))completion {
@@ -58,6 +58,10 @@
 
 + (void)showErrorHint:(NSString *)hintText {
     [SVProgressHUD showErrorWithStatus:hintText];
+}
+
++ (void)hideErrorHint {
+    [SVProgressHUD dismiss];
 }
 
 + (void)showInfoHint:(NSString *)hintText {

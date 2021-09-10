@@ -24,20 +24,10 @@
  * SOFTWARE.
  */
 
-#ifndef CubeLoginViewController_h
-#define CubeLoginViewController_h
+#import "CubeAccount.h"
 
-#import "CubeViewController.h"
-#import "CubeAccountExplorer.h"
+@implementation CubeAccount
 
-@interface CubeLoginViewController : CubeViewController
 
-@property (nonatomic, weak) CubeAccountExplorer * explorer;
-
-@property (nonatomic, copy) void (^loginSuccess)(NSString * token);
-
-@property (nonatomic, copy) void (^loginFailure)(NSError * error);
 
 @end
-
-#endif /* CubeLoginViewController_h */
