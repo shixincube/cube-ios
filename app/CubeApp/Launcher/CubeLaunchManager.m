@@ -39,6 +39,8 @@
 
 - (void)launch;
 
+- (void)enterMain;
+
 - (void)setRootVC:(__kindof UIViewController *)rootVC;
 
 @end
@@ -80,13 +82,23 @@
     NSString * tokenCode = [CubeAccountHelper sharedInstance].tokenCode;
     if (tokenCode) {
         // 有 Token Code，尝试使用 Token Code 进行登录
+        NSLog(@"Token : %@", tokenCode);
     }
     else {
         // 未登录
         CubeAccountViewController * accountVC = [[CubeAccountViewController alloc] init];
+        @weakify(self);
+        [accountVC setLoginSuccess:^ {
+            @strongify(self);
+            [self enterMain];
+        }];
 
         [self setRootVC:accountVC];
     }
+}
+
+- (void)enterMain {
+    NSLog(@"XJW: %@", [CubeAccountHelper sharedInstance].tokenCode);
 }
 
 - (void)setRootVC:(__kindof UIViewController *)rootVC {

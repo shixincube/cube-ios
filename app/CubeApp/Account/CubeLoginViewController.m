@@ -121,7 +121,7 @@
     CWeakSelf(self);
     [self.explorer loginWithPhoneNumber:phoneNumber password:passwordMD5 success:^(id data) {
         if (weak_self.loginSuccess) {
-            weak_self.loginSuccess((NSString *)data);
+            weak_self.loginSuccess();
         }
     } failure:^(NSError *error) {
         NSString * hint = [NSString stringWithFormat:@"登录失败: %ld", error.code];

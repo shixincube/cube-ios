@@ -36,6 +36,10 @@
 
 @property (nonatomic, weak) CubeAccountExplorer * explorer;
 
+@property (nonatomic, strong, readonly) NSString * phoneNumber;
+
+@property (nonatomic, strong, readonly) NSString * password;
+
 @property (nonatomic, copy) void (^registerSuccess)(CubeAccount * account);
 
 @property (nonatomic, copy) void (^registerFailure)(NSError * error);

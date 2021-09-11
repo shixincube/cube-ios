@@ -36,9 +36,13 @@
  */
 @interface CubeAccountHelper : NSObject
 
-@property (nonatomic, strong) NSString * tokenCode;
+@property (nonatomic, strong, readonly) NSString * tokenCode;
+
+@property (nonatomic, assign, readonly) NSUInteger tokenExpireTime;
 
 + (CubeAccountHelper *)sharedInstance;
+
+- (void)saveToken:(NSString *)code tokenExpireTime:(NSUInteger)expireTime;
 
 @end
 

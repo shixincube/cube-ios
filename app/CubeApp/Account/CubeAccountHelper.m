@@ -27,9 +27,17 @@
 #import "CubeAccountHelper.h"
 #import "CubeAccount.h"
 
+@interface CubeAccountHelper ()
+
+- (void)loadToken;
+
+@end
+
+
 @implementation CubeAccountHelper
 
 @synthesize tokenCode = _tokenCode;
+@synthesize tokenExpireTime = _tokenExpireTime;
 
 + (CubeAccountHelper *)sharedInstance {
     static CubeAccountHelper *helper;
@@ -40,15 +48,51 @@
     return helper;
 }
 
+- (instancetype)init {
+    if (self = [super init]) {
+        _tokenExpireTime = 0;
+    }
+    
+    return self;
+}
+
+- (void)saveToken:(NSString *)code tokenExpireTime:(NSUInteger)expireTime {
+    _tokenCode = code;
+    _tokenExpireTime = expireTime;
+
+    NSNumber * time = [NSNumber numberWithUnsignedLong:expireTime];
+    NSDictionary * json = @{ @"code" : code, @"expire" : time };
+    [[NSUserDefaults standardUserDefaults] setValue:json forKey:@"CubeAppToken"];
+}
+
 #pragma mark - Getters
 
 - (NSString *)tokenCode {
     if (!_tokenCode) {
         // 尝试读取令牌数据
-        
+        [self loadToken];
     }
     
     return _tokenCode;
+}
+
+- (NSUInteger)tokenExpireTime {
+    if (0 == _tokenExpireTime) {
+        // 尝试读取令牌数据
+        [self loadToken];
+    }
+
+    return _tokenExpireTime;
+}
+
+#pragma mark - Private
+
+- (void)loadToken {
+    NSDictionary * tokenJson = [[NSUserDefaults standardUserDefaults] valueForKey:@"CubeAppToken"];
+    if (tokenJson) {
+        _tokenCode = [tokenJson valueForKey:@"code"];
+        _tokenExpireTime = [[tokenJson valueForKey:@"expire"] unsignedLongLongValue];
+    }
 }
 
 @end

@@ -99,7 +99,7 @@
 }
 
 - (void)registerButtonTouchUp:(UIButton *)sender {
-    NSString *phoneNumber = self.phoneNumberTextField.text;
+    NSString * phoneNumber = self.phoneNumberTextField.text;
     if (phoneNumber.length != 11 || ![phoneNumber hasPrefix:@"1"]) {
         [CubeUIUtility showErrorHint:@"请输入正确的手机号码"];
         return;
@@ -126,6 +126,9 @@
     NSString * avatar = [self.explorer defaultAvatar];
 
     [CubeUIUtility showLoading:nil];
+    
+    _phoneNumber = phoneNumber;
+    _password = passwordMD5;
 
     CWeakSelf(self);
     [self.explorer registerWithPhoneNumber:phoneNumber
@@ -133,6 +136,7 @@
                                   nickname:name
                                     avatar:avatar
                                    success:^(id data) {
+        // 注册成功
         [CubeUIUtility hideLoading];
 
         if (weak_self.registerSuccess) {
@@ -140,6 +144,7 @@
         }
     }
                                    failure:^(NSError *error) {
+        // 注册失败
         NSString * hint = [NSString stringWithFormat:@"注册账号失败，请稍候再试: %ld", error.code];
         [CubeUIUtility showErrorHint:hint];
 

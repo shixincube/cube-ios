@@ -27,6 +27,7 @@
 #import "CubeAccountViewController.h"
 #import "CubeLoginViewController.h"
 #import "CubeRegisterViewController.h"
+#import "CubeUIUtility.h"
 
 #define HEIGHT_BUTTON  50
 #define EDGE_BUTTON    35
@@ -97,10 +98,30 @@ typedef NS_ENUM(NSInteger, CubeAccountButtonTag) {
         
         [registerVC setRegisterSuccess:^(CubeAccount *account) {
             [weak_registerVC dismissViewControllerAnimated:YES completion:nil];
+
+            // 进行登录
+            [CubeUIUtility showLoading:@"正在登录账号"];
+
+            [weak_self.explorer loginWithPhoneNumber:weak_registerVC.phoneNumber
+                                            password:weak_registerVC.password
+                                             success:^(id data) {
+                // 登录成功
+                [CubeUIUtility hideLoading];
+
+                if (weak_self.loginSuccess) {
+                    weak_self.loginSuccess();
+                }
+            }
+                                             failure:^(NSError *error) {
+                // 登录失败
+                NSLog(@"Login failure: %ld", error.code);
+                [CubeUIUtility hideLoading];
+                [CubeUIUtility showErrorHint:@"登录账号失败"];
+            }];
         }];
         
         [registerVC setRegisterFailure:^(NSError *error) {
-            // 注册失败
+            // 注册失败 - Nothing
         }];
 
         [self presentViewController:registerVC animated:YES completion:nil];
@@ -108,9 +129,18 @@ typedef NS_ENUM(NSInteger, CubeAccountButtonTag) {
     else if (sender.tag == CubeAccountButtonTagLogin) {
         CubeLoginViewController * loginVC = [[CubeLoginViewController alloc] init];
         loginVC.explorer = self.explorer;
-//        CWeakSelf(self);
-//        CWeakSelf(loginVC);
-        // TODO
+
+        CWeakSelf(self);
+        CWeakSelf(loginVC);
+
+        [loginVC setLoginSuccess:^{
+            [weak_loginVC dismissViewControllerAnimated:YES completion:nil];
+
+            if (weak_self.loginSuccess) {
+                weak_self.loginSuccess();
+            }
+        }];
+
         [self presentViewController:loginVC animated:YES completion:nil];
     }
 }

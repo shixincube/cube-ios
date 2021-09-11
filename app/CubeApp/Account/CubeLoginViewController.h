@@ -34,7 +34,7 @@
 
 @property (nonatomic, weak) CubeAccountExplorer * explorer;
 
-@property (nonatomic, copy) void (^loginSuccess)(NSString * token);
+@property (nonatomic, copy) void (^loginSuccess)(void);
 
 @property (nonatomic, copy) void (^loginFailure)(NSError * error);
 

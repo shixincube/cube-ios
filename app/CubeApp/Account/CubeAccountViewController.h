@@ -34,6 +34,8 @@
 
 @property (nonatomic, strong) CubeAccountExplorer * explorer;
 
+@property (nonatomic, copy) void (^loginSuccess)(void);
+
 @end
 
 #endif /* CubeAccountViewController_h */

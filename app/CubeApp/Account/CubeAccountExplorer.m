@@ -27,6 +27,7 @@
 #import "CubeAccountExplorer.h"
 #import <AFNetworking/AFNetworking.h>
 #import "CubeAccount.h"
+#import "CubeAccountHelper.h"
 
 #define URL_LOGIN    @"/account/login/"
 #define URL_LOGOUT   @"/account/logout/"
@@ -67,7 +68,11 @@
         NSDictionary * json = [responseObject toJSONObject];
         NSInteger code = [[json valueForKey:@"code"] integerValue];
         if (code == CubeAccountStateCodeSuccess) {
-            success((NSString *) [json valueForKey:@"token"]);
+            NSString * tokenCode = (NSString *) [json valueForKey:@"token"];
+            NSUInteger tokenExpireTime = [[json valueForKey:@"expire"] unsignedLongLongValue];
+            [[CubeAccountHelper sharedInstance] saveToken:tokenCode tokenExpireTime:tokenExpireTime];
+
+            success(tokenCode);
         }
         else {
             NSError * error = [NSError errorWithDomain:@"CubeFailure" code:code userInfo:nil];
@@ -130,7 +135,7 @@
                                              @"text/javascript",
                                              @"text/plain", nil];
         _httpManager.operationQueue.maxConcurrentOperationCount = 5;
-        _httpManager.requestSerializer.timeoutInterval = 3;
+        _httpManager.requestSerializer.timeoutInterval = 5;
         _httpManager.responseSerializer.acceptableContentTypes = acceptableContentTypes;
     }
     
