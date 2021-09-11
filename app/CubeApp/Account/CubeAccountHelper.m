@@ -51,6 +51,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         _tokenExpireTime = 0;
+        _lastLoginTime = 0;
     }
     
     return self;
@@ -63,6 +64,14 @@
     NSNumber * time = [NSNumber numberWithUnsignedLong:expireTime];
     NSDictionary * json = @{ @"code" : code, @"expire" : time };
     [[NSUserDefaults standardUserDefaults] setValue:json forKey:@"CubeAppToken"];
+}
+
+- (BOOL)hasLogin {
+    if (_lastLoginTime == 0) {
+        return NO;
+    }
+
+    return ([CUtils currentTimeMillis] - _lastLoginTime < 4 * 60 * 60 * 1000);
 }
 
 #pragma mark - Getters

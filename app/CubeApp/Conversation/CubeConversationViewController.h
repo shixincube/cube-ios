@@ -24,30 +24,13 @@
  * SOFTWARE.
  */
 
-#ifndef CubeAccountHelper_h
-#define CubeAccountHelper_h
+#ifndef CubeConversationViewController_h
+#define CubeConversationViewController_h
 
-#import <Foundation/Foundation.h>
+#import "CubeViewController.h"
 
-@class CubeAccount;
-
-/*!
- * @brief 用于管理账号本地数据的辅助库。
- */
-@interface CubeAccountHelper : NSObject
-
-@property (nonatomic, strong, readonly) NSString * tokenCode;
-
-@property (nonatomic, assign, readonly) NSUInteger tokenExpireTime;
-
-@property (nonatomic, assign) UInt64 lastLoginTime;
-
-+ (CubeAccountHelper *)sharedInstance;
-
-- (void)saveToken:(NSString *)code tokenExpireTime:(NSUInteger)expireTime;
-
-- (BOOL)hasLogin;
+@interface CubeConversationViewController : CubeViewController
 
 @end
 
-#endif /* CubeAccountHelper_h */
+#endif /* CubeConversationViewController_h */

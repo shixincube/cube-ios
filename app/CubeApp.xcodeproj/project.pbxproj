@@ -29,6 +29,8 @@
 		C8A0DA3526E1D6C40032A9D5 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3426E1D6C40032A9D5 /* UIView+Extensions.m */; };
 		C8A0DA3826E20BFD0032A9D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */; };
 		C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */; };
+		C8CCF97826EC9B1200ED4115 /* CubeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */; };
+		C8CCF97B26ECA3E600ED4115 /* CubeConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */; };
 		C8E3258D26E0CF95005CA08A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3258C26E0CF95005CA08A /* AppDelegate.m */; };
 		C8E3259026E0CF95005CA08A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3258F26E0CF95005CA08A /* SceneDelegate.m */; };
 		C8E3259326E0CF95005CA08A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3259226E0CF95005CA08A /* ViewController.m */; };
@@ -159,6 +161,10 @@
 		C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C8A0DA3926E2252F0032A9D5 /* CubeLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeLoginViewController.h; sourceTree = "<group>"; };
 		C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeLoginViewController.m; sourceTree = "<group>"; };
+		C8CCF97626EC9B0200ED4115 /* CubeTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeTabBarController.h; sourceTree = "<group>"; };
+		C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeTabBarController.m; sourceTree = "<group>"; };
+		C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationViewController.m; sourceTree = "<group>"; };
+		C8CCF97C26ECA3F100ED4115 /* CubeConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationViewController.h; sourceTree = "<group>"; };
 		C8E3258826E0CF95005CA08A /* CubeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E3258B26E0CF95005CA08A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C8E3258C26E0CF95005CA08A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -383,6 +389,15 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		C8CCF97926ECA3BB00ED4115 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				C8CCF97C26ECA3F100ED4115 /* CubeConversationViewController.h */,
+				C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
 		C8E3257F26E0CF95005CA08A = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +420,7 @@
 			children = (
 				C8E325A626E0D352005CA08A /* Launcher */,
 				C8E3268726E0F25F005CA08A /* Account */,
+				C8CCF97926ECA3BB00ED4115 /* Conversation */,
 				C8E3264F26E0DAD4005CA08A /* Components */,
 				C8E3267F26E0E4EE005CA08A /* Utilities */,
 				C8A0DA3226E1D6940032A9D5 /* Categories */,
@@ -688,6 +704,8 @@
 		C8E3264F26E0DAD4005CA08A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C8CCF97626EC9B0200ED4115 /* CubeTabBarController.h */,
+				C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */,
 				C8E3265326E0DB0C005CA08A /* CubeViewController.h */,
 				C8E3265026E0DB02005CA08A /* CubeViewController.m */,
 				C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */,
@@ -946,6 +964,7 @@
 				C8E3263126E0DAA3005CA08A /* UIView+ZZFLEX.m in Sources */,
 				C8E3264226E0DAA3005CA08A /* UIView+ZZSeparator.m in Sources */,
 				C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */,
+				C8CCF97826EC9B1200ED4115 /* CubeTabBarController.m in Sources */,
 				C8E3264926E0DAA3005CA08A /* NSMutableAttributedString+ZZFLEX.m in Sources */,
 				C8E3267926E0DBFF005CA08A /* View+MASAdditions.m in Sources */,
 				C8E3263D26E0DAA3005CA08A /* ZZViewChainModel.m in Sources */,
@@ -963,6 +982,7 @@
 				C8E3263226E0DAA3005CA08A /* ZZTextFieldChainModel.m in Sources */,
 				C8E3267726E0DBFF005CA08A /* MASLayoutConstraint.m in Sources */,
 				C8E3263026E0DAA3005CA08A /* UIView+ZZCornor.m in Sources */,
+				C8CCF97B26ECA3E600ED4115 /* CubeConversationViewController.m in Sources */,
 				C8E3262626E0DAA3005CA08A /* ZZFLEXTableViewEmptyCell.m in Sources */,
 				C8E3263826E0DAA3005CA08A /* ZZScrollViewChainModel.m in Sources */,
 			);

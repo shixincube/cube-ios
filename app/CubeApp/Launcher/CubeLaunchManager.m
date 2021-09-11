@@ -26,6 +26,7 @@
 
 #import "CubeLaunchManager.h"
 #import "CubeAccountViewController.h"
+#import "CubeTabBarController.h"
 #import "SceneDelegate.h"
 #import "CubeAccountHelper.h"
 
@@ -35,19 +36,13 @@
 
 @property (nonatomic, weak) UIWindow * window;
 
-@property (nonatomic, strong, readonly) TLTabBarController * tabBarController;
-
 - (void)launch;
-
-- (void)enterMain;
 
 - (void)setRootVC:(__kindof UIViewController *)rootVC;
 
 @end
 
 @implementation CubeLaunchManager
-
-@synthesize tabBarController = _tabBarController;
 
 + (CubeLaunchManager *)sharedInstance {
     static CubeLaunchManager *manager;
@@ -81,8 +76,9 @@
 - (void)launch {
     NSString * tokenCode = [CubeAccountHelper sharedInstance].tokenCode;
     if (tokenCode) {
-        // 有 Token Code，尝试使用 Token Code 进行登录
-        NSLog(@"Token : %@", tokenCode);
+        // 有 Token Code，使用 Token Code 进行登录
+        CubeTabBarController * tabBarVC = [[CubeTabBarController alloc] init];
+        [self setRootVC:tabBarVC];
     }
     else {
         // 未登录
@@ -90,15 +86,11 @@
         @weakify(self);
         [accountVC setLoginSuccess:^ {
             @strongify(self);
-            [self enterMain];
+            [self launch];
         }];
 
         [self setRootVC:accountVC];
     }
-}
-
-- (void)enterMain {
-    NSLog(@"XJW: %@", [CubeAccountHelper sharedInstance].tokenCode);
 }
 
 - (void)setRootVC:(__kindof UIViewController *)rootVC {
@@ -117,19 +109,6 @@
     [window setRootViewController:rootVC];
     [window addSubview:rootVC.view];
     [window makeKeyAndVisible];
-}
-
-#pragma mark - Getters
-
-- (TLTabBarController *)tabBarController {
-    if (!_tabBarController) {
-        TLTabBarController * tabBarController = [[TLTabBarController alloc] init];
-        [tabBarController.tabBar setBackgroundColor:[UIColor colorGrayBG]];
-        [tabBarController.tabBar setTintColor:[UIColor colorBlueDefault]];
-        _tabBarController = tabBarController;
-    }
-
-    return _tabBarController;
 }
 
 @end
