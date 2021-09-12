@@ -58,6 +58,7 @@ typedef NS_ENUM(NSInteger, CubeAccountStateCode) {
     CubeAccountStateCodeOther = 99
 };
 
+
 @interface CubeAccountExplorer : NSObject
 
 /*!
@@ -89,6 +90,12 @@ typedef NS_ENUM(NSInteger, CubeAccountStateCode) {
 - (void)getAccountWithToken:(NSString *)tokenCode
                     success:(CubeBlockRequestSuccessWithData)success
                     failure:(CubeBlockRequestFailureWithError)failure;
+
+/*!
+ * @brief 获取引擎配置。
+ */
+- (void)getEngineConfigWithSuccess:(CubeBlockRequestSuccessWithData)success
+                           failure:(CubeBlockRequestFailureWithError)failure;
 
 @end
 

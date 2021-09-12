@@ -42,7 +42,7 @@
 
 @property (nonatomic, strong) CubeAccount * current;
 
-@property (nonatomic, strong) NSDictionary * cubeConfig;
+@property (nonatomic, strong) NSDictionary * engineConfig;
 
 + (CubeAccountHelper *)sharedInstance;
 

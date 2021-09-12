@@ -58,7 +58,7 @@
         ];
         [self setViewControllers:data];
     }
-    
+
     self.explorer = [[CubeAccountExplorer alloc] init];
 
     return self;
@@ -77,34 +77,47 @@
         __block BOOL gotAccount = NO;
         __block BOOL gotConfig = NO;
 
-        void (^process)() = ^() {
+        void (^process)(void) = ^() {
             if (gotAccount && gotConfig) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completion();
                 });
             }
         };
-        
+
+        // 获取账号数据
         if ([CubeAccountHelper sharedInstance].current) {
             gotAccount = YES;
             process();
         }
         else {
-            // 获取账号数据
             [self.explorer getAccountWithToken:[CubeAccountHelper sharedInstance].tokenCode
                                        success:^(id data) {
-                CubeAccount * account = (CubeAccount *)data;
-                [CubeAccountHelper sharedInstance].current = account;
                 gotAccount = YES;
                 process();
             }
                                        failure:^(NSError *error) {
                 gotAccount = YES;
                 process();
+                // TODO
             }];
         }
 
-        
+        // 获取配置数据
+        if ([CubeAccountHelper sharedInstance].engineConfig) {
+            gotConfig = YES;
+            process();
+        }
+        else {
+            [self.explorer getEngineConfigWithSuccess:^(id data) {
+                gotConfig = YES;
+                process();
+            } failure:^(NSError *error) {
+                gotConfig = YES;
+                process();
+                // TODO
+            }];
+        }
     });
 }
 

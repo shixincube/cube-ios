@@ -48,6 +48,10 @@
 - (NSDictionary *)toJSON {
     NSDictionary * json = @{
         @"id" : [NSNumber numberWithUnsignedLongLong:_identity],
+        @"account" : _accountName,
+        @"phone" : _phoneNumber,
+        @"name" : _displayName,
+        @"avatar" : _avatar,
         @"state" : [NSNumber numberWithUnsignedInteger:_state]
     };
     return json;

@@ -43,7 +43,7 @@
 @synthesize tokenCode = _tokenCode;
 @synthesize tokenExpireTime = _tokenExpireTime;
 @synthesize current = _current;
-@synthesize cubeConfig = _cubeConfig;
+@synthesize engineConfig = _engineConfig;
 
 + (CubeAccountHelper *)sharedInstance {
     static CubeAccountHelper *helper;
@@ -102,13 +102,32 @@
     return _current;
 }
 
+- (NSDictionary *)engineConfig {
+    if (!_engineConfig) {
+        NSDictionary * json = [[NSUserDefaults standardUserDefaults] valueForKey:KEY_ENGINECONFIG];
+        if (json) {
+            _engineConfig = json;
+        }
+    }
+
+    return _engineConfig;
+}
+
 #pragma mark - Setters
 
 - (void)setCurrent:(CubeAccount *)current {
     _current = current;
 
     if (_current) {
-        [[NSUserDefaults standardUserDefaults] setValue:_current forKey:KEY_ACCOUNT];
+        [[NSUserDefaults standardUserDefaults] setValue:[_current toJSON] forKey:KEY_ACCOUNT];
+    }
+}
+
+- (void)setEngineConfig:(NSDictionary *)engineConfig {
+    _engineConfig = engineConfig;
+
+    if (engineConfig) {
+        [[NSUserDefaults standardUserDefaults] setValue:engineConfig forKey:KEY_ENGINECONFIG];
     }
 }
 

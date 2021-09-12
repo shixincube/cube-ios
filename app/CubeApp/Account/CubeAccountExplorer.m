@@ -29,10 +29,11 @@
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
 
-#define URL_LOGIN    @"/account/login/"
-#define URL_LOGOUT   @"/account/logout/"
-#define URL_REGISTER @"/account/register/"
-#define URL_INFO     @"/account/info/"
+#define URL_CUBE_CONFIG  @"/cube/config/"
+#define URL_LOGIN        @"/account/login/"
+#define URL_LOGOUT       @"/account/logout/"
+#define URL_REGISTER     @"/account/register/"
+#define URL_INFO         @"/account/info/"
 
 @interface CubeAccountExplorer ()
 
@@ -139,11 +140,37 @@
         // 请求成功
         NSDictionary * json = [responseObject toJSONObject];
         CubeAccount * account = [[CubeAccount alloc] initWithJSON:json];
+        // 保存数据
+        [CubeAccountHelper sharedInstance].current = account;
+        // 回调
         success(account);
     }
                   failure:^(NSURLSessionDataTask * task, NSError * error) {
         // 请求失败
         NSLog(@"Get account failure: %ld", error.code);
+        failure(error);
+    }];
+}
+
+- (void)getEngineConfigWithSuccess:(CubeBlockRequestSuccessWithData)success
+                           failure:(CubeBlockRequestFailureWithError)failure {
+    NSString * url = [HOST_URL stringByAppendingString:URL_CUBE_CONFIG];
+    NSDictionary * params = @{
+        @"t" : [CubeAccountHelper sharedInstance].tokenCode };
+    
+    [self.httpManager GET:url
+               parameters:params
+                  headers:nil
+                 progress:nil
+                  success:^(NSURLSessionDataTask * task, id responseObject) {
+        // 请求成功
+        [CubeAccountHelper sharedInstance].engineConfig = [responseObject toJSONObject];
+        // 回调
+        success([CubeAccountHelper sharedInstance].engineConfig);
+    }
+                  failure:^(NSURLSessionDataTask * task, NSError * error) {
+        // 请求失败
+        NSLog(@"Get engine config: %ld", error.code);
         failure(error);
     }];
 }
