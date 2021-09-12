@@ -83,6 +83,13 @@ typedef NS_ENUM(NSInteger, CubeAccountStateCode) {
                         success:(CubeBlockRequestSuccessWithData)success
                         failure:(CubeBlockRequestFailureWithError)failure;
 
+/*!
+ * @brief 使用令牌获取账号数据。
+ */
+- (void)getAccountWithToken:(NSString *)tokenCode
+                    success:(CubeBlockRequestSuccessWithData)success
+                    failure:(CubeBlockRequestFailureWithError)failure;
+
 @end
 
 #endif /* CubeAccountExplorer_h */

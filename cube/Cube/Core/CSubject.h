@@ -27,8 +27,10 @@
 #ifndef CSubject_h
 #define CSubject_h
 
-#import "CObserver.h"
-#import "CObservableEvent.h"
+#import <Foundation/Foundation.h>
+
+@class CObserver;
+@class CObservableEvent;
 
 @interface CSubject : NSObject
 

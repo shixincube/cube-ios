@@ -25,6 +25,8 @@
  */
 
 #import "CSubject.h"
+#import "CObserver.h"
+#import "CObservableEvent.h"
 
 @interface CSubject ()
 

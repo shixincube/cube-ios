@@ -45,4 +45,12 @@
     return self;
 }
 
+- (NSDictionary *)toJSON {
+    NSDictionary * json = @{
+        @"id" : [NSNumber numberWithUnsignedLongLong:_identity],
+        @"state" : [NSNumber numberWithUnsignedInteger:_state]
+    };
+    return json;
+}
+
 @end

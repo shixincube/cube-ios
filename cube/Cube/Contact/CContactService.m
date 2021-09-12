@@ -25,14 +25,19 @@
  */
 
 #import "CContactService.h"
+#import "CAuthToken.h"
+#import "CError.h"
+#import "CKernel.h"
+#import "CObservableEvent.h"
+#import "CUtils.h"
 #import "CContactPipelineListener.h"
 #import "CContactStorage.h"
 #import "CContactAction.h"
 #import "CContactEvent.h"
 #import "CContactServiceState.h"
-#import "CError.h"
-#import "CKernel.h"
-#import "CUtils.h"
+#import "CSelf.h"
+#import "CGroup.h"
+#import "CContactZone.h"
 
 @interface CContactService () {
     

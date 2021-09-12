@@ -48,6 +48,8 @@
 
 - (instancetype)initWithJSON:(NSDictionary *)accountJSON;
 
+- (NSDictionary *)toJSON;
+
 @end
 
 #endif /* CubeAccount_h */

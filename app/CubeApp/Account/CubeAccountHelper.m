@@ -27,6 +27,10 @@
 #import "CubeAccountHelper.h"
 #import "CubeAccount.h"
 
+#define KEY_TOKEN @"CubeAppToken"
+#define KEY_ACCOUNT @"CubeAppAccount"
+#define KEY_ENGINECONFIG @"CubeEngineConfig"
+
 @interface CubeAccountHelper ()
 
 - (void)loadToken;
@@ -38,6 +42,8 @@
 
 @synthesize tokenCode = _tokenCode;
 @synthesize tokenExpireTime = _tokenExpireTime;
+@synthesize current = _current;
+@synthesize cubeConfig = _cubeConfig;
 
 + (CubeAccountHelper *)sharedInstance {
     static CubeAccountHelper *helper;
@@ -51,9 +57,8 @@
 - (instancetype)init {
     if (self = [super init]) {
         _tokenExpireTime = 0;
-        _lastLoginTime = 0;
     }
-    
+
     return self;
 }
 
@@ -63,15 +68,7 @@
 
     NSNumber * time = [NSNumber numberWithUnsignedLong:expireTime];
     NSDictionary * json = @{ @"code" : code, @"expire" : time };
-    [[NSUserDefaults standardUserDefaults] setValue:json forKey:@"CubeAppToken"];
-}
-
-- (BOOL)hasLogin {
-    if (_lastLoginTime == 0) {
-        return NO;
-    }
-
-    return ([CUtils currentTimeMillis] - _lastLoginTime < 4 * 60 * 60 * 1000);
+    [[NSUserDefaults standardUserDefaults] setValue:json forKey:KEY_TOKEN];
 }
 
 #pragma mark - Getters
@@ -94,10 +91,31 @@
     return _tokenExpireTime;
 }
 
+- (CubeAccount *)current {
+    if (!_current) {
+        NSDictionary * json = [[NSUserDefaults standardUserDefaults] valueForKey:KEY_ACCOUNT];
+        if (json) {
+            _current = [[CubeAccount alloc] initWithJSON:json];
+        }
+    }
+    
+    return _current;
+}
+
+#pragma mark - Setters
+
+- (void)setCurrent:(CubeAccount *)current {
+    _current = current;
+
+    if (_current) {
+        [[NSUserDefaults standardUserDefaults] setValue:_current forKey:KEY_ACCOUNT];
+    }
+}
+
 #pragma mark - Private
 
 - (void)loadToken {
-    NSDictionary * tokenJson = [[NSUserDefaults standardUserDefaults] valueForKey:@"CubeAppToken"];
+    NSDictionary * tokenJson = [[NSUserDefaults standardUserDefaults] valueForKey:KEY_TOKEN];
     if (tokenJson) {
         _tokenCode = [tokenJson valueForKey:@"code"];
         _tokenExpireTime = [[tokenJson valueForKey:@"expire"] unsignedLongLongValue];

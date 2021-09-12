@@ -30,6 +30,7 @@
 #import "CError.h"
 #import "CSelf.h"
 #import "CUtils.h"
+#import "CObservableEvent.h"
 
 @implementation CContactService (Core)
 

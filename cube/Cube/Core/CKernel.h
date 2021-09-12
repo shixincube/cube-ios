@@ -28,9 +28,6 @@
 #define CKernel_h
 
 #import <Foundation/Foundation.h>
-#import "CModule.h"
-#import "CError.h"
-#import "../Auth/CAuthToken.h"
 
 #ifndef CUBE_KERNEL_VERSION
 #define CUBE_KERNEL_VERSION @"3.0.0"
@@ -43,6 +40,10 @@
 #ifndef CUBE_KERNEL_SC_NO_TOKEN
 #define CUBE_KERNEL_SC_NO_TOKEN 305
 #endif
+
+@class CModule;
+@class CError;
+@class CAuthToken;
 
 
 /*!

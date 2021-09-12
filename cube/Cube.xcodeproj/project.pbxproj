@@ -16,7 +16,7 @@
 		C80A209926D7410600255B11 /* CMessagingStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C80A209826D7410600255B11 /* CMessagingStorage.m */; };
 		C817FE0726C12B6F0080D697 /* CContactAppendix.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE0626C12B6F0080D697 /* CContactAppendix.h */; };
 		C817FE0A26C12B7C0080D697 /* CContactAppendix.m in Sources */ = {isa = PBXBuildFile; fileRef = C817FE0926C12B7C0080D697 /* CContactAppendix.m */; };
-		C817FE0E26C12C460080D697 /* CContactEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE0D26C12C460080D697 /* CContactEvent.h */; };
+		C817FE0E26C12C460080D697 /* CContactEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE0D26C12C460080D697 /* CContactEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1126C14E930080D697 /* CContactServiceState.h */; };
 		C817FE1626C153250080D697 /* CContactZone.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1526C153250080D697 /* CContactZone.h */; };
 		C817FE1A26C153320080D697 /* CContactZone.m in Sources */ = {isa = PBXBuildFile; fileRef = C817FE1926C153320080D697 /* CContactZone.m */; };
@@ -47,7 +47,7 @@
 		C859CF4426DF2647003040CC /* NSString+Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = C859CF4326DF2647003040CC /* NSString+Cube.m */; };
 		C88461E426B55A4B00A8A3C6 /* CError.m in Sources */ = {isa = PBXBuildFile; fileRef = C88461E326B55A4B00A8A3C6 /* CError.m */; };
 		C8A0DA0526E1C8D80032A9D5 /* CUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384F626BD1B73009CF806 /* CUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C8ACAC8126B953530057740D /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = C8ACAC8026B953530057740D /* CEngine.h */; };
+		C8ACAC8126B953530057740D /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = C8ACAC8026B953530057740D /* CEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
 		C8B755D8268B384F00812A4C /* CModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755D7268B384F00812A4C /* CModule.m */; };
 		C8B755DE268B393E00812A4C /* CObservableEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755DD268B393E00812A4C /* CObservableEvent.m */; };
@@ -60,7 +60,7 @@
 		C8BE511326D8969900935149 /* CMessagingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C8BE511226D8969900935149 /* CMessagingEvent.h */; };
 		C8BE511626D896A500935149 /* CMessagingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BE511526D896A500935149 /* CMessagingEvent.m */; };
 		C8BE85AD26B77FD9007E154E /* KernelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BE85AC26B77FD9007E154E /* KernelTest.m */; };
-		C8C384D626BCD7C8009CF806 /* CContactService.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384D526BCD7C8009CF806 /* CContactService.h */; };
+		C8C384D626BCD7C8009CF806 /* CContactService.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384D526BCD7C8009CF806 /* CContactService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8C384DA26BCD7DA009CF806 /* CContactService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384D926BCD7DA009CF806 /* CContactService.m */; };
 		C8C384DD26BD0306009CF806 /* CContactStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384DC26BD0306009CF806 /* CContactStorage.m */; };
 		C8C384E226BD043A009CF806 /* CEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384E126BD043A009CF806 /* CEntity.h */; };
@@ -72,7 +72,11 @@
 		C8C384F426BD1B68009CF806 /* CUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384F326BD1B68009CF806 /* CUtils.m */; };
 		C8C384FA26BD2380009CF806 /* CAbstractContact.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384F926BD2380009CF806 /* CAbstractContact.m */; };
 		C8C384FF26BD275C009CF806 /* CContact.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384FE26BD275C009CF806 /* CContact.m */; };
-		C8C3850226BD2775009CF806 /* CContact.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C3850126BD2775009CF806 /* CContact.h */; };
+		C8C3850226BD2775009CF806 /* CContact.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C3850126BD2775009CF806 /* CContact.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8D7556D26EDAEB400B7368E /* CKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1A56426899B770020F136 /* CKernel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8D7557026EDAECA00B7368E /* CError.h in Headers */ = {isa = PBXBuildFile; fileRef = C88461E226B55A3A00A8A3C6 /* CError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8D7557626EDB14B00B7368E /* CModule.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B755DB268B385A00812A4C /* CModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8D7557926EDB15700B7368E /* CSubject.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B755E5268B3C4F00812A4C /* CSubject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8DF88B2268DAD4D00399C99 /* CAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DF88B1268DAD4D00399C99 /* CAuthService.m */; };
 		C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DF88B8268DB2C300399C99 /* CEngine.m */; };
 		C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */ = {isa = PBXBuildFile; fileRef = C8DF88B5268DAD5B00399C99 /* CAuthService.h */; };
@@ -480,9 +484,11 @@
 				C8C3850226BD2775009CF806 /* CContact.h in Headers */,
 				C842BDD026DE071C008A8517 /* CPlugin.h in Headers */,
 				C80A209526D7390200255B11 /* CMessagingServiceState.h in Headers */,
+				C8D7557026EDAECA00B7368E /* CError.h in Headers */,
 				C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */,
 				C817FE1626C153250080D697 /* CContactZone.h in Headers */,
 				C817FE0726C12B6F0080D697 /* CContactAppendix.h in Headers */,
+				C8D7557626EDB14B00B7368E /* CModule.h in Headers */,
 				C8400ABD26C20EBB00C8FF48 /* CGroupAppendix.h in Headers */,
 				C8F1A556268985A70020F136 /* Cube.h in Headers */,
 				C8400AB326C20DB600C8FF48 /* CGroup.h in Headers */,
@@ -491,6 +497,8 @@
 				C842BDD526DE085A008A8517 /* CPluginSystem.h in Headers */,
 				C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */,
 				C8400AC126C2175400C8FF48 /* CGroupState.h in Headers */,
+				C8D7557926EDB15700B7368E /* CSubject.h in Headers */,
+				C8D7556D26EDAEB400B7368E /* CKernel.h in Headers */,
 				C80A208A26D725AE00255B11 /* CMessage.h in Headers */,
 				C859CF3C26DF0BBF003040CC /* CHyperTextMessage.h in Headers */,
 				C8E3257C26E0A40B005CA08A /* CMessagingExtension.h in Headers */,

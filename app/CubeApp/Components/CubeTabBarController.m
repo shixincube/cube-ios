@@ -28,10 +28,14 @@
 #import "CubeConversationViewController.h"
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
+#import "CubeAccountExplorer.h"
+#import <Cube/Cube.h>
 
 @interface CubeTabBarController ()
 
-- (void)loginAndGetAccount:(void (^)(CubeAccount * account))completion;
+@property (nonatomic, strong) CubeAccountExplorer * explorer;
+
+- (void)setup:(void (^)(void))completion;
 
 - (UINavigationController *)addNavigationController:(UIViewController *)viewController;
 
@@ -54,25 +58,53 @@
         ];
         [self setViewControllers:data];
     }
-
-    if (![[CubeAccountHelper sharedInstance] hasLogin]) {
-        NSLog(@"Login with token");
-        // 登录
-        [self loginAndGetAccount:^(CubeAccount *account) {
-            NSLog(@"");
-        }];
-    }
+    
+    self.explorer = [[CubeAccountExplorer alloc] init];
 
     return self;
 }
 
 - (void)loadView {
     [super loadView];
+    
+    [self setup:^ {
+        NSLog(@"");
+    }];
 }
 
-- (void)loginAndGetAccount:(void (^)(CubeAccount *))completion {
+- (void)setup:(void (^)(void))completion {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        completion(nil);
+        __block BOOL gotAccount = NO;
+        __block BOOL gotConfig = NO;
+
+        void (^process)() = ^() {
+            if (gotAccount && gotConfig) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion();
+                });
+            }
+        };
+        
+        if ([CubeAccountHelper sharedInstance].current) {
+            gotAccount = YES;
+            process();
+        }
+        else {
+            // 获取账号数据
+            [self.explorer getAccountWithToken:[CubeAccountHelper sharedInstance].tokenCode
+                                       success:^(id data) {
+                CubeAccount * account = (CubeAccount *)data;
+                [CubeAccountHelper sharedInstance].current = account;
+                gotAccount = YES;
+                process();
+            }
+                                       failure:^(NSError *error) {
+                gotAccount = YES;
+                process();
+            }];
+        }
+
+        
     });
 }
 

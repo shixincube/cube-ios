@@ -27,11 +27,7 @@
 #ifndef CubeTabBarController_h
 #define CubeTabBarController_h
 
-#import "CubeAccountExplorer.h"
-
 @interface CubeTabBarController : TLTabBarController
-
-@property (nonatomic, strong) CubeAccountExplorer * explorer;
 
 @end
 

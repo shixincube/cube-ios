@@ -25,6 +25,10 @@
  */
 
 #import "CMessagingService.h"
+#import "CKernel.h"
+#import "CUtils.h"
+#import "CError.h"
+#import "CObservableEvent.h"
 #import "CMessagingPipelineListener.h"
 #import "CMessagingStorage.h"
 #import "CMessagingObserver.h"
@@ -34,9 +38,9 @@
 #import "CPluginSystem.h"
 #import "CInstantiateHook.h"
 #import "CMessageTypePlugin.h"
-#import "CKernel.h"
-#import "CUtils.h"
-#import "CObservableEvent.h"
+#import "CContact.h"
+#import "CGroup.h"
+#import "CSelf.h"
 
 typedef void (^PullCompletedHandler)(void);
 

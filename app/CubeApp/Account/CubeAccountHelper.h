@@ -40,13 +40,13 @@
 
 @property (nonatomic, assign, readonly) NSUInteger tokenExpireTime;
 
-@property (nonatomic, assign) UInt64 lastLoginTime;
+@property (nonatomic, strong) CubeAccount * current;
+
+@property (nonatomic, strong) NSDictionary * cubeConfig;
 
 + (CubeAccountHelper *)sharedInstance;
 
 - (void)saveToken:(NSString *)code tokenExpireTime:(NSUInteger)expireTime;
-
-- (BOOL)hasLogin;
 
 @end
 

@@ -26,9 +26,12 @@
 
 #import "CKernel.h"
 #import <PromiseKit/AnyPromise.h>
-#import "../Pipeline/CCellPipeline.h"
-#import "../Auth/CAuthService.h"
-#import "../Contact/CContactService.h"
+#import "CModule.h"
+#import "CError.h"
+#import "CAuthToken.h"
+#import "CCellPipeline.h"
+#import "CAuthService.h"
+#import "CContactService.h"
 
 @implementation CKernelConfig
 

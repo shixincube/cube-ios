@@ -28,9 +28,13 @@
 #define CContactService_h
 
 #import "CModule.h"
-#import "CSelf.h"
-#import "CGroup.h"
-#import "CContactZone.h"
+
+@class CSelf;
+@class CContact;
+@class CGroup;
+@class CContactZone;
+@class CContactAppendix;
+@class CGroupAppendix;
 
 #ifndef CUBE_MODULE_CONTACT
 /*! @brief 模块名。 */

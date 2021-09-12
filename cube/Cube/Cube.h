@@ -27,3 +27,5 @@
 #import <Foundation/Foundation.h>
 
 #import <Cube/CUtils.h>
+#import <Cube/CEngine.h>
+#import <Cube/CContactService.h>

@@ -32,6 +32,7 @@
 #define URL_LOGIN    @"/account/login/"
 #define URL_LOGOUT   @"/account/logout/"
 #define URL_REGISTER @"/account/register/"
+#define URL_INFO     @"/account/info/"
 
 @interface CubeAccountExplorer ()
 
@@ -119,6 +120,30 @@
     }
                    failure:^(NSURLSessionDataTask * task, NSError * error) {
         // 请求失败
+        failure(error);
+    }];
+}
+
+- (void)getAccountWithToken:(NSString *)tokenCode
+                    success:(CubeBlockRequestSuccessWithData)success
+                    failure:(CubeBlockRequestFailureWithError)failure {
+    NSString * url = [HOST_URL stringByAppendingString:URL_LOGIN];
+    NSDictionary * params = @{
+        @"token" : tokenCode };
+
+    [self.httpManager GET:url
+               parameters:params
+                  headers:nil
+                 progress:nil
+                  success:^(NSURLSessionDataTask * task, id responseObject) {
+        // 请求成功
+        NSDictionary * json = [responseObject toJSONObject];
+        CubeAccount * account = [[CubeAccount alloc] initWithJSON:json];
+        success(account);
+    }
+                  failure:^(NSURLSessionDataTask * task, NSError * error) {
+        // 请求失败
+        NSLog(@"Get account failure: %ld", error.code);
         failure(error);
     }];
 }

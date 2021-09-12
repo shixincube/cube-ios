@@ -29,13 +29,13 @@
 
 #import <Foundation/Foundation.h>
 
-#import "CKernel.h"
-#import "CError.h"
-#import "CAuthService.h"
-#import "CContactService.h"
-#import "CMessagingService.h"
-#import "CMessagingExtension.h"
-#import "CUtils.h"
+@class CKernelConfig;
+@class CKernel;
+@class CError;
+@class CAuthService;
+@class CContactService;
+@class CMessagingService;
+@class CSelf;
 
 @interface CEngine : NSObject
 

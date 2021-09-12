@@ -26,6 +26,15 @@
 
 #import "CEngine.h"
 
+#import "CKernel.h"
+#import "CError.h"
+#import "CAuthService.h"
+#import "CContactService.h"
+#import "CMessagingService.h"
+#import "CMessagingExtension.h"
+#import "CUtils.h"
+#import "CSelf.h"
+
 @implementation CEngine
 
 + (CEngine * _Nonnull)sharedInstance {

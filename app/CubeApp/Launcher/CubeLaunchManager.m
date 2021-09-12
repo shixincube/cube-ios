@@ -76,7 +76,7 @@
 - (void)launch {
     NSString * tokenCode = [CubeAccountHelper sharedInstance].tokenCode;
     if (tokenCode) {
-        // 有 Token Code，使用 Token Code 进行登录
+        // 有 Token Code，使用 Token Code 进行操作
         CubeTabBarController * tabBarVC = [[CubeTabBarController alloc] init];
         [self setRootVC:tabBarVC];
     }
