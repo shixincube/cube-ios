@@ -24,20 +24,13 @@
  * SOFTWARE.
  */
 
-#ifndef CubeViewController_h
-#define CubeViewController_h
+#ifndef CubeProfileViewController_h
+#define CubeProfileViewController_h
 
 #import <UIKit/UIKit.h>
 
-@interface CubeViewController : UIViewController
-
-@property (nonatomic, strong) NSString * analyzeTitle;
-
-/*! 当前 VC Status Bar 的状态，仅在 viewWillAppear 时生效，默认 LightContent 。 */
-@property (nonatomic, assign) UIStatusBarStyle statusBarStyle;
-
-- (void)configTabBarItem:(NSString *)title image:(NSString *)image imageHL:(NSString *)imageHL;
+@interface CubeProfileViewController : ZZFLEXCollectionViewController
 
 @end
 
-#endif /* CubeViewController_h */
+#endif /* CubeProfileViewController_h */

@@ -26,6 +26,19 @@
 
 #import "CubeConversationViewController.h"
 
+@interface CubeConversationViewController ()
+
+@end
+
+
 @implementation CubeConversationViewController
+
+- (instancetype)init {
+    if (self = [super init]) {
+        [self configTabBarItem:@"会话" image:@"TabBarConversation" imageHL:@"TabBarConversationHL"];
+    }
+
+    return self;
+}
 
 @end

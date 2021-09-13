@@ -26,6 +26,7 @@
 
 #import "CubeTabBarController.h"
 #import "CubeConversationViewController.h"
+#import "CubeProfileViewController.h"
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
 #import "CubeAccountExplorer.h"
@@ -53,10 +54,11 @@
         CubeConversationViewController * conversationVC = [[CubeConversationViewController alloc] init];
 //        CubeContactsViewController *contactsVC = [[CubeContactsViewController alloc] init];
 //        CubeDiscoverViewController *discoverVC = [[CubeDiscoverViewController alloc] init];
-//        CubeProfileViewController *profileVC = [[CubeProfileViewController alloc] init];
+        CubeProfileViewController *profileVC = [[CubeProfileViewController alloc] init];
 
         NSArray *data = @[
-            [self addNavigationController:conversationVC]
+            [self addNavigationController:conversationVC],
+            [self addNavigationController:profileVC]
         ];
         [self setViewControllers:data];
     }

@@ -24,20 +24,15 @@
  * SOFTWARE.
  */
 
-#ifndef CubeViewController_h
-#define CubeViewController_h
+#import "CubeProfileInfoViewController.h"
 
-#import <UIKit/UIKit.h>
+@implementation CubeProfileInfoViewController
 
-@interface CubeViewController : UIViewController
-
-@property (nonatomic, strong) NSString * analyzeTitle;
-
-/*! 当前 VC Status Bar 的状态，仅在 viewWillAppear 时生效，默认 LightContent 。 */
-@property (nonatomic, assign) UIStatusBarStyle statusBarStyle;
-
-- (void)configTabBarItem:(NSString *)title image:(NSString *)image imageHL:(NSString *)imageHL;
+- (void)loadView {
+    [super loadView];
+    
+    [self setTitle:@"个人信息"];
+    [self.view setBackgroundColor:[UIColor colorGrayBG]];
+}
 
 @end
-
-#endif /* CubeViewController_h */

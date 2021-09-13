@@ -24,72 +24,59 @@
  * SOFTWARE.
  */
 
-#import "CubeViewController.h"
-#import "UIColor+Cube.h"
+#import "CubeProfileViewController.h"
+#import "CubeProfileInfoViewController.h"
 
-@implementation CubeViewController
+
+typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
+    CubeProfileSectionTagInfo,
+    CubeProfileSectionTagSetting,
+};
+
+
+@interface CubeProfileViewController ()
+
+- (void)configTabBarItem:(NSString *)title image:(NSString *)image imageHL:(NSString *)imageHL;
+
+- (void)buildMenus;
+
+@end
+
+@implementation CubeProfileViewController
 
 - (instancetype)init {
     if (self = [super init]) {
-        [self setStatusBarStyle:UIStatusBarStyleLightContent];
+        [self configTabBarItem:@"我的" image:@"TabBarProfile" imageHL:@"TabBarProfileHL"];
     }
 
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorGrayBG]];
-}
+- (void)loadView {
+    [super loadView];
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    [self.navigationItem setTitle:@"我的"];
     
-    // TODO 统计
+    [self buildMenus];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    // TODO 统计
-}
+#pragma mark - Private
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return self.statusBarStyle;
-}
+- (void)buildMenus {
+    @weakify(self);
+    self.clear();
 
-- (BOOL)shouldAutorotate {
-    return NO;
-}
-
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
-}
-
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-    return UIInterfaceOrientationPortrait;
-}
-
-- (void)dealloc
-{
-#ifdef DEBUG_MEMERY
-    NSLog(@"dealloc %@", self.navigationItem.title);
-#endif
+    {
+        NSInteger sectionTag = CubeProfileSectionTagInfo;
+        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
+//        self.addCell();
+    }
 }
 
 - (void)configTabBarItem:(NSString *)title image:(NSString *)image imageHL:(NSString *)imageHL {
     [self.tabBarItem setTitle:title];
     [self.tabBarItem setImage:[UIImage imageNamed:image]];
     [self.tabBarItem setSelectedImage:[UIImage imageNamed:imageHL]];
-}
-
-#pragma mark - Getters
-
-- (NSString *)analyzeTitle {
-    if (_analyzeTitle == nil) {
-        return self.navigationItem.title;
-    }
-    return _analyzeTitle;
 }
 
 @end

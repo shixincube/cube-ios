@@ -31,6 +31,9 @@
 		C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */; };
 		C8CCF97826EC9B1200ED4115 /* CubeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */; };
 		C8CCF97B26ECA3E600ED4115 /* CubeConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */; };
+		C8E31C5526EF3370007B92F1 /* CubeProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E31C5426EF3370007B92F1 /* CubeProfileViewController.m */; };
+		C8E31C5726EF37C2007B92F1 /* CubeProfileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E31C5626EF37C2007B92F1 /* CubeProfileInfoViewController.m */; };
+		C8E31C5B26EF3C3B007B92F1 /* CubeProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E31C5A26EF3C3B007B92F1 /* CubeProfileHeaderCell.m */; };
 		C8E3258D26E0CF95005CA08A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3258C26E0CF95005CA08A /* AppDelegate.m */; };
 		C8E3259026E0CF95005CA08A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3258F26E0CF95005CA08A /* SceneDelegate.m */; };
 		C8E3259326E0CF95005CA08A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3259226E0CF95005CA08A /* ViewController.m */; };
@@ -165,6 +168,12 @@
 		C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeTabBarController.m; sourceTree = "<group>"; };
 		C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationViewController.m; sourceTree = "<group>"; };
 		C8CCF97C26ECA3F100ED4115 /* CubeConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationViewController.h; sourceTree = "<group>"; };
+		C8E31C5326EF3362007B92F1 /* CubeProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeProfileViewController.h; sourceTree = "<group>"; };
+		C8E31C5426EF3370007B92F1 /* CubeProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeProfileViewController.m; sourceTree = "<group>"; };
+		C8E31C5626EF37C2007B92F1 /* CubeProfileInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeProfileInfoViewController.m; sourceTree = "<group>"; };
+		C8E31C5826EF37CC007B92F1 /* CubeProfileInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeProfileInfoViewController.h; sourceTree = "<group>"; };
+		C8E31C5926EF3C2F007B92F1 /* CubeProfileHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeProfileHeaderCell.h; sourceTree = "<group>"; };
+		C8E31C5A26EF3C3B007B92F1 /* CubeProfileHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeProfileHeaderCell.m; sourceTree = "<group>"; };
 		C8E3258826E0CF95005CA08A /* CubeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E3258B26E0CF95005CA08A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C8E3258C26E0CF95005CA08A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -398,6 +407,19 @@
 			path = Conversation;
 			sourceTree = "<group>";
 		};
+		C8E31C5226EF2DF9007B92F1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C8E31C5926EF3C2F007B92F1 /* CubeProfileHeaderCell.h */,
+				C8E31C5A26EF3C3B007B92F1 /* CubeProfileHeaderCell.m */,
+				C8E31C5826EF37CC007B92F1 /* CubeProfileInfoViewController.h */,
+				C8E31C5626EF37C2007B92F1 /* CubeProfileInfoViewController.m */,
+				C8E31C5326EF3362007B92F1 /* CubeProfileViewController.h */,
+				C8E31C5426EF3370007B92F1 /* CubeProfileViewController.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		C8E3257F26E0CF95005CA08A = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +443,7 @@
 				C8E325A626E0D352005CA08A /* Launcher */,
 				C8E3268726E0F25F005CA08A /* Account */,
 				C8CCF97926ECA3BB00ED4115 /* Conversation */,
+				C8E31C5226EF2DF9007B92F1 /* Profile */,
 				C8E3264F26E0DAD4005CA08A /* Components */,
 				C8E3267F26E0E4EE005CA08A /* Utilities */,
 				C8A0DA3226E1D6940032A9D5 /* Categories */,
@@ -708,7 +731,6 @@
 				C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */,
 				C8E3265326E0DB0C005CA08A /* CubeViewController.h */,
 				C8E3265026E0DB02005CA08A /* CubeViewController.m */,
-				C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -792,6 +814,7 @@
 		C8EAB74A26EB31320044A085 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -943,12 +966,15 @@
 				C8E3262426E0DAA3005CA08A /* ZZFLEXTableViewHeaderFooterView.m in Sources */,
 				C8E3263526E0DAA3005CA08A /* ZZTableViewChainModel.m in Sources */,
 				C8EAB76226EB4A2B0044A085 /* TLBadge.m in Sources */,
+				C8E31C5526EF3370007B92F1 /* CubeProfileViewController.m in Sources */,
 				C8E3263426E0DAA3005CA08A /* ZZCollectionViewChainModel.m in Sources */,
 				C8E3262826E0DAA3005CA08A /* ZZFLEXAngelViewEditChainModel.m in Sources */,
 				C8E3267426E0DBFF005CA08A /* ViewController+MASAdditions.m in Sources */,
 				C8E3263A26E0DAA3005CA08A /* ZZControlChainModel.m in Sources */,
 				C8E3263926E0DAA3005CA08A /* ZZImageViewChainModel.m in Sources */,
 				C8E3262E26E0DAA3005CA08A /* ZZFLEXViewModel+Angel.m in Sources */,
+				C8E31C5726EF37C2007B92F1 /* CubeProfileInfoViewController.m in Sources */,
+				C8E31C5B26EF3C3B007B92F1 /* CubeProfileHeaderCell.m in Sources */,
 				C8E3267626E0DBFF005CA08A /* MASConstraintMaker.m in Sources */,
 				C8E3264D26E0DAA3005CA08A /* ZZFLEXCollectionViewController+EditExtension.m in Sources */,
 				C8E3258D26E0CF95005CA08A /* AppDelegate.m in Sources */,
