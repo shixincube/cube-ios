@@ -128,7 +128,7 @@
 - (void)getAccountWithToken:(NSString *)tokenCode
                     success:(CubeBlockRequestSuccessWithData)success
                     failure:(CubeBlockRequestFailureWithError)failure {
-    NSString * url = [HOST_URL stringByAppendingString:URL_LOGIN];
+    NSString * url = [HOST_URL stringByAppendingString:URL_INFO];
     NSDictionary * params = @{
         @"token" : tokenCode };
 
@@ -141,7 +141,7 @@
         NSDictionary * json = [responseObject toJSONObject];
         CubeAccount * account = [[CubeAccount alloc] initWithJSON:json];
         // 保存数据
-        [CubeAccountHelper sharedInstance].current = account;
+        [CubeAccountHelper sharedInstance].currentAccount = account;
         // 回调
         success(account);
     }
@@ -157,7 +157,7 @@
     NSString * url = [HOST_URL stringByAppendingString:URL_CUBE_CONFIG];
     NSDictionary * params = @{
         @"t" : [CubeAccountHelper sharedInstance].tokenCode };
-    
+
     [self.httpManager GET:url
                parameters:params
                   headers:nil
@@ -187,7 +187,7 @@
                                              @"text/javascript",
                                              @"text/plain", nil];
         _httpManager.operationQueue.maxConcurrentOperationCount = 5;
-        _httpManager.requestSerializer.timeoutInterval = 5;
+        _httpManager.requestSerializer.timeoutInterval = 3;
         _httpManager.responseSerializer.acceptableContentTypes = acceptableContentTypes;
     }
     

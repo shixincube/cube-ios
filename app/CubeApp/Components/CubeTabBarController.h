@@ -29,6 +29,8 @@
 
 @interface CubeTabBarController : TLTabBarController
 
+@property (nonatomic, copy) void (^setupFailure)(void);
+
 @end
 
 #endif /* CubeTabBarController_h */

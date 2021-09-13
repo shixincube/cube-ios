@@ -31,9 +31,11 @@
 #import "CubeAccountExplorer.h"
 #import <Cube/Cube.h>
 
-@interface CubeTabBarController ()
+@interface CubeTabBarController () {
+    
+    CubeAccountExplorer * _explorer;
 
-@property (nonatomic, strong) CubeAccountExplorer * explorer;
+}
 
 - (void)setup:(void (^)(void))completion;
 
@@ -59,66 +61,70 @@
         [self setViewControllers:data];
     }
 
-    self.explorer = [[CubeAccountExplorer alloc] init];
-
     return self;
 }
 
 - (void)loadView {
     [super loadView];
-    
-    [self setup:^ {
-        NSLog(@"");
-    }];
+
+    _explorer = [[CubeAccountExplorer alloc] init];
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self setup:^ {
+            NSLog(@"Setup completed");
+        }];
+    });
 }
 
 - (void)setup:(void (^)(void))completion {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        __block BOOL gotAccount = NO;
-        __block BOOL gotConfig = NO;
+    __block BOOL gotAccount = NO;
+    __block BOOL gotConfig = NO;
+    __block BOOL tipError = NO;
 
-        void (^process)(void) = ^() {
-            if (gotAccount && gotConfig) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion();
-                });
-            }
-        };
+    void (^process)(NSError * error) = ^(NSError * error) {
+        if (gotAccount && gotConfig) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion();
+            });
+            return;
+        }
 
-        // 获取账号数据
-        if ([CubeAccountHelper sharedInstance].current) {
+        if (error && !tipError) {
+            tipError = YES;
+            NSLog(@"Setup error: %ld", error.code);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [CubeUIUtility showErrorHint:@"服务器维护，请稍候再试"];
+            });
+        }
+    };
+
+    // 获取账号数据
+    if ([CubeAccountHelper sharedInstance].currentAccount) {
+        gotAccount = YES;
+        process(nil);
+    }
+    else {
+        [_explorer getAccountWithToken:[CubeAccountHelper sharedInstance].tokenCode success:^(id data) {
             gotAccount = YES;
-            process();
-        }
-        else {
-            [self.explorer getAccountWithToken:[CubeAccountHelper sharedInstance].tokenCode
-                                       success:^(id data) {
-                gotAccount = YES;
-                process();
-            }
-                                       failure:^(NSError *error) {
-                gotAccount = YES;
-                process();
-                // TODO
-            }];
-        }
+            process(nil);
+        } failure:^(NSError *error) {
+            process(error);
+        }];
+    }
 
-        // 获取配置数据
-        if ([CubeAccountHelper sharedInstance].engineConfig) {
+    // 获取配置数据
+    if ([CubeAccountHelper sharedInstance].engineConfig) {
+        gotConfig = YES;
+        process(nil);
+    }
+    else {
+        [_explorer getEngineConfigWithSuccess:^(id data) {
             gotConfig = YES;
-            process();
-        }
-        else {
-            [self.explorer getEngineConfigWithSuccess:^(id data) {
-                gotConfig = YES;
-                process();
-            } failure:^(NSError *error) {
-                gotConfig = YES;
-                process();
-                // TODO
-            }];
-        }
-    });
+            process(nil);
+        } failure:^(NSError *error) {
+            process(error);
+        }];
+    }
 }
 
 - (UINavigationController *)addNavigationController:(UIViewController *)viewController {

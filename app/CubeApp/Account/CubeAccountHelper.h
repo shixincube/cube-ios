@@ -40,7 +40,7 @@
 
 @property (nonatomic, assign, readonly) NSUInteger tokenExpireTime;
 
-@property (nonatomic, strong) CubeAccount * current;
+@property (nonatomic, strong) CubeAccount * currentAccount;
 
 @property (nonatomic, strong) NSDictionary * engineConfig;
 
