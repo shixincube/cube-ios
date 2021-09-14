@@ -112,6 +112,7 @@
 		C8EAB76326EB4A2B0044A085 /* TLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75A26EB4A2B0044A085 /* TLTabBar.m */; };
 		C8EAB76426EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */; };
 		C8EAB76526EB4A2B0044A085 /* UITabBar+TLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */; };
+		C8FD7ED226F039B6003FFE98 /* UICollectionViewCell+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -339,6 +340,8 @@
 		C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLTabBar+iOS12_1Fix.m"; sourceTree = "<group>"; };
 		C8EAB75D26EB4A2B0044A085 /* TLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLBadge.h; sourceTree = "<group>"; };
 		C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+TLExtension.m"; sourceTree = "<group>"; };
+		C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+Extensions.m"; sourceTree = "<group>"; };
+		C8FD7ED326F039BE003FFE98 /* UICollectionViewCell+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+Extensions.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +395,8 @@
 			children = (
 				C84CC1B126EA0B080004A9CB /* NSObject+CubeKeyValue.h */,
 				C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */,
+				C8FD7ED326F039BE003FFE98 /* UICollectionViewCell+Extensions.h */,
+				C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */,
 				C8A0DA3326E1D6B80032A9D5 /* UIView+Extensions.h */,
 				C8A0DA3426E1D6C40032A9D5 /* UIView+Extensions.m */,
 			);
@@ -1009,6 +1014,7 @@
 				C8E3267726E0DBFF005CA08A /* MASLayoutConstraint.m in Sources */,
 				C8E3263026E0DAA3005CA08A /* UIView+ZZCornor.m in Sources */,
 				C8CCF97B26ECA3E600ED4115 /* CubeConversationViewController.m in Sources */,
+				C8FD7ED226F039B6003FFE98 /* UICollectionViewCell+Extensions.m in Sources */,
 				C8E3262626E0DAA3005CA08A /* ZZFLEXTableViewEmptyCell.m in Sources */,
 				C8E3263826E0DAA3005CA08A /* ZZScrollViewChainModel.m in Sources */,
 			);

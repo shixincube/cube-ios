@@ -25,7 +25,10 @@
  */
 
 #import "CubeProfileViewController.h"
+#import "CubeProfileHeaderCell.h"
 #import "CubeProfileInfoViewController.h"
+#import "CubeAccount.h"
+#import "CubeAccountHelper.h"
 
 
 typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
@@ -56,8 +59,21 @@ typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
     [super loadView];
 
     [self.navigationItem setTitle:@"我的"];
-    
-    [self buildMenus];
+
+//    [self buildMenus];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorGrayBG]];
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+
+    if (!CGRectEqualToRect(self.view.bounds, self.collectionView.frame)) {
+        [self.collectionView setFrame:self.view.bounds];
+    }
 }
 
 #pragma mark - Private
@@ -65,12 +81,21 @@ typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
 - (void)buildMenus {
     @weakify(self);
     self.clear();
+    
+    CubeAccount * account = [CubeAccountHelper sharedInstance].currentAccount;
 
-    {
-        NSInteger sectionTag = CubeProfileSectionTagInfo;
-        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
-//        self.addCell();
-    }
+    NSInteger sectionTag = CubeProfileSectionTagInfo;
+    self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
+    self.addCell([CubeProfileHeaderCell class])
+        .toSection(sectionTag)
+        .withDataModel(account)
+        .selectedAction(^ (id data) {
+            @strongify(self);
+            CubeProfileInfoViewController * infoVC = [[CubeProfileInfoViewController alloc] init];
+            PushVC(infoVC);
+        });
+    
+    [self reloadView];
 }
 
 - (void)configTabBarItem:(NSString *)title image:(NSString *)image imageHL:(NSString *)imageHL {

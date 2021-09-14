@@ -24,34 +24,23 @@
  * SOFTWARE.
  */
 
-#import "CubeProfileInfoViewController.h"
-#import "CubeAccount.h"
-#import "CubeAccountHelper.h"
+#import "UICollectionViewCell+Extensions.h"
 
-@interface CubeProfileInfoViewController ()
+@implementation UICollectionViewCell (Extensions)
 
-- (void)buildUI;
-
-@end
-
-@implementation CubeProfileInfoViewController
-
-- (void)loadView {
-    [super loadView];
-    
-    [self setTitle:@"个人信息"];
-    [self.view setBackgroundColor:[UIColor colorGrayBG]];
+- (void)setSelectedBackgroundColor:(UIColor *)selectedBackgroundColor {
+    if (selectedBackgroundColor) {
+        UIView * selectedBackgroundView = [[UIView alloc] init];
+        [selectedBackgroundView setBackgroundColor:selectedBackgroundColor];
+        [self setSelectedBackgroundView:selectedBackgroundView];
+    }
+    else {
+        [self setSelectedBackgroundView:nil];
+    }
 }
 
-#pragma mark - Private
-
-- (void)buildUI {
-    @weakify(self);
-    self.clear();
-    
-    CubeAccount * account = [CubeAccountHelper sharedInstance].currentAccount;
-    
-//    NSInteger sectionTag = 
+- (UIColor *)selectedBackgroundColor {
+    return self.selectedBackgroundView.backgroundColor;
 }
 
 @end

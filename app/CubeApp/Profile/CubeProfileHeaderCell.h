@@ -28,8 +28,11 @@
 #define CubeProfileHeaderCell_h
 
 #import <UIKit/UIKit.h>
+#import "CubeAccount.h"
 
 @interface CubeProfileHeaderCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
+
+@property (nonatomic, strong) CubeAccount * account;
 
 @end
 

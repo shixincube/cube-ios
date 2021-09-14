@@ -14,6 +14,7 @@
 #import "Utilities/CubeAppMacros.h"
 
 #import "Categories/UIView+Extensions.h"
+#import "Categories/UICollectionViewCell+Extensions.h"
 #import "Categories/NSObject+CubeKeyValue.h"
 
 #import "Frameworks/Masonry/Masonry/Masonry.h"
