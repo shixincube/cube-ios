@@ -75,4 +75,12 @@
     return [manager POST:url parameters:parameters headers:nil progress:nil success:success failure:failure];
 }
 
++ (NSString *)explainAvatarName:(NSString *)avatarName {
+    if ([avatarName isEqualToString:@"default"]) {
+        return @"AvatarDefault";
+    }
+
+    return nil;
+}
+
 @end

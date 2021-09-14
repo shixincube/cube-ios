@@ -24,30 +24,60 @@
  * SOFTWARE.
  */
 
-#ifndef CubeAppUtil_h
-#define CubeAppUtil_h
+#ifndef CubeSettingItem_h
+#define CubeSettingItem_h
 
 #import <Foundation/Foundation.h>
 
-@interface CubeAppUtil : NSObject
+typedef NS_ENUM(NSInteger, CubeSettingItemType) {
+    CubeSettingItemTypeDefalut = 0,
+    CubeSettingItemTypeTitleButton,
+    CubeSettingItemTypeSwitch,
+    CubeSettingItemTypeOther
+};
 
-+ (NSString *)makeMD5:(NSString *)input;
-
-/*!
- * @brief 手机号码脱敏。
- */
-+ (NSString *)desensitizePhoneNumber:(NSString *)phoneNumber;
-
-+ (NSURLSessionDataTask *)postURL:(NSString *)url
-                       parameters:(id)parameters
-                          success:(void (^)(NSURLSessionDataTask * task, id responseObject))success
-                          failure:(void (^)(NSURLSessionDataTask * task, NSError * error))failure;
+@interface CubeSettingItem : NSObject
 
 /*!
- * @brief 解释头像名为头像文件名。
+ * @brief 主标题。
  */
-+ (NSString *)explainAvatarName:(NSString *)avatarName;
+@property (nonatomic, strong) NSString * title;
+
+/*!
+ * @brief 副标题
+ */
+@property (nonatomic, strong) NSString * subTitle;
+
+/*!
+ * @brief 右图片(本地)
+ */
+@property (nonatomic, strong) NSString * rightImageName;
+
+/*!
+ * @brief 右图片(网络)
+ */
+@property (nonatomic, strong) NSString * rightImageURL;
+
+/*!
+ * @brief 是否显示箭头（默认YES）
+ */
+@property (nonatomic, assign) BOOL showDisclosureIndicator;
+
+/*!
+ * @brief 停用高亮（默认NO）
+ */
+@property (nonatomic, assign) BOOL disableHighlight;
+
+/*!
+ * @brief Cell 类型，默认 CubeSettingItemTypeDefalut
+ */
+@property (nonatomic, assign) CubeSettingItemType type;
+
+
++ (CubeSettingItem *) itemWithTitle:(NSString *)title;
+
+- (NSString *) cellClassName;
 
 @end
 
-#endif /* CubeAppUtil_h */
+#endif /* CubeSettingItem_h */

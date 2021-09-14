@@ -57,10 +57,10 @@ typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
 
 - (void)loadView {
     [super loadView];
+    
+    [self setTitle:@"我的"];
 
-    [self.navigationItem setTitle:@"我的"];
-
-//    [self buildMenus];
+    [self buildMenus];
 }
 
 - (void)viewDidLoad {
@@ -81,7 +81,7 @@ typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
 - (void)buildMenus {
     @weakify(self);
     self.clear();
-    
+
     CubeAccount * account = [CubeAccountHelper sharedInstance].currentAccount;
 
     NSInteger sectionTag = CubeProfileSectionTagInfo;

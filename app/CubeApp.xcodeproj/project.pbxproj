@@ -113,6 +113,10 @@
 		C8EAB76426EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */; };
 		C8EAB76526EB4A2B0044A085 /* UITabBar+TLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */; };
 		C8FD7ED226F039B6003FFE98 /* UICollectionViewCell+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */; };
+		C8FD7ED526F06F05003FFE98 /* Avatar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8FD7ED426F06F05003FFE98 /* Avatar.xcassets */; };
+		C8FD7ED726F087D5003FFE98 /* CubeSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FD7ED626F087D5003FFE98 /* CubeSettingItem.m */; };
+		C8FD7EDB26F096F1003FFE98 /* CubeProfileInfoAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FD7EDA26F096F1003FFE98 /* CubeProfileInfoAvatarCell.m */; };
+		C8FD7EDE26F0981E003FFE98 /* CubeSettingItemBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FD7EDD26F0981E003FFE98 /* CubeSettingItemBaseCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -342,6 +346,13 @@
 		C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+TLExtension.m"; sourceTree = "<group>"; };
 		C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+Extensions.m"; sourceTree = "<group>"; };
 		C8FD7ED326F039BE003FFE98 /* UICollectionViewCell+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+Extensions.h"; sourceTree = "<group>"; };
+		C8FD7ED426F06F05003FFE98 /* Avatar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Avatar.xcassets; sourceTree = "<group>"; };
+		C8FD7ED626F087D5003FFE98 /* CubeSettingItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeSettingItem.m; sourceTree = "<group>"; };
+		C8FD7ED826F087E9003FFE98 /* CubeSettingItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSettingItem.h; sourceTree = "<group>"; };
+		C8FD7ED926F096E4003FFE98 /* CubeProfileInfoAvatarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeProfileInfoAvatarCell.h; sourceTree = "<group>"; };
+		C8FD7EDA26F096F1003FFE98 /* CubeProfileInfoAvatarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeProfileInfoAvatarCell.m; sourceTree = "<group>"; };
+		C8FD7EDD26F0981E003FFE98 /* CubeSettingItemBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeSettingItemBaseCell.m; sourceTree = "<group>"; };
+		C8FD7EDF26F09829003FFE98 /* CubeSettingItemBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSettingItemBaseCell.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +428,8 @@
 			children = (
 				C8E31C5926EF3C2F007B92F1 /* CubeProfileHeaderCell.h */,
 				C8E31C5A26EF3C3B007B92F1 /* CubeProfileHeaderCell.m */,
+				C8FD7ED926F096E4003FFE98 /* CubeProfileInfoAvatarCell.h */,
+				C8FD7EDA26F096F1003FFE98 /* CubeProfileInfoAvatarCell.m */,
 				C8E31C5826EF37CC007B92F1 /* CubeProfileInfoViewController.h */,
 				C8E31C5626EF37C2007B92F1 /* CubeProfileInfoViewController.m */,
 				C8E31C5326EF3362007B92F1 /* CubeProfileViewController.h */,
@@ -515,13 +528,13 @@
 		C8E325B126E0DAA3005CA08A /* ZZFLEXAngel */ = {
 			isa = PBXGroup;
 			children = (
-				C8E325B226E0DAA3005CA08A /* ViewModels */,
-				C8E325B726E0DAA3005CA08A /* ZZFlexibleLayoutViewProtocol.h */,
-				C8E325B826E0DAA3005CA08A /* CommonViews */,
 				C8E325C126E0DAA3005CA08A /* ChainModels */,
-				C8E325CA26E0DAA3005CA08A /* ZZFLEXAngel.m */,
+				C8E325B826E0DAA3005CA08A /* CommonViews */,
 				C8E325CB26E0DAA3005CA08A /* Private */,
+				C8E325B226E0DAA3005CA08A /* ViewModels */,
 				C8E325D526E0DAA3005CA08A /* ZZFLEXAngel.h */,
+				C8E325CA26E0DAA3005CA08A /* ZZFLEXAngel.m */,
+				C8E325B726E0DAA3005CA08A /* ZZFlexibleLayoutViewProtocol.h */,
 			);
 			path = ZZFLEXAngel;
 			sourceTree = "<group>";
@@ -732,6 +745,7 @@
 		C8E3264F26E0DAD4005CA08A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C8FD7EDC26F097D5003FFE98 /* SettingItem */,
 				C8CCF97626EC9B0200ED4115 /* CubeTabBarController.h */,
 				C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */,
 				C8E3265326E0DB0C005CA08A /* CubeViewController.h */,
@@ -820,6 +834,7 @@
 			isa = PBXGroup;
 			children = (
 				C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */,
+				C8FD7ED426F06F05003FFE98 /* Avatar.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -852,6 +867,17 @@
 				C8EAB75D26EB4A2B0044A085 /* TLBadge.h */,
 			);
 			path = Private;
+			sourceTree = "<group>";
+		};
+		C8FD7EDC26F097D5003FFE98 /* SettingItem */ = {
+			isa = PBXGroup;
+			children = (
+				C8FD7ED826F087E9003FFE98 /* CubeSettingItem.h */,
+				C8FD7ED626F087D5003FFE98 /* CubeSettingItem.m */,
+				C8FD7EDF26F09829003FFE98 /* CubeSettingItemBaseCell.h */,
+				C8FD7EDD26F0981E003FFE98 /* CubeSettingItemBaseCell.m */,
+			);
+			path = SettingItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -913,6 +939,7 @@
 			files = (
 				C80B4FF826E5EA5A00AD90B2 /* SVProgressHUD.bundle in Resources */,
 				C8E3259B26E0CF98005CA08A /* LaunchScreen.storyboard in Resources */,
+				C8FD7ED526F06F05003FFE98 /* Avatar.xcassets in Resources */,
 				C8E3259826E0CF98005CA08A /* Assets.xcassets in Resources */,
 				C8E3267D26E0DC00005CA08A /* README.md in Resources */,
 				C8A0DA3826E20BFD0032A9D5 /* Images.xcassets in Resources */,
@@ -947,6 +974,7 @@
 				C8EAB76026EB4A2B0044A085 /* UITabBarItem+TLExtension.m in Sources */,
 				C8E3262B26E0DAA3005CA08A /* ZZFLEXAngel.m in Sources */,
 				C8E3262126E0DAA3005CA08A /* ZZFLEXViewModel.m in Sources */,
+				C8FD7EDE26F0981E003FFE98 /* CubeSettingItemBaseCell.m in Sources */,
 				C8E3259326E0CF95005CA08A /* ViewController.m in Sources */,
 				C8E3263F26E0DAA3005CA08A /* UIView+ZZFrame.m in Sources */,
 				C8E3262326E0DAA3005CA08A /* ZZFlexibleLayoutSeperatorCell.m in Sources */,
@@ -984,12 +1012,14 @@
 				C8E3264D26E0DAA3005CA08A /* ZZFLEXCollectionViewController+EditExtension.m in Sources */,
 				C8E3258D26E0CF95005CA08A /* AppDelegate.m in Sources */,
 				C8E3265126E0DB02005CA08A /* CubeViewController.m in Sources */,
+				C8FD7ED726F087D5003FFE98 /* CubeSettingItem.m in Sources */,
 				C8E3263326E0DAA3005CA08A /* ZZLabelChainModel.m in Sources */,
 				C80B4FF526E5EA5A00AD90B2 /* SVProgressAnimatedView.m in Sources */,
 				C8E3263E26E0DAA3005CA08A /* UIButton+ZZExtension.m in Sources */,
 				C8E3262726E0DAA3005CA08A /* ZZFLEXAngelViewBatchChainModel.m in Sources */,
 				C8E3267A26E0DBFF005CA08A /* MASConstraint.m in Sources */,
 				C8EAB76126EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m in Sources */,
+				C8FD7EDB26F096F1003FFE98 /* CubeProfileInfoAvatarCell.m in Sources */,
 				C8EAB75F26EB4A2B0044A085 /* TLTabBarController.m in Sources */,
 				C80B4FF426E5EA5A00AD90B2 /* SVRadialGradientLayer.m in Sources */,
 				C8E3263126E0DAA3005CA08A /* UIView+ZZFLEX.m in Sources */,

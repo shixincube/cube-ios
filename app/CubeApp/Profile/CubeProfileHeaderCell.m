@@ -25,6 +25,8 @@
  */
 
 #import "CubeProfileHeaderCell.h"
+#import "CubeAccount.h"
+#import "CubeAppUtil.h"
 
 #define INFO_SPACE_X 14.0f
 #define INFO_SPACE_Y 12.0f
@@ -70,6 +72,23 @@
         make.bottom.mas_equalTo(-INFO_SPACE_Y);
         make.width.mas_equalTo(self.avatarImageView.mas_height);
     }];
+
+    [self.nikenameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
+    [self.nikenameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(INFO_SPACE_Y);
+        make.bottom.mas_equalTo(self.avatarImageView.mas_centerY).mas_offset(-3.5);
+    }];
+    
+    [self.cubeIdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.nikenameLabel);
+        make.top.mas_equalTo(self.avatarImageView.mas_centerY).mas_offset(5.0);
+    }];
+
+    [self.arrowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(0);
+        make.size.mas_equalTo(CGSizeMake(8, 13));
+        make.right.mas_equalTo(-15);
+    }];
 }
 
 #pragma mark - Protocol
@@ -98,6 +117,24 @@
     }
 }
 
+#pragma mark - Setters
+
+- (void)setAccount:(CubeAccount *)account {
+    _account = account;
+    
+    NSString * avatar = [CubeAppUtil explainAvatarName:account.avatar];
+    if (nil != avatar) {
+        // 使用默认头像
+        [self.avatarImageView setImage:[UIImage imageNamed:avatar]];
+    }
+    else {
+        // TODO 使用网络头像
+    }
+    
+    [self.nikenameLabel setText:account.displayName];
+    [self.cubeIdLabel setText:[NSString stringWithFormat:@"%@: %lu", @"魔方号", account.identity]];
+}
+
 #pragma mark - Getters
 
 - (UIImageView *)avatarImageView {
@@ -108,7 +145,7 @@
         [_avatarImageView.layer setBorderWidth:BORDER_WIDTH_1PX];
         [_avatarImageView.layer setBorderColor:[UIColor lightGrayColor].CGColor];
     }
-    
+
     return _avatarImageView;
 }
 
@@ -127,6 +164,7 @@
         _cubeIdLabel = [[UILabel alloc] init];
         [_cubeIdLabel setText:@"魔方号"];
         [_cubeIdLabel setFont:[UIFont systemFontOfSize:14]];
+        [_cubeIdLabel setTextColor:[UIColor colorTextGray]];
     }
 
     return _cubeIdLabel;

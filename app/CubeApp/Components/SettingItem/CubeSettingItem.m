@@ -24,30 +24,38 @@
  * SOFTWARE.
  */
 
-#ifndef CubeAppUtil_h
-#define CubeAppUtil_h
+#import "CubeSettingItem.h"
 
-#import <Foundation/Foundation.h>
+@implementation CubeSettingItem
 
-@interface CubeAppUtil : NSObject
++ (CubeSettingItem *)itemWithTitle:(NSString *)title {
+    CubeSettingItem * item = [[CubeSettingItem alloc] init];
+    item.title = title;
+    return item;
+}
 
-+ (NSString *)makeMD5:(NSString *)input;
+- (instancetype)init {
+    if (self = [super init]) {
+        self.showDisclosureIndicator = YES;
+    }
+    return self;
+}
 
-/*!
- * @brief 手机号码脱敏。
- */
-+ (NSString *)desensitizePhoneNumber:(NSString *)phoneNumber;
-
-+ (NSURLSessionDataTask *)postURL:(NSString *)url
-                       parameters:(id)parameters
-                          success:(void (^)(NSURLSessionDataTask * task, id responseObject))success
-                          failure:(void (^)(NSURLSessionDataTask * task, NSError * error))failure;
-
-/*!
- * @brief 解释头像名为头像文件名。
- */
-+ (NSString *)explainAvatarName:(NSString *)avatarName;
+- (NSString *)cellClassName {
+    switch (self.type) {
+        case CubeSettingItemTypeDefalut:
+            return @"CubeSettingCell";
+            break;
+        case CubeSettingItemTypeTitleButton:
+            return @"CubeSSettingButtonCell";
+            break;
+        case CubeSettingItemTypeSwitch:
+            return @"CubeSettingSwitchCell";
+            break;
+        default:
+            break;
+    }
+    return nil;
+}
 
 @end
-
-#endif /* CubeAppUtil_h */

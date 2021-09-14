@@ -27,6 +27,13 @@
 #import "CubeProfileInfoViewController.h"
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
+#import "CubeProfileInfoAvatarCell.h"
+#import "CubeAppUtil.h"
+
+typedef NS_ENUM(NSInteger, CubeProfileInfoVCSectionType) {
+    CubeProfileInfoVCSectionTypeBase,
+    CubeProfileInfoVCSectionTypeMore,
+};
 
 @interface CubeProfileInfoViewController ()
 
@@ -38,9 +45,11 @@
 
 - (void)loadView {
     [super loadView];
-    
+
     [self setTitle:@"个人信息"];
     [self.view setBackgroundColor:[UIColor colorGrayBG]];
+    
+    [self buildUI];
 }
 
 #pragma mark - Private
@@ -48,10 +57,20 @@
 - (void)buildUI {
     @weakify(self);
     self.clear();
-    
+
     CubeAccount * account = [CubeAccountHelper sharedInstance].currentAccount;
     
-//    NSInteger sectionTag = 
+    NSInteger sectionTag = CubeProfileInfoVCSectionTypeBase;
+    self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
+
+    // 头像
+    CubeSettingItem * avatar = [CubeSettingItem itemWithTitle:@"头像"];
+    avatar.rightImageName = [CubeAppUtil explainAvatarName:account.avatar];
+    self.addCell([CubeProfileInfoAvatarCell class]).toSection(sectionTag).withDataModel(avatar).selectedAction(^ (id data) {
+        // Nothing
+    });
+
+    [self reloadView];
 }
 
 @end

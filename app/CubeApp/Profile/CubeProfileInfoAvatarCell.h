@@ -24,30 +24,13 @@
  * SOFTWARE.
  */
 
-#ifndef CubeAppUtil_h
-#define CubeAppUtil_h
+#ifndef CubeProfileInfoAvatarCell_h
+#define CubeProfileInfoAvatarCell_h
 
-#import <Foundation/Foundation.h>
+#import "CubeSettingItemBaseCell.h"
 
-@interface CubeAppUtil : NSObject
-
-+ (NSString *)makeMD5:(NSString *)input;
-
-/*!
- * @brief 手机号码脱敏。
- */
-+ (NSString *)desensitizePhoneNumber:(NSString *)phoneNumber;
-
-+ (NSURLSessionDataTask *)postURL:(NSString *)url
-                       parameters:(id)parameters
-                          success:(void (^)(NSURLSessionDataTask * task, id responseObject))success
-                          failure:(void (^)(NSURLSessionDataTask * task, NSError * error))failure;
-
-/*!
- * @brief 解释头像名为头像文件名。
- */
-+ (NSString *)explainAvatarName:(NSString *)avatarName;
+@interface CubeProfileInfoAvatarCell : CubeSettingItemBaseCell
 
 @end
 
-#endif /* CubeAppUtil_h */
+#endif /* CubeProfileInfoAvatarCell_h */

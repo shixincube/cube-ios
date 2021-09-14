@@ -45,7 +45,7 @@
 ({   \
     UIEdgeInsets edgeInsets = UIEdgeInsetsZero; \
     if (@available(iOS 11.0, *)) {      \
-        edgeInsets = [UIApplication sharedApplication].keyWindow.safeAreaInsets;     \
+        edgeInsets = [UIApplication sharedApplication].windows[0].safeAreaInsets;     \
     }   \
     edgeInsets;  \
 })\

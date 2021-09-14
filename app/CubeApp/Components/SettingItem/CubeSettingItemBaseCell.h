@@ -24,30 +24,18 @@
  * SOFTWARE.
  */
 
-#ifndef CubeAppUtil_h
-#define CubeAppUtil_h
+#ifndef CubeSettingItemBaseCell_h
+#define CubeSettingItemBaseCell_h
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "CubeSettingItem.h"
 
-@interface CubeAppUtil : NSObject
+@interface CubeSettingItemBaseCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
 
-+ (NSString *)makeMD5:(NSString *)input;
+@property (nonatomic, strong) UIImageView * arrowView;
 
-/*!
- * @brief 手机号码脱敏。
- */
-+ (NSString *)desensitizePhoneNumber:(NSString *)phoneNumber;
-
-+ (NSURLSessionDataTask *)postURL:(NSString *)url
-                       parameters:(id)parameters
-                          success:(void (^)(NSURLSessionDataTask * task, id responseObject))success
-                          failure:(void (^)(NSURLSessionDataTask * task, NSError * error))failure;
-
-/*!
- * @brief 解释头像名为头像文件名。
- */
-+ (NSString *)explainAvatarName:(NSString *)avatarName;
+@property (nonatomic, strong) CubeSettingItem * item;
 
 @end
 
-#endif /* CubeAppUtil_h */
+#endif /* CubeSettingItemBaseCell_h */

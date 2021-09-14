@@ -8,6 +8,8 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#import "Components/SettingItem/CubeSettingItem.h"
+
 #import "Utilities/UIColor+Cube.h"
 #import "Utilities/CubeUIUtility.h"
 #import "Utilities/CubeShortcutMacros.h"
