@@ -29,6 +29,7 @@
 #import "CubeAccountHelper.h"
 #import "CubeProfileInfoAvatarCell.h"
 #import "CubeAppUtil.h"
+#import "CubeSettingItemTemplate.h"
 
 typedef NS_ENUM(NSInteger, CubeProfileInfoVCSectionType) {
     CubeProfileInfoVCSectionTypeBase,
@@ -55,7 +56,6 @@ typedef NS_ENUM(NSInteger, CubeProfileInfoVCSectionType) {
 #pragma mark - Private
 
 - (void)buildUI {
-    @weakify(self);
     self.clear();
 
     CubeAccount * account = [CubeAccountHelper sharedInstance].currentAccount;
@@ -69,6 +69,14 @@ typedef NS_ENUM(NSInteger, CubeProfileInfoVCSectionType) {
     self.addCell([CubeProfileInfoAvatarCell class]).toSection(sectionTag).withDataModel(avatar).selectedAction(^ (id data) {
         // Nothing
     });
+    
+    // 名字
+    CubeSettingItem * nickname = [CubeSettingItem itemWithTitle:@"名字"];
+    nickname.subTitle = account.displayName;
+    self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(nickname).selectedAction(^ (id data) {
+        // Nothing
+    });
+    
 
     [self reloadView];
 }

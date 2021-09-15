@@ -18,6 +18,7 @@
 		C84CC1AD26E9F2010004A9CB /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C84CC1B026E9F2940004A9CB /* CubeAppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CC1AF26E9F2940004A9CB /* CubeAppUtil.m */; };
 		C84CC1B326EA0B110004A9CB /* NSObject+CubeKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */; };
+		C888CD5826F201C0004D7782 /* CubeSettingItemNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C888CD5726F201C0004D7782 /* CubeSettingItemNormalCell.m */; };
 		C8A0DA0226E1C86F0032A9D5 /* Cube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0126E1C86F0032A9D5 /* Cube.framework */; };
 		C8A0DA0326E1C86F0032A9D5 /* Cube.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0126E1C86F0032A9D5 /* Cube.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8A0DA0F26E1D0440032A9D5 /* cell.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0B26E1D0440032A9D5 /* cell.xcframework */; };
@@ -158,6 +159,9 @@
 		C84CC1AF26E9F2940004A9CB /* CubeAppUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeAppUtil.m; sourceTree = "<group>"; };
 		C84CC1B126EA0B080004A9CB /* NSObject+CubeKeyValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CubeKeyValue.h"; sourceTree = "<group>"; };
 		C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CubeKeyValue.m"; sourceTree = "<group>"; };
+		C888CD5526F20129004D7782 /* CubeSettingItemTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSettingItemTemplate.h; sourceTree = "<group>"; };
+		C888CD5626F201B2004D7782 /* CubeSettingItemNormalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSettingItemNormalCell.h; sourceTree = "<group>"; };
+		C888CD5726F201C0004D7782 /* CubeSettingItemNormalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeSettingItemNormalCell.m; sourceTree = "<group>"; };
 		C8A0DA0126E1C86F0032A9D5 /* Cube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A0DA0B26E1D0440032A9D5 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = "/Users/ambrose/Documents/Repositories/Cube3/cube-ios/cube/../libs/cell.xcframework"; sourceTree = "<absolute>"; };
 		C8A0DA0C26E1D0440032A9D5 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = "/Users/ambrose/Documents/Repositories/Cube3/cube-ios/cube/../libs/WebRTC.xcframework"; sourceTree = "<absolute>"; };
@@ -876,6 +880,9 @@
 				C8FD7ED626F087D5003FFE98 /* CubeSettingItem.m */,
 				C8FD7EDF26F09829003FFE98 /* CubeSettingItemBaseCell.h */,
 				C8FD7EDD26F0981E003FFE98 /* CubeSettingItemBaseCell.m */,
+				C888CD5626F201B2004D7782 /* CubeSettingItemNormalCell.h */,
+				C888CD5726F201C0004D7782 /* CubeSettingItemNormalCell.m */,
+				C888CD5526F20129004D7782 /* CubeSettingItemTemplate.h */,
 			);
 			path = SettingItem;
 			sourceTree = "<group>";
@@ -1018,6 +1025,7 @@
 				C8E3263E26E0DAA3005CA08A /* UIButton+ZZExtension.m in Sources */,
 				C8E3262726E0DAA3005CA08A /* ZZFLEXAngelViewBatchChainModel.m in Sources */,
 				C8E3267A26E0DBFF005CA08A /* MASConstraint.m in Sources */,
+				C888CD5826F201C0004D7782 /* CubeSettingItemNormalCell.m in Sources */,
 				C8EAB76126EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m in Sources */,
 				C8FD7EDB26F096F1003FFE98 /* CubeProfileInfoAvatarCell.m in Sources */,
 				C8EAB75F26EB4A2B0044A085 /* TLTabBarController.m in Sources */,
