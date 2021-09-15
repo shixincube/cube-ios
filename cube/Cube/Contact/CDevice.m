@@ -25,15 +25,23 @@
  */
 
 #import "CDevice.h"
+#import "DeviceUtil.h"
 #import <UIKit/UIDevice.h>
 
 @implementation CDevice
 
 - (instancetype)init {
     if (self = [super init]) {
+        DeviceUtil * devUtil = [[DeviceUtil alloc] init];
+        // 设备描述，例如：iPhone 11 Pro
+        NSString * desc = [devUtil hardwareSimpleDescription];
+
         UIDevice * device = [UIDevice currentDevice];
-        _name = [NSString stringWithString:[device model]];
-        _platform = [NSString stringWithFormat:@"%@/%@", [device systemName], [device systemVersion]];
+        _name = device.model;
+
+        _platform = [NSString stringWithFormat:@"%@/%@ %@/%@", desc,
+                     [device systemName], [device systemVersion],
+                     device.identifierForVendor.UUIDString];
     }
 
     return self;

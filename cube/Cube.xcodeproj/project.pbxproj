@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8077E3F26F1899F00E36265 /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C8077E3B26F1899E00E36265 /* DeviceUtil.m */; };
+		C8077E4126F1899F00E36265 /* DeviceUtil+Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = C8077E3D26F1899E00E36265 /* DeviceUtil+Constant.m */; };
+		C8077E4826F18A3400E36265 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8077E4726F18A3400E36265 /* DeviceList.plist */; };
+		C8077E7526F18C6A00E36265 /* CJSONable.h in Headers */ = {isa = PBXBuildFile; fileRef = C8361BF8268EBD6C00B1E15E /* CJSONable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8077E7926F18C9200E36265 /* CAbstractContact.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384F826BD2373009CF806 /* CAbstractContact.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C80A208226D71C7D00255B11 /* CMessagingService.m in Sources */ = {isa = PBXBuildFile; fileRef = C80A208126D71C7D00255B11 /* CMessagingService.m */; };
 		C80A208626D71C8A00255B11 /* CMessagingService.h in Headers */ = {isa = PBXBuildFile; fileRef = C80A208526D71C8A00255B11 /* CMessagingService.h */; };
 		C80A208A26D725AE00255B11 /* CMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = C80A208926D725AE00255B11 /* CMessage.h */; };
@@ -26,7 +31,7 @@
 		C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF2268EB52700B1E15E /* CAuthToken.m */; };
 		C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF9268EBD7700B1E15E /* CJSONable.m */; };
 		C8400AAC26C1F98B00C8FF48 /* CDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400AAB26C1F98B00C8FF48 /* CDevice.m */; };
-		C8400AAF26C1F99900C8FF48 /* CDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AAE26C1F99900C8FF48 /* CDevice.h */; };
+		C8400AAF26C1F99900C8FF48 /* CDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AAE26C1F99900C8FF48 /* CDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8400AB326C20DB600C8FF48 /* CGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AB226C20DB600C8FF48 /* CGroup.h */; };
 		C8400AB626C20DC100C8FF48 /* CGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400AB526C20DC100C8FF48 /* CGroup.m */; };
 		C8400ABA26C20EAB00C8FF48 /* CGroupAppendix.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400AB926C20EAB00C8FF48 /* CGroupAppendix.m */; };
@@ -63,7 +68,7 @@
 		C8C384D626BCD7C8009CF806 /* CContactService.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384D526BCD7C8009CF806 /* CContactService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8C384DA26BCD7DA009CF806 /* CContactService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384D926BCD7DA009CF806 /* CContactService.m */; };
 		C8C384DD26BD0306009CF806 /* CContactStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384DC26BD0306009CF806 /* CContactStorage.m */; };
-		C8C384E226BD043A009CF806 /* CEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384E126BD043A009CF806 /* CEntity.h */; };
+		C8C384E226BD043A009CF806 /* CEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384E126BD043A009CF806 /* CEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8C384E526BD0448009CF806 /* CEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384E426BD0448009CF806 /* CEntity.m */; };
 		C8C384EB26BD182F009CF806 /* cell.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C384EA26BD182F009CF806 /* cell.xcframework */; };
 		C8C384EC26BD182F009CF806 /* cell.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8C384EA26BD182F009CF806 /* cell.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -122,6 +127,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C8077E1926F1808900E36265 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = ../libs/DeviceKit.framework; sourceTree = "<group>"; };
+		C8077E3626F1869300E36265 /* DeviceKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DeviceKit.xcframework; path = ../libs/DeviceKit.xcframework; sourceTree = "<group>"; };
+		C8077E3B26F1899E00E36265 /* DeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
+		C8077E3C26F1899E00E36265 /* DeviceUtil+Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DeviceUtil+Constant.h"; sourceTree = "<group>"; };
+		C8077E3D26F1899E00E36265 /* DeviceUtil+Constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DeviceUtil+Constant.m"; sourceTree = "<group>"; };
+		C8077E3E26F1899E00E36265 /* DeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
+		C8077E4726F18A3400E36265 /* DeviceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceList.plist; sourceTree = "<group>"; };
 		C80A208126D71C7D00255B11 /* CMessagingService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessagingService.m; sourceTree = "<group>"; };
 		C80A208526D71C8A00255B11 /* CMessagingService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessagingService.h; sourceTree = "<group>"; };
 		C80A208926D725AE00255B11 /* CMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessage.h; sourceTree = "<group>"; };
@@ -294,8 +306,13 @@
 				C8361BF9268EBD7700B1E15E /* CJSONable.m */,
 				C8C384F626BD1B73009CF806 /* CUtils.h */,
 				C8C384F326BD1B68009CF806 /* CUtils.m */,
+				C8077E3E26F1899E00E36265 /* DeviceUtil.h */,
+				C8077E3B26F1899E00E36265 /* DeviceUtil.m */,
+				C8077E3C26F1899E00E36265 /* DeviceUtil+Constant.h */,
+				C8077E3D26F1899E00E36265 /* DeviceUtil+Constant.m */,
 				C859CF4226DF263D003040CC /* NSString+Cube.h */,
 				C859CF4326DF2647003040CC /* NSString+Cube.m */,
+				C8077E4726F18A3400E36265 /* DeviceList.plist */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -453,6 +470,8 @@
 		C8F1A5792689A1E80020F136 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8077E3626F1869300E36265 /* DeviceKit.xcframework */,
+				C8077E1926F1808900E36265 /* DeviceKit.framework */,
 				C8C384EF26BD1840009CF806 /* WebRTC.xcframework */,
 				C8C384EA26BD182F009CF806 /* cell.xcframework */,
 				C82DB8B926B39B0500813378 /* FMDB.framework */,
@@ -489,6 +508,7 @@
 				C817FE1626C153250080D697 /* CContactZone.h in Headers */,
 				C817FE0726C12B6F0080D697 /* CContactAppendix.h in Headers */,
 				C8D7557626EDB14B00B7368E /* CModule.h in Headers */,
+				C8077E7926F18C9200E36265 /* CAbstractContact.h in Headers */,
 				C8400ABD26C20EBB00C8FF48 /* CGroupAppendix.h in Headers */,
 				C8F1A556268985A70020F136 /* Cube.h in Headers */,
 				C8400AB326C20DB600C8FF48 /* CGroup.h in Headers */,
@@ -496,6 +516,7 @@
 				C8ACAC8126B953530057740D /* CEngine.h in Headers */,
 				C842BDD526DE085A008A8517 /* CPluginSystem.h in Headers */,
 				C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */,
+				C8077E7526F18C6A00E36265 /* CJSONable.h in Headers */,
 				C8400AC126C2175400C8FF48 /* CGroupState.h in Headers */,
 				C8D7557926EDB15700B7368E /* CSubject.h in Headers */,
 				C8D7556D26EDAEB400B7368E /* CKernel.h in Headers */,
@@ -592,6 +613,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8077E4826F18A3400E36265 /* DeviceList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +652,7 @@
 				C8400ABA26C20EAB00C8FF48 /* CGroupAppendix.m in Sources */,
 				C8BE510926D8754400935149 /* CMessagingService+Core.m in Sources */,
 				C80A209926D7410600255B11 /* CMessagingStorage.m in Sources */,
+				C8077E3F26F1899F00E36265 /* DeviceUtil.m in Sources */,
 				C8BE511626D896A500935149 /* CMessagingEvent.m in Sources */,
 				C859CF3F26DF0C04003040CC /* CHyperTextMessage.m in Sources */,
 				C842BDE426DE3901008A8517 /* CMessageTypePlugin.m in Sources */,
@@ -641,6 +664,7 @@
 				C842BDD926DE0865008A8517 /* CPluginSystem.m in Sources */,
 				C8400AAC26C1F98B00C8FF48 /* CDevice.m in Sources */,
 				C8F1A5B52689CE350020F136 /* CPacket.m in Sources */,
+				C8077E4126F1899F00E36265 /* DeviceUtil+Constant.m in Sources */,
 				C8C384DA26BCD7DA009CF806 /* CContactService.m in Sources */,
 				C8C384E526BD0448009CF806 /* CEntity.m in Sources */,
 				C8B755E9268B3FC000812A4C /* CObserver.m in Sources */,

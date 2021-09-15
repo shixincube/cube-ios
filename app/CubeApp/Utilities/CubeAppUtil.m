@@ -26,6 +26,7 @@
 
 #import "CubeAppUtil.h"
 #import <CommonCrypto/CommonDigest.h>
+#import <sys/utsname.h>
 
 @implementation CubeAppUtil
 
@@ -81,6 +82,13 @@
     }
 
     return nil;
+}
+
++ (NSString*)deviceModelName {
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString * deviceModel = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    return deviceModel;
 }
 
 @end

@@ -29,3 +29,5 @@
 #import <Cube/CUtils.h>
 #import <Cube/CEngine.h>
 #import <Cube/CContactService.h>
+#import <Cube/CContact.h>
+#import <Cube/CDevice.h>

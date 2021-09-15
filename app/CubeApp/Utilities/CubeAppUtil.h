@@ -48,6 +48,8 @@
  */
 + (NSString *)explainAvatarName:(NSString *)avatarName;
 
++ (NSString*)deviceModelName;
+
 @end
 
 #endif /* CubeAppUtil_h */

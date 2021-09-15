@@ -36,8 +36,12 @@
 #import "CContactEvent.h"
 #import "CContactServiceState.h"
 #import "CSelf.h"
+#import "CContact.h"
+#import "CDevice.h"
 #import "CGroup.h"
 #import "CContactZone.h"
+#import "CContactAppendix.h"
+#import "CGroupAppendix.h"
 
 @interface CContactService () {
     

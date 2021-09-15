@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, CubeProfileInfoVCSectionType) {
     self.clear();
 
     CubeAccount * account = [CubeAccountHelper sharedInstance].currentAccount;
-    
+
     NSInteger sectionTag = CubeProfileInfoVCSectionTypeBase;
     self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
 

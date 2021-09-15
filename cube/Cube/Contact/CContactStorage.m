@@ -27,6 +27,7 @@
 #import "CContactStorage.h"
 #import "CUtils.h"
 #import "CContactService.h"
+#import "CContactAppendix.h"
 #import <FMDB/FMDatabase.h>
 
 @interface CContactStorage () {

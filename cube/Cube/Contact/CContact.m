@@ -25,6 +25,8 @@
  */
 
 #import "CContact.h"
+#import "CDevice.h"
+#import "CContactAppendix.h"
 
 @implementation CContact
 

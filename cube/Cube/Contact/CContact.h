@@ -28,8 +28,10 @@
 #define CContact_h
 
 #import "CAbstractContact.h"
-#import "CDevice.h"
-#import "CContactAppendix.h"
+
+@class CDevice;
+@class CContactAppendix;
+
 
 /*!
  * @brief 联系人实体。
