@@ -39,7 +39,7 @@
 
 @property (nonatomic, strong) UILabel * cubeIdLabel;
 
-@property (nonatomic, strong) UIImageView * arrowView;
+@property (nonatomic, strong) UIImageView * indicatorView;
 
 - (void)makeMasonry;
 
@@ -55,7 +55,7 @@
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.nikenameLabel];
         [self.contentView addSubview:self.cubeIdLabel];
-        [self.contentView addSubview:self.arrowView];
+        [self.contentView addSubview:self.indicatorView];
 
         [self makeMasonry];
     }
@@ -84,7 +84,7 @@
         make.top.mas_equalTo(self.avatarImageView.mas_centerY).mas_offset(5.0);
     }];
 
-    [self.arrowView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.indicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);
         make.size.mas_equalTo(CGSizeMake(8, 13));
         make.right.mas_equalTo(-15);
@@ -170,12 +170,12 @@
     return _cubeIdLabel;
 }
 
-- (UIImageView *)arrowView {
-    if (!_arrowView) {
-        _arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ArrowRight"]];
+- (UIImageView *)indicatorView {
+    if (!_indicatorView) {
+        _indicatorView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellIndicator"]];
     }
-    
-    return _arrowView;
+
+    return _indicatorView;
 }
 
 @end

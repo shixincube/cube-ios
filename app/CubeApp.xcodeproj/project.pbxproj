@@ -14,6 +14,10 @@
 		C80B4FF726E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FF126E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m */; };
 		C80B4FF826E5EA5A00AD90B2 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C80B4FF226E5EA5A00AD90B2 /* SVProgressHUD.bundle */; };
 		C80B4FFB26E5EADB00AD90B2 /* CubeUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FFA26E5EADB00AD90B2 /* CubeUIUtility.m */; };
+		C81CD09626F2CE7B001D469B /* CubeSettingItemButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C81CD09526F2CE7B001D469B /* CubeSettingItemButtonCell.m */; };
+		C81CD09A26F2D956001D469B /* CubeSettingItemSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C81CD09926F2D956001D469B /* CubeSettingItemSwitchCell.m */; };
+		C81CD09E26F2F299001D469B /* CubeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C81CD09D26F2F299001D469B /* CubeMenuItem.m */; };
+		C81CD0A026F2F2A9001D469B /* CubeMenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C81CD09F26F2F2A9001D469B /* CubeMenuItemCell.m */; };
 		C84CC1AC26E9F2010004A9CB /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */; };
 		C84CC1AD26E9F2010004A9CB /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C84CC1B026E9F2940004A9CB /* CubeAppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CC1AF26E9F2940004A9CB /* CubeAppUtil.m */; };
@@ -153,6 +157,14 @@
 		C80B4FF326E5EA5A00AD90B2 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		C80B4FF926E5EACE00AD90B2 /* CubeUIUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeUIUtility.h; sourceTree = "<group>"; };
 		C80B4FFA26E5EADB00AD90B2 /* CubeUIUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeUIUtility.m; sourceTree = "<group>"; };
+		C81CD09526F2CE7B001D469B /* CubeSettingItemButtonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeSettingItemButtonCell.m; sourceTree = "<group>"; };
+		C81CD09726F2CE85001D469B /* CubeSettingItemButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSettingItemButtonCell.h; sourceTree = "<group>"; };
+		C81CD09826F2D946001D469B /* CubeSettingItemSwitchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSettingItemSwitchCell.h; sourceTree = "<group>"; };
+		C81CD09926F2D956001D469B /* CubeSettingItemSwitchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeSettingItemSwitchCell.m; sourceTree = "<group>"; };
+		C81CD09C26F2F289001D469B /* CubeMenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeMenuItem.h; sourceTree = "<group>"; };
+		C81CD09D26F2F299001D469B /* CubeMenuItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeMenuItem.m; sourceTree = "<group>"; };
+		C81CD09F26F2F2A9001D469B /* CubeMenuItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeMenuItemCell.m; sourceTree = "<group>"; };
+		C81CD0A126F2F2B2001D469B /* CubeMenuItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeMenuItemCell.h; sourceTree = "<group>"; };
 		C84CC1A326E9EAB60004A9CB /* CubeAppMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAppMacros.h; sourceTree = "<group>"; };
 		C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84CC1AE26E9F28A0004A9CB /* CubeAppUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAppUtil.h; sourceTree = "<group>"; };
@@ -390,6 +402,17 @@
 				C80B4FEA26E5EA5A00AD90B2 /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		C81CD09B26F2F25C001D469B /* MenuItem */ = {
+			isa = PBXGroup;
+			children = (
+				C81CD09C26F2F289001D469B /* CubeMenuItem.h */,
+				C81CD09D26F2F299001D469B /* CubeMenuItem.m */,
+				C81CD0A126F2F2B2001D469B /* CubeMenuItemCell.h */,
+				C81CD09F26F2F2A9001D469B /* CubeMenuItemCell.m */,
+			);
+			path = MenuItem;
 			sourceTree = "<group>";
 		};
 		C8A0DA0026E1C86F0032A9D5 /* Frameworks */ = {
@@ -749,6 +772,7 @@
 		C8E3264F26E0DAD4005CA08A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C81CD09B26F2F25C001D469B /* MenuItem */,
 				C8FD7EDC26F097D5003FFE98 /* SettingItem */,
 				C8CCF97626EC9B0200ED4115 /* CubeTabBarController.h */,
 				C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */,
@@ -861,14 +885,14 @@
 		C8EAB75526EB4A2B0044A085 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				C8EAB75626EB4A2B0044A085 /* TLTabBar.h */,
-				C8EAB75726EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m */,
-				C8EAB75826EB4A2B0044A085 /* TLBadge.m */,
-				C8EAB75926EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.h */,
-				C8EAB75A26EB4A2B0044A085 /* TLTabBar.m */,
-				C8EAB75B26EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.h */,
-				C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */,
 				C8EAB75D26EB4A2B0044A085 /* TLBadge.h */,
+				C8EAB75826EB4A2B0044A085 /* TLBadge.m */,
+				C8EAB75626EB4A2B0044A085 /* TLTabBar.h */,
+				C8EAB75A26EB4A2B0044A085 /* TLTabBar.m */,
+				C8EAB75926EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.h */,
+				C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */,
+				C8EAB75B26EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.h */,
+				C8EAB75726EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -880,8 +904,12 @@
 				C8FD7ED626F087D5003FFE98 /* CubeSettingItem.m */,
 				C8FD7EDF26F09829003FFE98 /* CubeSettingItemBaseCell.h */,
 				C8FD7EDD26F0981E003FFE98 /* CubeSettingItemBaseCell.m */,
+				C81CD09726F2CE85001D469B /* CubeSettingItemButtonCell.h */,
+				C81CD09526F2CE7B001D469B /* CubeSettingItemButtonCell.m */,
 				C888CD5626F201B2004D7782 /* CubeSettingItemNormalCell.h */,
 				C888CD5726F201C0004D7782 /* CubeSettingItemNormalCell.m */,
+				C81CD09826F2D946001D469B /* CubeSettingItemSwitchCell.h */,
+				C81CD09926F2D956001D469B /* CubeSettingItemSwitchCell.m */,
 				C888CD5526F20129004D7782 /* CubeSettingItemTemplate.h */,
 			);
 			path = SettingItem;
@@ -974,6 +1002,7 @@
 				C80B4FFB26E5EADB00AD90B2 /* CubeUIUtility.m in Sources */,
 				C8E3263626E0DAA3005CA08A /* ZZBaseViewChainModel.m in Sources */,
 				C8E325AA26E0D665005CA08A /* CubeLaunchManager.m in Sources */,
+				C81CD09626F2CE7B001D469B /* CubeSettingItemButtonCell.m in Sources */,
 				C8E3267C26E0DBFF005CA08A /* MASViewAttribute.m in Sources */,
 				C8E3268A26E0F29E005CA08A /* CubeAccountViewController.m in Sources */,
 				C8E3264B26E0DAA3005CA08A /* ZZFLEXEditModel.m in Sources */,
@@ -1005,6 +1034,7 @@
 				C8E3267526E0DBFF005CA08A /* MASCompositeConstraint.m in Sources */,
 				C8E3262426E0DAA3005CA08A /* ZZFLEXTableViewHeaderFooterView.m in Sources */,
 				C8E3263526E0DAA3005CA08A /* ZZTableViewChainModel.m in Sources */,
+				C81CD09E26F2F299001D469B /* CubeMenuItem.m in Sources */,
 				C8EAB76226EB4A2B0044A085 /* TLBadge.m in Sources */,
 				C8E31C5526EF3370007B92F1 /* CubeProfileViewController.m in Sources */,
 				C8E3263426E0DAA3005CA08A /* ZZCollectionViewChainModel.m in Sources */,
@@ -1031,8 +1061,10 @@
 				C8EAB75F26EB4A2B0044A085 /* TLTabBarController.m in Sources */,
 				C80B4FF426E5EA5A00AD90B2 /* SVRadialGradientLayer.m in Sources */,
 				C8E3263126E0DAA3005CA08A /* UIView+ZZFLEX.m in Sources */,
+				C81CD0A026F2F2A9001D469B /* CubeMenuItemCell.m in Sources */,
 				C8E3264226E0DAA3005CA08A /* UIView+ZZSeparator.m in Sources */,
 				C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */,
+				C81CD09A26F2D956001D469B /* CubeSettingItemSwitchCell.m in Sources */,
 				C8CCF97826EC9B1200ED4115 /* CubeTabBarController.m in Sources */,
 				C8E3264926E0DAA3005CA08A /* NSMutableAttributedString+ZZFLEX.m in Sources */,
 				C8E3267926E0DBFF005CA08A /* View+MASAdditions.m in Sources */,

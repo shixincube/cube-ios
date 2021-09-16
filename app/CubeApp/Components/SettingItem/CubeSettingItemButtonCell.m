@@ -24,59 +24,37 @@
  * SOFTWARE.
  */
 
-#import "CubeSettingItemBaseCell.h"
+#import "CubeSettingItemButtonCell.h"
 
-@implementation CubeSettingItemBaseCell
+@interface CubeSettingItemButtonCell ()
+
+@property (nonatomic, strong) UILabel * titleLabel;
+
+@end
+
+
+@implementation CubeSettingItemButtonCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self setBackgroundColor:[UIColor whiteColor]];
+        [self.indicatorView setHidden:YES];
         
-        self.indicatorView = self.addImageView(10)
-            .image([UIImage imageNamed:@"CellIndicator"])
+        self.titleLabel = self.contentView.addLabel(1)
             .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
-                make.centerY.mas_equalTo(0);
-                make.size.mas_equalTo(CGSizeMake(8, 13));
-                make.right.mas_equalTo(-15);
+                make.center.mas_equalTo(0);
+                make.width.mas_lessThanOrEqualTo(self.contentView);
             }).view;
     }
 
     return self;
 }
 
-#pragma mark - Setters
-
 - (void)setItem:(CubeSettingItem *)item {
-    _item = item;
+    item.showDisclosureIndicator = NO;
 
-    [self setSelectedBackgroundColor:item.disableHighlight ? nil : [UIColor colorGrayLine]];
-    [self.indicatorView setHidden:!item.showDisclosureIndicator];
-}
+    [super setItem:item];
 
-#pragma mark - Protocol
-
-+ (CGFloat)viewHeightByDataModel:(id)dataModel {
-    return 44.0f;
-}
-
-- (void)setViewDataModel:(id)dataModel {
-    [self setItem:dataModel];
-}
-
-- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count {
-    if (indexPath.row == 0) {
-        self.addSeparator(ZZSeparatorPositionTop);
-    }
-    else {
-        self.removeSeparator(ZZSeparatorPositionTop);
-    }
-
-    if (indexPath.row == count - 1) {
-        self.addSeparator(ZZSeparatorPositionBottom);
-    }
-    else {
-        self.addSeparator(ZZSeparatorPositionBottom).beginAt(15);
-    }
+    [self.titleLabel setText:item.title];
 }
 
 @end

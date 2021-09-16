@@ -24,18 +24,32 @@
  * SOFTWARE.
  */
 
-#ifndef CubeSettingItemBaseCell_h
-#define CubeSettingItemBaseCell_h
+#ifndef CubeMenuItem_h
+#define CubeMenuItem_h
 
-#import <UIKit/UIKit.h>
-#import "CubeSettingItem.h"
+#import <Foundation/Foundation.h>
 
-@interface CubeSettingItemBaseCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
+@interface CubeMenuItem : NSObject
 
-@property (nonatomic, strong) UIImageView * indicatorView;
+@property (nonatomic, strong) NSString * iconName;
 
-@property (nonatomic, strong) CubeSettingItem * item;
+@property (nonatomic, strong) NSString * iconURL;
+
+/*! @brief 标题。 */
+@property (nonatomic, strong) NSString * title;
+
+@property (nonatomic, strong) NSString * badge;
+
+@property (nonatomic, strong) NSString * subTitle;
+
+@property (nonatomic, strong) NSString * rightIconName;
+
+@property (nonatomic, assign) BOOL showRightIconBadge;
+
+@property (nonatomic, assign, readonly) CGSize badgeSize;
+
++ (CubeMenuItem *)itemWithIcon:(NSString *)icon title:(NSString *)title;
 
 @end
 
-#endif /* CubeSettingItemBaseCell_h */
+#endif /* CubeMenuItem_h */

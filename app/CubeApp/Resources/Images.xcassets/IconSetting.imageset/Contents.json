@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "ArrowRight.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "IconSetting@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "IconSetting@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -34,7 +34,7 @@
 
 @property (nonatomic, strong) UIImageView * rightImageView;
 
-- (void)buildUI;
+- (void)buildView;
 
 @end
 
@@ -43,7 +43,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self buildUI];
+        [self buildView];
     }
     
     return self;
@@ -74,7 +74,7 @@
 
 #pragma mark - Private
 
-- (void)buildUI {
+- (void)buildView {
     self.titleLabel = self.contentView.addLabel(1)
         .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0);

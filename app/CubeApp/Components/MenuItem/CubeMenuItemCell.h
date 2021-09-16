@@ -24,18 +24,37 @@
  * SOFTWARE.
  */
 
-#ifndef CubeSettingItemBaseCell_h
-#define CubeSettingItemBaseCell_h
+#ifndef CubeMenuItemCell_h
+#define CubeMenuItemCell_h
 
 #import <UIKit/UIKit.h>
-#import "CubeSettingItem.h"
+#import "CubeMenuItem.h"
+#import "TLBadge.h"
 
-@interface CubeSettingItemBaseCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
+@interface CubeMenuItemCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
+
+/*!
+ * @brief 主 ICON 视图。
+ */
+@property (nonatomic, strong) UIImageView * iconView;
+
+@property (nonatomic, strong) UILabel * titleLabel;
+
+@property (nonatomic, strong) TLBadge * badgeView;
+
+/*!
+ * @brief 详情描述。
+ */
+@property (nonatomic, strong) UILabel * detailLabel;
+
+@property (nonatomic, strong) UIImageView * rightImageView;
+
+@property (nonatomic, strong) TLBadge * rightBadgeView;
 
 @property (nonatomic, strong) UIImageView * indicatorView;
 
-@property (nonatomic, strong) CubeSettingItem * item;
+@property (nonatomic, strong) CubeMenuItem * menuItem;
 
 @end
 
-#endif /* CubeSettingItemBaseCell_h */
+#endif /* CubeMenuItemCell_h */

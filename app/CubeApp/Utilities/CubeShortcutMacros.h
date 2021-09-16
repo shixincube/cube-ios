@@ -71,7 +71,7 @@
 /// URL
 #define     CURL(urlString)            [NSURL URLWithString:urlString]
 /// 图片
-#define     CImage(imageName)          (imageName ? [UIImage imageNamed:imageName] : nil)
+#define     CImage(imageName)          [UIImage imageNamed:imageName]
 #define     CPNG(X)                    [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:X ofType:@"png"]]
 #define     CJPG(X)                    [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:X ofType:@"jpg"]]
 /// 字符串

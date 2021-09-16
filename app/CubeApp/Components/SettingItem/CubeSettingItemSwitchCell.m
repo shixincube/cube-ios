@@ -24,21 +24,24 @@
  * SOFTWARE.
  */
 
-#import "CubeSettingItemBaseCell.h"
+#import "CubeSettingItemSwitchCell.h"
 
-@implementation CubeSettingItemBaseCell
+@interface CubeSettingItemSwitchCell ()
+
+@property (nonatomic, strong) UILabel * titleLabel;
+
+@property (nonatomic, strong) UISwitch * switchControl;
+
+- (void)buildView;
+
+@end
+
+
+@implementation CubeSettingItemSwitchCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self setBackgroundColor:[UIColor whiteColor]];
-        
-        self.indicatorView = self.addImageView(10)
-            .image([UIImage imageNamed:@"CellIndicator"])
-            .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
-                make.centerY.mas_equalTo(0);
-                make.size.mas_equalTo(CGSizeMake(8, 13));
-                make.right.mas_equalTo(-15);
-            }).view;
+        [self buildView];
     }
 
     return self;
@@ -47,36 +50,29 @@
 #pragma mark - Setters
 
 - (void)setItem:(CubeSettingItem *)item {
-    _item = item;
+    item.showDisclosureIndicator = NO;
+    item.disableHighlight = YES;
+    
+    [super setItem:item];
 
-    [self setSelectedBackgroundColor:item.disableHighlight ? nil : [UIColor colorGrayLine]];
-    [self.indicatorView setHidden:!item.showDisclosureIndicator];
+    [self.titleLabel setText:item.title];
 }
 
-#pragma mark - Protocol
+#pragma mark - Private
 
-+ (CGFloat)viewHeightByDataModel:(id)dataModel {
-    return 44.0f;
-}
-
-- (void)setViewDataModel:(id)dataModel {
-    [self setItem:dataModel];
-}
-
-- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count {
-    if (indexPath.row == 0) {
-        self.addSeparator(ZZSeparatorPositionTop);
-    }
-    else {
-        self.removeSeparator(ZZSeparatorPositionTop);
-    }
-
-    if (indexPath.row == count - 1) {
-        self.addSeparator(ZZSeparatorPositionBottom);
-    }
-    else {
-        self.addSeparator(ZZSeparatorPositionBottom).beginAt(15);
-    }
+- (void)buildView {
+    self.titleLabel = self.contentView.addLabel(1)
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.left.mas_equalTo(15);
+            make.right.mas_lessThanOrEqualTo(-80);
+        }).view;
+    
+    self.switchControl = self.contentView.addSwitch(2)
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.right.mas_lessThanOrEqualTo(-15);
+        }).view;
 }
 
 @end

@@ -33,12 +33,13 @@
 
 typedef NS_ENUM(NSInteger, CubeProfileInfoVCSectionType) {
     CubeProfileInfoVCSectionTypeBase,
+    CubeProfileInfoVCSectionTypeSafe,
     CubeProfileInfoVCSectionTypeMore,
 };
 
 @interface CubeProfileInfoViewController ()
 
-- (void)buildUI;
+- (void)buildView;
 
 @end
 
@@ -50,12 +51,12 @@ typedef NS_ENUM(NSInteger, CubeProfileInfoVCSectionType) {
     [self setTitle:@"个人信息"];
     [self.view setBackgroundColor:[UIColor colorGrayBG]];
     
-    [self buildUI];
+    [self buildView];
 }
 
 #pragma mark - Private
 
-- (void)buildUI {
+- (void)buildView {
     self.clear();
 
     CubeAccount * account = [CubeAccountHelper sharedInstance].currentAccount;
@@ -76,7 +77,32 @@ typedef NS_ENUM(NSInteger, CubeProfileInfoVCSectionType) {
     self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(nickname).selectedAction(^ (id data) {
         // Nothing
     });
+
+    // 魔方号
+    CubeSettingItem * cubeId = [CubeSettingItem itemWithTitle:@"魔方号"];
+    cubeId.showDisclosureIndicator = NO;
+    cubeId.subTitle = [NSString stringWithFormat:@"%lu", account.identity];
+    self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(cubeId).selectedAction(^ (id data) {
+        // Nothing
+    });
     
+    // 更多
+    CubeSettingItem * more = [CubeSettingItem itemWithTitle:@"更多"];
+    self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(more).selectedAction(^ (id data) {
+        // Nothing
+    });
+    
+    
+    // 安全屋
+    
+    sectionTag = CubeProfileInfoVCSectionTypeSafe;
+    self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
+    
+    // 我的安全屋
+    CubeSettingItem * safeHouse = [CubeSettingItem itemWithTitle:@"我的安全屋"];
+    self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(safeHouse).selectedAction(^ (id data) {
+        // Nothing
+    });
 
     [self reloadView];
 }

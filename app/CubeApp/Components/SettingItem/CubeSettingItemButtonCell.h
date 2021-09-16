@@ -23,19 +23,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+#ifndef CubeSettingItemButtonCell_h
+#define CubeSettingItemButtonCell_h
 
-#ifndef CubeSettingItemBaseCell_h
-#define CubeSettingItemBaseCell_h
+#import "CubeSettingItemBaseCell.h"
 
-#import <UIKit/UIKit.h>
-#import "CubeSettingItem.h"
-
-@interface CubeSettingItemBaseCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
-
-@property (nonatomic, strong) UIImageView * indicatorView;
-
-@property (nonatomic, strong) CubeSettingItem * item;
+@interface CubeSettingItemButtonCell : CubeSettingItemBaseCell
 
 @end
 
-#endif /* CubeSettingItemBaseCell_h */
+#endif /* CubeSettingItemButtonCell_h */

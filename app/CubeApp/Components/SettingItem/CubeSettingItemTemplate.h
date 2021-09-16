@@ -28,7 +28,11 @@
 #define CubeSettingItemTemplate_h
 
 #import "CubeSettingItemNormalCell.h"
+#import "CubeSettingItemButtonCell.h"
+#import "CubeSettingItemSwitchCell.h"
 
 #define CELL_ST_ITEM_NORMAL     [CubeSettingItemNormalCell class]
+#define CELL_ST_ITEM_BUTTON     [CubeSettingItemButtonCell class]
+#define CELL_ST_ITEM_SWITCH     [CubeSettingItemSwitchCell class]
 
 #endif /* CubeSettingItemTemplate_h */

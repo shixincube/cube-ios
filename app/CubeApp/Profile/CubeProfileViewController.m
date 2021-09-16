@@ -29,7 +29,8 @@
 #import "CubeProfileInfoViewController.h"
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
-
+#import "CubeMenuItem.h"
+#import "CubeMenuItemCell.h"
 
 typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
     CubeProfileSectionTagInfo,
@@ -57,7 +58,7 @@ typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
 
 - (void)loadView {
     [super loadView];
-    
+
     [self setTitle:@"我的"];
 
     [self buildMenus];
@@ -84,6 +85,7 @@ typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
 
     CubeAccount * account = [CubeAccountHelper sharedInstance].currentAccount;
 
+    // 基本信息
     NSInteger sectionTag = CubeProfileSectionTagInfo;
     self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
     self.addCell([CubeProfileHeaderCell class])
@@ -94,6 +96,23 @@ typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
             CubeProfileInfoViewController * infoVC = [[CubeProfileInfoViewController alloc] init];
             PushVC(infoVC);
         });
+
+    // 设置
+    sectionTag = CubeProfileSectionTagSetting;
+    self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
+    CubeMenuItem * setting = [CubeMenuItem itemWithIcon:@"IconSetting" title:@"设置"];
+    self.addCell([CubeMenuItemCell class])
+        .toSection(sectionTag)
+        .withDataModel(setting)
+        .selectedAction(^ (id data) {
+            @strongify(self);
+            // CubeSettingViewController * settingVC;
+            // PushVC(settingVC);
+        });
+
+    // 意见反馈
+
+    // 在线客服
     
     [self reloadView];
 }

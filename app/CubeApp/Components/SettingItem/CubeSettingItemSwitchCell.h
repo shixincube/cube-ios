@@ -24,18 +24,13 @@
  * SOFTWARE.
  */
 
-#ifndef CubeSettingItemBaseCell_h
-#define CubeSettingItemBaseCell_h
+#ifndef CubeSettingItemSwitchCell_h
+#define CubeSettingItemSwitchCell_h
 
-#import <UIKit/UIKit.h>
-#import "CubeSettingItem.h"
+#import "CubeSettingItemBaseCell.h"
 
-@interface CubeSettingItemBaseCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
-
-@property (nonatomic, strong) UIImageView * indicatorView;
-
-@property (nonatomic, strong) CubeSettingItem * item;
+@interface CubeSettingItemSwitchCell : CubeSettingItemBaseCell
 
 @end
 
-#endif /* CubeSettingItemBaseCell_h */
+#endif /* CubeSettingItemSwitchCell_h */
