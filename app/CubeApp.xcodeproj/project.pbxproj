@@ -18,6 +18,8 @@
 		C81CD09A26F2D956001D469B /* CubeSettingItemSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C81CD09926F2D956001D469B /* CubeSettingItemSwitchCell.m */; };
 		C81CD09E26F2F299001D469B /* CubeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C81CD09D26F2F299001D469B /* CubeMenuItem.m */; };
 		C81CD0A026F2F2A9001D469B /* CubeMenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C81CD09F26F2F2A9001D469B /* CubeMenuItemCell.m */; };
+		C81CD0A426F32702001D469B /* CubeSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C81CD0A326F32702001D469B /* CubeSettingViewController.m */; };
+		C81CD0A726F32AA6001D469B /* CubeAccountSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C81CD0A626F32AA6001D469B /* CubeAccountSettingViewController.m */; };
 		C84CC1AC26E9F2010004A9CB /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */; };
 		C84CC1AD26E9F2010004A9CB /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C84CC1B026E9F2940004A9CB /* CubeAppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CC1AF26E9F2940004A9CB /* CubeAppUtil.m */; };
@@ -165,6 +167,10 @@
 		C81CD09D26F2F299001D469B /* CubeMenuItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeMenuItem.m; sourceTree = "<group>"; };
 		C81CD09F26F2F2A9001D469B /* CubeMenuItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeMenuItemCell.m; sourceTree = "<group>"; };
 		C81CD0A126F2F2B2001D469B /* CubeMenuItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeMenuItemCell.h; sourceTree = "<group>"; };
+		C81CD0A226F326F3001D469B /* CubeSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSettingViewController.h; sourceTree = "<group>"; };
+		C81CD0A326F32702001D469B /* CubeSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeSettingViewController.m; sourceTree = "<group>"; };
+		C81CD0A626F32AA6001D469B /* CubeAccountSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeAccountSettingViewController.m; sourceTree = "<group>"; };
+		C81CD0A826F32AB0001D469B /* CubeAccountSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAccountSettingViewController.h; sourceTree = "<group>"; };
 		C84CC1A326E9EAB60004A9CB /* CubeAppMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAppMacros.h; sourceTree = "<group>"; };
 		C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84CC1AE26E9F28A0004A9CB /* CubeAppUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAppUtil.h; sourceTree = "<group>"; };
@@ -415,6 +421,15 @@
 			path = MenuItem;
 			sourceTree = "<group>";
 		};
+		C81CD0A526F3297D001D469B /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C81CD0A826F32AB0001D469B /* CubeAccountSettingViewController.h */,
+				C81CD0A626F32AA6001D469B /* CubeAccountSettingViewController.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		C8A0DA0026E1C86F0032A9D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +468,7 @@
 		C8E31C5226EF2DF9007B92F1 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				C81CD0A526F3297D001D469B /* Setting */,
 				C8E31C5926EF3C2F007B92F1 /* CubeProfileHeaderCell.h */,
 				C8E31C5A26EF3C3B007B92F1 /* CubeProfileHeaderCell.m */,
 				C8FD7ED926F096E4003FFE98 /* CubeProfileInfoAvatarCell.h */,
@@ -461,6 +477,8 @@
 				C8E31C5626EF37C2007B92F1 /* CubeProfileInfoViewController.m */,
 				C8E31C5326EF3362007B92F1 /* CubeProfileViewController.h */,
 				C8E31C5426EF3370007B92F1 /* CubeProfileViewController.m */,
+				C81CD0A226F326F3001D469B /* CubeSettingViewController.h */,
+				C81CD0A326F32702001D469B /* CubeSettingViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1048,11 +1066,13 @@
 				C8E3267626E0DBFF005CA08A /* MASConstraintMaker.m in Sources */,
 				C8E3264D26E0DAA3005CA08A /* ZZFLEXCollectionViewController+EditExtension.m in Sources */,
 				C8E3258D26E0CF95005CA08A /* AppDelegate.m in Sources */,
+				C81CD0A426F32702001D469B /* CubeSettingViewController.m in Sources */,
 				C8E3265126E0DB02005CA08A /* CubeViewController.m in Sources */,
 				C8FD7ED726F087D5003FFE98 /* CubeSettingItem.m in Sources */,
 				C8E3263326E0DAA3005CA08A /* ZZLabelChainModel.m in Sources */,
 				C80B4FF526E5EA5A00AD90B2 /* SVProgressAnimatedView.m in Sources */,
 				C8E3263E26E0DAA3005CA08A /* UIButton+ZZExtension.m in Sources */,
+				C81CD0A726F32AA6001D469B /* CubeAccountSettingViewController.m in Sources */,
 				C8E3262726E0DAA3005CA08A /* ZZFLEXAngelViewBatchChainModel.m in Sources */,
 				C8E3267A26E0DBFF005CA08A /* MASConstraint.m in Sources */,
 				C888CD5826F201C0004D7782 /* CubeSettingItemNormalCell.m in Sources */,

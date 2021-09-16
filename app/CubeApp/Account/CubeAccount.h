@@ -39,9 +39,13 @@
 
 @property (nonatomic, strong, readonly) NSString * displayName;
 
+@property (nonatomic, strong, readonly) NSString * region;
+
 @property (nonatomic, strong, readonly) NSString * avatar;
 
 @property (nonatomic, assign, readonly) NSInteger state;
+
+@property (nonatomic, assign, readonly) int64_t localTimestamp;
 
 
 + (CubeAccount *)accountWithJSON:(NSDictionary *)json;

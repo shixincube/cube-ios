@@ -25,6 +25,7 @@
  */
 
 #import "CubeAccount.h"
+#import <Cube/CUtils.h>
 
 @implementation CubeAccount
 
@@ -35,13 +36,27 @@
 - (instancetype)initWithJSON:(NSDictionary *)accountJSON {
     if (self = [super init]) {
         _identity = [[accountJSON valueForKey:@"id"] unsignedLongValue];
-        _accountName = [accountJSON valueForKey:@"account"];
         _phoneNumber = [accountJSON valueForKey:@"phone"];
         _displayName = [accountJSON valueForKey:@"name"];
+        _region = [accountJSON valueForKey:@"region"];
         _avatar = [accountJSON valueForKey:@"avatar"];
         _state = [[accountJSON valueForKey:@"state"] integerValue];
+
+        if ([accountJSON objectForKey:@"account"]) {
+            _accountName = [accountJSON valueForKey:@"account"];
+        }
+        else {
+            _accountName = @"";
+        }
+
+        if ([accountJSON objectForKey:@"localTimestamp"]) {
+            _localTimestamp = [[accountJSON valueForKey:@"localTimestamp"] unsignedLongLongValue];
+        }
+        else {
+            _localTimestamp = [CUtils currentTimeMillis];
+        }
     }
-    
+
     return self;
 }
 
@@ -51,8 +66,10 @@
         @"account" : _accountName,
         @"phone" : _phoneNumber,
         @"name" : _displayName,
+        @"region" : _region,
         @"avatar" : _avatar,
-        @"state" : [NSNumber numberWithUnsignedInteger:_state]
+        @"state" : [NSNumber numberWithUnsignedInteger:_state],
+        @"localTimestamp": [NSNumber numberWithUnsignedLongLong:_localTimestamp]
     };
     return json;
 }

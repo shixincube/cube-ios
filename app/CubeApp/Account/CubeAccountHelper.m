@@ -26,10 +26,12 @@
 
 #import "CubeAccountHelper.h"
 #import "CubeAccount.h"
+#import <Cube/CUtils.h>
 
-#define KEY_TOKEN @"CubeAppToken"
-#define KEY_ACCOUNT @"CubeAppAccount"
-#define KEY_ENGINECONFIG @"CubeEngineConfig"
+#define KEY_TOKEN           @"CubeAppToken"
+#define KEY_ACCOUNT         @"CubeAppAccount"
+#define KEY_ENGINECONFIG    @"CubeEngineConfig"
+
 
 @interface CubeAccountHelper ()
 
@@ -69,6 +71,17 @@
     NSNumber * time = [NSNumber numberWithUnsignedLong:expireTime];
     NSDictionary * json = @{ @"code" : code, @"expire" : time };
     [[NSUserDefaults standardUserDefaults] setValue:json forKey:KEY_TOKEN];
+}
+
+- (BOOL)checkValidToken {
+    if (self.tokenCode) {
+        UInt64 now = [CUtils currentTimeMillis];
+        if (self.tokenExpireTime > now) {
+            return YES;
+        }
+    }
+
+    return NO;
 }
 
 #pragma mark - Getters

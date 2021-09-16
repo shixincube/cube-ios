@@ -74,9 +74,8 @@
 #pragma mark - Private
 
 - (void)launch {
-    NSString * tokenCode = [CubeAccountHelper sharedInstance].tokenCode;
-    if (tokenCode) {
-        // 有 Token Code，使用 Token Code 进行操作
+    if ([[CubeAccountHelper sharedInstance] checkValidToken]) {
+        // Token 有效
         CubeTabBarController * tabBarVC = [[CubeTabBarController alloc] init];
         [self setRootVC:tabBarVC];
     }

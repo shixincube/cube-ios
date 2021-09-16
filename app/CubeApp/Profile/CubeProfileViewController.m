@@ -31,6 +31,7 @@
 #import "CubeAccountHelper.h"
 #import "CubeMenuItem.h"
 #import "CubeMenuItemCell.h"
+#import "CubeSettingViewController.h"
 
 typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
     CubeProfileSectionTagInfo,
@@ -77,6 +78,12 @@ typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
     }
 }
 
+#pragma mark - Delegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // TODO 更新 Badge
+}
+
 #pragma mark - Private
 
 - (void)buildMenus {
@@ -106,15 +113,36 @@ typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
         .withDataModel(setting)
         .selectedAction(^ (id data) {
             @strongify(self);
-            // CubeSettingViewController * settingVC;
-            // PushVC(settingVC);
+            CubeSettingViewController * settingVC = [[CubeSettingViewController alloc] init];
+            PushVC(settingVC);
         });
 
     // 意见反馈
 
     // 在线客服
-    
+
     [self reloadView];
+    [self resetTabBarBadge];
+}
+
+- (void)resetTabBarBadge {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString * badgeValue = nil;
+        NSArray * data = self.dataModelArray.all();
+        for (id item in data) {
+            if ([item isKindOfClass:[CubeMenuItem class]]) {
+                CubeMenuItem * menuItem = item;
+                if (menuItem.badge || menuItem.showRightIconBadge) {
+                    badgeValue = @"";
+                    break;
+                }
+            }
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tabBarItem setBadgeValue:badgeValue];
+        });
+    });
 }
 
 - (void)configTabBarItem:(NSString *)title image:(NSString *)image imageHL:(NSString *)imageHL {
