@@ -121,6 +121,8 @@
 		C8EAB76326EB4A2B0044A085 /* TLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75A26EB4A2B0044A085 /* TLTabBar.m */; };
 		C8EAB76426EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */; };
 		C8EAB76526EB4A2B0044A085 /* UITabBar+TLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */; };
+		C8F2A5A926F4A6AC00E17946 /* CubeConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F2A5A826F4A6AC00E17946 /* CubeConversationListController.m */; };
+		C8F2A5AC26F4AB8700E17946 /* CubeConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F2A5AB26F4AB8700E17946 /* CubeConversation.m */; };
 		C8FD7ED226F039B6003FFE98 /* UICollectionViewCell+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */; };
 		C8FD7ED526F06F05003FFE98 /* Avatar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8FD7ED426F06F05003FFE98 /* Avatar.xcassets */; };
 		C8FD7ED726F087D5003FFE98 /* CubeSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FD7ED626F087D5003FFE98 /* CubeSettingItem.m */; };
@@ -373,6 +375,10 @@
 		C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLTabBar+iOS12_1Fix.m"; sourceTree = "<group>"; };
 		C8EAB75D26EB4A2B0044A085 /* TLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLBadge.h; sourceTree = "<group>"; };
 		C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+TLExtension.m"; sourceTree = "<group>"; };
+		C8F2A5A726F4A6A000E17946 /* CubeConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationListController.h; sourceTree = "<group>"; };
+		C8F2A5A826F4A6AC00E17946 /* CubeConversationListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationListController.m; sourceTree = "<group>"; };
+		C8F2A5AB26F4AB8700E17946 /* CubeConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversation.m; sourceTree = "<group>"; };
+		C8F2A5AD26F4ABE700E17946 /* CubeConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversation.h; sourceTree = "<group>"; };
 		C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+Extensions.m"; sourceTree = "<group>"; };
 		C8FD7ED326F039BE003FFE98 /* UICollectionViewCell+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+Extensions.h"; sourceTree = "<group>"; };
 		C8FD7ED426F06F05003FFE98 /* Avatar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Avatar.xcassets; sourceTree = "<group>"; };
@@ -478,6 +484,8 @@
 		C8CCF97926ECA3BB00ED4115 /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
+				C8F2A5A726F4A6A000E17946 /* CubeConversationListController.h */,
+				C8F2A5A826F4A6AC00E17946 /* CubeConversationListController.m */,
 				C8CCF97C26ECA3F100ED4115 /* CubeConversationViewController.h */,
 				C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */,
 			);
@@ -522,6 +530,7 @@
 		C8E3258A26E0CF95005CA08A /* CubeApp */ = {
 			isa = PBXGroup;
 			children = (
+				C8F2A5AA26F4AB2300E17946 /* DataModel */,
 				C8E325A626E0D352005CA08A /* Launcher */,
 				C8E3268726E0F25F005CA08A /* Account */,
 				C8CCF97926ECA3BB00ED4115 /* Conversation */,
@@ -880,8 +889,6 @@
 		C8E3268726E0F25F005CA08A /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				C8EAB74726EB0BEA0044A085 /* CubeAccount.h */,
-				C8EAB74826EB0BF90044A085 /* CubeAccount.m */,
 				C80B4FE826E5E87E00AD90B2 /* CubeAccountExplorer.h */,
 				C80B4FE626E5E86B00AD90B2 /* CubeAccountExplorer.m */,
 				C8EAB74D26EB46BA0044A085 /* CubeAccountHelper.h */,
@@ -933,6 +940,17 @@
 				C8EAB75726EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m */,
 			);
 			path = Private;
+			sourceTree = "<group>";
+		};
+		C8F2A5AA26F4AB2300E17946 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				C8EAB74726EB0BEA0044A085 /* CubeAccount.h */,
+				C8EAB74826EB0BF90044A085 /* CubeAccount.m */,
+				C8F2A5AD26F4ABE700E17946 /* CubeConversation.h */,
+				C8F2A5AB26F4AB8700E17946 /* CubeConversation.m */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		C8FD7EDC26F097D5003FFE98 /* SettingItem */ = {
@@ -1072,6 +1090,7 @@
 				C8E3267526E0DBFF005CA08A /* MASCompositeConstraint.m in Sources */,
 				C8E3262426E0DAA3005CA08A /* ZZFLEXTableViewHeaderFooterView.m in Sources */,
 				C8E3263526E0DAA3005CA08A /* ZZTableViewChainModel.m in Sources */,
+				C8F2A5A926F4A6AC00E17946 /* CubeConversationListController.m in Sources */,
 				C81CD09E26F2F299001D469B /* CubeMenuItem.m in Sources */,
 				C8EAB76226EB4A2B0044A085 /* TLBadge.m in Sources */,
 				C8E31C5526EF3370007B92F1 /* CubeProfileViewController.m in Sources */,
@@ -1128,6 +1147,7 @@
 				C8CCF97B26ECA3E600ED4115 /* CubeConversationViewController.m in Sources */,
 				C8FD7ED226F039B6003FFE98 /* UICollectionViewCell+Extensions.m in Sources */,
 				C8E3262626E0DAA3005CA08A /* ZZFLEXTableViewEmptyCell.m in Sources */,
+				C8F2A5AC26F4AB8700E17946 /* CubeConversation.m in Sources */,
 				C8E3263826E0DAA3005CA08A /* ZZScrollViewChainModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

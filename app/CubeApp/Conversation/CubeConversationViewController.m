@@ -65,8 +65,12 @@
     // 列表
     self.tableView = self.view.addTableView(1)
         .backgroundColor([UIColor whiteColor])
+        .tableFooterView([[UIView alloc] init])
+        .separatorStyle(UITableViewCellSeparatorStyleNone)
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        })
         .view;
-//        .tableHeaderView(self.ser)
 }
 
 #pragma mark - Getters
@@ -75,7 +79,7 @@
     if (!_searchController) {
         
     }
-    
+
     return _searchController;
 }
 
