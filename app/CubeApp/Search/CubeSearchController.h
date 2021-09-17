@@ -24,59 +24,16 @@
  * SOFTWARE.
  */
 
-#import "CubeConversationViewController.h"
-#import "CubeSearchController.h"
+#ifndef CubeSearchController_h
+#define CubeSearchController_h
 
-@interface CubeConversationViewController ()
+#import <UIKit/UIKit.h>
+#import "CubeSearchResultsProtocol.h"
 
-@property (nonatomic, strong) UITableView * tableView;
+@interface CubeSearchController : UISearchController
 
-@property (nonatomic, strong) CubeSearchController * searchController;
-
-@end
-
-
-@implementation CubeConversationViewController
-
-- (instancetype)init {
-    if (self = [super init]) {
-        [self configTabBarItem:@"消息" image:@"TabBarConversation" imageHL:@"TabBarConversationHL"];
-    }
-
-    return self;
-}
-
-- (void)loadView {
-    [super loadView];
-    [self setNavTitleWithStatusString:nil];
-
-    // 构建界面
-    [self buildView];
-}
-
-#pragma mark - Private
-
-- (void)setNavTitleWithStatusString:(NSString *)statusString {
-    NSString * title = (nil != statusString) ? [NSString stringWithFormat:@"消息(%@)", statusString] : @"消息";
-    [self.navigationItem setTitle:title];
-}
-
-- (void)buildView {
-    // 列表
-    self.tableView = self.view.addTableView(1)
-        .backgroundColor([UIColor whiteColor])
-        .view;
-//        .tableHeaderView(self.ser)
-}
-
-#pragma mark - Getters
-
-- (CubeSearchController *)searchController {
-    if (!_searchController) {
-        
-    }
-    
-    return _searchController;
-}
++ (CubeSearchController *)controllerWithSearchResultsController:(UIViewController<CubeSearchResultsProtocol> *)searchResultsController;
 
 @end
+
+#endif /* CubeSearchController_h */

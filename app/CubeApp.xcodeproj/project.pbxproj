@@ -25,6 +25,8 @@
 		C84CC1B026E9F2940004A9CB /* CubeAppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CC1AF26E9F2940004A9CB /* CubeAppUtil.m */; };
 		C84CC1B326EA0B110004A9CB /* NSObject+CubeKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */; };
 		C888CD5826F201C0004D7782 /* CubeSettingItemNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C888CD5726F201C0004D7782 /* CubeSettingItemNormalCell.m */; };
+		C89FC0D526F463CE0027B2FC /* CubeSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = C89FC0D426F463CE0027B2FC /* CubeSearchController.m */; };
+		C89FC0D726F468D30027B2FC /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C89FC0D626F468D30027B2FC /* UIImage+Color.m */; };
 		C8A0DA0226E1C86F0032A9D5 /* Cube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0126E1C86F0032A9D5 /* Cube.framework */; };
 		C8A0DA0326E1C86F0032A9D5 /* Cube.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0126E1C86F0032A9D5 /* Cube.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8A0DA0F26E1D0440032A9D5 /* cell.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0B26E1D0440032A9D5 /* cell.xcframework */; };
@@ -180,6 +182,11 @@
 		C888CD5526F20129004D7782 /* CubeSettingItemTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSettingItemTemplate.h; sourceTree = "<group>"; };
 		C888CD5626F201B2004D7782 /* CubeSettingItemNormalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSettingItemNormalCell.h; sourceTree = "<group>"; };
 		C888CD5726F201C0004D7782 /* CubeSettingItemNormalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeSettingItemNormalCell.m; sourceTree = "<group>"; };
+		C89FC0D226F4631C0027B2FC /* CubeSearchResultsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSearchResultsProtocol.h; sourceTree = "<group>"; };
+		C89FC0D326F463C20027B2FC /* CubeSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSearchController.h; sourceTree = "<group>"; };
+		C89FC0D426F463CE0027B2FC /* CubeSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeSearchController.m; sourceTree = "<group>"; };
+		C89FC0D626F468D30027B2FC /* UIImage+Color.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		C89FC0D826F468DE0027B2FC /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		C8A0DA0126E1C86F0032A9D5 /* Cube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A0DA0B26E1D0440032A9D5 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = "/Users/ambrose/Documents/Repositories/Cube3/cube-ios/cube/../libs/cell.xcframework"; sourceTree = "<absolute>"; };
 		C8A0DA0C26E1D0440032A9D5 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = "/Users/ambrose/Documents/Repositories/Cube3/cube-ios/cube/../libs/WebRTC.xcframework"; sourceTree = "<absolute>"; };
@@ -430,6 +437,16 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		C89FC0D126F462E60027B2FC /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C89FC0D226F4631C0027B2FC /* CubeSearchResultsProtocol.h */,
+				C89FC0D326F463C20027B2FC /* CubeSearchController.h */,
+				C89FC0D426F463CE0027B2FC /* CubeSearchController.m */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		C8A0DA0026E1C86F0032A9D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +467,8 @@
 				C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */,
 				C8FD7ED326F039BE003FFE98 /* UICollectionViewCell+Extensions.h */,
 				C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */,
+				C89FC0D826F468DE0027B2FC /* UIImage+Color.h */,
+				C89FC0D626F468D30027B2FC /* UIImage+Color.m */,
 				C8A0DA3326E1D6B80032A9D5 /* UIView+Extensions.h */,
 				C8A0DA3426E1D6C40032A9D5 /* UIView+Extensions.m */,
 			);
@@ -507,6 +526,7 @@
 				C8E3268726E0F25F005CA08A /* Account */,
 				C8CCF97926ECA3BB00ED4115 /* Conversation */,
 				C8E31C5226EF2DF9007B92F1 /* Profile */,
+				C89FC0D126F462E60027B2FC /* Search */,
 				C8E3264F26E0DAD4005CA08A /* Components */,
 				C8E3267F26E0E4EE005CA08A /* Utilities */,
 				C8A0DA3226E1D6940032A9D5 /* Categories */,
@@ -1058,6 +1078,7 @@
 				C8E3263426E0DAA3005CA08A /* ZZCollectionViewChainModel.m in Sources */,
 				C8E3262826E0DAA3005CA08A /* ZZFLEXAngelViewEditChainModel.m in Sources */,
 				C8E3267426E0DBFF005CA08A /* ViewController+MASAdditions.m in Sources */,
+				C89FC0D526F463CE0027B2FC /* CubeSearchController.m in Sources */,
 				C8E3263A26E0DAA3005CA08A /* ZZControlChainModel.m in Sources */,
 				C8E3263926E0DAA3005CA08A /* ZZImageViewChainModel.m in Sources */,
 				C8E3262E26E0DAA3005CA08A /* ZZFLEXViewModel+Angel.m in Sources */,
@@ -1065,6 +1086,7 @@
 				C8E31C5B26EF3C3B007B92F1 /* CubeProfileHeaderCell.m in Sources */,
 				C8E3267626E0DBFF005CA08A /* MASConstraintMaker.m in Sources */,
 				C8E3264D26E0DAA3005CA08A /* ZZFLEXCollectionViewController+EditExtension.m in Sources */,
+				C89FC0D726F468D30027B2FC /* UIImage+Color.m in Sources */,
 				C8E3258D26E0CF95005CA08A /* AppDelegate.m in Sources */,
 				C81CD0A426F32702001D469B /* CubeSettingViewController.m in Sources */,
 				C8E3265126E0DB02005CA08A /* CubeViewController.m in Sources */,

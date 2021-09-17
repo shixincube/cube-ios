@@ -15,9 +15,10 @@
 #import "Utilities/CubeShortcutMacros.h"
 #import "Utilities/CubeAppMacros.h"
 
-#import "Categories/UIView+Extensions.h"
 #import "Categories/UICollectionViewCell+Extensions.h"
 #import "Categories/NSObject+CubeKeyValue.h"
+#import "Categories/UIImage+Color.h"
+#import "Categories/UIView+Extensions.h"
 
 #import "Frameworks/Masonry/Masonry/Masonry.h"
 #import "Frameworks/ZZFLEX/ZZFLEX.h"
