@@ -25,11 +25,15 @@
  */
 
 #import "CubeConversationViewController.h"
+#import "CubeConversationListController.h"
 #import "CubeSearchController.h"
 
 @interface CubeConversationViewController ()
 
 @property (nonatomic, strong) UITableView * tableView;
+
+/*! 列表数据控制器。 */
+@property (nonatomic, strong) CubeConversationListController * listController;
 
 @property (nonatomic, strong) CubeSearchController * searchController;
 
@@ -52,6 +56,9 @@
 
     // 构建界面
     [self buildView];
+
+    // 初始数据模型
+    [self initModel];
 }
 
 #pragma mark - Private
@@ -71,6 +78,14 @@
             make.edges.mas_equalTo(0);
         })
         .view;
+}
+
+- (void)initModel {
+    @weakify(self);
+    self.listController = [[CubeConversationListController alloc] initWithHostView:self.tableView badgeStatusChangeAction:^(NSString *badge) {
+        @strongify(self);
+        [self.tabBarItem setBadgeValue:badge];
+    }];
 }
 
 #pragma mark - Getters

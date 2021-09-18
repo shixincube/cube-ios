@@ -27,7 +27,79 @@
 #ifndef CubeConversation_h
 #define CubeConversation_h
 
+#import <Foundation/Foundation.h>
+
+typedef NS_ENUM(NSInteger, CubeConversationType) {
+    CubeConversationTypeContact,        // 联系人的消息
+    CubeConversationTypeGroup,          // 群组的消息
+    CubeConversationTypeOrganization,   // 企业及组织消息
+    CubeConversationTypeNotifier        // 通知
+};
+
+typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
+    CubeMessageRemindTypeNormal,        // 正常接受
+    CubeMessageRemindTypeClosed,        // 不提示
+    CubeMessageRemindTypeNotRead,       // 不看
+    CubeMessageRemindTypeUnlike         // 不喜欢
+};
+
+
 @interface CubeConversation : NSObject
+
+/*!
+ * @brief 会话类型。
+ */
+@property (nonatomic, assign) CubeConversationType type;
+
+/*!
+ * @brief 消息提示类型。
+ */
+@property (nonatomic, assign) CubeMessageRemindType remindType;
+
+/*!
+ * @brief 该会话联系人或群组的 ID 。
+ */
+@property (nonatomic, assign) UInt64 identity;
+
+/*!
+ * @brief 会话显示的名称。
+ */
+@property (nonatomic, strong) NSString * displayName;
+
+/*!
+ * @brief 头像图片名称。
+ */
+@property (nonatomic, strong) NSString * avatarName;
+
+/*!
+ * @brief 头像图片 URL 。
+ */
+@property (nonatomic, strong) NSString * avatarURL;
+
+/*!
+ * @brief 日期。
+ */
+@property (nonatomic, strong) NSDate * date;
+
+/*!
+ * @brief 显示的内容。
+ */
+@property (nonatomic, strong) NSString * content;
+
+/*!
+ * @brief 未读数量。
+ */
+@property (nonatomic, assign) NSInteger unread;
+
+/*!
+ * @brief 气泡显示的数据。
+ */
+@property (nonatomic, strong, readonly) NSString * badgeValue;
+
+/*!
+ * @brief 是否已读消息。
+ */
+- (BOOL)isRead;
 
 @end
 

@@ -27,6 +27,7 @@
 #import "CubeConversationListController.h"
 #import "ZZFLEXAngel+Private.h"
 #import "ZZFLEXSectionModel.h"
+#import "CubeConversation.h"
 
 @implementation CubeConversationListController
 
@@ -49,8 +50,26 @@
     if (sectionModel.sectionTag == CubeConversationSectionTagConversation
         || sectionModel.sectionTag == CubeConversationSectionTagConversation) {
         @weakify(self);
+        CubeConversation * conversation = self.dataModel.atIndexPath(indexPath);
+        UIContextualAction * deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"删除" handler:^(UIContextualAction * action, __kindof UIView * sourceView, void (^ completionHandler)(BOOL)) {
+            @strongify(self);
+            [self tableView:tableView deleteItemAtIndexPath:indexPath];
+            completionHandler(YES);
+        }];
+        // 背景色
+        deleteAction.backgroundColor = [UIColor redColor];
+        
+        UISwipeActionsConfiguration * config = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
+        return config;
     }
+    
     return nil;
+}
+
+#pragma mark - Private
+
+- (void)tableView:(UITableView *)tableView deleteItemAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 @end

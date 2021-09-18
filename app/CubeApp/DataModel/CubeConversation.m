@@ -28,6 +28,21 @@
 
 @implementation CubeConversation
 
+- (BOOL)isRead {
+    return self.unread <= 0;
+}
 
+- (NSString *)badgeValue {
+    if ([self isRead]) {
+        return nil;
+    }
+
+    if (self.type == CubeConversationTypeContact || self.type == CubeConversationTypeGroup) {
+        return self.unread <= 99 ? [NSString stringWithFormat:@"%ld", self.unread] : @"99+";
+    }
+    else {
+        return @"";
+    }
+}
 
 @end
