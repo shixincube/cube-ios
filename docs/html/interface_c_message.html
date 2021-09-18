@@ -117,15 +117,17 @@ $(document).ready(function(){initNavTree('interface_c_message.html',''); initRes
 <tr class="memdesc:a1a8c16c8e0d459519fc6359556f34967"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用其他消息实例数据初始化消息实体。  <a href="interface_c_message.html#a1a8c16c8e0d459519fc6359556f34967">更多...</a><br /></td></tr>
 <tr class="separator:a1a8c16c8e0d459519fc6359556f34967"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaeebd76caea398c5f06dbd8dac671760"><td class="memItemLeft" align="right" valign="top">(int)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_message.html#aaeebd76caea398c5f06dbd8dac671760">getScope</a></td></tr>
+<tr class="memdesc:aaeebd76caea398c5f06dbd8dac671760"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取消息范围。  <a href="interface_c_message.html#aaeebd76caea398c5f06dbd8dac671760">更多...</a><br /></td></tr>
 <tr class="separator:aaeebd76caea398c5f06dbd8dac671760"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3451cbfa3d73a663c88f241c8f3be65"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_message.html#ae3451cbfa3d73a663c88f241c8f3be65">isFromGroup</a></td></tr>
 <tr class="memdesc:ae3451cbfa3d73a663c88f241c8f3be65"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否来自群组。  <a href="interface_c_message.html#ae3451cbfa3d73a663c88f241c8f3be65">更多...</a><br /></td></tr>
 <tr class="separator:ae3451cbfa3d73a663c88f241c8f3be65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa66a298fec637fe041c782b3cafb36e8"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_message.html#aa66a298fec637fe041c782b3cafb36e8">bind:sender:to:receiver:source:sourceGroup:</a></td></tr>
-<tr class="memdesc:aa66a298fec637fe041c782b3cafb36e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置消息路由相关数据。  <a href="interface_c_message.html#aa66a298fec637fe041c782b3cafb36e8">更多...</a><br /></td></tr>
-<tr class="separator:aa66a298fec637fe041c782b3cafb36e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af63627fdcc4dd9752cfe38fb718431fa"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_message.html#af63627fdcc4dd9752cfe38fb718431fa">bind:to:source:</a></td></tr>
+<tr class="memdesc:af63627fdcc4dd9752cfe38fb718431fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置消息路由相关数据。  <a href="interface_c_message.html#af63627fdcc4dd9752cfe38fb718431fa">更多...</a><br /></td></tr>
+<tr class="separator:af63627fdcc4dd9752cfe38fb718431fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3bc33df2ca64150e2c81073207088e0"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_message.html#ae3bc33df2ca64150e2c81073207088e0">assignTS:remoteTS:</a></td></tr>
+<tr class="separator:ae3bc33df2ca64150e2c81073207088e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab88cf4dcb51b40b2fd1e525c757bfad2"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_message.html#ab88cf4dcb51b40b2fd1e525c757bfad2">assign:receiver:sourceGroup:</a></td></tr>
-<tr class="memdesc:ab88cf4dcb51b40b2fd1e525c757bfad2"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置实体关联数据。  <a href="interface_c_message.html#ab88cf4dcb51b40b2fd1e525c757bfad2">更多...</a><br /></td></tr>
 <tr class="separator:ab88cf4dcb51b40b2fd1e525c757bfad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1d458183dbdeed50f5f764175f29d22"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_message.html#aa1d458183dbdeed50f5f764175f29d22">assignSender:</a></td></tr>
 <tr class="separator:aa1d458183dbdeed50f5f764175f29d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,8 +229,6 @@ $(document).ready(function(){initNavTree('interface_c_message.html',''); initRes
       </table>
 </div><div class="memdoc">
 
-<p>设置实体关联数据。 </p>
-
 </div>
 </div>
 <a id="a7b38a85a00d2af4ea44fb296b886f8d5"></a>
@@ -285,8 +285,36 @@ $(document).ready(function(){initNavTree('interface_c_message.html',''); initRes
 
 </div>
 </div>
-<a id="aa66a298fec637fe041c782b3cafb36e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa66a298fec637fe041c782b3cafb36e8">&#9670;&nbsp;</a></span>bind:sender:to:receiver:source:sourceGroup:</h2>
+<a id="ae3bc33df2ca64150e2c81073207088e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3bc33df2ca64150e2c81073207088e0">&#9670;&nbsp;</a></span>assignTS:remoteTS:</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) assignTS: </td>
+          <td></td>
+          <td class="paramtype">(UInt64)&#160;</td>
+          <td class="paramname"><em>localTS</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">remoteTS:</td>
+          <td></td>
+          <td class="paramtype">(UInt64)&#160;</td>
+          <td class="paramname"><em>remoteTS</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af63627fdcc4dd9752cfe38fb718431fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af63627fdcc4dd9752cfe38fb718431fa">&#9670;&nbsp;</a></span>bind:to:source:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -298,34 +326,16 @@ $(document).ready(function(){initNavTree('interface_c_message.html',''); initRes
           <td class="paramname"><em>from</em></td>
         </tr>
         <tr>
-          <td class="paramkey">sender:</td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interface_c_contact.html">CContact</a> *)&#160;</td>
-          <td class="paramname"><em>sender</em></td>
-        </tr>
-        <tr>
           <td class="paramkey">to:</td>
           <td></td>
           <td class="paramtype">(UInt64)&#160;</td>
           <td class="paramname"><em>to</em></td>
         </tr>
         <tr>
-          <td class="paramkey">receiver:</td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interface_c_contact.html">CContact</a> *)&#160;</td>
-          <td class="paramname"><em>receiver</em></td>
-        </tr>
-        <tr>
           <td class="paramkey">source:</td>
           <td></td>
           <td class="paramtype">(UInt64)&#160;</td>
-          <td class="paramname"><em>source</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">sourceGroup:</td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interface_c_group.html">CGroup</a> *)&#160;</td>
-          <td class="paramname"><em>sourceGroup</em>&#160;</td>
+          <td class="paramname"><em>source</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -353,6 +363,8 @@ $(document).ready(function(){initNavTree('interface_c_message.html',''); initRes
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>获取消息范围。 </p>
 
 </div>
 </div>

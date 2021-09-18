@@ -26,6 +26,7 @@ var hierarchy =
       [ "CAuthStorage", "interface_c_auth_storage.html", null ],
       [ "CContactPipelineListener", "interface_c_contact_pipeline_listener.html", null ],
       [ "CContactStorage", "interface_c_contact_storage.html", null ],
+      [ "CEngine", "interface_c_engine.html", null ],
       [ "CHook", "interface_c_hook.html", [
         [ "CInstantiateHook", "interface_c_instantiate_hook.html", null ]
       ] ],
@@ -50,7 +51,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "<NSObject>", null, [
-      [ "<CMessagingNotifyDelegate>", "protocol_c_messaging_notify_delegate-p.html", null ],
+      [ "<CMessagingEventDelegate>", "protocol_c_messaging_event_delegate-p.html", null ],
       [ "<CPipelineListener>", "protocol_c_pipeline_listener-p.html", [
         [ "CContactPipelineListener", "interface_c_contact_pipeline_listener.html", null ],
         [ "CMessagingPipelineListener", "interface_c_messaging_pipeline_listener.html", null ]

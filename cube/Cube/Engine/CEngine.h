@@ -37,6 +37,10 @@
 @class CMessagingService;
 @class CSelf;
 
+/*!
+ * @brief 魔方引擎的入口类。
+ * 该类设计为单例，在应用程序中通过该类调用魔方的各个功能模块。
+ */
 @interface CEngine : NSObject
 
 /*!
@@ -56,12 +60,26 @@
 @property (nonatomic, strong, readonly) CKernel * _Nonnull kernel;
 
 /*!
+ * @brief 最近一次发生的错误。
+ */
+@property (nonatomic, strong, readonly) CError * _Nonnull lastError;
+
+
+/*!
  * @brief 启动魔方引擎。
  * @param config 内核配置。
  * @param success 启动成功回调函数。
  * @param failure 启动故障回调函数。
  */
-- (void)start:(CKernelConfig * _Nonnull)config success:(void(^ _Nonnull)(CEngine * _Nullable engine))success failure:(void(^ _Nonnull)(CError * _Nonnull error))failure;
+- (void)startWithConfig:(CKernelConfig * _Nonnull)config success:(void(^ _Nonnull)(CEngine * _Nullable engine))success failure:(void(^ _Nonnull)(CError * _Nonnull error))failure;
+
+/*!
+ * @brief 启动魔方引擎，该方法会阻塞当前线程，直到引擎启动成功或者失败。
+ * @param config 内核配置。
+ * @param timeoutInMilliseconds 以毫秒为单位的超时时间。
+ * @return 如果启动成功返回 @c TRUE ，否则返回 @c FALSE 。如果启动失败，可以通过 CEngine::lastError 查看错误信息。
+ */
+- (BOOL)startWithConfig:(CKernelConfig * _Nonnull)config timeoutInMilliseconds:(UInt64)timeoutInMilliseconds;
 
 /*!
  * @brief 停止魔方引擎。
@@ -83,6 +101,12 @@
  * @return 引擎已启动返回 @c TRUE ，否则返回 @c FALSE 。
  */
 - (BOOL)hasStarted;
+
+/*!
+ * @brief 数据通道是否就绪。
+ * @return 如果数据通道已经连接到服务器返回 @c TRUE 。
+ */
+- (BOOL)isReadyForPipeline;
 
 /*!
  * @brief 签入指定 ID 的联系人。

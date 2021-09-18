@@ -51,6 +51,7 @@ var menudata={children:[
 {text:"s",url:"functions_s.html#index_s"},
 {text:"t",url:"functions_t.html#index_t"},
 {text:"u",url:"functions_u.html#index_u"},
+{text:"v",url:"functions_v.html#index_v"},
 {text:"w",url:"functions_w.html#index_w"}]},
 {text:"函数",url:"functions_func.html",children:[
 {text:"a",url:"functions_func.html#index_a"},
@@ -63,6 +64,7 @@ var menudata={children:[
 {text:"h",url:"functions_func.html#index_h"},
 {text:"i",url:"functions_func.html#index_i"},
 {text:"l",url:"functions_func.html#index_l"},
+{text:"m",url:"functions_func.html#index_m"},
 {text:"n",url:"functions_func.html#index_n"},
 {text:"o",url:"functions_func.html#index_o"},
 {text:"p",url:"functions_func.html#index_p"},
@@ -88,7 +90,8 @@ var menudata={children:[
 {text:"p",url:"functions_prop.html#index_p"},
 {text:"r",url:"functions_prop.html#index_r"},
 {text:"s",url:"functions_prop.html#index_s"},
-{text:"t",url:"functions_prop.html#index_t"}]}]}]},
+{text:"t",url:"functions_prop.html#index_t"},
+{text:"v",url:"functions_prop.html#index_v"}]}]}]},
 {text:"文件",url:"files.html",children:[
 {text:"文件列表",url:"files.html"},
 {text:"文件成员",url:"globals.html",children:[

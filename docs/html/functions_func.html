@@ -118,6 +118,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>assignSourceGroup:
 : <a class="el" href="interface_c_message.html#ac5fa8071e51003688b7ae442bfd420cc">CMessage</a>
 </li>
+<li>assignTS:remoteTS:
+: <a class="el" href="interface_c_message.html#ae3bc33df2ca64150e2c81073207088e0">CMessage</a>
+</li>
 <li>attach:
 : <a class="el" href="interface_c_subject.html#a464e4e7d909912a5e701547932332235">CSubject</a>
 </li>
@@ -128,8 +131,8 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_b"></a>- b -</h3><ul>
-<li>bind:sender:to:receiver:source:sourceGroup:
-: <a class="el" href="interface_c_message.html#aa66a298fec637fe041c782b3cafb36e8">CMessage</a>
+<li>bind:to:source:
+: <a class="el" href="interface_c_message.html#af63627fdcc4dd9752cfe38fb718431fa">CMessage</a>
 </li>
 </ul>
 
@@ -242,6 +245,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>getContact:handleSuccess:handleFailure:
 : <a class="el" href="interface_c_contact_service.html#a390f2220ee137539dad074e9c39375a1">CContactService</a>
 </li>
+<li>getContactService
+: <a class="el" href="interface_c_engine.html#a7fe434d8ef7e4b684ae09fb62896ccec">CEngine</a>
+</li>
 <li>getDevice
 : <a class="el" href="interface_c_contact.html#a5b0308712fde3f4bb67fbfc41a43a7db">CContact</a>
 </li>
@@ -250,6 +256,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </li>
 <li>getId
 : <a class="el" href="interface_c_entity.html#ac291eeedc2a27e8d04d14a83fba7ee53">CEntity</a>
+</li>
+<li>getMessagingService
+: <a class="el" href="interface_c_engine.html#a8a9451e3d9b69d5cb119c91188c8e744">CEngine</a>
 </li>
 <li>getModule:
 : <a class="el" href="interface_c_kernel.html#ad22cbb0f429efbc7bc7bcb9911b940fa">CKernel</a>
@@ -274,7 +283,8 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="interface_c_contact_appendix.html#a7fcbea2cb5d7bc0bc77feee42d0668e7">CContactAppendix</a>
 </li>
 <li>hasStarted
-: <a class="el" href="interface_c_module.html#a10a5247388b573f5488e28c912a0c474">CModule</a>
+: <a class="el" href="interface_c_engine.html#ae32ae28394dfba11580c9451ad0aeaf6">CEngine</a>
+, <a class="el" href="interface_c_module.html#a10a5247388b573f5488e28c912a0c474">CModule</a>
 </li>
 </ul>
 
@@ -403,12 +413,22 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </ul>
 
 
+<h3><a id="index_m"></a>- m -</h3><ul>
+<li>messageReceived:service:
+: <a class="el" href="protocol_c_messaging_event_delegate-p.html#a51c17a6f4d545ddd2ef51ec3c5ad09b9">&lt;CMessagingEventDelegate&gt;</a>
+</li>
+<li>messageSending:service:
+: <a class="el" href="protocol_c_messaging_event_delegate-p.html#a6f3ec4927106c44241576d2bfc0c11b1">&lt;CMessagingEventDelegate&gt;</a>
+</li>
+<li>messageSent:service:
+: <a class="el" href="protocol_c_messaging_event_delegate-p.html#a10a9851cd75afc8b70d19e556e74e86e">&lt;CMessagingEventDelegate&gt;</a>
+</li>
+</ul>
+
+
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>name
 : <a class="el" href="interface_c_instantiate_hook.html#a4721c8c5f3806db688e8808fa3890287">CInstantiateHook</a>
-</li>
-<li>notify:service:
-: <a class="el" href="protocol_c_messaging_notify_delegate-p.html#ad92f343b11c81c9146ebf6ec7fa24eee">&lt;CMessagingNotifyDelegate&gt;</a>
 </li>
 <li>notifyObservers:
 : <a class="el" href="interface_c_subject.html#a95708a7cfe6231af9e284b4cbc1c70b8">CSubject</a>
@@ -465,7 +485,8 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="interface_c_pipeline.html#aad825dbad01afdfea0eec8af5658e78f">CPipeline</a>
 </li>
 <li>resume
-: <a class="el" href="interface_c_kernel.html#acb91983b0f402fb2c4c0d607932e7580">CKernel</a>
+: <a class="el" href="interface_c_engine.html#adf4a472c500998a70441cd09ce13f129">CEngine</a>
+, <a class="el" href="interface_c_kernel.html#acb91983b0f402fb2c4c0d607932e7580">CKernel</a>
 , <a class="el" href="interface_c_module.html#ab9c36fdba0fbd7bd0fb204c65be99ceb">CModule</a>
 </li>
 </ul>
@@ -481,8 +502,17 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>send:withPacket:handleResponse:
 : <a class="el" href="interface_c_pipeline.html#a30f439dab6668985c98958e67adde00d">CPipeline</a>
 </li>
+<li>sendToContact:message:
+: <a class="el" href="interface_c_messaging_service.html#a90c2c8fc44e31fb57d85e17199e3c565">CMessagingService</a>
+</li>
+<li>sendToContactWithId:message:
+: <a class="el" href="interface_c_messaging_service.html#ac76b8ba020f8d60b7102ddb1d6ba1536">CMessagingService</a>
+</li>
 <li>setRemoteAddress:withPort:
 : <a class="el" href="interface_c_pipeline.html#a1c3eb087cd8c277972589a4e5c46f573">CPipeline</a>
+</li>
+<li>sharedInstance
+: <a class="el" href="interface_c_engine.html#a771fcc7d7fd4fc45a08df7a386c9f5ab">CEngine</a>
 </li>
 <li>shutdown
 : <a class="el" href="interface_c_kernel.html#a44e64d1d7158a361faa3afda13e21a3d">CKernel</a>
@@ -493,6 +523,12 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>signInWith:name:handleSuccess:handleFailure:
 : <a class="el" href="interface_c_contact_service.html#a65e7107281294c202e3ef36ccccade25">CContactService</a>
 </li>
+<li>signInWithId:
+: <a class="el" href="interface_c_engine.html#a36398dc294b7d9d7ccd62de9a3fb0388">CEngine</a>
+</li>
+<li>signInWithId:andName:andContext:
+: <a class="el" href="interface_c_engine.html#a9935f27d01078427048be13e40261f35">CEngine</a>
+</li>
 <li>signOut:
 : <a class="el" href="interface_c_contact_service.html#a1eaf1c57fe81b40b46b44a53f72dbafb">CContactService</a>
 </li>
@@ -502,11 +538,19 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>startup:completion:failure:
 : <a class="el" href="interface_c_kernel.html#a84d92cf6525e986a5ba6763cadb3750f">CKernel</a>
 </li>
+<li>startWithConfig:
+: <a class="el" href="interface_c_engine.html#aa4810e5c929c59938244e6942f653ff0">CEngine</a>
+</li>
+<li>startWithConfig:success:failure:
+: <a class="el" href="interface_c_engine.html#aef36ba48c9c95fb5991978bc687f4463">CEngine</a>
+</li>
 <li>stop
-: <a class="el" href="interface_c_module.html#ac23c831eec40d2ecc7a9ebb2306073bf">CModule</a>
+: <a class="el" href="interface_c_engine.html#a9fb67dc4031718b249e1718d4e68aaf4">CEngine</a>
+, <a class="el" href="interface_c_module.html#ac23c831eec40d2ecc7a9ebb2306073bf">CModule</a>
 </li>
 <li>suspend
-: <a class="el" href="interface_c_kernel.html#a83866d93e0bbee52629fdec4ee52baba">CKernel</a>
+: <a class="el" href="interface_c_engine.html#a255518be269134cb63083d27e971562b">CEngine</a>
+, <a class="el" href="interface_c_kernel.html#a83866d93e0bbee52629fdec4ee52baba">CKernel</a>
 , <a class="el" href="interface_c_module.html#a9d060627c5f1c17f5cd7d18aa0dce8c0">CModule</a>
 </li>
 <li>syncApply:data:
@@ -546,7 +590,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="interface_c_observer.html#a7b44e0b8f4a958725cfc061ade62e14d">CObserver</a>
 </li>
 <li>updateMessage:
-: <a class="el" href="interface_c_messaging_storage.html#ac3e53ec73eb159e0e3a98bf6d8a7a0ce">CMessagingStorage</a>
+: <a class="el" href="interface_c_messaging_storage.html#a5020e0dc7880827fde7ca0df36a4f52e">CMessagingStorage</a>
 </li>
 <li>updateToken:
 : <a class="el" href="interface_c_auth_storage.html#a1172424578100ede42cbf572f97d1dc7">CAuthStorage</a>

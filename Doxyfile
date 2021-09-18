@@ -825,6 +825,7 @@ WARN_LOGFILE           =
 
 INPUT                  = ./README.md \
                          ./cube/Cube \
+                         ./cube/Cube/Engine \
                          ./cube/Cube/Core \
                          ./cube/Cube/Auth \
                          ./cube/Cube/Contact \

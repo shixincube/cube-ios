@@ -28,6 +28,12 @@
 
 #import <Cube/CUtils.h>
 #import <Cube/CEngine.h>
+#import <Cube/CKernel.h>
+
 #import <Cube/CContactService.h>
+#import <Cube/CSelf.h>
 #import <Cube/CContact.h>
 #import <Cube/CDevice.h>
+
+#import <Cube/CMessagingService.h>
+#import <Cube/CMessage.h>

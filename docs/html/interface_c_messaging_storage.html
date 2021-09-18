@@ -112,9 +112,9 @@ $(document).ready(function(){initNavTree('interface_c_messaging_storage.html',''
 <tr class="memitem:a7f86214e89f78d2b19077ca0b5de8360"><td class="memItemLeft" align="right" valign="top">(UInt64)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_messaging_storage.html#a7f86214e89f78d2b19077ca0b5de8360">queryLastMessageTime</a></td></tr>
 <tr class="memdesc:a7f86214e89f78d2b19077ca0b5de8360"><td class="mdescLeft">&#160;</td><td class="mdescRight">查询最近一条消息的时间戳。  <a href="interface_c_messaging_storage.html#a7f86214e89f78d2b19077ca0b5de8360">更多...</a><br /></td></tr>
 <tr class="separator:a7f86214e89f78d2b19077ca0b5de8360"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3e53ec73eb159e0e3a98bf6d8a7a0ce"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_messaging_storage.html#ac3e53ec73eb159e0e3a98bf6d8a7a0ce">updateMessage:</a></td></tr>
-<tr class="memdesc:ac3e53ec73eb159e0e3a98bf6d8a7a0ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新消息。该方法将同时更新消息表和最近消息表。  <a href="interface_c_messaging_storage.html#ac3e53ec73eb159e0e3a98bf6d8a7a0ce">更多...</a><br /></td></tr>
-<tr class="separator:ac3e53ec73eb159e0e3a98bf6d8a7a0ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5020e0dc7880827fde7ca0df36a4f52e"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_messaging_storage.html#a5020e0dc7880827fde7ca0df36a4f52e">updateMessage:</a></td></tr>
+<tr class="memdesc:a5020e0dc7880827fde7ca0df36a4f52e"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新消息。该方法将同时更新消息表和最近消息表。  <a href="interface_c_messaging_storage.html#a5020e0dc7880827fde7ca0df36a4f52e">更多...</a><br /></td></tr>
+<tr class="separator:a5020e0dc7880827fde7ca0df36a4f52e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">函数文档</h2>
 <a id="ad7d64cfedf149016d35b0687801c3542"></a>
@@ -214,14 +214,14 @@ $(document).ready(function(){initNavTree('interface_c_messaging_storage.html',''
 
 </div>
 </div>
-<a id="ac3e53ec73eb159e0e3a98bf6d8a7a0ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3e53ec73eb159e0e3a98bf6d8a7a0ce">&#9670;&nbsp;</a></span>updateMessage:</h2>
+<a id="a5020e0dc7880827fde7ca0df36a4f52e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5020e0dc7880827fde7ca0df36a4f52e">&#9670;&nbsp;</a></span>updateMessage:</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) updateMessage: </td>
+          <td class="memname">- (BOOL) updateMessage: </td>
           <td></td>
           <td class="paramtype">(<a class="el" href="interface_c_message.html">CMessage</a> *)&#160;</td>
           <td class="paramname"><em>message</em></td>
@@ -237,6 +237,7 @@ $(document).ready(function(){initNavTree('interface_c_messaging_storage.html',''
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>返回</dt><dd>如果更新的消息是已存在的返回 <code>TRUE</code> ，如果消息未找到，插入新数据时返回 <code>FALSE</code> 。 </dd></dl>
 
 </div>
 </div>

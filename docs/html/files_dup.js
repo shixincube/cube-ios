@@ -37,6 +37,9 @@ var files_dup =
     [ "CDevice.h", "_c_device_8h.html", [
       [ "CDevice", "interface_c_device.html", "interface_c_device" ]
     ] ],
+    [ "CEngine.h", "_c_engine_8h.html", [
+      [ "CEngine", "interface_c_engine.html", "interface_c_engine" ]
+    ] ],
     [ "CEntity.h", "_c_entity_8h.html", [
       [ "CEntity", "interface_c_entity.html", "interface_c_entity" ]
     ] ],
@@ -61,6 +64,7 @@ var files_dup =
     [ "CMessageState.h", "_c_message_state_8h.html", "_c_message_state_8h" ],
     [ "CMessagingAction.h", "_c_messaging_action_8h.html", "_c_messaging_action_8h" ],
     [ "CMessagingEvent.h", "_c_messaging_event_8h.html", "_c_messaging_event_8h" ],
+    [ "CMessagingExtension.h", "_c_messaging_extension_8h.html", null ],
     [ "CMessagingObserver.h", "_c_messaging_observer_8h.html", [
       [ "CMessagingObserver", "interface_c_messaging_observer.html", "interface_c_messaging_observer" ]
     ] ],
@@ -102,5 +106,5 @@ var files_dup =
     [ "CSubject.h", "_c_subject_8h.html", [
       [ "CSubject", "interface_c_subject.html", "interface_c_subject" ]
     ] ],
-    [ "Cube.h", "_cube_8h.html", "_cube_8h" ]
+    [ "Cube.h", "_cube_8h.html", null ]
 ];

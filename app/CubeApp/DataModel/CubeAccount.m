@@ -25,6 +25,7 @@
  */
 
 #import "CubeAccount.h"
+#import "CubeAppUtil.h"
 #import <Cube/CUtils.h>
 
 @implementation CubeAccount
@@ -66,10 +67,22 @@
         @"account" : _accountName,
         @"phone" : _phoneNumber,
         @"name" : _displayName,
-        @"region" : _region,
         @"avatar" : _avatar,
+        @"region" : _region,
         @"state" : [NSNumber numberWithUnsignedInteger:_state],
         @"localTimestamp": [NSNumber numberWithUnsignedLongLong:_localTimestamp]
+    };
+    return json;
+}
+
+- (NSDictionary *)toDesensitizingJSON {
+    NSDictionary * json = @{
+        @"id" : [NSNumber numberWithUnsignedLongLong:_identity],
+        @"phone" : [CubeAppUtil desensitizePhoneNumber:_phoneNumber],
+        @"name" : _displayName,
+        @"avatar" : _avatar,
+        @"region" : _region,
+        @"state" : [NSNumber numberWithUnsignedInteger:_state]
     };
     return json;
 }

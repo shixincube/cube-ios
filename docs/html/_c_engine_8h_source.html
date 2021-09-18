@@ -1,0 +1,193 @@
+<!-- HTML header for doxygen 1.8.18-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cube for iOS: CEngine.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Cube for iOS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_c_engine_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CEngine.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_c_engine_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="interface_c_engine.html#a771fcc7d7fd4fc45a08df7a386c9f5ab">    1</a></span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * This file is part of Cube.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * The MIT License (MIT)</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Copyright (c) 2020-2022 Shixin Cube Team.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * Permission is hereby granted, free of charge, to any person obtaining a copy</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * of this software and associated documentation files (the &quot;Software&quot;), to deal</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * in the Software without restriction, including without limitation the rights</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * copies of the Software, and to permit persons to whom the Software is</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * furnished to do so, subject to the following conditions:</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * The above copyright notice and this permission notice shall be included in all</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * copies or substantial portions of the Software.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * SOFTWARE.</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef CEngine_h</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CEngine_h</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_kernel_config.html">CKernelConfig</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_kernel.html">CKernel</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_error.html">CError</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_auth_service.html">CAuthService</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_contact_service.html">CContactService</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_messaging_service.html">CMessagingService</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_self.html">CSelf</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="interface_c_engine.html">   44</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_engine.html">CEngine</a> : NSObject</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;+ (<a class="code" href="interface_c_engine.html">CEngine</a> * _Nonnull)<a class="code" href="interface_c_engine.html#a771fcc7d7fd4fc45a08df7a386c9f5ab">sharedInstance</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="interface_c_engine.html#a952aaf21ef664953fa6bf8401efe0aa2">   55</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) NSString * _Nonnull <a class="code" href="interface_c_engine.html#a952aaf21ef664953fa6bf8401efe0aa2">version</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="interface_c_engine.html#a9038b996f31c0fcb765ee3afae594a31">   60</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_kernel.html">CKernel</a> * _Nonnull <a class="code" href="interface_c_engine.html#a9038b996f31c0fcb765ee3afae594a31">kernel</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="interface_c_engine.html#a7fe434d8ef7e4b684ae09fb62896ccec">   65</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_error.html">CError</a> * _Nonnull <a class="code" href="interface_c_engine.html#ab23ede12a921d05ad412d3041f6f8611">lastError</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;- (void)startWithConfig:(<a class="code" href="interface_c_kernel_config.html">CKernelConfig</a> * _Nonnull)config success:(<span class="keywordtype">void</span>(^ _Nonnull)(<a class="code" href="interface_c_engine.html">CEngine</a> * _Nullable engine))success failure:(<span class="keywordtype">void</span>(^ _Nonnull)(<a class="code" href="interface_c_error.html">CError</a> * _Nonnull error))failure;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;- (BOOL)startWithConfig:(<a class="code" href="interface_c_kernel_config.html">CKernelConfig</a> * _Nonnull)config;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;- (void)<a class="code" href="interface_c_engine.html#a9fb67dc4031718b249e1718d4e68aaf4">stop</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;- (void)<a class="code" href="interface_c_engine.html#a255518be269134cb63083d27e971562b">suspend</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;- (void)<a class="code" href="interface_c_engine.html#adf4a472c500998a70441cd09ce13f129">resume</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;- (BOOL)<a class="code" href="interface_c_engine.html#ae32ae28394dfba11580c9451ad0aeaf6">hasStarted</a>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;- (<a class="code" href="interface_c_self.html">CSelf</a> * _Nullable)signInWithId:(UInt64)contactId;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;- (<a class="code" href="interface_c_self.html">CSelf</a> * _Nullable)signInWithId:(UInt64)contactId andName:(NSString * _Nonnull)name andContext:(NSDictionary * _Nullable)context;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;- (<a class="code" href="interface_c_contact_service.html">CContactService</a> * _Nullable)<a class="code" href="interface_c_engine.html#a7fe434d8ef7e4b684ae09fb62896ccec">getContactService</a>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;- (<a class="code" href="interface_c_messaging_service.html">CMessagingService</a> * _Nullable)<a class="code" href="interface_c_engine.html#a8a9451e3d9b69d5cb119c91188c8e744">getMessagingService</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CEngine_h */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="ainterface_c_auth_service_html"><div class="ttname"><a href="interface_c_auth_service.html">CAuthService</a></div><div class="ttdoc">授权服务。管理引擎的授权信息。</div><div class="ttdef"><b>Definition:</b> CAuthService.h:44</div></div>
+<div class="ttc" id="ainterface_c_contact_service_html"><div class="ttname"><a href="interface_c_contact_service.html">CContactService</a></div><div class="ttdoc">联系人模块。</div><div class="ttdef"><b>Definition:</b> CContactService.h:56</div></div>
+<div class="ttc" id="ainterface_c_engine_html"><div class="ttname"><a href="interface_c_engine.html">CEngine</a></div><div class="ttdoc">魔方引擎的入口类。 该类设计为单例，在应用程序中通过该类调用魔方的各个功能模块。</div><div class="ttdef"><b>Definition:</b> CEngine.h:45</div></div>
+<div class="ttc" id="ainterface_c_engine_html_a255518be269134cb63083d27e971562b"><div class="ttname"><a href="interface_c_engine.html#a255518be269134cb63083d27e971562b">-[CEngine suspend]</a></div><div class="ttdeci">void suspend()</div><div class="ttdoc">挂起魔方引擎。用于应用程序退到后台。</div></div>
+<div class="ttc" id="ainterface_c_engine_html_a771fcc7d7fd4fc45a08df7a386c9f5ab"><div class="ttname"><a href="interface_c_engine.html#a771fcc7d7fd4fc45a08df7a386c9f5ab">+[CEngine sharedInstance]</a></div><div class="ttdeci">CEngine *_Nonnull sharedInstance()</div><div class="ttdoc">获取引擎单例。</div></div>
+<div class="ttc" id="ainterface_c_engine_html_a7fe434d8ef7e4b684ae09fb62896ccec"><div class="ttname"><a href="interface_c_engine.html#a7fe434d8ef7e4b684ae09fb62896ccec">-[CEngine getContactService]</a></div><div class="ttdeci">CContactService *_Nullable getContactService()</div><div class="ttdoc">获取联系人服务模块。</div></div>
+<div class="ttc" id="ainterface_c_engine_html_a8a9451e3d9b69d5cb119c91188c8e744"><div class="ttname"><a href="interface_c_engine.html#a8a9451e3d9b69d5cb119c91188c8e744">-[CEngine getMessagingService]</a></div><div class="ttdeci">CMessagingService *_Nullable getMessagingService()</div><div class="ttdoc">获取消息服务模块。</div></div>
+<div class="ttc" id="ainterface_c_engine_html_a9038b996f31c0fcb765ee3afae594a31"><div class="ttname"><a href="interface_c_engine.html#a9038b996f31c0fcb765ee3afae594a31">CEngine::kernel</a></div><div class="ttdeci">CKernel *_Nonnull kernel</div><div class="ttdoc">内核实例。</div><div class="ttdef"><b>Definition:</b> CEngine.h:60</div></div>
+<div class="ttc" id="ainterface_c_engine_html_a952aaf21ef664953fa6bf8401efe0aa2"><div class="ttname"><a href="interface_c_engine.html#a952aaf21ef664953fa6bf8401efe0aa2">CEngine::version</a></div><div class="ttdeci">NSString *_Nonnull version</div><div class="ttdoc">内核实例。</div><div class="ttdef"><b>Definition:</b> CEngine.h:55</div></div>
+<div class="ttc" id="ainterface_c_engine_html_a9fb67dc4031718b249e1718d4e68aaf4"><div class="ttname"><a href="interface_c_engine.html#a9fb67dc4031718b249e1718d4e68aaf4">-[CEngine stop]</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">停止魔方引擎。</div></div>
+<div class="ttc" id="ainterface_c_engine_html_ab23ede12a921d05ad412d3041f6f8611"><div class="ttname"><a href="interface_c_engine.html#ab23ede12a921d05ad412d3041f6f8611">CEngine::lastError</a></div><div class="ttdeci">CError *_Nonnull lastError</div><div class="ttdoc">最近一次发生的错误。</div><div class="ttdef"><b>Definition:</b> CEngine.h:65</div></div>
+<div class="ttc" id="ainterface_c_engine_html_adf4a472c500998a70441cd09ce13f129"><div class="ttname"><a href="interface_c_engine.html#adf4a472c500998a70441cd09ce13f129">-[CEngine resume]</a></div><div class="ttdeci">void resume()</div><div class="ttdoc">恢复魔方引擎。用于应用程序回到前台。</div></div>
+<div class="ttc" id="ainterface_c_engine_html_ae32ae28394dfba11580c9451ad0aeaf6"><div class="ttname"><a href="interface_c_engine.html#ae32ae28394dfba11580c9451ad0aeaf6">-[CEngine hasStarted]</a></div><div class="ttdeci">BOOL hasStarted()</div><div class="ttdoc">是否已启动。</div></div>
+<div class="ttc" id="ainterface_c_error_html"><div class="ttname"><a href="interface_c_error.html">CError</a></div><div class="ttdef"><b>Definition:</b> CError.h:33</div></div>
+<div class="ttc" id="ainterface_c_kernel_config_html"><div class="ttname"><a href="interface_c_kernel_config.html">CKernelConfig</a></div><div class="ttdoc">内核配置定义。</div><div class="ttdef"><b>Definition:</b> CKernel.h:53</div></div>
+<div class="ttc" id="ainterface_c_kernel_html"><div class="ttname"><a href="interface_c_kernel.html">CKernel</a></div><div class="ttdoc">内核。内核管理所有的模块和通信管道。</div><div class="ttdef"><b>Definition:</b> CKernel.h:108</div></div>
+<div class="ttc" id="ainterface_c_messaging_service_html"><div class="ttname"><a href="interface_c_messaging_service.html">CMessagingService</a></div><div class="ttdoc">消息模块。</div><div class="ttdef"><b>Definition:</b> CMessagingService.h:82</div></div>
+<div class="ttc" id="ainterface_c_self_html"><div class="ttname"><a href="interface_c_self.html">CSelf</a></div><div class="ttdoc">用户描述自己的账号。</div><div class="ttdef"><b>Definition:</b> CSelf.h:37</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.18-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_452bf2a1f165afdc57f378d186bca8c8.html">cube</a></li><li class="navelem"><a class="el" href="dir_170416ba8e842f45e64f4e38289ca8a1.html">Cube</a></li><li class="navelem"><a class="el" href="dir_549feafb45974b8ec29896b73d9f1544.html">Engine</a></li><li class="navelem"><a class="el" href="_c_engine_8h.html">CEngine.h</a></li>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

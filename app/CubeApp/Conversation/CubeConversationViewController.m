@@ -86,6 +86,23 @@
         @strongify(self);
         [self.tabBarItem setBadgeValue:badge];
     }];
+
+    // 网络状态提醒
+    self.listController.addSection(CubeConversationSectionTagAlert);
+
+    // 置顶文章
+    self.listController.addSection(CubeConversationSectionTagTopArticle);
+    
+    // 播放内容
+    self.listController.addSection(CubeConversationSectionTagPlay);
+    
+    // 置顶会话
+    self.listController.addSection(CubeConversationSectionTagTopConversation);
+    
+    // 一般会话
+    self.listController.addSection(CubeConversationSectionTagConversation);
+
+    [self.tableView reloadData];
 }
 
 #pragma mark - Getters

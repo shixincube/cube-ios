@@ -118,23 +118,23 @@ $(document).ready(function(){initNavTree('_c_auth_storage_8h_source.html',''); i
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_auth_token_8h.html">CAuthToken.h</a>&quot;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="interface_c_auth_storage.html">   33</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_auth_storage.html">CAuthStorage</a> : NSObject</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;- (BOOL)<a class="code" href="interface_c_auth_storage.html#a7d4158237bc9ea73e2cd63c17ec04a19">open</a>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;- (void)<a class="code" href="interface_c_auth_storage.html#a4898ace17aed2e8f73077a48c49e2e83">close</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;- (<a class="code" href="interface_c_auth_token.html">CAuthToken</a> *)loadTokenWithDomain:(NSString *)domain appKey:(NSString *)appKey;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;- (void)saveToken:(<a class="code" href="interface_c_auth_token.html">CAuthToken</a> *)authToken;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;- (BOOL)updateToken:(<a class="code" href="interface_c_auth_token.html">CAuthToken</a> *)authToken;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CAuthStorage_h */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="interface_c_auth_storage.html">   36</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_auth_storage.html">CAuthStorage</a> : NSObject</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;- (BOOL)<a class="code" href="interface_c_auth_storage.html#a7d4158237bc9ea73e2cd63c17ec04a19">open</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;- (void)<a class="code" href="interface_c_auth_storage.html#a4898ace17aed2e8f73077a48c49e2e83">close</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;- (<a class="code" href="interface_c_auth_token.html">CAuthToken</a> *)loadTokenWithDomain:(NSString *)domain appKey:(NSString *)appKey;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;- (void)saveToken:(<a class="code" href="interface_c_auth_token.html">CAuthToken</a> *)authToken;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;- (BOOL)updateToken:(<a class="code" href="interface_c_auth_token.html">CAuthToken</a> *)authToken;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CAuthStorage_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a_c_auth_token_8h_html"><div class="ttname"><a href="_c_auth_token_8h.html">CAuthToken.h</a></div></div>
-<div class="ttc" id="ainterface_c_auth_storage_html"><div class="ttname"><a href="interface_c_auth_storage.html">CAuthStorage</a></div><div class="ttdef"><b>Definition:</b> CAuthStorage.h:34</div></div>
+<div class="ttc" id="ainterface_c_auth_storage_html"><div class="ttname"><a href="interface_c_auth_storage.html">CAuthStorage</a></div><div class="ttdoc">授权模块存储器。</div><div class="ttdef"><b>Definition:</b> CAuthStorage.h:37</div></div>
 <div class="ttc" id="ainterface_c_auth_storage_html_a4898ace17aed2e8f73077a48c49e2e83"><div class="ttname"><a href="interface_c_auth_storage.html#a4898ace17aed2e8f73077a48c49e2e83">-[CAuthStorage close]</a></div><div class="ttdeci">void close()</div><div class="ttdoc">关闭存储器。</div></div>
 <div class="ttc" id="ainterface_c_auth_storage_html_a7d4158237bc9ea73e2cd63c17ec04a19"><div class="ttname"><a href="interface_c_auth_storage.html#a7d4158237bc9ea73e2cd63c17ec04a19">-[CAuthStorage open]</a></div><div class="ttdeci">BOOL open()</div><div class="ttdoc">开启存储器。</div></div>
 <div class="ttc" id="ainterface_c_auth_token_html"><div class="ttname"><a href="interface_c_auth_token.html">CAuthToken</a></div><div class="ttdoc">授权访问的令牌。</div><div class="ttdef"><b>Definition:</b> CAuthToken.h:66</div></div>

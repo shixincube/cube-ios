@@ -28,7 +28,8 @@
 #define CSelf_h
 
 #import "CContact.h"
-#import "CDevice.h"
+
+@class CDevice;
 
 /*!
  * @brief 用户描述自己的账号。

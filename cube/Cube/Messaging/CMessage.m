@@ -25,6 +25,8 @@
  */
 
 #import "CMessage.h"
+#import "CContact.h"
+#import "CGroup.h"
 #import "CMessageState.h"
 #import "CAuthService.h"
 #import "CUtils.h"

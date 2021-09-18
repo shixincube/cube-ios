@@ -71,14 +71,49 @@
 
     _explorer = [[CubeAccountExplorer alloc] init];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self setup:^ {
-            NSLog(@"Setup completed");
-        }];
-    });
+    CubeAccount * current = [CubeAccountHelper sharedInstance].currentAccount;
+    NSDictionary * config = [CubeAccountHelper sharedInstance].engineConfig;
+    if (current && config) {
+        [self setup];
+    }
+    else {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self requestData:^ {
+                // 启动引擎
+                [self setup];
+                NSLog(@"Request data completed");
+            }];
+        });
+    }
 }
 
-- (void)setup:(void (^)(void))completion {
+#pragma mark - Private
+
+- (void)setup {
+    CubeAccount * current = [CubeAccountHelper sharedInstance].currentAccount;
+    NSDictionary * config = [CubeAccountHelper sharedInstance].engineConfig;
+
+    CKernelConfig * kernelConfig = [CKernelConfig configWithAddress:[config valueForKey:@"address"]
+                                                             domain:[config valueForKey:@"domain"]
+                                                             appKey:[config valueForKey:@"appKey"]];
+
+    // 以阻塞方式进行启动
+    BOOL result = [[CEngine sharedInstance] startWithConfig:kernelConfig timeoutInMilliseconds:5000];
+    if (!result) {
+        // 启动失败
+        [CubeUIUtility showErrorHint:@"启动引擎失败"];
+        return;
+    }
+
+    NSLog(@"Cube Engine started");
+
+    // 签入当前账号，该方法也是阻塞
+    CSelf * ownerAccount = [[CEngine sharedInstance] signInWithId:current.identity
+                                   andName:current.displayName
+                                andContext:[current toDesensitizingJSON]];
+}
+
+- (void)requestData:(void (^)(void))completion {
     __block BOOL gotAccount = NO;
     __block BOOL gotConfig = NO;
     __block BOOL tipError = NO;
@@ -101,32 +136,20 @@
     };
 
     // 获取账号数据
-    if ([CubeAccountHelper sharedInstance].currentAccount) {
+    [_explorer getAccountWithToken:[CubeAccountHelper sharedInstance].tokenCode success:^(id data) {
         gotAccount = YES;
         process(nil);
-    }
-    else {
-        [_explorer getAccountWithToken:[CubeAccountHelper sharedInstance].tokenCode success:^(id data) {
-            gotAccount = YES;
-            process(nil);
-        } failure:^(NSError *error) {
-            process(error);
-        }];
-    }
+    } failure:^(NSError *error) {
+        process(error);
+    }];
 
     // 获取配置数据
-    if ([CubeAccountHelper sharedInstance].engineConfig) {
+    [_explorer getEngineConfigWithSuccess:^(id data) {
         gotConfig = YES;
         process(nil);
-    }
-    else {
-        [_explorer getEngineConfigWithSuccess:^(id data) {
-            gotConfig = YES;
-            process(nil);
-        } failure:^(NSError *error) {
-            process(error);
-        }];
-    }
+    } failure:^(NSError *error) {
+        process(error);
+    }];
 }
 
 - (UINavigationController *)addNavigationController:(UIViewController *)viewController {

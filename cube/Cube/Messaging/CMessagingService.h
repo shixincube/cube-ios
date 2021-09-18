@@ -28,8 +28,6 @@
 #define CMessagingService_h
 
 #import "CModule.h"
-#import "CContactService.h"
-#import "CMessage.h"
 #import "CMessageState.h"
 #import "CMessagingServiceState.h"
 
@@ -38,10 +36,14 @@
 #define CUBE_MODULE_MESSAGING @"Messaging"
 #endif
 
+@class CContactService;
 @class CMessagingService;
 @class CMessagingPipelineListener;
 @class CMessagingStorage;
 @class CMessagingObserver;
+@class CMessage;
+@class CContact;
+@class CGroup;
 
 /*!
  * @brief 消息模块事件的代理协议。

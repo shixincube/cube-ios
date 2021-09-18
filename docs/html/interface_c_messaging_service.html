@@ -115,6 +115,12 @@ $(document).ready(function(){initNavTree('interface_c_messaging_service.html',''
 <tr class="memitem:a3f81922b9f9009964403b99d121203c8"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_messaging_service.html#a3f81922b9f9009964403b99d121203c8">isSender:</a></td></tr>
 <tr class="memdesc:a3f81922b9f9009964403b99d121203c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">消息是否是当前签入的联系人账号发出的。 即当前账号是否是指定消息的发件人。  <a href="interface_c_messaging_service.html#a3f81922b9f9009964403b99d121203c8">更多...</a><br /></td></tr>
 <tr class="separator:a3f81922b9f9009964403b99d121203c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90c2c8fc44e31fb57d85e17199e3c565"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_messaging_service.html#a90c2c8fc44e31fb57d85e17199e3c565">sendToContact:message:</a></td></tr>
+<tr class="memdesc:a90c2c8fc44e31fb57d85e17199e3c565"><td class="mdescLeft">&#160;</td><td class="mdescRight">向指定联系人发送消息。  <a href="interface_c_messaging_service.html#a90c2c8fc44e31fb57d85e17199e3c565">更多...</a><br /></td></tr>
+<tr class="separator:a90c2c8fc44e31fb57d85e17199e3c565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac76b8ba020f8d60b7102ddb1d6ba1536"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_messaging_service.html#ac76b8ba020f8d60b7102ddb1d6ba1536">sendToContactWithId:message:</a></td></tr>
+<tr class="memdesc:ac76b8ba020f8d60b7102ddb1d6ba1536"><td class="mdescLeft">&#160;</td><td class="mdescRight">向指定联系人发送消息。  <a href="interface_c_messaging_service.html#ac76b8ba020f8d60b7102ddb1d6ba1536">更多...</a><br /></td></tr>
+<tr class="separator:ac76b8ba020f8d60b7102ddb1d6ba1536"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ba40f92dccd1abbb2af36d2aedd23c8"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_messaging_service.html#a1ba40f92dccd1abbb2af36d2aedd23c8">prepare:completedHandler:</a></td></tr>
 <tr class="memdesc:a1ba40f92dccd1abbb2af36d2aedd23c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">进行数据加载。  <a href="interface_c_messaging_service.html#a1ba40f92dccd1abbb2af36d2aedd23c8">更多...</a><br /></td></tr>
 <tr class="separator:a1ba40f92dccd1abbb2af36d2aedd23c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -190,9 +196,11 @@ Protected 属性</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 属性</h2></td></tr>
 <tr class="memitem:a0b638518bb10be8740b9dbbb59e86495"><td class="memItemLeft" align="right" valign="top">UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_messaging_service.html#a0b638518bb10be8740b9dbbb59e86495">defaultRetrospect</a></td></tr>
+<tr class="memdesc:a0b638518bb10be8740b9dbbb59e86495"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认回溯时长，默认值：14个自然天。  <a href="interface_c_messaging_service.html#a0b638518bb10be8740b9dbbb59e86495">更多...</a><br /></td></tr>
 <tr class="separator:a0b638518bb10be8740b9dbbb59e86495"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57febdb4ae63c1ad724512fb847971fa"><td class="memItemLeft" align="right" valign="top">id&lt; <a class="el" href="protocol_c_messaging_notify_delegate-p.html">CMessagingNotifyDelegate</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_messaging_service.html#a57febdb4ae63c1ad724512fb847971fa">notifyDelegate</a></td></tr>
-<tr class="separator:a57febdb4ae63c1ad724512fb847971fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a982e5a6c3c06a0e2b703c61564c0726e"><td class="memItemLeft" align="right" valign="top">id&lt; <a class="el" href="protocol_c_messaging_event_delegate-p.html">CMessagingEventDelegate</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_messaging_service.html#a982e5a6c3c06a0e2b703c61564c0726e">eventDelegate</a></td></tr>
+<tr class="memdesc:a982e5a6c3c06a0e2b703c61564c0726e"><td class="mdescLeft">&#160;</td><td class="mdescRight">消息服务的事件代理。  <a href="interface_c_messaging_service.html#a982e5a6c3c06a0e2b703c61564c0726e">更多...</a><br /></td></tr>
+<tr class="separator:a982e5a6c3c06a0e2b703c61564c0726e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_interface_c_module"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_c_module')"><img src="closed.png" alt="-"/>&#160;属性 继承自 <a class="el" href="interface_c_module.html">CModule</a></td></tr>
 <tr class="memitem:a1b8b93be9419f3ee79e449d60f9b77c2 inherit properties_interface_c_module"><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_module.html#a1b8b93be9419f3ee79e449d60f9b77c2">name</a></td></tr>
 <tr class="memdesc:a1b8b93be9419f3ee79e449d60f9b77c2 inherit properties_interface_c_module"><td class="mdescLeft">&#160;</td><td class="mdescRight">模块名。  <a href="interface_c_module.html#a1b8b93be9419f3ee79e449d60f9b77c2">更多...</a><br /></td></tr>
@@ -386,6 +394,82 @@ Protected 属性</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a90c2c8fc44e31fb57d85e17199e3c565"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90c2c8fc44e31fb57d85e17199e3c565">&#9670;&nbsp;</a></span>sendToContact:message:</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) sendToContact: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_c_contact.html">CContact</a> *)&#160;</td>
+          <td class="paramname"><em>conatct</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">message:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_c_message.html">CMessage</a> *)&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>向指定联系人发送消息。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">conatct</td><td>指定联系人。 </td></tr>
+    <tr><td class="paramname">message</td><td>指定消息实例。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>如果消息被正确处理返回 <code>TRUE</code> ，否则返回 <code>FALSE</code> 。 </dd></dl>
+
+</div>
+</div>
+<a id="ac76b8ba020f8d60b7102ddb1d6ba1536"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac76b8ba020f8d60b7102ddb1d6ba1536">&#9670;&nbsp;</a></span>sendToContactWithId:message:</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) sendToContactWithId: </td>
+          <td></td>
+          <td class="paramtype">(UInt64)&#160;</td>
+          <td class="paramname"><em>contactId</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">message:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_c_message.html">CMessage</a> *)&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>向指定联系人发送消息。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">contactId</td><td>指定联系人 ID 。 </td></tr>
+    <tr><td class="paramname">message</td><td>指定消息实例。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>如果消息被正确处理返回 <code>TRUE</code> ，否则返回 <code>FALSE</code> 。 </dd></dl>
 
 </div>
 </div>
@@ -597,12 +681,13 @@ Protected 属性</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>默认回溯时长，默认值：14个自然天。 </p>
 
 </div>
 </div>
-<a id="a57febdb4ae63c1ad724512fb847971fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57febdb4ae63c1ad724512fb847971fa">&#9670;&nbsp;</a></span>notifyDelegate</h2>
+<a id="a982e5a6c3c06a0e2b703c61564c0726e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a982e5a6c3c06a0e2b703c61564c0726e">&#9670;&nbsp;</a></span>eventDelegate</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -611,7 +696,7 @@ Protected 属性</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (id&lt;<a class="el" href="protocol_c_messaging_notify_delegate-p.html">CMessagingNotifyDelegate</a>&gt;) notifyDelegate</td>
+          <td class="memname">- (id&lt;<a class="el" href="protocol_c_messaging_event_delegate-p.html">CMessagingEventDelegate</a>&gt;) eventDelegate</td>
         </tr>
       </table>
   </td>
@@ -620,7 +705,8 @@ Protected 属性</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>消息实时接收的代理。 </p>
+
+<p>消息服务的事件代理。 </p>
 
 </div>
 </div>

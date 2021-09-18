@@ -116,85 +116,86 @@ $(document).ready(function(){initNavTree('_c_message_8h_source.html',''); initRe
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CMessage_h</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_entity_8h.html">CEntity.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_contact_8h.html">CContact.h</a>&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_group_8h.html">CGroup.h</a>&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="interface_c_message.html">   37</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_message.html">CMessage</a> : <a class="code" href="interface_c_entity.html">CEntity</a></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="interface_c_message.html#af025a2510142b49502fbae22ebe05a0c">   40</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) NSString * <a class="code" href="interface_c_message.html#af025a2510142b49502fbae22ebe05a0c">domain</a>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="interface_c_message.html#af08fe5b466bc522fcc92dd67fe56587e">   43</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#af08fe5b466bc522fcc92dd67fe56587e">from</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="interface_c_message.html#a25318155835ecb71f77b185b45044766">   46</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_contact.html">CContact</a> * <a class="code" href="interface_c_message.html#a25318155835ecb71f77b185b45044766">sender</a>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="interface_c_message.html#ac14ad3b88b6ed5fff1fe3ab7e198937b">   49</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#ac14ad3b88b6ed5fff1fe3ab7e198937b">to</a>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="interface_c_message.html#a40b5439080a740bcb9171e68c652f215">   52</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_contact.html">CContact</a> * <a class="code" href="interface_c_message.html#a40b5439080a740bcb9171e68c652f215">receiver</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="interface_c_message.html#a75bd049584abb7542fe22e7ad4ea05c1">   55</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#a75bd049584abb7542fe22e7ad4ea05c1">source</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="interface_c_message.html#a269d082fdeaa697ecb3fc3092a8f737a">   58</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_group.html">CGroup</a> * <a class="code" href="interface_c_message.html#a269d082fdeaa697ecb3fc3092a8f737a">sourceGroup</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="interface_c_message.html#a030d53b540670d5fee79fac04f34f20b">   61</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#a030d53b540670d5fee79fac04f34f20b">localTS</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="interface_c_message.html#a7d7965e991d09d7f9d444a5ab9950228">   64</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#a7d7965e991d09d7f9d444a5ab9950228">remoteTS</a>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="interface_c_message.html#a41027c218e2ecd4b40df5db194bee6f1">   67</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) NSDictionary * <a class="code" href="interface_c_message.html#a41027c218e2ecd4b40df5db194bee6f1">payload</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="interface_c_message.html#ab88cf4dcb51b40b2fd1e525c757bfad2">   73</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign) <span class="keywordtype">int</span> <a class="code" href="interface_c_message.html#a931f936c7c5225b8785fd0365e445688">state</a>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">//@property (nonatomic, strong, readonly) FileAttachment * attachment;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_contact.html">CContact</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_group.html">CGroup</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="interface_c_message.html">   39</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_message.html">CMessage</a> : <a class="code" href="interface_c_entity.html">CEntity</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="interface_c_message.html#af025a2510142b49502fbae22ebe05a0c">   42</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) NSString * <a class="code" href="interface_c_message.html#af025a2510142b49502fbae22ebe05a0c">domain</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="interface_c_message.html#af08fe5b466bc522fcc92dd67fe56587e">   45</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#af08fe5b466bc522fcc92dd67fe56587e">from</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="interface_c_message.html#a25318155835ecb71f77b185b45044766">   48</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_contact.html">CContact</a> * <a class="code" href="interface_c_message.html#a25318155835ecb71f77b185b45044766">sender</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="interface_c_message.html#ac14ad3b88b6ed5fff1fe3ab7e198937b">   51</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#ac14ad3b88b6ed5fff1fe3ab7e198937b">to</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="interface_c_message.html#a40b5439080a740bcb9171e68c652f215">   54</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_contact.html">CContact</a> * <a class="code" href="interface_c_message.html#a40b5439080a740bcb9171e68c652f215">receiver</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="interface_c_message.html#a75bd049584abb7542fe22e7ad4ea05c1">   57</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#a75bd049584abb7542fe22e7ad4ea05c1">source</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="interface_c_message.html#a269d082fdeaa697ecb3fc3092a8f737a">   60</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_group.html">CGroup</a> * <a class="code" href="interface_c_message.html#a269d082fdeaa697ecb3fc3092a8f737a">sourceGroup</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="interface_c_message.html#a030d53b540670d5fee79fac04f34f20b">   63</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#a030d53b540670d5fee79fac04f34f20b">localTS</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="interface_c_message.html#a7d7965e991d09d7f9d444a5ab9950228">   66</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign, readonly) UInt64 <a class="code" href="interface_c_message.html#a7d7965e991d09d7f9d444a5ab9950228">remoteTS</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="interface_c_message.html#a41027c218e2ecd4b40df5db194bee6f1">   69</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) NSDictionary * <a class="code" href="interface_c_message.html#a41027c218e2ecd4b40df5db194bee6f1">payload</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="interface_c_message.html#ab88cf4dcb51b40b2fd1e525c757bfad2">   75</a></span>&#160;<span class="keyword">@property</span> (nonatomic, assign) <span class="keywordtype">int</span> <a class="code" href="interface_c_message.html#a931f936c7c5225b8785fd0365e445688">state</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;- (instancetype)initWithPayload:(NSDictionary *)payload;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;- (instancetype)initWithJSON:(NSDictionary *)json;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;- (instancetype)initWithMessage:(<a class="code" href="interface_c_message.html">CMessage</a> *)message;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;- (int)<a class="code" href="interface_c_message.html#aaeebd76caea398c5f06dbd8dac671760">getScope</a>;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;- (BOOL)<a class="code" href="interface_c_message.html#ae3451cbfa3d73a663c88f241c8f3be65">isFromGroup</a>;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;- (void)bind:(UInt64)from sender:(<a class="code" href="interface_c_contact.html">CContact</a> *)sender</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;              to:(UInt64)to receiver:(<a class="code" href="interface_c_contact.html">CContact</a> *)receiver</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;          source:(UInt64)source sourceGroup:(<a class="code" href="interface_c_group.html">CGroup</a> *)sourceGroup;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;- (void)assign:(<a class="code" href="interface_c_contact.html">CContact</a> *)sender receiver:(<a class="code" href="interface_c_contact.html">CContact</a> *)receiver</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;   sourceGroup:(<a class="code" href="interface_c_group.html">CGroup</a> *)sourceGroup;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;- (void)assignSender:(<a class="code" href="interface_c_contact.html">CContact</a> *)sender;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">//@property (nonatomic, strong, readonly) FileAttachment * attachment;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;- (instancetype)initWithPayload:(NSDictionary *)payload;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;- (instancetype)initWithJSON:(NSDictionary *)json;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;- (instancetype)initWithMessage:(<a class="code" href="interface_c_message.html">CMessage</a> *)message;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;- (int)<a class="code" href="interface_c_message.html#aaeebd76caea398c5f06dbd8dac671760">getScope</a>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;- (BOOL)<a class="code" href="interface_c_message.html#ae3451cbfa3d73a663c88f241c8f3be65">isFromGroup</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;- (void)bind:(UInt64)from</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;          to:(UInt64)to</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      source:(UInt64)source;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;- (void)assignTS:(UInt64)localTS remoteTS:(UInt64)remoteTS;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;- (void)assign:(<a class="code" href="interface_c_contact.html">CContact</a> *)sender receiver:(<a class="code" href="interface_c_contact.html">CContact</a> *)receiver</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;   sourceGroup:(<a class="code" href="interface_c_group.html">CGroup</a> *)sourceGroup;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;- (void)assignReceiver:(<a class="code" href="interface_c_contact.html">CContact</a> *)receiver;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;- (void)assignSender:(<a class="code" href="interface_c_contact.html">CContact</a> *)sender;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;- (void)assignSourceGroup:(<a class="code" href="interface_c_group.html">CGroup</a> *)group;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;- (void)assignReceiver:(<a class="code" href="interface_c_contact.html">CContact</a> *)receiver;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;- (void)assignSourceGroup:(<a class="code" href="interface_c_group.html">CGroup</a> *)group;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CMessage_h */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="a_c_contact_8h_html"><div class="ttname"><a href="_c_contact_8h.html">CContact.h</a></div></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CMessage_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a_c_entity_8h_html"><div class="ttname"><a href="_c_entity_8h.html">CEntity.h</a></div></div>
-<div class="ttc" id="a_c_group_8h_html"><div class="ttname"><a href="_c_group_8h.html">CGroup.h</a></div></div>
-<div class="ttc" id="ainterface_c_contact_html"><div class="ttname"><a href="interface_c_contact.html">CContact</a></div><div class="ttdoc">联系人实体。</div><div class="ttdef"><b>Definition:</b> CContact.h:38</div></div>
+<div class="ttc" id="ainterface_c_contact_html"><div class="ttname"><a href="interface_c_contact.html">CContact</a></div><div class="ttdoc">联系人实体。</div><div class="ttdef"><b>Definition:</b> CContact.h:40</div></div>
 <div class="ttc" id="ainterface_c_entity_html"><div class="ttname"><a href="interface_c_entity.html">CEntity</a></div><div class="ttdoc">信息实体对象。所有实体对象的基类。</div><div class="ttdef"><b>Definition:</b> CEntity.h:36</div></div>
 <div class="ttc" id="ainterface_c_group_html"><div class="ttname"><a href="interface_c_group.html">CGroup</a></div><div class="ttdef"><b>Definition:</b> CGroup.h:34</div></div>
-<div class="ttc" id="ainterface_c_message_html"><div class="ttname"><a href="interface_c_message.html">CMessage</a></div><div class="ttdoc">消息实体。</div><div class="ttdef"><b>Definition:</b> CMessage.h:38</div></div>
-<div class="ttc" id="ainterface_c_message_html_a030d53b540670d5fee79fac04f34f20b"><div class="ttname"><a href="interface_c_message.html#a030d53b540670d5fee79fac04f34f20b">CMessage::localTS</a></div><div class="ttdeci">UInt64 localTS</div><div class="ttdoc">本地时间戳。</div><div class="ttdef"><b>Definition:</b> CMessage.h:61</div></div>
-<div class="ttc" id="ainterface_c_message_html_a25318155835ecb71f77b185b45044766"><div class="ttname"><a href="interface_c_message.html#a25318155835ecb71f77b185b45044766">CMessage::sender</a></div><div class="ttdeci">CContact * sender</div><div class="ttdoc">消息发件人。</div><div class="ttdef"><b>Definition:</b> CMessage.h:46</div></div>
-<div class="ttc" id="ainterface_c_message_html_a269d082fdeaa697ecb3fc3092a8f737a"><div class="ttname"><a href="interface_c_message.html#a269d082fdeaa697ecb3fc3092a8f737a">CMessage::sourceGroup</a></div><div class="ttdeci">CGroup * sourceGroup</div><div class="ttdoc">消息的收发群组。</div><div class="ttdef"><b>Definition:</b> CMessage.h:58</div></div>
-<div class="ttc" id="ainterface_c_message_html_a40b5439080a740bcb9171e68c652f215"><div class="ttname"><a href="interface_c_message.html#a40b5439080a740bcb9171e68c652f215">CMessage::receiver</a></div><div class="ttdeci">CContact * receiver</div><div class="ttdoc">消息收件人。</div><div class="ttdef"><b>Definition:</b> CMessage.h:52</div></div>
-<div class="ttc" id="ainterface_c_message_html_a41027c218e2ecd4b40df5db194bee6f1"><div class="ttname"><a href="interface_c_message.html#a41027c218e2ecd4b40df5db194bee6f1">CMessage::payload</a></div><div class="ttdeci">NSDictionary * payload</div><div class="ttdoc">消息负载数据。</div><div class="ttdef"><b>Definition:</b> CMessage.h:67</div></div>
-<div class="ttc" id="ainterface_c_message_html_a75bd049584abb7542fe22e7ad4ea05c1"><div class="ttname"><a href="interface_c_message.html#a75bd049584abb7542fe22e7ad4ea05c1">CMessage::source</a></div><div class="ttdeci">UInt64 source</div><div class="ttdoc">消息的收发源。该属性表示消息在一个广播域里的域标识或者域 ID 。</div><div class="ttdef"><b>Definition:</b> CMessage.h:55</div></div>
-<div class="ttc" id="ainterface_c_message_html_a7d7965e991d09d7f9d444a5ab9950228"><div class="ttname"><a href="interface_c_message.html#a7d7965e991d09d7f9d444a5ab9950228">CMessage::remoteTS</a></div><div class="ttdeci">UInt64 remoteTS</div><div class="ttdoc">服务器端时间戳。</div><div class="ttdef"><b>Definition:</b> CMessage.h:64</div></div>
-<div class="ttc" id="ainterface_c_message_html_a931f936c7c5225b8785fd0365e445688"><div class="ttname"><a href="interface_c_message.html#a931f936c7c5225b8785fd0365e445688">CMessage::state</a></div><div class="ttdeci">int state</div><div class="ttdoc">消息状态描述。</div><div class="ttdef"><b>Definition:</b> CMessage.h:73</div></div>
-<div class="ttc" id="ainterface_c_message_html_aaeebd76caea398c5f06dbd8dac671760"><div class="ttname"><a href="interface_c_message.html#aaeebd76caea398c5f06dbd8dac671760">-[CMessage getScope]</a></div><div class="ttdeci">int getScope()</div></div>
-<div class="ttc" id="ainterface_c_message_html_ac14ad3b88b6ed5fff1fe3ab7e198937b"><div class="ttname"><a href="interface_c_message.html#ac14ad3b88b6ed5fff1fe3ab7e198937b">CMessage::to</a></div><div class="ttdeci">UInt64 to</div><div class="ttdoc">消息接收方 ID 。</div><div class="ttdef"><b>Definition:</b> CMessage.h:49</div></div>
+<div class="ttc" id="ainterface_c_message_html"><div class="ttname"><a href="interface_c_message.html">CMessage</a></div><div class="ttdoc">消息实体。</div><div class="ttdef"><b>Definition:</b> CMessage.h:40</div></div>
+<div class="ttc" id="ainterface_c_message_html_a030d53b540670d5fee79fac04f34f20b"><div class="ttname"><a href="interface_c_message.html#a030d53b540670d5fee79fac04f34f20b">CMessage::localTS</a></div><div class="ttdeci">UInt64 localTS</div><div class="ttdoc">本地时间戳。</div><div class="ttdef"><b>Definition:</b> CMessage.h:63</div></div>
+<div class="ttc" id="ainterface_c_message_html_a25318155835ecb71f77b185b45044766"><div class="ttname"><a href="interface_c_message.html#a25318155835ecb71f77b185b45044766">CMessage::sender</a></div><div class="ttdeci">CContact * sender</div><div class="ttdoc">消息发件人。</div><div class="ttdef"><b>Definition:</b> CMessage.h:48</div></div>
+<div class="ttc" id="ainterface_c_message_html_a269d082fdeaa697ecb3fc3092a8f737a"><div class="ttname"><a href="interface_c_message.html#a269d082fdeaa697ecb3fc3092a8f737a">CMessage::sourceGroup</a></div><div class="ttdeci">CGroup * sourceGroup</div><div class="ttdoc">消息的收发群组。</div><div class="ttdef"><b>Definition:</b> CMessage.h:60</div></div>
+<div class="ttc" id="ainterface_c_message_html_a40b5439080a740bcb9171e68c652f215"><div class="ttname"><a href="interface_c_message.html#a40b5439080a740bcb9171e68c652f215">CMessage::receiver</a></div><div class="ttdeci">CContact * receiver</div><div class="ttdoc">消息收件人。</div><div class="ttdef"><b>Definition:</b> CMessage.h:54</div></div>
+<div class="ttc" id="ainterface_c_message_html_a41027c218e2ecd4b40df5db194bee6f1"><div class="ttname"><a href="interface_c_message.html#a41027c218e2ecd4b40df5db194bee6f1">CMessage::payload</a></div><div class="ttdeci">NSDictionary * payload</div><div class="ttdoc">消息负载数据。</div><div class="ttdef"><b>Definition:</b> CMessage.h:69</div></div>
+<div class="ttc" id="ainterface_c_message_html_a75bd049584abb7542fe22e7ad4ea05c1"><div class="ttname"><a href="interface_c_message.html#a75bd049584abb7542fe22e7ad4ea05c1">CMessage::source</a></div><div class="ttdeci">UInt64 source</div><div class="ttdoc">消息的收发源。该属性表示消息在一个广播域里的域标识或者域 ID 。</div><div class="ttdef"><b>Definition:</b> CMessage.h:57</div></div>
+<div class="ttc" id="ainterface_c_message_html_a7d7965e991d09d7f9d444a5ab9950228"><div class="ttname"><a href="interface_c_message.html#a7d7965e991d09d7f9d444a5ab9950228">CMessage::remoteTS</a></div><div class="ttdeci">UInt64 remoteTS</div><div class="ttdoc">服务器端时间戳。</div><div class="ttdef"><b>Definition:</b> CMessage.h:66</div></div>
+<div class="ttc" id="ainterface_c_message_html_a931f936c7c5225b8785fd0365e445688"><div class="ttname"><a href="interface_c_message.html#a931f936c7c5225b8785fd0365e445688">CMessage::state</a></div><div class="ttdeci">int state</div><div class="ttdoc">消息状态描述。</div><div class="ttdef"><b>Definition:</b> CMessage.h:75</div></div>
+<div class="ttc" id="ainterface_c_message_html_aaeebd76caea398c5f06dbd8dac671760"><div class="ttname"><a href="interface_c_message.html#aaeebd76caea398c5f06dbd8dac671760">-[CMessage getScope]</a></div><div class="ttdeci">int getScope()</div><div class="ttdoc">获取消息范围。</div></div>
+<div class="ttc" id="ainterface_c_message_html_ac14ad3b88b6ed5fff1fe3ab7e198937b"><div class="ttname"><a href="interface_c_message.html#ac14ad3b88b6ed5fff1fe3ab7e198937b">CMessage::to</a></div><div class="ttdeci">UInt64 to</div><div class="ttdoc">消息接收方 ID 。</div><div class="ttdef"><b>Definition:</b> CMessage.h:51</div></div>
 <div class="ttc" id="ainterface_c_message_html_ae3451cbfa3d73a663c88f241c8f3be65"><div class="ttname"><a href="interface_c_message.html#ae3451cbfa3d73a663c88f241c8f3be65">-[CMessage isFromGroup]</a></div><div class="ttdeci">BOOL isFromGroup()</div><div class="ttdoc">是否来自群组。</div></div>
-<div class="ttc" id="ainterface_c_message_html_af025a2510142b49502fbae22ebe05a0c"><div class="ttname"><a href="interface_c_message.html#af025a2510142b49502fbae22ebe05a0c">CMessage::domain</a></div><div class="ttdeci">NSString * domain</div><div class="ttdoc">消息所在的域。</div><div class="ttdef"><b>Definition:</b> CMessage.h:40</div></div>
-<div class="ttc" id="ainterface_c_message_html_af08fe5b466bc522fcc92dd67fe56587e"><div class="ttname"><a href="interface_c_message.html#af08fe5b466bc522fcc92dd67fe56587e">CMessage::from</a></div><div class="ttdeci">UInt64 from</div><div class="ttdoc">消息发送方 ID 。</div><div class="ttdef"><b>Definition:</b> CMessage.h:43</div></div>
+<div class="ttc" id="ainterface_c_message_html_af025a2510142b49502fbae22ebe05a0c"><div class="ttname"><a href="interface_c_message.html#af025a2510142b49502fbae22ebe05a0c">CMessage::domain</a></div><div class="ttdeci">NSString * domain</div><div class="ttdoc">消息所在的域。</div><div class="ttdef"><b>Definition:</b> CMessage.h:42</div></div>
+<div class="ttc" id="ainterface_c_message_html_af08fe5b466bc522fcc92dd67fe56587e"><div class="ttname"><a href="interface_c_message.html#af08fe5b466bc522fcc92dd67fe56587e">CMessage::from</a></div><div class="ttdeci">UInt64 from</div><div class="ttdoc">消息发送方 ID 。</div><div class="ttdef"><b>Definition:</b> CMessage.h:45</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.18-->

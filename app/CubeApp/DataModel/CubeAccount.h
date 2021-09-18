@@ -54,6 +54,8 @@
 
 - (NSDictionary *)toJSON;
 
+- (NSDictionary *)toDesensitizingJSON;
+
 @end
 
 #endif /* CubeAccount_h */

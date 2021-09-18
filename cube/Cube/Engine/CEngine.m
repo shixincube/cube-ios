@@ -34,6 +34,7 @@
 #import "CMessagingExtension.h"
 #import "CUtils.h"
 #import "CSelf.h"
+#import "CPipeline.h"
 
 @implementation CEngine
 
@@ -54,17 +55,46 @@
         [_kernel installModule:[[CMessagingService alloc] init]];
 
         _version = CUBE_KERNEL_VERSION;
+
+        _lastError = nil;
     }
 
     return self;
 }
 
-- (void)start:(CKernelConfig * _Nonnull)config success:(void (^)(CEngine * _Nullable))success failure:(void (^)(CError * _Nonnull))failure {
+- (void)startWithConfig:(CKernelConfig * _Nonnull)config success:(void (^)(CEngine * _Nullable))success failure:(void (^)(CError * _Nonnull))failure {
     [_kernel startup:config completion:^ {
         success(self);
     } failure:^(CError * error) {
         failure(error);
     }];
+}
+
+- (BOOL)startWithConfig:(CKernelConfig *)config timeoutInMilliseconds:(UInt64)timeoutInMilliseconds {
+    __block CError * startupError = nil;
+
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+
+    BOOL result = [_kernel startup:config completion:^{
+        dispatch_semaphore_signal(semaphore);
+    } failure:^(CError * error) {
+        startupError = [CError errorWithModule:error.module code:error.code];
+        dispatch_semaphore_signal(semaphore);
+    }];
+
+    if (!result) {
+        // 内核操作无效
+        _lastError = [CError errorWithModule:@"Kernel" code:-1];
+        return FALSE;
+    }
+
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, timeoutInMilliseconds * NSEC_PER_MSEC);
+    dispatch_semaphore_wait(semaphore, timeout);
+
+    // 记录错误
+    _lastError = startupError;
+
+    return (nil == startupError);
 }
 
 - (void)stop {
@@ -81,6 +111,14 @@
 
 - (BOOL)hasStarted {
     return [_kernel isReady];
+}
+
+- (BOOL)isReadyForPipeline {
+    if (_kernel.mainPipeline) {
+        return [_kernel.mainPipeline isReady];
+    }
+    
+    return FALSE;
 }
 
 - (CSelf * _Nullable)signInWithId:(UInt64)contactId {

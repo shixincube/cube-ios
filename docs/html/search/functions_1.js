@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bind_3asender_3ato_3areceiver_3asource_3asourcegroup_3a_506',['bind:sender:to:receiver:source:sourceGroup:',['../interface_c_message.html#aa66a298fec637fe041c782b3cafb36e8',1,'CMessage']]]
+  ['bind_3ato_3asource_3a_526',['bind:to:source:',['../interface_c_message.html#af63627fdcc4dd9752cfe38fb718431fa',1,'CMessage']]]
 ];

@@ -29,18 +29,23 @@
 #import "CUtils.h"
 #import "CError.h"
 #import "CObservableEvent.h"
+#import "CContactService.h"
+#import "CContactEvent.h"
+#import "CContact.h"
+#import "CGroup.h"
+#import "CSelf.h"
+#import "CDevice.h"
+
+#import "CMessage.h"
 #import "CMessagingPipelineListener.h"
 #import "CMessagingStorage.h"
 #import "CMessagingObserver.h"
 #import "CMessagingEvent.h"
 #import "CMessagingAction.h"
-#import "CContactEvent.h"
 #import "CPluginSystem.h"
 #import "CInstantiateHook.h"
 #import "CMessageTypePlugin.h"
-#import "CContact.h"
-#import "CGroup.h"
-#import "CSelf.h"
+
 
 typedef void (^PullCompletedHandler)(void);
 

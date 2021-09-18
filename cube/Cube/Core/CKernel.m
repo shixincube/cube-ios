@@ -127,12 +127,16 @@
             // 设置数据通道的访问令牌码
             self->_cellPipeline.tokenCode = token.code;
 
-            completion();
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                completion();
+            });
         }
         else {
             self->_working = FALSE;
 
-            failure(error);
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                failure(error);
+            });
         }
     }];
     
@@ -184,10 +188,15 @@
     return ([_modules objectForKey:moduleName]) ? TRUE : FALSE;
 }
 
-- (void)activeToken:(UInt64)contactId handler:(void (^)(CAuthToken *))handler {
+- (CAuthToken *)activeToken:(UInt64)contactId {
     CAuthService * authService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
-    CAuthToken * token = [authService allocToken:contactId];
-    handler(token);
+    return [authService allocToken:contactId];
+}
+
+#pragma mark - Getters
+
+- (CPipeline *)mainPipeline {
+    return _cellPipeline;
 }
 
 #pragma mark - Private

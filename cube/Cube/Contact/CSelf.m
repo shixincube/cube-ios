@@ -25,6 +25,7 @@
  */
 
 #import "CSelf.h"
+#import <CDevice.h>
 #import "CAuthService.h"
 
 @implementation CSelf

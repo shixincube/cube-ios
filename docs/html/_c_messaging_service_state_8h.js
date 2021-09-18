@@ -3,6 +3,7 @@ var _c_messaging_service_state_8h =
     [ "CMessagingServiceState", "_c_messaging_service_state_8h.html#ab5e2c20819a4023f52ab9af2997918da", null ],
     [ "_CMessagingServiceState", "_c_messaging_service_state_8h.html#af0b5c693978bd28f644c57da958156bd", [
       [ "CMessagingServiceStateOk", "_c_messaging_service_state_8h.html#af0b5c693978bd28f644c57da958156bdac99bb4139b26a51bf0f50488a6acec12", null ],
+      [ "CMessagingServiceStateInvalidParameter", "_c_messaging_service_state_8h.html#af0b5c693978bd28f644c57da958156bdaa380b31ee2719d63706dfb48b3ecb797", null ],
       [ "CMessagingServiceStateFailure", "_c_messaging_service_state_8h.html#af0b5c693978bd28f644c57da958156bdae4c92d26f8cb804710bfc6e97b4a847b", null ],
       [ "CMessagingServiceStateInvalidDomain", "_c_messaging_service_state_8h.html#af0b5c693978bd28f644c57da958156bdafebf0fbbd7587e83c067e6edcc47c213", null ],
       [ "CMessagingServiceStateDataStructureError", "_c_messaging_service_state_8h.html#af0b5c693978bd28f644c57da958156bda723b0d123039d7a9277d401802355c6c", null ],

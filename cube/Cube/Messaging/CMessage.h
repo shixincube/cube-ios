@@ -28,8 +28,10 @@
 #define CMessage_h
 
 #import "CEntity.h"
-#import "CContact.h"
-#import "CGroup.h"
+
+@class CContact;
+@class CGroup;
+
 
 /*!
  * @brief 消息实体。

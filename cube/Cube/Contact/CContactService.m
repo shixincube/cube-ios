@@ -110,10 +110,10 @@
 - (BOOL)signIn:(CSelf *)me handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
     // 不允许重复签入
     if (_selfReady) {
-        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateIllegalOperation]);
+//        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateIllegalOperation]);
         return FALSE;
     }
-    
+
     // 检查是否已经启动模块
     if (![self hasStarted]) {
         [self start];
@@ -134,15 +134,17 @@
             _owner.context = myselfContact.context;
             _owner.appendix = myselfContact.appendix;
 
-            handleSuccess(self.owner);
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                handleSuccess(self.owner);
 
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
                 [self notifyObservers:event];
             });
         }
         else {
-            handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNoNetwork]);
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNoNetwork]);
+            });
         }
 
         return TRUE;
@@ -151,37 +153,39 @@
     // 10 秒
     _waitReadyCount = 100;
 
-    [self.kernel activeToken:me.identity handler:^(CAuthToken * token) {
-        // 通知系统 Self 实例就绪
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
-            [self notifyObservers:event];
-        });
+    // 通知系统 Self 实例就绪
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
+        [self notifyObservers:event];
+    });
 
-        if (token) {
-            // 打包数据
-            NSMutableDictionary * data = [[NSMutableDictionary alloc] init];
-            [data setValue:[me toJSON] forKey:@"self"];
-            [data setValue:[token toJSON] forKey:@"token"];
+    // 激活令牌
+    CAuthToken * token = [self.kernel activeToken:me.identity];
+    if (token) {
+        // 打包数据
+        NSMutableDictionary * data = [[NSMutableDictionary alloc] init];
+        [data setValue:[me toJSON] forKey:@"self"];
+        [data setValue:[token toJSON] forKey:@"token"];
 
-            CPacket * signInPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_SIGNIN andData:data];
-            [self.pipeline send:CUBE_MODULE_CONTACT withPacket:signInPacket handleResponse:^(CPacket *packet) {
-                [self waitReady:^(BOOL timeout) {
-                    if (timeout) {
-                        // 超时
-                        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateServerError]);
-                    }
-                    else {
-                        handleSuccess(self.owner);
-                    }
-                }];
+        CPacket * signInPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_SIGNIN andData:data];
+        [self.pipeline send:CUBE_MODULE_CONTACT withPacket:signInPacket handleResponse:^(CPacket *packet) {
+            [self waitReady:^(BOOL timeout) {
+                if (timeout) {
+                    // 超时
+                    handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateServerError]);
+                }
+                else {
+                    handleSuccess(self.owner);
+                }
             }];
-        }
-        else {
+        }];
+    }
+    else {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateInconsistentToken]);
-        }
-    }];
-    
+        });
+    }
+
     return TRUE;
 }
 

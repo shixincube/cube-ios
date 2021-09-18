@@ -44,6 +44,7 @@
 @class CModule;
 @class CError;
 @class CAuthToken;
+@class CPipeline;
 
 
 /*!
@@ -112,6 +113,9 @@
 /*! @brief 配置。 */
 @property (nonatomic, strong, readonly) CKernelConfig * config;
 
+/*! @brief 主数据通道。 */
+@property (nonatomic, strong, readonly) CPipeline * mainPipeline;
+
 /*!
  * @brief 启动内核。
  * @param config 配置信息。
@@ -172,7 +176,7 @@
 /*!
  * @brief 使用指定联系人 ID 绑定已生效的令牌。
  */
-- (void)activeToken:(UInt64)contactId handler:(void(^)(CAuthToken *))handler;
+- (CAuthToken *)activeToken:(UInt64)contactId;
 
 @end
 
