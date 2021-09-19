@@ -142,6 +142,8 @@
 
 - (CSelf * _Nullable)signInWithId:(UInt64)contactId andName:(NSString * _Nonnull)name andContext:(NSDictionary * _Nullable)context {
     __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    
+    __block CError * signInError = nil;
 
     CContactService * contactService = [self getContactService];
     CSelf * me = [[CSelf alloc] initWithId:contactId name:name];
@@ -151,6 +153,7 @@
         }
         dispatch_semaphore_signal(semaphore);
     } handleFailure:^(CError * _Nonnull error) {
+        signInError = error;
         dispatch_semaphore_signal(semaphore);
     }];
 
@@ -160,7 +163,13 @@
 
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 
-    return contactService.owner;
+    if (nil != signInError) {
+        _lastError = signInError;
+        return nil;
+    }
+    else {
+        return contactService.owner;
+    }
 }
 
 - (CContactService * _Nullable)getContactService {

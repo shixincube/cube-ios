@@ -131,9 +131,9 @@ $(document).ready(function(){initNavTree('interface_c_kernel.html',''); initResi
 <tr class="memitem:a12b459e1a3772c77486812e77824d11b"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_kernel.html#a12b459e1a3772c77486812e77824d11b">hasModule:</a></td></tr>
 <tr class="memdesc:a12b459e1a3772c77486812e77824d11b"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否已经安装指定模块。  <a href="interface_c_kernel.html#a12b459e1a3772c77486812e77824d11b">更多...</a><br /></td></tr>
 <tr class="separator:a12b459e1a3772c77486812e77824d11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d6a5175cdbb6ffc92fd47b8dc1cac7f"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_kernel.html#a6d6a5175cdbb6ffc92fd47b8dc1cac7f">activeToken:handler:</a></td></tr>
-<tr class="memdesc:a6d6a5175cdbb6ffc92fd47b8dc1cac7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用指定联系人 ID 绑定已生效的令牌。  <a href="interface_c_kernel.html#a6d6a5175cdbb6ffc92fd47b8dc1cac7f">更多...</a><br /></td></tr>
-<tr class="separator:a6d6a5175cdbb6ffc92fd47b8dc1cac7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65e794d61d55edc080b1eb9d6a90babd"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_c_auth_token.html">CAuthToken</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_kernel.html#a65e794d61d55edc080b1eb9d6a90babd">activeToken:</a></td></tr>
+<tr class="memdesc:a65e794d61d55edc080b1eb9d6a90babd"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用指定联系人 ID 绑定已生效的令牌。  <a href="interface_c_kernel.html#a65e794d61d55edc080b1eb9d6a90babd">更多...</a><br /></td></tr>
+<tr class="separator:a65e794d61d55edc080b1eb9d6a90babd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 属性</h2></td></tr>
@@ -143,32 +143,25 @@ $(document).ready(function(){initNavTree('interface_c_kernel.html',''); initResi
 <tr class="memitem:a630bae31e56940e32ea5b0423670926a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_c_kernel_config.html">CKernelConfig</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_kernel.html#a630bae31e56940e32ea5b0423670926a">config</a></td></tr>
 <tr class="memdesc:a630bae31e56940e32ea5b0423670926a"><td class="mdescLeft">&#160;</td><td class="mdescRight">配置。  <a href="interface_c_kernel.html#a630bae31e56940e32ea5b0423670926a">更多...</a><br /></td></tr>
 <tr class="separator:a630bae31e56940e32ea5b0423670926a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad9f586a34d5633938db2c6d1e78f962"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_c_pipeline.html">CPipeline</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_c_kernel.html#aad9f586a34d5633938db2c6d1e78f962">mainPipeline</a></td></tr>
+<tr class="memdesc:aad9f586a34d5633938db2c6d1e78f962"><td class="mdescLeft">&#160;</td><td class="mdescRight">主数据通道。  <a href="interface_c_kernel.html#aad9f586a34d5633938db2c6d1e78f962">更多...</a><br /></td></tr>
+<tr class="separator:aad9f586a34d5633938db2c6d1e78f962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>内核。内核管理所有的模块和通信管道。 </p>
 </div><h2 class="groupheader">函数文档</h2>
-<a id="a6d6a5175cdbb6ffc92fd47b8dc1cac7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d6a5175cdbb6ffc92fd47b8dc1cac7f">&#9670;&nbsp;</a></span>activeToken:handler:</h2>
+<a id="a65e794d61d55edc080b1eb9d6a90babd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65e794d61d55edc080b1eb9d6a90babd">&#9670;&nbsp;</a></span>activeToken:</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) activeToken: </td>
+          <td class="memname">- (<a class="el" href="interface_c_auth_token.html">CAuthToken</a> *) activeToken: </td>
           <td></td>
           <td class="paramtype">(UInt64)&#160;</td>
           <td class="paramname"><em>contactId</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">handler:</td>
           <td></td>
-          <td class="paramtype">(void(^)(<a class="el" href="interface_c_auth_token.html">CAuthToken</a> *))&#160;</td>
-          <td class="paramname"><em>handler</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -451,6 +444,30 @@ $(document).ready(function(){initNavTree('interface_c_kernel.html',''); initResi
 </div><div class="memdoc">
 
 <p>配置。 </p>
+
+</div>
+</div>
+<a id="aad9f586a34d5633938db2c6d1e78f962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad9f586a34d5633938db2c6d1e78f962">&#9670;&nbsp;</a></span>mainPipeline</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="interface_c_pipeline.html">CPipeline</a>*) mainPipeline</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>主数据通道。 </p>
 
 </div>
 </div>

@@ -60,7 +60,7 @@
         }];
         // 背景色
         deleteAction.backgroundColor = [UIColor redColor];
-        
+
         UISwipeActionsConfiguration * config = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
         return config;
     }

@@ -41,6 +41,8 @@
 
 - (CPacket *)convertPrimitiveToPacket:(CellActionDialect *)dialect;
 
+- (void)retry;
+
 @end
 
 
@@ -130,7 +132,26 @@
     return packet;
 }
 
-#pragma mark CellTalkListener
+- (void)retry {
+    NSLog(@"Retry connect : %@:%d", self.address, (int)self.port);
+
+    // 尝试重连
+    [_nucleus.talkService hangup:self.address withPort:(int)self.port withNow:TRUE];
+
+    // 3 秒后重连
+    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, 3000 * NSEC_PER_MSEC);
+    dispatch_after(delayInNanoSeconds, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [self->_nucleus.talkService call:self.address withPort:(int)self.port];
+    });
+}
+
+#pragma mark - CNetworkStatusDelegate
+
+- (void)networkStatusChanged:(CNetworkStatus)status {
+    
+}
+
+#pragma mark - CellTalkListener
 
 - (void)onListened:(CellSpeaker *)speaker cellet:(NSString *)cellet primitive:(CellPrimitive *)primitive {
     CellActionDialect * dialect = [[CellActionDialect alloc] initWithPrimitive:primitive];
@@ -184,17 +205,7 @@
     }
 
     if (_enabled) {
-        NSLog(@"Retry connect : %@:%d", self.address, (int)self.port);
-        
-        // 尝试重连
-        [_nucleus.talkService hangup:self.address withPort:(int)self.port withNow:TRUE];
-
-        // 3 秒后重连
-        dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, 3000 * NSEC_PER_MSEC);
-        dispatch_after(delayInNanoSeconds,
-            dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-                [self->_nucleus.talkService call:self.address withPort:(int)self.port];
-        });
+        [self retry];
     }
 }
 

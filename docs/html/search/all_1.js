@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['activetoken_3ahandler_3a_12',['activeToken:handler:',['../interface_c_kernel.html#a6d6a5175cdbb6ffc92fd47b8dc1cac7f',1,'CKernel']]],
+  ['activetoken_3a_12',['activeToken:',['../interface_c_kernel.html#a65e794d61d55edc080b1eb9d6a90babd',1,'CKernel']]],
   ['adddevice_3a_13',['addDevice:',['../interface_c_contact.html#aebefe3c25676becce51590a2b72041e9',1,'CContact']]],
   ['addhook_3a_14',['addHook:',['../interface_c_plugin_system.html#a51d5f3433f5dfb40722ce1b1cddb1ff9',1,'CPluginSystem']]],
   ['addlistener_3alistener_3a_15',['addListener:listener:',['../interface_c_pipeline.html#a8ee9641947d8274c687d03b04cf0cb3d',1,'CPipeline']]],

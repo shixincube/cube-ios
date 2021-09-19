@@ -138,27 +138,29 @@ $(document).ready(function(){initNavTree('_c_engine_8h_source.html',''); initRes
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;- (void)startWithConfig:(<a class="code" href="interface_c_kernel_config.html">CKernelConfig</a> * _Nonnull)config success:(<span class="keywordtype">void</span>(^ _Nonnull)(<a class="code" href="interface_c_engine.html">CEngine</a> * _Nullable engine))success failure:(<span class="keywordtype">void</span>(^ _Nonnull)(<a class="code" href="interface_c_error.html">CError</a> * _Nonnull error))failure;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;- (BOOL)startWithConfig:(<a class="code" href="interface_c_kernel_config.html">CKernelConfig</a> * _Nonnull)config;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;- (void)<a class="code" href="interface_c_engine.html#a9fb67dc4031718b249e1718d4e68aaf4">stop</a>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;- (void)<a class="code" href="interface_c_engine.html#a255518be269134cb63083d27e971562b">suspend</a>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;- (void)<a class="code" href="interface_c_engine.html#adf4a472c500998a70441cd09ce13f129">resume</a>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;- (BOOL)<a class="code" href="interface_c_engine.html#ae32ae28394dfba11580c9451ad0aeaf6">hasStarted</a>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;- (<a class="code" href="interface_c_self.html">CSelf</a> * _Nullable)signInWithId:(UInt64)contactId;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;- (BOOL)startWithConfig:(<a class="code" href="interface_c_kernel_config.html">CKernelConfig</a> * _Nonnull)config timeoutInMilliseconds:(UInt64)timeoutInMilliseconds;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;- (void)<a class="code" href="interface_c_engine.html#a9fb67dc4031718b249e1718d4e68aaf4">stop</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;- (void)<a class="code" href="interface_c_engine.html#a255518be269134cb63083d27e971562b">suspend</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;- (void)<a class="code" href="interface_c_engine.html#adf4a472c500998a70441cd09ce13f129">resume</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;- (BOOL)<a class="code" href="interface_c_engine.html#ae32ae28394dfba11580c9451ad0aeaf6">hasStarted</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;- (BOOL)<a class="code" href="interface_c_engine.html#a8f7e07f8bfb457062f8e6fd20fc6b7ba">isReadyForPipeline</a>;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;- (<a class="code" href="interface_c_self.html">CSelf</a> * _Nullable)signInWithId:(UInt64)contactId andName:(NSString * _Nonnull)name andContext:(NSDictionary * _Nullable)context;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;- (<a class="code" href="interface_c_contact_service.html">CContactService</a> * _Nullable)<a class="code" href="interface_c_engine.html#a7fe434d8ef7e4b684ae09fb62896ccec">getContactService</a>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;- (<a class="code" href="interface_c_messaging_service.html">CMessagingService</a> * _Nullable)<a class="code" href="interface_c_engine.html#a8a9451e3d9b69d5cb119c91188c8e744">getMessagingService</a>;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CEngine_h */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;- (<a class="code" href="interface_c_self.html">CSelf</a> * _Nullable)signInWithId:(UInt64)contactId;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;- (<a class="code" href="interface_c_self.html">CSelf</a> * _Nullable)signInWithId:(UInt64)contactId andName:(NSString * _Nonnull)name andContext:(NSDictionary * _Nullable)context;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;- (<a class="code" href="interface_c_contact_service.html">CContactService</a> * _Nullable)<a class="code" href="interface_c_engine.html#a7fe434d8ef7e4b684ae09fb62896ccec">getContactService</a>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;- (<a class="code" href="interface_c_messaging_service.html">CMessagingService</a> * _Nullable)<a class="code" href="interface_c_engine.html#a8a9451e3d9b69d5cb119c91188c8e744">getMessagingService</a>;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CEngine_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="ainterface_c_auth_service_html"><div class="ttname"><a href="interface_c_auth_service.html">CAuthService</a></div><div class="ttdoc">授权服务。管理引擎的授权信息。</div><div class="ttdef"><b>Definition:</b> CAuthService.h:44</div></div>
 <div class="ttc" id="ainterface_c_contact_service_html"><div class="ttname"><a href="interface_c_contact_service.html">CContactService</a></div><div class="ttdoc">联系人模块。</div><div class="ttdef"><b>Definition:</b> CContactService.h:56</div></div>
 <div class="ttc" id="ainterface_c_engine_html"><div class="ttname"><a href="interface_c_engine.html">CEngine</a></div><div class="ttdoc">魔方引擎的入口类。 该类设计为单例，在应用程序中通过该类调用魔方的各个功能模块。</div><div class="ttdef"><b>Definition:</b> CEngine.h:45</div></div>
@@ -166,6 +168,7 @@ $(document).ready(function(){initNavTree('_c_engine_8h_source.html',''); initRes
 <div class="ttc" id="ainterface_c_engine_html_a771fcc7d7fd4fc45a08df7a386c9f5ab"><div class="ttname"><a href="interface_c_engine.html#a771fcc7d7fd4fc45a08df7a386c9f5ab">+[CEngine sharedInstance]</a></div><div class="ttdeci">CEngine *_Nonnull sharedInstance()</div><div class="ttdoc">获取引擎单例。</div></div>
 <div class="ttc" id="ainterface_c_engine_html_a7fe434d8ef7e4b684ae09fb62896ccec"><div class="ttname"><a href="interface_c_engine.html#a7fe434d8ef7e4b684ae09fb62896ccec">-[CEngine getContactService]</a></div><div class="ttdeci">CContactService *_Nullable getContactService()</div><div class="ttdoc">获取联系人服务模块。</div></div>
 <div class="ttc" id="ainterface_c_engine_html_a8a9451e3d9b69d5cb119c91188c8e744"><div class="ttname"><a href="interface_c_engine.html#a8a9451e3d9b69d5cb119c91188c8e744">-[CEngine getMessagingService]</a></div><div class="ttdeci">CMessagingService *_Nullable getMessagingService()</div><div class="ttdoc">获取消息服务模块。</div></div>
+<div class="ttc" id="ainterface_c_engine_html_a8f7e07f8bfb457062f8e6fd20fc6b7ba"><div class="ttname"><a href="interface_c_engine.html#a8f7e07f8bfb457062f8e6fd20fc6b7ba">-[CEngine isReadyForPipeline]</a></div><div class="ttdeci">BOOL isReadyForPipeline()</div><div class="ttdoc">数据通道是否就绪。</div></div>
 <div class="ttc" id="ainterface_c_engine_html_a9038b996f31c0fcb765ee3afae594a31"><div class="ttname"><a href="interface_c_engine.html#a9038b996f31c0fcb765ee3afae594a31">CEngine::kernel</a></div><div class="ttdeci">CKernel *_Nonnull kernel</div><div class="ttdoc">内核实例。</div><div class="ttdef"><b>Definition:</b> CEngine.h:60</div></div>
 <div class="ttc" id="ainterface_c_engine_html_a952aaf21ef664953fa6bf8401efe0aa2"><div class="ttname"><a href="interface_c_engine.html#a952aaf21ef664953fa6bf8401efe0aa2">CEngine::version</a></div><div class="ttdeci">NSString *_Nonnull version</div><div class="ttdoc">内核实例。</div><div class="ttdef"><b>Definition:</b> CEngine.h:55</div></div>
 <div class="ttc" id="ainterface_c_engine_html_a9fb67dc4031718b249e1718d4e68aaf4"><div class="ttname"><a href="interface_c_engine.html#a9fb67dc4031718b249e1718d4e68aaf4">-[CEngine stop]</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">停止魔方引擎。</div></div>
@@ -173,10 +176,10 @@ $(document).ready(function(){initNavTree('_c_engine_8h_source.html',''); initRes
 <div class="ttc" id="ainterface_c_engine_html_adf4a472c500998a70441cd09ce13f129"><div class="ttname"><a href="interface_c_engine.html#adf4a472c500998a70441cd09ce13f129">-[CEngine resume]</a></div><div class="ttdeci">void resume()</div><div class="ttdoc">恢复魔方引擎。用于应用程序回到前台。</div></div>
 <div class="ttc" id="ainterface_c_engine_html_ae32ae28394dfba11580c9451ad0aeaf6"><div class="ttname"><a href="interface_c_engine.html#ae32ae28394dfba11580c9451ad0aeaf6">-[CEngine hasStarted]</a></div><div class="ttdeci">BOOL hasStarted()</div><div class="ttdoc">是否已启动。</div></div>
 <div class="ttc" id="ainterface_c_error_html"><div class="ttname"><a href="interface_c_error.html">CError</a></div><div class="ttdef"><b>Definition:</b> CError.h:33</div></div>
-<div class="ttc" id="ainterface_c_kernel_config_html"><div class="ttname"><a href="interface_c_kernel_config.html">CKernelConfig</a></div><div class="ttdoc">内核配置定义。</div><div class="ttdef"><b>Definition:</b> CKernel.h:53</div></div>
-<div class="ttc" id="ainterface_c_kernel_html"><div class="ttname"><a href="interface_c_kernel.html">CKernel</a></div><div class="ttdoc">内核。内核管理所有的模块和通信管道。</div><div class="ttdef"><b>Definition:</b> CKernel.h:108</div></div>
+<div class="ttc" id="ainterface_c_kernel_config_html"><div class="ttname"><a href="interface_c_kernel_config.html">CKernelConfig</a></div><div class="ttdoc">内核配置定义。</div><div class="ttdef"><b>Definition:</b> CKernel.h:54</div></div>
+<div class="ttc" id="ainterface_c_kernel_html"><div class="ttname"><a href="interface_c_kernel.html">CKernel</a></div><div class="ttdoc">内核。内核管理所有的模块和通信管道。</div><div class="ttdef"><b>Definition:</b> CKernel.h:109</div></div>
 <div class="ttc" id="ainterface_c_messaging_service_html"><div class="ttname"><a href="interface_c_messaging_service.html">CMessagingService</a></div><div class="ttdoc">消息模块。</div><div class="ttdef"><b>Definition:</b> CMessagingService.h:82</div></div>
-<div class="ttc" id="ainterface_c_self_html"><div class="ttname"><a href="interface_c_self.html">CSelf</a></div><div class="ttdoc">用户描述自己的账号。</div><div class="ttdef"><b>Definition:</b> CSelf.h:37</div></div>
+<div class="ttc" id="ainterface_c_self_html"><div class="ttname"><a href="interface_c_self.html">CSelf</a></div><div class="ttdoc">用户描述自己的账号。</div><div class="ttdef"><b>Definition:</b> CSelf.h:38</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.18-->

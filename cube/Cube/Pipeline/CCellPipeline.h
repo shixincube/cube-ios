@@ -29,9 +29,10 @@
 
 #include <cell/Cell.h>
 
-#import "../Core/CPipeline.h"
+#import "CPipeline.h"
+#import "CNetworkStatusManager.h"
 
-@interface CCellPipeline : CPipeline <CellTalkListener>
+@interface CCellPipeline : CPipeline <CellTalkListener, CNetworkStatusDelegate>
 
 @end
 

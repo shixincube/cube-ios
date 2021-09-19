@@ -52,6 +52,10 @@
 		C859CF3F26DF0C04003040CC /* CHyperTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C859CF3E26DF0C04003040CC /* CHyperTextMessage.m */; };
 		C859CF4426DF2647003040CC /* NSString+Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = C859CF4326DF2647003040CC /* NSString+Cube.m */; };
 		C88461E426B55A4B00A8A3C6 /* CError.m in Sources */ = {isa = PBXBuildFile; fileRef = C88461E326B55A4B00A8A3C6 /* CError.m */; };
+		C896B2B926F713DB00339989 /* CNetworkStatusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C896B2B826F713DB00339989 /* CNetworkStatusManager.m */; };
+		C896B2BC26F713DF00339989 /* CNetworkStatusManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C896B2B726F713CD00339989 /* CNetworkStatusManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C896B2D726F72C2500339989 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C896B2D626F72C2500339989 /* AFNetworking.framework */; };
+		C896B2D826F72C2500339989 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C896B2D626F72C2500339989 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8A0DA0526E1C8D80032A9D5 /* CUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384F626BD1B73009CF806 /* CUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8ACAC8126B953530057740D /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = C8ACAC8026B953530057740D /* CEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B755B0268ABD1B00812A4C /* CStateCode.m */; };
@@ -118,6 +122,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C8C384F126BD1840009CF806 /* WebRTC.xcframework in Embed Frameworks */,
+				C896B2D826F72C2500339989 /* AFNetworking.framework in Embed Frameworks */,
 				C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */,
 				C82DB8BB26B39B0500813378 /* FMDB.framework in Embed Frameworks */,
 				C8C384EC26BD182F009CF806 /* cell.xcframework in Embed Frameworks */,
@@ -187,6 +192,9 @@
 		C859CF4326DF2647003040CC /* NSString+Cube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Cube.m"; sourceTree = "<group>"; };
 		C88461E226B55A3A00A8A3C6 /* CError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CError.h; sourceTree = "<group>"; };
 		C88461E326B55A4B00A8A3C6 /* CError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CError.m; sourceTree = "<group>"; };
+		C896B2B726F713CD00339989 /* CNetworkStatusManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNetworkStatusManager.h; sourceTree = "<group>"; };
+		C896B2B826F713DB00339989 /* CNetworkStatusManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CNetworkStatusManager.m; sourceTree = "<group>"; };
+		C896B2D626F72C2500339989 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89D151326BE712300C4A55F /* CContactAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactAction.h; sourceTree = "<group>"; };
 		C8ACAC8026B953530057740D /* CEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEngine.h; sourceTree = "<group>"; };
 		C8B755AF268ABA6300812A4C /* CStateCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CStateCode.h; sourceTree = "<group>"; };
@@ -255,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8C384F026BD1840009CF806 /* WebRTC.xcframework in Frameworks */,
+				C896B2D726F72C2500339989 /* AFNetworking.framework in Frameworks */,
 				C8F1A57B2689A1E80020F136 /* PromiseKit.framework in Frameworks */,
 				C82DB8BA26B39B0500813378 /* FMDB.framework in Frameworks */,
 				C8C384EB26BD182F009CF806 /* cell.xcframework in Frameworks */,
@@ -471,6 +480,7 @@
 		C8F1A5792689A1E80020F136 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C896B2D626F72C2500339989 /* AFNetworking.framework */,
 				C8077E3626F1869300E36265 /* DeviceKit.xcframework */,
 				C8077E1926F1808900E36265 /* DeviceKit.framework */,
 				C8C384EF26BD1840009CF806 /* WebRTC.xcframework */,
@@ -489,6 +499,8 @@
 			children = (
 				C8F1A5802689AC090020F136 /* CCellPipeline.h */,
 				C8F1A5812689AC230020F136 /* CCellPipeline.m */,
+				C896B2B726F713CD00339989 /* CNetworkStatusManager.h */,
+				C896B2B826F713DB00339989 /* CNetworkStatusManager.m */,
 			);
 			path = Pipeline;
 			sourceTree = "<group>";
@@ -525,6 +537,7 @@
 				C80A208A26D725AE00255B11 /* CMessage.h in Headers */,
 				C859CF3C26DF0BBF003040CC /* CHyperTextMessage.h in Headers */,
 				C8E3257C26E0A40B005CA08A /* CMessagingExtension.h in Headers */,
+				C896B2BC26F713DF00339989 /* CNetworkStatusManager.h in Headers */,
 				C8BE511326D8969900935149 /* CMessagingEvent.h in Headers */,
 				C80A208626D71C8A00255B11 /* CMessagingService.h in Headers */,
 				C8400AAF26C1F99900C8FF48 /* CDevice.h in Headers */,
@@ -639,6 +652,7 @@
 				C8F1A56926899B980020F136 /* CKernel.m in Sources */,
 				C8C384DD26BD0306009CF806 /* CContactStorage.m in Sources */,
 				C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */,
+				C896B2B926F713DB00339989 /* CNetworkStatusManager.m in Sources */,
 				C8B755B1268ABD1B00812A4C /* CStateCode.m in Sources */,
 				C8F4596826C5346900CC4E13 /* CContactEvent.m in Sources */,
 				C8C384F426BD1B68009CF806 /* CUtils.m in Sources */,
@@ -755,7 +769,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -811,7 +825,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

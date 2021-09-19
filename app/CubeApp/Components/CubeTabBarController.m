@@ -38,7 +38,7 @@
 
 }
 
-- (void)setup:(void (^)(void))completion;
+- (void)setup;
 
 - (UINavigationController *)addNavigationController:(UIViewController *)viewController;
 
@@ -79,9 +79,9 @@
     else {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self requestData:^ {
+                NSLog(@"Request data completed");
                 // 启动引擎
                 [self setup];
-                NSLog(@"Request data completed");
             }];
         });
     }
@@ -109,8 +109,12 @@
 
     // 签入当前账号，该方法也是阻塞
     CSelf * ownerAccount = [[CEngine sharedInstance] signInWithId:current.identity
-                                   andName:current.displayName
-                                andContext:[current toDesensitizingJSON]];
+                                                          andName:current.displayName
+                                                       andContext:[current toDesensitizingJSON]];
+    if (nil == ownerAccount) {
+        NSLog(@"Sign-in failure");
+        return;
+    }
 }
 
 - (void)requestData:(void (^)(void))completion {

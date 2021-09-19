@@ -108,9 +108,9 @@ $(document).ready(function(){initNavTree('interface_c_engine.html',''); initResi
 <tr class="memitem:aef36ba48c9c95fb5991978bc687f4463"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_engine.html#aef36ba48c9c95fb5991978bc687f4463">startWithConfig:success:failure:</a></td></tr>
 <tr class="memdesc:aef36ba48c9c95fb5991978bc687f4463"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动魔方引擎。  <a href="interface_c_engine.html#aef36ba48c9c95fb5991978bc687f4463">更多...</a><br /></td></tr>
 <tr class="separator:aef36ba48c9c95fb5991978bc687f4463"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4810e5c929c59938244e6942f653ff0"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_engine.html#aa4810e5c929c59938244e6942f653ff0">startWithConfig:</a></td></tr>
-<tr class="memdesc:aa4810e5c929c59938244e6942f653ff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动魔方引擎，该方法会阻塞当前线程，直到引擎启动成功或者失败。  <a href="interface_c_engine.html#aa4810e5c929c59938244e6942f653ff0">更多...</a><br /></td></tr>
-<tr class="separator:aa4810e5c929c59938244e6942f653ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dcd094b4fda19626e8e608deea695d2"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_engine.html#a1dcd094b4fda19626e8e608deea695d2">startWithConfig:timeoutInMilliseconds:</a></td></tr>
+<tr class="memdesc:a1dcd094b4fda19626e8e608deea695d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动魔方引擎，该方法会阻塞当前线程，直到引擎启动成功或者失败。  <a href="interface_c_engine.html#a1dcd094b4fda19626e8e608deea695d2">更多...</a><br /></td></tr>
+<tr class="separator:a1dcd094b4fda19626e8e608deea695d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fb67dc4031718b249e1718d4e68aaf4"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_engine.html#a9fb67dc4031718b249e1718d4e68aaf4">stop</a></td></tr>
 <tr class="memdesc:a9fb67dc4031718b249e1718d4e68aaf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止魔方引擎。  <a href="interface_c_engine.html#a9fb67dc4031718b249e1718d4e68aaf4">更多...</a><br /></td></tr>
 <tr class="separator:a9fb67dc4031718b249e1718d4e68aaf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,6 +123,9 @@ $(document).ready(function(){initNavTree('interface_c_engine.html',''); initResi
 <tr class="memitem:ae32ae28394dfba11580c9451ad0aeaf6"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_engine.html#ae32ae28394dfba11580c9451ad0aeaf6">hasStarted</a></td></tr>
 <tr class="memdesc:ae32ae28394dfba11580c9451ad0aeaf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否已启动。  <a href="interface_c_engine.html#ae32ae28394dfba11580c9451ad0aeaf6">更多...</a><br /></td></tr>
 <tr class="separator:ae32ae28394dfba11580c9451ad0aeaf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f7e07f8bfb457062f8e6fd20fc6b7ba"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_engine.html#a8f7e07f8bfb457062f8e6fd20fc6b7ba">isReadyForPipeline</a></td></tr>
+<tr class="memdesc:a8f7e07f8bfb457062f8e6fd20fc6b7ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">数据通道是否就绪。  <a href="interface_c_engine.html#a8f7e07f8bfb457062f8e6fd20fc6b7ba">更多...</a><br /></td></tr>
+<tr class="separator:a8f7e07f8bfb457062f8e6fd20fc6b7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36398dc294b7d9d7ccd62de9a3fb0388"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_c_self.html">CSelf</a> *_Nullable)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_c_engine.html#a36398dc294b7d9d7ccd62de9a3fb0388">signInWithId:</a></td></tr>
 <tr class="memdesc:a36398dc294b7d9d7ccd62de9a3fb0388"><td class="mdescLeft">&#160;</td><td class="mdescRight">签入指定 ID 的联系人。  <a href="interface_c_engine.html#a36398dc294b7d9d7ccd62de9a3fb0388">更多...</a><br /></td></tr>
 <tr class="separator:a36398dc294b7d9d7ccd62de9a3fb0388"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -214,6 +217,26 @@ $(document).ready(function(){initNavTree('interface_c_engine.html',''); initResi
 
 <p>是否已启动。 </p>
 <dl class="section return"><dt>返回</dt><dd>引擎已启动返回 <code>TRUE</code> ，否则返回 <code>FALSE</code> 。 </dd></dl>
+
+</div>
+</div>
+<a id="a8f7e07f8bfb457062f8e6fd20fc6b7ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f7e07f8bfb457062f8e6fd20fc6b7ba">&#9670;&nbsp;</a></span>isReadyForPipeline</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) isReadyForPipeline </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>数据通道是否就绪。 </p>
+<dl class="section return"><dt>返回</dt><dd>如果数据通道已经连接到服务器返回 <code>TRUE</code> 。 </dd></dl>
 
 </div>
 </div>
@@ -328,33 +351,6 @@ $(document).ready(function(){initNavTree('interface_c_engine.html',''); initResi
 
 </div>
 </div>
-<a id="aa4810e5c929c59938244e6942f653ff0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4810e5c929c59938244e6942f653ff0">&#9670;&nbsp;</a></span>startWithConfig:</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (BOOL) startWithConfig: </td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interface_c_kernel_config.html">CKernelConfig</a> *_Nonnull)&#160;</td>
-          <td class="paramname"><em>config</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>启动魔方引擎，该方法会阻塞当前线程，直到引擎启动成功或者失败。 </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">config</td><td>内核配置。 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>返回</dt><dd>如果启动成功返回 <code>TRUE</code> ，否则返回 <code>FALSE</code> 。如果启动失败，可以通过 <a class="el" href="interface_c_engine.html#ab23ede12a921d05ad412d3041f6f8611" title="最近一次发生的错误。">CEngine::lastError</a> 查看错误信息。 </dd></dl>
-
-</div>
-</div>
 <a id="aef36ba48c9c95fb5991978bc687f4463"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aef36ba48c9c95fb5991978bc687f4463">&#9670;&nbsp;</a></span>startWithConfig:success:failure:</h2>
 
@@ -362,7 +358,7 @@ $(document).ready(function(){initNavTree('interface_c_engine.html',''); initResi
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) <a class="el" href="interface_c_engine.html#aa4810e5c929c59938244e6942f653ff0">startWithConfig:</a> </td>
+          <td class="memname">- (void) startWithConfig: </td>
           <td></td>
           <td class="paramtype">(<a class="el" href="interface_c_kernel_config.html">CKernelConfig</a> *_Nonnull)&#160;</td>
           <td class="paramname"><em>config</em></td>
@@ -396,6 +392,44 @@ $(document).ready(function(){initNavTree('interface_c_engine.html',''); initResi
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a1dcd094b4fda19626e8e608deea695d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dcd094b4fda19626e8e608deea695d2">&#9670;&nbsp;</a></span>startWithConfig:timeoutInMilliseconds:</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) startWithConfig: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_c_kernel_config.html">CKernelConfig</a> *_Nonnull)&#160;</td>
+          <td class="paramname"><em>config</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">timeoutInMilliseconds:</td>
+          <td></td>
+          <td class="paramtype">(UInt64)&#160;</td>
+          <td class="paramname"><em>timeoutInMilliseconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>启动魔方引擎，该方法会阻塞当前线程，直到引擎启动成功或者失败。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td>内核配置。 </td></tr>
+    <tr><td class="paramname">timeoutInMilliseconds</td><td>以毫秒为单位的超时时间。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>如果启动成功返回 <code>TRUE</code> ，否则返回 <code>FALSE</code> 。如果启动失败，可以通过 <a class="el" href="interface_c_engine.html#ab23ede12a921d05ad412d3041f6f8611" title="最近一次发生的错误。">CEngine::lastError</a> 查看错误信息。 </dd></dl>
 
 </div>
 </div>

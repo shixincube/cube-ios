@@ -61,6 +61,10 @@
     [self initModel];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
 #pragma mark - Private
 
 - (void)setNavTitleWithStatusString:(NSString *)statusString {

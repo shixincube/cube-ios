@@ -116,29 +116,29 @@ $(document).ready(function(){initNavTree('_c_self_8h_source.html',''); initResiz
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CSelf_h</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_contact_8h.html">CContact.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_c_device_8h.html">CDevice.h</a>&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="interface_c_self.html">   36</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_self.html">CSelf</a> : <a class="code" href="interface_c_contact.html">CContact</a></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="interface_c_self.html#a64694a259fcb6b668425dcc065130d9c">   39</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_device.html">CDevice</a> * <a class="code" href="interface_c_self.html#a64694a259fcb6b668425dcc065130d9c">device</a>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;- (instancetype)initWithId:(UInt64)<a class="code" href="interface_c_entity.html#abe3affde8e879755ff4fd411a29e97c8">identity</a> <a class="code" href="interface_c_abstract_contact.html#a826c1aaa3d53b4aab1714a9ecf89e7fc">name</a>:(NSString *)<a class="code" href="interface_c_abstract_contact.html#a826c1aaa3d53b4aab1714a9ecf89e7fc">name</a>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;- (instancetype)initWithJSON:(NSDictionary *)json;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;- (void)updateWithJSON:(NSDictionary *)json;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">@end</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CSelf_h */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">@class</span> <a class="code" href="interface_c_device.html">CDevice</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="interface_c_self.html">   37</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_c_self.html">CSelf</a> : <a class="code" href="interface_c_contact.html">CContact</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="interface_c_self.html#a64694a259fcb6b668425dcc065130d9c">   40</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong, readonly) <a class="code" href="interface_c_device.html">CDevice</a> * <a class="code" href="interface_c_self.html#a64694a259fcb6b668425dcc065130d9c">device</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;- (instancetype)initWithId:(UInt64)<a class="code" href="interface_c_entity.html#abe3affde8e879755ff4fd411a29e97c8">identity</a> <a class="code" href="interface_c_abstract_contact.html#a826c1aaa3d53b4aab1714a9ecf89e7fc">name</a>:(NSString *)<a class="code" href="interface_c_abstract_contact.html#a826c1aaa3d53b4aab1714a9ecf89e7fc">name</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;- (instancetype)initWithJSON:(NSDictionary *)json;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;- (void)updateWithJSON:(NSDictionary *)json;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CSelf_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a_c_contact_8h_html"><div class="ttname"><a href="_c_contact_8h.html">CContact.h</a></div></div>
-<div class="ttc" id="a_c_device_8h_html"><div class="ttname"><a href="_c_device_8h.html">CDevice.h</a></div></div>
 <div class="ttc" id="ainterface_c_abstract_contact_html_a826c1aaa3d53b4aab1714a9ecf89e7fc"><div class="ttname"><a href="interface_c_abstract_contact.html#a826c1aaa3d53b4aab1714a9ecf89e7fc">CAbstractContact::name</a></div><div class="ttdeci">NSString * name</div><div class="ttdef"><b>Definition:</b> CAbstractContact.h:38</div></div>
 <div class="ttc" id="ainterface_c_contact_html"><div class="ttname"><a href="interface_c_contact.html">CContact</a></div><div class="ttdoc">联系人实体。</div><div class="ttdef"><b>Definition:</b> CContact.h:40</div></div>
 <div class="ttc" id="ainterface_c_device_html"><div class="ttname"><a href="interface_c_device.html">CDevice</a></div><div class="ttdoc">设备描述。</div><div class="ttdef"><b>Definition:</b> CDevice.h:36</div></div>
 <div class="ttc" id="ainterface_c_entity_html_abe3affde8e879755ff4fd411a29e97c8"><div class="ttname"><a href="interface_c_entity.html#abe3affde8e879755ff4fd411a29e97c8">CEntity::identity</a></div><div class="ttdeci">UInt64 identity</div><div class="ttdef"><b>Definition:</b> CEntity.h:38</div></div>
-<div class="ttc" id="ainterface_c_self_html"><div class="ttname"><a href="interface_c_self.html">CSelf</a></div><div class="ttdoc">用户描述自己的账号。</div><div class="ttdef"><b>Definition:</b> CSelf.h:37</div></div>
-<div class="ttc" id="ainterface_c_self_html_a64694a259fcb6b668425dcc065130d9c"><div class="ttname"><a href="interface_c_self.html#a64694a259fcb6b668425dcc065130d9c">CSelf::device</a></div><div class="ttdeci">CDevice * device</div><div class="ttdef"><b>Definition:</b> CSelf.h:39</div></div>
+<div class="ttc" id="ainterface_c_self_html"><div class="ttname"><a href="interface_c_self.html">CSelf</a></div><div class="ttdoc">用户描述自己的账号。</div><div class="ttdef"><b>Definition:</b> CSelf.h:38</div></div>
+<div class="ttc" id="ainterface_c_self_html_a64694a259fcb6b668425dcc065130d9c"><div class="ttname"><a href="interface_c_self.html#a64694a259fcb6b668425dcc065130d9c">CSelf::device</a></div><div class="ttdeci">CDevice * device</div><div class="ttdef"><b>Definition:</b> CSelf.h:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.18-->
