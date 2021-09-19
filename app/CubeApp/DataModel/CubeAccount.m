@@ -43,6 +43,10 @@
         _avatar = [accountJSON valueForKey:@"avatar"];
         _state = [[accountJSON valueForKey:@"state"] integerValue];
 
+        if (!_region) {
+            _region = @"";
+        }
+
         if ([accountJSON objectForKey:@"account"]) {
             _accountName = [accountJSON valueForKey:@"account"];
         }
@@ -82,7 +86,7 @@
         @"name" : _displayName,
         @"avatar" : _avatar,
         @"region" : _region,
-        @"state" : [NSNumber numberWithUnsignedInteger:_state]
+        @"state" : [NSNumber numberWithInteger:_state]
     };
     return json;
 }

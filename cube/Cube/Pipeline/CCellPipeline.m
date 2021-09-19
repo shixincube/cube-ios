@@ -41,7 +41,7 @@
 
 - (CPacket *)convertPrimitiveToPacket:(CellActionDialect *)dialect;
 
-- (void)retry;
+- (void)retry:(UInt64)delayInMills;
 
 @end
 
@@ -79,9 +79,17 @@
     _enabled = TRUE;
 
     [_nucleus.talkService call:self.address withPort:(int)self.port];
+
+    // 监听网络状态
+    [[CNetworkStatusManager sharedInstance] startMonitoring];
+    [[CNetworkStatusManager sharedInstance] addDelegate:self];
 }
 
 - (void)close {
+    // 解除监听
+    [[CNetworkStatusManager sharedInstance] stopMonitoring];
+    [[CNetworkStatusManager sharedInstance] removeDelegate:self];
+
     _enabled = FALSE;
 
     [_nucleus.talkService hangup:self.address withPort:(int)self.port withNow:TRUE];
@@ -110,7 +118,7 @@
     [self.nucleus.talkService speak:destination withPrimitive:dialect];
 }
 
-#pragma mark Private
+#pragma mark - Private
 
 - (CellActionDialect *)convertPacketToPrimitive:(CPacket *)packet {
     CellActionDialect * dialect = [[CellActionDialect alloc] initWithName:packet.name];
@@ -132,23 +140,27 @@
     return packet;
 }
 
-- (void)retry {
+- (void)retry:(UInt64)delayInMills {
     NSLog(@"Retry connect : %@:%d", self.address, (int)self.port);
 
     // 尝试重连
     [_nucleus.talkService hangup:self.address withPort:(int)self.port withNow:TRUE];
 
-    // 3 秒后重连
-    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, 3000 * NSEC_PER_MSEC);
+    // delayInMills 毫秒后重连
+    dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInMills * NSEC_PER_MSEC);
     dispatch_after(delayInNanoSeconds, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        [self->_nucleus.talkService call:self.address withPort:(int)self.port];
+        if (![self->_nucleus.talkService isCalled:self.address withPort:(int)self.port]) {
+            [self->_nucleus.talkService call:self.address withPort:(int)self.port];
+        }
     });
 }
 
 #pragma mark - CNetworkStatusDelegate
 
 - (void)networkStatusChanged:(CNetworkStatus)status {
-    
+    if (_enabled && (status == CNetworkStatusWWAN || status == CNetworkStatusWiFi)) {
+        NSLog(@"Network status changed");
+    }
 }
 
 #pragma mark - CellTalkListener
@@ -205,7 +217,10 @@
     }
 
     if (_enabled) {
-        [self retry];
+        if ([CNetworkStatusManager sharedInstance].networkStatus == CNetworkStatusWWAN
+            || [CNetworkStatusManager sharedInstance].networkStatus == CNetworkStatusWiFi) {
+            [self retry:1000];
+        }
     }
 }
 

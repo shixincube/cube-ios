@@ -31,6 +31,8 @@
 
 @interface CNetworkStatusManager ()
 
+@property (atomic, assign) BOOL monitoring;
+
 @property (nonatomic, strong) NSMutableArray< __kindof id<CNetworkStatusDelegate> > * delegates;
 
 - (void)networkStatusChanged:(NSNotification *)notification;
@@ -57,8 +59,10 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        self.monitoring = FALSE;
+
         self.delegates = [[NSMutableArray alloc] init];
-        
+
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChanged:) name:CTServiceRadioAccessTechnologyDidChangeNotification object:nil];
 
         [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
@@ -71,18 +75,30 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
+
     [self.delegates removeAllObjects];
     self.delegates = nil;
 }
 
 - (void)startMonitoring {
+    if (self.monitoring) {
+        return;
+    }
+
+    self.monitoring = TRUE;
+
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 
     [self networkReachabilityStatus:[AFNetworkReachabilityManager sharedManager].networkReachabilityStatus];
 }
 
 - (void)stopMonitoring {
+    if (!self.monitoring) {
+        return;
+    }
+
+    self.monitoring = FALSE;
+
     [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
 }
 
@@ -90,7 +106,7 @@
     if ([self.delegates containsObject:delegate]) {
         return;
     }
-    
+
     [self.delegates addObject:delegate];
 }
 
