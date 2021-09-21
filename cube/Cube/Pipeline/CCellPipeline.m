@@ -41,7 +41,7 @@
 
 - (CPacket *)convertPrimitiveToPacket:(CellActionDialect *)dialect;
 
-- (void)retry:(UInt64)delayInMills;
+- (void)retry:(UInt64)delayInMills hangUpBefore:(BOOL)hangUpBefore;
 
 @end
 
@@ -143,11 +143,12 @@
     return packet;
 }
 
-- (void)retry:(UInt64)delayInMills {
+- (void)retry:(UInt64)delayInMills hangUpBefore:(BOOL)hangUpBefore {
     NSLog(@"Retry connect : %@:%d", self.address, (int)self.port);
 
-    // 尝试重连
-    [_nucleus.talkService hangup:self.address withPort:(int)self.port withNow:TRUE];
+    if (hangUpBefore) {
+        [_nucleus.talkService hangup:self.address withPort:(int)self.port withNow:TRUE];
+    }
 
     // delayInMills 毫秒后重连
     dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInMills * NSEC_PER_MSEC);
@@ -161,8 +162,15 @@
 #pragma mark - CNetworkStatusDelegate
 
 - (void)networkStatusChanged:(CNetworkStatus)status {
+    if (_opening) {
+        return;
+    }
+
     if (_enabled && (status == CNetworkStatusWWAN || status == CNetworkStatusWiFi)) {
-        NSLog(@"Network status changed");
+//        NSLog(@"Network status changed");
+        if (![self isReady]) {
+            [self retry:500 hangUpBefore:FALSE];
+        }
     }
 }
 
@@ -222,7 +230,7 @@
     if (_enabled) {
         if ([CNetworkStatusManager sharedInstance].networkStatus == CNetworkStatusWWAN
             || [CNetworkStatusManager sharedInstance].networkStatus == CNetworkStatusWiFi) {
-            [self retry:1000];
+            [self retry:1000 hangUpBefore:TRUE];
         }
     }
 }

@@ -32,10 +32,55 @@
 
 @property (nonatomic, strong) UIImageView * iconView;
 
+- (void)buildView;
+
 @end
 
 @implementation CubeConversationNoNetCell
 
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [self.contentView setBackgroundColor:RGBAColor(255, 223, 224, 1)];
 
+        [self buildView];
+    }
+
+    return self;
+}
+
++ (CGFloat)viewHeightByDataModel:(id)dataModel {
+    return 45.0f;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+
+    self.addSeparator(ZZSeparatorPositionBottom);
+}
+
+#pragma mark - Private
+
+- (void)buildView {
+    self.iconView = self.addImageView(1)
+        .image(CImage(@"ConvExclamationMark"))
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
+            make.size.mas_equalTo(40);
+            make.left.mas_equalTo(10);
+            make.centerY.mas_equalTo(0);
+        })
+        .view;
+
+    self.titleLabel = self.contentView.addLabel(2)
+        .text(@"当前网络不可用，请检查你的网络设置")
+        .font([UIFont systemFontOfSize:14])
+        .textColor([UIColor grayColor])
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.iconView.mas_right).mas_offset(10);
+            make.right.mas_lessThanOrEqualTo(-15);
+            make.centerY.mas_equalTo(0);
+        })
+        .view;
+}
 
 @end

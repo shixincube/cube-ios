@@ -37,6 +37,10 @@ typedef NS_ENUM(NSInteger, CubeConversationSectionTag) {
     CubeConversationSectionTagConversation,
 };
 
+typedef NS_ENUM(NSInteger, CubeConversationCellTag) {
+    CubeConversationCellTagNoNetwork,
+};
+
 @interface CubeConversationListController : ZZFLEXAngel <UITableViewDelegate>
 
 @property (nonatomic, copy) void (^badgeStatusChangeAction)(NSString *badge);

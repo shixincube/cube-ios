@@ -28,6 +28,8 @@
 #import "CubeConversationListController.h"
 #import "CubeSearchController.h"
 
+#import "CubeConversationNoNetCell.h"
+
 @interface CubeConversationViewController ()
 
 @property (nonatomic, strong) UITableView * tableView;
@@ -36,6 +38,8 @@
 @property (nonatomic, strong) CubeConversationListController * listController;
 
 @property (nonatomic, strong) CubeSearchController * searchController;
+
+@property (nonatomic, weak) CMessagingService * messagingService;
 
 @end
 
@@ -59,10 +63,15 @@
 
     // 初始数据模型
     [self initModel];
+
+    // 加载数据
+    [self loadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.messagingService.eventDelegate = self;
 
     [self monitorNetwork];
 }
@@ -111,9 +120,20 @@
     [self.tableView reloadData];
 }
 
+- (void)loadData {
+    self.messagingService = [[CEngine sharedInstance] getMessagingService];
+    
+    // 查找数据
+    
+}
+
 - (void)monitorNetwork {
     [[CNetworkStatusManager sharedInstance] startMonitoring];
     [[CNetworkStatusManager sharedInstance] addDelegate:self];
+}
+
+- (void)updateConvsationModuleWithData:(NSArray *)data {
+    // 更新数据
 }
 
 #pragma mark - Getters
@@ -128,11 +148,25 @@
 
 #pragma mark - Delegate
 
+- (void)messageSending:(CMessage *)message service:(CMessagingService *)service {
+    
+}
+
+- (void)messageSent:(CMessage *)message service:(CMessagingService *)service {
+    
+}
+
+- (void)messageReceived:(CMessage *)message service:(CMessagingService *)service {
+    
+}
+
 - (void)networkStatusChanged:(CNetworkStatus)status {
     self.listController.sectionForTag(CubeConversationSectionTagAlert).clear();
     if (status == CNetworkStatusNone) {
         [self setNavTitleWithStatusString:@"未连接"];
-        // TODO
+        self.listController.addCell([CubeConversationNoNetCell class])
+            .toSection(CubeConversationSectionTagAlert)
+            .viewTag(CubeConversationCellTagNoNetwork);
     }
     else {
         [self setNavTitleWithStatusString:nil];

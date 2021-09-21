@@ -37,6 +37,7 @@
 		C8A0DA3826E20BFD0032A9D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */; };
 		C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */; };
 		C8A8F20826F9831B00E25046 /* CubeConversationNoNetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */; };
+		C8A8F23F26F9B26300E25046 /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A8F23E26F9B26300E25046 /* Conversation.xcassets */; };
 		C8CCF97826EC9B1200ED4115 /* CubeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */; };
 		C8CCF97B26ECA3E600ED4115 /* CubeConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */; };
 		C8E31C5526EF3370007B92F1 /* CubeProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E31C5426EF3370007B92F1 /* CubeProfileViewController.m */; };
@@ -200,6 +201,7 @@
 		C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeLoginViewController.m; sourceTree = "<group>"; };
 		C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationNoNetCell.m; sourceTree = "<group>"; };
 		C8A8F20926F9832600E25046 /* CubeConversationNoNetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationNoNetCell.h; sourceTree = "<group>"; };
+		C8A8F23E26F9B26300E25046 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
 		C8CCF97626EC9B0200ED4115 /* CubeTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeTabBarController.h; sourceTree = "<group>"; };
 		C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeTabBarController.m; sourceTree = "<group>"; };
 		C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationViewController.m; sourceTree = "<group>"; };
@@ -915,8 +917,9 @@
 		C8EAB74A26EB31320044A085 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */,
 				C8FD7ED426F06F05003FFE98 /* Avatar.xcassets */,
+				C8A8F23E26F9B26300E25046 /* Conversation.xcassets */,
+				C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1039,6 +1042,7 @@
 			files = (
 				C80B4FF826E5EA5A00AD90B2 /* SVProgressHUD.bundle in Resources */,
 				C8E3259B26E0CF98005CA08A /* LaunchScreen.storyboard in Resources */,
+				C8A8F23F26F9B26300E25046 /* Conversation.xcassets in Resources */,
 				C8FD7ED526F06F05003FFE98 /* Avatar.xcassets in Resources */,
 				C8E3259826E0CF98005CA08A /* Assets.xcassets in Resources */,
 				C8E3267D26E0DC00005CA08A /* README.md in Resources */,

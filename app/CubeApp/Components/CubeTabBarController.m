@@ -112,13 +112,13 @@
                                                           andName:current.displayName
                                                        andContext:[current toDesensitizingJSON]];
     if (nil == ownerAccount) {
-        NSLog(@"Sign-in failure");
+        NSLog(@"SignIn failure");
         return;
     }
 
     // 签入成功
     [CubeAccountHelper sharedInstance].owner = ownerAccount;
-    NSLog(@"Sign-in : %ld", current.identity);
+    NSLog(@"SignIn : %ld", current.identity);
 }
 
 - (void)requestData:(void (^)(void))completion {
