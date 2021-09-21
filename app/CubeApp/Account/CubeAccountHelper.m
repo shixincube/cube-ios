@@ -27,6 +27,7 @@
 #import "CubeAccountHelper.h"
 #import "CubeAccount.h"
 #import <Cube/CUtils.h>
+#import <Cube/Cube.h>
 
 #define KEY_TOKEN           @"CubeAppToken"
 #define KEY_ACCOUNT         @"CubeAppAccount"

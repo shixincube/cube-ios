@@ -63,6 +63,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self monitorNetwork];
 }
 
 #pragma mark - Private
@@ -109,6 +111,11 @@
     [self.tableView reloadData];
 }
 
+- (void)monitorNetwork {
+    [[CNetworkStatusManager sharedInstance] startMonitoring];
+    [[CNetworkStatusManager sharedInstance] addDelegate:self];
+}
+
 #pragma mark - Getters
 
 - (CubeSearchController *)searchController {
@@ -117,6 +124,21 @@
     }
 
     return _searchController;
+}
+
+#pragma mark - Delegate
+
+- (void)networkStatusChanged:(CNetworkStatus)status {
+    self.listController.sectionForTag(CubeConversationSectionTagAlert).clear();
+    if (status == CNetworkStatusNone) {
+        [self setNavTitleWithStatusString:@"未连接"];
+        // TODO
+    }
+    else {
+        [self setNavTitleWithStatusString:nil];
+    }
+
+    [self.tableView reloadData];
 }
 
 @end

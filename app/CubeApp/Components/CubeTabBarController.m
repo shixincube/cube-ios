@@ -115,6 +115,10 @@
         NSLog(@"Sign-in failure");
         return;
     }
+
+    // 签入成功
+    [CubeAccountHelper sharedInstance].owner = ownerAccount;
+    NSLog(@"Sign-in : %ld", current.identity);
 }
 
 - (void)requestData:(void (^)(void))completion {

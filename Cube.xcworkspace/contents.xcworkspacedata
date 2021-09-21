@@ -16,8 +16,5 @@
       <FileRef
          location = "group:libs/fmdb-2.7.7/fmdb.xcodeproj">
       </FileRef>
-      <FileRef
-         location = "group:libs/PromiseKit-6/PromiseKit.xcodeproj">
-      </FileRef>
    </Group>
 </Workspace>

@@ -24,14 +24,18 @@
  * SOFTWARE.
  */
 
-#ifndef CubeConversationViewController_h
-#define CubeConversationViewController_h
+#import "CubeConversationNoNetCell.h"
 
-#import "CubeViewController.h"
-#import <Cube/CNetworkStatusManager.h>
+@interface CubeConversationNoNetCell ()
 
-@interface CubeConversationViewController : CubeViewController <CNetworkStatusDelegate>
+@property (nonatomic, strong) UILabel * titleLabel;
+
+@property (nonatomic, strong) UIImageView * iconView;
 
 @end
 
-#endif /* CubeConversationViewController_h */
+@implementation CubeConversationNoNetCell
+
+
+
+@end

@@ -30,6 +30,7 @@
 #import <Foundation/Foundation.h>
 
 @class CubeAccount;
+@class CSelf;
 
 /*!
  * @brief 用于管理账号本地数据的辅助库。
@@ -43,6 +44,8 @@
 @property (nonatomic, strong) CubeAccount * currentAccount;
 
 @property (nonatomic, strong) NSDictionary * engineConfig;
+
+@property (nonatomic, strong) CSelf * owner;
 
 + (CubeAccountHelper *)sharedInstance;
 

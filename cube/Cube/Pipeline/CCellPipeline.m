@@ -65,6 +65,10 @@
     return self;
 }
 
+- (void)dealloc {
+    [[CNetworkStatusManager sharedInstance] stopMonitoring];
+}
+
 - (void)open {
     if ([self isReady]) {
         return;
@@ -87,7 +91,6 @@
 
 - (void)close {
     // 解除监听
-    [[CNetworkStatusManager sharedInstance] stopMonitoring];
     [[CNetworkStatusManager sharedInstance] removeDelegate:self];
 
     _enabled = FALSE;

@@ -96,8 +96,6 @@
 		C8F1A556268985A70020F136 /* Cube.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1A548268985A70020F136 /* Cube.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8F1A56926899B980020F136 /* CKernel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A56826899B980020F136 /* CKernel.m */; };
 		C8F1A56D26899F910020F136 /* CPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A56C26899F910020F136 /* CPipeline.m */; };
-		C8F1A57B2689A1E80020F136 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A57A2689A1E80020F136 /* PromiseKit.framework */; };
-		C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8F1A57A2689A1E80020F136 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A5812689AC230020F136 /* CCellPipeline.m */; };
 		C8F1A5B52689CE350020F136 /* CPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F1A5B42689CE350020F136 /* CPacket.m */; };
 		C8F4596326C4B66000CC4E13 /* CContactService+Core.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F4596226C4B66000CC4E13 /* CContactService+Core.m */; };
@@ -123,7 +121,6 @@
 			files = (
 				C8C384F126BD1840009CF806 /* WebRTC.xcframework in Embed Frameworks */,
 				C896B2D826F72C2500339989 /* AFNetworking.framework in Embed Frameworks */,
-				C8F1A57C2689A1E80020F136 /* PromiseKit.framework in Embed Frameworks */,
 				C82DB8BB26B39B0500813378 /* FMDB.framework in Embed Frameworks */,
 				C8C384EC26BD182F009CF806 /* cell.xcframework in Embed Frameworks */,
 			);
@@ -264,7 +261,6 @@
 			files = (
 				C8C384F026BD1840009CF806 /* WebRTC.xcframework in Frameworks */,
 				C896B2D726F72C2500339989 /* AFNetworking.framework in Frameworks */,
-				C8F1A57B2689A1E80020F136 /* PromiseKit.framework in Frameworks */,
 				C82DB8BA26B39B0500813378 /* FMDB.framework in Frameworks */,
 				C8C384EB26BD182F009CF806 /* cell.xcframework in Frameworks */,
 			);

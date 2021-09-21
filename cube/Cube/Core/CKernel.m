@@ -25,7 +25,6 @@
  */
 
 #import "CKernel.h"
-#import <PromiseKit/AnyPromise.h>
 #import "CModule.h"
 #import "CError.h"
 #import "CAuthToken.h"
@@ -139,7 +138,7 @@
             });
         }
     }];
-    
+
     return TRUE;
 }
 
@@ -219,27 +218,21 @@
 
     CAuthService * authService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
 
+    // 先查找本地存储的令牌
     CAuthToken * token = [authService checkLocalToken:config.domain appKey:config.appKey];
     if (token && [token isValid]) {
         handler(nil, token);
         return;
     }
 
-    [authService check:config.domain appKey:config.appKey address:config.address].then(^(id token) {
-        if ([token isKindOfClass:[CError class]]) {
-            handler((CError *) token, nil);
+    [authService check:config.domain appKey:config.appKey address:config.address handler:^(CError *error, CAuthToken *token) {
+        if (error) {
+            handler(error, nil);
         }
         else {
-            handler(nil, (CAuthToken *) token);
+            handler(nil, token);
         }
-    }).catch(^(NSError *error) {
-        if ([error isKindOfClass:[CError class]]) {
-            handler((CError *) error, nil);
-        }
-        else {
-            handler([CError errorWithError:error], nil);
-        }
-    });
+    }];
 }
 
 @end

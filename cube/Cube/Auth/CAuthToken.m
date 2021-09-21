@@ -65,7 +65,7 @@
 
 @implementation CAuthToken
 
-@dynamic description;
+@synthesize description = _description;
 
 - (CPrimaryDescription *)description {
     return _description;

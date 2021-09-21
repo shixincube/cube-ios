@@ -63,32 +63,41 @@ static NSString * sCubeDomain = @"shixincube.com";
     CAuthStorage * storage = [[CAuthStorage alloc] init];
     if ([storage open]) {
         CAuthToken * token = [storage loadTokenWithDomain:domain appKey:appKey];
+        if (token && [token isValid]) {
+            // 令牌赋值
+            self.token = token;
 
-        [storage close];
+            [storage close];
 
-        return token;
+            return self.token;
+        }
+        else {
+            [storage close];
+
+            return nil;
+        }
     }
 
     return nil;
 }
 
-- (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address {
+- (void)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address handler:(void(^)(CError * error, CAuthToken * token))handler {
     // 赋值 Domain 数据
     sCubeDomain = domain;
 
-    return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolver) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         CAuthStorage * storage = [[CAuthStorage alloc] init];
 
         // 打开存储器
         if ([storage open]) {
             CAuthToken * token = [storage loadTokenWithDomain:domain appKey:appKey];
-            if (nil != token && [token isValid]) {
+            if (token && [token isValid]) {
                 // 关闭存储器
                 [storage close];
 
                 self.token = token;
 
-                resolver(token);
+                handler(nil, token);
             }
             else {
                 // 等待通道就绪
@@ -102,56 +111,53 @@ static NSString * sCubeDomain = @"shixincube.com";
                         // 关闭存储器
                         [storage close];
 
-                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateTimeout]);
+                        handler([CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateTimeout], nil);
                         return;
                     }
 
-                    [self applyToken:domain appKey:appKey].then(^(id value) {
-                        if ([value isKindOfClass:[CError class]]) {
+                    [self applyToken:domain appKey:appKey handler:^(CError *error, CAuthToken *token) {
+                        if (error) {
+                            NSLog(@"CAuthService#applyToken error : %ld", error.code);
+
                             // 关闭存储器
                             [storage close];
 
-                            resolver(value);
+//                            handler([CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateFailure], nil);
+                            handler(error, nil);
                         }
                         else {
-                            CAuthToken * token = value;
+                            NSLog(@"CAuthService#applyToken OK");
+
                             // 保存令牌
                             [storage saveToken:token];
+
                             self.token = token;
 
-                            NSLog(@"CAuthService#applyToken");
                             // 关闭存储器
                             [storage close];
 
-                            resolver(token);
+                            handler(nil, token);
                         }
-                    }).catch(^(NSError * error) {
-                        NSLog(@"CAuthService#applyToken : %@", error.localizedDescription);
-
-                        // 关闭存储器
-                        [storage close];
-
-                        resolver([CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateFailure]);
-                    });
+                    }];
                 }];
             }
         }
         else {
             // 开启存储错误
-            @throw [CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateStorage];
+            handler([CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateStorage], nil);
         }
-    }];
+    });
 }
 
-- (AnyPromise *)applyToken:(NSString *)domain appKey:(NSString *)appKey {
-    return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolver) {
+- (void)applyToken:(NSString *)domain appKey:(NSString *)appKey handler:(void(^)(CError * error, CAuthToken * token))handler {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         // 向服务器请求
         NSDictionary * data = @{@"domain": domain, @"appKey": appKey};
         CPacket * packet = [[CPacket alloc] initWithName:CUBE_AUTH_APPLY_TOKEN andData:data];
 
         [self.pipeline send:CUBE_MODULE_AUTH withPacket:packet handleResponse:^(CPacket *packet) {
             if (packet.state.code != CSC_Ok) {
-                resolver([CError errorWithModule:CUBE_MODULE_AUTH code:packet.state.code]);
+                handler([CError errorWithModule:CUBE_MODULE_AUTH code:packet.state.code], nil);
                 return;
             }
 
@@ -159,16 +165,20 @@ static NSString * sCubeDomain = @"shixincube.com";
             if (state == CAuthServiceStateOk) {
                 // 创建令牌数据
                 CAuthToken * authToken = [[CAuthToken alloc] initWithJSON:[packet extractData]];
-                resolver(authToken);
+                handler(nil, authToken);
             }
             else {
-                resolver([CError errorWithModule:CUBE_MODULE_AUTH code:state]);
+                handler([CError errorWithModule:CUBE_MODULE_AUTH code:state], nil);
             }
         }];
-    }];
+    });
 }
 
 - (CAuthToken *)allocToken:(UInt64)contactId {
+    if (!self.token) {
+        return nil;
+    }
+
     if (self.token.cid != contactId) {
         // 修改令牌 CID
         self.token.cid = contactId;
@@ -183,26 +193,6 @@ static NSString * sCubeDomain = @"shixincube.com";
     }
 
     return self.token;
-
-//    return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolver) {
-//        if (self.token.cid != contactId) {
-//            // 修改令牌 CID
-//            self.token.cid = contactId;
-//
-//            CAuthStorage * storage = [[CAuthStorage alloc] init];
-//            if ([storage open]) {
-//                // 更新令牌
-//                [storage updateToken:self.token];
-//
-//                [storage close];
-//            }
-//            else {
-//                @throw [CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateStorage];
-//            }
-//        }
-//
-//        resolver(self.token);
-//    }];
 }
 
 - (void)waitPipelineReady:(wait_block_t)block {

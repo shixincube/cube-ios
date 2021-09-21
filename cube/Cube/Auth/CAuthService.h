@@ -35,7 +35,6 @@
 #import "CModule.h"
 #import "CAuthToken.h"
 #import "CError.h"
-#import <PromiseKit/AnyPromise.h>
 
 /*!
  * @brief 授权服务。管理引擎的授权信息。
@@ -52,9 +51,9 @@
  * @param domain 令牌对应的域。
  * @param appKey 令牌指定的 App Key 串。
  * @param address 授权服务器地址。
- * @return 返回 Promise 异步执行实例。
+ * @param handler 操作回调。
  */
-- (AnyPromise *)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address;
+- (void)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address handler:(void(^)(CError * error, CAuthToken * token))handler;
 
 /*!
  * @brief 加载令牌。
@@ -68,9 +67,9 @@
  * @brief 从服务器申请令牌。
  * @param domain 令牌对应的域。
  * @param appKey 令牌指定的 App Key 串。
- * @return 返回 Promise 异步执行实例。
+ * @param handler 操作回调。
  */
-- (AnyPromise *)applyToken:(NSString *)domain appKey:(NSString *)appKey;
+- (void)applyToken:(NSString *)domain appKey:(NSString *)appKey handler:(void(^)(CError * error, CAuthToken * token))handler;
 
 /*!
  * @brief 将当前令牌分配给指定的联系人。

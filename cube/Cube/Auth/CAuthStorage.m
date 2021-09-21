@@ -119,7 +119,7 @@
 - (BOOL)updateToken:(CAuthToken *)authToken {
     NSString * sql = @"UPDATE `token` SET `cid`=?, `data`=? WHERE `code`=?";
 
-    NSString * jsonString = [CUtils toStringWithJSON: [authToken toJSON]];
+    NSString * jsonString = [CUtils toStringWithJSON:[authToken toJSON]];
 
     @synchronized (self) {
         return [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:authToken.cid],

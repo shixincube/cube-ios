@@ -24,14 +24,13 @@
  * SOFTWARE.
  */
 
-#ifndef CubeConversationViewController_h
-#define CubeConversationViewController_h
+#ifndef CubeConversationNoNetCell_h
+#define CubeConversationNoNetCell_h
 
-#import "CubeViewController.h"
-#import <Cube/CNetworkStatusManager.h>
+#import <UIKit/UIKit.h>
 
-@interface CubeConversationViewController : CubeViewController <CNetworkStatusDelegate>
+@interface CubeConversationNoNetCell : UITableViewCell <ZZFlexibleLayoutViewProtocol>
 
 @end
 
-#endif /* CubeConversationViewController_h */
+#endif /* CubeConversationNoNetCell_h */
