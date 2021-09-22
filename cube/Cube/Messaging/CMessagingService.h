@@ -136,6 +136,13 @@
 - (BOOL)sendToContactWithId:(UInt64)contactId message:(CMessage *)message;
 
 /*!
+ * @brief 查询最近的消息，每条消息都来自不同的接收联系人和群组。
+ * @return 返回消息列表。
+ */
+- (NSArray<__kindof CMessage *> *)queryRecentMessages;
+
+
+/*!
  * @private
  * @brief 进行数据加载。
  */

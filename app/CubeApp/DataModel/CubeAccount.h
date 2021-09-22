@@ -56,6 +56,8 @@
 
 - (NSDictionary *)toDesensitizingJSON;
 
++ (NSString *)getAvatar:(NSDictionary *)json;
+
 @end
 
 #endif /* CubeAccount_h */

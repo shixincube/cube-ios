@@ -130,7 +130,6 @@
         CContact * myselfContact = [_storage readContact:me.identity];
 
         if (myselfContact) {
-            _owner = me;
             _owner.context = myselfContact.context;
             _owner.appendix = myselfContact.appendix;
 
@@ -242,18 +241,6 @@
 }
 
 - (void)getContact:(UInt64)contactId handleSuccess:(CubeContactBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
-    if (![self.pipeline isReady]) {
-        CContact * contact = [_storage readContact:contactId];
-        if (contact) {
-            handleSuccess(contact);
-        }
-        else {
-            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNotFindContact];
-            handleFailure(error);
-        }
-        return;
-    }
-
     // 从数据库读取
     CContact * contact = [_storage readContact:contactId];
     if (contact) {
@@ -261,14 +248,40 @@
         UInt64 now = [CUtils currentTimeMillis];
         if (now < contact.expiry) {
             // 没有过期
-            handleSuccess(contact);
+
+            // 检查上下文
+            if (nil == contact.context && self.delegate
+                    && [self.delegate respondsToSelector:@selector(needContactContext:)]) {
+                contact.context = [self.delegate needContactContext:contact];
+                if (contact.context) {
+                    [_storage updateContactContext:contact.identity context:contact.context];
+                }
+            }
+
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                handleSuccess(contact);
+            });
             return;
         }
     }
 
-    NSMutableDictionary * packetData = [[NSMutableDictionary alloc] init];
-    [packetData setValue:[NSNumber numberWithUnsignedLongLong:contactId] forKey:@"id"];
-    [packetData setValue:self.kernel.authToken.domain forKey:@"domain"];
+    // 检查数据通道
+    if (![self.pipeline isReady]) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNotFindContact];
+            handleFailure(error);
+        });
+        return;
+    }
+
+
+//    NSMutableDictionary * packetData = [[NSMutableDictionary alloc] init];
+//    [packetData setValue:[NSNumber numberWithUnsignedLongLong:contactId] forKey:@"id"];
+//    [packetData setValue:self.kernel.authToken.domain forKey:@"domain"];
+    NSDictionary * packetData = @{
+        @"id" : [NSNumber numberWithUnsignedLongLong:contactId],
+        @"domain" : self.kernel.authToken.domain
+    };
 
     CPacket * requestPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_GETCONTACT andData:packetData];
     [self.pipeline send:CUBE_MODULE_CONTACT withPacket:requestPacket handleResponse:^(CPacket *packet) {
@@ -288,6 +301,7 @@
         CContact * contact = [[CContact alloc] initWithJSON:[packet extractData] domain:self.kernel.authToken.domain];
 
         // 获取上下文
+
         if (nil == contact.context) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(needContactContext:)]) {
                 contact.context = [self.delegate needContactContext:contact];

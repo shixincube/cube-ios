@@ -100,7 +100,7 @@
             if (contextString && contextString.length > 1) {
                 contextData = [CUtils toJSONWithString:contextString];
             }
-            
+
             UInt64 timestamp = [result unsignedLongLongIntForColumn:@"timestamp"];
 
             contact = [[CContact alloc] initWithId:contactId name:name domain:_domain timestamp:timestamp];
@@ -190,6 +190,19 @@
     }
 
     return ret;
+}
+
+- (void)updateContactContext:(UInt64)contactId context:(NSDictionary *)context {
+    NSString * sql = @"UPDATE `contact` SET `context`=?, `timestamp`=? WHERE `id`=?";
+
+    NSString * contextString = [CUtils toStringWithJSON:context];
+
+    @synchronized (self) {
+        // 执行 SQL
+        [_db executeUpdate:sql, contextString,
+               [NSNumber numberWithUnsignedLongLong:[CUtils currentTimeMillis]],
+               [NSNumber numberWithUnsignedLongLong:contactId]];
+    }
 }
 
 - (BOOL)writeContactAppendix:(CContactAppendix *)appendix {

@@ -84,7 +84,7 @@
 - (UInt64)queryLastMessageTime {
     __block UInt64 ret = 0;
     
-    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
     [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
         NSString * sql = @"SELECT `rts` FROM `message` WHERE `scope`=0 ORDER BY `rts` DESC LIMIT 1";
@@ -106,7 +106,7 @@
 - (BOOL)updateMessage:(CMessage *)message {
     __block BOOL exists = FALSE;
 
-    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
     [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
         // 先查询是否有该消息记录
@@ -226,21 +226,40 @@
     return exists;
 }
 
-- (NSArray<__kindof CMessage *> *)queryRecentMessagersWithLimit:(NSInteger)limit {
+- (NSArray<__kindof CMessage *> *)queryRecentMessagesWithLimit:(NSInteger)limit {
     __block NSMutableArray<__kindof CMessage *> * array = [[NSMutableArray alloc] init];
 
-    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
     [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
-        // TODO
+        NSMutableArray * messageIdList = [[NSMutableArray alloc] init];
 
         NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `recent_messager` ORDER BY `time` DESC LIMIT %ld", limit];
         FMResultSet * result = [db executeQuery:sql];
-        if ([result next]) {
-            
+        while ([result next]) {
+            UInt64 messageId = [result unsignedLongLongIntForColumn:@"message_id"];
+            [messageIdList addObject:[NSNumber numberWithUnsignedLongLong:messageId]];
         }
 
         [result close];
+
+        // 逐一查询消息记录
+        for (NSNumber * messageId in messageIdList) {
+            sql = [NSString stringWithFormat:@"SELECT * FROM `message` WHERE `id`=%llu", messageId.unsignedLongLongValue];
+            result = [db executeQuery:sql];
+
+            if ([result next]) {
+                NSString * dataString = [result stringForColumn:@"data"];
+                // 实例化消息
+                CMessage * message = [[CMessage alloc] initWithJSON:[CUtils toJSONWithString:dataString]];
+                // 填充数据
+                [_service fillMessage:message];
+
+                [array addObject:message];
+            }
+
+            [result close];
+        }
 
         dispatch_semaphore_signal(semaphore);
     }];
@@ -250,10 +269,36 @@
     return array;
 }
 
+- (CMessage *)readMessageWithId:(UInt64)messageId {
+    __block CMessage * message = nil;
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `message` WHERE `id`=%llu", messageId];
+        FMResultSet * result = [db executeQuery:sql];
+
+        if ([result next]) {
+            NSString * dataString = [result stringForColumn:@"data"];
+            // 实例化消息
+            message = [[CMessage alloc] initWithJSON:[CUtils toJSONWithString:dataString]];
+            // 填充数据
+            [_service fillMessage:message];
+        }
+
+        [result close];
+
+        dispatch_semaphore_signal(semaphore);
+    }];
+
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+    return message;
+}
+
 #pragma mark - Private
 
 - (void)execSelfChecking {
-    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
     [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
         // 配置信息表

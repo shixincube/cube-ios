@@ -44,6 +44,9 @@ typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
 };
 
 
+/*!
+ * @brief 会话描述。
+ */
 @interface CubeConversation : NSObject
 
 /*!
@@ -95,6 +98,11 @@ typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
  * @brief 气泡显示的数据。
  */
 @property (nonatomic, strong, readonly) NSString * badgeValue;
+
+
+
++ (CubeConversation *)conversationWithMessage:(CMessage *)message currentOwner:(CSelf *)owner;
+
 
 /*!
  * @brief 是否已读消息。

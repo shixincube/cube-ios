@@ -38,6 +38,8 @@
  */
 @interface CubeAccountHelper : NSObject <CContactEventDelegate>
 
+@property (nonatomic, strong, readonly) NSString * defaultAvatarImageName;
+
 @property (nonatomic, strong, readonly) CubeAccountExplorer * explorer;
 
 @property (nonatomic, strong, readonly) NSString * tokenCode;

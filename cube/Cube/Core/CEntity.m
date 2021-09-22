@@ -34,7 +34,7 @@
     if (self = [super init]) {
         _identity = [CellUtil generateUnsignedSerialNumber];
         _timestamp = [CUtils currentTimeMillis];
-        _expiry = _timestamp + 60 * 60 * 1000;
+        _expiry = _timestamp + 7 * 24 * 60 * 60 * 1000;
         self.context = nil;
     }
 
@@ -45,7 +45,7 @@
     if (self = [super init]) {
         _identity = identity;
         _timestamp = [CUtils currentTimeMillis];
-        _expiry = _timestamp + 60 * 60 * 1000;
+        _expiry = _timestamp + 7 * 24 * 60 * 60 * 1000;
         self.context = nil;
     }
     
@@ -56,7 +56,7 @@
     if (self = [super init]) {
         _identity = identity;
         _timestamp = timestamp;
-        _expiry = _timestamp + 60 * 60 * 1000;
+        _expiry = _timestamp + 7 * 24 * 60 * 60 * 1000;
         self.context = nil;
     }
 

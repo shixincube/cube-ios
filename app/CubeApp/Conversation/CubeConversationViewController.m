@@ -28,6 +28,7 @@
 #import "CubeConversationListController.h"
 #import "CubeSearchController.h"
 
+#import "CubeConversation.h"
 #import "CubeConversationNoNetCell.h"
 
 #import <Cube/CHyperTextMessage.h>
@@ -40,6 +41,8 @@
 @property (nonatomic, strong) CubeConversationListController * listController;
 
 @property (nonatomic, strong) CubeSearchController * searchController;
+
+@property (nonatomic, weak) CContactService * contactService;
 
 @property (nonatomic, weak) CMessagingService * messagingService;
 
@@ -65,15 +68,16 @@
 
     // 初始数据模型
     [self initModel];
-
-    // 加载数据
-    [self loadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // 事件代理
     self.messagingService.eventDelegate = self;
+
+    // 加载数据
+    [self loadData];
 
     [self monitorNetwork];
 }
@@ -123,10 +127,18 @@
 }
 
 - (void)loadData {
-    self.messagingService = [[CEngine sharedInstance] getMessagingService];
-    
     // 查找数据
-    // TODO
+    NSArray * list = [self.messagingService queryRecentMessages];
+    if (list && list.count > 0) {
+        NSMutableArray * conversations = [[NSMutableArray alloc] initWithCapacity:list.count];
+        for (CMessage * message in list) {
+            // 创建 Conversation
+            CubeConversation * conversation = [CubeConversation conversationWithMessage:message currentOwner:self.contactService.owner];
+            [conversations addObject:conversation];
+        }
+
+        [self updateConvsationModuleWithData:conversations];
+    }
 }
 
 - (void)monitorNetwork {
@@ -135,7 +147,7 @@
 }
 
 - (void)updateConvsationModuleWithData:(NSArray *)data {
-    // 更新数据
+//    NSLog(@"XJW : %@", ((CubeConversation *)(data.firstObject)).content);
 }
 
 #pragma mark - Getters
@@ -146,6 +158,20 @@
     }
 
     return _searchController;
+}
+
+- (CContactService *)contactService {
+    if (!_contactService) {
+        _contactService = [CEngine sharedInstance].contactService;
+    }
+    return _contactService;
+}
+
+- (CMessagingService *)messagingService {
+    if (!_messagingService) {
+        _messagingService = [CEngine sharedInstance].messagingService;
+    }
+    return _messagingService;
 }
 
 #pragma mark - Delegate

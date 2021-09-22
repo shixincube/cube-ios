@@ -68,6 +68,9 @@
 /*! @brief 消息负载数据。 */
 @property (nonatomic, strong, readonly) NSDictionary * payload;
 
+/*! @brief 消息的摘要内容。 */
+@property (nonatomic, strong, readonly) NSString * summary;
+
 /*!
  * @brief 消息状态描述。
  * @see CMessageState

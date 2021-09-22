@@ -98,6 +98,14 @@ NSString * CFormattedContentEmoji = @"emoji";
     return [[CHyperTextMessage alloc] initWithText:text];
 }
 
+#pragma mark - Getters
+
+- (NSString *)summary {
+    return _plaintext;
+}
+
+#pragma mark - Private
+
 - (void)parse:(NSString *)input {
     // AT Format: [@ name # id ]
     // Emoji Format: [E desc # code ]

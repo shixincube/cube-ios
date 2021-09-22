@@ -49,11 +49,16 @@
 
 typedef void (^PullCompletedHandler)(void);
 
+const static char * kMSQueueLabel = "CubeMessagingTQ";
+
+
 @interface CMessagingService () {
 
     CContactService * _contactService;
     
     NSMutableDictionary * _sendingMap;
+
+    dispatch_queue_t _threadQueue;
 }
 
 @property (nonatomic, copy) PullCompletedHandler pullCompletedHandler;
@@ -87,11 +92,17 @@ typedef void (^PullCompletedHandler)(void);
     return self;
 }
 
+- (void)dealloc {
+}
+
 - (BOOL)start {
     if (![super start]) {
         return FALSE;
     }
-    
+
+    // 创建线程队列
+    _threadQueue = dispatch_queue_create(kMSQueueLabel, DISPATCH_QUEUE_CONCURRENT);
+
     // 组装插件
     [self assemble];
 
@@ -187,6 +198,14 @@ typedef void (^PullCompletedHandler)(void);
     });
 
     return TRUE;
+}
+
+- (NSArray<__kindof CMessage *> *)queryRecentMessages {
+    if (![self hasStarted]) {
+        return nil;
+    }
+
+    return [_storage queryRecentMessagesWithLimit:50];
 }
 
 #pragma mark - Private
@@ -357,43 +376,63 @@ typedef void (^PullCompletedHandler)(void);
 }
 
 - (void)fillMessage:(CMessage *)message {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_group_t group = dispatch_group_create();
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
-    dispatch_group_enter(group);
-    dispatch_async(queue, ^{
+    __block BOOL gotFrom = FALSE;
+    __block BOOL gotToOrSource = FALSE;
+
+    void (^process)(CError * error) = ^(CError * error) {
+        if (error) {
+            NSLog(@"CMessageService#fillMessage '%@' : %ld", error.module, error.code);
+        }
+
+        if (gotFrom && gotToOrSource) {
+            dispatch_semaphore_signal(semaphore);
+        }
+    };
+
+    dispatch_async(_threadQueue, ^{
         [self->_contactService getContact:message.from handleSuccess:^(CContact *contact) {
             // 发件人赋值
             [message assignSender:contact];
-            dispatch_group_leave(group);
+            NSLog(@"XJW 1");
+            gotFrom = TRUE;
+            process(nil);
         } handleFailure:^(CError * _Nonnull error) {
-            dispatch_group_leave(group);
+            gotFrom = TRUE;
+            process(error);
         }];
     });
 
-    dispatch_group_enter(group);
-    dispatch_async(queue, ^{
+    dispatch_async(_threadQueue, ^{
         if (message.source > 0) {
             // TODO
-            dispatch_group_leave(group);
+            gotToOrSource = TRUE;
+            process(nil);
         }
         else {
             [self->_contactService getContact:message.to handleSuccess:^(CContact *contact) {
                 // 收件人赋值
                 [message assignReceiver:contact];
-                dispatch_group_leave(group);
+                NSLog(@"XJW 2");
+                gotToOrSource = TRUE;
+                process(nil);
             } handleFailure:^(CError * _Nonnull error) {
-                dispatch_group_leave(group);
+                gotToOrSource = TRUE;
+                process(error);
             }];
         }
     });
 
-    dispatch_group_notify(group, queue, ^{
-        // Nothing
-    });
-    
+    if (gotFrom && gotToOrSource) {
+        return;
+    }
+
     // 阻塞线程
-    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+//    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 3000 * NSEC_PER_MSEC);
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+    NSLog(@"XJW 3");
 }
 
 #pragma mark - Events

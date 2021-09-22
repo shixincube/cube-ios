@@ -25,8 +25,42 @@
  */
 
 #import "CubeConversation.h"
+#import "CubeAccount.h"
+#import "CubeAccountHelper.h"
 
 @implementation CubeConversation
+
++ (CubeConversation *)conversationWithMessage:(CMessage *)message currentOwner:(CSelf *)owner {
+    CubeConversation * conversation = [[CubeConversation alloc] init];
+
+    if ([message isFromGroup]) {
+        conversation.type = CubeConversationTypeContact;
+        conversation.identity = message.source;
+        // TODO 群组数据
+//        conversation.displayName = message.sourceGroup.name;
+    }
+    else {
+        conversation.type = CubeConversationTypeGroup;
+        if (message.from == owner.identity) {
+            // “我”是发件人
+            conversation.identity = message.to;
+            conversation.displayName = [message.receiver getPriorityName];
+            conversation.avatarName = message.receiver.context ? [CubeAccount getAvatar:message.receiver.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
+        }
+        else {
+            // “我”是收件人
+            conversation.identity = message.from;
+            conversation.displayName = [message.sender getPriorityName];
+            conversation.avatarName = message.sender.context ? [CubeAccount getAvatar:message.sender.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
+        }
+
+        NSLog(@"XJW : %@", conversation.avatarName);
+    }
+
+    conversation.remindType = CubeMessageRemindTypeNormal;
+
+    return conversation;
+}
 
 - (BOOL)isRead {
     return self.unread <= 0;

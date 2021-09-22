@@ -73,7 +73,7 @@
 - (BOOL)startWithConfig:(CKernelConfig *)config timeoutInMilliseconds:(UInt64)timeoutInMilliseconds {
     __block CError * startupError = nil;
 
-    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
     BOOL result = [_kernel startup:config completion:^{
         dispatch_semaphore_signal(semaphore);
@@ -122,7 +122,7 @@
 }
 
 - (CSelf * _Nullable)signInWithId:(UInt64)contactId {
-    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
     CContactService * contactService = [self getContactService];
     BOOL ret = [contactService signInWith:contactId name:@"Cube" handleSuccess:^(CSelf * owner) {
@@ -141,7 +141,7 @@
 }
 
 - (CSelf * _Nullable)signInWithId:(UInt64)contactId andName:(NSString * _Nonnull)name andContext:(NSDictionary * _Nullable)context {
-    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     __block CError * signInError = nil;
 

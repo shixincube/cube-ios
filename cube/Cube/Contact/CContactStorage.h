@@ -68,6 +68,8 @@
  */
 - (BOOL)writeContact:(CContact *)contact;
 
+- (void)updateContactContext:(UInt64)contactId context:(NSDictionary *)context;
+
 /*!
  * @brief 写入联系人附件数据。
  */

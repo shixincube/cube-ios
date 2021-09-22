@@ -69,7 +69,12 @@
  * @param limit 指定最大查询数量。
  * @return 返回查询结构数组。
  */
-- (NSArray<__kindof CMessage *> *)queryRecentMessagersWithLimit:(NSInteger)limit;
+- (NSArray<__kindof CMessage *> *)queryRecentMessagesWithLimit:(NSInteger)limit;
+
+/*!
+ * @brief 使用消息 ID 获取消息。
+ */
+- (CMessage *)readMessageWithId:(UInt64)messageId;
 
 @end
 

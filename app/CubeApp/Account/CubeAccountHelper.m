@@ -93,7 +93,7 @@
 #pragma mark - Delegate
 
 - (NSDictionary *)needContactContext:(CContact *)contact {
-    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     __block CubeAccount * account = nil;
 
     [self.explorer getAccountWithId:contact.identity tokenCode:self.tokenCode success:^(id data) {
@@ -104,11 +104,15 @@
     }];
 
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-
+    NSLog(@"XJW account : %lld", account.identity);
     return (account) ? [account toJSON] : nil;
 }
 
 #pragma mark - Getters
+
+- (NSString *)defaultAvatarImageName {
+    return @"AvatarDefault";
+}
 
 - (CubeAccountExplorer *)explorer {
     if (!_explorer) {

@@ -91,4 +91,8 @@
     return json;
 }
 
++ (NSString *)getAvatar:(NSDictionary *)json {
+    return [json valueForKey:@"avatar"];
+}
+
 @end
