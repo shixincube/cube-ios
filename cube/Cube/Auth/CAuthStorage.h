@@ -47,12 +47,21 @@
 - (void)close;
 
 /*!
- * @brief 加载指定令牌。
+ * @brief 加载指定域的令牌。
  * @param domain 指定域。
  * @param appKey 指定 App Key 。
  * @return 返回令牌实例。
  */
 - (CAuthToken *)loadTokenWithDomain:(NSString *)domain appKey:(NSString *)appKey;
+
+/*!
+ * @brief 加载指定联系人的令牌。
+ * @param contactId 指定联系人 ID 。
+ * @param domain 指定域。
+ * @param appKey 指定 App Key 。
+ * @return 返回令牌实例。
+ */
+- (CAuthToken *)loadTokenWithContactId:(UInt64)contactId domain:(NSString *)domain appKey:(NSString *)appKey;
 
 /*!
  * @brief 保存令牌。

@@ -37,5 +37,6 @@
 
 #import <Cube/CMessagingService.h>
 #import <Cube/CMessage.h>
+#import <Cube/CHyperTextMessage.h>
 
 #import <Cube/CNetworkStatusManager.h>

@@ -180,13 +180,23 @@ static NSString * sCubeDomain = @"shixincube.com";
     }
 
     if (self.token.cid != contactId) {
-        // 修改令牌 CID
-        self.token.cid = contactId;
-
+        // 按照指定 ID 获取令牌
         CAuthStorage * storage = [[CAuthStorage alloc] init];
         if ([storage open]) {
-            // 更新令牌
-            [storage updateToken:self.token];
+            // 查询指定令牌
+            CAuthToken * contactToken = [storage loadTokenWithContactId:contactId domain:self.token.domain appKey:self.token.appKey];
+
+            if (nil == contactToken) {
+                // 没有对应的令牌，将当前令牌进行更新
+                self.token.cid = contactId;
+
+                // 更新令牌
+                [storage updateToken:self.token];
+            }
+            else {
+                // 覆盖当前令牌
+                self.token = contactToken;
+            }
 
             [storage close];
         }

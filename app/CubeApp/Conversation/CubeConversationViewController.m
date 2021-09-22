@@ -30,6 +30,8 @@
 
 #import "CubeConversationNoNetCell.h"
 
+#import <Cube/CHyperTextMessage.h>
+
 @interface CubeConversationViewController ()
 
 @property (nonatomic, strong) UITableView * tableView;
@@ -124,7 +126,7 @@
     self.messagingService = [[CEngine sharedInstance] getMessagingService];
     
     // 查找数据
-    
+    // TODO
 }
 
 - (void)monitorNetwork {
@@ -157,7 +159,12 @@
 }
 
 - (void)messageReceived:(CMessage *)message service:(CMessagingService *)service {
-    
+    if ([message isKindOfClass:[CHyperTextMessage class]]) {
+        CHyperTextMessage * textMessage = (CHyperTextMessage *) message;
+    }
+    else {
+        NSLog(@"Unknown message type");
+    }
 }
 
 - (void)networkStatusChanged:(CNetworkStatus)status {

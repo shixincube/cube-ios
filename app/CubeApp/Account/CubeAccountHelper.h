@@ -28,6 +28,7 @@
 #define CubeAccountHelper_h
 
 #import <Foundation/Foundation.h>
+#import "CubeAccountExplorer.h"
 
 @class CubeAccount;
 @class CSelf;
@@ -35,7 +36,9 @@
 /*!
  * @brief 用于管理账号本地数据的辅助库。
  */
-@interface CubeAccountHelper : NSObject
+@interface CubeAccountHelper : NSObject <CContactEventDelegate>
+
+@property (nonatomic, strong, readonly) CubeAccountExplorer * explorer;
 
 @property (nonatomic, strong, readonly) NSString * tokenCode;
 
@@ -52,6 +55,13 @@
 - (void)saveToken:(NSString *)code tokenExpireTime:(NSUInteger)expireTime;
 
 - (BOOL)checkValidToken;
+
+/*!
+ * @brief 注入引擎相关的事件。
+ * 当联系人模块需要获取联系人详情的 context 数据时，Helper 使用 Explorer 访问应用服务器将联系人数据写入到魔方引擎。
+ * Helper 将代理 CContactEventDelegate 里的方法。
+ */
+- (void)injectEngineEvent;
 
 @end
 

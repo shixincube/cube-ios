@@ -69,7 +69,7 @@
 - (void)loadView {
     [super loadView];
 
-    _explorer = [[CubeAccountExplorer alloc] init];
+    _explorer = [CubeAccountHelper sharedInstance].explorer;
 
     CubeAccount * current = [CubeAccountHelper sharedInstance].currentAccount;
     NSDictionary * config = [CubeAccountHelper sharedInstance].engineConfig;
@@ -119,6 +119,12 @@
     // 签入成功
     [CubeAccountHelper sharedInstance].owner = ownerAccount;
     NSLog(@"SignIn : %ld", current.identity);
+
+    // 与引擎关联事件
+    [[CubeAccountHelper sharedInstance] injectEngineEvent];
+
+    // 启动即时消息模块
+    [[CEngine sharedInstance].messagingService start];
 }
 
 - (void)requestData:(void (^)(void))completion {

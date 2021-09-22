@@ -107,7 +107,7 @@
             if (contextData) {
                 contact.context = contextData;
             }
-            
+
             [result close];
 
             // 查询附件

@@ -64,6 +64,16 @@
  */
 @property (nonatomic, strong, readonly) CError * _Nonnull lastError;
 
+/*!
+ * @brief 联系人服务模块。
+ */
+@property (nonatomic, strong, readonly) CContactService * _Nullable contactService;
+
+/*!
+ * @brief 即时消息服务模块。
+ */
+@property (nonatomic, strong, readonly) CMessagingService * _Nullable messagingService;
+
 
 /*!
  * @brief 启动魔方引擎。

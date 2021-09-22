@@ -28,11 +28,8 @@
 #define CubeAccountViewController_h
 
 #import "CubeViewController.h"
-#import "CubeAccountExplorer.h"
 
 @interface CubeAccountViewController : CubeViewController
-
-@property (nonatomic, strong) CubeAccountExplorer * explorer;
 
 @property (nonatomic, copy) void (^loginSuccess)(void);
 

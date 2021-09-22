@@ -152,6 +152,31 @@
     }];
 }
 
+- (void)getAccountWithId:(NSUInteger)accountId
+               tokenCode:(NSString *)tokenCode
+                 success:(CubeBlockRequestSuccessWithData)success
+                 failure:(CubeBlockRequestFailureWithError)failure {
+    NSString * url = [HOST_URL stringByAppendingString:URL_INFO];
+    NSDictionary * params = @{
+        @"id" : [NSNumber numberWithUnsignedInteger:accountId],
+        @"token" : tokenCode };
+
+    [self.httpManager GET:url
+               parameters:params
+                  headers:nil
+                 progress:nil
+                  success:^(NSURLSessionDataTask * task, id responseObject) {
+        // 请求成功
+        NSDictionary * json = [responseObject toJSONObject];
+        CubeAccount * account = [[CubeAccount alloc] initWithJSON:json];
+        success(account);
+    }
+                  failure:^(NSURLSessionDataTask * task, NSError * error) {
+        // 请求失败
+        failure(error);
+    }];
+}
+
 - (void)getEngineConfigWithSuccess:(CubeBlockRequestSuccessWithData)success
                            failure:(CubeBlockRequestFailureWithError)failure {
     NSString * url = [HOST_URL stringByAppendingString:URL_CUBE_CONFIG];

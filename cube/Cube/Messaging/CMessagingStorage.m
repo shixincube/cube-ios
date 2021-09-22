@@ -226,6 +226,30 @@
     return exists;
 }
 
+- (NSArray<__kindof CMessage *> *)queryRecentMessagersWithLimit:(NSInteger)limit {
+    __block NSMutableArray<__kindof CMessage *> * array = [[NSMutableArray alloc] init];
+
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        // TODO
+
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `recent_messager` ORDER BY `time` DESC LIMIT %ld", limit];
+        FMResultSet * result = [db executeQuery:sql];
+        if ([result next]) {
+            
+        }
+
+        [result close];
+
+        dispatch_semaphore_signal(semaphore);
+    }];
+
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+    return array;
+}
+
 #pragma mark - Private
 
 - (void)execSelfChecking {

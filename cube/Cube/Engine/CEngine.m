@@ -146,11 +146,14 @@
     __block CError * signInError = nil;
 
     CContactService * contactService = [self getContactService];
+    
+    // 实例化 CSelf
     CSelf * me = [[CSelf alloc] initWithId:contactId name:name];
+    if (context) {
+        me.context = context;
+    }
+
     BOOL ret = [contactService signIn:me handleSuccess:^(CSelf *owner) {
-        if (context) {
-            owner.context = context;
-        }
         dispatch_semaphore_signal(semaphore);
     } handleFailure:^(CError * _Nonnull error) {
         signInError = error;
@@ -177,6 +180,16 @@
 }
 
 - (CMessagingService * _Nullable)getMessagingService {
+    return (CMessagingService *) [_kernel getModule:CUBE_MODULE_MESSAGING];
+}
+
+#pragma mark - Getters
+
+- (CContactService *)contactService {
+    return (CContactService *) [_kernel getModule:CUBE_MODULE_CONTACT];
+}
+
+- (CMessagingService *)messagingService {
     return (CMessagingService *) [_kernel getModule:CUBE_MODULE_MESSAGING];
 }
 

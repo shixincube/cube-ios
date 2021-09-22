@@ -96,6 +96,36 @@
     }
 }
 
+- (CAuthToken *)loadTokenWithContactId:(UInt64)contactId domain:(NSString *)domain appKey:(NSString *)appKey {
+    @synchronized (self) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `token` WHERE `cid`=%llu AND `domain`='%@' AND `app_key`='%@' ORDER BY sn DESC", contactId, domain, appKey];
+        FMResultSet * result = [_db executeQuery:sql];
+        if ([result next]) {
+            NSString * data = [result stringForColumn:@"data"];
+            NSData * jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+            NSError * error = nil;
+            NSDictionary * json = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                  options:NSJSONReadingMutableContainers
+                                                                    error:&error];
+            [result close];
+
+            if (error) {
+                // 错误
+                return nil;
+            }
+            else {
+                CAuthToken * token = [[CAuthToken alloc] initWithJSON:json];
+                return token;
+            }
+        }
+        else {
+            [result close];
+
+            return nil;
+        }
+    }
+}
+
 - (void)saveToken:(CAuthToken *)authToken {
     NSString * sql = @"INSERT INTO `token` (domain,app_key,cid,code,data) VALUES (?,?,?,?,?)";
 

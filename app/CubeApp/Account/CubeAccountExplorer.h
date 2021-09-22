@@ -92,6 +92,14 @@ typedef NS_ENUM(NSInteger, CubeAccountStateCode) {
                     failure:(CubeBlockRequestFailureWithError)failure;
 
 /*!
+ * @brief 使用账号 ID 获取账号数据。
+ */
+- (void)getAccountWithId:(NSUInteger)accountId
+               tokenCode:(NSString *)tokenCode
+                 success:(CubeBlockRequestSuccessWithData)success
+                 failure:(CubeBlockRequestFailureWithError)failure;
+
+/*!
  * @brief 获取引擎配置。
  */
 - (void)getEngineConfigWithSuccess:(CubeBlockRequestSuccessWithData)success

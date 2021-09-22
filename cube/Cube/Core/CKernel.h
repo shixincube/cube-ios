@@ -108,7 +108,7 @@
 @interface CKernel : NSObject
 
 /*! @brief 有效的访问令牌。 */
-@property (nonatomic, strong) CAuthToken * authToken;
+@property (nonatomic, strong, readonly) CAuthToken * authToken;
 
 /*! @brief 配置。 */
 @property (nonatomic, strong, readonly) CKernelConfig * config;

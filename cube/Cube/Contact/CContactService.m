@@ -88,10 +88,10 @@
     [super stop];
 
     [self.pipeline removeListener:CUBE_MODULE_CONTACT listener:_pipelineListener];
-    
+
     // 关闭存储
     [_storage close];
-    
+
     _selfReady = FALSE;
 }
 
@@ -286,6 +286,13 @@
         }
 
         CContact * contact = [[CContact alloc] initWithJSON:[packet extractData] domain:self.kernel.authToken.domain];
+
+        // 获取上下文
+        if (nil == contact.context) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(needContactContext:)]) {
+                contact.context = [self.delegate needContactContext:contact];
+            }
+        }
 
         // 写入数据库
         [self->_storage writeContact:contact];

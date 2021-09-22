@@ -49,6 +49,20 @@ typedef void (^GroupBlock)(CGroup * group);
 
 typedef void (^ContactZoneBlock)(CContactZone * contactZone);
 
+
+/*!
+ * @brief 联系人模块事件代理协议。
+ */
+@protocol CContactEventDelegate <NSObject>
+
+@optional
+
+- (NSDictionary *)needContactContext:(CContact *)contact;
+
+@end
+
+
+
 /*!
  * @brief 联系人模块。
  */
@@ -59,6 +73,9 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
 
 /*! 默认回溯时长，默认值：30个自然天。 */
 @property (nonatomic, assign) UInt64 defaultRetrospect;
+
+/*! 联系人模块事件代理。 */
+@property (nonatomic, weak) id<CContactEventDelegate> delegate;
 
 /*!
  * @brief 初始化。

@@ -43,6 +43,7 @@
 
 @implementation CubeAccountHelper
 
+@synthesize explorer = _explorer;
 @synthesize tokenCode = _tokenCode;
 @synthesize tokenExpireTime = _tokenExpireTime;
 @synthesize currentAccount = _currentAccount;
@@ -85,7 +86,37 @@
     return NO;
 }
 
+- (void)injectEngineEvent {
+    [CEngine sharedInstance].contactService.delegate = self;
+}
+
+#pragma mark - Delegate
+
+- (NSDictionary *)needContactContext:(CContact *)contact {
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    __block CubeAccount * account = nil;
+
+    [self.explorer getAccountWithId:contact.identity tokenCode:self.tokenCode success:^(id data) {
+        account = data;
+        dispatch_semaphore_signal(semaphore);
+    } failure:^(NSError * error) {
+        dispatch_semaphore_signal(semaphore);
+    }];
+
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+    return (account) ? [account toJSON] : nil;
+}
+
 #pragma mark - Getters
+
+- (CubeAccountExplorer *)explorer {
+    if (!_explorer) {
+        _explorer = [[CubeAccountExplorer alloc] init];
+    }
+
+    return _explorer;
+}
 
 - (NSString *)tokenCode {
     if (!_tokenCode) {

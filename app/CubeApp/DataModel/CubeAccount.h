@@ -45,7 +45,7 @@
 
 @property (nonatomic, assign, readonly) NSInteger state;
 
-@property (nonatomic, assign, readonly) int64_t localTimestamp;
+@property (nonatomic, assign, readonly) UInt64 localTimestamp;
 
 
 + (CubeAccount *)accountWithJSON:(NSDictionary *)json;

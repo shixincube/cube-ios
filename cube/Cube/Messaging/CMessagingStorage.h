@@ -64,6 +64,13 @@
  */
 - (BOOL)updateMessage:(CMessage *)message;
 
+/*!
+ * @brief 查询所有联系人和群组的最近一次消息记录。
+ * @param limit 指定最大查询数量。
+ * @return 返回查询结构数组。
+ */
+- (NSArray<__kindof CMessage *> *)queryRecentMessagersWithLimit:(NSInteger)limit;
+
 @end
 
 #endif /* CMessagingStorage_h */
