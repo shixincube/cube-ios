@@ -24,48 +24,44 @@
  * SOFTWARE.
  */
 
-#ifndef UIColor_Cube_h
-#define UIColor_Cube_h
+#ifndef UIFont_Cube_h
+#define UIFont_Cube_h
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (Cube)
+@interface UIFont (Cube)
 
-#pragma mark - 文本颜色
-+ (UIColor *)colorTextBlack;
-+ (UIColor *)colorTextGray;
-+ (UIColor *)colorTextLightGray;
+#pragma mark - Common
 
-
-#pragma mark - 灰色
-+ (UIColor *)colorGrayBG;           // 浅灰色默认背景
-+ (UIColor *)colorGrayCharcoalBG;   // 较深灰色背景（聊天窗口, 朋友圈用）
-+ (UIColor *)colorGrayLine;
-+ (UIColor *)colorGrayForChatBar;
-+ (UIColor *)colorGrayForMoment;
++ (UIFont *)fontNavBarTitle;
 
 
+#pragma mark - Conversation
 
-#pragma mark - 主题色
-+ (UIColor *)colorBlueDefault;
-+ (UIColor *)colorBlueHL;
-
-
-#pragma mark - 蓝色
-+ (UIColor *)colorBlueMoment;
++ (UIFont *)fontConversationName;
++ (UIFont *)fontConversationDetail;
++ (UIFont *)fontConversationTime;
 
 
-#pragma mark - 黑色
-+ (UIColor *)colorBlackForNavBar;
-+ (UIColor *)colorBlackBG;
-+ (UIColor *)colorBlackAlphaScannerBG;
-+ (UIColor *)colorBlackForAddMenu;
-+ (UIColor *)colorBlackForAddMenuHL;
+#pragma mark - Contacts
 
-#pragma mark - 红色
-+ (UIColor *)colorRedForButton;
-+ (UIColor *)colorRedForButtonHL;
++ (UIFont *)fontContactsName;
+
+#pragma mark - Profile
+
++ (UIFont *)fontProfileNikename;
++ (UIFont *)fontProfileUsername;
+
+
+#pragma mark - Setting
+
++ (UIFont *)fontSettingHeaderAndFooterTitle;
+
+
+#pragma mark - Chat
+
++ (UIFont *)fontTextMessageText;
 
 @end
 
-#endif /* UIColor_Cube_h */
+#endif /* UIFont_Cube_h */

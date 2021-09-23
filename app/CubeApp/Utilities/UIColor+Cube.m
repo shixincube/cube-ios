@@ -38,7 +38,7 @@
     return [UIColor grayColor];
 }
 
-+ (UIColor *)colorTextGray1 {
++ (UIColor *)colorTextLightGray {
     return RGBAColor(160, 160, 160, 1.0);
 }
 

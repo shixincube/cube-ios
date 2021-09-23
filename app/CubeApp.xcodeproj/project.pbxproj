@@ -38,6 +38,11 @@
 		C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */; };
 		C8A8F20826F9831B00E25046 /* CubeConversationNoNetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */; };
 		C8A8F23F26F9B26300E25046 /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A8F23E26F9B26300E25046 /* Conversation.xcassets */; };
+		C8C81BFD26FC213B00455355 /* CubeConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81BFC26FC213B00455355 /* CubeConversationCell.m */; };
+		C8C81BFF26FC26C200455355 /* UIFont+Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81BFE26FC26C200455355 /* UIFont+Cube.m */; };
+		C8C81C0326FC4BD200455355 /* NSDate+Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81C0226FC4BD200455355 /* NSDate+Cube.m */; };
+		C8C81C0526FC4D0000455355 /* NSDate+Relation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81C0426FC4D0000455355 /* NSDate+Relation.m */; };
+		C8C81C0926FC4F0200455355 /* NSDate+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81C0826FC4F0200455355 /* NSDate+Extensions.m */; };
 		C8CCF97826EC9B1200ED4115 /* CubeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */; };
 		C8CCF97B26ECA3E600ED4115 /* CubeConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */; };
 		C8E31C5526EF3370007B92F1 /* CubeProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E31C5426EF3370007B92F1 /* CubeProfileViewController.m */; };
@@ -202,6 +207,16 @@
 		C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationNoNetCell.m; sourceTree = "<group>"; };
 		C8A8F20926F9832600E25046 /* CubeConversationNoNetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationNoNetCell.h; sourceTree = "<group>"; };
 		C8A8F23E26F9B26300E25046 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
+		C8C81BFB26FC213000455355 /* CubeConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationCell.h; sourceTree = "<group>"; };
+		C8C81BFC26FC213B00455355 /* CubeConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationCell.m; sourceTree = "<group>"; };
+		C8C81BFE26FC26C200455355 /* UIFont+Cube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Cube.m"; sourceTree = "<group>"; };
+		C8C81C0026FC26CD00455355 /* UIFont+Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+Cube.h"; sourceTree = "<group>"; };
+		C8C81C0126FC4BC600455355 /* NSDate+Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Cube.h"; sourceTree = "<group>"; };
+		C8C81C0226FC4BD200455355 /* NSDate+Cube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Cube.m"; sourceTree = "<group>"; };
+		C8C81C0426FC4D0000455355 /* NSDate+Relation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Relation.m"; sourceTree = "<group>"; };
+		C8C81C0626FC4D0B00455355 /* NSDate+Relation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Relation.h"; sourceTree = "<group>"; };
+		C8C81C0726FC4EF600455355 /* NSDate+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extensions.h"; sourceTree = "<group>"; };
+		C8C81C0826FC4F0200455355 /* NSDate+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extensions.m"; sourceTree = "<group>"; };
 		C8CCF97626EC9B0200ED4115 /* CubeTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeTabBarController.h; sourceTree = "<group>"; };
 		C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeTabBarController.m; sourceTree = "<group>"; };
 		C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationViewController.m; sourceTree = "<group>"; };
@@ -470,6 +485,10 @@
 		C8A0DA3226E1D6940032A9D5 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				C8C81C0726FC4EF600455355 /* NSDate+Extensions.h */,
+				C8C81C0826FC4F0200455355 /* NSDate+Extensions.m */,
+				C8C81C0626FC4D0B00455355 /* NSDate+Relation.h */,
+				C8C81C0426FC4D0000455355 /* NSDate+Relation.m */,
 				C84CC1B126EA0B080004A9CB /* NSObject+CubeKeyValue.h */,
 				C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */,
 				C8FD7ED326F039BE003FFE98 /* UICollectionViewCell+Extensions.h */,
@@ -485,6 +504,8 @@
 		C8A8F20626F982F000E25046 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C8C81BFB26FC213000455355 /* CubeConversationCell.h */,
+				C8C81BFC26FC213B00455355 /* CubeConversationCell.m */,
 				C8A8F20926F9832600E25046 /* CubeConversationNoNetCell.h */,
 				C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */,
 			);
@@ -891,8 +912,12 @@
 				C8E3268526E0E800005CA08A /* CubeShortcutMacros.h */,
 				C80B4FF926E5EACE00AD90B2 /* CubeUIUtility.h */,
 				C80B4FFA26E5EADB00AD90B2 /* CubeUIUtility.m */,
+				C8C81C0126FC4BC600455355 /* NSDate+Cube.h */,
+				C8C81C0226FC4BD200455355 /* NSDate+Cube.m */,
 				C8E3268026E0E54E005CA08A /* UIColor+Cube.h */,
 				C8E3268126E0E567005CA08A /* UIColor+Cube.m */,
+				C8C81C0026FC26CD00455355 /* UIFont+Cube.h */,
+				C8C81BFE26FC26C200455355 /* UIFont+Cube.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1114,6 +1139,8 @@
 				C89FC0D526F463CE0027B2FC /* CubeSearchController.m in Sources */,
 				C8E3263A26E0DAA3005CA08A /* ZZControlChainModel.m in Sources */,
 				C8E3263926E0DAA3005CA08A /* ZZImageViewChainModel.m in Sources */,
+				C8C81BFF26FC26C200455355 /* UIFont+Cube.m in Sources */,
+				C8C81C0926FC4F0200455355 /* NSDate+Extensions.m in Sources */,
 				C8E3262E26E0DAA3005CA08A /* ZZFLEXViewModel+Angel.m in Sources */,
 				C8E31C5726EF37C2007B92F1 /* CubeProfileInfoViewController.m in Sources */,
 				C8E31C5B26EF3C3B007B92F1 /* CubeProfileHeaderCell.m in Sources */,
@@ -1126,10 +1153,12 @@
 				C8FD7ED726F087D5003FFE98 /* CubeSettingItem.m in Sources */,
 				C8E3263326E0DAA3005CA08A /* ZZLabelChainModel.m in Sources */,
 				C80B4FF526E5EA5A00AD90B2 /* SVProgressAnimatedView.m in Sources */,
+				C8C81C0526FC4D0000455355 /* NSDate+Relation.m in Sources */,
 				C8E3263E26E0DAA3005CA08A /* UIButton+ZZExtension.m in Sources */,
 				C81CD0A726F32AA6001D469B /* CubeAccountSettingViewController.m in Sources */,
 				C8E3262726E0DAA3005CA08A /* ZZFLEXAngelViewBatchChainModel.m in Sources */,
 				C8E3267A26E0DBFF005CA08A /* MASConstraint.m in Sources */,
+				C8C81C0326FC4BD200455355 /* NSDate+Cube.m in Sources */,
 				C888CD5826F201C0004D7782 /* CubeSettingItemNormalCell.m in Sources */,
 				C8EAB76126EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m in Sources */,
 				C8FD7EDB26F096F1003FFE98 /* CubeProfileInfoAvatarCell.m in Sources */,
@@ -1148,6 +1177,7 @@
 				C8E3264C26E0DAA3005CA08A /* ZZFLEXAngel+EditExtension.m in Sources */,
 				C80B4FF626E5EA5A00AD90B2 /* SVProgressHUD.m in Sources */,
 				C8E3262A26E0DAA3005CA08A /* ZZFLEXAngelSectionChainModel.m in Sources */,
+				C8C81BFD26FC213B00455355 /* CubeConversationCell.m in Sources */,
 				C8E3259E26E0CF98005CA08A /* main.m in Sources */,
 				C8E3264826E0DAA3005CA08A /* ZZMutableParagraphStyleChainModel.m in Sources */,
 				C8EAB74C26EB46B10044A085 /* CubeAccountHelper.m in Sources */,

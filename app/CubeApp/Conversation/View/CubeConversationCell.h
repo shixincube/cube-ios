@@ -24,48 +24,27 @@
  * SOFTWARE.
  */
 
-#ifndef UIColor_Cube_h
-#define UIColor_Cube_h
+#ifndef CubeConversationCell_h
+#define CubeConversationCell_h
 
 #import <UIKit/UIKit.h>
+#import "CubeConversation.h"
 
-@interface UIColor (Cube)
+typedef NS_ENUM(NSInteger, CubeConversationCellSeperatorStyle) {
+    CubeConversationCellSeperatorStyleDefault,
+    CubeConversationCellSeperatorStyleFill
+};
 
-#pragma mark - 文本颜色
-+ (UIColor *)colorTextBlack;
-+ (UIColor *)colorTextGray;
-+ (UIColor *)colorTextLightGray;
+@interface CubeConversationCell : UITableViewCell <ZZFlexibleLayoutViewProtocol>
 
+@property (nonatomic, strong) CubeConversation * conversation;
 
-#pragma mark - 灰色
-+ (UIColor *)colorGrayBG;           // 浅灰色默认背景
-+ (UIColor *)colorGrayCharcoalBG;   // 较深灰色背景（聊天窗口, 朋友圈用）
-+ (UIColor *)colorGrayLine;
-+ (UIColor *)colorGrayForChatBar;
-+ (UIColor *)colorGrayForMoment;
+@property (nonatomic, assign) CubeConversationCellSeperatorStyle bottomSeperatorStyle;
 
+- (void)markAsUnread;
 
-
-#pragma mark - 主题色
-+ (UIColor *)colorBlueDefault;
-+ (UIColor *)colorBlueHL;
-
-
-#pragma mark - 蓝色
-+ (UIColor *)colorBlueMoment;
-
-
-#pragma mark - 黑色
-+ (UIColor *)colorBlackForNavBar;
-+ (UIColor *)colorBlackBG;
-+ (UIColor *)colorBlackAlphaScannerBG;
-+ (UIColor *)colorBlackForAddMenu;
-+ (UIColor *)colorBlackForAddMenuHL;
-
-#pragma mark - 红色
-+ (UIColor *)colorRedForButton;
-+ (UIColor *)colorRedForButtonHL;
+- (void)markAsRead;
 
 @end
 
-#endif /* UIColor_Cube_h */
+#endif /* CubeConversationCell_h */

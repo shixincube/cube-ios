@@ -24,48 +24,48 @@
  * SOFTWARE.
  */
 
-#ifndef UIColor_Cube_h
-#define UIColor_Cube_h
+#import "UIFont+Cube.h"
 
-#import <UIKit/UIKit.h>
+@implementation UIFont (Cube)
 
-@interface UIColor (Cube)
++ (UIFont *) fontNavBarTitle {
+    return [UIFont boldSystemFontOfSize:17.5f];
+}
 
-#pragma mark - 文本颜色
-+ (UIColor *)colorTextBlack;
-+ (UIColor *)colorTextGray;
-+ (UIColor *)colorTextLightGray;
++ (UIFont *) fontConversationName {
+    return [UIFont systemFontOfSize:17.0f];
+}
 
++ (UIFont *) fontConversationDetail {
+    return [UIFont systemFontOfSize:14.0f];
+}
 
-#pragma mark - 灰色
-+ (UIColor *)colorGrayBG;           // 浅灰色默认背景
-+ (UIColor *)colorGrayCharcoalBG;   // 较深灰色背景（聊天窗口, 朋友圈用）
-+ (UIColor *)colorGrayLine;
-+ (UIColor *)colorGrayForChatBar;
-+ (UIColor *)colorGrayForMoment;
++ (UIFont *) fontConversationTime {
+    return [UIFont systemFontOfSize:12.5f];
+}
 
++ (UIFont *) fontContactsName {
+    return [UIFont systemFontOfSize:17.0f];
+}
 
++ (UIFont *) fontProfileNikename {
+    return [UIFont systemFontOfSize:17.0f];
+}
 
-#pragma mark - 主题色
-+ (UIColor *)colorBlueDefault;
-+ (UIColor *)colorBlueHL;
++ (UIFont *) fontProfileUsername {
+    return [UIFont systemFontOfSize:14.0f];
+}
 
++ (UIFont *) fontSettingHeaderAndFooterTitle {
+    return [UIFont systemFontOfSize:14.0f];
+}
 
-#pragma mark - 蓝色
-+ (UIColor *)colorBlueMoment;
-
-
-#pragma mark - 黑色
-+ (UIColor *)colorBlackForNavBar;
-+ (UIColor *)colorBlackBG;
-+ (UIColor *)colorBlackAlphaScannerBG;
-+ (UIColor *)colorBlackForAddMenu;
-+ (UIColor *)colorBlackForAddMenuHL;
-
-#pragma mark - 红色
-+ (UIColor *)colorRedForButton;
-+ (UIColor *)colorRedForButtonHL;
++ (UIFont *) fontTextMessageText {
+    CGFloat size = [[NSUserDefaults standardUserDefaults] doubleForKey:@"CHAT_FONT_SIZE"];
+    if (size == 0) {
+        size = 16.0f;
+    }
+    return [UIFont systemFontOfSize:size];
+}
 
 @end
-
-#endif /* UIColor_Cube_h */
