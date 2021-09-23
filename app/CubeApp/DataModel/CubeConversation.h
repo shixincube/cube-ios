@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, CubeConversationType) {
 typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
     CubeMessageRemindTypeNormal,        // 正常接受
     CubeMessageRemindTypeClosed,        // 不提示
-    CubeMessageRemindTypeNotRead,       // 不看
+    CubeMessageRemindTypeNotCare,       // 不看
     CubeMessageRemindTypeUnlike         // 不喜欢
 };
 

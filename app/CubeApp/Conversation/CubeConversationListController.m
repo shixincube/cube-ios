@@ -42,6 +42,10 @@
 }
 
 - (void)reloadBadge {
+    if (!self.badgeStatusChangeAction) {
+        return;
+    }
+
     
 }
 

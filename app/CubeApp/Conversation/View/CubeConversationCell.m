@@ -26,6 +26,7 @@
 
 #import "CubeConversationCell.h"
 #import "UIFont+Cube.h"
+#import "NSDate+Cube.h"
 #import "TLBadge.h"
 
 #define HEIGHT_CONVERSATION_CELL 64.0f
@@ -64,11 +65,13 @@
 }
 
 - (void)markAsUnread {
-    
+    self.conversation.unread = 1;
+    [self updateBadge];
 }
 
 - (void)markAsRead {
-    
+    self.conversation.unread = 0;
+    [self updateBadge];
 }
 
 #pragma mark - Override
@@ -82,6 +85,16 @@
     else {
         self.addSeparator(ZZSeparatorPositionBottom);
     }
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    self.badge.backgroundColor = [UIColor redColor];
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+    self.badge.backgroundColor = [UIColor redColor];
 }
 
 + (CGFloat)viewHeightByDataModel:(id)dataModel {
@@ -107,7 +120,27 @@
     
     [self.nameLabel setText:conversation.displayName];
     [self.detailLabel setText:conversation.content];
-//    self
+    [self.timeLabel setText:[conversation.date conversaionTimeInfo]];
+    [self.remindImageView setHidden:NO];
+    switch (conversation.remindType) {
+        case CubeMessageRemindTypeNormal:
+            [self.remindImageView setHidden:YES];
+            break;
+        case CubeMessageRemindTypeClosed:
+            [self.remindImageView setImage:[UIImage imageNamed:@"ConvRemindClose"]];
+            break;
+        case CubeMessageRemindTypeNotCare:
+            [self.remindImageView setImage:[UIImage imageNamed:@"ConvRemindNotCare"]];
+            break;
+        case CubeMessageRemindTypeUnlike:
+            [self.remindImageView setImage:[UIImage imageNamed:@"ConvRemindStop"]];
+            break;
+        default:
+            break;
+    }
+
+    // 更新气泡
+    [self updateBadge];
 }
 
 - (void)setBottomSeperatorStyle:(CubeConversationCellSeperatorStyle)bottomSeperatorStyle {
@@ -116,6 +149,14 @@
 }
 
 #pragma mark - Private
+
+- (void)updateBadge {
+    CGSize size = [TLBadge badgeSizeWithValue:self.conversation.badgeValue];
+    [self.badge setBadgeValue:self.conversation.badgeValue];
+    [self.badge mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(size);
+    }];
+}
 
 - (void)buildView {
     // 头像/图标
@@ -130,20 +171,9 @@
     [self.avatarView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(self.avatarView.mas_height);
     }];
-
-    // 主题名称
-    self.nameLabel = self.contentView.addLabel(1002)
-        .font([UIFont fontConversationName])
-        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(10);
-            make.top.mas_equalTo(self.avatarView).mas_offset(1.5);
-            make.right.mas_lessThanOrEqualTo(self.timeLabel.mas_left).mas_offset(-5);
-        })
-        .view;
-    [self.nameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     
     // 时间
-    self.timeLabel = self.contentView.addLabel(1003)
+    self.timeLabel = self.contentView.addLabel(1002)
         .font([UIFont fontConversationTime])
         .textColor([UIColor colorTextLightGray])
         .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
@@ -152,6 +182,17 @@
         })
         .view;
     [self.timeLabel setContentCompressionResistancePriority:300 forAxis:UILayoutConstraintAxisHorizontal];
+
+    // 主题名称
+    self.nameLabel = self.contentView.addLabel(1003)
+        .font([UIFont fontConversationName])
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(10);
+            make.top.mas_equalTo(self.avatarView).mas_offset(1.5);
+            make.right.mas_lessThanOrEqualTo(self.timeLabel.mas_left).mas_offset(-5);
+        })
+        .view;
+    [self.nameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     
     // 免打扰标识
     self.remindImageView = self.contentView.addImageView(1004)

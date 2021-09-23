@@ -29,6 +29,7 @@
 #import "CubeSearchController.h"
 
 #import "CubeConversation.h"
+#import "CubeConversationCell.h"
 #import "CubeConversationNoNetCell.h"
 
 #import <Cube/CHyperTextMessage.h>
@@ -152,7 +153,22 @@
 
 - (void)updateConvsationModuleWithData:(NSArray *)data {
     // 更新会话的 Cell 和 Table View
+    @weakify(self);
+    self.listController.sectionForTag(CubeConversationSectionTagConversation).clear();
     
+    self.listController.addCells([CubeConversationCell class])
+        .toSection(CubeConversationSectionTagConversation)
+        .withDataModelArray(data)
+        .selectedAction(^ (CubeConversation * conversation) {
+            @strongify(self);
+            [conversation setUnread:0];
+            [self.listController reloadBadge];
+
+            // TODO
+//            CubeChatViewController
+        });
+
+    [self.tableView reloadData];
 }
 
 #pragma mark - Getters
