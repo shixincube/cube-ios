@@ -77,6 +77,23 @@
 
 
 /*!
+ * @brief 最近的消息事件的代理协议。
+ */
+@protocol CMessagingRecentEventDelegate <NSObject>
+
+@optional
+
+/*!
+ * @brief 有新消息。
+ * @param message 消息实体。
+ * @param service 消息服务。
+ */
+- (void)newMessage:(CMessage *)message service:(CMessagingService *)service;
+
+@end
+
+
+/*!
  * @brief 消息模块。
  */
 @interface CMessagingService : CModule {
@@ -105,6 +122,9 @@
 
 /*! @brief 消息服务的事件代理。 */
 @property (retain) id<CMessagingEventDelegate> eventDelegate;
+
+/*! @brief 最近消息。 */
+@property (retain) id<CMessagingRecentEventDelegate> recentEventDelegate;
 
 
 /*!

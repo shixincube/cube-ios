@@ -24,15 +24,10 @@
  * SOFTWARE.
  */
 
-#ifndef CubeConversationViewController_h
-#define CubeConversationViewController_h
+#import "CubeMessagePanelView.h"
 
-#import "CubeViewController.h"
-#import <Cube/CNetworkStatusManager.h>
-#import <Cube/CMessagingService.h>
+@implementation CubeMessagePanelView
 
-@interface CubeConversationViewController : CubeViewController <CMessagingRecentEventDelegate, CNetworkStatusDelegate>
+
 
 @end
-
-#endif /* CubeConversationViewController_h */

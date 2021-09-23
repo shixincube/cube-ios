@@ -71,7 +71,7 @@ NSString * CFormattedContentEmoji = @"emoji";
         if (![self.payload objectForKey:@"type"]) {
             [self.payload setValue:@"hypertext" forKey:@"type"];
         }
-        
+
         _plaintext = [self.payload valueForKey:@"content"];
 
         [self parse:_plaintext];
@@ -102,6 +102,10 @@ NSString * CFormattedContentEmoji = @"emoji";
 
 - (NSString *)summary {
     return _plaintext;
+}
+
+- (CMessageType)type {
+    return CMessageTypeText;
 }
 
 #pragma mark - Private

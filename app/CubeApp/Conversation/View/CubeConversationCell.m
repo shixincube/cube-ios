@@ -171,7 +171,7 @@
     [self.avatarView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(self.avatarView.mas_height);
     }];
-    
+
     // 时间
     self.timeLabel = self.contentView.addLabel(1002)
         .font([UIFont fontConversationTime])
@@ -193,7 +193,7 @@
         })
         .view;
     [self.nameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
-    
+
     // 免打扰标识
     self.remindImageView = self.contentView.addImageView(1004)
         .alpha(0.4)
@@ -203,7 +203,7 @@
         })
         .view;
     [self.remindImageView setContentCompressionResistancePriority:310 forAxis:UILayoutConstraintAxisHorizontal];
-    
+
     // 描述信息
     self.detailLabel = self.contentView.addLabel(2001)
         .font([UIFont fontConversationDetail])
@@ -215,7 +215,7 @@
         })
         .view;
     [self.detailLabel setContentCompressionResistancePriority:110 forAxis:UILayoutConstraintAxisHorizontal];
-    
+
     // 气泡
     self.badge = [[TLBadge alloc] init];
     [self.contentView addSubview:self.badge];

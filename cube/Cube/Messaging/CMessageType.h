@@ -24,15 +24,45 @@
  * SOFTWARE.
  */
 
-#ifndef CubeConversationViewController_h
-#define CubeConversationViewController_h
+#ifndef CMessageType_h
+#define CMessageType_h
 
-#import "CubeViewController.h"
-#import <Cube/CNetworkStatusManager.h>
-#import <Cube/CMessagingService.h>
+/*!
+ * @brief 消息类型。
+ */
+typedef NS_ENUM(NSInteger, CMessageType) {
 
-@interface CubeConversationViewController : CubeViewController <CMessagingRecentEventDelegate, CNetworkStatusDelegate>
+    CMessageTypeUnknown = 0,
 
-@end
+    /*! 文字。 */
+    CMessageTypeText,
 
-#endif /* CubeConversationViewController_h */
+    /*! 文件。 */
+    CMessageTypeFile,
+
+    /*! 图片。 */
+    CMessageTypeImage,
+
+    /*! 短语音。 */
+    CMessageTypeVoice,
+
+    /*! 视频。 */
+    CMessageTypeVideo,
+
+    /*! 链接。 */
+    CMessageTypeURL,
+
+    /*! 定位。 */
+    CMessageTypeLocation,
+
+    /*! 卡片。 */
+    CMessageTypeCard,
+
+    /*! 系统。 */
+    CMessageTypeSystem,
+
+    /*! 其他类型。 */
+    CMessageTypeOther
+};
+
+#endif /* CMessageType_h */

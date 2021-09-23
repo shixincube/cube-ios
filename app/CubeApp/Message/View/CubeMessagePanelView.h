@@ -24,15 +24,28 @@
  * SOFTWARE.
  */
 
-#ifndef CubeConversationViewController_h
-#define CubeConversationViewController_h
+#ifndef CubeMessagePanelView_h
+#define CubeMessagePanelView_h
 
-#import "CubeViewController.h"
-#import <Cube/CNetworkStatusManager.h>
-#import <Cube/CMessagingService.h>
+#import <UIKit/UIKit.h>
+#import "CubeMessagePanelViewDelegate.h"
 
-@interface CubeConversationViewController : CubeViewController <CMessagingRecentEventDelegate, CNetworkStatusDelegate>
+@interface CubeMessagePanelView : UIView
+
+@property (nonatomic, assign) id<CubeMessagePanelViewDelegate> delegate;
+
+@property (nonatomic, strong) NSMutableArray * data;
+
+@property (nonatomic, strong, readonly) UITableView * tableView;
+
+/*! @brief 禁用下拉刷新。 */
+@property (nonatomic, assign) BOOL disablePullToRefresh;
+
+/*! @brief 禁用长安菜单。 */
+@property (nonatomic, assign) BOOL disablePressAndHoldMenu;
+
+
 
 @end
 
-#endif /* CubeConversationViewController_h */
+#endif /* CubeMessagePanelView_h */

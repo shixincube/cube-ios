@@ -28,6 +28,7 @@
 #define CMessage_h
 
 #import "CEntity.h"
+#import "CMessageType.h"
 
 @class CContact;
 @class CGroup;
@@ -70,6 +71,9 @@
 
 /*! @brief 消息的摘要内容。 */
 @property (nonatomic, strong, readonly) NSString * summary;
+
+/*! @brief 消息类型。 */
+@property (nonatomic, assign, readonly) CMessageType type;
 
 /*!
  * @brief 消息状态描述。

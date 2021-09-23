@@ -121,6 +121,10 @@
     return self;
 }
 
+- (CMessageType)type {
+    return CMessageTypeUnknown;
+}
+
 - (int)getScope {
     return _scope;
 }

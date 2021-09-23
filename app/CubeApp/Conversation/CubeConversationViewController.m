@@ -75,7 +75,7 @@
     [super viewDidLoad];
 
     // 事件代理
-    self.messagingService.eventDelegate = self;
+    self.messagingService.recentEventDelegate = self;
 
     // 加载数据
     [self loadData];
@@ -197,15 +197,7 @@
 
 #pragma mark - Delegate
 
-- (void)messageSending:(CMessage *)message service:(CMessagingService *)service {
-    
-}
-
-- (void)messageSent:(CMessage *)message service:(CMessagingService *)service {
-    
-}
-
-- (void)messageReceived:(CMessage *)message service:(CMessagingService *)service {
+- (void)newMessage:(CMessage *)message service:(CMessagingService *)service {
     if ([message isKindOfClass:[CHyperTextMessage class]]) {
         CHyperTextMessage * textMessage = (CHyperTextMessage *) message;
     }

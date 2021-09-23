@@ -24,15 +24,19 @@
  * SOFTWARE.
  */
 
-#ifndef CubeConversationViewController_h
-#define CubeConversationViewController_h
+#ifndef CubeMessageBaseViewController_h
+#define CubeMessageBaseViewController_h
 
-#import "CubeViewController.h"
-#import <Cube/CNetworkStatusManager.h>
-#import <Cube/CMessagingService.h>
+#import <UIKit/UIKit.h>
 
-@interface CubeConversationViewController : CubeViewController <CMessagingRecentEventDelegate, CNetworkStatusDelegate>
+@interface CubeMessageBaseViewController : UIViewController
+
+@property (nonatomic, strong) CContact * partner;
+
+@property (nonatomic, strong) CGroup * group;
+
+
 
 @end
 
-#endif /* CubeConversationViewController_h */
+#endif /* CubeMessageBaseViewController_h */

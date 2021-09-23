@@ -485,6 +485,14 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
             }
         }
     }
+
+    if (self.recentEventDelegate) {
+        if ([event.name isEqualToString:CMessagingEventNotify]) {
+            if ([self.recentEventDelegate respondsToSelector:@selector(newMessage:service:)]) {
+                [self.recentEventDelegate newMessage:(CMessage *)event.data service:self];
+            }
+        }
+    }
 }
 
 @end
