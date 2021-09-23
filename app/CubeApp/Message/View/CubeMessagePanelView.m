@@ -26,6 +26,16 @@
 
 #import "CubeMessagePanelView.h"
 
+#define PAGE_MESSAGE_COUNT 15
+
+@interface CubeMessagePanelView ()
+
+//@property (nonatomic, strong) MJRefreshNormalHeader *refresHeader;
+
+@property (nonatomic, strong) NSDate * currentDate;
+
+@end
+
 @implementation CubeMessagePanelView
 
 

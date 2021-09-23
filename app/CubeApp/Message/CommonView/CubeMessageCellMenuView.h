@@ -29,7 +29,24 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, CubeMessageMenuItemType) {
+    CubeMessageMenuItemTypeDismiss,   // 关闭菜单
+    CubeMessageMenuItemTypeCopy,
+    CubeMessageMenuItemTypeDelete,
+    CubeMessageMenuItemTypeRecall
+};
+
 @interface CubeMessageCellMenuView : UIView
+
+@property (nonatomic, assign, readonly) BOOL isShow;
+
+@property (nonatomic, assign) CMessageType messageType;
+
+@property (nonatomic, copy) void (^actionBlock)(CubeMessageMenuItemType);
+
+- (void)showInView:(UIView *)view withMessageType:(CMessageType)messageType targetRect:(CGRect)targetRect actionBlock:(void (^)(CubeMessageMenuItemType))actionBlock;
+
+- (void)dismiss;
 
 @end
 

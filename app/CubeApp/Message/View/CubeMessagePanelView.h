@@ -29,6 +29,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CubeMessagePanelViewDelegate.h"
+#import "CubeMessageCellMenuView.h"
 
 @interface CubeMessagePanelView : UIView
 
@@ -43,6 +44,8 @@
 
 /*! @brief 禁用长安菜单。 */
 @property (nonatomic, assign) BOOL disablePressAndHoldMenu;
+
+@property (nonatomic, strong) CubeMessageCellMenuView * menuView;
 
 
 
