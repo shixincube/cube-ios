@@ -26,6 +26,7 @@
 
 #import "CMessagingStorage.h"
 #import "CMessagingService+Core.h"
+#import "CMessageState.h"
 #import "CUtils.h"
 #import <FMDB/FMDatabase.h>
 #import <FMDB/FMDatabaseQueue.h>
@@ -264,9 +265,41 @@
         dispatch_semaphore_signal(semaphore);
     }];
 
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC);
+    dispatch_semaphore_wait(semaphore, timeout);
 
     return array;
+}
+
+- (NSUInteger)countUnreadMessagesWithFrom:(UInt64)contactId {
+    __block NSUInteger count = 0;
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT COUNT(`id`) FROM `message` WHERE `from`=%llu AND `state`=%d", contactId, CMessageStateSent];
+
+        FMResultSet * result = [db executeQuery:sql];
+        if ([result next]) {
+            count = [result intForColumnIndex:0];
+        }
+
+        [result close];
+
+        dispatch_semaphore_signal(semaphore);
+    }];
+
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC);
+    dispatch_semaphore_wait(semaphore, timeout);
+
+    return count;
+}
+
+- (NSUInteger)countUnreadMessagesWithTo:(UInt64)contactId {
+    return 0;
+}
+
+- (NSUInteger)countUnreadMessagesWithSource:(UInt64)groupId {
+    return 0;
 }
 
 - (CMessage *)readMessageWithId:(UInt64)messageId {

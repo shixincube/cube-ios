@@ -27,6 +27,7 @@
 #import "CubeConversation.h"
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
+#import "CubeAppUtil.h"
 
 @implementation CubeConversation
 
@@ -53,11 +54,19 @@
             conversation.displayName = [message.sender getPriorityName];
             conversation.avatarName = message.sender.context ? [CubeAccount getAvatar:message.sender.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
         }
-
-        NSLog(@"XJW : %@", conversation.avatarName);
     }
 
+    // 头像处理
+    conversation.avatarName = [CubeAppUtil explainAvatarName:conversation.avatarName];
+
     conversation.remindType = CubeMessageRemindTypeNormal;
+
+    // 时间
+    double time = (double) message.remoteTS;
+    conversation.date = [[NSDate alloc] initWithTimeIntervalSince1970:time / 1000.0f];
+
+    // 信息摘要
+    conversation.content = message.summary;
 
     return conversation;
 }

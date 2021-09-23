@@ -104,7 +104,6 @@
     }];
 
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    NSLog(@"XJW account : %lld", account.identity);
     return (account) ? [account toJSON] : nil;
 }
 

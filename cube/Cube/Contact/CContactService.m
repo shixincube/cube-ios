@@ -44,14 +44,16 @@
 #import "CGroupAppendix.h"
 
 @interface CContactService () {
-    
+
     CContactPipelineListener * _pipelineListener;
-    
+
     CContactStorage * _storage;
-    
+
     BOOL _selfReady;
-    
+
     NSInteger _waitReadyCount;
+
+    dispatch_queue_t _threadQueue;
 }
 
 - (void)waitReady:(void(^)(BOOL timeout))handler;
@@ -69,6 +71,8 @@
         _selfReady = FALSE;
 
         self.defaultRetrospect = 30 * 24 * 60 * 60000L;
+
+        _threadQueue = dispatch_queue_create("CContactServiceQueue", DISPATCH_QUEUE_CONCURRENT);
     }
 
     return self;
@@ -133,7 +137,7 @@
             _owner.context = myselfContact.context;
             _owner.appendix = myselfContact.appendix;
 
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)*/, ^{
                 handleSuccess(self.owner);
 
                 CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
@@ -141,7 +145,7 @@
             });
         }
         else {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)*/, ^{
                 handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNoNetwork]);
             });
         }
@@ -153,7 +157,7 @@
     _waitReadyCount = 100;
 
     // 通知系统 Self 实例就绪
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)*/, ^{
         CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
         [self notifyObservers:event];
     });
@@ -180,7 +184,7 @@
         }];
     }
     else {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)*/, ^{
             handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateInconsistentToken]);
         });
     }
@@ -258,7 +262,7 @@
                 }
             }
 
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)*/, ^{
                 handleSuccess(contact);
             });
             return;
@@ -267,7 +271,7 @@
 
     // 检查数据通道
     if (![self.pipeline isReady]) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)*/, ^{
             CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNotFindContact];
             handleFailure(error);
         });

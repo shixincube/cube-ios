@@ -71,6 +71,12 @@
  */
 - (NSArray<__kindof CMessage *> *)queryRecentMessagesWithLimit:(NSInteger)limit;
 
+- (NSUInteger)countUnreadMessagesWithFrom:(UInt64)contactId;
+
+- (NSUInteger)countUnreadMessagesWithTo:(UInt64)contactId;
+
+- (NSUInteger)countUnreadMessagesWithSource:(UInt64)groupId;
+
 /*!
  * @brief 使用消息 ID 获取消息。
  */

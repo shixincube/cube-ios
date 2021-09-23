@@ -137,9 +137,15 @@
 
 /*!
  * @brief 查询最近的消息，每条消息都来自不同的接收联系人和群组。
- * @return 返回消息列表。
+ * @return 返回消息列表。如果返回 @c nil 值表示模块尚未启动。
  */
 - (NSArray<__kindof CMessage *> *)queryRecentMessages;
+
+/*!
+ * @brief 统计与指定消息相关的联系人的未读消息数量。
+ * @return 返回未读消息数量。
+ */
+- (NSUInteger)countUnreadWithMessage:(CMessage *)message;
 
 
 /*!

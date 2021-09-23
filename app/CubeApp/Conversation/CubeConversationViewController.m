@@ -134,6 +134,10 @@
         for (CMessage * message in list) {
             // 创建 Conversation
             CubeConversation * conversation = [CubeConversation conversationWithMessage:message currentOwner:self.contactService.owner];
+
+            // 计算未读数量
+            conversation.unread = [self.messagingService countUnreadWithMessage:message];
+
             [conversations addObject:conversation];
         }
 
@@ -147,7 +151,8 @@
 }
 
 - (void)updateConvsationModuleWithData:(NSArray *)data {
-//    NSLog(@"XJW : %@", ((CubeConversation *)(data.firstObject)).content);
+    // 更新会话的 Cell 和 Table View
+    
 }
 
 #pragma mark - Getters

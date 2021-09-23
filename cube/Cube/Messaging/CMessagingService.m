@@ -205,7 +205,39 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
         return nil;
     }
 
-    return [_storage queryRecentMessagesWithLimit:50];
+    NSArray<__kindof CMessage *> * list = [_storage queryRecentMessagesWithLimit:50];
+    if (list.count == 0) {
+        return list;
+    }
+
+    // 调取钩子
+    CHook * hook = [self.pluginSystem getHook:CInstantiateHookName];
+
+    NSMutableArray<__kindof CMessage *> * result = [[NSMutableArray alloc] initWithCapacity:list.count];
+    for (CMessage * message in list) {
+        CMessage * compMessage = [hook apply:message];
+        [result addObject:compMessage];
+    }
+
+    return result;
+}
+
+- (NSUInteger)countUnreadWithMessage:(CMessage *)message {
+    if (![self hasStarted]) {
+        return 0;
+    }
+
+    if (message.source > 0) {
+        return [_storage countUnreadMessagesWithSource:message.source];
+    }
+    else if (message.to == _contactService.owner.identity) {
+        return [_storage countUnreadMessagesWithFrom:message.from];
+    }
+    else if (message.from == _contactService.owner.identity) {
+        return [_storage countUnreadMessagesWithTo:message.to];
+    }
+
+    return 0;
 }
 
 #pragma mark - Private
@@ -395,7 +427,6 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
         [self->_contactService getContact:message.from handleSuccess:^(CContact *contact) {
             // 发件人赋值
             [message assignSender:contact];
-            NSLog(@"XJW 1");
             gotFrom = TRUE;
             process(nil);
         } handleFailure:^(CError * _Nonnull error) {
@@ -414,7 +445,6 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
             [self->_contactService getContact:message.to handleSuccess:^(CContact *contact) {
                 // 收件人赋值
                 [message assignReceiver:contact];
-                NSLog(@"XJW 2");
                 gotToOrSource = TRUE;
                 process(nil);
             } handleFailure:^(CError * _Nonnull error) {
@@ -429,10 +459,8 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 
     // 阻塞线程
-//    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 3000 * NSEC_PER_MSEC);
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-
-    NSLog(@"XJW 3");
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 3000 * NSEC_PER_MSEC);
+    dispatch_semaphore_wait(semaphore, timeout);
 }
 
 #pragma mark - Events

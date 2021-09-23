@@ -80,8 +80,11 @@
     if ([avatarName isEqualToString:@"default"]) {
         return @"AvatarDefault";
     }
+    else if ([avatarName isEqualToString:@"avatar01"]) {
+        return @"Avatar01";
+    }
 
-    return nil;
+    return avatarName;
 }
 
 + (NSString*)deviceModelName {
