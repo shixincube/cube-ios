@@ -121,10 +121,10 @@
 @property (nonatomic, assign) UInt64 defaultRetrospect;
 
 /*! @brief 消息服务的事件代理。 */
-@property (retain) id<CMessagingEventDelegate> eventDelegate;
+@property (nonatomic, assign) id<CMessagingEventDelegate> eventDelegate;
 
 /*! @brief 最近消息。 */
-@property (retain) id<CMessagingRecentEventDelegate> recentEventDelegate;
+@property (nonatomic, assign) id<CMessagingRecentEventDelegate> recentEventDelegate;
 
 
 /*!

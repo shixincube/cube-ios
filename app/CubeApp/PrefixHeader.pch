@@ -26,6 +26,7 @@
 #import "Frameworks/ZZFLEX/ZZFLEX.h"
 #import "Frameworks/SVProgressHUD/SVProgressHUD.h"
 #import "Frameworks/TLTabBarController/TLTabBarController.h"
+#import "Frameworks/MJRefresh/MJRefresh.h"
 
 #import <Cube/Cube.h>
 

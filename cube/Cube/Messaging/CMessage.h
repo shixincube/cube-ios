@@ -126,15 +126,30 @@
           to:(UInt64)to
       source:(UInt64)source;
 
+/*!
+ * @private
+ */
 - (void)assignTS:(UInt64)localTS remoteTS:(UInt64)remoteTS;
 
+/*!
+ * @private
+ */
 - (void)assign:(CContact *)sender receiver:(CContact *)receiver
    sourceGroup:(CGroup *)sourceGroup;
 
+/*!
+ * @private
+ */
 - (void)assignSender:(CContact *)sender;
 
+/*!
+ * @private
+ */
 - (void)assignReceiver:(CContact *)receiver;
 
+/*!
+ * @private
+ */
 - (void)assignSourceGroup:(CGroup *)group;
 
 @end

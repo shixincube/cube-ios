@@ -25,12 +25,13 @@
  */
 
 #import "CubeMessagePanelView.h"
+#import "CubeMessagePanelView+Delegate.h"
 
 #define PAGE_MESSAGE_COUNT 15
 
 @interface CubeMessagePanelView ()
 
-//@property (nonatomic, strong) MJRefreshNormalHeader *refresHeader;
+@property (nonatomic, strong) MJRefreshNormalHeader * refreshHeader;
 
 @property (nonatomic, strong) NSDate * currentDate;
 
@@ -38,6 +39,51 @@
 
 @implementation CubeMessagePanelView
 
+@synthesize tableView = _tableView;
+@synthesize menuView = _menuView;
+@synthesize data = _data;
 
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self addSubview:self.tableView];
+        self.disablePullToRefresh = NO;
+        
+    }
+
+    return self;
+}
+
+- (void)dealloc {
+    
+}
+
+#pragma mark - Getters
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] init];
+        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        [_tableView setBackgroundColor:[UIColor clearColor]];
+        [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)]];
+        [_tableView setDelegate:self];
+        [_tableView setDataSource:self];
+    }
+    return _tableView;
+}
+
+- (CubeMessageCellMenuView *)menuView {
+    if (!_menuView) {
+        _menuView = [[CubeMessageCellMenuView alloc] init];
+    }
+    return _menuView;
+}
+
+- (NSMutableArray *)data {
+    if (!_data) {
+        _data = [[NSMutableArray alloc] init];
+    }
+    return _data;
+}
 
 @end

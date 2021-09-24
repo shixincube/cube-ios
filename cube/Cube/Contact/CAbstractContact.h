@@ -34,11 +34,15 @@
  */
 @interface CAbstractContact : CEntity
 
-/*! 联系人名称。 */
+/*! @brief 联系人名称。 */
 @property (nonatomic, strong) NSString * name;
 
-/*! 联系人所属的域。 */
+/*! @brief 联系人所属的域。 */
 @property (nonatomic, strong) NSString * domain;
+
+/*! @brief 自定义数据，为应用程序提供关联其他数据对象的属性。 */
+@property (nonatomic, strong) id customData;
+
 
 /*!
  * @brief 初始化抽象联系人。

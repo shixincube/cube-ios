@@ -24,29 +24,21 @@
  * SOFTWARE.
  */
 
-#ifndef CubeMessagePanelView_h
-#define CubeMessagePanelView_h
+#ifndef CubeMessageCellDelegate_h
+#define CubeMessageCellDelegate_h
 
-#import <UIKit/UIKit.h>
-#import "CubeMessagePanelViewDelegate.h"
-#import "CubeMessageCellMenuView.h"
+#import <Foundation/Foundation.h>
 
-@interface CubeMessagePanelView : UIView
+@protocol CubeMessageCellDelegate <NSObject>
 
-@property (nonatomic, strong) NSMutableArray * data;
+- (void)messageCellDidClickAvatarForContact:(CContact *)contact;
 
-@property (nonatomic, strong, readonly) UITableView * tableView;
+- (void)messageCellDidClick:(CMessage *)message;
 
-/*! @brief 禁用下拉刷新。 */
-@property (nonatomic, assign) BOOL disablePullToRefresh;
+- (void)messageCellDidLongPress:(CMessage *)message targetRect:(CGRect)targetRect;
 
-/*! @brief 禁用长安菜单。 */
-@property (nonatomic, assign) BOOL disableLongPressMenu;
-
-@property (nonatomic, strong) CubeMessageCellMenuView * menuView;
-
-@property (nonatomic, assign) id<CubeMessagePanelViewDelegate> delegate;
+- (void)messageCellDidDoubleClick:(CMessage *)message;
 
 @end
 
-#endif /* CubeMessagePanelView_h */
+#endif /* CubeMessageCellDelegate_h */
