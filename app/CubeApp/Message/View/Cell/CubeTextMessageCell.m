@@ -24,19 +24,10 @@
  * SOFTWARE.
  */
 
-#ifndef NSDate_Cube_h
-#define NSDate_Cube_h
+#import "CubeTextMessageCell.h"
 
-#import <Foundation/Foundation.h>
+@implementation CubeTextMessageCell
 
-@interface NSDate (Cube)
 
-- (NSString *)messageTimeInfo;
-
-- (NSString *)conversaionTimeInfo;
-
-- (NSString *)messageFileTimeInfo;
 
 @end
-
-#endif /* NSDate_Cube_h */

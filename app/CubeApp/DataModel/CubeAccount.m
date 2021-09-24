@@ -92,7 +92,14 @@
 }
 
 + (NSString *)getAvatar:(NSDictionary *)json {
-    return [json valueForKey:@"avatar"];
+    if (json) {
+        NSString * avatar = [json valueForKey:@"avatar"];
+        if (avatar) {
+            return avatar;
+        }
+    }
+
+    return @"default";
 }
 
 @end

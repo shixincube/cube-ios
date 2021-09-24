@@ -28,7 +28,7 @@
 
 @implementation NSDate (Cube)
 
-- (NSString *)chatTimeInfo {
+- (NSString *)messageTimeInfo {
     if ([self isToday]) {
         // 今天
         return self.formatHM;
@@ -64,7 +64,7 @@
     }
 }
 
-- (NSString *)chatFileTimeInfo {
+- (NSString *)messageFileTimeInfo {
     if ([self isThisWeek]) {
         return @"本周";
     }

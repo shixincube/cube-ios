@@ -181,7 +181,9 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
     // 更新消息状态
     message.state = CMessageStateSending;
-    
+    // 更新 Typer
+    message.selfTyper = TRUE;
+
     // 更新数据
     [message bind:owner.identity to:contactId source:0];
 
@@ -215,6 +217,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
     NSMutableArray<__kindof CMessage *> * result = [[NSMutableArray alloc] initWithCapacity:list.count];
     for (CMessage * message in list) {
+        
         CMessage * compMessage = [hook apply:message];
         [result addObject:compMessage];
     }
@@ -408,6 +411,9 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 }
 
 - (void)fillMessage:(CMessage *)message {
+    CSelf * owner = _contactService.owner;
+    message.selfTyper = (message.from == owner.identity);
+
     __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
     __block BOOL gotFrom = FALSE;

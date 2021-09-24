@@ -75,11 +75,17 @@
 /*! @brief 消息类型。 */
 @property (nonatomic, assign, readonly) CMessageType type;
 
+/*! @brief 消息的创建时间。 */
+@property (nonatomic, strong, readonly) NSDate * date;
+
 /*!
  * @brief 消息状态描述。
  * @see CMessageState
  */
 @property (nonatomic, assign) int state;
+
+/*! @brief 自己是否是该消息的创建者。 */
+@property (nonatomic, assign) BOOL selfTyper;
 
 
 //@property (nonatomic, strong, readonly) FileAttachment * attachment;

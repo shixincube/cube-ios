@@ -74,6 +74,7 @@
 		C8D8931B26FD52060062E509 /* MJRefreshTrailer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D8930326FD52060062E509 /* MJRefreshTrailer.m */; };
 		C8D8931D26FD5F160062E509 /* CubeMessagePanelView+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D8931C26FD5F160062E509 /* CubeMessagePanelView+Delegate.m */; };
 		C8D8932226FD64F00062E509 /* CubeMessageBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D8932126FD64F00062E509 /* CubeMessageBaseCell.m */; };
+		C8D8935326FDAB170062E509 /* CubeTextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D8935226FDAB170062E509 /* CubeTextMessageCell.m */; };
 		C8E31C5526EF3370007B92F1 /* CubeProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E31C5426EF3370007B92F1 /* CubeProfileViewController.m */; };
 		C8E31C5726EF37C2007B92F1 /* CubeProfileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E31C5626EF37C2007B92F1 /* CubeProfileInfoViewController.m */; };
 		C8E31C5B26EF3C3B007B92F1 /* CubeProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E31C5A26EF3C3B007B92F1 /* CubeProfileHeaderCell.m */; };
@@ -334,6 +335,8 @@
 		C8D8932026FD64E50062E509 /* CubeMessageBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeMessageBaseCell.h; sourceTree = "<group>"; };
 		C8D8932126FD64F00062E509 /* CubeMessageBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeMessageBaseCell.m; sourceTree = "<group>"; };
 		C8D8932326FD65B90062E509 /* CubeMessageCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeMessageCellDelegate.h; sourceTree = "<group>"; };
+		C8D8935126FDAB0D0062E509 /* CubeTextMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeTextMessageCell.h; sourceTree = "<group>"; };
+		C8D8935226FDAB170062E509 /* CubeTextMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeTextMessageCell.m; sourceTree = "<group>"; };
 		C8E31C5326EF3362007B92F1 /* CubeProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeProfileViewController.h; sourceTree = "<group>"; };
 		C8E31C5426EF3370007B92F1 /* CubeProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeProfileViewController.m; sourceTree = "<group>"; };
 		C8E31C5626EF37C2007B92F1 /* CubeProfileInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeProfileInfoViewController.m; sourceTree = "<group>"; };
@@ -827,6 +830,8 @@
 				C8D8932026FD64E50062E509 /* CubeMessageBaseCell.h */,
 				C8D8932126FD64F00062E509 /* CubeMessageBaseCell.m */,
 				C8D8932326FD65B90062E509 /* CubeMessageCellDelegate.h */,
+				C8D8935126FDAB0D0062E509 /* CubeTextMessageCell.h */,
+				C8D8935226FDAB170062E509 /* CubeTextMessageCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1519,6 +1524,7 @@
 				C8E3259026E0CF95005CA08A /* SceneDelegate.m in Sources */,
 				C8D8931326FD52060062E509 /* MJRefreshNormalHeader.m in Sources */,
 				C8E3262F26E0DAA3005CA08A /* ZZFLEXAngel+UITableView.m in Sources */,
+				C8D8935326FDAB170062E509 /* CubeTextMessageCell.m in Sources */,
 				C8E3263226E0DAA3005CA08A /* ZZTextFieldChainModel.m in Sources */,
 				C8E3267726E0DBFF005CA08A /* MASLayoutConstraint.m in Sources */,
 				C8D8931A26FD52060062E509 /* MJRefreshComponent.m in Sources */,

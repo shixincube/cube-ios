@@ -61,8 +61,10 @@
 @synthesize remoteTS = _remoteTS;
 @synthesize payload = _payload;
 @synthesize state = _state;
+@synthesize selfTyper = _selfTyper;
 @synthesize owner = _owner;
 @synthesize scope = _scope;
+@synthesize date = _date;
 
 - (instancetype)initWithPayload:(NSDictionary *)payload {
     if (self = [super init]) {
@@ -114,6 +116,7 @@
         _remoteTS = message.remoteTS;
         _payload = message.payload;
         _state = message.state;
+        _selfTyper = message.selfTyper;
         _owner = message.owner;
         _scope = message.scope;
     }
@@ -183,6 +186,16 @@
 
 - (NSMutableDictionary *)toCompactJSON {
     return [self toJSON];
+}
+
+#pragma mark - Getters
+
+- (NSDate *)date {
+    if (nil == _date) {
+        NSTimeInterval time = (NSTimeInterval) _remoteTS;
+        _date = [[NSDate alloc] initWithTimeIntervalSince1970:(time / 1000.0f)];
+    }
+    return _date;
 }
 
 @end
