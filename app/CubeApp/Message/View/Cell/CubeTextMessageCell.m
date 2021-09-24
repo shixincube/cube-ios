@@ -25,9 +25,56 @@
  */
 
 #import "CubeTextMessageCell.h"
+#import "UIFont+Cube.h"
+
+#define     MSG_SPACE_TOP       14
+#define     MSG_SPACE_BTM       20
+#define     MSG_SPACE_LEFT      19
+#define     MSG_SPACE_RIGHT     22
+
+
+@interface CubeTextMessageCell ()
+
+@property (nonatomic, strong) UILabel * contentLabel;
+
+@end
 
 @implementation CubeTextMessageCell
 
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self.contentView addSubview:self.contentLabel];
+    }
+    return self;
+}
 
+- (void)updateMessage:(CMessage *)message {
+    if (self.message && self.message.identity == message.identity) {
+        return;
+    }
+    
+    if (![message isKindOfClass:[CHyperTextMessage class]]) {
+        return;
+    }
+
+    BOOL lastSelfTyper = self.message ? self.message.selfTyper : YES;
+
+    [super updateMessage:message];
+
+    CHyperTextMessage * textMessage = (CHyperTextMessage *)message;
+
+//    [self.contentLabel setAttributedText:textMessage.a];
+}
+
+#pragma mark - Getters
+
+- (UILabel *)contentLabel {
+    if (!_contentLabel) {
+        _contentLabel = [[UILabel alloc] init];
+        [_contentLabel setFont:[UIFont fontTextMessageText]];
+        [_contentLabel setNumberOfLines:0];
+    }
+    return _contentLabel;
+}
 
 @end

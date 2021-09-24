@@ -29,15 +29,7 @@
 
 #import "CubeMessageBaseCell.h"
 
-#define     MSG_SPACE_TOP       14
-#define     MSG_SPACE_BTM       20
-#define     MSG_SPACE_LEFT      19
-#define     MSG_SPACE_RIGHT     22
-
-
 @interface CubeTextMessageCell : CubeMessageBaseCell
-
-
 
 @end
 

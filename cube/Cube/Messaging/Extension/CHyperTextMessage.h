@@ -71,6 +71,10 @@ extern NSString * CFormattedContentEmoji;
 /*! @brief 平滑文本内容。 */
 @property (nonatomic, strong, readonly) NSString * plaintext;
 
+/*! @brief 属性化字符串内容。 */
+@property (nonatomic, strong, readonly) NSAttributedString * attributedText;
+
+
 /*!
  * @brief 使用文本内容进行初始化。
  * @param text 指定文本内容。

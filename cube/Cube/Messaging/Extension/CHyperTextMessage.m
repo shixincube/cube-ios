@@ -49,7 +49,9 @@ NSString * CFormattedContentEmoji = @"emoji";
 @end
 
 
-@interface CHyperTextMessage ()
+@interface CHyperTextMessage () {
+    NSMutableAttributedString * _attributedText;
+}
 
 - (void)parse:(NSString *)input;
 
@@ -73,6 +75,7 @@ NSString * CFormattedContentEmoji = @"emoji";
         }
 
         _plaintext = [self.payload valueForKey:@"content"];
+        _attributedText = nil;
 
         [self parse:_plaintext];
     }
@@ -87,6 +90,7 @@ NSString * CFormattedContentEmoji = @"emoji";
         _formattedContents = [[NSMutableArray alloc] init];
 
         _plaintext = text;
+        _attributedText = nil;
 
         [self parse:text];
     }
@@ -106,6 +110,14 @@ NSString * CFormattedContentEmoji = @"emoji";
 
 - (CMessageType)type {
     return CMessageTypeText;
+}
+
+- (NSAttributedString *)attributedText {
+    if (nil == _attributedText) {
+        _attributedText = [[NSMutableAttributedString alloc] init];
+    }
+
+    return _attributedText;
 }
 
 #pragma mark - Private
