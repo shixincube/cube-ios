@@ -63,7 +63,14 @@
 
     CHyperTextMessage * textMessage = (CHyperTextMessage *)message;
 
-//    [self.contentLabel setAttributedText:textMessage.a];
+    [self.contentLabel setAttributedText:textMessage.attributedText];
+    [self.contentLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
+
+    [self.messageBackgroundView setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
+    
+    if (lastSelfTyper != message.selfTyper) {
+        
+    }
 }
 
 #pragma mark - Getters

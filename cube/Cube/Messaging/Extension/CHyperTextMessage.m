@@ -122,7 +122,7 @@
 
         for (CFormattedContent * fc in _formattedContents) {
             if (fc.format == CFormattedContentFormatText) {
-                NSDictionary * attr = @{ NSFontAttributeName : [UIFont systemFontOfSize:16.0]};
+                NSDictionary * attr = @{ NSFontAttributeName : [UIFont systemFontOfSize:16.0] };
                 NSString * text = [fc.content valueForKey:CFC_KEY_TEXT];
                 NSAttributedString * content = [[NSAttributedString alloc] initWithString:text
                                                                              attributes:attr];
