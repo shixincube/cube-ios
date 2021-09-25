@@ -29,14 +29,23 @@
 
 #import "CTypeableMessage.h"
 
-/*! @brief 一般文本格式。 */
-extern NSString * CFormattedContentText;
+/*!
+ * @brief 内容格式描述。
+ */
+typedef enum _CFormattedContentFormat {
+    /*! @brief 一般文本格式。 */
+    CFormattedContentFormatText,
 
-/*! @brief 提醒联系人格式。 */
-extern NSString * CFormattedContentAt;
+    /*! @brief 提醒联系人格式。 */
+    CFormattedContentFormatAt,
 
-/*! @brief 表情符号格式。 */
-extern NSString * CFormattedContentEmoji;
+    /*! @brief 表情符号格式。 */
+    CFormattedContentFormatEmoji,
+
+    /*! @brief 未知格式。 */
+    CFormattedContentFormatUnknown = 99
+} CFormattedContentFormat;
+
 
 /*!
  * @brief 格式化的内容。
@@ -44,7 +53,7 @@ extern NSString * CFormattedContentEmoji;
 @interface CFormattedContent : NSObject
 
 /*! @brief 内容格式。 */
-@property (nonatomic, strong) NSString * format;
+@property (nonatomic, assign) CFormattedContentFormat format;
 
 /*! @brief 内容。 */
 @property (nonatomic, strong) NSDictionary * content;
@@ -55,7 +64,7 @@ extern NSString * CFormattedContentEmoji;
  * @param content 指定内容。
  * @return 返回 @c CFormattedContent 实例。
  */
-- (instancetype)initWithFormat:(NSString *)format content:(NSDictionary *)content;
+- (instancetype)initWithFormat:(CFormattedContentFormat)format content:(NSDictionary *)content;
 
 @end
 

@@ -27,17 +27,21 @@
 #import "CHyperTextMessage.h"
 #import "NSString+Cube.h"
 #import "CUtils.h"
+#import <UIKit/UIKit.h>
 
-NSString * CFormattedContentText = @"text";
+//NSString * CFormattedContentText = @"text";
+//NSString * CFormattedContentAt = @"at";
+//NSString * CFormattedContentEmoji = @"emoji";
 
-NSString * CFormattedContentAt = @"at";
-
-NSString * CFormattedContentEmoji = @"emoji";
-
+#define CFC_KEY_TEXT    @"text"
+#define CFC_KEY_DESC    @"desc"
+#define CFC_KEY_NAME    @"name"
+#define CFC_KEY_CODE    @"code"
+#define CFC_KEY_ID      @"id"
 
 @implementation CFormattedContent
 
-- (instancetype)initWithFormat:(NSString *)format content:(NSDictionary *)content {
+- (instancetype)initWithFormat:(CFormattedContentFormat)format content:(NSDictionary *)content {
     if (self = [super init]) {
         _format = format;
         _content = content;
@@ -115,6 +119,22 @@ NSString * CFormattedContentEmoji = @"emoji";
 - (NSAttributedString *)attributedText {
     if (nil == _attributedText) {
         _attributedText = [[NSMutableAttributedString alloc] init];
+
+        for (CFormattedContent * fc in _formattedContents) {
+            if (fc.format == CFormattedContentFormatText) {
+                NSDictionary * attr = @{ NSFontAttributeName : [UIFont systemFontOfSize:16.0]};
+                NSString * text = [fc.content valueForKey:CFC_KEY_TEXT];
+                NSAttributedString * content = [[NSAttributedString alloc] initWithString:text
+                                                                             attributes:attr];
+                [_attributedText appendAttributedString:content];
+            }
+            else if (fc.format == CFormattedContentFormatEmoji) {
+                // TODO
+            }
+            else if (fc.format == CFormattedContentFormatAt) {
+                // TODO
+            }
+        }
     }
 
     return _attributedText;
@@ -152,8 +172,8 @@ NSString * CFormattedContentEmoji = @"emoji";
                 // 记录之前缓存里的文本数据
                 [content flip];
                 NSString * data = [CUtils byteBufferToString:content];
-                CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentText
-                                                                           content:@{ @"text": data }];
+                CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentFormatText
+                                                                           content:@{ CFC_KEY_TEXT: data }];
                 [_formattedContents addObject:fc];
                 [content clear];
 
@@ -164,8 +184,8 @@ NSString * CFormattedContentEmoji = @"emoji";
                 // 记录之前缓存里的文本数据
                 [content flip];
                 NSString * data = [CUtils byteBufferToString:content];
-                CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentText
-                                                                           content:@{ @"text": data }];
+                CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentFormatText
+                                                                           content:@{ CFC_KEY_TEXT: data }];
                 [_formattedContents addObject:fc];
                 [content clear];
 
@@ -181,7 +201,7 @@ NSString * CFormattedContentEmoji = @"emoji";
                 NSDictionary * emojiResult = [self parseEmoji:data];
                 [string clear];
                 
-                CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentEmoji
+                CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentFormatEmoji
                                                                            content:emojiResult];
                 [_formattedContents addObject:fc];
             }
@@ -192,7 +212,7 @@ NSString * CFormattedContentEmoji = @"emoji";
                 NSDictionary * atResult = [self parseAt:data];
                 [string clear];
 
-                CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentAt
+                CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentFormatAt
                                                                            content:atResult];
                 [_formattedContents addObject:fc];
             }
@@ -210,8 +230,8 @@ NSString * CFormattedContentEmoji = @"emoji";
     if (content.position > 0) {
         [content flip];
         NSString * data = [CUtils byteBufferToString:content];
-        CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentText
-                                                                   content:@{ @"text": data }];
+        CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentFormatText
+                                                                   content:@{ CFC_KEY_TEXT: data }];
         [_formattedContents addObject:fc];
     }
     [content clear];
@@ -219,19 +239,19 @@ NSString * CFormattedContentEmoji = @"emoji";
     // 生成平滑文本
     NSMutableString * plain = [[NSMutableString alloc] init];
     for (CFormattedContent * fc in _formattedContents) {
-        if ([fc.format isEqualToString:CFormattedContentText]) {
-            NSString * text = [fc.content valueForKey:@"text"];
+        if (fc.format == CFormattedContentFormatText) {
+            NSString * text = [fc.content valueForKey:CFC_KEY_TEXT];
             [plain appendString:text];
         }
-        else if ([fc.format isEqualToString:CFormattedContentEmoji]) {
+        else if (fc.format == CFormattedContentFormatEmoji) {
             [plain appendString:@"["];
-            NSString * text = [fc.content valueForKey:@"desc"];
+            NSString * text = [fc.content valueForKey:CFC_KEY_DESC];
             [plain appendString:text];
             [plain appendString:@"]"];
         }
-        else if ([fc.format isEqualToString:CFormattedContentAt]) {
+        else if (fc.format == CFormattedContentFormatAt) {
             [plain appendString:@" @"];
-            NSString * text = [fc.content valueForKey:@"name"];
+            NSString * text = [fc.content valueForKey:CFC_KEY_NAME];
             [plain appendString:text];
             [plain appendString:@" "];
         }
@@ -243,16 +263,16 @@ NSString * CFormattedContentEmoji = @"emoji";
 - (NSDictionary *)parseEmoji:(NSString *)input {
     // Format: [ desc # code ]
     NSInteger index = [input lastIndexOfChar:'#'];
-    NSDictionary * result = @{@"desc": [input substringToIndex:index],
-                              @"code": [input substringFromIndex:index + 1]};
+    NSDictionary * result = @{CFC_KEY_DESC : [input substringToIndex:index],
+                              CFC_KEY_CODE : [input substringFromIndex:index + 1]};
     return result;
 }
 
 - (NSDictionary *)parseAt:(NSString *)input {
     // Format: [ name # id ]
     NSInteger index = [input lastIndexOfChar:'#'];
-    NSDictionary * result = @{@"name": [input substringToIndex:index],
-                              @"id": [input substringFromIndex:index + 1]};
+    NSDictionary * result = @{CFC_KEY_NAME : [input substringToIndex:index],
+                              CFC_KEY_ID   : [input substringFromIndex:index + 1]};
     return result;
 }
 
