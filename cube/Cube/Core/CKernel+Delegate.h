@@ -24,21 +24,14 @@
  * SOFTWARE.
  */
 
-#ifndef CubeMessageBaseViewController_h
-#define CubeMessageBaseViewController_h
+#ifndef CKernel_Delegate_h
+#define CKernel_Delegate_h
 
-#import <UIKit/UIKit.h>
-#import "CubeMessagePanelView.h"
+#import "CKernel.h"
+#import "CPipeline.h"
 
-@interface CubeMessageBaseViewController : UIViewController
-
-@property (nonatomic, strong) CContact * contact;
-
-@property (nonatomic, strong) CGroup * group;
-
-/*! @brief 消息内容显示面板。 */
-@property (nonatomic, strong) CubeMessagePanelView * messagePanelView;
+@interface CKernel (Delegate) <CPipelineListener>
 
 @end
 
-#endif /* CubeMessageBaseViewController_h */
+#endif /* CKernel_Delegate_h */

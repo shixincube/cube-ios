@@ -31,7 +31,9 @@
 
 @interface CubeMessageViewController : CubeMessageBaseViewController
 
+- (instancetype)initWithContact:(CContact *)contact;
 
+- (instancetype)initWithGroup:(CGroup *)group;
 
 @end
 

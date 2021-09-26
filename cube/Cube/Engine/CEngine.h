@@ -28,6 +28,7 @@
 #define CEngine_h
 
 #import <Foundation/Foundation.h>
+#import "CPipelineStateDelegate.h"
 
 @class CKernelConfig;
 @class CKernel;
@@ -73,6 +74,11 @@
  * @brief 即时消息服务模块。
  */
 @property (nonatomic, strong, readonly) CMessagingService * _Nullable messagingService;
+
+/*!
+ * @brief 消息通道状态代理。
+ */
+@property (nonatomic, weak) id<CPipelineStateDelegate> _Nullable pipelineStateDelegate;
 
 
 /*!

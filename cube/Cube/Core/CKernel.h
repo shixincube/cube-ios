@@ -28,6 +28,7 @@
 #define CKernel_h
 
 #import <Foundation/Foundation.h>
+#import "CPipelineStateDelegate.h"
 
 #ifndef CUBE_KERNEL_VERSION
 #define CUBE_KERNEL_VERSION @"3.0.0"
@@ -115,6 +116,9 @@
 
 /*! @brief 主数据通道。 */
 @property (nonatomic, strong, readonly) CPipeline * mainPipeline;
+
+/*! @brief 数据通道状态代理。 */
+@property (nonatomic, weak) id<CPipelineStateDelegate> pipelineStateDelegate;
 
 /*!
  * @brief 启动内核。

@@ -31,6 +31,7 @@
 #import "CCellPipeline.h"
 #import "CAuthService.h"
 #import "CContactService.h"
+#import "CKernel+Delegate.h"
 
 @implementation CKernelConfig
 
@@ -117,8 +118,9 @@
 
     // 启动管道
     [_cellPipeline setRemoteAddress:_config.address withPort:_config.port];
+    [_cellPipeline addListener:@"*" listener:self];
     [_cellPipeline open];
- 
+
     [self checkAuth:config handler:^(CError * error, CAuthToken * token) {
         if (token) {
             // 设置数据通道的访问令牌码

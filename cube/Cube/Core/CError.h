@@ -29,11 +29,16 @@
 
 #import <Foundation/Foundation.h>
 
+/*!
+ * @brief 错误描述类。
+ */
 @interface CError : NSError
 
 @property (nonatomic, strong, readonly) NSString * module;
 
 - (instancetype)initWithModule:(NSString *)module code:(NSInteger)code;
+
+- (instancetype)initWithModule:(NSString *)module code:(NSInteger)code desc:(NSString *)desc;
 
 + (instancetype)errorWithModule:(NSString *)module code:(NSInteger)code;
 

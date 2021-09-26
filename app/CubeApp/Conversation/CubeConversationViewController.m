@@ -69,6 +69,8 @@
 
     // 初始数据模型
     [self initModel];
+
+    [CEngine sharedInstance].pipelineStateDelegate = self;
 }
 
 - (void)viewDidLoad {
@@ -219,6 +221,10 @@
     }
 
     [self.tableView reloadData];
+}
+
+- (void)pipelineFaultOccurred:(CError *)error kernel:(CKernel *)kernel {
+    [self setNavTitleWithStatusString:@"正在连接服务器"];
 }
 
 @end

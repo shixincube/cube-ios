@@ -24,21 +24,32 @@
  * SOFTWARE.
  */
 
-#ifndef CubeMessageBaseViewController_h
-#define CubeMessageBaseViewController_h
+#import "CKernel+Delegate.h"
+#import "CError.h"
 
-#import <UIKit/UIKit.h>
-#import "CubeMessagePanelView.h"
+@implementation CKernel (Delegate)
 
-@interface CubeMessageBaseViewController : UIViewController
+- (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet {
+    // Nothing
+}
 
-@property (nonatomic, strong) CContact * contact;
+- (void)didOpen:(CPipeline *)pipeline {
+    if (self.pipelineStateDelegate && [self.pipelineStateDelegate respondsToSelector:@selector(pipelineOpened:)]) {
+        [self.pipelineStateDelegate pipelineOpened:self];
+    }
+}
 
-@property (nonatomic, strong) CGroup * group;
+- (void)didClose:(CPipeline *)pipeline {
+    if (self.pipelineStateDelegate && [self.pipelineStateDelegate respondsToSelector:@selector(pipelineClosed:)]) {
+        [self.pipelineStateDelegate pipelineClosed:self];
+    }
+}
 
-/*! @brief 消息内容显示面板。 */
-@property (nonatomic, strong) CubeMessagePanelView * messagePanelView;
+- (void)faultOccurred:(CPipeline *)pipeline code:(NSInteger)code desc:(NSString *)desc {
+    if (self.pipelineStateDelegate && [self.pipelineStateDelegate respondsToSelector:@selector(pipelineFaultOccurred:kernel:)]) {
+        CError * error = [[CError alloc] initWithModule:@"Kernel" code:code desc:desc];
+        [self.pipelineStateDelegate pipelineFaultOccurred:error kernel:self];
+    }
+}
 
 @end
-
-#endif /* CubeMessageBaseViewController_h */

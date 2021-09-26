@@ -193,5 +193,11 @@
     return (CMessagingService *) [_kernel getModule:CUBE_MODULE_MESSAGING];
 }
 
+#pragma mark - Setters
+
+- (void)setPipelineStateDelegate:(id<CPipelineStateDelegate>)pipelineStateDelegate {
+    _kernel.pipelineStateDelegate = pipelineStateDelegate;
+}
+
 @end
 

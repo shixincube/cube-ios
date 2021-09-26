@@ -24,21 +24,40 @@
  * SOFTWARE.
  */
 
-#ifndef CubeMessageBaseViewController_h
-#define CubeMessageBaseViewController_h
+#ifndef CPipelineStateDelegate_h
+#define CPipelineStateDelegate_h
 
-#import <UIKit/UIKit.h>
-#import "CubeMessagePanelView.h"
+#import <Foundation/Foundation.h>
 
-@interface CubeMessageBaseViewController : UIViewController
+@class CKernel;
+@class CError;
 
-@property (nonatomic, strong) CContact * contact;
+/*!
+ * @brief 数据通道状态代理。
+ */
+@protocol CPipelineStateDelegate <NSObject>
 
-@property (nonatomic, strong) CGroup * group;
+@optional
 
-/*! @brief 消息内容显示面板。 */
-@property (nonatomic, strong) CubeMessagePanelView * messagePanelView;
+/*!
+ * @brief 当管道与服务器建立连接时回调。
+ * @param kernel 引擎内核对象。
+ */
+- (void)pipelineOpened:(CKernel *)kernel;
+
+/*!
+ * @brief 当管道与服务器关闭连接时回调。
+ * @param kernel 引擎内核对象。
+ */
+- (void)pipelineClosed:(CKernel *)kernel;
+
+/*!
+ * @brief 当管道发生故障时回调。
+ * @param error 发生故障时的故障数据。
+ * @param kernel 引擎内核对象。
+ */
+- (void)pipelineFaultOccurred:(CError *)error kernel:(CKernel *)kernel;
 
 @end
 
-#endif /* CubeMessageBaseViewController_h */
+#endif /* CPipelineStateDelegate_h */

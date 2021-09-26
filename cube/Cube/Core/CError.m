@@ -26,14 +26,35 @@
 
 #import "CError.h"
 
+@interface CError () {
+    NSString * _desc;
+}
+
+@end
+
 @implementation CError
 
 - (instancetype)initWithModule:(NSString *)module code:(NSInteger)code {
     if (self = [super initWithDomain:module code:code userInfo:nil]) {
         _module = module;
     }
-
     return self;
+}
+
+- (instancetype)initWithModule:(NSString *)module code:(NSInteger)code desc:(NSString *)desc {
+    if (self = [super initWithDomain:module code:code userInfo:nil]) {
+        _module = module;
+        _desc = desc;
+    }
+    return self;
+}
+
+- (NSString *)localizedDescription {
+    if (nil != _desc) {
+        return _desc;
+    }
+
+    return [super localizedDescription];
 }
 
 + (instancetype)errorWithModule:(NSString *)module code:(NSInteger)code {

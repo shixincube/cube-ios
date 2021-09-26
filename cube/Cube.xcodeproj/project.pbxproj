@@ -26,6 +26,8 @@
 		C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1126C14E930080D697 /* CContactServiceState.h */; };
 		C817FE1626C153250080D697 /* CContactZone.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1526C153250080D697 /* CContactZone.h */; };
 		C817FE1A26C153320080D697 /* CContactZone.m in Sources */ = {isa = PBXBuildFile; fileRef = C817FE1926C153320080D697 /* CContactZone.m */; };
+		C81A945F2700733200FA13E9 /* CPipelineStateDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C81A945E2700731B00FA13E9 /* CPipelineStateDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C81A94732700762B00FA13E9 /* CKernel+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C81A94722700762B00FA13E9 /* CKernel+Delegate.m */; };
 		C82DB8BA26B39B0500813378 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82DB8B926B39B0500813378 /* FMDB.framework */; };
 		C82DB8BB26B39B0500813378 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C82DB8B926B39B0500813378 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C82DB8BE26B3AE7900813378 /* CAuthStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C82DB8BD26B3AE7900813378 /* CAuthStorage.m */; };
@@ -154,6 +156,9 @@
 		C817FE1126C14E930080D697 /* CContactServiceState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactServiceState.h; sourceTree = "<group>"; };
 		C817FE1526C153250080D697 /* CContactZone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactZone.h; sourceTree = "<group>"; };
 		C817FE1926C153320080D697 /* CContactZone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactZone.m; sourceTree = "<group>"; };
+		C81A945E2700731B00FA13E9 /* CPipelineStateDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPipelineStateDelegate.h; sourceTree = "<group>"; };
+		C81A94712700761E00FA13E9 /* CKernel+Delegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CKernel+Delegate.h"; sourceTree = "<group>"; };
+		C81A94722700762B00FA13E9 /* CKernel+Delegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CKernel+Delegate.m"; sourceTree = "<group>"; };
 		C82DB8AD26B398F700813378 /* MagicalRecord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MagicalRecord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82DB8B926B39B0500813378 /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82DB8BD26B3AE7900813378 /* CAuthStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAuthStorage.m; sourceTree = "<group>"; };
@@ -456,6 +461,8 @@
 				C842BDCC26DE070B008A8517 /* CHook.m */,
 				C8F1A56426899B770020F136 /* CKernel.h */,
 				C8F1A56826899B980020F136 /* CKernel.m */,
+				C81A94712700761E00FA13E9 /* CKernel+Delegate.h */,
+				C81A94722700762B00FA13E9 /* CKernel+Delegate.m */,
 				C8B755DB268B385A00812A4C /* CModule.h */,
 				C8B755D7268B384F00812A4C /* CModule.m */,
 				C8B755DC268B393100812A4C /* CObservableEvent.h */,
@@ -466,6 +473,7 @@
 				C8F1A5B42689CE350020F136 /* CPacket.m */,
 				C8F1A57026899FB60020F136 /* CPipeline.h */,
 				C8F1A56C26899F910020F136 /* CPipeline.m */,
+				C81A945E2700731B00FA13E9 /* CPipelineStateDelegate.h */,
 				C842BDCF26DE071C008A8517 /* CPlugin.h */,
 				C842BDD426DE085A008A8517 /* CPluginSystem.h */,
 				C842BDD826DE0865008A8517 /* CPluginSystem.m */,
@@ -523,6 +531,7 @@
 				C8D7557626EDB14B00B7368E /* CModule.h in Headers */,
 				C8077E7926F18C9200E36265 /* CAbstractContact.h in Headers */,
 				C8400ABD26C20EBB00C8FF48 /* CGroupAppendix.h in Headers */,
+				C81A945F2700733200FA13E9 /* CPipelineStateDelegate.h in Headers */,
 				C8F1A556268985A70020F136 /* Cube.h in Headers */,
 				C8022B4C26FAFE8F008E0D92 /* CTypeableMessage.h in Headers */,
 				C8400AB326C20DB600C8FF48 /* CGroup.h in Headers */,
@@ -687,6 +696,7 @@
 				C8C384E526BD0448009CF806 /* CEntity.m in Sources */,
 				C8B755E9268B3FC000812A4C /* CObserver.m in Sources */,
 				C817FE0A26C12B7C0080D697 /* CContactAppendix.m in Sources */,
+				C81A94732700762B00FA13E9 /* CKernel+Delegate.m in Sources */,
 				C859CF4426DF2647003040CC /* NSString+Cube.m in Sources */,
 				C8B755D8268B384F00812A4C /* CModule.m in Sources */,
 				C8400ACC26C2215400C8FF48 /* CContactPipelineListener.m in Sources */,

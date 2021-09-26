@@ -29,9 +29,8 @@
 
 #import "CubeViewController.h"
 #import <Cube/CNetworkStatusManager.h>
-#import <Cube/CMessagingService.h>
 
-@interface CubeConversationViewController : CubeViewController <CMessagingRecentEventDelegate, CNetworkStatusDelegate>
+@interface CubeConversationViewController : CubeViewController <CMessagingRecentEventDelegate, CNetworkStatusDelegate, CPipelineStateDelegate>
 
 @end
 

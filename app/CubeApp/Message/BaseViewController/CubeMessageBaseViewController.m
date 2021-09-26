@@ -69,8 +69,8 @@
 
 - (void)resetView {
     NSString * bgImageName = nil;
-    if (_partner) {
-        bgImageName = [CubePreference messagePanelBackgroundWithContact:_partner];
+    if (_contact) {
+        bgImageName = [CubePreference messagePanelBackgroundWithContact:_contact];
     }
     
     // TODO
@@ -87,19 +87,25 @@
 
 #pragma mark - Setters
 
-- (void)setPartner:(CContact *)partner {
+- (void)setContact:(CContact *)contact {
     _group = nil;
 
-    if (_partner && _partner.identity == partner.identity) {
+    if (_contact && _contact.identity == contact.identity) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.messagePanelView scrollToBottomWithAnimation:NO];
         });
         return;
     }
 
-    _partner = partner;
-    [self.navigationItem setTitle:[partner getPriorityName]];
+    _contact = contact;
+    [self.navigationItem setTitle:[contact getPriorityName]];
     [self resetView];
+}
+
+- (void)setGroup:(CGroup *)group {
+    _contact = nil;
+    
+    _group = group;
 }
 
 #pragma mark - Getters

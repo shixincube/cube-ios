@@ -29,6 +29,7 @@
 #import <Cube/CUtils.h>
 #import <Cube/CEngine.h>
 #import <Cube/CKernel.h>
+#import <Cube/CPipelineStateDelegate.h>
 
 #import <Cube/CContactService.h>
 #import <Cube/CSelf.h>

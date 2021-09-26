@@ -28,6 +28,18 @@
 
 @implementation CubeMessageViewController
 
+- (instancetype)initWithContact:(CContact *)contact {
+    if (self = [super init]) {
+        self.contact = contact;
+    }
+    return self;
+}
 
+- (instancetype)initWithGroup:(CGroup *)group {
+    if (self = [super init]) {
+        self.group = group;
+    }
+    return self;
+}
 
 @end
