@@ -78,11 +78,32 @@
                 make.right.mas_equalTo(self.messageBackgroundView).mas_offset(-MSG_SPACE_RIGHT);
                 make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
             }];
+            
+            [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(self.contentLabel).mas_offset(-MSG_SPACE_LEFT);
+                make.bottom.mas_equalTo(self.contentLabel).mas_offset(MSG_SPACE_BTM);
+            }];
         }
         else {
+            [self.messageBackgroundView setImage:[UIImage imageWithColor:[UIColor colorTextGray]]];
+            [self.messageBackgroundView setHighlightedImage:[UIImage imageWithColor:[UIColor colorTextLightGray]]];
             
+            [self.contentLabel setTextColor:[UIColor colorTextBlack]];
+            [self.contentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_LEFT);
+                make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
+            }];
+
+            [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.contentLabel).mas_offset(MSG_SPACE_RIGHT);
+                make.bottom.mas_equalTo(self.contentLabel).mas_offset(MSG_SPACE_BTM);
+            }];
         }
     }
+
+    [self.contentLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo([CubeMessageFrame frameWithTextMessage:message label:self.contentLabel showTime:self.showTime showNameLabel:self.showNameLabel].contentSize);
+    }];
 }
 
 #pragma mark - Getters

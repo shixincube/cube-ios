@@ -48,14 +48,141 @@
     if (self = [super initWithFrame:frame]) {
         [self addSubview:self.tableView];
         self.disablePullToRefresh = NO;
+        // 初始化 Table View
+        [self registerCellClassForTableView:self.tableView];
         
+        [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
+
+        UITapGestureRecognizer * tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchTableView:)];
+        [self.tableView addGestureRecognizer:tapGR];
+
+        [self.tableView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     }
 
     return self;
 }
 
 - (void)dealloc {
+    [self.menuView dismiss];
+    [self.tableView removeObserver:self forKeyPath:@"bounds"];
+}
+
+- (void)reset {
+    [self.data removeAllObjects];
+    [self.tableView reloadData];
+
+    self.currentDate = [NSDate date];
     
+    if (!self.disablePullToRefresh) {
+        [self.tableView setMj_header:self.refreshHeader];
+    }
+    
+    CWeakSelf(self);
+    [self tryToRefreshMoreRecord:^(NSInteger count, BOOL hasMore) {
+        if (!hasMore) {
+            weak_self.tableView.mj_header = nil;
+        }
+
+        if (count > 0) {
+            [weak_self.tableView reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weak_self.tableView scrollToBottomWithAnimation:NO];
+            });
+        }
+    }];
+}
+
+- (void)addMessage:(CMessage *)message {
+    [self.data addObject:message];
+    [self.tableView reloadData];
+}
+
+- (void)deleteMessage:(CMessage *)message {
+    [self deleteMessage:message withAnimation:NO];
+}
+
+- (void)deleteMessage:(CMessage *)message withAnimation:(BOOL)animation {
+    if (nil == message) {
+        return;
+    }
+    
+    NSInteger index = [self.data indexOfObject:message];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(messagePanelView:didDeleteMessage:)]) {
+        [self.delegate messagePanelView:self didDeleteMessage:message];
+    }
+    
+    [self.data removeObject:message];
+    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:animation ? UITableViewRowAnimationAutomatic : UITableViewRowAnimationNone];
+}
+
+- (void)updateMessage:(CMessage *)message {
+    NSArray * visibleCells = [self.tableView visibleCells];
+    for (id cell in visibleCells) {
+        if ([cell isKindOfClass:[CubeMessageBaseCell class]]) {
+            CubeMessageBaseCell * cbc = (CubeMessageBaseCell *)cell;
+            if (cbc.message.identity == message.identity) {
+                [cbc updateMessage:message];
+                return;
+            }
+        }
+    }
+}
+
+- (void)reloadData {
+    [self.tableView reloadData];
+}
+
+- (void)scrollToBottomWithAnimation:(BOOL)animation {
+    [self.tableView scrollToBottomWithAnimation:animation];
+}
+
+#pragma mark - Event Response
+
+- (void)didTouchTableView:(UIGestureRecognizer*)gestureRecognizer {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(messagePanelViewDidTouched:)]) {
+        [self.delegate messagePanelViewDidTouched:self];
+    }
+}
+
+#pragma mark - Private Methods
+
+- (void)tryToRefreshMoreRecord:(void (^)(NSInteger count, BOOL hasMore))complete {
+    CWeakSelf(self);
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(getDataFromBeginningTime:beginningTime:count:completed:)]) {
+        [self.delegate getDataFromBeginningTime:self
+                                  beginningTime:self.currentDate
+                                          count:PAGE_MESSAGE_COUNT
+                                      completed:^(NSDate * date, NSArray * array, BOOL hasMore) {
+            if (array.count > 0) {
+                weak_self.currentDate = [array[0] date];
+                [weak_self.data insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, array.count)]];
+                complete(array.count, hasMore);
+            }
+            else {
+                complete(0, hasMore);
+            }
+        }];
+    }
+}
+
+#pragma mark - Setters
+
+- (void)setData:(NSMutableArray *)data {
+    _data = data;
+    [self.tableView reloadData];
+}
+
+- (void)setDisablePullToRefresh:(BOOL)disablePullToRefresh {
+    if (disablePullToRefresh) {
+        [self.tableView setMj_header:nil];
+    }
+    else {
+        [self.tableView setMj_header:self.refreshHeader];
+    }
 }
 
 #pragma mark - Getters
@@ -84,6 +211,31 @@
         _data = [[NSMutableArray alloc] init];
     }
     return _data;
+}
+
+- (MJRefreshNormalHeader *)refreshHeader {
+    if (!_refreshHeader) {
+        CWeakSelf(self);
+        _refreshHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [weak_self tryToRefreshMoreRecord:^(NSInteger count, BOOL hasMore) {
+                // 结束刷新效果
+                [weak_self.tableView.mj_header endRefreshing];
+
+                if (!hasMore) {
+                    weak_self.tableView.mj_header = nil;
+                }
+
+                if (count > 0) {
+                    [weak_self.tableView reloadData];
+                    [weak_self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:count inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                }
+            }];
+        }];
+        
+        _refreshHeader.lastUpdatedTimeLabel.hidden = YES;
+        _refreshHeader.stateLabel.hidden = YES;
+    }
+    return _refreshHeader;
 }
 
 @end

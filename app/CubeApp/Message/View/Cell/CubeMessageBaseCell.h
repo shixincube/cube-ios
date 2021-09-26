@@ -29,6 +29,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CubeMessageCellDelegate.h"
+#import "CubeMessageFrame.h"
 
 @interface CubeMessageBaseCell : UITableViewCell
 
@@ -43,6 +44,10 @@
 @property (nonatomic, assign) id<CubeMessageCellDelegate> delegate;
 
 @property (nonatomic, strong) CMessage * message;
+
+@property (nonatomic, assign) BOOL showTime;
+
+@property (nonatomic, assign) BOOL showNameLabel;
 
 - (void)updateMessage:(CMessage *)message;
 

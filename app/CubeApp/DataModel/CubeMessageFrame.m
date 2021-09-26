@@ -24,53 +24,20 @@
  * SOFTWARE.
  */
 
-#ifndef CubeMessagePanelView_h
-#define CubeMessagePanelView_h
+#import "CubeMessageFrame.h"
 
-#import <UIKit/UIKit.h>
-#import "CubeMessagePanelViewDelegate.h"
-#import "CubeMessageCellMenuView.h"
-#import "CubeTextMessageCell.h"
+@implementation CubeMessageFrame
 
-@interface CubeMessagePanelView : UIView
++ (CubeMessageFrame *)frameWithTextMessage:(CMessage *)message label:(UILabel *)label showTime:(BOOL)showTime showNameLabel:(BOOL)showNameLabel {
+    if (message.type == CMessageTypeText) {
+        CubeMessageFrame * frame = [[CubeMessageFrame alloc] init];
+        frame.height = 20 + (showTime ? 30 : 0) + (showNameLabel ? 15 : 0) + 20;
+        frame.contentSize = [label sizeThatFits:CGSizeMake(MAX_MESSAGE_WIDTH, MAXFLOAT)];
+        frame.height += frame.contentSize.height;
+        return frame;
+    }
 
-@property (nonatomic, strong) NSMutableArray * data;
-
-@property (nonatomic, strong, readonly) UITableView * tableView;
-
-/*! @brief 禁用下拉刷新。 */
-@property (nonatomic, assign) BOOL disablePullToRefresh;
-
-/*! @brief 禁用长安菜单。 */
-@property (nonatomic, assign) BOOL disableLongPressMenu;
-
-@property (nonatomic, strong) CubeMessageCellMenuView * menuView;
-
-@property (nonatomic, assign) id<CubeMessagePanelViewDelegate> delegate;
-
-
-/*!
- * @brief 重置当前 View 。
- */
-- (void)reset;
-
-- (void)addMessage:(CMessage *)message;
-
-- (void)deleteMessage:(CMessage *)message;
-
-- (void)deleteMessage:(CMessage *)message withAnimation:(BOOL)animation;
-
-- (void)updateMessage:(CMessage *)message;
-
-- (void)reloadData;
-
-
-/*!
- * @brief 滚动到底部。
- * @param animation 是否执行动画。
- */
-- (void)scrollToBottomWithAnimation:(BOOL)animation;
+    return nil;
+}
 
 @end
-
-#endif /* CubeMessagePanelView_h */

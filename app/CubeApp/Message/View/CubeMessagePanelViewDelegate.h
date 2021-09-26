@@ -42,20 +42,19 @@
  * @param count 数量。
  * @param completed 结果回调。
  */
-- (void)messagePanelView:(CubeMessagePanelView *)panelView
-           beginningTime:(NSDate *)beginningTime
-                   count:(NSUInteger)count
-               completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
+- (void)getDataFromBeginningTime:(CubeMessagePanelView *)panelView
+                   beginningTime:(NSDate *)beginningTime
+                           count:(NSUInteger)count
+                       completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
 
 
 @optional
 
 /*!
  * @brief 消息被删除。
- * @return 消息是否删除成功。
  */
-- (BOOL)messagePanelView:(CubeMessagePanelView *)panelView
-          deletedMessage:(CMessage *)message;
+- (void)messagePanelView:(CubeMessagePanelView *)panelView
+        didDeleteMessage:(CMessage *)message;
 
 /*!
  * @brief 点击联系人头像。

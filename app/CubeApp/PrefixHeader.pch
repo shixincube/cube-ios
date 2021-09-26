@@ -21,6 +21,7 @@
 #import "Categories/UIView+Extensions.h"
 #import "Categories/NSDate+Extensions.h"
 #import "Categories/NSDate+Relation.h"
+#import "Categories/UIScrollView+Extensions.h"
 
 #import "Frameworks/Masonry/Masonry/Masonry.h"
 #import "Frameworks/ZZFLEX/ZZFLEX.h"

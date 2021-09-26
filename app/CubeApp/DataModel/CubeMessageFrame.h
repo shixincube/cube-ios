@@ -24,53 +24,29 @@
  * SOFTWARE.
  */
 
-#ifndef CubeMessagePanelView_h
-#define CubeMessagePanelView_h
+#ifndef CubeMessageFrame_h
+#define CubeMessageFrame_h
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "CubeMessagePanelViewDelegate.h"
-#import "CubeMessageCellMenuView.h"
-#import "CubeTextMessageCell.h"
-
-@interface CubeMessagePanelView : UIView
-
-@property (nonatomic, strong) NSMutableArray * data;
-
-@property (nonatomic, strong, readonly) UITableView * tableView;
-
-/*! @brief 禁用下拉刷新。 */
-@property (nonatomic, assign) BOOL disablePullToRefresh;
-
-/*! @brief 禁用长安菜单。 */
-@property (nonatomic, assign) BOOL disableLongPressMenu;
-
-@property (nonatomic, strong) CubeMessageCellMenuView * menuView;
-
-@property (nonatomic, assign) id<CubeMessagePanelViewDelegate> delegate;
 
 
-/*!
- * @brief 重置当前 View 。
- */
-- (void)reset;
-
-- (void)addMessage:(CMessage *)message;
-
-- (void)deleteMessage:(CMessage *)message;
-
-- (void)deleteMessage:(CMessage *)message withAnimation:(BOOL)animation;
-
-- (void)updateMessage:(CMessage *)message;
-
-- (void)reloadData;
+#define     MAX_MESSAGE_WIDTH               SCREEN_WIDTH * 0.58
+#define     MAX_MESSAGE_IMAGE_WIDTH         SCREEN_WIDTH * 0.45
+#define     MIN_MESSAGE_IMAGE_WIDTH         SCREEN_WIDTH * 0.25
+#define     MAX_MESSAGE_EXPRESSION_WIDTH    SCREEN_WIDTH * 0.35
+#define     MIN_MESSAGE_EXPRESSION_WIDTH    SCREEN_WIDTH * 0.2
 
 
-/*!
- * @brief 滚动到底部。
- * @param animation 是否执行动画。
- */
-- (void)scrollToBottomWithAnimation:(BOOL)animation;
+@interface CubeMessageFrame : NSObject
+
+@property (nonatomic, assign) CGFloat height;
+
+@property (nonatomic, assign) CGSize contentSize;
+
+
++ (CubeMessageFrame *)frameWithTextMessage:(CMessage *)message label:(UILabel *)label showTime:(BOOL)showTime showNameLabel:(BOOL)showNameLabel;
 
 @end
 
-#endif /* CubeMessagePanelView_h */
+#endif /* CubeMessageFrame_h */

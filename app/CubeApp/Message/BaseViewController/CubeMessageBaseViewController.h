@@ -28,6 +28,7 @@
 #define CubeMessageBaseViewController_h
 
 #import <UIKit/UIKit.h>
+#import "CubeMessagePanelView.h"
 
 @interface CubeMessageBaseViewController : UIViewController
 
@@ -35,7 +36,8 @@
 
 @property (nonatomic, strong) CGroup * group;
 
-
+/*! @brief 消息内容显示面板。 */
+@property (nonatomic, strong) CubeMessagePanelView * messagePanelView;
 
 @end
 

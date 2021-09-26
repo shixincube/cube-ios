@@ -132,19 +132,19 @@
     NSString * avatar = [CubeAppUtil explainAvatarName:[CubeAccount getAvatar:message.sender.context]];
     [self.avatarButton setImage:[UIImage imageNamed:avatar] forState:UIControlStateNormal];
 
+    self.showTime = NO;
     // 是否显示时间
     if (nil == _message || _message.type != message.type) {
-        BOOL showTime = NO;
         if (message.type == CMessageTypeFile) {
-            showTime = YES;
+            self.showTime = YES;
         }
         [self.timeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(showTime ? TIMELABEL_HEIGHT : 0);
-            make.top.mas_equalTo(self.contentView).mas_offset(showTime ? TIMELABEL_SPACE_Y : 0);
+            make.height.mas_equalTo(self.showTime ? TIMELABEL_HEIGHT : 0);
+            make.top.mas_equalTo(self.contentView).mas_offset(self.showTime ? TIMELABEL_SPACE_Y : 0);
         }];
     }
 
-    BOOL showNameLabel = [message isFromGroup] ? YES : NO;
+    self.showNameLabel = [message isFromGroup] ? YES : NO;
 
     // 位置调整
     if (nil == _message || _message.selfTyper != message.selfTyper) {
@@ -179,13 +179,13 @@
             else {
                 make.left.mas_equalTo(self.avatarButton.mas_right).mas_offset(MSGBG_SPACE_X);
             }
-            make.top.mas_equalTo(self.nameLabel.mas_bottom).mas_offset(showNameLabel ? showNameLabel : -MSGBG_SPACE_Y);
+            make.top.mas_equalTo(self.nameLabel.mas_bottom).mas_offset(self.showNameLabel ? 0 : -MSGBG_SPACE_Y);
         }];
     }
 
-    [self.nameLabel setHidden:!showNameLabel];
+    [self.nameLabel setHidden:!self.showNameLabel];
     [self.nameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(showNameLabel ? NAMELABEL_HEIGHT : 0);
+        make.height.mas_equalTo(self.showNameLabel ? NAMELABEL_HEIGHT : 0);
     }];
 
     // 赋值

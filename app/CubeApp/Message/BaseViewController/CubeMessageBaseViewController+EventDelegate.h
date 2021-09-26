@@ -24,53 +24,13 @@
  * SOFTWARE.
  */
 
-#ifndef CubeMessagePanelView_h
-#define CubeMessagePanelView_h
+#ifndef CubeMessageBaseViewController_EventDelegate_h
+#define CubeMessageBaseViewController_EventDelegate_h
 
-#import <UIKit/UIKit.h>
-#import "CubeMessagePanelViewDelegate.h"
-#import "CubeMessageCellMenuView.h"
-#import "CubeTextMessageCell.h"
+#import "CubeMessageBaseViewController.h"
 
-@interface CubeMessagePanelView : UIView
-
-@property (nonatomic, strong) NSMutableArray * data;
-
-@property (nonatomic, strong, readonly) UITableView * tableView;
-
-/*! @brief 禁用下拉刷新。 */
-@property (nonatomic, assign) BOOL disablePullToRefresh;
-
-/*! @brief 禁用长安菜单。 */
-@property (nonatomic, assign) BOOL disableLongPressMenu;
-
-@property (nonatomic, strong) CubeMessageCellMenuView * menuView;
-
-@property (nonatomic, assign) id<CubeMessagePanelViewDelegate> delegate;
-
-
-/*!
- * @brief 重置当前 View 。
- */
-- (void)reset;
-
-- (void)addMessage:(CMessage *)message;
-
-- (void)deleteMessage:(CMessage *)message;
-
-- (void)deleteMessage:(CMessage *)message withAnimation:(BOOL)animation;
-
-- (void)updateMessage:(CMessage *)message;
-
-- (void)reloadData;
-
-
-/*!
- * @brief 滚动到底部。
- * @param animation 是否执行动画。
- */
-- (void)scrollToBottomWithAnimation:(BOOL)animation;
+@interface CubeMessageBaseViewController (EventDelegate) <CMessagingEventDelegate>
 
 @end
 
-#endif /* CubeMessagePanelView_h */
+#endif /* CubeMessageBaseViewController_EventDelegate_h */

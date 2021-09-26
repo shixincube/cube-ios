@@ -25,9 +25,14 @@
  */
 
 #import "CubeMessageBaseViewController.h"
+#import "CubeMessageBaseViewController+EventDelegate.h"
 
 @implementation CubeMessageBaseViewController
 
-
+- (void)loadView {
+    [super loadView];
+    
+    [CEngine sharedInstance].messagingService.eventDelegate = self;
+}
 
 @end

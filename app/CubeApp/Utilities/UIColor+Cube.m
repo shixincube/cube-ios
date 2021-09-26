@@ -35,7 +35,7 @@
 }
 
 + (UIColor *)colorTextWhite {
-    return RGBAColor(240, 240, 240, 1.0);
+    return RGBAColor(250, 250, 250, 1.0);
 }
 
 + (UIColor *)colorTextGray {

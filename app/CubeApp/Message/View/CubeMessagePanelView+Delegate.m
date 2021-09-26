@@ -29,7 +29,7 @@
 @implementation CubeMessagePanelView (Delegate)
 
 - (void)registerCellClassForTableView:(UITableView *)tableView {
-    
+    [tableView registerClass:[CubeTextMessageCell class] forCellReuseIdentifier:@"CubeTextMessageCell"];
 }
 
 #pragma mark - UITableViewDelegate

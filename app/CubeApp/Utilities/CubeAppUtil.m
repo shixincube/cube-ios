@@ -64,18 +64,6 @@
     }
 }
 
-
-+ (NSURLSessionDataTask *)postURL:(NSString *)url
-                       parameters:(id)parameters
-                          success:(void (^)(NSURLSessionDataTask * task, id responseObject))success
-                          failure:(void (^)(NSURLSessionDataTask * task, NSError * error))failure {
-    NSSet * acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", nil];
-    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.timeoutInterval = 3;
-    manager.responseSerializer.acceptableContentTypes = acceptableContentTypes;
-    return [manager POST:url parameters:parameters headers:nil progress:nil success:success failure:failure];
-}
-
 + (NSString *)explainAvatarName:(NSString *)avatarName {
     if ([avatarName isEqualToString:@"default"]) {
         return @"AvatarDefault";

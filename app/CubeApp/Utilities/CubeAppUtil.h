@@ -38,16 +38,14 @@
  */
 + (NSString *)desensitizePhoneNumber:(NSString *)phoneNumber;
 
-+ (NSURLSessionDataTask *)postURL:(NSString *)url
-                       parameters:(id)parameters
-                          success:(void (^)(NSURLSessionDataTask * task, id responseObject))success
-                          failure:(void (^)(NSURLSessionDataTask * task, NSError * error))failure;
-
 /*!
  * @brief 解释头像名为头像文件名。
  */
 + (NSString *)explainAvatarName:(NSString *)avatarName;
 
+/*!
+ * @brief 获取设备名称。
+ */
 + (NSString*)deviceModelName;
 
 @end
