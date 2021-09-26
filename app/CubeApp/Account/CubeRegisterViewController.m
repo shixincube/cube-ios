@@ -309,7 +309,7 @@
 - (UIButton *)cancelButton {
     if (!_cancelButton) {
         _cancelButton = UIButton.zz_create(1)
-            .backgroundColor([UIColor colorBlueDefault])
+            .backgroundColor([UIColor colorThemeBlue])
             .title(@"取消")
             .titleFont([UIFont systemFontOfSize:16])
             .cornerRadius(3.0f)
@@ -428,7 +428,7 @@
             .masksToBounds(YES)
             .cornerRadius(4.0f)
             .borderWidth(BORDER_WIDTH_1PX)
-            .backgroundColor([UIColor colorBlueDefault])
+            .backgroundColor([UIColor colorThemeBlue])
             .titleFont([UIFont systemFontOfSize:16.0f])
             .title(@"注册")
             .view;

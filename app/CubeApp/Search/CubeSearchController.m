@@ -52,7 +52,7 @@
         [self.searchBar setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         [self.searchBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorGrayBG]]];
         [self.searchBar setBarTintColor:[UIColor colorGrayBG]];
-        [self.searchBar setTintColor:[UIColor colorBlueDefault]];
+        [self.searchBar setTintColor:[UIColor colorThemeBlue]];
         [self.searchBar setDelegate:searchResultsController];
         [self.searchBar setTranslucent:NO];
         

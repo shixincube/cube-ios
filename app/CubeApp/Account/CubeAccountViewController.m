@@ -77,7 +77,7 @@ typedef NS_ENUM(NSInteger, CubeAccountButtonTag) {
     }];
 
     // 登录按钮
-    UIButton *loginButton = createButton(@"登 录", [UIColor colorBlueDefault], CubeAccountButtonTagLogin);
+    UIButton *loginButton = createButton(@"登 录", [UIColor colorThemeBlue], CubeAccountButtonTagLogin);
     [self.view addSubview:loginButton];
     [loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-EDGE_BUTTON);

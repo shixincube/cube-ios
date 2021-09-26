@@ -49,7 +49,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         [self.tabBar setBackgroundColor:[UIColor colorGrayBG]];
-        [self.tabBar setTintColor:[UIColor colorBlueDefault]];
+        [self.tabBar setTintColor:[UIColor colorThemeBlue]];
 
         CubeConversationViewController * conversationVC = [[CubeConversationViewController alloc] init];
 //        CubeContactsViewController *contactsVC = [[CubeContactsViewController alloc] init];

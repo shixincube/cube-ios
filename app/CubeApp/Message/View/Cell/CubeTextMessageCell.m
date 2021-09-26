@@ -69,7 +69,19 @@
     [self.messageBackgroundView setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     
     if (lastSelfTyper != message.selfTyper) {
-        
+        if (message.selfTyper) {
+            [self.messageBackgroundView setImage:[UIImage imageWithColor:[UIColor colorThemeBlue]]];
+            [self.messageBackgroundView setHighlightedImage:[UIImage imageWithColor:[UIColor colorThemeBlueHighlighted]]];
+
+            [self.contentLabel setTextColor:[UIColor colorTextWhite]];
+            [self.contentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.messageBackgroundView).mas_offset(-MSG_SPACE_RIGHT);
+                make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
+            }];
+        }
+        else {
+            
+        }
     }
 }
 

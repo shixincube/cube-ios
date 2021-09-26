@@ -33,6 +33,7 @@
 
 #pragma mark - 文本颜色
 + (UIColor *)colorTextBlack;
++ (UIColor *)colorTextWhite;
 + (UIColor *)colorTextGray;
 + (UIColor *)colorTextLightGray;
 
@@ -47,8 +48,8 @@
 
 
 #pragma mark - 主题色
-+ (UIColor *)colorBlueDefault;
-+ (UIColor *)colorBlueHL;
++ (UIColor *)colorThemeBlue;
++ (UIColor *)colorThemeBlueHighlighted;
 
 
 #pragma mark - 蓝色
