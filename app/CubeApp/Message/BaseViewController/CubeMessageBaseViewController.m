@@ -25,14 +25,91 @@
  */
 
 #import "CubeMessageBaseViewController.h"
+#import "CubePreference.h"
 #import "CubeMessageBaseViewController+EventDelegate.h"
+#import "CubeMessageBaseViewController+PanelViewDelegate.h"
 
 @implementation CubeMessageBaseViewController
 
 - (void)loadView {
     [super loadView];
-    
+
     [CEngine sharedInstance].messagingService.eventDelegate = self;
+
+    [self.view addSubview:self.messagePanelView];
+    // TODO chat bar
+
+    if (SAFEAREA_INSETS_BOTTOM > 0) {
+//        self.view.addView(1001).backgroundColor()
+    }
+
+    [self buildMasonry];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    // TODO load keyboard
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+#pragma mark - Private
+
+- (void)buildMasonry {
+    [self.messagePanelView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.and.left.and.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view);
+    }];
+
+    [self.view layoutIfNeeded];
+}
+
+- (void)resetView {
+    NSString * bgImageName = nil;
+    if (_partner) {
+        bgImageName = [CubePreference messagePanelBackgroundWithContact:_partner];
+    }
+    
+    // TODO
+    
+    if (nil == bgImageName) {
+        [self.view setBackgroundColor:[UIColor colorGrayCharcoalBG]];
+    }
+    else {
+        
+    }
+
+    [self resetPanelView];
+}
+
+#pragma mark - Setters
+
+- (void)setPartner:(CContact *)partner {
+    _group = nil;
+
+    if (_partner && _partner.identity == partner.identity) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.messagePanelView scrollToBottomWithAnimation:NO];
+        });
+        return;
+    }
+
+    _partner = partner;
+    [self.navigationItem setTitle:[partner getPriorityName]];
+    [self resetView];
+}
+
+#pragma mark - Getters
+
+- (CubeMessagePanelView *)messagePanelView {
+    if (nil == _messagePanelView) {
+        _messagePanelView = [[CubeMessagePanelView alloc] init];
+        _messagePanelView.delegate = self;
+    }
+    return _messagePanelView;
 }
 
 @end

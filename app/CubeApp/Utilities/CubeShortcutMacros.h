@@ -44,11 +44,14 @@
 #define     SAFEAREA_INSETS     \
 ({   \
     UIEdgeInsets edgeInsets = UIEdgeInsetsZero; \
-    if (@available(iOS 11.0, *)) {      \
+    if (@available(iOS 13.0, *)) {      \
         edgeInsets = [UIApplication sharedApplication].windows[0].safeAreaInsets;     \
     }   \
+    else if (@available(iOS 11.0, *)) {    \
+        edgeInsets = [UIApplication sharedApplication].keyWindow.safeAreaInsets;    \
+    }   \
     edgeInsets;  \
-})\
+})
 
 #define     SAFEAREA_INSETS_BOTTOM      (SAFEAREA_INSETS.bottom)
 
