@@ -25,25 +25,77 @@
  */
 
 #import "CubeMessagePanelView+Delegate.h"
+#import "CubeMessageFrame.h"
 
 @implementation CubeMessagePanelView (Delegate)
 
 - (void)registerCellClassForTableView:(UITableView *)tableView {
     [tableView registerClass:[CubeTextMessageCell class] forCellReuseIdentifier:@"CubeTextMessageCell"];
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    CMessage * message = self.data[indexPath.row];
+    if (message.type == CMessageTypeText) {
+        CubeTextMessageCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CubeTextMessageCell"];
+        cell.message = message;
+        cell.delegate = self;
+    }
+
+    return [tableView dequeueReusableCellWithIdentifier:@"EmptyCell"];
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - UITableViewDelegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row >= self.data.count) {
+        return 0.0f;
+    }
+    
+    CMessage * message = self.data[indexPath.row];
+    if (!message.customData) {
+        return 0.0f;
+    }
 
+    return ((CubeMessageFrame *)message.customData).height;
+}
+
+#pragma mark - CubeMessageCellDelegate
+
+- (void)messageCellDidClickAvatarForContact:(CContact *)contact {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(messagePanelView:didClickContactAvatar:)]) {
+        [self.delegate messagePanelView:self didClickContactAvatar:contact];
+    }
+}
+
+- (void)messageCellDidClick:(CMessage *)message {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(messagePanelView:didClickMessage:)]) {
+        [self.delegate messagePanelView:self didClickMessage:message];
+    }
+}
+
+- (void)messageCellDidLongPress:(CMessage *)message targetRect:(CGRect)targetRect {
+    // TODO
+}
+
+- (void)messageCellDidDoubleClick:(CMessage *)message {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(messagePanelView:didDoubleClickMessage:)]) {
+        [self.delegate messagePanelView:self didDoubleClickMessage:message];
+    }
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(messagePanelViewDidTouched:)]) {
+        [self.delegate messagePanelViewDidTouched:self];
+    }
+}
 
 @end

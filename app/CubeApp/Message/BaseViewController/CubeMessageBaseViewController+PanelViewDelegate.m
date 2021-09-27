@@ -45,7 +45,7 @@
                    beginningTime:(NSDate *)beginningTime
                            count:(NSUInteger)count
                        completed:(void (^)(NSDate *, NSArray *, BOOL))completed {
-    
+    NSLog(@"CubeMessageBaseViewController#getDataFromBeginningTime");
 }
 
 
@@ -57,12 +57,6 @@
 
 - (void)messagePanelView:(CubeMessagePanelView *)panelView
    didClickContactAvatar:(CContact *)contact {
-    
-}
-
-
-- (void)messagePanelView:(CubeMessagePanelView *)panelView
-     didClickGroupAvatar:(CGroup *)group {
     
 }
 

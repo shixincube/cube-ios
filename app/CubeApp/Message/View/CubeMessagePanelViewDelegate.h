@@ -63,12 +63,6 @@
    didClickContactAvatar:(CContact *)contact;
 
 /*!
- * @brief 点击群组头像。
- */
-- (void)messagePanelView:(CubeMessagePanelView *)panelView
-     didClickGroupAvatar:(CGroup *)group;
-
-/*!
  * @brief 点击消息。
  */
 - (void)messagePanelView:(CubeMessagePanelView *)panelView

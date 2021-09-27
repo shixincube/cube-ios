@@ -48,6 +48,11 @@
 
 @property (nonatomic, assign) id<CubeMessagePanelViewDelegate> delegate;
 
+@property (nonatomic, weak) CContact * contact;
+
+@property (nonatomic, weak) CGroup * group;
+
+- (instancetype)initWithFrame:(CGRect)frame;
 
 /*!
  * @brief 重置当前 View 。

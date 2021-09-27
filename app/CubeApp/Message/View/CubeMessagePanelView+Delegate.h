@@ -29,7 +29,7 @@
 
 #import "CubeMessagePanelView.h"
 
-@interface CubeMessagePanelView (Delegate) <UITableViewDelegate, UITableViewDataSource>
+@interface CubeMessagePanelView (Delegate) <UITableViewDelegate, UITableViewDataSource, CubeMessageCellDelegate>
 
 - (void)registerCellClassForTableView:(UITableView *)tableView;
 

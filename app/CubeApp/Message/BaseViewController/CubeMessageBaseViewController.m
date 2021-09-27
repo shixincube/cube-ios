@@ -37,11 +37,12 @@
     [CEngine sharedInstance].messagingService.eventDelegate = self;
 
     [self.view addSubview:self.messagePanelView];
+
     // TODO chat bar
 
-    if (SAFEAREA_INSETS_BOTTOM > 0) {
+//    if (SAFEAREA_INSETS_BOTTOM > 0) {
 //        self.view.addView(1001).backgroundColor()
-    }
+//    }
 
     [self buildMasonry];
 }
@@ -56,6 +57,12 @@
     [super viewWillAppear:animated];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    [self.view layoutIfNeeded];
+}
+
 #pragma mark - Private
 
 - (void)buildMasonry {
@@ -63,8 +70,6 @@
         make.top.and.left.and.right.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.view);
     }];
-
-    [self.view layoutIfNeeded];
 }
 
 - (void)resetView {
@@ -72,9 +77,9 @@
     if (_contact) {
         bgImageName = [CubePreference messagePanelBackgroundWithContact:_contact];
     }
-    
+
     // TODO
-    
+
     if (nil == bgImageName) {
         [self.view setBackgroundColor:[UIColor colorGrayCharcoalBG]];
     }
@@ -112,7 +117,12 @@
 
 - (CubeMessagePanelView *)messagePanelView {
     if (nil == _messagePanelView) {
-        _messagePanelView = [[CubeMessagePanelView alloc] init];
+        CGFloat width = self.view.frame.size.width;
+        CGFloat height = self.view.frame.size.height - 44.0;
+        CGRect frame = CGRectMake(0, 0, width, height);
+        _messagePanelView = [[CubeMessagePanelView alloc] initWithFrame:frame];
+        _messagePanelView.contact = self.contact;
+        _messagePanelView.group = self.group;
         _messagePanelView.delegate = self;
     }
     return _messagePanelView;

@@ -101,8 +101,11 @@
         }
     }
 
+    CubeMessageFrame * mf = [CubeMessageFrame frameWithTextMessage:message label:self.contentLabel showTime:self.showTime showNameLabel:self.showNameLabel];
+    textMessage.customData = mf;
+
     [self.contentLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo([CubeMessageFrame frameWithTextMessage:message label:self.contentLabel showTime:self.showTime showNameLabel:self.showNameLabel].contentSize);
+        make.size.mas_equalTo(mf.contentSize);
     }];
 }
 

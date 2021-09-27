@@ -35,14 +35,14 @@
     CubeConversation * conversation = [[CubeConversation alloc] init];
 
     if ([message isFromGroup]) {
-        conversation.type = CubeConversationTypeContact;
+        conversation.type = CubeConversationTypeGroup;
         conversation.identity = message.source;
         conversation.group = message.sourceGroup;
         // TODO 群组数据
 //        conversation.displayName = message.sourceGroup.name;
     }
     else {
-        conversation.type = CubeConversationTypeGroup;
+        conversation.type = CubeConversationTypeContact;
         if (message.from == owner.identity) {
             // “我”是发件人
             conversation.identity = message.to;

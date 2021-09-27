@@ -50,7 +50,7 @@
         self.disablePullToRefresh = NO;
         // 初始化 Table View
         [self registerCellClassForTableView:self.tableView];
-        
+
         [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(0);
         }];
@@ -58,15 +58,15 @@
         UITapGestureRecognizer * tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchTableView:)];
         [self.tableView addGestureRecognizer:tapGR];
 
-        [self.tableView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+//        [self.tableView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     }
 
     return self;
 }
 
 - (void)dealloc {
-    [self.menuView dismiss];
-    [self.tableView removeObserver:self forKeyPath:@"bounds"];
+//    [self.menuView dismiss];
+//    [self.tableView removeObserver:self forKeyPath:@"bounds"];
 }
 
 - (void)reset {
@@ -74,7 +74,7 @@
     [self.tableView reloadData];
 
     self.currentDate = [NSDate date];
-    
+
     if (!self.disablePullToRefresh) {
         [self.tableView setMj_header:self.refreshHeader];
     }

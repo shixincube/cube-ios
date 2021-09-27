@@ -87,6 +87,9 @@
 /*! @brief 自己是否是该消息的创建者。 */
 @property (nonatomic, assign) BOOL selfTyper;
 
+/*! @brief 自定义数据。 */
+@property (nonatomic, strong) id customData;
+
 
 //@property (nonatomic, strong, readonly) FileAttachment * attachment;
 
