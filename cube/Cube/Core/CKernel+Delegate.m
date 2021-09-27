@@ -35,20 +35,26 @@
 
 - (void)didOpen:(CPipeline *)pipeline {
     if (self.pipelineStateDelegate && [self.pipelineStateDelegate respondsToSelector:@selector(pipelineOpened:)]) {
-        [self.pipelineStateDelegate pipelineOpened:self];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.pipelineStateDelegate pipelineOpened:self];
+        });
     }
 }
 
 - (void)didClose:(CPipeline *)pipeline {
     if (self.pipelineStateDelegate && [self.pipelineStateDelegate respondsToSelector:@selector(pipelineClosed:)]) {
-        [self.pipelineStateDelegate pipelineClosed:self];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.pipelineStateDelegate pipelineClosed:self];
+        });
     }
 }
 
 - (void)faultOccurred:(CPipeline *)pipeline code:(NSInteger)code desc:(NSString *)desc {
     if (self.pipelineStateDelegate && [self.pipelineStateDelegate respondsToSelector:@selector(pipelineFaultOccurred:kernel:)]) {
-        CError * error = [[CError alloc] initWithModule:@"Kernel" code:code desc:desc];
-        [self.pipelineStateDelegate pipelineFaultOccurred:error kernel:self];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            CError * error = [[CError alloc] initWithModule:@"Kernel" code:code desc:desc];
+            [self.pipelineStateDelegate pipelineFaultOccurred:error kernel:self];
+        });
     }
 }
 

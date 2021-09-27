@@ -27,10 +27,13 @@
 #import "CubeConversationViewController.h"
 #import "CubeConversationListController.h"
 #import "CubeSearchController.h"
+#import "CubeMessageViewController+Conversation.h"
 
 #import "CubeConversation.h"
 #import "CubeConversationCell.h"
 #import "CubeConversationNoNetCell.h"
+
+#import "CubeMessageViewController.h"
 
 #import "UIFont+Cube.h"
 
@@ -171,8 +174,8 @@
             [conversation setUnread:0];
             [self.listController reloadBadge];
 
-            // TODO
-//            CubeChatViewController
+            CubeMessageViewController * messageVC = [[CubeMessageViewController alloc] initWithConversation:conversation];
+            PushVC(messageVC);
         });
 
     [self.tableView reloadData];
@@ -226,6 +229,16 @@
     }
 
     [self.tableView reloadData];
+}
+
+- (void)pipelineOpened:(CKernel *)kernel {
+    NSLog(@"CubeConversationViewController#pipelineOpened");
+    [self setNavTitleWithStatusString:nil];
+}
+
+- (void)pipelineClosed:(CKernel *)kernel {
+    NSLog(@"CubeConversationViewController#pipelineClosed");
+    [self setNavTitleWithStatusString:@"未连接"];
 }
 
 - (void)pipelineFaultOccurred:(CError *)error kernel:(CKernel *)kernel {

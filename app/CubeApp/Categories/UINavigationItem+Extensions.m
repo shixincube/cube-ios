@@ -27,6 +27,7 @@
 #import "UINavigationItem+Extensions.h"
 
 static UIView * sRawTitleView = nil;
+static NSString * sLoadingTitle = nil;
 
 @implementation UINavigationItem (Extensions)
 
@@ -36,6 +37,8 @@ static UIView * sRawTitleView = nil;
         sRawTitleView = nil;
     }
 
+    sLoadingTitle = nil;
+
     [self setTitle:title];
 }
 
@@ -43,6 +46,13 @@ static UIView * sRawTitleView = nil;
     if (nil == sRawTitleView) {
         sRawTitleView = self.titleView;
     }
+
+    if (nil != sLoadingTitle && [sLoadingTitle isEqualToString:title]) {
+        // 标题相同，返回
+        return;
+    }
+
+    sLoadingTitle = title;
 
     CGFloat indicatorSize = 25.0;
     CGRect viewFrame = self.titleView.frame;
@@ -59,6 +69,7 @@ static UIView * sRawTitleView = nil;
 
     CGRect frame = CGRectMake(0.0, 0.0, indicatorSize, indicatorSize);
     UIActivityIndicatorView * av = [[UIActivityIndicatorView alloc] initWithFrame:frame];
+    av.tag = 2001;
     av.color = [UIColor grayColor];
     av.activityIndicatorViewStyle = UIActivityIndicatorViewStyleMedium;
     [view addSubview:av];

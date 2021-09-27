@@ -153,9 +153,12 @@
     // delayInMills 毫秒后重连
     dispatch_time_t delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, delayInMills * NSEC_PER_MSEC);
     dispatch_after(delayInNanoSeconds, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        NSLog(@"XJW 1");
         if (![self->_nucleus.talkService isCalled:self.address withPort:(int)self.port]) {
+            NSLog(@"XJW XXXXXX");
             [self->_nucleus.talkService call:self.address withPort:(int)self.port];
         }
+        NSLog(@"XJW 2");
     });
 }
 
@@ -230,7 +233,7 @@
     if (_enabled) {
         if ([CNetworkStatusManager sharedInstance].networkStatus == CNetworkStatusWWAN
             || [CNetworkStatusManager sharedInstance].networkStatus == CNetworkStatusWiFi) {
-            [self retry:1000 hangUpBefore:TRUE];
+            [self retry:2000 hangUpBefore:TRUE];
         }
     }
 }

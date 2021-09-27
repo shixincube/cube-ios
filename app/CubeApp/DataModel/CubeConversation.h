@@ -60,6 +60,16 @@ typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
 @property (nonatomic, assign) CubeMessageRemindType remindType;
 
 /*!
+ * @brief 关联的联系人。
+ */
+@property (nonatomic, strong) CContact * contact;
+
+/*!
+ * @brief 关联的群组。
+ */
+@property (nonatomic, strong) CGroup * group;
+
+/*!
  * @brief 该会话联系人或群组的 ID 。
  */
 @property (nonatomic, assign) UInt64 identity;

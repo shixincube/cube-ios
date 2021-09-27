@@ -37,6 +37,7 @@
     if ([message isFromGroup]) {
         conversation.type = CubeConversationTypeContact;
         conversation.identity = message.source;
+        conversation.group = message.sourceGroup;
         // TODO 群组数据
 //        conversation.displayName = message.sourceGroup.name;
     }
@@ -45,12 +46,14 @@
         if (message.from == owner.identity) {
             // “我”是发件人
             conversation.identity = message.to;
+            conversation.contact = message.receiver;
             conversation.displayName = [message.receiver getPriorityName];
             conversation.avatarName = message.receiver.context ? [CubeAccount getAvatar:message.receiver.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
         }
         else {
             // “我”是收件人
             conversation.identity = message.from;
+            conversation.contact = message.sender;
             conversation.displayName = [message.sender getPriorityName];
             conversation.avatarName = message.sender.context ? [CubeAccount getAvatar:message.sender.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
         }
