@@ -15,13 +15,14 @@
 #import "Utilities/CubeShortcutMacros.h"
 #import "Utilities/CubeAppMacros.h"
 
-#import "Categories/UICollectionViewCell+Extensions.h"
 #import "Categories/NSObject+CubeKeyValue.h"
-#import "Categories/UIImage+Color.h"
-#import "Categories/UIView+Extensions.h"
 #import "Categories/NSDate+Extensions.h"
 #import "Categories/NSDate+Relation.h"
+#import "Categories/UICollectionViewCell+Extensions.h"
+#import "Categories/UIImage+Color.h"
+#import "Categories/UIView+Extensions.h"
 #import "Categories/UIScrollView+Extensions.h"
+#import "Categories/UINavigationItem+Extensions.h"
 
 #import "Frameworks/Masonry/Masonry/Masonry.h"
 #import "Frameworks/ZZFLEX/ZZFLEX.h"

@@ -32,7 +32,7 @@
 #import "CubeConversationCell.h"
 #import "CubeConversationNoNetCell.h"
 
-#import <Cube/CHyperTextMessage.h>
+#import "UIFont+Cube.h"
 
 @interface CubeConversationViewController ()
 
@@ -71,6 +71,11 @@
     [self initModel];
 
     [CEngine sharedInstance].pipelineStateDelegate = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (![[CEngine sharedInstance] isReadyForPipeline]) {
+            [self pipelineFaultOccurred:nil kernel:[CEngine sharedInstance].kernel];
+        }
+    });
 }
 
 - (void)viewDidLoad {
@@ -89,7 +94,7 @@
 
 - (void)setNavTitleWithStatusString:(NSString *)statusString {
     NSString * title = (nil != statusString) ? [NSString stringWithFormat:@"消息(%@)", statusString] : @"消息";
-    [self.navigationItem setTitle:title];
+    [self.navigationItem setNormalTitle:title];
 }
 
 - (void)buildView {
@@ -157,7 +162,7 @@
     // 更新会话的 Cell 和 Table View
     @weakify(self);
     self.listController.sectionForTag(CubeConversationSectionTagConversation).clear();
-    
+
     self.listController.addCells([CubeConversationCell class])
         .toSection(CubeConversationSectionTagConversation)
         .withDataModelArray(data)
@@ -224,7 +229,7 @@
 }
 
 - (void)pipelineFaultOccurred:(CError *)error kernel:(CKernel *)kernel {
-    [self setNavTitleWithStatusString:@"正在连接服务器"];
+    [self.navigationItem setLoadingTitle:@"连接中"];
 }
 
 @end

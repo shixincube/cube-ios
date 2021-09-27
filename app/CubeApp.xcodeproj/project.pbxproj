@@ -30,6 +30,7 @@
 		C84CC1AD26E9F2010004A9CB /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C84CC1AB26E9F2010004A9CB /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C84CC1B026E9F2940004A9CB /* CubeAppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CC1AF26E9F2940004A9CB /* CubeAppUtil.m */; };
 		C84CC1B326EA0B110004A9CB /* NSObject+CubeKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */; };
+		C8754CD627015B2F00B0790F /* UINavigationItem+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8754CD527015B2F00B0790F /* UINavigationItem+Extensions.m */; };
 		C888CD5826F201C0004D7782 /* CubeSettingItemNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C888CD5726F201C0004D7782 /* CubeSettingItemNormalCell.m */; };
 		C89FC0D526F463CE0027B2FC /* CubeSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = C89FC0D426F463CE0027B2FC /* CubeSearchController.m */; };
 		C89FC0D726F468D30027B2FC /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C89FC0D626F468D30027B2FC /* UIImage+Color.m */; };
@@ -233,6 +234,8 @@
 		C84CC1AF26E9F2940004A9CB /* CubeAppUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeAppUtil.m; sourceTree = "<group>"; };
 		C84CC1B126EA0B080004A9CB /* NSObject+CubeKeyValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CubeKeyValue.h"; sourceTree = "<group>"; };
 		C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CubeKeyValue.m"; sourceTree = "<group>"; };
+		C8754CD527015B2F00B0790F /* UINavigationItem+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Extensions.m"; sourceTree = "<group>"; };
+		C8754CD727015B3800B0790F /* UINavigationItem+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Extensions.h"; sourceTree = "<group>"; };
 		C888CD5526F20129004D7782 /* CubeSettingItemTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSettingItemTemplate.h; sourceTree = "<group>"; };
 		C888CD5626F201B2004D7782 /* CubeSettingItemNormalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeSettingItemNormalCell.h; sourceTree = "<group>"; };
 		C888CD5726F201C0004D7782 /* CubeSettingItemNormalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeSettingItemNormalCell.m; sourceTree = "<group>"; };
@@ -629,6 +632,8 @@
 				C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */,
 				C89FC0D826F468DE0027B2FC /* UIImage+Color.h */,
 				C89FC0D626F468D30027B2FC /* UIImage+Color.m */,
+				C8754CD727015B3800B0790F /* UINavigationItem+Extensions.h */,
+				C8754CD527015B2F00B0790F /* UINavigationItem+Extensions.m */,
 				C81A94512700512D00FA13E9 /* UIScrollView+Extensions.h */,
 				C81A944F2700512200FA13E9 /* UIScrollView+Extensions.m */,
 				C8A0DA3326E1D6B80032A9D5 /* UIView+Extensions.h */,
@@ -1569,6 +1574,7 @@
 				C8CCF97B26ECA3E600ED4115 /* CubeConversationViewController.m in Sources */,
 				C8FD7ED226F039B6003FFE98 /* UICollectionViewCell+Extensions.m in Sources */,
 				C8C81C2126FC736D00455355 /* CubeMessagePanelView.m in Sources */,
+				C8754CD627015B2F00B0790F /* UINavigationItem+Extensions.m in Sources */,
 				C8D8930C26FD52060062E509 /* MJRefreshBackStateFooter.m in Sources */,
 				C8E3262626E0DAA3005CA08A /* ZZFLEXTableViewEmptyCell.m in Sources */,
 				C8F2A5AC26F4AB8700E17946 /* CubeConversation.m in Sources */,
