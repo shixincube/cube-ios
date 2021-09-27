@@ -167,6 +167,16 @@
  */
 - (NSUInteger)countUnreadWithMessage:(CMessage *)message;
 
+/*!
+ * @brief 查询指定联系人 ID 相关的所有消息，即包括该联系人发送的消息，也包含该联系人接收的消息。
+ * 从起始时间向前反向查询所有消息。
+ * @param contact 指定联系人。
+ * @param beginning 指定查询的起始时间。
+ * @param limit 指定最大查询记录数量。
+ * @return 返回保存了消息的数组。
+ */
+- (NSArray<__kindof CMessage *> *)queryMessagesByReverseWithContact:(CContact *)contact beginning:(UInt64)beginning limit:(NSInteger)limit;
+
 
 /*!
  * @private

@@ -99,7 +99,8 @@
         dispatch_semaphore_signal(semaphore);
     }];
 
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    dispatch_semaphore_wait(semaphore, timeout);
 
     return ret;
 }
@@ -222,7 +223,8 @@
         dispatch_semaphore_signal(semaphore);
     }];
 
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC);
+    dispatch_semaphore_wait(semaphore, timeout);
 
     return exists;
 }
@@ -302,6 +304,26 @@
     return 0;
 }
 
+- (NSArray<__kindof CMessage *> *)queryReverseWithContact:(UInt64)contactId
+                                                beginning:(UInt64)beginning
+                                                    limit:(NSInteger)limit {
+    __block NSArray<__kindof CMessage *> * array = nil;
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `message` WHERE `scope`=0 AND `rts`>=%llu ORDER BY `rts` DESC LIMIT %ld",
+                          beginning, limit];
+        FMResultSet * result = [db executeQuery:sql];
+
+        [result close];
+    }];
+
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC);
+    dispatch_semaphore_wait(semaphore, timeout);
+    
+    return array;
+}
+
 - (CMessage *)readMessageWithId:(UInt64)messageId {
     __block CMessage * message = nil;
     __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
@@ -323,7 +345,8 @@
         dispatch_semaphore_signal(semaphore);
     }];
 
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    dispatch_semaphore_wait(semaphore, timeout);
 
     return message;
 }
@@ -362,7 +385,8 @@
         dispatch_semaphore_signal(semaphore);
     }];
 
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    dispatch_semaphore_wait(semaphore, timeout);
 }
 
 @end

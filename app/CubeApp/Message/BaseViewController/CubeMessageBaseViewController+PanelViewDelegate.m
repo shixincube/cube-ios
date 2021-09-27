@@ -46,6 +46,7 @@
                            count:(NSUInteger)count
                        completed:(void (^)(NSDate *, NSArray *, BOOL))completed {
     NSLog(@"CubeMessageBaseViewController#getDataFromBeginningTime");
+    
 }
 
 

@@ -71,16 +71,32 @@
  */
 - (NSArray<__kindof CMessage *> *)queryRecentMessagesWithLimit:(NSInteger)limit;
 
+/*!
+ * @brief 计算消息发件人相关的未读消息数量。
+ */
 - (NSUInteger)countUnreadMessagesWithFrom:(UInt64)contactId;
 
+/*!
+ * @brief 计算消息收件人相关的未读消息数量。
+ */
 - (NSUInteger)countUnreadMessagesWithTo:(UInt64)contactId;
 
+/*!
+ * @brief 计算消息群组源相关的未读消息数量。
+ */
 - (NSUInteger)countUnreadMessagesWithSource:(UInt64)groupId;
 
 /*!
  * @brief 使用消息 ID 获取消息。
  */
 - (CMessage *)readMessageWithId:(UInt64)messageId;
+
+/*!
+ * @brief 反向查询消息。
+ */
+- (NSArray<__kindof CMessage *> *)queryReverseWithContact:(UInt64)contactId
+                                                beginning:(UInt64)beginning
+                                                    limit:(NSInteger)limit;
 
 @end
 

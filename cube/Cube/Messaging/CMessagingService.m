@@ -243,6 +243,11 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     return 0;
 }
 
+- (NSArray<__kindof CMessage *> *)queryMessagesByReverseWithContact:(CContact *)contact beginning:(UInt64)beginning limit:(NSInteger)limit {
+    
+    return nil;
+}
+
 #pragma mark - Private
 
 - (void)assemble {
