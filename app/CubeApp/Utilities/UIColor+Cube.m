@@ -51,6 +51,10 @@
     return RGBAColor(239, 239, 244, 1.0);
 }
 
++ (UIColor *)colorLightGrayBG {
+    return RGBAColor(249, 249, 254, 1.0);
+}
+
 + (UIColor *)colorGrayCharcoalBG {
     return RGBAColor(235, 235, 235, 1.0);
 }
@@ -110,6 +114,12 @@
 
 + (UIColor *)colorRedForButtonHL {
     return RGBColor(205, 62, 64);
+}
+
+
+#pragma mark - 白色
++ (UIColor *)colorWhiteBG {
+    return RGBAColor(255, 255, 255, 1.0);
 }
 
 @end

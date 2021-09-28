@@ -40,8 +40,8 @@
 #define     AVATAR_SPACE_X      8.0f
 #define     AVATAR_SPACE_Y      12.0f
 
-#define     MSGBG_SPACE_X       5.0f
-#define     MSGBG_SPACE_Y       1.0f
+#define     MSGBG_SPACE_X       6.0f
+#define     MSGBG_SPACE_Y       0.0f
 
 
 @implementation CubeMessageBaseCell
@@ -62,73 +62,13 @@
 }
 
 - (void)updateMessage:(CMessage *)message {
-    [self setMessage:message];
-}
-
-#pragma mark - Private
-
-- (void)makeConstraints {
-    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.contentView).mas_offset(TIMELABEL_SPACE_Y);
-        make.centerX.mas_equalTo(self.contentView);
-    }];
-    
-    [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.avatarButton).mas_equalTo(-NAMELABEL_SPACE_Y);
-        make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-NAMELABEL_SPACE_X);
-    }];
-
-    // 默认是自己
-    [self.avatarButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.contentView).mas_offset(-AVATAR_SPACE_X);
-        make.width.and.height.mas_equalTo(AVATAR_WIDTH);
-        make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(AVATAR_SPACE_Y);
-    }];
-
-    [self.messageBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X);
-        make.top.mas_equalTo(self.nameLabel.mas_bottom).mas_offset(-MSGBG_SPACE_Y);
-    }];
-}
-
-#pragma mark - Event Response
-
-- (void)avatarButtonTouchUp:(UIButton *)sender {
-    if (_delegate && [_delegate respondsToSelector:@selector(messageCellDidClickAvatarForContact:)]) {
-        [_delegate messageCellDidClickAvatarForContact:self.message.sender];
-    }
-}
-
-- (void)longPressBackgroundView:(UIGestureRecognizer *)gestureRecognizer {
-    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) {
-        return;
-    }
-    
-    [self.messageBackgroundView setHighlighted:YES];
-
-    if (_delegate && [_delegate respondsToSelector:@selector(messageCellDidLongPress:targetRect:)]) {
-        CGRect rect = self.messageBackgroundView.frame;
-        rect.size.height -= 10;     // 背景图片底部空白区域
-        [_delegate messageCellDidLongPress:self.message targetRect:rect];
-    }
-}
-
-- (void)doubleTapBackgroundView:(UIGestureRecognizer*)gestureRecognizer {
-    if (_delegate && [_delegate respondsToSelector:@selector(messageCellDidDoubleClick:)]) {
-        [_delegate messageCellDidDoubleClick:self.message];
-    }
-}
-
-#pragma mark - Setters
-
-- (void)setMessage:(CMessage *)message {
     if (_message && _message.identity == message.identity) {
         return;
     }
 
     [self.timeLabel setText:[NSString stringWithFormat:@"  %@  ", [message.date messageTimeInfo]]];
     [self.nameLabel setText:[message.sender getPriorityName]];
-    
+
     NSString * avatar = [CubeAppUtil explainAvatarName:[CubeAccount getAvatar:message.sender.context]];
     [self.avatarButton setImage:[UIImage imageNamed:avatar] forState:UIControlStateNormal];
 
@@ -190,6 +130,60 @@
 
     // 赋值
     _message = message;
+}
+
+#pragma mark - Private
+
+- (void)makeConstraints {
+    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.contentView).mas_offset(TIMELABEL_SPACE_Y);
+        make.centerX.mas_equalTo(self.contentView);
+    }];
+    
+    [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.avatarButton).mas_equalTo(-NAMELABEL_SPACE_Y);
+        make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-NAMELABEL_SPACE_X);
+    }];
+
+    // 默认是自己
+    [self.avatarButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.contentView).mas_offset(-AVATAR_SPACE_X);
+        make.width.and.height.mas_equalTo(AVATAR_WIDTH);
+        make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(AVATAR_SPACE_Y);
+    }];
+
+    [self.messageBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X);
+        make.top.mas_equalTo(self.nameLabel.mas_bottom).mas_offset(-MSGBG_SPACE_Y);
+    }];
+}
+
+#pragma mark - Event Response
+
+- (void)avatarButtonTouchUp:(UIButton *)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(messageCellDidClickAvatarForContact:)]) {
+        [_delegate messageCellDidClickAvatarForContact:self.message.sender];
+    }
+}
+
+- (void)longPressBackgroundView:(UIGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
+    
+    [self.messageBackgroundView setHighlighted:YES];
+
+    if (_delegate && [_delegate respondsToSelector:@selector(messageCellDidLongPress:targetRect:)]) {
+        CGRect rect = self.messageBackgroundView.frame;
+        rect.size.height -= 10;     // 背景图片底部空白区域
+        [_delegate messageCellDidLongPress:self.message targetRect:rect];
+    }
+}
+
+- (void)doubleTapBackgroundView:(UIGestureRecognizer*)gestureRecognizer {
+    if (_delegate && [_delegate respondsToSelector:@selector(messageCellDidDoubleClick:)]) {
+        [_delegate messageCellDidDoubleClick:self.message];
+    }
 }
 
 #pragma mark - Getters

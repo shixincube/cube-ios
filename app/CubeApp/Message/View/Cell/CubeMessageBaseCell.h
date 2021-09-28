@@ -43,7 +43,7 @@
 
 @property (nonatomic, assign) id<CubeMessageCellDelegate> delegate;
 
-@property (nonatomic, strong) CMessage * message;
+@property (nonatomic, strong, readonly) CMessage * message;
 
 @property (nonatomic, assign) BOOL showTime;
 

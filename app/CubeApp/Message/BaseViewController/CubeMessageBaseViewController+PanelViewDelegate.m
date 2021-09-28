@@ -46,7 +46,20 @@
                            count:(NSUInteger)count
                        completed:(void (^)(NSDate *, NSArray *, BOOL))completed {
     NSLog(@"CubeMessageBaseViewController#getDataFromBeginningTime");
-    
+
+    if (panelView.contact) {
+        [[CEngine sharedInstance].messagingService queryMessagesByReverseWithContact:panelView.contact
+                                                                           beginning:[beginningTime timeIntervalSince1970Mills]
+                                                                               limit:count
+                                                                          completion:^(NSArray<__kindof CMessage *> *array, BOOL hasMore) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completed(beginningTime, array, hasMore);
+            });
+        }];
+    }
+    else {
+        // TODO
+    }
 }
 
 

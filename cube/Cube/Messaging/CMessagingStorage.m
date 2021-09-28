@@ -304,24 +304,40 @@
     return 0;
 }
 
-- (NSArray<__kindof CMessage *> *)queryReverseWithContact:(UInt64)contactId
-                                                beginning:(UInt64)beginning
-                                                    limit:(NSInteger)limit {
-    __block NSArray<__kindof CMessage *> * array = nil;
-    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-
+- (void)queryReverseWithContact:(UInt64)contactId
+                      beginning:(UInt64)beginning
+                          limit:(NSInteger)limit
+                     completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion {
     [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `message` WHERE `scope`=0 AND `rts`>=%llu ORDER BY `rts` DESC LIMIT %ld",
-                          beginning, limit];
+        NSMutableArray<__kindof CMessage *> * array = [[NSMutableArray alloc] init];
+
+        // 多查询一条记录，判断是否后续还有数据
+        BOOL hasMore = FALSE;
+
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `message` WHERE `scope`=0 AND `rts`<%llu ORDER BY `rts` DESC LIMIT %ld",
+                          beginning, limit + 1];
         FMResultSet * result = [db executeQuery:sql];
+        while ([result next]) {
+            if (array.count == limit) {
+                hasMore = TRUE;
+                break;
+            }
+
+            NSString * dataString = [result stringForColumn:@"data"];
+            // 实例化消息
+            CMessage * message = [[CMessage alloc] initWithJSON:[CUtils toJSONWithString:dataString]];
+            // 填充
+            [_service fillMessage:message];
+
+            [array addObject:message];
+        }
 
         [result close];
-    }];
 
-    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC);
-    dispatch_semaphore_wait(semaphore, timeout);
-    
-    return array;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            completion(array, hasMore);
+        });
+    }];
 }
 
 - (CMessage *)readMessageWithId:(UInt64)messageId {

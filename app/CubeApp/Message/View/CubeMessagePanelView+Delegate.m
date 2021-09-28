@@ -44,8 +44,9 @@
     CMessage * message = self.data[indexPath.row];
     if (message.type == CMessageTypeText) {
         CubeTextMessageCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CubeTextMessageCell"];
-        cell.message = message;
+        [cell updateMessage:message];
         cell.delegate = self;
+        return cell;
     }
 
     return [tableView dequeueReusableCellWithIdentifier:@"EmptyCell"];

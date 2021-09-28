@@ -34,4 +34,49 @@
     }
 }
 
+- (void)cornerRadiusWithRoundingCorners:(UIRectCorner)corners radius:(CGFloat)radius {
+//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corners cornerRadii:CGSizeMake(radius, radius)];
+//    CAShapeLayer * maskLayer = [[CAShapeLayer alloc] init];
+//    maskLayer.path = maskPath.CGPath;
+//    maskLayer.frame = self.bounds;
+//    self.layer.mask = maskLayer;
+
+    /*
+     kCALayerMinXMinYCorner = 1U << 0,
+     kCALayerMaxXMinYCorner = 1U << 1,
+     kCALayerMinXMaxYCorner = 1U << 2,
+     kCALayerMaxXMaxYCorner = 1U << 3,
+     */
+
+    CACornerMask cm = 0;
+    if (corners == UIRectCornerAllCorners) {
+        cm = kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner;
+    }
+    else {
+        if (corners & UIRectCornerTopLeft) {
+            if (cm == 0) cm = kCALayerMinXMinYCorner;
+            else cm |= kCALayerMinXMinYCorner;
+        }
+
+        if (corners & UIRectCornerTopRight) {
+            if (cm == 0) cm = kCALayerMaxXMinYCorner;
+            else cm |= kCALayerMaxXMinYCorner;
+        }
+
+        if (corners & UIRectCornerBottomLeft) {
+            if (cm == 0) cm = kCALayerMinXMaxYCorner;
+            else cm |= kCALayerMinXMaxYCorner;
+        }
+
+        if (corners & UIRectCornerBottomRight) {
+            if (cm == 0) cm = kCALayerMaxXMaxYCorner;
+            else cm |= kCALayerMaxXMaxYCorner;
+        }
+    }
+
+    self.clipsToBounds = YES;
+    self.layer.cornerRadius = radius;
+    self.layer.maskedCorners = cm;
+}
+
 @end

@@ -36,6 +36,11 @@
  */
 - (void)removeAllSubviews;
 
+/*!
+ * @brief 设置指定边角为圆角。
+ */
+- (void)cornerRadiusWithRoundingCorners:(UIRectCorner)corners radius:(CGFloat)radius;
+
 @end
 
 #endif /* UIView_Extensions_h */

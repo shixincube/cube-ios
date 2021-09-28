@@ -76,6 +76,10 @@
 /*! @brief 月份 */
 - (NSString *)formatMonth;
 
+#pragma mark - 常用毫秒单位
+
+- (UInt64)timeIntervalSince1970Mills;
+
 @end
 
 #endif /* NSDate_Extensions_h */

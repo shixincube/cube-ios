@@ -94,9 +94,10 @@
 /*!
  * @brief 反向查询消息。
  */
-- (NSArray<__kindof CMessage *> *)queryReverseWithContact:(UInt64)contactId
-                                                beginning:(UInt64)beginning
-                                                    limit:(NSInteger)limit;
+- (void)queryReverseWithContact:(UInt64)contactId
+                      beginning:(UInt64)beginning
+                          limit:(NSInteger)limit
+                     completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
 
 @end
 

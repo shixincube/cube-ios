@@ -173,9 +173,11 @@
  * @param contact 指定联系人。
  * @param beginning 指定查询的起始时间。
  * @param limit 指定最大查询记录数量。
- * @return 返回保存了消息的数组。
  */
-- (NSArray<__kindof CMessage *> *)queryMessagesByReverseWithContact:(CContact *)contact beginning:(UInt64)beginning limit:(NSInteger)limit;
+- (void)queryMessagesByReverseWithContact:(CContact *)contact
+                                beginning:(UInt64)beginning
+                                    limit:(NSInteger)limit
+                               completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
 
 
 /*!

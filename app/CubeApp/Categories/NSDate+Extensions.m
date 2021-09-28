@@ -195,4 +195,8 @@
     return @"";
 }
 
+- (UInt64)timeIntervalSince1970Mills {
+    return (UInt64)([self timeIntervalSince1970] * 1000.0f);
+}
+
 @end

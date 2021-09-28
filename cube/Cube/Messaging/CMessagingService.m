@@ -217,7 +217,6 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
     NSMutableArray<__kindof CMessage *> * result = [[NSMutableArray alloc] initWithCapacity:list.count];
     for (CMessage * message in list) {
-        
         CMessage * compMessage = [hook apply:message];
         [result addObject:compMessage];
     }
@@ -243,9 +242,36 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     return 0;
 }
 
-- (NSArray<__kindof CMessage *> *)queryMessagesByReverseWithContact:(CContact *)contact beginning:(UInt64)beginning limit:(NSInteger)limit {
-    
-    return nil;
+- (void)queryMessagesByReverseWithContact:(CContact *)contact
+                                beginning:(UInt64)beginning
+                                    limit:(NSInteger)limit
+                               completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion {
+    if (![self hasStarted]) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            completion(nil, FALSE);
+        });
+        return;
+    }
+
+    [_storage queryReverseWithContact:contact.identity beginning:beginning limit:limit completion:^(NSArray<__kindof CMessage *> *array, BOOL hasMore) {
+        if (array.count == 0) {
+            completion(array, hasMore);
+            return;
+        }
+
+        // 调取钩子
+        CHook * hook = [self.pluginSystem getHook:CInstantiateHookName];
+
+        NSMutableArray<__kindof CMessage *> * result = [[NSMutableArray alloc] initWithCapacity:array.count];
+        for (CMessage * message in array) {
+            CMessage * compMessage = [hook apply:message];
+            [result addObject:compMessage];
+        }
+
+        // 从数据库里查出来的是时间倒序，从大到小
+        // 这里对数组进行翻转，翻转为时间正序
+        completion(result.reverseObjectEnumerator.allObjects, hasMore);
+    }];
 }
 
 #pragma mark - Private

@@ -28,7 +28,7 @@
 #import "UIFont+Cube.h"
 
 #define     MSG_SPACE_TOP       14
-#define     MSG_SPACE_BTM       20
+#define     MSG_SPACE_BOTTOM    14
 #define     MSG_SPACE_LEFT      19
 #define     MSG_SPACE_RIGHT     22
 
@@ -67,9 +67,10 @@
     [self.contentLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
 
     [self.messageBackgroundView setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
-    
+
     if (lastSelfTyper != message.selfTyper) {
         if (message.selfTyper) {
+            [self.messageBackgroundView setBackgroundColor:[UIColor colorThemeBlue]];
             [self.messageBackgroundView setImage:[UIImage imageWithColor:[UIColor colorThemeBlue]]];
             [self.messageBackgroundView setHighlightedImage:[UIImage imageWithColor:[UIColor colorThemeBlueHighlighted]]];
 
@@ -81,13 +82,16 @@
             
             [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.left.mas_equalTo(self.contentLabel).mas_offset(-MSG_SPACE_LEFT);
-                make.bottom.mas_equalTo(self.contentLabel).mas_offset(MSG_SPACE_BTM);
+                make.bottom.mas_equalTo(self.contentLabel).mas_offset(MSG_SPACE_BOTTOM);
             }];
         }
         else {
-            [self.messageBackgroundView setImage:[UIImage imageWithColor:[UIColor colorTextGray]]];
-            [self.messageBackgroundView setHighlightedImage:[UIImage imageWithColor:[UIColor colorTextLightGray]]];
-            
+            [self.messageBackgroundView setBackgroundColor:[UIColor colorWhiteBG]];
+            [self.messageBackgroundView setImage:[UIImage imageWithColor:[UIColor colorWhiteBG]]];
+            [self.messageBackgroundView setHighlightedImage:[UIImage imageWithColor:[UIColor colorGrayCharcoalBG]]];
+
+            [self.messageBackgroundView cornerRadiusWithRoundingCorners:(UIRectCornerTopRight | UIRectCornerBottomRight | UIRectCornerBottomLeft) radius:6];
+
             [self.contentLabel setTextColor:[UIColor colorTextBlack]];
             [self.contentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.left.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_LEFT);
@@ -96,7 +100,7 @@
 
             [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(self.contentLabel).mas_offset(MSG_SPACE_RIGHT);
-                make.bottom.mas_equalTo(self.contentLabel).mas_offset(MSG_SPACE_BTM);
+                make.bottom.mas_equalTo(self.contentLabel).mas_offset(MSG_SPACE_BOTTOM);
             }];
         }
     }
