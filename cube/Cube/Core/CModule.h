@@ -34,8 +34,15 @@
 @class CError;
 @class CPluginSystem;
 
-/*! 回调错误事件的 Block 定义。 */
-typedef void (^CubeFailureBlock)(CError * _Nonnull error);
+/*!
+ * @brief 操作成功回调。
+ */
+typedef void(^CSuccessBlock)(id _Nullable data);
+
+/*!
+ * @brief 操作失败回调。
+ */
+typedef void(^CFailureBlock)(CError * _Nullable error);
 
 /*!
  * @brief 内核模块。

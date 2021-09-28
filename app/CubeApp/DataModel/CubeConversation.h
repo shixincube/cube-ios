@@ -102,7 +102,7 @@ typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
 /*!
  * @brief 未读数量。
  */
-@property (nonatomic, assign) NSInteger unread;
+@property (nonatomic, assign, readonly) NSInteger unread;
 
 /*!
  * @brief 气泡显示的数据。
@@ -118,6 +118,8 @@ typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
  * @brief 是否已读消息。
  */
 - (BOOL)isRead;
+
+- (void)clearUnread;
 
 @end
 

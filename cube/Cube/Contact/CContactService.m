@@ -111,7 +111,7 @@
     return _selfReady && (nil != self.owner);
 }
 
-- (BOOL)signIn:(CSelf *)me handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
+- (BOOL)signIn:(CSelf *)me handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     // 不允许重复签入
     if (_selfReady) {
 //        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateIllegalOperation]);
@@ -192,7 +192,7 @@
     return TRUE;
 }
 
-- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
+- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     CSelf * owner = [[CSelf alloc] initWithId:identity name:name];
     return [self signIn:owner handleSuccess:handleSuccess handleFailure:handleFailure];
 }
@@ -244,7 +244,7 @@
     }
 }
 
-- (void)getContact:(UInt64)contactId handleSuccess:(CubeContactBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
+- (void)getContact:(UInt64)contactId handleSuccess:(CubeContactBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     // 从数据库读取
     CContact * contact = [_storage readContact:contactId];
     if (contact) {
@@ -324,7 +324,7 @@
     }];
 }
 
-- (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact *, CContactAppendix *))handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
+- (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact *, CContactAppendix *))handleSuccess handleFailure:(CFailureBlock)handleFailure {
     NSNumber * contactId = [NSNumber numberWithUnsignedLongLong:contact.identity];
     NSDictionary * data = [NSDictionary dictionaryWithObjectsAndKeys:contactId, @"contactId", nil];
     CPacket * request = [[CPacket alloc] initWithName:CUBE_CONTACT_GETAPPENDIX andData:data];
@@ -352,7 +352,7 @@
     }];
 }
 
-- (void)getAppendixWithGroup:(CGroup *)group handleSuccess:(void(^)(CGroup *, CGroupAppendix *))handleSuccess handleFailure:(CubeFailureBlock)handleFailure {
+- (void)getAppendixWithGroup:(CGroup *)group handleSuccess:(void(^)(CGroup *, CGroupAppendix *))handleSuccess handleFailure:(CFailureBlock)handleFailure {
     
 }
 

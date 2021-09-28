@@ -87,6 +87,13 @@
 - (NSUInteger)countUnreadMessagesWithSource:(UInt64)groupId;
 
 /*!
+ * @brief 将指定联系人相关的而消息更新为已读状态。
+ * @param contactId 指定联系人 ID 。
+ * @param completion 被变更的消息的 ID 列表。
+ */
+- (void)updateMessageReadWithContactId:(UInt64)contactId completion:(void (^)(NSArray<__kindof NSNumber *> * list))completion;
+
+/*!
  * @brief 使用消息 ID 获取消息。
  */
 - (CMessage *)readMessageWithId:(UInt64)messageId;

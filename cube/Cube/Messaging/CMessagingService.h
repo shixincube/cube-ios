@@ -168,6 +168,12 @@
 - (NSUInteger)countUnreadWithMessage:(CMessage *)message;
 
 /*!
+ * @brief 将与指定联系人相关的消息标记为已读。
+ * @param contact 指定联系人。
+ */
+- (void)markReadWithContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+
+/*!
  * @brief 查询指定联系人 ID 相关的所有消息，即包括该联系人发送的消息，也包含该联系人接收的消息。
  * 从起始时间向前反向查询所有消息。
  * @param contact 指定联系人。

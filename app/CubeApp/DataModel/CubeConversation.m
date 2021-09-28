@@ -78,6 +78,14 @@
     return self.unread <= 0;
 }
 
+- (void)clearUnread {
+    _unread = 0;
+    
+    
+}
+
+#pragma mark - Getters
+
 - (NSString *)badgeValue {
     if ([self isRead]) {
         return nil;

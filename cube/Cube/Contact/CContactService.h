@@ -89,7 +89,7 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  * @param handleFailure 操作失败回调。
  * @return 返回当次操作是否被执行。
  */
-- (BOOL)signIn:(CSelf *)me handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure;
+- (BOOL)signIn:(CSelf *)me handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
  * @brief 签入当前终端的联系人。
@@ -99,7 +99,7 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  * @param handleFailure 操作失败回调。
  * @return 返回当次操作是否被执行。
  */
-- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure;
+- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
  * @brief 将当前设置的联系人签出。
@@ -119,7 +119,7 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  * @param handleSuccess 成功获取到数据回调该函数。
  * @param handleFailure 获取数据时故障回调该函数。
  */
-- (void)getContact:(UInt64)contactId handleSuccess:(CubeContactBlock)handleSuccess handleFailure:(CubeFailureBlock)handleFailure;
+- (void)getContact:(UInt64)contactId handleSuccess:(CubeContactBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 //- (void)getContactZone:(NSString *)zoneName handleSuccess
 
@@ -129,7 +129,7 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  * @param handleSuccess 操作成功时回调。
  * @param handleFailure 操作故障时回调。
  */
-- (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact * contact, CContactAppendix * appendix))handleSuccess handleFailure:(CubeFailureBlock)handleFailure;
+- (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact * contact, CContactAppendix * appendix))handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
  * @brief 获取群组的附录。
@@ -137,7 +137,7 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  * @param handleSuccess 操作成功时回调。
  * @param handleFailure 操作故障时回调。
  */
-- (void)getAppendixWithGroup:(CGroup *)group handleSuccess:(void(^)(CGroup * contact, CGroupAppendix * appendix))handleSuccess handleFailure:(CubeFailureBlock)handleFailure;
+- (void)getAppendixWithGroup:(CGroup *)group handleSuccess:(void(^)(CGroup * contact, CGroupAppendix * appendix))handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
  * @brief 获取当前联系人所在的所有群。

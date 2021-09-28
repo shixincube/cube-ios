@@ -304,6 +304,36 @@
     return 0;
 }
 
+- (void)updateMessageReadWithContactId:(UInt64)contactId completion:(void (^)(NSArray<__kindof NSNumber *> * list))completion {
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSMutableArray * array = [[NSMutableArray alloc] init];
+
+        NSString * sql = [NSString stringWithFormat:@"SELECT `id` FROM `message` WHERE `source`=0 AND `scope`=0 AND `state`=%d AND `from`=%llu", CMessageStateSent, contactId];
+
+        FMResultSet * result = [db executeQuery:sql];
+        while ([result next]) {
+            NSNumber * mid = [NSNumber numberWithUnsignedLongLong:[result unsignedLongLongIntForColumn:@"id"]];
+            [array addObject:mid];
+        }
+
+        [result close];
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            completion(array);
+        });
+
+        if (array.count == 0) {
+            return;
+        }
+
+        NSString * updateSQL = [NSString stringWithFormat:@"UPDATE `message` SET `state`=%d WHERE `id`=(%@)", CMessageStateRead, sql];
+        BOOL ret = [db executeUpdate:updateSQL];
+        if (!ret) {
+            NSLog(@"CMessageStorage#updateMessageReadWithContactId Failed");
+        }
+    }];
+}
+
 - (void)queryReverseWithContact:(UInt64)contactId
                       beginning:(UInt64)beginning
                           limit:(NSInteger)limit

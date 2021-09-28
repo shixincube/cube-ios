@@ -242,6 +242,10 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     return 0;
 }
 
+- (void)markReadWithContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    
+}
+
 - (void)queryMessagesByReverseWithContact:(CContact *)contact
                                 beginning:(UInt64)beginning
                                     limit:(NSInteger)limit

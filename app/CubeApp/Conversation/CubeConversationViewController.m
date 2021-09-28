@@ -171,7 +171,7 @@
         .withDataModelArray(data)
         .selectedAction(^ (CubeConversation * conversation) {
             @strongify(self);
-            [conversation setUnread:0];
+            [conversation clearUnread];
             [self.listController reloadBadge];
 
             CubeMessageViewController * messageVC = [[CubeMessageViewController alloc] initWithConversation:conversation];
