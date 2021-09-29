@@ -65,12 +65,12 @@
 }
 
 - (void)markAsUnread {
-    self.conversation.unread = 1;
+    // TODO
     [self updateBadge];
 }
 
 - (void)markAsRead {
-    self.conversation.unread = 0;
+    [self.conversation clearUnread];
     [self updateBadge];
 }
 

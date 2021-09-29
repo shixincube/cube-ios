@@ -58,9 +58,15 @@
 - (instancetype)init {
     if (self = [super init]) {
         [self configTabBarItem:@"消息" image:@"TabBarConversation" imageHL:@"TabBarConversationHL"];
+        self.conversations = [[NSMutableArray alloc] init];
     }
 
     return self;
+}
+
+- (void)dealloc {
+    [self.conversations removeAllObjects];
+    self.conversations = nil;
 }
 
 - (void)loadView {
@@ -141,18 +147,16 @@
     // 查找数据
     NSArray * list = [self.messagingService queryRecentMessages];
     if (list && list.count > 0) {
-        NSMutableArray * conversations = [[NSMutableArray alloc] initWithCapacity:list.count];
+        [self.conversations removeAllObjects];
+//        NSMutableArray * conversations = [[NSMutableArray alloc] initWithCapacity:list.count];
         for (CMessage * message in list) {
             // 创建 Conversation
             CubeConversation * conversation = [CubeConversation conversationWithMessage:message currentOwner:self.contactService.owner];
 
-            // 计算未读数量
-            conversation.unread = [self.messagingService countUnreadWithMessage:message];
-
-            [conversations addObject:conversation];
+            [self.conversations addObject:conversation];
         }
 
-        [self updateConvsationModuleWithData:conversations];
+        [self updateConvsationModuleWithData:self.conversations];
     }
 }
 
@@ -179,6 +183,14 @@
         });
 
     [self.tableView reloadData];
+}
+
+/*!
+ * @brief 找到消息对应的 Conversation ，如果没有找到返回 @c nil 值。
+ */
+- (CubeConversation *)findConversation:(CMessage *)message {
+//    self.conversations;
+    return nil;
 }
 
 #pragma mark - Getters
@@ -210,6 +222,7 @@
 - (void)newMessage:(CMessage *)message service:(CMessagingService *)service {
     if ([message isKindOfClass:[CHyperTextMessage class]]) {
         CHyperTextMessage * textMessage = (CHyperTextMessage *) message;
+        CubeConversation * conversation = [self findConversation:message];
     }
     else {
         NSLog(@"Unknown message type");

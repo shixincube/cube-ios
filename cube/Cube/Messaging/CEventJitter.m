@@ -24,16 +24,31 @@
  * SOFTWARE.
  */
 
-#ifndef CubeConversationViewController_h
-#define CubeConversationViewController_h
+#import "CEventJitter.h"
+#import "CObservableEvent.h"
+#import "CContact.h"
+#import "CGroup.h"
 
-#import "CubeViewController.h"
-#import <Cube/CNetworkStatusManager.h>
+@implementation CEventJitter
 
-@interface CubeConversationViewController : CubeViewController <CMessagingRecentEventDelegate, CNetworkStatusDelegate, CPipelineStateDelegate>
+- (instancetype)initWithTimestamp:(UInt64)timestamp event:(CObservableEvent *)event {
+    if (self = [super init]) {
+        self.timestamp = timestamp;
+        self.event = event;
+    }
+    return self;
+}
 
-@property (nonatomic, strong) NSMutableArray * conversations;
+- (NSString *)mapKey {
+    if (self.contact) {
+        return [NSString stringWithFormat:@"%llu", self.contact.identity];
+    }
+    else if (self.group) {
+        return [NSString stringWithFormat:@"%llu", self.group.identity];
+    }
+    else {
+        return nil;
+    }
+}
 
 @end
-
-#endif /* CubeConversationViewController_h */

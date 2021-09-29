@@ -117,7 +117,7 @@
     NSTimer * _pullTimer;
 }
 
-/*! @brief 默认回溯时长，默认值：14个自然天。 */
+/*! @brief 默认回溯时长，默认值：30个自然日。 */
 @property (nonatomic, assign) UInt64 defaultRetrospect;
 
 /*! @brief 消息服务的事件代理。 */
@@ -199,7 +199,7 @@
  * @param ending 指定获取消息的截止时间。
  * @param completedHandler 指定本次查询回调，该回调函数仅用于通知该次查询结束，不携带任何消息数据。
  */
-- (void)queryRemoteMessage:(UInt64)beginning ending:(UInt64)ending completedHandler:(void(^)(void))completedHandler;
+- (void)queryRemoteMessageWithBeginning:(UInt64)beginning toEnding:(UInt64)ending completedHandler:(void(^)(void))completedHandler;
 
 /*!
  * @private

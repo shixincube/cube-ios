@@ -29,10 +29,56 @@
 #import "CubeAccountHelper.h"
 #import "CubeAppUtil.h"
 
+@interface CubeConversation ()
+
+@property (nonatomic, strong) CMessage * message;
+
+@end
+
 @implementation CubeConversation
+
+@synthesize unread = _unread;
+
+- (instancetype)init {
+    if (self = [super init]) {
+        _unread = -1;
+    }
+    return self;
+}
+
+- (BOOL)isRead {
+    return self.unread == 0;
+}
+
+- (NSInteger)unread {
+    if (_unread < 0) {
+        _unread = [[CEngine sharedInstance].messagingService countUnreadWithMessage:self.message];
+    }
+    return _unread;
+}
+
+- (void)clearUnread {
+    _unread = 0;
+}
+
+#pragma mark - Getters
+
+- (NSString *)badgeValue {
+    if ([self isRead]) {
+        return nil;
+    }
+
+    if (self.type == CubeConversationTypeContact || self.type == CubeConversationTypeGroup) {
+        return self.unread <= 99 ? [NSString stringWithFormat:@"%ld", self.unread] : @"99+";
+    }
+    else {
+        return @"";
+    }
+}
 
 + (CubeConversation *)conversationWithMessage:(CMessage *)message currentOwner:(CSelf *)owner {
     CubeConversation * conversation = [[CubeConversation alloc] init];
+    conversation.message = message;
 
     if ([message isFromGroup]) {
         conversation.type = CubeConversationTypeGroup;
@@ -72,31 +118,6 @@
     conversation.content = message.summary;
 
     return conversation;
-}
-
-- (BOOL)isRead {
-    return self.unread <= 0;
-}
-
-- (void)clearUnread {
-    _unread = 0;
-    
-    
-}
-
-#pragma mark - Getters
-
-- (NSString *)badgeValue {
-    if ([self isRead]) {
-        return nil;
-    }
-
-    if (self.type == CubeConversationTypeContact || self.type == CubeConversationTypeGroup) {
-        return self.unread <= 99 ? [NSString stringWithFormat:@"%ld", self.unread] : @"99+";
-    }
-    else {
-        return @"";
-    }
 }
 
 @end

@@ -73,6 +73,7 @@
 		C8BE511326D8969900935149 /* CMessagingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C8BE511226D8969900935149 /* CMessagingEvent.h */; };
 		C8BE511626D896A500935149 /* CMessagingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BE511526D896A500935149 /* CMessagingEvent.m */; };
 		C8BE85AD26B77FD9007E154E /* KernelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BE85AC26B77FD9007E154E /* KernelTest.m */; };
+		C8BFA9962704132B00193794 /* CEventJitter.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BFA9952704132B00193794 /* CEventJitter.m */; };
 		C8C384D626BCD7C8009CF806 /* CContactService.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C384D526BCD7C8009CF806 /* CContactService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8C384DA26BCD7DA009CF806 /* CContactService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384D926BCD7DA009CF806 /* CContactService.m */; };
 		C8C384DD26BD0306009CF806 /* CContactStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384DC26BD0306009CF806 /* CContactStorage.m */; };
@@ -221,6 +222,8 @@
 		C8BE511226D8969900935149 /* CMessagingEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessagingEvent.h; sourceTree = "<group>"; };
 		C8BE511526D896A500935149 /* CMessagingEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessagingEvent.m; sourceTree = "<group>"; };
 		C8BE85AC26B77FD9007E154E /* KernelTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KernelTest.m; sourceTree = "<group>"; };
+		C8BFA9952704132B00193794 /* CEventJitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEventJitter.m; sourceTree = "<group>"; };
+		C8BFA9982704133800193794 /* CEventJitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEventJitter.h; sourceTree = "<group>"; };
 		C8C384D526BCD7C8009CF806 /* CContactService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactService.h; sourceTree = "<group>"; };
 		C8C384D926BCD7DA009CF806 /* CContactService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactService.m; sourceTree = "<group>"; };
 		C8C384DC26BD0306009CF806 /* CContactStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactStorage.m; sourceTree = "<group>"; };
@@ -288,6 +291,8 @@
 		C80A208026D718BF00255B11 /* Messaging */ = {
 			isa = PBXGroup;
 			children = (
+				C8BFA9982704133800193794 /* CEventJitter.h */,
+				C8BFA9952704132B00193794 /* CEventJitter.m */,
 				C842BDDF26DE33F2008A8517 /* CInstantiateHook.h */,
 				C842BDDC26DE33E4008A8517 /* CInstantiateHook.m */,
 				C80A208926D725AE00255B11 /* CMessage.h */,
@@ -661,6 +666,7 @@
 				C8B755E3268B3C4300812A4C /* CSubject.m in Sources */,
 				C82DB8BE26B3AE7900813378 /* CAuthStorage.m in Sources */,
 				C8F1A56926899B980020F136 /* CKernel.m in Sources */,
+				C8BFA9962704132B00193794 /* CEventJitter.m in Sources */,
 				C8C384DD26BD0306009CF806 /* CContactStorage.m in Sources */,
 				C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */,
 				C896B2B926F713DB00339989 /* CNetworkStatusManager.m in Sources */,

@@ -304,11 +304,11 @@
     return 0;
 }
 
-- (void)updateMessageReadWithContactId:(UInt64)contactId completion:(void (^)(NSArray<__kindof NSNumber *> * list))completion {
+- (void)updateMessageStateWithContactId:(UInt64)contactId state:(CMessageState)state completion:(void (^)(NSArray<__kindof NSNumber *> * list))completion {
     [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
         NSMutableArray * array = [[NSMutableArray alloc] init];
 
-        NSString * sql = [NSString stringWithFormat:@"SELECT `id` FROM `message` WHERE `source`=0 AND `scope`=0 AND `state`=%d AND `from`=%llu", CMessageStateSent, contactId];
+        NSString * sql = [NSString stringWithFormat:@"SELECT `id` FROM `message` WHERE `source`=0 AND `scope`=0 AND `state`=%d AND `from`=%llu", state, contactId];
 
         FMResultSet * result = [db executeQuery:sql];
         while ([result next]) {
@@ -326,10 +326,10 @@
             return;
         }
 
-        NSString * updateSQL = [NSString stringWithFormat:@"UPDATE `message` SET `state`=%d WHERE `id`=(%@)", CMessageStateRead, sql];
+        NSString * updateSQL = [NSString stringWithFormat:@"UPDATE `message` SET `state`=%d WHERE `id`=(%@)", state, sql];
         BOOL ret = [db executeUpdate:updateSQL];
         if (!ret) {
-            NSLog(@"CMessageStorage#updateMessageReadWithContactId Failed");
+            NSLog(@"CMessageStorage#updateMessageStateWithContactId Failed");
         }
     }];
 }
@@ -410,7 +410,7 @@
         }
 
         // 消息表
-        sql = @"CREATE TABLE IF NOT EXISTS `message` (`id` BIGINT PRIMARY KEY, `from` BIGINT, `to` BIGINT, `source` BIGINT, `lts` BIGINT, `rts` BIGINT, `state` INT, `scope` INT, `data` TEXT)";
+        sql = @"CREATE TABLE IF NOT EXISTS `message` (`id` BIGINT PRIMARY KEY, `from` BIGINT, `to` BIGINT, `source` BIGINT, `lts` BIGINT, `rts` BIGINT, `state` INT, `remote_state` INT DEFAULT 10, `scope` INT, `data` TEXT)";
         if ([db executeUpdate:sql]) {
             NSLog(@"CMessagingStorage#execSelfChecking : `message` table OK");
         }

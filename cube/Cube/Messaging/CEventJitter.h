@@ -23,17 +23,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+#ifndef CEventJitter_h
+#define CEventJitter_h
 
-#ifndef CubeConversationViewController_h
-#define CubeConversationViewController_h
+#import <Foundation/Foundation.h>
 
-#import "CubeViewController.h"
-#import <Cube/CNetworkStatusManager.h>
+@class CObservableEvent;
+@class CContact;
+@class CGroup;
 
-@interface CubeConversationViewController : CubeViewController <CMessagingRecentEventDelegate, CNetworkStatusDelegate, CPipelineStateDelegate>
+@interface CEventJitter : NSObject
 
-@property (nonatomic, strong) NSMutableArray * conversations;
+@property (nonatomic, weak) CContact * contact;
+
+@property (nonatomic, weak) CGroup * group;
+
+@property (atomic, assign) UInt64 timestamp;
+
+@property (nonatomic, strong) CObservableEvent * event;
+
+@property (nonatomic, weak, readonly) NSString * mapKey;
+
+- (instancetype)initWithTimestamp:(UInt64)timestamp event:(CObservableEvent *)event;
 
 @end
 
-#endif /* CubeConversationViewController_h */
+#endif /* CEventJitter_h */

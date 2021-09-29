@@ -45,6 +45,7 @@
 #import "CPluginSystem.h"
 #import "CInstantiateHook.h"
 #import "CMessageTypePlugin.h"
+#import "CEventJitter.h"
 
 
 typedef void (^PullCompletedHandler)(void);
@@ -59,6 +60,10 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     NSMutableDictionary * _sendingMap;
 
     dispatch_queue_t _threadQueue;
+
+    // 用于抑制 Notify 事件回调时的控制线程
+    NSThread * _jitterThread;
+    NSMutableDictionary <__kindof NSString *, __kindof CEventJitter * > * _jitterMap;
 }
 
 @property (nonatomic, copy) PullCompletedHandler pullCompletedHandler;
@@ -80,19 +85,21 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
         _observer = [[CMessagingObserver alloc] initWithService:self];
         _serviceReady = FALSE;
 
-        self.defaultRetrospect = 14 * 24 * 60 * 60000L;
+        self.defaultRetrospect = 30 * 24 * 60 * 60000L;
 
         _pullTimer = nil;
 
         _eventDelegate = nil;
 
         _sendingMap = [[NSMutableDictionary alloc] init];
+        _jitterMap = [[NSMutableDictionary alloc] init];
     }
 
     return self;
 }
 
 - (void)dealloc {
+    [_jitterMap removeAllObjects];
 }
 
 - (BOOL)start {
@@ -243,7 +250,18 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 }
 
 - (void)markReadWithContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
-    
+    if (![self hasStarted]) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            CError * error = [CError errorWithModule:CUBE_MODULE_MESSAGING code:CMessagingServiceStateIllegalOperation];
+            handleFailure(error);
+        });
+        return;
+    }
+
+    [_storage updateMessageStateWithContactId:contact.identity state:CMessageStateRead completion:^(NSArray<__kindof NSNumber *> *list) {
+        // 同步到服务器
+        
+    }];
 }
 
 - (void)queryMessagesByReverseWithContact:(CContact *)contact
@@ -403,12 +421,12 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 
     // 从服务器上拉取自上一次时间戳之后的所有消息
-    [self queryRemoteMessage:(_lastMessageTime + 1) ending:now completedHandler:^ {
+    [self queryRemoteMessageWithBeginning:(_lastMessageTime + 1) toEnding:now completedHandler:^ {
         completedHandler();
     }];
 }
 
-- (void)queryRemoteMessage:(UInt64)beginning ending:(UInt64)ending completedHandler:(void (^)(void))completedHandler {
+- (void)queryRemoteMessageWithBeginning:(UInt64)beginning toEnding:(UInt64)ending completedHandler:(void (^)(void))completedHandler {
     // 如果没有网络直接回调函数
     if (![self.pipeline isReady]) {
         completedHandler();
@@ -443,6 +461,9 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
 - (void)firePullCompletedHandler {
     _pullCompletedHandler();
+    
+    // 对所有消息进行状态对比
+    
 }
 
 - (void)fillMessage:(CMessage *)message {
@@ -504,6 +525,21 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     dispatch_semaphore_wait(semaphore, timeout);
 }
 
+- (void)jitterThreadTask {
+    while (_jitterMap.count > 0) {
+        [NSThread sleepForTimeInterval:0.25];
+
+        UInt64 now = [CUtils currentTimeMillis];
+
+        for (CEventJitter * jitter in _jitterMap.allValues) {
+            if (now - jitter.timestamp >= 500) {
+                [_jitterMap removeObjectForKey:jitter.mapKey];
+                [self.recentEventDelegate newMessage:(CMessage *)jitter.event.data service:self];
+            }
+        }
+    }
+}
+
 #pragma mark - Events
 
 - (void)notifyObservers:(CObservableEvent *)event {
@@ -530,7 +566,36 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     if (self.recentEventDelegate) {
         if ([event.name isEqualToString:CMessagingEventNotify]) {
             if ([self.recentEventDelegate respondsToSelector:@selector(newMessage:service:)]) {
-                [self.recentEventDelegate newMessage:(CMessage *)event.data service:self];
+                CMessage * message = (CMessage *) event.data;
+                CEventJitter * jitter = nil;
+
+                if ([message isFromGroup]) {
+                    // TODO
+                }
+                else {
+                    if (!message.selfTyper) {
+                        NSString * contactId = [NSString stringWithFormat:@"%llu", message.from];
+                        jitter = [_jitterMap valueForKey:contactId];
+                        UInt64 time = [CUtils currentTimeMillis];
+                        if (nil == jitter) {
+                            jitter = [[CEventJitter alloc] initWithTimestamp:time event:event];
+                            jitter.contact = message.sender;
+                            [_jitterMap setValue:jitter forKey:contactId];
+                        }
+                        else {
+                            jitter.timestamp = time;
+                            jitter.event = event;
+                        }
+                    }
+                    else {
+                        return;
+                    }
+                }
+
+                if (nil == _jitterThread || [_jitterThread isFinished]) {
+                    _jitterThread = [[NSThread alloc] initWithTarget:self selector:@selector(jitterThreadTask) object:nil];
+                    [_jitterThread start];
+                }
             }
         }
     }

@@ -29,7 +29,7 @@
 @implementation CUtils
 
 + (UInt64)currentTimeMillis {
-    NSTimeInterval time = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970] * 1000.0f;
     return [[NSNumber numberWithDouble:time] unsignedLongLongValue];
 }
 
