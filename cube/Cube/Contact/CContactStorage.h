@@ -68,7 +68,15 @@
  */
 - (BOOL)writeContact:(CContact *)contact;
 
+/*!
+ * @brief 更新联系人上下文。
+ */
 - (void)updateContactContext:(UInt64)contactId context:(NSDictionary *)context;
+
+/*!
+ * @brief 更新联系人名称。
+ */
+- (void)updateContactName:(UInt64)contactId name:(NSString *)name;
 
 /*!
  * @brief 写入联系人附件数据。

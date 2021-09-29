@@ -109,17 +109,16 @@ typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
  */
 @property (nonatomic, strong, readonly) NSString * badgeValue;
 
-
-
-+ (CubeConversation *)conversationWithMessage:(CMessage *)message currentOwner:(CSelf *)owner;
-
-
 /*!
  * @brief 是否已读消息。
  */
 - (BOOL)isRead;
 
 - (void)clearUnread;
+
+- (void)reset:(CMessage *)message;
+
++ (CubeConversation *)conversationWithMessage:(CMessage *)message;
 
 @end
 

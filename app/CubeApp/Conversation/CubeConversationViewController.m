@@ -151,8 +151,7 @@
 //        NSMutableArray * conversations = [[NSMutableArray alloc] initWithCapacity:list.count];
         for (CMessage * message in list) {
             // 创建 Conversation
-            CubeConversation * conversation = [CubeConversation conversationWithMessage:message currentOwner:self.contactService.owner];
-
+            CubeConversation * conversation = [CubeConversation conversationWithMessage:message];
             [self.conversations addObject:conversation];
         }
 
@@ -189,7 +188,22 @@
  * @brief 找到消息对应的 Conversation ，如果没有找到返回 @c nil 值。
  */
 - (CubeConversation *)findConversation:(CMessage *)message {
-//    self.conversations;
+    UInt64 identity = message.source;
+    if (identity == 0) {
+        if (message.selfTyper) {
+            identity = message.to;
+        }
+        else {
+            identity = message.from;
+        }
+    }
+
+    for (CubeConversation * conversation in self.conversations) {
+        if (conversation.identity == identity) {
+            return conversation;
+        }
+    }
+
     return nil;
 }
 
@@ -221,8 +235,18 @@
 
 - (void)newMessage:(CMessage *)message service:(CMessagingService *)service {
     if ([message isKindOfClass:[CHyperTextMessage class]]) {
-        CHyperTextMessage * textMessage = (CHyperTextMessage *) message;
         CubeConversation * conversation = [self findConversation:message];
+        if (conversation) {
+            [conversation reset:message];
+        }
+        else {
+            conversation = [CubeConversation conversationWithMessage:message];
+            [self.conversations insertObject:conversation atIndex:0];
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateConvsationModuleWithData:self.conversations];
+        });
     }
     else {
         NSLog(@"Unknown message type");

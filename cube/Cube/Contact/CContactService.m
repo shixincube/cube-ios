@@ -324,6 +324,11 @@
     }];
 }
 
+- (void)modifyContactName:(CContact *)contact newName:(NSString *)name {
+    contact.name = name;
+    [_storage updateContactName:contact.identity name:name];
+}
+
 - (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact *, CContactAppendix *))handleSuccess handleFailure:(CFailureBlock)handleFailure {
     NSNumber * contactId = [NSNumber numberWithUnsignedLongLong:contact.identity];
     NSDictionary * data = [NSDictionary dictionaryWithObjectsAndKeys:contactId, @"contactId", nil];

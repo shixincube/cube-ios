@@ -61,6 +61,49 @@
     _unread = 0;
 }
 
+- (void)reset:(CMessage *)message {
+    _unread = -1;
+
+    self.message = message;
+
+    if ([message isFromGroup]) {
+        self.type = CubeConversationTypeGroup;
+        self.identity = message.source;
+        self.group = message.sourceGroup;
+        // TODO 群组数据
+//        conversation.displayName = message.sourceGroup.name;
+    }
+    else {
+        self.type = CubeConversationTypeContact;
+        if (message.selfTyper) {
+            // “我”是发件人
+            self.identity = message.to;
+            self.contact = message.receiver;
+            self.displayName = [message.receiver getPriorityName];
+            self.avatarName = message.receiver.context ? [CubeAccount getAvatar:message.receiver.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
+        }
+        else {
+            // “我”是收件人
+            self.identity = message.from;
+            self.contact = message.sender;
+            self.displayName = [message.sender getPriorityName];
+            self.avatarName = message.sender.context ? [CubeAccount getAvatar:message.sender.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
+        }
+    }
+
+    // 头像处理
+    self.avatarName = [CubeAppUtil explainAvatarName:self.avatarName];
+
+    self.remindType = CubeMessageRemindTypeNormal;
+
+    // 时间
+    double time = (double) message.remoteTS;
+    self.date = [[NSDate alloc] initWithTimeIntervalSince1970:time / 1000.0f];
+
+    // 信息摘要
+    self.content = message.summary;
+}
+
 #pragma mark - Getters
 
 - (NSString *)badgeValue {
@@ -76,47 +119,9 @@
     }
 }
 
-+ (CubeConversation *)conversationWithMessage:(CMessage *)message currentOwner:(CSelf *)owner {
++ (CubeConversation *)conversationWithMessage:(CMessage *)message {
     CubeConversation * conversation = [[CubeConversation alloc] init];
-    conversation.message = message;
-
-    if ([message isFromGroup]) {
-        conversation.type = CubeConversationTypeGroup;
-        conversation.identity = message.source;
-        conversation.group = message.sourceGroup;
-        // TODO 群组数据
-//        conversation.displayName = message.sourceGroup.name;
-    }
-    else {
-        conversation.type = CubeConversationTypeContact;
-        if (message.from == owner.identity) {
-            // “我”是发件人
-            conversation.identity = message.to;
-            conversation.contact = message.receiver;
-            conversation.displayName = [message.receiver getPriorityName];
-            conversation.avatarName = message.receiver.context ? [CubeAccount getAvatar:message.receiver.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
-        }
-        else {
-            // “我”是收件人
-            conversation.identity = message.from;
-            conversation.contact = message.sender;
-            conversation.displayName = [message.sender getPriorityName];
-            conversation.avatarName = message.sender.context ? [CubeAccount getAvatar:message.sender.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
-        }
-    }
-
-    // 头像处理
-    conversation.avatarName = [CubeAppUtil explainAvatarName:conversation.avatarName];
-
-    conversation.remindType = CubeMessageRemindTypeNormal;
-
-    // 时间
-    double time = (double) message.remoteTS;
-    conversation.date = [[NSDate alloc] initWithTimeIntervalSince1970:time / 1000.0f];
-
-    // 信息摘要
-    conversation.content = message.summary;
-
+    [conversation reset:message];
     return conversation;
 }
 

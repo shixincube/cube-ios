@@ -121,6 +121,13 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  */
 - (void)getContact:(UInt64)contactId handleSuccess:(CubeContactBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
+/*!
+ * @brief 修改指定联系人名称。该操作仅影响本地数据库的数据。
+ * @param contact 指定联系人。
+ * @param name 指定新名称。
+ */
+- (void)modifyContactName:(CContact *)contact newName:(NSString *)name;
+
 //- (void)getContactZone:(NSString *)zoneName handleSuccess
 
 /*!

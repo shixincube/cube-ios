@@ -84,7 +84,7 @@
  */
 @property (nonatomic, assign) int state;
 
-/*! @brief 自己是否是该消息的创建者。 */
+/*! @brief 自己是否是该消息的撰写人。 */
 @property (nonatomic, assign) BOOL selfTyper;
 
 /*! @brief 自定义数据。 */

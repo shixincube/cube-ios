@@ -98,12 +98,18 @@
 
     [self.explorer getAccountWithId:contact.identity tokenCode:self.tokenCode success:^(id data) {
         account = data;
+
+        // 修改名称
+        [[CEngine sharedInstance].contactService modifyContactName:contact newName:account.displayName];
+
         dispatch_semaphore_signal(semaphore);
     } failure:^(NSError * error) {
         dispatch_semaphore_signal(semaphore);
     }];
 
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    dispatch_semaphore_wait(semaphore, timeout);
+
     return (account) ? [account toJSON] : nil;
 }
 

@@ -205,6 +205,15 @@
     }
 }
 
+- (void)updateContactName:(UInt64)contactId name:(NSString *)name {
+    NSString * sql = @"UPDATE `contact` SET `name`=? WHERE `id`=?";
+    @synchronized (self) {
+        // 执行 SQL
+        [_db executeUpdate:sql, name,
+               [NSNumber numberWithUnsignedLongLong:contactId]];
+    }
+}
+
 - (BOOL)writeContactAppendix:(CContactAppendix *)appendix {
     BOOL ret = FALSE;
 

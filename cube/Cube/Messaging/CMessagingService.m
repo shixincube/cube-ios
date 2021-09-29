@@ -526,10 +526,12 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 }
 
 - (void)jitterThreadTask {
+    UInt64 now = [CUtils currentTimeMillis];
+
     while (_jitterMap.count > 0) {
         [NSThread sleepForTimeInterval:0.25];
 
-        UInt64 now = [CUtils currentTimeMillis];
+        now += 250;
 
         for (CEventJitter * jitter in _jitterMap.allValues) {
             if (now - jitter.timestamp >= 500) {
