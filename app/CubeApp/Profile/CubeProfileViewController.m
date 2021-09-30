@@ -63,6 +63,9 @@ typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
     [self setTitle:@"我的"];
 
     [self buildMenus];
+
+    self.collectionView.allowsSelection = YES;
+    self.collectionView.allowsMultipleSelection = NO;
 }
 
 - (void)viewDidLoad {
@@ -87,32 +90,32 @@ typedef NS_ENUM(NSInteger, CubeProfileSectionTag) {
 #pragma mark - Private
 
 - (void)buildMenus {
-    @weakify(self);
+//    @weakify(self);
     self.clear();
 
     CubeAccount * account = [CubeAccountHelper sharedInstance].currentAccount;
 
     // 基本信息
-    NSInteger sectionTag = CubeProfileSectionTagInfo;
-    self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
+    NSInteger infoSectionTag = CubeProfileSectionTagInfo;
+    self.addSection(infoSectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
     self.addCell([CubeProfileHeaderCell class])
-        .toSection(sectionTag)
+        .toSection(infoSectionTag)
         .withDataModel(account)
         .selectedAction(^ (id data) {
-            @strongify(self);
+//            @strongify(self);
             CubeProfileInfoViewController * infoVC = [[CubeProfileInfoViewController alloc] init];
             PushVC(infoVC);
         });
 
     // 设置
-    sectionTag = CubeProfileSectionTagSetting;
-    self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
+    NSInteger settingSectionTag = CubeProfileSectionTagSetting;
+    self.addSection(settingSectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
     CubeMenuItem * setting = [CubeMenuItem itemWithIcon:@"IconSetting" title:@"设置"];
     self.addCell([CubeMenuItemCell class])
-        .toSection(sectionTag)
+        .toSection(settingSectionTag)
         .withDataModel(setting)
         .selectedAction(^ (id data) {
-            @strongify(self);
+//            @strongify(self);
             CubeSettingViewController * settingVC = [[CubeSettingViewController alloc] init];
             PushVC(settingVC);
         });

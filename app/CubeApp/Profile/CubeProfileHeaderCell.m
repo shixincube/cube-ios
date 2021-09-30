@@ -130,7 +130,7 @@
     else {
         // TODO 使用网络头像
     }
-    
+
     [self.nikenameLabel setText:account.displayName];
     [self.cubeIdLabel setText:[NSString stringWithFormat:@"%@: %lu", @"魔方号", account.identity]];
 }

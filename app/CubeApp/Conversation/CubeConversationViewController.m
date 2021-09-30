@@ -116,6 +116,12 @@
             make.edges.mas_equalTo(0);
         })
         .view;
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_14_5
+    if (@available(iOS 15.0, *)) {
+        self.tableView.sectionHeaderTopPadding = 0;
+    }
+#endif
 }
 
 - (void)initModel {

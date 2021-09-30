@@ -148,7 +148,21 @@ ZZFLEXVC_ANGEL_METHOD(data, NSMutableArray *)
 //MARK: UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.angel collectionView:collectionView didSelectItemAtIndexPath:indexPath];
+    if (@available(iOS 15.0, *)) {
+        // Nothing
+    }
+    else {
+        [self.angel collectionView:collectionView didSelectItemAtIndexPath:indexPath];
+    }
+}
+- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (@available(iOS 15.0, *)) {
+        [self.angel collectionView:collectionView didSelectItemAtIndexPath:indexPath];
+    }
+
+    UICollectionViewCell * cell = [collectionView cellForItemAtIndexPath:indexPath];
+    [cell setSelectedBackgroundColor:cell.backgroundColor];
 }
 
 //MARK: ZZFlexibleLayoutFlowLayoutDelegate

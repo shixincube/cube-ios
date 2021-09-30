@@ -78,7 +78,7 @@
     ZZFLEXSectionModel * sectionModel = [self sectionModelAtIndex:indexPath.section];
     ZZFLEXViewModel * viewModel = [sectionModel objectAtIndex:indexPath.row];
     CubeConversation * conversation = viewModel.dataModel;
-    
+
     if (!conversation) {
         [CubeUIUtility showErrorHint:@"获取会话时发生错误"];
         return;

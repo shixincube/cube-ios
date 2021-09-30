@@ -560,7 +560,10 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
         for (CEventJitter * jitter in _jitterMap.allValues) {
             if (now - jitter.timestamp >= 500) {
-                [_jitterMap removeObjectForKey:jitter.mapKey];
+                NSString * key = jitter.mapKey;
+                if (key) {
+                    [_jitterMap removeObjectForKey:key];
+                }
                 [self.recentEventDelegate newMessage:(CMessage *)jitter.event.data service:self];
             }
         }
