@@ -24,25 +24,10 @@
  * SOFTWARE.
  */
 
-#ifndef CubeConversationCell_h
-#define CubeConversationCell_h
+#import "CubeMessageBar.h"
 
-#import <UIKit/UIKit.h>
-#import "CubeConversation.h"
+@implementation CubeMessageBar
 
-typedef NS_ENUM(NSInteger, CubeConversationCellSeperatorStyle) {
-    CubeConversationCellSeperatorStyleDefault,
-    CubeConversationCellSeperatorStyleFill
-};
 
-@interface CubeConversationCell : UITableViewCell <ZZFlexibleLayoutViewProtocol>
-
-@property (nonatomic, strong) CubeConversation * conversation;
-
-@property (nonatomic, assign) CubeConversationCellSeperatorStyle bottomSeperatorStyle;
-
-- (void)updateRead;
 
 @end
-
-#endif /* CubeConversationCell_h */

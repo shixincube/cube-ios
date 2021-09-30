@@ -24,25 +24,27 @@
  * SOFTWARE.
  */
 
-#ifndef CubeConversationCell_h
-#define CubeConversationCell_h
+#ifndef CubeMessageBarDelegate_h
+#define CubeMessageBarDelegate_h
 
-#import <UIKit/UIKit.h>
-#import "CubeConversation.h"
+#import "CubeMessageBarDefinition.h"
 
-typedef NS_ENUM(NSInteger, CubeConversationCellSeperatorStyle) {
-    CubeConversationCellSeperatorStyleDefault,
-    CubeConversationCellSeperatorStyleFill
-};
+@class CubeMessageBar;
 
-@interface CubeConversationCell : UITableViewCell <ZZFlexibleLayoutViewProtocol>
+@protocol CubeMessageBarDelegate <NSObject>
 
-@property (nonatomic, strong) CubeConversation * conversation;
+/*!
+ * @brief 工作状态变更。
+ */
+- (void)messageBar:(CubeMessageBar *)messageBar changeStatusFrom:(CubeMessageBarStatus)fromStatus to:(CubeMessageBarStatus)toStatus;
 
-@property (nonatomic, assign) CubeConversationCellSeperatorStyle bottomSeperatorStyle;
+/*!
+ * @brief 输入框高度改变。
+ */
+- (void)messageBar:(CubeMessageBar *)messageBar didChangeTextViewHeight:(CGFloat)height;
 
-- (void)updateRead;
+
 
 @end
 
-#endif /* CubeConversationCell_h */
+#endif /* CubeMessageBarDelegate_h */

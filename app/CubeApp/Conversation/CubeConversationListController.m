@@ -46,7 +46,17 @@
         return;
     }
 
-    
+    NSInteger count = 0;
+    NSArray * data = self.dataModelArray.all();
+    for (id value in data) {
+        if ([value isKindOfClass:[CubeConversation class]]) {
+            CubeConversation * conversation = value;
+            count += conversation.unread;
+        }
+    }
+
+    NSString * badge = count > 0 ? [NSString stringWithFormat:@"%ld", count] : nil;
+    self.badgeStatusChangeAction(badge);
 }
 
 #pragma mark - Delegate

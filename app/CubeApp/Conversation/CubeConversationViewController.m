@@ -73,6 +73,9 @@
     [super loadView];
     [self setNavTitleWithStatusString:nil];
 
+    self.navigationController.navigationBar.tintColor = [UIColor colorTextBlack];
+    self.navigationItem.backButtonTitle = @"";
+
     // 构建界面
     [self buildView];
 
@@ -185,6 +188,14 @@
 
             CubeMessageViewController * messageVC = [[CubeMessageViewController alloc] initWithConversation:conversation];
             PushVC(messageVC);
+
+            // 更新 Cell
+            NSIndexPath * indexPath = [self.tableView indexPathForSelectedRow];
+            CubeConversationCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, 600 * NSEC_PER_MSEC);
+            dispatch_after(delay, dispatch_get_main_queue(), ^{
+                [cell updateRead];
+            });
         });
 
     [self.tableView reloadData];

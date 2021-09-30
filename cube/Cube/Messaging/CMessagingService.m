@@ -282,7 +282,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
             NSDictionary * data = [packet extractData];
             NSArray * messageIdList = [data valueForKey:@"messageIdList"];
-            [_storage updateMessageRemoteState:messageIdList state:CMessageStateRead completion:^{
+            [self->_storage updateMessageRemoteState:messageIdList state:CMessageStateRead completion:^{
                 handleSuccess(list);
             }];
         }];
@@ -558,7 +558,8 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
         now += 250;
 
-        for (CEventJitter * jitter in _jitterMap.allValues) {
+        NSArray * list =_jitterMap.allValues;
+        for (CEventJitter * jitter in list) {
             if (now - jitter.timestamp >= 500) {
                 NSString * key = jitter.mapKey;
                 if (key) {

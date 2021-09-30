@@ -162,7 +162,10 @@ ZZFLEXVC_ANGEL_METHOD(data, NSMutableArray *)
     }
 
     UICollectionViewCell * cell = [collectionView cellForItemAtIndexPath:indexPath];
-    [cell setSelectedBackgroundColor:cell.backgroundColor];
+    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, 1000 * NSEC_PER_MSEC);
+    dispatch_after(delay, dispatch_get_main_queue(), ^{
+        cell.selected = NO;
+    });
 }
 
 //MARK: ZZFlexibleLayoutFlowLayoutDelegate

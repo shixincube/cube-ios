@@ -24,25 +24,29 @@
  * SOFTWARE.
  */
 
-#ifndef CubeConversationCell_h
-#define CubeConversationCell_h
+#ifndef CubeMessageBarDefinition_h
+#define CubeMessageBarDefinition_h
 
-#import <UIKit/UIKit.h>
-#import "CubeConversation.h"
+#define     HEIGHT_CHATBAR_TEXTVIEW         36.0f
+#define     HEIGHT_MAX_CHATBAR_TEXTVIEW     111.5f
+#define     HEIGHT_CHAT_KEYBOARD            215.0f
 
-typedef NS_ENUM(NSInteger, CubeConversationCellSeperatorStyle) {
-    CubeConversationCellSeperatorStyleDefault,
-    CubeConversationCellSeperatorStyleFill
+
+typedef NS_ENUM(NSInteger, CubeEmojiType) {
+    CubeEmojiTypeEmoji,
+    CubeEmojiTypeFavorite,
+    CubeEmojiTypeFace,
+    CubeEmojiTypeImage,
+    CubeEmojiTypeImageWithTitle,
+    CubeEmojiTypeOther
 };
 
-@interface CubeConversationCell : UITableViewCell <ZZFlexibleLayoutViewProtocol>
+typedef NS_ENUM(NSInteger, CubeMessageBarStatus) {
+    CubeMessageBarStatusInitial,
+    CubeMessageBarStatusVoice,
+    CubeMessageBarStatusEmoji,
+    CubeMessageBarStatusMore,
+    CubeMessageBarStatusKeyboard
+};
 
-@property (nonatomic, strong) CubeConversation * conversation;
-
-@property (nonatomic, assign) CubeConversationCellSeperatorStyle bottomSeperatorStyle;
-
-- (void)updateRead;
-
-@end
-
-#endif /* CubeConversationCell_h */
+#endif /* CubeMessageBarDefinition_h */

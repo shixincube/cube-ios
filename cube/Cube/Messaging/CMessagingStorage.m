@@ -308,7 +308,7 @@
     [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
         NSMutableArray * array = [[NSMutableArray alloc] init];
 
-        NSString * sql = [NSString stringWithFormat:@"SELECT `id` FROM `message` WHERE `source`=0 AND `scope`=0 AND `state`=%d AND `from`=%llu", state, contactId];
+        NSString * sql = [NSString stringWithFormat:@"SELECT `id` FROM `message` WHERE `source`=0 AND `scope`=0 AND `state`=10 AND `from`=%llu", contactId];
 
         FMResultSet * result = [db executeQuery:sql];
         while ([result next]) {
@@ -326,10 +326,12 @@
             return;
         }
 
-        NSString * updateSQL = [NSString stringWithFormat:@"UPDATE `message` SET `state`=%d WHERE `id`=(%@)", state, sql];
-        BOOL ret = [db executeUpdate:updateSQL];
-        if (!ret) {
-            NSLog(@"CMessageStorage#updateMessageStateWithContactId Failed");
+        for (NSNumber * messageId in array) {
+            NSString * updateSQL = [NSString stringWithFormat:@"UPDATE `message` SET `state`=%d WHERE `id`=%llu", state, [messageId unsignedLongLongValue]];
+            BOOL ret = [db executeUpdate:updateSQL];
+            if (!ret) {
+                NSLog(@"CMessageStorage#updateMessageStateWithContactId failed : %llu", [messageId unsignedLongLongValue]);
+            }
         }
     }];
 }

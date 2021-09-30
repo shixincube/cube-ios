@@ -64,21 +64,16 @@
     return self;
 }
 
-- (void)markAsUnread {
-    // TODO
+- (void)updateRead {
     [self updateBadge];
-}
-
-- (void)markAsRead {
-    [self.conversation clearUnread];
-    [self updateBadge];
+    [self layoutIfNeeded];
 }
 
 #pragma mark - Override
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    
+
     if (self.bottomSeperatorStyle == CubeConversationCellSeperatorStyleDefault) {
         self.addSeparator(ZZSeparatorPositionBottom).beginAt(15);
     }
