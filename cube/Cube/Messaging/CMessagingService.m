@@ -231,7 +231,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     return result;
 }
 
-- (NSUInteger)countUnreadWithMessage:(CMessage *)message {
+- (NSUInteger)countUnreadByMessage:(CMessage *)message {
     if (![self hasStarted]) {
         return 0;
     }
@@ -260,7 +260,32 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
     [_storage updateMessageStateWithContactId:contact.identity state:CMessageStateRead completion:^(NSArray<__kindof NSNumber *> *list) {
         // 同步到服务器
-        
+        NSDictionary * payload = @{
+            @"contactId": [NSNumber numberWithUnsignedLongLong:self->_contactService.owner.identity],
+            @"messageIdList": list,
+            @"messageFrom": [NSNumber numberWithUnsignedLongLong:contact.identity]
+        };
+        CPacket * packet = [[CPacket alloc] initWithName:CUBE_MESSAGING_READ andData:payload];
+        [self.pipeline send:CUBE_MODULE_MESSAGING withPacket:packet handleResponse:^(CPacket *packet) {
+            if (packet.state.code != CStateOk) {
+                CError * error = [CError errorWithModule:CUBE_MODULE_MESSAGING code:packet.state.code];
+                handleFailure(error);
+                return;
+            }
+
+            int state = [packet extractStateCode];
+            if (state != CMessagingServiceStateOk) {
+                CError * error = [CError errorWithModule:CUBE_MODULE_MESSAGING code:state];
+                handleFailure(error);
+                return;
+            }
+
+            NSDictionary * data = [packet extractData];
+            NSArray * messageIdList = [data valueForKey:@"messageIdList"];
+            [_storage updateMessageRemoteState:messageIdList state:CMessageStateRead completion:^{
+                handleSuccess(list);
+            }];
+        }];
     }];
 }
 
@@ -328,7 +353,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 }
 
 - (void)processPushResult:(CMessage *)message responsePacket:(CPacket *)responsePacket {
-    if (responsePacket.state.code != CSC_Ok) {
+    if (responsePacket.state.code != CStateOk) {
         NSLog(@"CMessagingService pipeline error : %d", responsePacket.state.code);
         
         [_sendingMap removeObjectForKey:[NSString stringWithFormat:@"%llu", message.identity]];

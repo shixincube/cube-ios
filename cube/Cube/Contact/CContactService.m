@@ -210,7 +210,7 @@
     CPacket * signOutPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_SIGNOUT andData:data];
 
     [self.pipeline send:CUBE_MODULE_CONTACT withPacket:signOutPacket handleResponse:^(CPacket * packet) {
-        if (packet.state.code != CSC_Ok) {
+        if (packet.state.code != CStateOk) {
             return;
         }
 
@@ -234,7 +234,7 @@
             NSDictionary * data = [self.owner toJSON];
             CPacket * requestPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_COMEBACK andData:data];
             [self.pipeline send:CUBE_MODULE_CONTACT withPacket:requestPacket handleResponse:^(CPacket *packet) {
-                if (packet.state.code == CSC_Ok && [packet extractStateCode] == CContactServiceStateOk) {
+                if (packet.state.code == CStateOk && [packet extractStateCode] == CContactServiceStateOk) {
                     NSLog(@"CContactService self comeback");
                     CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventComeback data:self.owner];
                     [self notifyObservers:event];
@@ -289,7 +289,7 @@
 
     CPacket * requestPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_GETCONTACT andData:packetData];
     [self.pipeline send:CUBE_MODULE_CONTACT withPacket:requestPacket handleResponse:^(CPacket *packet) {
-        if (packet.state.code != CSC_Ok) {
+        if (packet.state.code != CStateOk) {
             CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateServerError];
             handleFailure(error);
             return;
@@ -335,7 +335,7 @@
     CPacket * request = [[CPacket alloc] initWithName:CUBE_CONTACT_GETAPPENDIX andData:data];
     // 发送请求
     [self.pipeline send:CUBE_MODULE_CONTACT withPacket:request handleResponse:^(CPacket *packet) {
-        if (packet.state.code != CSC_Ok) {
+        if (packet.state.code != CStateOk) {
             CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:packet.state.code];
             handleFailure(error);
             return;

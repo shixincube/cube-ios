@@ -28,7 +28,7 @@
 
 @implementation CPipelineState
 
-- (instancetype)initWithCode:(unsigned int)code desc:(NSString *)desc {
+- (instancetype)initWithCode:(CStateCode)code desc:(NSString *)desc {
     if (self = [super init]) {
         self.code = code;
         self.desc = desc;

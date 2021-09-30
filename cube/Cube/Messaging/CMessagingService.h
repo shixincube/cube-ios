@@ -165,11 +165,13 @@
  * @brief 统计与指定消息相关的联系人的未读消息数量。
  * @return 返回未读消息数量。
  */
-- (NSUInteger)countUnreadWithMessage:(CMessage *)message;
+- (NSUInteger)countUnreadByMessage:(CMessage *)message;
 
 /*!
  * @brief 将与指定联系人相关的消息标记为已读。
  * @param contact 指定联系人。
+ * @param handleSuccess 操作成功回调，参数： @c NSArray 操作成功的消息的 ID 列表。
+ * @param handleFailure 操作失败回调。
  */
 - (void)markReadWithContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 

@@ -45,7 +45,7 @@
 }
 
 - (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet {
-    if (packet.state.code != CSC_Ok) {
+    if (packet.state.code != CStateOk) {
         NSLog(@"CMessagingPipelineListener#didReceive code : %d", packet.state.code);
         return;
     }

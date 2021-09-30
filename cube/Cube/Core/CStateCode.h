@@ -36,42 +36,42 @@ typedef enum _CStateCode {
     /*!
      * @brief 成功。
      */
-    CSC_Ok = 1000,
+    CStateOk = 1000,
 
     /*!
      * @brief 数据请求错误。
      */
-    CSC_BadRequest = 1400,
+    CStateBadRequest = 1400,
 
     /*!
      * @brief 未知的请求命令。
      */
-    CSC_NotFound = 1404,
+    CStateNotFound = 1404,
 
     /*!
      * @brief 没有找到授权码。
      */
-    CSC_NoAuthToken = 1501,
+    CStateNoAuthToken = 1501,
 
     /*!
      * @brief 请求服务超时。
      */
-    CSC_ServiceTimeout = 2001,
+    CStateServiceTimeout = 2001,
 
     /*!
      * @brief 负载格式错误。
      */
-    CSC_PayloadFormat = 2002,
+    CStatePayloadFormat = 2002,
 
     /*!
      * @brief 参数错误。
      */
-    CSC_InvalidParameter = 2003,
+    CStateInvalidParameter = 2003,
 
     /*!
      * @brief 网关错误。
      */
-    CSC_GatewayError = 2101
+    CStateGatewayError = 2101
 
 } CStateCode;
 
@@ -81,13 +81,13 @@ typedef enum _CStateCode {
 @interface CPipelineState : NSObject
 
 /*! @brief 状态码。  */
-@property (nonatomic, assign) unsigned int code;
+@property (nonatomic, assign) CStateCode code;
 
 /*! @brief 状态描述。  */
 @property (nonatomic, strong) NSString * desc;
 
 
-- (instancetype)initWithCode:(unsigned int)code desc:(NSString *)desc;
+- (instancetype)initWithCode:(CStateCode)code desc:(NSString *)desc;
 
 @end
 

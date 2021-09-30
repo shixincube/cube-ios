@@ -87,6 +87,9 @@
 /*! @brief 自己是否是该消息的撰写人。 */
 @property (nonatomic, assign) BOOL selfTyper;
 
+/*! @brief 该消息的参与人。 */
+@property (nonatomic, weak, readonly) CContact * partner;
+
 /*! @brief 自定义数据。 */
 @property (nonatomic, strong) id customData;
 

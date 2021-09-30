@@ -198,4 +198,13 @@
     return _date;
 }
 
+- (CContact *)partner {
+    if (self.selfTyper) {
+        return self.receiver;
+    }
+    else {
+        return self.sender;
+    }
+}
+
 @end

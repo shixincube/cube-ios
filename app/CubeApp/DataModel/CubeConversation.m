@@ -52,13 +52,21 @@
 
 - (NSInteger)unread {
     if (_unread < 0) {
-        _unread = [[CEngine sharedInstance].messagingService countUnreadWithMessage:self.message];
+        _unread = [[CEngine sharedInstance].messagingService countUnreadByMessage:self.message];
     }
     return _unread;
 }
 
 - (void)clearUnread {
     _unread = 0;
+
+    [[CEngine sharedInstance].messagingService markReadWithContact:self.message.partner handleSuccess:^(id  _Nullable data) {
+        // 标记成功
+        NSLog(@"Mark messages (%ld) read", ((NSArray *)data).count);
+    } handleFailure:^(CError * _Nullable error) {
+        // 标记失败
+        NSLog(@"Mark message read failed");
+    }];
 }
 
 - (void)reset:(CMessage *)message {

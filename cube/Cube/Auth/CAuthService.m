@@ -156,7 +156,7 @@ static NSString * sCubeDomain = @"shixincube.com";
         CPacket * packet = [[CPacket alloc] initWithName:CUBE_AUTH_APPLY_TOKEN andData:data];
 
         [self.pipeline send:CUBE_MODULE_AUTH withPacket:packet handleResponse:^(CPacket *packet) {
-            if (packet.state.code != CSC_Ok) {
+            if (packet.state.code != CStateOk) {
                 handler([CError errorWithModule:CUBE_MODULE_AUTH code:packet.state.code], nil);
                 return;
             }

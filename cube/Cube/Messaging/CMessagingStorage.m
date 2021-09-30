@@ -334,6 +334,20 @@
     }];
 }
 
+- (void)updateMessageRemoteState:(NSArray<__kindof NSNumber *> *)messageIdList state:(CMessageState)state completion:(void (^)(void))completion {
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        for (NSNumber * messageId in messageIdList) {
+            NSString * sql = [NSString stringWithFormat:@"UPDATE `message` SET `remote_state`=%d WHERE `id`=%llu", state, messageId.unsignedLongLongValue];
+            BOOL ret = [db executeUpdate:sql];
+            if (!ret) {
+                NSLog(@"CMessageStorage#updateMessageRemoteState Failed");
+            }
+        }
+
+        completion();
+    }];
+}
+
 - (void)queryReverseWithContact:(UInt64)contactId
                       beginning:(UInt64)beginning
                           limit:(NSInteger)limit
