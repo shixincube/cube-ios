@@ -47,6 +47,7 @@
 		C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */; };
 		C8A8F20826F9831B00E25046 /* CubeConversationNoNetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */; };
 		C8A8F23F26F9B26300E25046 /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A8F23E26F9B26300E25046 /* Conversation.xcassets */; };
+		C8B6FE8227069C6D002D033A /* Message.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B6FE8127069C6D002D033A /* Message.xcassets */; };
 		C8C81BFD26FC213B00455355 /* CubeConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81BFC26FC213B00455355 /* CubeConversationCell.m */; };
 		C8C81BFF26FC26C200455355 /* UIFont+Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81BFE26FC26C200455355 /* UIFont+Cube.m */; };
 		C8C81C0326FC4BD200455355 /* NSDate+Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81C0226FC4BD200455355 /* NSDate+Cube.m */; };
@@ -266,6 +267,7 @@
 		C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationNoNetCell.m; sourceTree = "<group>"; };
 		C8A8F20926F9832600E25046 /* CubeConversationNoNetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationNoNetCell.h; sourceTree = "<group>"; };
 		C8A8F23E26F9B26300E25046 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
+		C8B6FE8127069C6D002D033A /* Message.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Message.xcassets; sourceTree = "<group>"; };
 		C8C81BFB26FC213000455355 /* CubeConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationCell.h; sourceTree = "<group>"; };
 		C8C81BFC26FC213B00455355 /* CubeConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationCell.m; sourceTree = "<group>"; };
 		C8C81BFE26FC26C200455355 /* UIFont+Cube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Cube.m"; sourceTree = "<group>"; };
@@ -1312,6 +1314,7 @@
 				C8FD7ED426F06F05003FFE98 /* Avatar.xcassets */,
 				C8A8F23E26F9B26300E25046 /* Conversation.xcassets */,
 				C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */,
+				C8B6FE8127069C6D002D033A /* Message.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1446,6 +1449,7 @@
 				C8E3267226E0DBFF005CA08A /* LICENSE in Resources */,
 				C8D8930726FD52060062E509 /* MJRefresh.bundle in Resources */,
 				C8E3259626E0CF95005CA08A /* Main.storyboard in Resources */,
+				C8B6FE8227069C6D002D033A /* Message.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

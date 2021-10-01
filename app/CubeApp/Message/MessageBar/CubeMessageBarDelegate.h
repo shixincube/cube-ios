@@ -43,7 +43,19 @@
  */
 - (void)messageBar:(CubeMessageBar *)messageBar didChangeTextViewHeight:(CGFloat)height;
 
+/*!
+ * @brief 发出文本。
+ */
+- (void)messageBar:(CubeMessageBar *)messageBar didSendText:(NSString *)text;
 
+
+- (void)messageBarStartRecording:(CubeMessageBar *)messageBar;
+
+- (void)messageBarWillCancelRecording:(CubeMessageBar *)messageBar;
+
+- (void)messageBarDidCancelRecording:(CubeMessageBar *)messageBar;
+
+- (void)messageBarFinishedRecoding:(CubeMessageBar *)messageBar;
 
 @end
 

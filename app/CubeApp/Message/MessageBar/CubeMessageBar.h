@@ -32,6 +32,15 @@
 
 @interface CubeMessageBar : UIView
 
+@property (nonatomic, assign) CubeMessageBarStatus status;
+
+@property (nonatomic, assign) id<CubeMessageBarDelegate> delegate;
+
+@property (nonatomic, strong, readonly) NSString * currentText;
+
+// 是否激活状态（浏览个性表情时应该设置为NO）
+@property (nonatomic, assign) BOOL activity;
+
 @end
 
 #endif /* CubeMessageBar_h */

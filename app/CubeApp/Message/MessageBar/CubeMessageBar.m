@@ -26,6 +26,20 @@
 
 #import "CubeMessageBar.h"
 
+@interface CubeMessageBar () <UITextViewDelegate> {
+    UIImage *kVoiceImage;
+    UIImage *kVoiceImageHL;
+    UIImage *kEmojiImage;
+    UIImage *kEmojiImageHL;
+    UIImage *kMoreImage;
+    UIImage *kMoreImageHL;
+    UIImage *kKeyboardImage;
+    UIImage *kKeyboardImageHL;
+}
+
+@end
+
+
 @implementation CubeMessageBar
 
 
