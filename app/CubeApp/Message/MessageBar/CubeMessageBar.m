@@ -27,21 +27,40 @@
 #import "CubeMessageBar.h"
 
 @interface CubeMessageBar () <UITextViewDelegate> {
-    UIImage *kVoiceImage;
-    UIImage *kVoiceImageHL;
-    UIImage *kEmojiImage;
-    UIImage *kEmojiImageHL;
-    UIImage *kMoreImage;
-    UIImage *kMoreImageHL;
-    UIImage *kKeyboardImage;
-    UIImage *kKeyboardImageHL;
+    UIImage * kVoiceImage;
+    UIImage * kVoiceImageHL;
+    UIImage * kEmojiImage;
+    UIImage * kEmojiImageHL;
+    UIImage * kMoreImage;
+    UIImage * kMoreImageHL;
+    UIImage * kKeyboardImage;
+    UIImage * kKeyboardImageHL;
 }
+
+@property (nonatomic, strong) UIButton * modeButton;
+
+@property (nonatomic, strong) UIButton * voiceButton;
+
+@property (nonatomic, strong) UITextView * textView;
+
+@property (nonatomic, strong) UIButton * emojiButton;
+
+@property (nonatomic, strong) UIButton * moreButton;
 
 @end
 
 
 @implementation CubeMessageBar
 
-
+- (void)loadImage {
+    kVoiceImage = CImage(@"ToolInputVoice");
+    kVoiceImageHL = CImage(@"ToolInputVoiceHL");
+    kEmojiImage = CImage(@"ToolEmotion");
+    kEmojiImageHL = CImage(@"ToolEmotionHL");
+    kMoreImage = CImage(@"ToolMore");
+    kMoreImageHL = CImage(@"ToolMoreHL");
+    kKeyboardImage = CImage(@"ToolInputKeyboard");
+    kKeyboardImageHL = CImage(@"ToolInputKeyboardHL");
+}
 
 @end

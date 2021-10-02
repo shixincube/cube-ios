@@ -609,6 +609,7 @@
 		C88052B92705C37000F7362B /* MessageBar */ = {
 			isa = PBXGroup;
 			children = (
+				C8D6976F2707F21200F9C3D8 /* View */,
 				C88052BA2705C3F300F7362B /* CubeMessageBar.h */,
 				C88052BB2705C40200F7362B /* CubeMessageBar.m */,
 				C88052BD2705C41600F7362B /* CubeMessageBarDelegate.h */,
@@ -734,6 +735,13 @@
 				C8754CF727019A6900B0790F /* CubeMessageViewController+Conversation.m */,
 			);
 			path = Conversation;
+			sourceTree = "<group>";
+		};
+		C8D6976F2707F21200F9C3D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C8D892B326FD52060062E509 /* MJRefresh */ = {
