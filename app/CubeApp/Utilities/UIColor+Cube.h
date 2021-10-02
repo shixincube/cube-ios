@@ -41,7 +41,7 @@
 + (UIColor *)colorGrayBG;           // 浅灰色默认背景
 + (UIColor *)colorGrayCharcoalBG;   // 较深灰色背景（聊天窗口, 朋友圈用）
 + (UIColor *)colorGrayLine;
-+ (UIColor *)colorGrayForChatBar;
++ (UIColor *)colorGrayForMessageBar;
 + (UIColor *)colorGrayForMoment;
 
 

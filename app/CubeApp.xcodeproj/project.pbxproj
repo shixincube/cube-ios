@@ -58,6 +58,8 @@
 		C8C81C3B26FC815000455355 /* CubeMessageCellMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81C3A26FC815000455355 /* CubeMessageCellMenuView.m */; };
 		C8CCF97826EC9B1200ED4115 /* CubeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */; };
 		C8CCF97B26ECA3E600ED4115 /* CubeConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */; };
+		C8D6977227082EF500F9C3D8 /* CubeVoiceRecordingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D6977127082EF500F9C3D8 /* CubeVoiceRecordingButton.m */; };
+		C8D6977427084EF800F9C3D8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D6977327084EF800F9C3D8 /* UIView+Frame.m */; };
 		C8D8930426FD52060062E509 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D892B426FD52060062E509 /* UIScrollView+MJRefresh.m */; };
 		C8D8930526FD52060062E509 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D892B526FD52060062E509 /* MJRefreshConst.m */; };
 		C8D8930626FD52060062E509 /* MJRefreshConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D892B626FD52060062E509 /* MJRefreshConfig.m */; };
@@ -289,6 +291,10 @@
 		C8CCF97726EC9B1200ED4115 /* CubeTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeTabBarController.m; sourceTree = "<group>"; };
 		C8CCF97A26ECA3E600ED4115 /* CubeConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationViewController.m; sourceTree = "<group>"; };
 		C8CCF97C26ECA3F100ED4115 /* CubeConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationViewController.h; sourceTree = "<group>"; };
+		C8D6977027082EE900F9C3D8 /* CubeVoiceRecordingButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeVoiceRecordingButton.h; sourceTree = "<group>"; };
+		C8D6977127082EF500F9C3D8 /* CubeVoiceRecordingButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeVoiceRecordingButton.m; sourceTree = "<group>"; };
+		C8D6977327084EF800F9C3D8 /* UIView+Frame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		C8D6977527084F0400F9C3D8 /* UIView+Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		C8D892B426FD52060062E509 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		C8D892B526FD52060062E509 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
 		C8D892B626FD52060062E509 /* MJRefreshConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConfig.m; sourceTree = "<group>"; };
@@ -660,6 +666,8 @@
 				C81A944F2700512200FA13E9 /* UIScrollView+Extensions.m */,
 				C8A0DA3326E1D6B80032A9D5 /* UIView+Extensions.h */,
 				C8A0DA3426E1D6C40032A9D5 /* UIView+Extensions.m */,
+				C8D6977527084F0400F9C3D8 /* UIView+Frame.h */,
+				C8D6977327084EF800F9C3D8 /* UIView+Frame.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -740,6 +748,8 @@
 		C8D6976F2707F21200F9C3D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C8D6977027082EE900F9C3D8 /* CubeVoiceRecordingButton.h */,
+				C8D6977127082EF500F9C3D8 /* CubeVoiceRecordingButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1547,6 +1557,7 @@
 				C8D8931726FD52060062E509 /* MJRefreshHeader.m in Sources */,
 				C8C81C1C26FC6D9F00455355 /* CubeMessageBaseViewController.m in Sources */,
 				C8D8931126FD52060062E509 /* MJRefreshStateTrailer.m in Sources */,
+				C8D6977227082EF500F9C3D8 /* CubeVoiceRecordingButton.m in Sources */,
 				C81A944E27001A2F00FA13E9 /* CubeMessageFrame.m in Sources */,
 				C81CD0A426F32702001D469B /* CubeSettingViewController.m in Sources */,
 				C8E3265126E0DB02005CA08A /* CubeViewController.m in Sources */,
@@ -1597,6 +1608,7 @@
 				C8E3263B26E0DAA3005CA08A /* ZZTextViewChainModel.m in Sources */,
 				C8D8931026FD52060062E509 /* MJRefreshAutoNormalFooter.m in Sources */,
 				C8E3264626E0DAA3005CA08A /* ZZFLEXCollectionViewController.m in Sources */,
+				C8D6977427084EF800F9C3D8 /* UIView+Frame.m in Sources */,
 				C81A945627005E6A00FA13E9 /* CubeMessageBaseViewController+PanelViewDelegate.m in Sources */,
 				C8E3259026E0CF95005CA08A /* SceneDelegate.m in Sources */,
 				C8D8931326FD52060062E509 /* MJRefreshNormalHeader.m in Sources */,

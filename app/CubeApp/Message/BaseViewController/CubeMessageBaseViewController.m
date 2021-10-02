@@ -128,4 +128,12 @@
     return _messagePanelView;
 }
 
+- (CubeMessageBar *)messageBar {
+    if (nil == _messageBar) {
+        _messageBar = [[CubeMessageBar alloc] init];
+        // TODO 
+    }
+    return _messageBar;
+}
+
 @end

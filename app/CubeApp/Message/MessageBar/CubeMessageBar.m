@@ -25,6 +25,7 @@
  */
 
 #import "CubeMessageBar.h"
+#import "CubeVoiceRecordingButton.h"
 
 @interface CubeMessageBar () <UITextViewDelegate> {
     UIImage * kVoiceImage;
@@ -37,11 +38,13 @@
     UIImage * kKeyboardImageHL;
 }
 
-@property (nonatomic, strong) UIButton * modeButton;
+//@property (nonatomic, strong) UIButton * modeButton;
 
 @property (nonatomic, strong) UIButton * voiceButton;
 
 @property (nonatomic, strong) UITextView * textView;
+
+@property (nonatomic, strong) CubeVoiceRecordingButton * voiceButtong;
 
 @property (nonatomic, strong) UIButton * emojiButton;
 
@@ -52,6 +55,20 @@
 
 @implementation CubeMessageBar
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.backgroundColor = [UIColor colorGrayForMessageBar];
+        [self loadImage];
+        
+        [self addSubview:self.voiceButton];
+
+        self.status = CubeMessageBarStatusInitial;
+    }
+    return self;
+}
+
+#pragma mark - Private
+
 - (void)loadImage {
     kVoiceImage = CImage(@"ToolInputVoice");
     kVoiceImageHL = CImage(@"ToolInputVoiceHL");
@@ -61,6 +78,16 @@
     kMoreImageHL = CImage(@"ToolMoreHL");
     kKeyboardImage = CImage(@"ToolInputKeyboard");
     kKeyboardImageHL = CImage(@"ToolInputKeyboardHL");
+}
+
+#pragma mark - Getters
+
+- (UIButton *)voiceButton {
+    if (!_voiceButton) {
+        _voiceButton = [[UIButton alloc] init];
+        
+    }
+    return _voiceButton;
 }
 
 @end

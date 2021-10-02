@@ -24,25 +24,37 @@
  * SOFTWARE.
  */
 
-#ifndef CubeMessageBaseViewController_h
-#define CubeMessageBaseViewController_h
+#ifndef UIView_Frame_h
+#define UIView_Frame_h
 
 #import <UIKit/UIKit.h>
-#import "CubeMessagePanelView.h"
-#import "CubeMessageBar.h"
-#import "CubeMessageBarDelegate.h"
 
-@interface CubeMessageBaseViewController : UIViewController
+@interface UIView (Frame)
 
-@property (nonatomic, strong) CContact * contact;
+#pragma mark - Origin
+@property (nonatomic, assign) CGPoint origin;
+@property (nonatomic, assign) CGFloat x;
+@property (nonatomic, assign) CGFloat y;
 
-@property (nonatomic, strong) CGroup * group;
+#pragma mark - Size
+@property (nonatomic, assign) CGSize size;
+@property (nonatomic, assign) CGFloat width;
+@property (nonatomic, assign) CGFloat height;
 
-/*! @brief 消息内容显示面板。 */
-@property (nonatomic, strong) CubeMessagePanelView * messagePanelView;
+#pragma mark - Center
+@property (nonatomic, assign) CGFloat centerX;
+@property (nonatomic, assign) CGFloat centerY;
 
-@property (nonatomic, strong) CubeMessageBar * messageBar;
+#pragma mark - Coords
+@property (nonatomic) CGFloat top;
+@property (nonatomic) CGFloat bottom;
+@property (nonatomic) CGFloat left;
+@property (nonatomic) CGFloat right;
+
+#pragma mark - Max
+@property (nonatomic, assign, readonly) CGFloat maxX;
+@property (nonatomic, assign, readonly) CGFloat maxY;
 
 @end
 
-#endif /* CubeMessageBaseViewController_h */
+#endif /* UIView_Frame_h */

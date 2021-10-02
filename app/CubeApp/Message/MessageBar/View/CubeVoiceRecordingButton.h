@@ -24,25 +24,27 @@
  * SOFTWARE.
  */
 
-#ifndef CubeMessageBaseViewController_h
-#define CubeMessageBaseViewController_h
+#ifndef CubeVoiceRecordingButton_h
+#define CubeVoiceRecordingButton_h
 
 #import <UIKit/UIKit.h>
-#import "CubeMessagePanelView.h"
-#import "CubeMessageBar.h"
-#import "CubeMessageBarDelegate.h"
 
-@interface CubeMessageBaseViewController : UIViewController
+@interface CubeVoiceRecordingButton : UIView
 
-@property (nonatomic, strong) CContact * contact;
+@property (nonatomic, strong) NSString * normalTitle;
+@property (nonatomic, strong) NSString * cancelTitle;
+@property (nonatomic, strong) NSString * highlightTitle;
 
-@property (nonatomic, strong) CGroup * group;
+@property (nonatomic, strong) UIColor * highlightColor;
 
-/*! @brief 消息内容显示面板。 */
-@property (nonatomic, strong) CubeMessagePanelView * messagePanelView;
+@property (nonatomic, strong) UILabel * titleLabel;
 
-@property (nonatomic, strong) CubeMessageBar * messageBar;
+
+- (void)setTouchBeginAction:(void (^)(void))touchBegin
+      willTouchCancelAction:(void (^)(BOOL cancel))willTouchCancel
+             touchEndAction:(void (^)(void))touchEnd
+          touchCancelAction:(void (^)(void))touchCancel;
 
 @end
 
-#endif /* CubeMessageBaseViewController_h */
+#endif /* CubeVoiceRecordingButton_h */

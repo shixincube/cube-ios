@@ -21,6 +21,7 @@
 #import "Categories/UICollectionViewCell+Extensions.h"
 #import "Categories/UIImage+Color.h"
 #import "Categories/UIView+Extensions.h"
+#import "Categories/UIView+Frame.h"
 #import "Categories/UIScrollView+Extensions.h"
 #import "Categories/UINavigationItem+Extensions.h"
 

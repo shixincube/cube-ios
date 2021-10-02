@@ -63,7 +63,7 @@
     return [UIColor colorWithWhite:0.5 alpha:0.3];
 }
 
-+ (UIColor *)colorGrayForChatBar {
++ (UIColor *)colorGrayForMessageBar {
     return RGBAColor(245, 245, 247, 1.0);
 }
 
