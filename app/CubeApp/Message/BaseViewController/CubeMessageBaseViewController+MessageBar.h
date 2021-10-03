@@ -24,26 +24,19 @@
  * SOFTWARE.
  */
 
-#import "CubeMessageBaseViewController+EventDelegate.h"
+#ifndef CubeMessageBaseViewController_MessageBar_h
+#define CubeMessageBaseViewController_MessageBar_h
 
-@implementation CubeMessageBaseViewController (EventDelegate)
+#import "CubeMessageBaseViewController.h"
+#import "CubeMessageBarDelegate.h"
 
-- (void)sendTextMessage:(NSString *)text {
-    // TODO XJW
-}
+@interface CubeMessageBaseViewController (MessageBar) <CubeMessageBarDelegate>
 
-#pragma mark - CMessagingEventDelegate
-
-- (void)messageSending:(CMessage *)message service:(CMessagingService *)service {
-    
-}
-
-- (void)messageSent:(CMessage *)message service:(CMessagingService *)service {
-    
-}
-
-- (void)messageReceived:(CMessage *)message service:(CMessagingService *)service {
-    
-}
+- (void)keyboardWillShow:(NSNotification *)notification;
+- (void)keyboardDidShow:(NSNotification *)notification;
+- (void)keyboardWillHide:(NSNotification *)notification;
+- (void)keyboardFrameWillChange:(NSNotification *)notification;
 
 @end
+
+#endif /* CubeMessageBaseViewController_MessageBar_h */

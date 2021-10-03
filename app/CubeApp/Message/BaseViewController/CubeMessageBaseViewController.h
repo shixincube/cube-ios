@@ -43,6 +43,10 @@
 
 @property (nonatomic, strong) CubeMessageBar * messageBar;
 
+@property (nonatomic, assign) CubeMessageBarStatus lastStatus;
+
+@property (nonatomic, assign) CubeMessageBarStatus currentStatus;
+
 @end
 
 #endif /* CubeMessageBaseViewController_h */

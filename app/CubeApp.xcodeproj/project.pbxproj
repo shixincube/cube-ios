@@ -169,6 +169,8 @@
 		C8EAB76426EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */; };
 		C8EAB76526EB4A2B0044A085 /* UITabBar+TLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */; };
 		C8EFF6C62709400B00CD7625 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EFF6C52709400B00CD7625 /* UIButton+Extensions.m */; };
+		C8EFF6C82709868400CD7625 /* CubeMessageBaseViewController+MessageBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EFF6C72709868400CD7625 /* CubeMessageBaseViewController+MessageBar.m */; };
+		C8EFF6CD2709D36D00CD7625 /* CubeBaseKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EFF6CC2709D36D00CD7625 /* CubeBaseKeyboard.m */; };
 		C8F2A5A926F4A6AC00E17946 /* CubeConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F2A5A826F4A6AC00E17946 /* CubeConversationListController.m */; };
 		C8F2A5AC26F4AB8700E17946 /* CubeConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F2A5AB26F4AB8700E17946 /* CubeConversation.m */; };
 		C8FD7ED226F039B6003FFE98 /* UICollectionViewCell+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */; };
@@ -548,6 +550,12 @@
 		C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+TLExtension.m"; sourceTree = "<group>"; };
 		C8EFF6C427093FFF00CD7625 /* UIButton+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extensions.h"; sourceTree = "<group>"; };
 		C8EFF6C52709400B00CD7625 /* UIButton+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extensions.m"; sourceTree = "<group>"; };
+		C8EFF6C72709868400CD7625 /* CubeMessageBaseViewController+MessageBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CubeMessageBaseViewController+MessageBar.m"; sourceTree = "<group>"; };
+		C8EFF6C92709868F00CD7625 /* CubeMessageBaseViewController+MessageBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CubeMessageBaseViewController+MessageBar.h"; sourceTree = "<group>"; };
+		C8EFF6CB2709D35F00CD7625 /* CubeBaseKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeBaseKeyboard.h; sourceTree = "<group>"; };
+		C8EFF6CC2709D36D00CD7625 /* CubeBaseKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeBaseKeyboard.m; sourceTree = "<group>"; };
+		C8EFF6CE2709D3DC00CD7625 /* CubeKeyboardProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeKeyboardProtocol.h; sourceTree = "<group>"; };
+		C8EFF6CF2709D95900CD7625 /* CubeKeyboardDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeKeyboardDelegate.h; sourceTree = "<group>"; };
 		C8F2A5A726F4A6A000E17946 /* CubeConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationListController.h; sourceTree = "<group>"; };
 		C8F2A5A826F4A6AC00E17946 /* CubeConversationListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationListController.m; sourceTree = "<group>"; };
 		C8F2A5AB26F4AB8700E17946 /* CubeConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversation.m; sourceTree = "<group>"; };
@@ -691,10 +699,11 @@
 		C8C81C1926FC6C6A00455355 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				C88052B92705C37000F7362B /* MessageBar */,
-				C8C81C2326FC7B3300455355 /* CommonView */,
-				C8C81C1E26FC71BE00455355 /* View */,
 				C8C81C1A26FC6D3100455355 /* BaseViewController */,
+				C8C81C2326FC7B3300455355 /* CommonView */,
+				C8EFF6CA2709D30200CD7625 /* Keyborad */,
+				C88052B92705C37000F7362B /* MessageBar */,
+				C8C81C1E26FC71BE00455355 /* View */,
 				C81A945D27006C9700FA13E9 /* CubeMessageViewController.h */,
 				C81A945B27006C8E00FA13E9 /* CubeMessageViewController.m */,
 			);
@@ -708,6 +717,8 @@
 				C8C81C1B26FC6D9F00455355 /* CubeMessageBaseViewController.m */,
 				C81A945227005C4C00FA13E9 /* CubeMessageBaseViewController+EventDelegate.h */,
 				C81A945327005C6900FA13E9 /* CubeMessageBaseViewController+EventDelegate.m */,
+				C8EFF6C92709868F00CD7625 /* CubeMessageBaseViewController+MessageBar.h */,
+				C8EFF6C72709868400CD7625 /* CubeMessageBaseViewController+MessageBar.m */,
 				C81A945727005E7B00FA13E9 /* CubeMessageBaseViewController+PanelViewDelegate.h */,
 				C81A945527005E6A00FA13E9 /* CubeMessageBaseViewController+PanelViewDelegate.m */,
 			);
@@ -1372,6 +1383,33 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
+		C8EFF6CA2709D30200CD7625 /* Keyborad */ = {
+			isa = PBXGroup;
+			children = (
+				C8EFF6D02709E1B900CD7625 /* EmojiKeyboard */,
+				C8EFF6D12709E1EE00CD7625 /* MoreKeyboard */,
+				C8EFF6CB2709D35F00CD7625 /* CubeBaseKeyboard.h */,
+				C8EFF6CC2709D36D00CD7625 /* CubeBaseKeyboard.m */,
+				C8EFF6CF2709D95900CD7625 /* CubeKeyboardDelegate.h */,
+				C8EFF6CE2709D3DC00CD7625 /* CubeKeyboardProtocol.h */,
+			);
+			path = Keyborad;
+			sourceTree = "<group>";
+		};
+		C8EFF6D02709E1B900CD7625 /* EmojiKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EmojiKeyboard;
+			sourceTree = "<group>";
+		};
+		C8EFF6D12709E1EE00CD7625 /* MoreKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MoreKeyboard;
+			sourceTree = "<group>";
+		};
 		C8F2A5AA26F4AB2300E17946 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1544,6 +1582,7 @@
 				C88052BC2705C40200F7362B /* CubeMessageBar.m in Sources */,
 				C81CD09E26F2F299001D469B /* CubeMenuItem.m in Sources */,
 				C8EAB76226EB4A2B0044A085 /* TLBadge.m in Sources */,
+				C8EFF6C82709868400CD7625 /* CubeMessageBaseViewController+MessageBar.m in Sources */,
 				C8E31C5526EF3370007B92F1 /* CubeProfileViewController.m in Sources */,
 				C8E3263426E0DAA3005CA08A /* ZZCollectionViewChainModel.m in Sources */,
 				C8E3262826E0DAA3005CA08A /* ZZFLEXAngelViewEditChainModel.m in Sources */,
@@ -1586,6 +1625,7 @@
 				C8E3263126E0DAA3005CA08A /* UIView+ZZFLEX.m in Sources */,
 				C81CD0A026F2F2A9001D469B /* CubeMenuItemCell.m in Sources */,
 				C8E3264226E0DAA3005CA08A /* UIView+ZZSeparator.m in Sources */,
+				C8EFF6CD2709D36D00CD7625 /* CubeBaseKeyboard.m in Sources */,
 				C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */,
 				C81CD09A26F2D956001D469B /* CubeSettingItemSwitchCell.m in Sources */,
 				C8CCF97826EC9B1200ED4115 /* CubeTabBarController.m in Sources */,

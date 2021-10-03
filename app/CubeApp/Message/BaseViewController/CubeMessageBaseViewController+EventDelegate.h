@@ -31,6 +31,8 @@
 
 @interface CubeMessageBaseViewController (EventDelegate) <CMessagingEventDelegate>
 
+- (void)sendTextMessage:(NSString *)text;
+
 @end
 
 #endif /* CubeMessageBaseViewController_EventDelegate_h */

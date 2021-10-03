@@ -24,26 +24,27 @@
  * SOFTWARE.
  */
 
-#import "CubeMessageBaseViewController+EventDelegate.h"
+#ifndef CubeBaseKeyboard_h
+#define CubeBaseKeyboard_h
 
-@implementation CubeMessageBaseViewController (EventDelegate)
+#import <UIKit/UIKit.h>
+#import "CubeKeyboardProtocol.h"
+#import "CubeKeyboardDelegate.h"
 
-- (void)sendTextMessage:(NSString *)text {
-    // TODO XJW
-}
+@interface CubeBaseKeyboard : UIView <CubeKeyboardProtocol>
 
-#pragma mark - CMessagingEventDelegate
+@property (nonatomic, assign, readonly) BOOL isShow;
 
-- (void)messageSending:(CMessage *)message service:(CMessagingService *)service {
-    
-}
+@property (nonatomic, weak) id<CubeKeyboardDelegate> keyboardDelegate;
 
-- (void)messageSent:(CMessage *)message service:(CMessagingService *)service {
-    
-}
+- (void)showWithAnimation:(BOOL)animation;
 
-- (void)messageReceived:(CMessage *)message service:(CMessagingService *)service {
-    
-}
+- (void)showInView:(UIView *)view withAnimation:(BOOL)animation;
+
+- (void)dismissWithAnimation:(BOOL)animation;
+
+- (void)reset;
 
 @end
+
+#endif /* CubeBaseKeyboard_h */

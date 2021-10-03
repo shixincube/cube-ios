@@ -28,20 +28,27 @@
 #import "CubePreference.h"
 #import "CubeMessageBaseViewController+EventDelegate.h"
 #import "CubeMessageBaseViewController+PanelViewDelegate.h"
+#import "CubeMessageBaseViewController+MessageBar.h"
 
 @implementation CubeMessageBaseViewController
 
 - (void)loadView {
     [super loadView];
 
+    self.currentStatus = CubeMessageBarStatusInitial;
+
     [CEngine sharedInstance].messagingService.eventDelegate = self;
 
     [self.view addSubview:self.messagePanelView];
     [self.view addSubview:self.messageBar];
 
-//    if (SAFEAREA_INSETS_BOTTOM > 0) {
-//        self.view.addView(1001).backgroundColor()
-//    }
+    if (SAFEAREA_INSETS_BOTTOM > 0) {
+        self.view.addView(1001).backgroundColor(self.messageBar.backgroundColor)
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.top.mas_equalTo(self.messageBar.mas_bottom);
+        });
+    }
 
     [self buildMasonry];
 }
@@ -54,6 +61,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

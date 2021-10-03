@@ -255,11 +255,64 @@
 }
 
 - (void)emojiButtonTouchUp:(UIButton *)sender {
-    
+    if (self.status == CubeMessageBarStatusEmoji) {
+        // 转入文本输入
+        if (_delegate && [_delegate respondsToSelector:@selector(messageBar:changeStatusFrom:to:)]) {
+            [_delegate messageBar:self changeStatusFrom:self.status to:CubeMessageBarStatusKeyboard];
+        }
+        [self.emojiButton setImage:kEmojiImage imageHighlighted:kEmojiImageHL];
+        [self.textView becomeFirstResponder];
+        self.status = CubeMessageBarStatusKeyboard;
+    }
+    else {
+        // 转入表情输入
+        if (_delegate && [_delegate respondsToSelector:@selector(messageBar:changeStatusFrom:to:)]) {
+            [_delegate messageBar:self changeStatusFrom:self.status to:CubeMessageBarStatusEmoji];
+        }
+        
+        if (self.status == CubeMessageBarStatusVoice) {
+            [self.voiceButton setImage:kVoiceImage imageHighlighted:kVoiceImageHL];
+            self.recordButton.hidden = YES;
+            self.textView.hidden = NO;
+        }
+        else if (self.status == CubeMessageBarStatusMore) {
+            [self.moreButton setImage:kMoreImage imageHighlighted:kMoreImageHL];
+        }
+        
+        [self.emojiButton setImage:kKeyboardImage imageHighlighted:kKeyboardImageHL];
+        [self.textView resignFirstResponder];
+        self.status = CubeMessageBarStatusEmoji;
+    }
 }
 
 - (void)moreButtonTouchUp:(UIButton *)sender {
-    
+    if (self.status == CubeMessageBarStatusMore) {
+        // 转入文本输入
+        if (_delegate && [_delegate respondsToSelector:@selector(messageBar:changeStatusFrom:to:)]) {
+            [_delegate messageBar:self changeStatusFrom:self.status to:CubeMessageBarStatusKeyboard];
+        }
+        [self.moreButton setImage:kMoreImage imageHighlighted:kMoreImageHL];
+        [self.textView becomeFirstResponder];
+        self.status = CubeMessageBarStatusKeyboard;
+    }
+    else {
+        // 转入更多面板
+        if (_delegate && [_delegate respondsToSelector:@selector(messageBar:changeStatusFrom:to:)]) {
+            [_delegate messageBar:self changeStatusFrom:self.status to:CubeMessageBarStatusMore];
+        }
+        if (self.status == CubeMessageBarStatusVoice) {
+            [self.voiceButton setImage:kVoiceImage imageHighlighted:kVoiceImageHL];
+            self.recordButton.hidden = YES;
+            self.textView.hidden = NO;
+        }
+        else if (self.status == CubeMessageBarStatusEmoji) {
+            [self.emojiButton setImage:kEmojiImage imageHighlighted:kEmojiImageHL];
+        }
+
+        [self.moreButton setImage:kKeyboardImage imageHighlighted:kKeyboardImageHL];
+        [self.textView resignFirstResponder];
+        self.status = CubeMessageBarStatusMore;
+    }
 }
 
 #pragma mark - Private

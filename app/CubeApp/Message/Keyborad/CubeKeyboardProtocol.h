@@ -24,26 +24,17 @@
  * SOFTWARE.
  */
 
-#import "CubeMessageBaseViewController+EventDelegate.h"
+#ifndef CubeKeyboardProtocol_h
+#define CubeKeyboardProtocol_h
 
-@implementation CubeMessageBaseViewController (EventDelegate)
+#import <Foundation/Foundation.h>
 
-- (void)sendTextMessage:(NSString *)text {
-    // TODO XJW
-}
+@protocol CubeKeyboardProtocol <NSObject>
 
-#pragma mark - CMessagingEventDelegate
+@required;
 
-- (void)messageSending:(CMessage *)message service:(CMessagingService *)service {
-    
-}
-
-- (void)messageSent:(CMessage *)message service:(CMessagingService *)service {
-    
-}
-
-- (void)messageReceived:(CMessage *)message service:(CMessagingService *)service {
-    
-}
+- (CGFloat)keyboardHeight;
 
 @end
+
+#endif /* CubeKeyboardProtocol_h */

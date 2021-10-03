@@ -24,26 +24,27 @@
  * SOFTWARE.
  */
 
-#import "CubeMessageBaseViewController+EventDelegate.h"
+#ifndef CubeKeyboardDelegate_h
+#define CubeKeyboardDelegate_h
 
-@implementation CubeMessageBaseViewController (EventDelegate)
+#import <Foundation/Foundation.h>
 
-- (void)sendTextMessage:(NSString *)text {
-    // TODO XJW
-}
+@class CubeBaseKeyboard;
 
-#pragma mark - CMessagingEventDelegate
+@protocol CubeKeyboardDelegate <NSObject>
 
-- (void)messageSending:(CMessage *)message service:(CMessagingService *)service {
-    
-}
+@optional
 
-- (void)messageSent:(CMessage *)message service:(CMessagingService *)service {
-    
-}
+- (void)messageKeyboardWillShow:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated;
 
-- (void)messageReceived:(CMessage *)message service:(CMessagingService *)service {
-    
-}
+- (void)messageKeyboardDidShow:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated;
+
+- (void)messageKeyboardWillDismiss:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated;
+
+- (void)messageKeyboardDidDismiss:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated;
+
+- (void)messageKeyboard:(CubeBaseKeyboard *)keyboard didChangeHeight:(CGFloat)height;
 
 @end
+
+#endif /* CubeKeyboardDelegate_h */
