@@ -27,9 +27,9 @@
 #ifndef CubeMessageBarDefinition_h
 #define CubeMessageBarDefinition_h
 
-#define     HEIGHT_CHATBAR_TEXTVIEW         36.0f
-#define     HEIGHT_MAX_CHATBAR_TEXTVIEW     111.5f
-#define     HEIGHT_CHAT_KEYBOARD            215.0f
+#define     HEIGHT_MESSAGEBAR_TEXTVIEW          36.0f
+#define     HEIGHT_MAX_MESSAGEBAR_TEXTVIEW      112.0f
+#define     HEIGHT_MESSAGEBAR_KEYBOARD          215.0f
 
 
 typedef NS_ENUM(NSInteger, CubeEmojiType) {

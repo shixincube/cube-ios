@@ -46,12 +46,12 @@
 /*!
  * @brief 发出文本。
  */
-- (void)messageBar:(CubeMessageBar *)messageBar didSendText:(NSString *)text;
+- (void)messageBar:(CubeMessageBar *)messageBar sendText:(NSString *)text;
 
 
 - (void)messageBarStartRecording:(CubeMessageBar *)messageBar;
 
-- (void)messageBarWillCancelRecording:(CubeMessageBar *)messageBar;
+- (void)messageBarWillCancelRecording:(CubeMessageBar *)messageBar cancel:(BOOL)cancel;
 
 - (void)messageBarDidCancelRecording:(CubeMessageBar *)messageBar;
 

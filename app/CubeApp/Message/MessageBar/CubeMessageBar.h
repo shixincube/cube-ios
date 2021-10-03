@@ -41,6 +41,15 @@
 // 是否激活状态（浏览个性表情时应该设置为NO）
 @property (nonatomic, assign) BOOL activity;
 
+- (void)sendCurrentText;
+
+- (void)addEmojiString:(NSString *)emojiString;
+
+/*!
+ * @brief 删除最后一个字符。
+ */
+- (void)deleteLastCharacter;
+
 @end
 
 #endif /* CubeMessageBar_h */
