@@ -44,7 +44,7 @@
 
 @property (nonatomic, strong) UITextView * textView;
 
-@property (nonatomic, strong) CubeVoiceRecordingButton * voiceButtong;
+@property (nonatomic, strong) CubeVoiceRecordingButton * recordButton;
 
 @property (nonatomic, strong) UIButton * emojiButton;
 
@@ -62,9 +62,17 @@
         
         [self addSubview:self.voiceButton];
 
+        [self buildMasonry];
+
         self.status = CubeMessageBarStatusInitial;
     }
     return self;
+}
+
+#pragma mark - Event Response
+
+- (void)voiceButtonTouchUp:(UIButton *)sender {
+    
 }
 
 #pragma mark - Private
@@ -80,12 +88,22 @@
     kKeyboardImageHL = CImage(@"ToolInputKeyboardHL");
 }
 
+- (void)buildMasonry {
+    [self.voiceButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self);
+        make.top.mas_equalTo(self).mas_offset(7);
+        make.bottom.mas_equalTo(self).mas_offset(-7);
+        make.width.mas_equalTo(38);
+    }];
+}
+
 #pragma mark - Getters
 
 - (UIButton *)voiceButton {
     if (!_voiceButton) {
         _voiceButton = [[UIButton alloc] init];
-        
+        [_voiceButton setImage:kVoiceImage imageHighlighted:kVoiceImageHL];
+        [_voiceButton addTarget:self action:@selector(voiceButtonTouchUp:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _voiceButton;
 }

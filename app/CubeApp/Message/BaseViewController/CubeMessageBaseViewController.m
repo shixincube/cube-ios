@@ -37,8 +37,7 @@
     [CEngine sharedInstance].messagingService.eventDelegate = self;
 
     [self.view addSubview:self.messagePanelView];
-
-    // TODO chat bar
+    [self.view addSubview:self.messageBar];
 
 //    if (SAFEAREA_INSETS_BOTTOM > 0) {
 //        self.view.addView(1001).backgroundColor()
@@ -69,6 +68,12 @@
     [self.messagePanelView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.right.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.view);
+    }];
+
+    [self.messageBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view).mas_offset(-SAFEAREA_INSETS_BOTTOM);
+        make.height.mas_greaterThanOrEqualTo(44);
     }];
 }
 

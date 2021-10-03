@@ -168,6 +168,7 @@
 		C8EAB76326EB4A2B0044A085 /* TLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75A26EB4A2B0044A085 /* TLTabBar.m */; };
 		C8EAB76426EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */; };
 		C8EAB76526EB4A2B0044A085 /* UITabBar+TLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */; };
+		C8EFF6C62709400B00CD7625 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EFF6C52709400B00CD7625 /* UIButton+Extensions.m */; };
 		C8F2A5A926F4A6AC00E17946 /* CubeConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F2A5A826F4A6AC00E17946 /* CubeConversationListController.m */; };
 		C8F2A5AC26F4AB8700E17946 /* CubeConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F2A5AB26F4AB8700E17946 /* CubeConversation.m */; };
 		C8FD7ED226F039B6003FFE98 /* UICollectionViewCell+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */; };
@@ -545,6 +546,8 @@
 		C8EAB75C26EB4A2B0044A085 /* TLTabBar+iOS12_1Fix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLTabBar+iOS12_1Fix.m"; sourceTree = "<group>"; };
 		C8EAB75D26EB4A2B0044A085 /* TLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLBadge.h; sourceTree = "<group>"; };
 		C8EAB75E26EB4A2B0044A085 /* UITabBar+TLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+TLExtension.m"; sourceTree = "<group>"; };
+		C8EFF6C427093FFF00CD7625 /* UIButton+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extensions.h"; sourceTree = "<group>"; };
+		C8EFF6C52709400B00CD7625 /* UIButton+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extensions.m"; sourceTree = "<group>"; };
 		C8F2A5A726F4A6A000E17946 /* CubeConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationListController.h; sourceTree = "<group>"; };
 		C8F2A5A826F4A6AC00E17946 /* CubeConversationListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationListController.m; sourceTree = "<group>"; };
 		C8F2A5AB26F4AB8700E17946 /* CubeConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversation.m; sourceTree = "<group>"; };
@@ -656,6 +659,8 @@
 				C8C81C0426FC4D0000455355 /* NSDate+Relation.m */,
 				C84CC1B126EA0B080004A9CB /* NSObject+CubeKeyValue.h */,
 				C84CC1B226EA0B110004A9CB /* NSObject+CubeKeyValue.m */,
+				C8EFF6C427093FFF00CD7625 /* UIButton+Extensions.h */,
+				C8EFF6C52709400B00CD7625 /* UIButton+Extensions.m */,
 				C8FD7ED326F039BE003FFE98 /* UICollectionViewCell+Extensions.h */,
 				C8FD7ED126F039B6003FFE98 /* UICollectionViewCell+Extensions.m */,
 				C89FC0D826F468DE0027B2FC /* UIImage+Color.h */,
@@ -1503,6 +1508,7 @@
 				C8E3264426E0DAA3005CA08A /* ZZFLEXRequestQueue.m in Sources */,
 				C8EAB76026EB4A2B0044A085 /* UITabBarItem+TLExtension.m in Sources */,
 				C8D8931D26FD5F160062E509 /* CubeMessagePanelView+Delegate.m in Sources */,
+				C8EFF6C62709400B00CD7625 /* UIButton+Extensions.m in Sources */,
 				C8E3262B26E0DAA3005CA08A /* ZZFLEXAngel.m in Sources */,
 				C8E3262126E0DAA3005CA08A /* ZZFLEXViewModel.m in Sources */,
 				C8FD7EDE26F0981E003FFE98 /* CubeSettingItemBaseCell.m in Sources */,

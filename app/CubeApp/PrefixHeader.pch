@@ -24,6 +24,7 @@
 #import "Categories/UIView+Frame.h"
 #import "Categories/UIScrollView+Extensions.h"
 #import "Categories/UINavigationItem+Extensions.h"
+#import "Categories/UIButton+Extensions.h"
 
 #import "Frameworks/Masonry/Masonry/Masonry.h"
 #import "Frameworks/ZZFLEX/ZZFLEX.h"
