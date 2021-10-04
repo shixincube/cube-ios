@@ -56,7 +56,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // TODO load keyboard
+    [self loadKeyboards];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -148,7 +148,7 @@
 - (CubeMessageBar *)messageBar {
     if (nil == _messageBar) {
         _messageBar = [[CubeMessageBar alloc] init];
-        // TODO 
+        _messageBar.delegate = self;
     }
     return _messageBar;
 }

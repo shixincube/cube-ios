@@ -71,7 +71,7 @@
         [self buildMasonry];
 
         self.status = CubeMessageBarStatusInitial;
-        
+
         self.draft = @"";
     }
     return self;
@@ -278,7 +278,7 @@
         else if (self.status == CubeMessageBarStatusMore) {
             [self.moreButton setImage:kMoreImage imageHighlighted:kMoreImageHL];
         }
-        
+
         [self.emojiButton setImage:kKeyboardImage imageHighlighted:kKeyboardImageHL];
         [self.textView resignFirstResponder];
         self.status = CubeMessageBarStatusEmoji;

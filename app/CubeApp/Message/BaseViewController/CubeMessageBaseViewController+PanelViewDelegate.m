@@ -25,6 +25,7 @@
  */
 
 #import "CubeMessageBaseViewController+PanelViewDelegate.h"
+#import "CubeMessageBaseViewController+MessageBar.h"
 
 @implementation CubeMessageBaseViewController (PanelViewDelegate)
 
@@ -38,7 +39,7 @@
 #pragma mark - Delegate
 
 - (void)messagePanelViewDidTouched:(CubeMessagePanelView *)panelView {
-    
+    [self dismissKeyboards];
 }
 
 - (void)getDataFromBeginningTime:(CubeMessagePanelView *)panelView

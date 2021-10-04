@@ -705,8 +705,8 @@
 		C8C81C1926FC6C6A00455355 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				C8C81C1A26FC6D3100455355 /* BaseViewController */,
 				C8C81C2326FC7B3300455355 /* CommonView */,
+				C8C81C1A26FC6D3100455355 /* BaseViewController */,
 				C8EFF6CA2709D30200CD7625 /* Keyborad */,
 				C88052B92705C37000F7362B /* MessageBar */,
 				C8C81C1E26FC71BE00455355 /* View */,

@@ -30,11 +30,21 @@
 @implementation CubeMessageBaseViewController (MessageBar)
 
 - (void)loadKeyboards {
-    
+    self.emojiKeyboard.keyboardDelegate = self;
+    self.moreKeyboard.keyboardDelegate = self;
 }
 
 - (void)dismissKeyboards {
-    
+    if (self.currentStatus == CubeMessageBarStatusMore) {
+        [self.moreKeyboard dismissWithAnimation:YES];
+        self.currentStatus = CubeMessageBarStatusInitial;
+    }
+    else if (self.currentStatus == CubeMessageBarStatusEmoji) {
+        [self.emojiKeyboard dismissWithAnimation:YES];
+        self.currentStatus = CubeMessageBarStatusInitial;
+    }
+
+    [self.messageBar resignFirstResponder];
 }
 
 #pragma mark - System Keyboard Event
@@ -43,7 +53,7 @@
     if (self.currentStatus != CubeMessageBarStatusKeyboard) {
         return;
     }
-    
+
     [self.messagePanelView scrollToBottomWithAnimation:YES];
 }
 
@@ -52,37 +62,81 @@
         return;
     }
 
+    if (self.lastStatus == CubeMessageBarStatusMore) {
+        [self.moreKeyboard dismissWithAnimation:NO];
+    }
+    else if (self.lastStatus == CubeMessageBarStatusEmoji) {
+        [self.emojiKeyboard dismissWithAnimation:NO];
+    }
     
+    [self.messagePanelView scrollToBottomWithAnimation:YES];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
-    
+    if (self.currentStatus != CubeMessageBarStatusKeyboard && self.lastStatus != CubeMessageBarStatusKeyboard) {
+        return;
+    }
+    if (self.currentStatus == CubeMessageBarStatusEmoji || self.currentStatus == CubeMessageBarStatusMore) {
+        return;
+    }
+    [self.messageBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.view).mas_offset(-SAFEAREA_INSETS_BOTTOM);
+    }];
+    [self.view layoutIfNeeded];
 }
 
 - (void)keyboardFrameWillChange:(NSNotification *)notification {
+    if (self.currentStatus != CubeMessageBarStatusKeyboard && self.lastStatus != CubeMessageBarStatusKeyboard) {
+        return;
+    }
     
+    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    if (self.lastStatus == CubeMessageBarStatusMore || self.lastStatus == CubeMessageBarStatusEmoji) {
+        if (keyboardFrame.size.height <= HEIGHT_MESSAGEBAR_KEYBOARD) {
+            return;
+        }
+    }
+    else if (self.currentStatus == CubeMessageBarStatusMore || self.currentStatus == CubeMessageBarStatusEmoji) {
+        return;
+    }
+
+    [self.messageBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.view).mas_offset(MIN(-keyboardFrame.size.height, -SAFEAREA_INSETS_BOTTOM));
+    }];
+    [self.view layoutIfNeeded];
+    [self.messagePanelView scrollToBottomWithAnimation:YES];
 }
 
 #pragma mark - CubeBaseKeyboard
 
 - (void)messageKeyboardWillShow:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated {
-    
+    [self.messagePanelView scrollToBottomWithAnimation:YES];
 }
 
 - (void)messageKeyboardDidShow:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated {
-    
+    if (self.currentStatus == CubeMessageBarStatusMore && self.lastStatus == CubeMessageBarStatusEmoji) {
+        [self.emojiKeyboard dismissWithAnimation:NO];
+    }
+    else if (self.currentStatus == CubeMessageBarStatusEmoji && self.lastStatus == CubeMessageBarStatusMore) {
+        [self.moreKeyboard dismissWithAnimation:NO];
+    }
+    [self.messagePanelView scrollToBottomWithAnimation:YES];
 }
 
 - (void)messageKeyboardWillDismiss:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated {
-    
+    // Nothing
 }
 
 - (void)messageKeyboardDidDismiss:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated {
-    
+    // Nothing
 }
 
 - (void)messageKeyboard:(CubeBaseKeyboard *)keyboard didChangeHeight:(CGFloat)height {
-    
+    [self.messageBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.view).mas_offset(MIN(-height, -SAFEAREA_INSETS_BOTTOM));
+    }];
+    [self.view layoutIfNeeded];
+    [self.messagePanelView scrollToBottomWithAnimation:YES];
 }
 
 #pragma mark - CubeMessageBarDelegate
@@ -95,10 +149,27 @@
     self.lastStatus = fromStatus;
     self.currentStatus = toStatus;
     
-    if (CubeMessageBarStatusInitial == toStatus) {
-        if (CubeMessageBarStatusMore == fromStatus) {
-            
+    if (toStatus == CubeMessageBarStatusInitial) {
+        if (fromStatus == CubeMessageBarStatusMore) {
+            [self.moreKeyboard dismissWithAnimation:YES];
         }
+        else if (fromStatus == CubeMessageBarStatusEmoji) {
+            [self.emojiKeyboard dismissWithAnimation:YES];
+        }
+    }
+    else if (toStatus == CubeMessageBarStatusVoice) {
+        if (fromStatus == CubeMessageBarStatusMore) {
+            [self.moreKeyboard dismissWithAnimation:YES];
+        }
+        else if (fromStatus == CubeMessageBarStatusEmoji) {
+            [self.emojiKeyboard dismissWithAnimation:YES];
+        }
+    }
+    else if (toStatus == CubeMessageBarStatusEmoji) {
+        [self.emojiKeyboard showInView:self.view withAnimation:YES];
+    }
+    else if (toStatus == CubeMessageBarStatusMore) {
+        [self.moreKeyboard showInView:self.view withAnimation:YES];
     }
 }
 
@@ -110,15 +181,15 @@
     [self sendTextMessage:text];
 }
 
+- (void)messageBarStartRecording:(CubeMessageBar *)messageBar {
+    
+}
+
 - (void)messageBarDidCancelRecording:(CubeMessageBar *)messageBar {
     
 }
 
 - (void)messageBarFinishedRecoding:(CubeMessageBar *)messageBar {
-    
-}
-
-- (void)messageBarStartRecording:(CubeMessageBar *)messageBar {
     
 }
 
