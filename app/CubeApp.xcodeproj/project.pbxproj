@@ -45,6 +45,8 @@
 		C8A0DA3526E1D6C40032A9D5 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3426E1D6C40032A9D5 /* UIView+Extensions.m */; };
 		C8A0DA3826E20BFD0032A9D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */; };
 		C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */; };
+		C8A83864270AA83D0061205F /* CubeEmojiKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A83863270AA83D0061205F /* CubeEmojiKeyboard.m */; };
+		C8A83866270AA8620061205F /* CubeMoreKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A83865270AA8620061205F /* CubeMoreKeyboard.m */; };
 		C8A8F20826F9831B00E25046 /* CubeConversationNoNetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */; };
 		C8A8F23F26F9B26300E25046 /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A8F23E26F9B26300E25046 /* Conversation.xcassets */; };
 		C8B6FE8227069C6D002D033A /* Message.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B6FE8127069C6D002D033A /* Message.xcassets */; };
@@ -269,6 +271,10 @@
 		C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C8A0DA3926E2252F0032A9D5 /* CubeLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeLoginViewController.h; sourceTree = "<group>"; };
 		C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeLoginViewController.m; sourceTree = "<group>"; };
+		C8A83862270AA82E0061205F /* CubeEmojiKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeEmojiKeyboard.h; sourceTree = "<group>"; };
+		C8A83863270AA83D0061205F /* CubeEmojiKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeEmojiKeyboard.m; sourceTree = "<group>"; };
+		C8A83865270AA8620061205F /* CubeMoreKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeMoreKeyboard.m; sourceTree = "<group>"; };
+		C8A83867270AA86C0061205F /* CubeMoreKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeMoreKeyboard.h; sourceTree = "<group>"; };
 		C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationNoNetCell.m; sourceTree = "<group>"; };
 		C8A8F20926F9832600E25046 /* CubeConversationNoNetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationNoNetCell.h; sourceTree = "<group>"; };
 		C8A8F23E26F9B26300E25046 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
@@ -1399,6 +1405,8 @@
 		C8EFF6D02709E1B900CD7625 /* EmojiKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				C8A83862270AA82E0061205F /* CubeEmojiKeyboard.h */,
+				C8A83863270AA83D0061205F /* CubeEmojiKeyboard.m */,
 			);
 			path = EmojiKeyboard;
 			sourceTree = "<group>";
@@ -1406,6 +1414,8 @@
 		C8EFF6D12709E1EE00CD7625 /* MoreKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				C8A83867270AA86C0061205F /* CubeMoreKeyboard.h */,
+				C8A83865270AA8620061205F /* CubeMoreKeyboard.m */,
 			);
 			path = MoreKeyboard;
 			sourceTree = "<group>";
@@ -1617,6 +1627,7 @@
 				C81A945C27006C8E00FA13E9 /* CubeMessageViewController.m in Sources */,
 				C8C81C0326FC4BD200455355 /* NSDate+Cube.m in Sources */,
 				C888CD5826F201C0004D7782 /* CubeSettingItemNormalCell.m in Sources */,
+				C8A83866270AA8620061205F /* CubeMoreKeyboard.m in Sources */,
 				C8EAB76126EB4A2B0044A085 /* UITabBarItem+TLPrivateExtension.m in Sources */,
 				C8D8930426FD52060062E509 /* UIScrollView+MJRefresh.m in Sources */,
 				C8FD7EDB26F096F1003FFE98 /* CubeProfileInfoAvatarCell.m in Sources */,
@@ -1659,6 +1670,7 @@
 				C8E3259026E0CF95005CA08A /* SceneDelegate.m in Sources */,
 				C8D8931326FD52060062E509 /* MJRefreshNormalHeader.m in Sources */,
 				C8E3262F26E0DAA3005CA08A /* ZZFLEXAngel+UITableView.m in Sources */,
+				C8A83864270AA83D0061205F /* CubeEmojiKeyboard.m in Sources */,
 				C8D8935326FDAB170062E509 /* CubeTextMessageCell.m in Sources */,
 				C8E3263226E0DAA3005CA08A /* ZZTextFieldChainModel.m in Sources */,
 				C8E3267726E0DBFF005CA08A /* MASLayoutConstraint.m in Sources */,

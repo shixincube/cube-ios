@@ -24,27 +24,18 @@
  * SOFTWARE.
  */
 
-#ifndef CubeMessageBaseViewController_MessageBar_h
-#define CubeMessageBaseViewController_MessageBar_h
-
-#import "CubeMessageBaseViewController.h"
-#import "CubeMessageBarDelegate.h"
 #import "CubeEmojiKeyboard.h"
-#import "CubeMoreKeyboard.h"
 
-@interface CubeMessageBaseViewController (MessageBar) <CubeMessageBarDelegate>
+static CubeEmojiKeyboard * gsEmojiKeyboard;
 
-// 表情键盘
-@property (nonatomic, strong, readonly) CubeEmojiKeyboard * emojiKeyboard;
+@implementation CubeEmojiKeyboard
 
-// 更多键盘
-@property (nonatomic, strong, readonly) CubeMoreKeyboard * moreKeyboard;
-
-- (void)keyboardWillShow:(NSNotification *)notification;
-- (void)keyboardDidShow:(NSNotification *)notification;
-- (void)keyboardWillHide:(NSNotification *)notification;
-- (void)keyboardFrameWillChange:(NSNotification *)notification;
++ (CubeEmojiKeyboard *)keyboard {
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        gsEmojiKeyboard = [[CubeEmojiKeyboard alloc] init];
+    });
+    return gsEmojiKeyboard;
+}
 
 @end
-
-#endif /* CubeMessageBaseViewController_MessageBar_h */
