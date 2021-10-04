@@ -32,13 +32,16 @@
 #import "CubeEmojiKeyboard.h"
 #import "CubeMoreKeyboard.h"
 
-@interface CubeMessageBaseViewController (MessageBar) <CubeMessageBarDelegate>
+@interface CubeMessageBaseViewController (MessageBar) <CubeMessageBarDelegate, CubeKeyboardDelegate>
 
 // 表情键盘
-@property (nonatomic, strong, readonly) CubeEmojiKeyboard * emojiKeyboard;
+@property (nonatomic, weak, readonly) CubeEmojiKeyboard * emojiKeyboard;
 
 // 更多键盘
-@property (nonatomic, strong, readonly) CubeMoreKeyboard * moreKeyboard;
+@property (nonatomic, weak, readonly) CubeMoreKeyboard * moreKeyboard;
+
+- (void)loadKeyboards;
+- (void)dismissKeyboards;
 
 - (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardDidShow:(NSNotification *)notification;

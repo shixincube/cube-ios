@@ -29,6 +29,14 @@
 
 @implementation CubeMessageBaseViewController (MessageBar)
 
+- (void)loadKeyboards {
+    
+}
+
+- (void)dismissKeyboards {
+    
+}
+
 #pragma mark - System Keyboard Event
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -52,6 +60,28 @@
 }
 
 - (void)keyboardFrameWillChange:(NSNotification *)notification {
+    
+}
+
+#pragma mark - CubeBaseKeyboard
+
+- (void)messageKeyboardWillShow:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated {
+    
+}
+
+- (void)messageKeyboardDidShow:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated {
+    
+}
+
+- (void)messageKeyboardWillDismiss:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated {
+    
+}
+
+- (void)messageKeyboardDidDismiss:(CubeBaseKeyboard *)keyboard animated:(BOOL)animated {
+    
+}
+
+- (void)messageKeyboard:(CubeBaseKeyboard *)keyboard didChangeHeight:(CGFloat)height {
     
 }
 
@@ -94,6 +124,16 @@
 
 - (void)messageBarWillCancelRecording:(CubeMessageBar *)messageBar cancel:(BOOL)cancel {
     
+}
+
+#pragma mark - Getters
+
+- (CubeEmojiKeyboard *)emojiKeyboard {
+    return [CubeEmojiKeyboard keyboard];
+}
+
+- (CubeMoreKeyboard *)moreKeyboard {
+    return [CubeMoreKeyboard keyboard];
 }
 
 @end
