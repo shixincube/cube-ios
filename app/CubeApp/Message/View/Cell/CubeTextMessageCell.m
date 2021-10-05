@@ -57,7 +57,13 @@
         return;
     }
 
-    BOOL lastSelfTyper = self.message ? self.message.selfTyper : YES;
+    BOOL lastSelfTyper = NO;
+    if (nil == self.message) {
+        lastSelfTyper = !message.selfTyper;
+    }
+    else {
+        lastSelfTyper = self.message.selfTyper;
+    }
 
     [super updateMessage:message];
 
@@ -73,6 +79,8 @@
             [self.messageBackgroundView setBackgroundColor:[UIColor colorThemeBlue]];
             [self.messageBackgroundView setImage:[UIImage imageWithColor:[UIColor colorThemeBlue]]];
             [self.messageBackgroundView setHighlightedImage:[UIImage imageWithColor:[UIColor colorThemeBlueHighlighted]]];
+            
+            [self.messageBackgroundView cornerRadiusWithRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomRight | UIRectCornerBottomLeft) radius:6];
 
             [self.contentLabel setTextColor:[UIColor colorTextWhite]];
             [self.contentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {

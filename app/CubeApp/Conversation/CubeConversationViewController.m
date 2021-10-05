@@ -102,6 +102,12 @@
     [self monitorNetwork];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // TODO XJW
+}
+
 #pragma mark - Private
 
 - (void)setNavTitleWithStatusString:(NSString *)statusString {

@@ -38,7 +38,7 @@
         // TODO
     }
     else {
-        return;
+        // TODO
     }
 
     [self appendToShowMessage:message];
