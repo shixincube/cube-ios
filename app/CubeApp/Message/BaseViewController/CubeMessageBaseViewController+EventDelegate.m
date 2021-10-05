@@ -25,11 +25,23 @@
  */
 
 #import "CubeMessageBaseViewController+EventDelegate.h"
+#import "CubeMessageBaseViewController+PanelViewDelegate.h"
 
 @implementation CubeMessageBaseViewController (EventDelegate)
 
 - (void)sendTextMessage:(NSString *)text {
-    // TODO XJW
+    CHyperTextMessage * message = [[CHyperTextMessage alloc] initWithText:text];
+    if (self.contact) {
+        [[CEngine sharedInstance].messagingService sendToContact:self.contact message:message];
+    }
+    else if (self.group) {
+        // TODO
+    }
+    else {
+        return;
+    }
+
+    [self appendToShowMessage:message];
 }
 
 #pragma mark - CMessagingEventDelegate
@@ -43,7 +55,20 @@
 }
 
 - (void)messageReceived:(CMessage *)message service:(CMessagingService *)service {
-    
+    if (self.contact && (message.from == self.contact.identity || message.to == self.contact.identity)) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self appendToShowMessage:message];
+        });
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [[CEngine sharedInstance].messagingService markReadWithMessage:message handleSuccess:^(id  _Nullable data) {
+                // Nothing
+            } handleFailure:^(CError * _Nullable error) {
+                // Nothing
+            }];
+        });
+    }
+//    else if (self.group && message.source == self.group.identity) {
+//    }
 }
 
 @end

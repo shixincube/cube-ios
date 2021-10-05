@@ -249,7 +249,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     return 0;
 }
 
-- (void)markReadWithContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+- (void)markReadByContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     if (![self hasStarted]) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             CError * error = [CError errorWithModule:CUBE_MODULE_MESSAGING code:CMessagingServiceStateIllegalOperation];
@@ -282,8 +282,45 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
             NSDictionary * data = [packet extractData];
             NSArray * messageIdList = [data valueForKey:@"messageIdList"];
-            [self->_storage updateMessageRemoteState:messageIdList state:CMessageStateRead completion:^{
+            [self->_storage updateMessagesRemoteState:messageIdList state:CMessageStateRead completion:^{
                 handleSuccess(list);
+            }];
+        }];
+    }];
+}
+
+- (void)markReadWithMessage:(CMessage *)message handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    if (![self hasStarted]) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            CError * error = [CError errorWithModule:CUBE_MODULE_MESSAGING code:CMessagingServiceStateIllegalOperation];
+            handleFailure(error);
+        });
+        return;
+    }
+
+    [_storage updateMessageState:message.identity state:CMessageStateRead completion:^{
+        // 同步到服务器
+        NSDictionary * payload = @{
+            @"contactId": [NSNumber numberWithUnsignedLongLong:self->_contactService.owner.identity],
+            @"messageId": [NSNumber numberWithUnsignedLongLong:message.identity],
+        };
+        CPacket * packet = [[CPacket alloc] initWithName:CUBE_MESSAGING_READ andData:payload];
+        [self.pipeline send:CUBE_MODULE_MESSAGING withPacket:packet handleResponse:^(CPacket *packet) {
+            if (packet.state.code != CStateOk) {
+                CError * error = [CError errorWithModule:CUBE_MODULE_MESSAGING code:packet.state.code];
+                handleFailure(error);
+                return;
+            }
+
+            int state = [packet extractStateCode];
+            if (state != CMessagingServiceStateOk) {
+                CError * error = [CError errorWithModule:CUBE_MODULE_MESSAGING code:state];
+                handleFailure(error);
+                return;
+            }
+
+            [self->_storage updateMessageRemoteState:message.identity state:CMessageStateRead completion:^{
+                handleSuccess(message);
             }];
         }];
     }];

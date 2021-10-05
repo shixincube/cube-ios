@@ -168,7 +168,7 @@
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    if ([text isEqualToString:@""]) {
+    if ([text isEqualToString:@"\n"]) {
         [self sendCurrentText];
         return NO;
     }
@@ -177,8 +177,8 @@
             NSUInteger location = range.location;
             NSUInteger length = range.length;
             while (location != 0) {
-                location --;
-                length ++ ;
+                location--;
+                length++;
                 char c = [textView.text characterAtIndex:location];
                 if (c == '[') {
                     textView.text = [textView.text stringByReplacingCharactersInRange:NSMakeRange(location, length) withString:@""];

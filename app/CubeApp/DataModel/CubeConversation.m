@@ -60,7 +60,7 @@
 - (void)clearUnread {
     _unread = 0;
 
-    [[CEngine sharedInstance].messagingService markReadWithContact:self.message.partner handleSuccess:^(id  _Nullable data) {
+    [[CEngine sharedInstance].messagingService markReadByContact:self.message.partner handleSuccess:^(id  _Nullable data) {
         // 标记成功
         NSLog(@"Mark messages (%ld) read", ((NSArray *)data).count);
     } handleFailure:^(CError * _Nullable error) {

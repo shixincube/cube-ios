@@ -336,7 +336,15 @@
     }];
 }
 
-- (void)updateMessageRemoteState:(NSArray<__kindof NSNumber *> *)messageIdList state:(CMessageState)state completion:(void (^)(void))completion {
+- (void)updateMessageState:(UInt64)messageId state:(CMessageState)state completion:(void (^)(void))completion {
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSString * sql = [NSString stringWithFormat:@"UPDATE `message` SET `state`=%d WHERE `id`=%llu", state, messageId];
+        [db executeUpdate:sql];
+        completion();
+    }];
+}
+
+- (void)updateMessagesRemoteState:(NSArray<__kindof NSNumber *> *)messageIdList state:(CMessageState)state completion:(void (^)(void))completion {
     [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
         for (NSNumber * messageId in messageIdList) {
             NSString * sql = [NSString stringWithFormat:@"UPDATE `message` SET `remote_state`=%d WHERE `id`=%llu", state, messageId.unsignedLongLongValue];
@@ -347,6 +355,13 @@
         }
 
         completion();
+    }];
+}
+
+- (void)updateMessageRemoteState:(UInt64)messageId state:(CMessageState)state completion:(void (^)(void))completion {
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSString * sql = [NSString stringWithFormat:@"UPDATE `message` SET `remote_state`=%d WHERE `id`=%llu", state, messageId];
+        [db executeUpdate:sql];
     }];
 }
 

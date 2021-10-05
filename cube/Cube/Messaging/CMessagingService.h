@@ -173,7 +173,15 @@
  * @param handleSuccess 操作成功回调，参数： @c NSArray 操作成功的消息的 ID 列表。
  * @param handleFailure 操作失败回调。
  */
-- (void)markReadWithContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+- (void)markReadByContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+
+/*!
+ * @brief 将指定消息标记为已读。
+ * @param message 指定消息。
+ * @param handleSuccess 操作成功回调，参数： @c CMessage 操作的消息。
+ * @param handleFailure 操作失败回调。
+ */
+- (void)markReadWithMessage:(CMessage *)message handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
  * @brief 查询指定联系人 ID 相关的所有消息，即包括该联系人发送的消息，也包含该联系人接收的消息。

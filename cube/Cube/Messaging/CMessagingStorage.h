@@ -96,9 +96,22 @@
 - (void)updateMessageStateWithContactId:(UInt64)contactId state:(CMessageState)state completion:(void (^)(NSArray<__kindof NSNumber *> * list))completion;
 
 /*!
+ * @brief 更新消息状态。
+ * @param messageId 消息 ID 。
+ * @param state 消息状态。
+ * @param completion 操作完成的回调。
+ */
+- (void)updateMessageState:(UInt64)messageId state:(CMessageState)state completion:(void (^)(void))completion;
+
+/*!
  * @brief 更新消息在服务器上的状态。
  */
-- (void)updateMessageRemoteState:(NSArray<__kindof NSNumber *> *)messageIdList state:(CMessageState)state completion:(void (^)(void))completion;
+- (void)updateMessagesRemoteState:(NSArray<__kindof NSNumber *> *)messageIdList state:(CMessageState)state completion:(void (^)(void))completion;
+
+/*!
+ * @brief 更新消息在服务器上的状态。
+ */
+- (void)updateMessageRemoteState:(UInt64)messageId state:(CMessageState)state completion:(void (^)(void))completion;
 
 /*!
  * @brief 使用消息 ID 获取消息。

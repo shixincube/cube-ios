@@ -35,6 +35,8 @@
 
 @interface CubeMessageBaseViewController (PanelViewDelegate) <CubeMessagePanelViewDelegate>
 
+- (void)appendToShowMessage:(CMessage *)message;
+
 - (void)resetPanelView;
 
 @end

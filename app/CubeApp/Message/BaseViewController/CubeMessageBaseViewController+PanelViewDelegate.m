@@ -31,6 +31,13 @@
 
 #pragma mark - Public
 
+- (void)appendToShowMessage:(CMessage *)message {
+    [self.messagePanelView addMessage:message];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.messagePanelView scrollToBottomWithAnimation:YES];
+    });
+}
+
 - (void)resetPanelView {
     [self.messagePanelView reset];
     // TODO
