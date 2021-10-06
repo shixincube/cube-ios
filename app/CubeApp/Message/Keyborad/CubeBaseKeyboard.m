@@ -31,7 +31,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _isShow = NO;
+        _showed = NO;
     }
     return self;
 }
@@ -41,18 +41,18 @@
 }
 
 - (void)showInView:(UIView *)view withAnimation:(BOOL)animation {
-    if (_isShow) {
+    if (_showed) {
         return;
     }
-    
-    _isShow = YES;
-    
+
+    _showed = YES;
+
     if (self.keyboardDelegate && [self.keyboardDelegate respondsToSelector:@selector(messageKeyboardWillShow:animated:)]) {
         [self.keyboardDelegate messageKeyboardWillShow:self animated:animation];
     }
-    
+
     [view addSubview:self];
-    
+
     CGFloat keyboardHeight = [self keyboardHeight];
     [self mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(view);
@@ -60,7 +60,7 @@
         make.bottom.mas_equalTo(view).mas_offset(keyboardHeight);
     }];
     [view layoutIfNeeded];
-    
+
     if (animation) {
         [UIView animateWithDuration:0.3 animations:^{
             [self mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -88,14 +88,14 @@
 }
 
 - (void)dismissWithAnimation:(BOOL)animation {
-    if (!_isShow) {
+    if (!_showed) {
         if (!animation) {
             
         }
         return;
     }
-    
-    _isShow = NO;
+
+    _showed = NO;
     
     if (self.keyboardDelegate && [self.keyboardDelegate respondsToSelector:@selector(messageKeyboardWillDismiss:animated:)]) {
         [self.keyboardDelegate messageKeyboardWillDismiss:self animated:animation];

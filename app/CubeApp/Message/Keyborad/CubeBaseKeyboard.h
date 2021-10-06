@@ -33,7 +33,7 @@
 
 @interface CubeBaseKeyboard : UIView <CubeKeyboardProtocol>
 
-@property (nonatomic, assign, readonly) BOOL isShow;
+@property (nonatomic, assign, readonly) BOOL showed;
 
 @property (nonatomic, weak) id<CubeKeyboardDelegate> keyboardDelegate;
 

@@ -29,6 +29,7 @@
 
 #import "CMessage.h"
 #import "CMessageState.h"
+#import "CMessageDraft.h"
 
 @class CMessagingService;
 
@@ -125,6 +126,21 @@
                       beginning:(UInt64)beginning
                           limit:(NSInteger)limit
                      completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
+
+/*!
+ * @brief 写入草稿。
+ */
+- (void)writeDraft:(CMessageDraft *)draft;
+
+/*!
+ * @brief 读取草稿。
+ */
+- (void)readDraft:(UInt64)ownerId completion:(void(^)(CMessageDraft * draft))completion;
+
+/*!
+ * @brief 删除草稿。
+ */
+- (void)deleteDraft:(UInt64)ownerId;
 
 @end
 

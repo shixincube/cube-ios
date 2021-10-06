@@ -428,6 +428,56 @@
     return message;
 }
 
+- (void)writeDraft:(CMessageDraft *)draft {
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSString * dataString = [CUtils toStringWithJSON:[draft toJSON]];
+
+        NSString * sql = [NSString stringWithFormat:@"SELECT `time` FROM `draft` WHERE `owner`=%llu", draft.ownerId];
+        FMResultSet * result = [db executeQuery:sql];
+        if ([result next]) {
+            [result close];
+
+            [db executeUpdate:@"UPDATE `draft` SET `time`=?, `data`=? WHERE `owner`=?",
+                [NSNumber numberWithUnsignedLongLong:draft.timestamp],
+                dataString,
+                [NSNumber numberWithUnsignedLongLong:draft.ownerId]];
+        }
+        else {
+            [result close];
+
+            [db executeUpdate:@"INSERT INTO `draft`(`owner`,`time`,`data`) VALUES (?,?,?)",
+                [NSNumber numberWithUnsignedLongLong:draft.ownerId],
+                [NSNumber numberWithUnsignedLongLong:draft.timestamp],
+                dataString];
+        }
+    }];
+}
+
+- (void)readDraft:(UInt64)ownerId completion:(void(^)(CMessageDraft * draft))completion {
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        CMessageDraft * draft = nil;
+
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `draft` WHERE `owner`=%llu", ownerId];
+        FMResultSet * result = [db executeQuery:sql];
+        if ([result next]) {
+            NSString * dataString = [result stringForColumn:@"data"];
+            NSDictionary * dataJson = [CUtils toJSONWithString:dataString];
+            draft = [[CMessageDraft alloc] initWithJSON:dataJson];
+        }
+
+        [result close];
+
+        completion(draft);
+    }];
+}
+
+- (void)deleteDraft:(UInt64)ownerId {
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSString * sql = [NSString stringWithFormat:@"DELETE FROM `draft` WHERE `owner`=%llu", ownerId];
+        [db executeUpdate:sql];
+    }];
+}
+
 #pragma mark - Private
 
 - (void)execSelfChecking {
@@ -457,7 +507,13 @@
         }
 
         // 消息草稿表
-        // TODO
+        // owner - 草稿对应的会话
+        // tiem  - 草稿时间
+        // data  - JSON 格式的数据
+        sql = @"CREATE TABLE IF NOT EXISTS `draft` (`owner` BIGINT PRIMARY KEY, `time` BIGINT, `data` TEXT)";
+        if ([db executeUpdate:sql]) {
+            NSLog(@"CMessagingStorage#execSelfChecking : `draft` table OK");
+        }
 
         dispatch_semaphore_signal(semaphore);
     }];

@@ -24,22 +24,26 @@
  * SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#ifndef CMessageDraft_h
+#define CMessageDraft_h
 
-#import <Cube/CUtils.h>
-#import <Cube/CEngine.h>
-#import <Cube/CKernel.h>
-#import <Cube/CPipelineStateDelegate.h>
+#import "CEntity.h"
 
-#import <Cube/CContactService.h>
-#import <Cube/CSelf.h>
-#import <Cube/CContact.h>
-#import <Cube/CDevice.h>
+@class CContact;
+@class CMessage;
 
-#import <Cube/CMessagingService.h>
-#import <Cube/CMessage.h>
-#import <Cube/CMessageDraft.h>
-#import <Cube/CMessageType.h>
-#import <Cube/CHyperTextMessage.h>
+@interface CMessageDraft : CEntity
 
-#import <Cube/CNetworkStatusManager.h>
+@property (nonatomic, assign) UInt64 ownerId;
+
+@property (nonatomic, strong) CMessage * message;
+
+- (instancetype)initWithContact:(CContact *)contact message:(CMessage *)message;
+
+- (instancetype)initWithId:(UInt64)identity timestamp:(UInt64)timestamp message:(CMessage *)message;
+
+- (instancetype)initWithJSON:(NSDictionary *)json;
+
+@end
+
+#endif /* CMessageDraft_h */

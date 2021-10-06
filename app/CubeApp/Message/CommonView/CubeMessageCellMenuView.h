@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, CubeMessageMenuItemType) {
 
 @interface CubeMessageCellMenuView : UIView
 
-@property (nonatomic, assign, readonly) BOOL isShow;
+@property (nonatomic, assign, readonly) BOOL showed;
 
 @property (nonatomic, assign) CMessageType messageType;
 

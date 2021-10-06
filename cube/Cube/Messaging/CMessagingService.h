@@ -42,6 +42,7 @@
 @class CMessagingStorage;
 @class CMessagingObserver;
 @class CMessage;
+@class CMessageDraft;
 @class CContact;
 @class CGroup;
 
@@ -194,6 +195,14 @@
                                 beginning:(UInt64)beginning
                                     limit:(NSInteger)limit
                                completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
+
+- (BOOL)saveDraft:(CMessageDraft *)draft;
+
+- (void)loadDraftWitchContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+
+- (void)loadDraftWitchGroup:(CGroup *)group handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+
+- (void)deleteDraft:(CMessageDraft *)draft;
 
 
 /*!

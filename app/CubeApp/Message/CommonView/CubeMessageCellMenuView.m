@@ -47,7 +47,7 @@
 }
 
 - (void)showInView:(UIView *)view withMessageType:(CMessageType)messageType targetRect:(CGRect)targetRect actionBlock:(void (^)(CubeMessageMenuItemType))actionBlock {
-    _isShow = YES;
+    _showed = YES;
 
     [self setFrame:view.bounds];
     [view addSubview:self];
@@ -65,7 +65,7 @@
 }
 
 - (void)dismiss {
-    _isShow = NO;
+    _showed = NO;
     
     if (self.actionBlock) {
         self.actionBlock(CubeMessageMenuItemTypeDismiss);
@@ -111,7 +111,7 @@
 #pragma mark - Private
 
 - (void)touchMenu:(CubeMessageMenuItemType)type {
-    _isShow = NO;
+    _showed = NO;
 
     [self removeFromSuperview];
 

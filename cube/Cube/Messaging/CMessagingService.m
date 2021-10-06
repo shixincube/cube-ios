@@ -46,6 +46,7 @@
 #import "CInstantiateHook.h"
 #import "CMessageTypePlugin.h"
 #import "CEventJitter.h"
+#import "CMessageDraft.h"
 
 
 typedef void (^PullCompletedHandler)(void);
@@ -356,6 +357,29 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
         // 这里对数组进行翻转，翻转为时间正序
         completion(result.reverseObjectEnumerator.allObjects, hasMore);
     }];
+}
+
+#pragma mark - Message Draft
+
+- (BOOL)saveDraft:(CMessageDraft *)draft {
+    if (![self hasStarted]) {
+        return FALSE;
+    }
+
+    [_storage writeDraft:draft];
+    return TRUE;
+}
+
+- (void)loadDraftWitchContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    
+}
+
+- (void)loadDraftWitchGroup:(CGroup *)group handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    
+}
+
+- (void)deleteDraft:(CMessageDraft *)draft {
+    
 }
 
 #pragma mark - Private
