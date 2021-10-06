@@ -28,16 +28,17 @@
 #import "CubeConversationListController.h"
 #import "CubeSearchController.h"
 #import "CubeMessageViewController+Conversation.h"
-
 #import "CubeConversation.h"
 #import "CubeConversationCell.h"
 #import "CubeConversationNoNetCell.h"
-
 #import "CubeMessageViewController.h"
-
 #import "UIFont+Cube.h"
 
 @interface CubeConversationViewController ()
+
+@property (nonatomic, weak) CubeConversation * lastConversation;
+
+@property (nonatomic, weak) CubeConversationCell * lastConversationCell;
 
 @property (nonatomic, strong) UITableView * tableView;
 
@@ -104,8 +105,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    // TODO XJW
+
+    if (nil != self.lastConversationCell) {
+        if (nil != self.lastConversation) {
+            [self.lastConversationCell setConversation:self.lastConversation];
+        }
+        [self.lastConversationCell updateRead];
+    }
 }
 
 #pragma mark - Private
@@ -189,19 +195,16 @@
         .withDataModelArray(data)
         .selectedAction(^ (CubeConversation * conversation) {
             @strongify(self);
+            self.lastConversation = conversation;
+
+            NSIndexPath * indexPath = [self.tableView indexPathForSelectedRow];
+            self.lastConversationCell = [self.tableView cellForRowAtIndexPath:indexPath];
+
             [conversation clearUnread];
             [self.listController reloadBadge];
 
             CubeMessageViewController * messageVC = [[CubeMessageViewController alloc] initWithConversation:conversation];
             PushVC(messageVC);
-
-            // 更新 Cell
-            NSIndexPath * indexPath = [self.tableView indexPathForSelectedRow];
-            CubeConversationCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
-            dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, 600 * NSEC_PER_MSEC);
-            dispatch_after(delay, dispatch_get_main_queue(), ^{
-                [cell updateRead];
-            });
         });
 
     [self.tableView reloadData];

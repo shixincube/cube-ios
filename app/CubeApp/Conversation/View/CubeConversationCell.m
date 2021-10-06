@@ -112,7 +112,7 @@
     if (conversation.avatarName) {
         [self.avatarView setImage:[UIImage imageNamed:conversation.avatarName]];
     }
-    
+
     [self.nameLabel setText:conversation.displayName];
     [self.detailLabel setText:conversation.content];
     [self.timeLabel setText:[conversation.date conversaionTimeInfo]];

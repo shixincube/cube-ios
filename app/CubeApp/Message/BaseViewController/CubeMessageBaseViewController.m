@@ -74,12 +74,24 @@
     [self.view layoutIfNeeded];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dealloc {
+    [[CubeMoreKeyboard keyboard] dismissWithAnimation:NO];
+    [[CubeEmojiKeyboard keyboard] dismissWithAnimation:NO];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Private
 
 - (void)buildMasonry {
     [self.messagePanelView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.right.mas_equalTo(self.view);
-        make.bottom.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.messageBar.mas_top);
     }];
 
     [self.messageBar mas_makeConstraints:^(MASConstraintMaker *make) {

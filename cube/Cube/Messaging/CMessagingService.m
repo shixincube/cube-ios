@@ -632,7 +632,8 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 
     if (self.recentEventDelegate) {
-        if ([event.name isEqualToString:CMessagingEventNotify]) {
+        if ([event.name isEqualToString:CMessagingEventNotify]
+            || [event.name isEqualToString:CMessagingEventSent]) {
             if ([self.recentEventDelegate respondsToSelector:@selector(newMessage:service:)]) {
                 CMessage * message = (CMessage *) event.data;
                 CEventJitter * jitter = nil;
@@ -641,22 +642,25 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
                     // TODO
                 }
                 else {
+                    NSString * contactId = nil;
                     if (!message.selfTyper) {
-                        NSString * contactId = [NSString stringWithFormat:@"%llu", message.from];
+                        contactId = [NSString stringWithFormat:@"%llu", message.from];
                         jitter = [_jitterMap valueForKey:contactId];
-                        UInt64 time = [CUtils currentTimeMillis];
-                        if (nil == jitter) {
-                            jitter = [[CEventJitter alloc] initWithTimestamp:time event:event];
-                            jitter.contact = message.sender;
-                            [_jitterMap setValue:jitter forKey:contactId];
-                        }
-                        else {
-                            jitter.timestamp = time;
-                            jitter.event = event;
-                        }
                     }
                     else {
-                        return;
+                        contactId = [NSString stringWithFormat:@"%llu", message.to];
+                        jitter = [_jitterMap valueForKey:contactId];
+                    }
+
+                    UInt64 time = [CUtils currentTimeMillis];
+                    if (nil == jitter) {
+                        jitter = [[CEventJitter alloc] initWithTimestamp:time event:event];
+                        jitter.contact = message.sender;
+                        [_jitterMap setValue:jitter forKey:contactId];
+                    }
+                    else {
+                        jitter.timestamp = time;
+                        jitter.event = event;
                     }
                 }
 

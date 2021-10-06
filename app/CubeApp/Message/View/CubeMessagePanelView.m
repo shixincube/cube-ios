@@ -58,7 +58,7 @@
         UITapGestureRecognizer * tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchTableView:)];
         [self.tableView addGestureRecognizer:tapGR];
 
-//        [self.tableView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+        [self.tableView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     }
 
     return self;
@@ -66,7 +66,7 @@
 
 - (void)dealloc {
 //    [self.menuView dismiss];
-//    [self.tableView removeObserver:self forKeyPath:@"bounds"];
+    [self.tableView removeObserver:self forKeyPath:@"bounds"];
 }
 
 - (void)reset {
@@ -107,13 +107,13 @@
     if (nil == message) {
         return;
     }
-    
+
     NSInteger index = [self.data indexOfObject:message];
-    
+
     if (self.delegate && [self.delegate respondsToSelector:@selector(messagePanelView:didDeleteMessage:)]) {
         [self.delegate messagePanelView:self didDeleteMessage:message];
     }
-    
+
     [self.data removeObject:message];
     [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:animation ? UITableViewRowAnimationAutomatic : UITableViewRowAnimationNone];
 }
@@ -140,6 +140,19 @@
 }
 
 #pragma mark - Event Response
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if (object == self.tableView && [keyPath isEqualToString:@"bounds"]) {
+        // Table View 变小时，消息贴底
+        CGRect oldBounds, newBounds;
+        [change[@"old"] getValue:&oldBounds];
+        [change[@"new"] getValue:&newBounds];
+        CGFloat t = oldBounds.size.height - newBounds.size.height;
+        if (t > 0 && fabs(self.tableView.contentOffset.y + t + newBounds.size.height - self.tableView.contentSize.height) < 1.0) {
+            [self scrollToBottomWithAnimation:NO];
+        }
+    }
+}
 
 - (void)didTouchTableView:(UIGestureRecognizer*)gestureRecognizer {
     if (self.delegate && [self.delegate respondsToSelector:@selector(messagePanelViewDidTouched:)]) {
