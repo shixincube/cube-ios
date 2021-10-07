@@ -399,8 +399,20 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     // TODO
 }
 
+- (void)deleteDraftWithContact:(CContact *)contact {
+    if (![self hasStarted]) {
+        return;
+    }
+
+    [_storage deleteDraft:contact.identity];
+}
+
 - (void)deleteDraft:(CMessageDraft *)draft {
-    
+    if (![self hasStarted]) {
+        return;
+    }
+
+    [_storage deleteDraft:draft.ownerId];
 }
 
 #pragma mark - Private

@@ -48,6 +48,20 @@
  */
 - (void)messageBar:(CubeMessageBar *)messageBar sendText:(NSString *)text;
 
+/*!
+ * @brief 加载草稿。
+ */
+- (void)messageBarLoadDraft:(CubeMessageBar *)messageBar completion:(void (^)(CMessageDraft * draft))completion;
+
+/*!
+ * @brief 保存草稿。
+ */
+- (void)messageBarSaveDraft:(CubeMessageBar *)messageBar draft:(CMessageDraft *)draft;
+
+/*!
+ * @brief 删除草稿。
+ */
+- (void)messageBarDeleteDraft:(CubeMessageBar *)messageBar;
 
 - (void)messageBarStartRecording:(CubeMessageBar *)messageBar;
 

@@ -181,6 +181,37 @@
     [self sendTextMessage:text];
 }
 
+- (void)messageBarLoadDraft:(CubeMessageBar *)messageBar completion:(void (^)(CMessageDraft *))completion {
+    if (self.contact) {
+        [[CEngine sharedInstance].messagingService loadDraftWithContact:self.contact handleSuccess:^(id  _Nullable data) {
+            completion(data);
+        } handleFailure:^(CError * _Nullable error) {
+            completion(nil);
+        }];
+    }
+    else if (self.group) {
+        // TODO
+    }
+}
+
+- (void)messageBarSaveDraft:(CubeMessageBar *)messageBar draft:(CMessageDraft *)draft {
+    if (self.contact) {
+        [[CEngine sharedInstance].messagingService saveDraft:draft];
+    }
+    else if (self.group) {
+        // TODO
+    }
+}
+
+- (void)messageBarDeleteDraft:(CubeMessageBar *)messageBar {
+    if (self.contact) {
+        [[CEngine sharedInstance].messagingService deleteDraftWithContact:self.contact];
+    }
+    else if (self.group) {
+        // TODO
+    }
+}
+
 - (void)messageBarStartRecording:(CubeMessageBar *)messageBar {
     
 }

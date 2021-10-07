@@ -202,6 +202,8 @@
 
 - (void)loadDraftWithGroup:(CGroup *)group handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
+- (void)deleteDraftWithContact:(CContact *)contact;
+
 - (void)deleteDraft:(CMessageDraft *)draft;
 
 
