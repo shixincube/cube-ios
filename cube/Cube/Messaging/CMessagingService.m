@@ -370,12 +370,33 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     return TRUE;
 }
 
-- (void)loadDraftWitchContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
-    
+- (void)loadDraftWithContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    if (![self hasStarted]) {
+        CError * error = [CError errorWithModule:CUBE_MODULE_MESSAGING code:CMessagingServiceStateIllegalOperation];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            handleFailure(error);
+        });
+        return;
+    }
+
+    [_storage readDraft:contact.identity completion:^(CMessageDraft *draft) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            if (nil == draft) {
+                CError * error = [CError errorWithModule:CUBE_MODULE_MESSAGING code:CMessagingServiceStateStorageNoData];
+                handleFailure(error);
+                return;
+            }
+
+            CHook * hook = [self.pluginSystem getHook:CInstantiateHookName];
+            CMessage * compMessage = [hook apply:draft.message];
+            draft.message = compMessage;
+            handleSuccess(draft);
+        });
+    }];
 }
 
-- (void)loadDraftWitchGroup:(CGroup *)group handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
-    
+- (void)loadDraftWithGroup:(CGroup *)group handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    // TODO
 }
 
 - (void)deleteDraft:(CMessageDraft *)draft {

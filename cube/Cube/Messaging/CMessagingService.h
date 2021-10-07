@@ -198,9 +198,9 @@
 
 - (BOOL)saveDraft:(CMessageDraft *)draft;
 
-- (void)loadDraftWitchContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+- (void)loadDraftWithContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
-- (void)loadDraftWitchGroup:(CGroup *)group handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+- (void)loadDraftWithGroup:(CGroup *)group handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 - (void)deleteDraft:(CMessageDraft *)draft;
 
