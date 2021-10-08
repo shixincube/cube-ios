@@ -25,6 +25,24 @@
  */
 
 #import "CubeContactsViewController.h"
+#import "CubeContactsListController.h"
+#import "CubeSearchController.h"
+#import "CubeContactsSearchResultViewController.h"
+
+@interface CubeContactsViewController ()
+
+@property (nonatomic, strong) UITableView * tableView;
+
+@property (nonatomic, strong) CubeContactsListController * listController;
+
+/*!
+ * @brief 页脚显示联系人总数。
+ */
+@property (nonatomic, strong) UILabel * footerLabel;
+
+@property (nonatomic, strong) CubeSearchController * searchController;
+
+@end
 
 @implementation CubeContactsViewController
 
@@ -33,6 +51,77 @@
         [self configTabBarItem:@"联系人" image:@"TabBarContact" imageHL:@"TabBarContactHL"];
     }
     return self;
+}
+
+- (void)loadView {
+    [super loadView];
+
+    [self buildView];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    [self loadData];
+}
+
+#pragma mark - Private
+
+- (void)buildView {
+    self.navigationItem.title = @"联系人";
+
+    @weakify(self);
+
+    self.tableView = self.view.addTableView(101)
+        .backgroundColor([UIColor colorGrayBG])
+        .separatorStyle(UITableViewCellSeparatorStyleNone)
+        .tableHeaderView(self.searchController.searchBar)
+        .tableFooterView(self.footerLabel)
+        .estimatedRowHeight(0).estimatedSectionFooterHeight(0).estimatedSectionHeaderHeight(0)
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        })
+        .view;
+
+    [self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
+    [self.tableView setSectionIndexColor:[UIColor colorBlackForNavBar]];
+
+    self.listController = [[CubeContactsListController alloc] initWithHostView:self.tableView pushAction:^(__kindof UIViewController *viewController) {
+        @strongify(self);
+        PushVC(viewController);
+    }];
+}
+
+- (void)loadData {
+    
+}
+
+#pragma mark - Getters
+
+- (CubeSearchController *)searchController {
+    if (!_searchController) {
+        CubeContactsSearchResultViewController * searchResultVC = [[CubeContactsSearchResultViewController alloc] init];
+        @weakify(self);
+        [searchResultVC setItemSelectedAction:^(CubeContactsSearchResultViewController *searchResultVC, CContact *contactModel) {
+            @strongify(self);
+            [self.searchController setActive:NO];
+//            CubeContactDetailViewController *detailVC = [[CubeContactDetailViewController alloc] initWithUserModel:contactModel];
+//            PushVC(detailVC);
+        }];
+        _searchController = [CubeSearchController controllerWithSearchResultsController:searchResultVC];
+    }
+
+    return _searchController;
+}
+
+- (UILabel *)footerLabel {
+    if (!_footerLabel) {
+        _footerLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50.0f)];
+        [_footerLabel setTextAlignment:NSTextAlignmentCenter];
+        [_footerLabel setFont:[UIFont systemFontOfSize:17.0f]];
+        [_footerLabel setTextColor:[UIColor grayColor]];
+    }
+    return _footerLabel;
 }
 
 @end
