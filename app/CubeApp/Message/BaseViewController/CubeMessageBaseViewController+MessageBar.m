@@ -194,8 +194,10 @@
     }
 }
 
-- (void)messageBarSaveDraft:(CubeMessageBar *)messageBar draft:(CMessageDraft *)draft {
+- (void)messageBarSaveDraft:(CubeMessageBar *)messageBar draftText:(NSString *)draftText {
     if (self.contact) {
+        CHyperTextMessage * message = [[CHyperTextMessage alloc] initWithText:draftText];
+        CMessageDraft * draft = [[CMessageDraft alloc] initWithContact:self.contact message:message];
         [[CEngine sharedInstance].messagingService saveDraft:draft];
     }
     else if (self.group) {

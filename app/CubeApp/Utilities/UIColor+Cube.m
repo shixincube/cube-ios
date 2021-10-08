@@ -46,6 +46,10 @@
     return RGBAColor(160, 160, 160, 1.0);
 }
 
++ (UIColor *)colorTextPlaceholder {
+    return RGBAColor(128, 128, 128, 0.5);
+}
+
 #pragma mark - 灰色
 + (UIColor *)colorGrayBG {
     return RGBAColor(239, 239, 244, 1.0);
@@ -120,6 +124,23 @@
 #pragma mark - 白色
 + (UIColor *)colorWhiteBG {
     return RGBAColor(255, 255, 255, 1.0);
+}
+
+#pragma mark - 暗夜主题色
++ (UIColor *)colorDarkBG {
+    return RGBColor(17, 17, 17);
+}
+
++ (UIColor *)colorDarkTextWhite {
+    return RGBColor(210, 210, 210);
+}
+
++ (UIColor *)colorDarkTextPlaceholder {
+    return RGBAColor(210, 210, 210, 0.5);
+}
+
++ (UIColor *)colorDarkGrayLine {
+    return [UIColor colorWithWhite:1.0 alpha:0.5];
 }
 
 @end

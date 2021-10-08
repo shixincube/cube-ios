@@ -50,8 +50,6 @@
 
 @property (nonatomic, strong) UIButton * moreButton;
 
-@property (nonatomic, strong) NSString * draft;
-
 @end
 
 
@@ -71,8 +69,6 @@
         [self buildMasonry];
 
         self.status = CubeMessageBarStatusInitial;
-
-        self.draft = @"";
     }
     return self;
 }
@@ -207,17 +203,23 @@
 
 - (void)voiceButtonTouchUp:(UIButton *)sender {
     [self.textView resignFirstResponder];
-    
+
     if (self.status == CubeMessageBarStatusVoice) {
         // 转为输入文本
-        if (self.draft.length > 0) {
-            self.textView.text = self.draft;
-            self.draft = @"";
-            [self reloadTextViewWithAnimation:YES];
+        CWeakSelf(self);
+        if (_delegate && [_delegate respondsToSelector:@selector(messageBarLoadDraft:completion:)]) {
+            [_delegate messageBarLoadDraft:weak_self completion:^(CMessageDraft * draft) {
+                if (draft) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        weak_self.textView.text = draft.message.summary;
+                        [weak_self reloadTextViewWithAnimation:YES];
+                    });
+                }
+            }];
         }
 
         if (_delegate && [_delegate respondsToSelector:@selector(messageBar:changeStatusFrom:to:)]) {
-            [_delegate messageBar:self changeStatusFrom:self.status to:CubeMessageBarStatusKeyboard];
+            [_delegate messageBar:weak_self changeStatusFrom:weak_self.status to:CubeMessageBarStatusKeyboard];
         }
         [self.voiceButton setImage:kVoiceImage imageHighlighted:kVoiceImageHL];
         [self.textView becomeFirstResponder];
@@ -226,15 +228,24 @@
         self.status = CubeMessageBarStatusKeyboard;
     }
     else {
+        CWeakSelf(self);
         // 转为语音录制
         if (self.textView.text.length > 0) {
-            self.draft = self.textView.text;
+            NSString * draftText = self.textView.text;
+            if (_delegate && [_delegate respondsToSelector:@selector(messageBarSaveDraft:draftText:)]) {
+                [_delegate messageBarSaveDraft:weak_self draftText:draftText];
+            }
             self.textView.text = @"";
             [self reloadTextViewWithAnimation:YES];
         }
+        else {
+            if (_delegate && [_delegate respondsToSelector:@selector(messageBarDeleteDraft:)]) {
+                [_delegate messageBarDeleteDraft:weak_self];
+            }
+        }
 
         if (_delegate && [_delegate respondsToSelector:@selector(messageBar:changeStatusFrom:to:)]) {
-            [_delegate messageBar:self changeStatusFrom:self.status to:CubeMessageBarStatusVoice];
+            [_delegate messageBar:weak_self changeStatusFrom:weak_self.status to:CubeMessageBarStatusVoice];
         }
         
         if (self.status == CubeMessageBarStatusKeyboard) {

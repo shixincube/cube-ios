@@ -56,7 +56,7 @@
 /*!
  * @brief 保存草稿。
  */
-- (void)messageBarSaveDraft:(CubeMessageBar *)messageBar draft:(CMessageDraft *)draft;
+- (void)messageBarSaveDraft:(CubeMessageBar *)messageBar draftText:(NSString *)draftText;
 
 /*!
  * @brief 删除草稿。

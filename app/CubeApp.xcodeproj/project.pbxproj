@@ -49,6 +49,25 @@
 		C8A83866270AA8620061205F /* CubeMoreKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A83865270AA8620061205F /* CubeMoreKeyboard.m */; };
 		C8A8F20826F9831B00E25046 /* CubeConversationNoNetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */; };
 		C8A8F23F26F9B26300E25046 /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A8F23E26F9B26300E25046 /* Conversation.xcassets */; };
+		C8B4F74A270FDA72003D9005 /* TKThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F722270FDA72003D9005 /* TKThemeManager.m */; };
+		C8B4F74B270FDA72003D9005 /* UIButton+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F724270FDA72003D9005 /* UIButton+TKUpdate.m */; };
+		C8B4F74C270FDA72003D9005 /* UIView+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F728270FDA72003D9005 /* UIView+TKUpdate.m */; };
+		C8B4F74D270FDA72003D9005 /* UISlider+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F729270FDA72003D9005 /* UISlider+TKUpdate.m */; };
+		C8B4F74E270FDA72003D9005 /* UITextView+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F72C270FDA72003D9005 /* UITextView+TKUpdate.m */; };
+		C8B4F74F270FDA72003D9005 /* UILabel+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F72D270FDA72003D9005 /* UILabel+TKUpdate.m */; };
+		C8B4F750270FDA72003D9005 /* UIImageView+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F72E270FDA72003D9005 /* UIImageView+TKUpdate.m */; };
+		C8B4F751270FDA72003D9005 /* CALayer+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F730270FDA72003D9005 /* CALayer+TKUpdate.m */; };
+		C8B4F752270FDA72003D9005 /* UIActivityIndicatorView+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F731270FDA72003D9005 /* UIActivityIndicatorView+TKUpdate.m */; };
+		C8B4F753270FDA72003D9005 /* UITableView+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F732270FDA72003D9005 /* UITableView+TKUpdate.m */; };
+		C8B4F754270FDA72003D9005 /* UITabBar+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F733270FDA72003D9005 /* UITabBar+TKUpdate.m */; };
+		C8B4F755270FDA72003D9005 /* NSObject+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F734270FDA72003D9005 /* NSObject+TKUpdate.m */; };
+		C8B4F756270FDA72003D9005 /* UIStepper+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F737270FDA72003D9005 /* UIStepper+TKUpdate.m */; };
+		C8B4F757270FDA72003D9005 /* UITextField+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F738270FDA72003D9005 /* UITextField+TKUpdate.m */; };
+		C8B4F758270FDA72003D9005 /* UIProgressView+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F739270FDA72003D9005 /* UIProgressView+TKUpdate.m */; };
+		C8B4F759270FDA72003D9005 /* UISwitch+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F73D270FDA72003D9005 /* UISwitch+TKUpdate.m */; };
+		C8B4F75A270FDA72003D9005 /* UIPageControl+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F740270FDA72003D9005 /* UIPageControl+TKUpdate.m */; };
+		C8B4F75B270FDA72003D9005 /* UIWindow+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F747270FDA72003D9005 /* UIWindow+TKUpdate.m */; };
+		C8B4F75C270FDA72003D9005 /* TKThemeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F748270FDA72003D9005 /* TKThemeObject.m */; };
 		C8B6FE8227069C6D002D033A /* Message.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B6FE8127069C6D002D033A /* Message.xcassets */; };
 		C8C81BFD26FC213B00455355 /* CubeConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81BFC26FC213B00455355 /* CubeConversationCell.m */; };
 		C8C81BFF26FC26C200455355 /* UIFont+Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81BFE26FC26C200455355 /* UIFont+Cube.m */; };
@@ -94,8 +113,6 @@
 		C8E31C5B26EF3C3B007B92F1 /* CubeProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E31C5A26EF3C3B007B92F1 /* CubeProfileHeaderCell.m */; };
 		C8E3258D26E0CF95005CA08A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3258C26E0CF95005CA08A /* AppDelegate.m */; };
 		C8E3259026E0CF95005CA08A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3258F26E0CF95005CA08A /* SceneDelegate.m */; };
-		C8E3259326E0CF95005CA08A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3259226E0CF95005CA08A /* ViewController.m */; };
-		C8E3259626E0CF95005CA08A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8E3259426E0CF95005CA08A /* Main.storyboard */; };
 		C8E3259826E0CF98005CA08A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8E3259726E0CF98005CA08A /* Assets.xcassets */; };
 		C8E3259B26E0CF98005CA08A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8E3259926E0CF98005CA08A /* LaunchScreen.storyboard */; };
 		C8E3259E26E0CF98005CA08A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E3259D26E0CF98005CA08A /* main.m */; };
@@ -264,7 +281,6 @@
 		C8A0DA0B26E1D0440032A9D5 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = "/Users/ambrose/Documents/Repositories/Cube3/cube-ios/cube/../libs/cell.xcframework"; sourceTree = "<absolute>"; };
 		C8A0DA0C26E1D0440032A9D5 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = "/Users/ambrose/Documents/Repositories/Cube3/cube-ios/cube/../libs/WebRTC.xcframework"; sourceTree = "<absolute>"; };
 		C8A0DA0D26E1D0440032A9D5 /* libFMDB-IOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libFMDB-IOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8A0DA0E26E1D0440032A9D5 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A0DA3326E1D6B80032A9D5 /* UIView+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		C8A0DA3426E1D6C40032A9D5 /* UIView+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		C8A0DA3626E1D74A0032A9D5 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -278,6 +294,46 @@
 		C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationNoNetCell.m; sourceTree = "<group>"; };
 		C8A8F20926F9832600E25046 /* CubeConversationNoNetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationNoNetCell.h; sourceTree = "<group>"; };
 		C8A8F23E26F9B26300E25046 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
+		C8B4F720270FDA72003D9005 /* TKThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKThemeManager.h; sourceTree = "<group>"; };
+		C8B4F721270FDA72003D9005 /* TKThemeConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKThemeConfig.h; sourceTree = "<group>"; };
+		C8B4F722270FDA72003D9005 /* TKThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKThemeManager.m; sourceTree = "<group>"; };
+		C8B4F724270FDA72003D9005 /* UIButton+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F725270FDA72003D9005 /* UIProgressView+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F726270FDA72003D9005 /* UIStepper+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStepper+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F727270FDA72003D9005 /* UITextField+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F728270FDA72003D9005 /* UIView+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F729270FDA72003D9005 /* UISlider+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISlider+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F72A270FDA72003D9005 /* NSObject+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F72B270FDA72003D9005 /* UISwitch+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F72C270FDA72003D9005 /* UITextView+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F72D270FDA72003D9005 /* UILabel+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F72E270FDA72003D9005 /* UIImageView+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F72F270FDA72003D9005 /* UIPageControl+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPageControl+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F730270FDA72003D9005 /* CALayer+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F731270FDA72003D9005 /* UIActivityIndicatorView+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivityIndicatorView+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F732270FDA72003D9005 /* UITableView+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F733270FDA72003D9005 /* UITabBar+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F734270FDA72003D9005 /* NSObject+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F735270FDA72003D9005 /* UISlider+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISlider+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F736270FDA72003D9005 /* UIView+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F737270FDA72003D9005 /* UIStepper+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStepper+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F738270FDA72003D9005 /* UITextField+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F739270FDA72003D9005 /* UIProgressView+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F73A270FDA72003D9005 /* UIButton+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F73B270FDA72003D9005 /* UILabel+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F73C270FDA72003D9005 /* UITextView+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F73D270FDA72003D9005 /* UISwitch+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F73E270FDA72003D9005 /* UIActivityIndicatorView+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F73F270FDA72003D9005 /* CALayer+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F740270FDA72003D9005 /* UIPageControl+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPageControl+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F741270FDA72003D9005 /* UIImageView+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F742270FDA72003D9005 /* UITabBar+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F743270FDA72003D9005 /* UITableView+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F745270FDA72003D9005 /* TKThemeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKThemeObject.h; sourceTree = "<group>"; };
+		C8B4F746270FDA72003D9005 /* UIWindow+TKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TKUpdate.h"; sourceTree = "<group>"; };
+		C8B4F747270FDA72003D9005 /* UIWindow+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TKUpdate.m"; sourceTree = "<group>"; };
+		C8B4F748270FDA72003D9005 /* TKThemeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKThemeObject.m; sourceTree = "<group>"; };
+		C8B4F749270FDA72003D9005 /* TKThemeManager+privateUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TKThemeManager+privateUpdate.h"; sourceTree = "<group>"; };
 		C8B6FE8127069C6D002D033A /* Message.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Message.xcassets; sourceTree = "<group>"; };
 		C8C81BFB26FC213000455355 /* CubeConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationCell.h; sourceTree = "<group>"; };
 		C8C81BFC26FC213B00455355 /* CubeConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationCell.m; sourceTree = "<group>"; };
@@ -394,9 +450,6 @@
 		C8E3258C26E0CF95005CA08A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C8E3258E26E0CF95005CA08A /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		C8E3258F26E0CF95005CA08A /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		C8E3259126E0CF95005CA08A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C8E3259226E0CF95005CA08A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		C8E3259526E0CF95005CA08A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C8E3259726E0CF98005CA08A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8E3259A26E0CF98005CA08A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8E3259C26E0CF98005CA08A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -658,7 +711,6 @@
 				C8A0DA0B26E1D0440032A9D5 /* cell.xcframework */,
 				C8A0DA0C26E1D0440032A9D5 /* WebRTC.xcframework */,
 				C8A0DA0D26E1D0440032A9D5 /* libFMDB-IOS.a */,
-				C8A0DA0E26E1D0440032A9D5 /* PromiseKit.framework */,
 				C8A0DA0126E1C86F0032A9D5 /* Cube.framework */,
 			);
 			name = Frameworks;
@@ -700,6 +752,77 @@
 				C8A8F20726F9831B00E25046 /* CubeConversationNoNetCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C8B4F71E270FDA72003D9005 /* TKThemeConfig */ = {
+			isa = PBXGroup;
+			children = (
+				C8B4F71F270FDA72003D9005 /* TKTheme */,
+				C8B4F723270FDA72003D9005 /* TKThemeCategory */,
+				C8B4F744270FDA72003D9005 /* TKThemeTools */,
+			);
+			path = TKThemeConfig;
+			sourceTree = "<group>";
+		};
+		C8B4F71F270FDA72003D9005 /* TKTheme */ = {
+			isa = PBXGroup;
+			children = (
+				C8B4F720270FDA72003D9005 /* TKThemeManager.h */,
+				C8B4F721270FDA72003D9005 /* TKThemeConfig.h */,
+				C8B4F722270FDA72003D9005 /* TKThemeManager.m */,
+			);
+			path = TKTheme;
+			sourceTree = "<group>";
+		};
+		C8B4F723270FDA72003D9005 /* TKThemeCategory */ = {
+			isa = PBXGroup;
+			children = (
+				C8B4F724270FDA72003D9005 /* UIButton+TKUpdate.m */,
+				C8B4F725270FDA72003D9005 /* UIProgressView+TKUpdate.h */,
+				C8B4F726270FDA72003D9005 /* UIStepper+TKUpdate.h */,
+				C8B4F727270FDA72003D9005 /* UITextField+TKUpdate.h */,
+				C8B4F728270FDA72003D9005 /* UIView+TKUpdate.m */,
+				C8B4F729270FDA72003D9005 /* UISlider+TKUpdate.m */,
+				C8B4F72A270FDA72003D9005 /* NSObject+TKUpdate.h */,
+				C8B4F72B270FDA72003D9005 /* UISwitch+TKUpdate.h */,
+				C8B4F72C270FDA72003D9005 /* UITextView+TKUpdate.m */,
+				C8B4F72D270FDA72003D9005 /* UILabel+TKUpdate.m */,
+				C8B4F72E270FDA72003D9005 /* UIImageView+TKUpdate.m */,
+				C8B4F72F270FDA72003D9005 /* UIPageControl+TKUpdate.h */,
+				C8B4F730270FDA72003D9005 /* CALayer+TKUpdate.m */,
+				C8B4F731270FDA72003D9005 /* UIActivityIndicatorView+TKUpdate.m */,
+				C8B4F732270FDA72003D9005 /* UITableView+TKUpdate.m */,
+				C8B4F733270FDA72003D9005 /* UITabBar+TKUpdate.m */,
+				C8B4F734270FDA72003D9005 /* NSObject+TKUpdate.m */,
+				C8B4F735270FDA72003D9005 /* UISlider+TKUpdate.h */,
+				C8B4F736270FDA72003D9005 /* UIView+TKUpdate.h */,
+				C8B4F737270FDA72003D9005 /* UIStepper+TKUpdate.m */,
+				C8B4F738270FDA72003D9005 /* UITextField+TKUpdate.m */,
+				C8B4F739270FDA72003D9005 /* UIProgressView+TKUpdate.m */,
+				C8B4F73A270FDA72003D9005 /* UIButton+TKUpdate.h */,
+				C8B4F73B270FDA72003D9005 /* UILabel+TKUpdate.h */,
+				C8B4F73C270FDA72003D9005 /* UITextView+TKUpdate.h */,
+				C8B4F73D270FDA72003D9005 /* UISwitch+TKUpdate.m */,
+				C8B4F73E270FDA72003D9005 /* UIActivityIndicatorView+TKUpdate.h */,
+				C8B4F73F270FDA72003D9005 /* CALayer+TKUpdate.h */,
+				C8B4F740270FDA72003D9005 /* UIPageControl+TKUpdate.m */,
+				C8B4F741270FDA72003D9005 /* UIImageView+TKUpdate.h */,
+				C8B4F742270FDA72003D9005 /* UITabBar+TKUpdate.h */,
+				C8B4F743270FDA72003D9005 /* UITableView+TKUpdate.h */,
+			);
+			path = TKThemeCategory;
+			sourceTree = "<group>";
+		};
+		C8B4F744270FDA72003D9005 /* TKThemeTools */ = {
+			isa = PBXGroup;
+			children = (
+				C8B4F745270FDA72003D9005 /* TKThemeObject.h */,
+				C8B4F746270FDA72003D9005 /* UIWindow+TKUpdate.h */,
+				C8B4F747270FDA72003D9005 /* UIWindow+TKUpdate.m */,
+				C8B4F748270FDA72003D9005 /* TKThemeObject.m */,
+				C8B4F749270FDA72003D9005 /* TKThemeManager+privateUpdate.h */,
+			);
+			path = TKThemeTools;
 			sourceTree = "<group>";
 		};
 		C8C81C1926FC6C6A00455355 /* Message */ = {
@@ -985,11 +1108,8 @@
 				C8E3259C26E0CF98005CA08A /* Info.plist */,
 				C8E3259D26E0CF98005CA08A /* main.m */,
 				C8E3259926E0CF98005CA08A /* LaunchScreen.storyboard */,
-				C8E3259426E0CF95005CA08A /* Main.storyboard */,
 				C8E3258E26E0CF95005CA08A /* SceneDelegate.h */,
 				C8E3258F26E0CF95005CA08A /* SceneDelegate.m */,
-				C8E3259126E0CF95005CA08A /* ViewController.h */,
-				C8E3259226E0CF95005CA08A /* ViewController.m */,
 			);
 			path = CubeApp;
 			sourceTree = "<group>";
@@ -1017,6 +1137,7 @@
 		C8E325AE26E0D9BD005CA08A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8B4F71E270FDA72003D9005 /* TKThemeConfig */,
 				C8D892B326FD52060062E509 /* MJRefresh */,
 				C8E3265526E0DBFF005CA08A /* Masonry */,
 				C80B4FE926E5EA5A00AD90B2 /* SVProgressHUD */,
@@ -1519,7 +1640,6 @@
 				C8A0DA3826E20BFD0032A9D5 /* Images.xcassets in Resources */,
 				C8E3267226E0DBFF005CA08A /* LICENSE in Resources */,
 				C8D8930726FD52060062E509 /* MJRefresh.bundle in Resources */,
-				C8E3259626E0CF95005CA08A /* Main.storyboard in Resources */,
 				C8B6FE8227069C6D002D033A /* Message.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1536,6 +1656,7 @@
 				C8A0DA3526E1D6C40032A9D5 /* UIView+Extensions.m in Sources */,
 				C80B4FE726E5E86B00AD90B2 /* CubeAccountExplorer.m in Sources */,
 				C8A8F20826F9831B00E25046 /* CubeConversationNoNetCell.m in Sources */,
+				C8B4F74A270FDA72003D9005 /* TKThemeManager.m in Sources */,
 				C8E3268226E0E567005CA08A /* UIColor+Cube.m in Sources */,
 				C8D8930E26FD52060062E509 /* MJRefreshAutoStateFooter.m in Sources */,
 				C80B4FF726E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m in Sources */,
@@ -1554,18 +1675,22 @@
 				C8E3264B26E0DAA3005CA08A /* ZZFLEXEditModel.m in Sources */,
 				C8D8930A26FD52060062E509 /* UIView+MJExtension.m in Sources */,
 				C8E3264426E0DAA3005CA08A /* ZZFLEXRequestQueue.m in Sources */,
+				C8B4F74F270FDA72003D9005 /* UILabel+TKUpdate.m in Sources */,
+				C8B4F754270FDA72003D9005 /* UITabBar+TKUpdate.m in Sources */,
 				C8EAB76026EB4A2B0044A085 /* UITabBarItem+TLExtension.m in Sources */,
 				C8D8931D26FD5F160062E509 /* CubeMessagePanelView+Delegate.m in Sources */,
 				C8EFF6C62709400B00CD7625 /* UIButton+Extensions.m in Sources */,
 				C8E3262B26E0DAA3005CA08A /* ZZFLEXAngel.m in Sources */,
 				C8E3262126E0DAA3005CA08A /* ZZFLEXViewModel.m in Sources */,
 				C8FD7EDE26F0981E003FFE98 /* CubeSettingItemBaseCell.m in Sources */,
-				C8E3259326E0CF95005CA08A /* ViewController.m in Sources */,
+				C8B4F75B270FDA72003D9005 /* UIWindow+TKUpdate.m in Sources */,
 				C8E3263F26E0DAA3005CA08A /* UIView+ZZFrame.m in Sources */,
 				C8E3262326E0DAA3005CA08A /* ZZFlexibleLayoutSeperatorCell.m in Sources */,
 				C8E3264526E0DAA3005CA08A /* ZZFLEXTableViewController.m in Sources */,
 				C8EAB76326EB4A2B0044A085 /* TLTabBar.m in Sources */,
+				C8B4F757270FDA72003D9005 /* UITextField+TKUpdate.m in Sources */,
 				C8E3263C26E0DAA3005CA08A /* ZZSwitchChainModel.m in Sources */,
+				C8B4F750270FDA72003D9005 /* UIImageView+TKUpdate.m in Sources */,
 				C8D8930926FD52060062E509 /* NSBundle+MJRefresh.m in Sources */,
 				C8D8930826FD52060062E509 /* UIScrollView+MJExtension.m in Sources */,
 				C84CC1B026E9F2940004A9CB /* CubeAppUtil.m in Sources */,
@@ -1574,6 +1699,7 @@
 				C8E3263726E0DAA3005CA08A /* ZZButtonChainModel.m in Sources */,
 				C8E3262D26E0DAA3005CA08A /* ZZFLEXAngel+Private.m in Sources */,
 				C8D8930B26FD52060062E509 /* MJRefreshBackGifFooter.m in Sources */,
+				C8B4F74C270FDA72003D9005 /* UIView+TKUpdate.m in Sources */,
 				C8EAB74926EB0BF90044A085 /* CubeAccount.m in Sources */,
 				C8EAB76526EB4A2B0044A085 /* UITabBar+TLExtension.m in Sources */,
 				C8E3264326E0DAA3005CA08A /* ZZFLEXRequestModel.m in Sources */,
@@ -1585,6 +1711,7 @@
 				C8E3264026E0DAA3005CA08A /* ZZFlexibleLayoutFlowLayout.m in Sources */,
 				C8E3262526E0DAA3005CA08A /* ZZFlexibleLayoutEmptyHeaderFooterView.m in Sources */,
 				C81A94502700512200FA13E9 /* UIScrollView+Extensions.m in Sources */,
+				C8B4F74D270FDA72003D9005 /* UISlider+TKUpdate.m in Sources */,
 				C8E3267526E0DBFF005CA08A /* MASCompositeConstraint.m in Sources */,
 				C8E3262426E0DAA3005CA08A /* ZZFLEXTableViewHeaderFooterView.m in Sources */,
 				C8E3263526E0DAA3005CA08A /* ZZTableViewChainModel.m in Sources */,
@@ -1601,18 +1728,23 @@
 				C8E3263A26E0DAA3005CA08A /* ZZControlChainModel.m in Sources */,
 				C8E3263926E0DAA3005CA08A /* ZZImageViewChainModel.m in Sources */,
 				C8C81BFF26FC26C200455355 /* UIFont+Cube.m in Sources */,
+				C8B4F759270FDA72003D9005 /* UISwitch+TKUpdate.m in Sources */,
+				C8B4F74E270FDA72003D9005 /* UITextView+TKUpdate.m in Sources */,
 				C8C81C0926FC4F0200455355 /* NSDate+Extensions.m in Sources */,
+				C8B4F751270FDA72003D9005 /* CALayer+TKUpdate.m in Sources */,
 				C8E3262E26E0DAA3005CA08A /* ZZFLEXViewModel+Angel.m in Sources */,
 				C8E31C5726EF37C2007B92F1 /* CubeProfileInfoViewController.m in Sources */,
 				C8E31C5B26EF3C3B007B92F1 /* CubeProfileHeaderCell.m in Sources */,
 				C8E3267626E0DBFF005CA08A /* MASConstraintMaker.m in Sources */,
 				C8E3264D26E0DAA3005CA08A /* ZZFLEXCollectionViewController+EditExtension.m in Sources */,
+				C8B4F75C270FDA72003D9005 /* TKThemeObject.m in Sources */,
 				C89FC0D726F468D30027B2FC /* UIImage+Color.m in Sources */,
 				C8E3258D26E0CF95005CA08A /* AppDelegate.m in Sources */,
 				C8D8931726FD52060062E509 /* MJRefreshHeader.m in Sources */,
 				C8C81C1C26FC6D9F00455355 /* CubeMessageBaseViewController.m in Sources */,
 				C8D8931126FD52060062E509 /* MJRefreshStateTrailer.m in Sources */,
 				C8D6977227082EF500F9C3D8 /* CubeVoiceRecordingButton.m in Sources */,
+				C8B4F752270FDA72003D9005 /* UIActivityIndicatorView+TKUpdate.m in Sources */,
 				C81A944E27001A2F00FA13E9 /* CubeMessageFrame.m in Sources */,
 				C81CD0A426F32702001D469B /* CubeSettingViewController.m in Sources */,
 				C8E3265126E0DB02005CA08A /* CubeViewController.m in Sources */,
@@ -1639,7 +1771,10 @@
 				C8EFF6CD2709D36D00CD7625 /* CubeBaseKeyboard.m in Sources */,
 				C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */,
 				C81CD09A26F2D956001D469B /* CubeSettingItemSwitchCell.m in Sources */,
+				C8B4F755270FDA72003D9005 /* NSObject+TKUpdate.m in Sources */,
+				C8B4F74B270FDA72003D9005 /* UIButton+TKUpdate.m in Sources */,
 				C8CCF97826EC9B1200ED4115 /* CubeTabBarController.m in Sources */,
+				C8B4F756270FDA72003D9005 /* UIStepper+TKUpdate.m in Sources */,
 				C8E3264926E0DAA3005CA08A /* NSMutableAttributedString+ZZFLEX.m in Sources */,
 				C8E3267926E0DBFF005CA08A /* View+MASAdditions.m in Sources */,
 				C8D8931426FD52060062E509 /* MJRefreshStateHeader.m in Sources */,
@@ -1649,10 +1784,13 @@
 				C8D8930626FD52060062E509 /* MJRefreshConfig.m in Sources */,
 				C8D8931826FD52060062E509 /* MJRefreshBackFooter.m in Sources */,
 				C8E3263D26E0DAA3005CA08A /* ZZViewChainModel.m in Sources */,
+				C8B4F75A270FDA72003D9005 /* UIPageControl+TKUpdate.m in Sources */,
 				C8E3267326E0DBFF005CA08A /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				C8E3264C26E0DAA3005CA08A /* ZZFLEXAngel+EditExtension.m in Sources */,
+				C8B4F758270FDA72003D9005 /* UIProgressView+TKUpdate.m in Sources */,
 				C80B4FF626E5EA5A00AD90B2 /* SVProgressHUD.m in Sources */,
 				C8E3262A26E0DAA3005CA08A /* ZZFLEXAngelSectionChainModel.m in Sources */,
+				C8B4F753270FDA72003D9005 /* UITableView+TKUpdate.m in Sources */,
 				C8C81BFD26FC213B00455355 /* CubeConversationCell.m in Sources */,
 				C8D8930F26FD52060062E509 /* MJRefreshAutoGifFooter.m in Sources */,
 				C8E3259E26E0CF98005CA08A /* main.m in Sources */,
@@ -1691,14 +1829,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C8E3259426E0CF95005CA08A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C8E3259526E0CF95005CA08A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C8E3259926E0CF98005CA08A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

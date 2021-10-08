@@ -37,6 +37,8 @@
 + (UIColor *)colorTextGray;
 + (UIColor *)colorTextLightGray;
 
++ (UIColor *)colorTextPlaceholder;
+
 #pragma mark - 灰色
 + (UIColor *)colorGrayBG;           // 浅灰色默认背景
 + (UIColor *)colorGrayCharcoalBG;   // 较深灰色背景（聊天窗口, 朋友圈用）
@@ -68,6 +70,13 @@
 
 #pragma mark - 白色
 + (UIColor *)colorWhiteBG;
+
+
+#pragma mark - 暗夜主题色
++ (UIColor *)colorDarkBG;
++ (UIColor *)colorDarkTextWhite;
++ (UIColor *)colorDarkTextPlaceholder;
++ (UIColor *)colorDarkGrayLine;
 
 @end
 

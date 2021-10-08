@@ -31,6 +31,8 @@
 
 - (void)urgentHandler;
 
+- (void)changeThemeCofingFollowSystem:(BOOL)followSystemTheme;
+
 @end
 
 
@@ -43,6 +45,8 @@
         return YES;
     }
     else {
+        [self changeThemeCofingFollowSystem:YES];
+
         self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
         // 初始化 UI
@@ -52,6 +56,26 @@
         [self urgentHandler];
 
         return YES;
+    }
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    
+}
+
+#pragma mark - Private
+
+- (void)changeThemeCofingFollowSystem:(BOOL)followSystemTheme {
+    if (followSystemTheme) {
+        [TKThemeManager config].followSystemTheme = YES;
+    }
+    else {
+        [TKThemeManager config].followSystemTheme = NO;
+        [TKThemeManager config].themeIndex = 0;
     }
 }
 
@@ -75,7 +99,6 @@
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 }
-
- */
+*/
 
 @end

@@ -31,6 +31,8 @@
 #import "Frameworks/SVProgressHUD/SVProgressHUD.h"
 #import "Frameworks/TLTabBarController/TLTabBarController.h"
 #import "Frameworks/MJRefresh/MJRefresh.h"
+#import "Frameworks/TKThemeConfig/TKTheme/TKThemeManager.h"
+#import "Frameworks/TKThemeConfig/TKTheme/TKThemeConfig.h"
 
 #import <Cube/Cube.h>
 

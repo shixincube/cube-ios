@@ -63,7 +63,7 @@
     [super loadView];
     
     self.statusBarStyle = UIStatusBarStyleDefault;
-    
+
     [self.view addSubview:self.scrollView];
     [self.view addSubview:self.cancelButton];
     [self.scrollView addSubview:self.titleLabel];
@@ -184,7 +184,7 @@
     
     UIView *(^createLine)(void) = ^UIView *() {
         UIView *view = [[UIView alloc] init];
-        [view setBackgroundColor:[UIColor colorGrayLine]];
+        view.tkThemebackgroundColors = @[[UIColor colorGrayLine], [UIColor colorDarkGrayLine]];
         return view;
     };
     
@@ -301,6 +301,7 @@
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] init];
+        _scrollView.tkThemebackgroundColors = @[[UIColor colorGrayBG], [UIColor colorDarkBG]];
     }
 
     return _scrollView;
@@ -326,6 +327,7 @@
             .text(@"使用手机号码注册")
             .font([UIFont systemFontOfSize:28])
             .view;
+        _titleLabel.tkThemetextColors = @[[UIColor blackColor], [UIColor colorDarkTextWhite]];
     }
 
     return _titleLabel;
@@ -337,6 +339,7 @@
            .text(@"国家/地区")
            .font([UIFont systemFontOfSize:17])
            .view;
+        _originTitleLabel.tkThemetextColors = @[[UIColor blackColor], [UIColor colorDarkTextWhite]];
     }
 
     return _originTitleLabel;
@@ -348,6 +351,7 @@
             .text(@"中国")
             .font([UIFont systemFontOfSize:17])
             .view;
+        _originLabel.tkThemetextColors = @[[UIColor blackColor], [UIColor colorDarkTextWhite]];
     }
 
     return _originLabel;
@@ -359,6 +363,7 @@
             .text(@"+86")
             .font([UIFont systemFontOfSize:17])
             .view;
+        _districtNumberLabel.tkThemetextColors = @[[UIColor blackColor], [UIColor colorDarkTextWhite]];
     }
 
     return _districtNumberLabel;
@@ -371,6 +376,20 @@
             .clearButtonMode(UITextFieldViewModeWhileEditing)
             .keyboardType(UIKeyboardTypePhonePad)
             .view;
+        _phoneNumberTextField.tkThemetextColors = @[[UIColor blackColor], [UIColor colorDarkTextWhite]];
+        _phoneNumberTextField.tkThemeChangeBlock = ^(id _Nullable itself, NSUInteger themeIndex) {
+            UITextField * tf = (UITextField *) itself;
+            NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+            attrs[NSFontAttributeName] = [UIFont systemFontOfSize:17];
+            if (0 == themeIndex) {
+                attrs[NSForegroundColorAttributeName] = [UIColor colorTextPlaceholder];
+            }
+            else {
+                attrs[NSForegroundColorAttributeName] = [UIColor colorDarkTextPlaceholder];
+            }
+            NSAttributedString *attStr = [[NSAttributedString alloc] initWithString:@"请填写手机号码" attributes:attrs];
+            tf.attributedPlaceholder = attStr;
+        };
     }
 
     return _phoneNumberTextField;
@@ -382,6 +401,7 @@
             .text(@"密码")
             .font([UIFont systemFontOfSize:17])
             .view;
+        _passwordTitleLabel.tkThemetextColors = @[[UIColor blackColor], [UIColor colorDarkTextWhite]];
     }
 
     return _passwordTitleLabel;
@@ -393,7 +413,22 @@
             .placeholder(@"请填写密码")
             .clearButtonMode(UITextFieldViewModeWhileEditing)
             .view;
-        [_passwordTextField setSecureTextEntry:YES];
+        _passwordTextField.textContentType = UITextContentTypeOneTimeCode;
+        _passwordTextField.secureTextEntry = YES;
+        _passwordTextField.tkThemetextColors = @[[UIColor blackColor], [UIColor colorDarkTextWhite]];
+        _passwordTextField.tkThemeChangeBlock = ^(id _Nullable itself, NSUInteger themeIndex) {
+            UITextField * tf = (UITextField *) itself;
+            NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+            attrs[NSFontAttributeName] = [UIFont systemFontOfSize:17];
+            if (0 == themeIndex) {
+                attrs[NSForegroundColorAttributeName] = [UIColor colorTextPlaceholder];
+            }
+            else {
+                attrs[NSForegroundColorAttributeName] = [UIColor colorDarkTextPlaceholder];
+            }
+            NSAttributedString *attStr = [[NSAttributedString alloc] initWithString:@"请填写密码" attributes:attrs];
+            tf.attributedPlaceholder = attStr;
+        };
     }
 
     return _passwordTextField;
@@ -405,8 +440,9 @@
            .text(@"确认密码")
            .font([UIFont systemFontOfSize:17])
            .view;
+        _repeatPasswordTitleLabel.tkThemetextColors = @[[UIColor blackColor], [UIColor colorDarkTextWhite]];
     }
-    
+
     return _repeatPasswordTitleLabel;
 }
 
@@ -416,7 +452,22 @@
             .placeholder(@"请再填写一次密码")
             .clearButtonMode(UITextFieldViewModeWhileEditing)
             .view;
-        [_repeatPasswordTextField setSecureTextEntry:YES];
+        _repeatPasswordTextField.textContentType = UITextContentTypeOneTimeCode;
+        _repeatPasswordTextField.secureTextEntry = YES;
+        _repeatPasswordTextField.tkThemetextColors = @[[UIColor blackColor], [UIColor colorDarkTextWhite]];
+        _repeatPasswordTextField.tkThemeChangeBlock = ^(id _Nullable itself, NSUInteger themeIndex) {
+            UITextField * tf = (UITextField *) itself;
+            NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+            attrs[NSFontAttributeName] = [UIFont systemFontOfSize:17];
+            if (0 == themeIndex) {
+                attrs[NSForegroundColorAttributeName] = [UIColor colorTextPlaceholder];
+            }
+            else {
+                attrs[NSForegroundColorAttributeName] = [UIColor colorDarkTextPlaceholder];
+            }
+            NSAttributedString *attStr = [[NSAttributedString alloc] initWithString:@"请再填写一次密码" attributes:attrs];
+            tf.attributedPlaceholder = attStr;
+        };
     }
 
     return _repeatPasswordTextField;
