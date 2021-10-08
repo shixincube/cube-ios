@@ -68,6 +68,8 @@
 		C8B4F75A270FDA72003D9005 /* UIPageControl+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F740270FDA72003D9005 /* UIPageControl+TKUpdate.m */; };
 		C8B4F75B270FDA72003D9005 /* UIWindow+TKUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F747270FDA72003D9005 /* UIWindow+TKUpdate.m */; };
 		C8B4F75C270FDA72003D9005 /* TKThemeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F748270FDA72003D9005 /* TKThemeObject.m */; };
+		C8B4F76027102E2B003D9005 /* CubeFilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F75F27102E2B003D9005 /* CubeFilesViewController.m */; };
+		C8B4F76527102F62003D9005 /* CubeContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4F76427102F62003D9005 /* CubeContactsViewController.m */; };
 		C8B6FE8227069C6D002D033A /* Message.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B6FE8127069C6D002D033A /* Message.xcassets */; };
 		C8C81BFD26FC213B00455355 /* CubeConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81BFC26FC213B00455355 /* CubeConversationCell.m */; };
 		C8C81BFF26FC26C200455355 /* UIFont+Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C81BFE26FC26C200455355 /* UIFont+Cube.m */; };
@@ -334,6 +336,10 @@
 		C8B4F747270FDA72003D9005 /* UIWindow+TKUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TKUpdate.m"; sourceTree = "<group>"; };
 		C8B4F748270FDA72003D9005 /* TKThemeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKThemeObject.m; sourceTree = "<group>"; };
 		C8B4F749270FDA72003D9005 /* TKThemeManager+privateUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TKThemeManager+privateUpdate.h"; sourceTree = "<group>"; };
+		C8B4F75F27102E2B003D9005 /* CubeFilesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeFilesViewController.m; sourceTree = "<group>"; };
+		C8B4F76127102E36003D9005 /* CubeFilesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeFilesViewController.h; sourceTree = "<group>"; };
+		C8B4F76327102F53003D9005 /* CubeContactsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeContactsViewController.h; sourceTree = "<group>"; };
+		C8B4F76427102F62003D9005 /* CubeContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeContactsViewController.m; sourceTree = "<group>"; };
 		C8B6FE8127069C6D002D033A /* Message.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Message.xcassets; sourceTree = "<group>"; };
 		C8C81BFB26FC213000455355 /* CubeConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeConversationCell.h; sourceTree = "<group>"; };
 		C8C81BFC26FC213B00455355 /* CubeConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeConversationCell.m; sourceTree = "<group>"; };
@@ -825,6 +831,37 @@
 			path = TKThemeTools;
 			sourceTree = "<group>";
 		};
+		C8B4F75D27102D4A003D9005 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				C8B4F76127102E36003D9005 /* CubeFilesViewController.h */,
+				C8B4F75F27102E2B003D9005 /* CubeFilesViewController.m */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		C8B4F75E27102D5E003D9005 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C8CCF97926ECA3BB00ED4115 /* Conversation */,
+				C8C81C1926FC6C6A00455355 /* Message */,
+				C8B4F75D27102D4A003D9005 /* Files */,
+				C8B4F76227102E9B003D9005 /* Contacts */,
+				C8E31C5226EF2DF9007B92F1 /* Profile */,
+				C89FC0D126F462E60027B2FC /* Search */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C8B4F76227102E9B003D9005 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				C8B4F76327102F53003D9005 /* CubeContactsViewController.h */,
+				C8B4F76427102F62003D9005 /* CubeContactsViewController.m */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
 		C8C81C1926FC6C6A00455355 /* Message */ = {
 			isa = PBXGroup;
 			children = (
@@ -1095,10 +1132,7 @@
 				C8F2A5AA26F4AB2300E17946 /* DataModel */,
 				C8E325A626E0D352005CA08A /* Launcher */,
 				C8E3268726E0F25F005CA08A /* Account */,
-				C8CCF97926ECA3BB00ED4115 /* Conversation */,
-				C8C81C1926FC6C6A00455355 /* Message */,
-				C8E31C5226EF2DF9007B92F1 /* Profile */,
-				C89FC0D126F462E60027B2FC /* Search */,
+				C8B4F75E27102D5E003D9005 /* Modules */,
 				C8E3264F26E0DAD4005CA08A /* Components */,
 				C8E3267F26E0E4EE005CA08A /* Utilities */,
 				C8A0DA3226E1D6940032A9D5 /* Categories */,
@@ -1734,6 +1768,7 @@
 				C8B4F751270FDA72003D9005 /* CALayer+TKUpdate.m in Sources */,
 				C8E3262E26E0DAA3005CA08A /* ZZFLEXViewModel+Angel.m in Sources */,
 				C8E31C5726EF37C2007B92F1 /* CubeProfileInfoViewController.m in Sources */,
+				C8B4F76027102E2B003D9005 /* CubeFilesViewController.m in Sources */,
 				C8E31C5B26EF3C3B007B92F1 /* CubeProfileHeaderCell.m in Sources */,
 				C8E3267626E0DBFF005CA08A /* MASConstraintMaker.m in Sources */,
 				C8E3264D26E0DAA3005CA08A /* ZZFLEXCollectionViewController+EditExtension.m in Sources */,
@@ -1768,6 +1803,7 @@
 				C8E3263126E0DAA3005CA08A /* UIView+ZZFLEX.m in Sources */,
 				C81CD0A026F2F2A9001D469B /* CubeMenuItemCell.m in Sources */,
 				C8E3264226E0DAA3005CA08A /* UIView+ZZSeparator.m in Sources */,
+				C8B4F76527102F62003D9005 /* CubeContactsViewController.m in Sources */,
 				C8EFF6CD2709D36D00CD7625 /* CubeBaseKeyboard.m in Sources */,
 				C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */,
 				C81CD09A26F2D956001D469B /* CubeSettingItemSwitchCell.m in Sources */,

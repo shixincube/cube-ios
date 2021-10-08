@@ -26,6 +26,8 @@
 
 #import "CubeTabBarController.h"
 #import "CubeConversationViewController.h"
+#import "CubeFilesViewController.h"
+#import "CubeContactsViewController.h"
 #import "CubeProfileViewController.h"
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
@@ -52,12 +54,14 @@
         [self.tabBar setTintColor:[UIColor colorThemeBlue]];
 
         CubeConversationViewController * conversationVC = [[CubeConversationViewController alloc] init];
-//        CubeContactsViewController *contactsVC = [[CubeContactsViewController alloc] init];
-//        CubeDiscoverViewController *discoverVC = [[CubeDiscoverViewController alloc] init];
+        CubeFilesViewController * filesVC = [[CubeFilesViewController alloc] init];
+        CubeContactsViewController * contactsVC = [[CubeContactsViewController alloc] init];
         CubeProfileViewController *profileVC = [[CubeProfileViewController alloc] init];
 
         NSArray *data = @[
             [self addNavigationController:conversationVC],
+            [self addNavigationController:filesVC],
+            [self addNavigationController:contactsVC],
             [self addNavigationController:profileVC]
         ];
         [self setViewControllers:data];
