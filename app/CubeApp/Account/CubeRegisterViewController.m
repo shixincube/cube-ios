@@ -296,7 +296,7 @@
     }];
 }
 
-#pragma mark - Getter
+#pragma mark - Getters
 
 - (UIScrollView *)scrollView {
     if (!_scrollView) {

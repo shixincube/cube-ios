@@ -51,8 +51,12 @@ typedef NS_ENUM(NSInteger, CubeAccountButtonTag) {
     UIImage * image = [UIImage imageNamed:@"AccountBG"];
     self.view.addImageView(1).image(image).masonry(^(__kindof UIView *sender, MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);
-        make.edges.left.mas_equalTo(0);
-        make.edges.right.mas_equalTo(0);
+        make.centerX.mas_equalTo(0);
+        CGSize size = SCREEN_SIZE;
+        CGFloat height = size.height + SAFEAREA_INSETS_BOTTOM;
+        CGFloat aspectRatio = image.size.height / height;
+        make.height.mas_equalTo(height);
+        make.width.mas_equalTo(size.width * aspectRatio);
     });
 
     UIButton * (^createButton)(NSString *title, UIColor *bgColor, NSInteger tag) = ^UIButton * (NSString *title, UIColor *bgColor, NSInteger tag) {
