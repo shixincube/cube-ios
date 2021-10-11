@@ -28,6 +28,8 @@
 #define CContactStorage_h
 
 #import "CContact.h"
+#import "CContactZone.h"
+#import "CContactZoneParticipant.h"
 
 @class CContactService;
 
@@ -82,6 +84,16 @@
  * @brief 写入联系人附件数据。
  */
 - (BOOL)writeContactAppendix:(CContactAppendix *)appendix;
+
+/*!
+ * @brief 读取指定名称的联系人分区。
+ */
+- (CContactZone *)readContactZone:(NSString *)zoneName;
+
+/*!
+ * @brief 写入联系人分区数据。
+ */
+- (void)writeContactZone:(CContactZone *)zone;
 
 @end
 

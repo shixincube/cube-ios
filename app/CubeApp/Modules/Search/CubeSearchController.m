@@ -26,7 +26,9 @@
 
 #import "CubeSearchController.h"
 
-@interface CubeSearchController ()
+@interface CubeSearchController () {
+    UIStatusBarStyle lastBarStyle;
+}
 
 - (instancetype)initWithController:(UIViewController<CubeSearchResultsProtocol> *)searchResultsController;
 
@@ -49,13 +51,13 @@
 
         // Search Bar
         [self.searchBar setPlaceholder:@"搜索"];
-        [self.searchBar setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        [self.searchBar setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SEARCHBAR_HEIGHT)];
         [self.searchBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorGrayBG]]];
         [self.searchBar setBarTintColor:[UIColor colorGrayBG]];
         [self.searchBar setTintColor:[UIColor colorThemeBlue]];
         [self.searchBar setDelegate:searchResultsController];
         [self.searchBar setTranslucent:NO];
-        
+
         UITextField * tf = [[self.searchBar.subviews firstObject].subviews lastObject];
         [tf.layer setMasksToBounds:YES];
         [tf.layer setBorderWidth:BORDER_WIDTH_1PX];
@@ -87,12 +89,13 @@
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    if (@available(iOS 13.0, *)) {
-        return [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarStyle;
-    }
-    else {
-        return [UIApplication sharedApplication].statusBarStyle;
-    }
+//    if (@available(iOS 13.0, *)) {
+//        return [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarStyle;
+//    }
+//    else {
+//        return [UIApplication sharedApplication].statusBarStyle;
+//    }
+    return UIStatusBarStyleDefault;
 }
 
 - (BOOL)prefersStatusBarHidden {

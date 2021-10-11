@@ -247,35 +247,131 @@
     return ret;
 }
 
+#pragma mark - # Contact Zone
+
+- (CContactZone *)readContactZone:(NSString *)zoneName {
+    CContactZone * zone = nil;
+
+    @synchronized (self) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `contact_zone` WHERE `name`='%@'", zoneName];
+        FMResultSet * result = [_db executeQuery:sql];
+        if ([result next]) {
+            UInt64 identity = [result unsignedLongLongIntForColumn:@"id"];
+            NSString * name = [result stringForColumn:@"name"];
+            NSString * displayName = [result stringForColumn:@"display_name"];
+            UInt64 timestamp = [result unsignedLongLongIntForColumn:@"timestamp"];
+            CContactZoneState state = [result intForColumn:@"state"];
+            // 实例化分区
+            zone = [[CContactZone alloc] initWithId:identity name:name displayName:displayName timestamp:timestamp state:state];
+        }
+
+        [result close];
+
+        if (nil == zone) {
+            return nil;
+        }
+
+        sql = [NSString stringWithFormat:@"SELECT * FROM `contact_zone_participant` WHERE `contact_zone_id`=%llu", zone.identity];
+        FMResultSet * partResult = [_db executeQuery:sql];
+        while ([partResult next]) {
+            UInt64 contactId = [partResult unsignedLongLongIntForColumn:@"contact_id"];
+            CContactZoneParticipantState state = [partResult intForColumn:@"state"];
+            NSString * postscript = [partResult stringForColumn:@"postscript"];
+
+            CContactZoneParticipant * participant = [[CContactZoneParticipant alloc] initWithContactId:contactId state:state postscript:postscript];
+            [zone addContact:participant];
+        }
+
+        [partResult close];
+    }
+
+    return zone;
+}
+
+- (void)writeContactZone:(CContactZone *)zone {
+    @synchronized (self) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT `id` FROM `contact_zone` WHERE `name`='%@'", zone.name];
+        FMResultSet * result = [_db executeQuery:sql];
+        if ([result next]) {
+            [result close];
+
+            // 已存在，重置参与人数据，删除已存在数据
+            sql = [NSString stringWithFormat:@"DELETE FROM `contact_zone_participant` WHERE `contact_zone_id`=%llu", zone.identity];
+            [_db executeUpdate:sql];
+
+            // 更新数据
+            sql = [NSString stringWithFormat:@"UPDATE `contact_zone` SET `display_name`='%@', `state`=%d, `timestamp`=%llu", zone.displayName, zone.state, zone.timestamp];
+            [_db executeUpdate:sql];
+        }
+        else {
+            [result close];
+
+            // 不存在，写入
+            sql = @"INSERT INTO `contact_zone` (`id`,`name`,`display_name`,`state`,`timestamp`) VALUES (?,?,?,?,?)";
+            [_db executeUpdate:sql,
+                [NSNumber numberWithUnsignedLongLong:zone.identity],
+                zone.name,
+                zone.displayName,
+                [NSNumber numberWithInt:zone.state],
+                [NSNumber numberWithUnsignedLongLong:zone.timestamp]
+            ];
+        }
+
+        // 写入参与人数据
+        NSNumber * zoneId = [NSNumber numberWithUnsignedLongLong:zone.identity];
+        NSNumber * timestamp = [NSNumber numberWithUnsignedLongLong:zone.timestamp];
+        for (CContactZoneParticipant * participant in zone.participants) {
+            NSString * postscript = (nil != participant.postscript) ? participant.postscript : @"";
+
+            sql = @"INSERT INTO `contact_zone_participant` (`contact_zone_id`,`contact_id`,`state`,`timestamp`,`postscript`) VALUES (?,?,?,?,?)";
+            [_db executeUpdate:sql,
+                zoneId,
+                [NSNumber numberWithUnsignedLongLong:participant.contactId],
+                [NSNumber numberWithInt:participant.state],
+                timestamp,
+                postscript
+            ];
+        }
+    }
+}
+
 #pragma mark - Private
 
 - (void)execSelfChecking {
     // 联系人表
     NSString * sql = @"CREATE TABLE IF NOT EXISTS `contact` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `id` BIGINT, `name` TEXT, `context` TEXT, `timestamp` BIGINT)";
-
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `contact` table OK");
     }
 
     // 群组表
     sql = @"CREATE TABLE IF NOT EXISTS `group` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `id` BIGINT, `name` TEXT, `owner` TEXT, `tag` TEXT, `creation` BIGINT, `last_active` BIGINT, `state` INTEGER, `context` TEXT)";
-
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `group` table OK");
     }
 
     // 群成员表
     sql = @"CREATE TABLE IF NOT EXISTS `group_member` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `group` BIGINT, `contact_id` BIGINT, `contact_name` TEXT, `contact_context` TEXT)";
-
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `group_member` table OK");
     }
-    
+
     // 附录表
     sql = @"CREATE TABLE IF NOT EXISTS `appendix` (`id` BIGINT PRIMARY KEY, `data` TEXT)";
-    
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `appendix` table OK");
+    }
+
+    // 联系人分区
+    sql = @"CREATE TABLE IF NOT EXISTS `contact_zone` (`id` BIGINT PRIMARY KEY, `name` TEXT, `display_name` TEXT, `state` INTEGER, `timestamp` BIGINT)";
+    if ([_db executeUpdate:sql]) {
+        NSLog(@"CContactStorage#execSelfChecking : `contact_zone` table OK");
+    }
+
+    // 联系人分区参与者
+    sql = @"CREATE TABLE IF NOT EXISTS `contact_zone_participant` (`contact_zone_id` BIGINT, `contact_id` BIGINT, `state` INTEGER, `timestamp` BIGINT, `postscript` TEXT)";
+    if ([_db executeUpdate:sql]) {
+        NSLog(@"CContactStorage#execSelfChecking : `contact_zone_participant` table OK");
     }
 }
 

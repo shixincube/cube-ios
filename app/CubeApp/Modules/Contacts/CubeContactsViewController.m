@@ -28,6 +28,7 @@
 #import "CubeContactsListController.h"
 #import "CubeSearchController.h"
 #import "CubeContactsSearchResultViewController.h"
+#import "CubeContactsHelper.h"
 
 @interface CubeContactsViewController ()
 
@@ -93,7 +94,11 @@
 }
 
 - (void)loadData {
-    
+    [self.listController resetListWithContactsData:[CubeContactsHelper sharedInstance].groupedContactsData sectionHeaders:[CubeContactsHelper sharedInstance].sectionHeaders];
+    self.footerLabel.text = [NSString stringWithFormat:@"%ld %@",
+                             [CubeContactsHelper sharedInstance].contactsCount,
+                             @"位联系人"];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Getters

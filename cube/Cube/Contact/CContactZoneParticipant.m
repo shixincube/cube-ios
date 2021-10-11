@@ -24,57 +24,26 @@
  * SOFTWARE.
  */
 
-#ifndef CContactZone_h
-#define CContactZone_h
+#import "CContactZoneParticipant.h"
 
-#import "CJSONable.h"
+@implementation CContactZoneParticipant
 
-@class CContact;
-@class CContactZoneParticipant;
+- (instancetype)initWithJSON:(NSDictionary *)json {
+    if (self = [super init]) {
+        _contactId = [[json valueForKey:@"id"] unsignedLongLongValue];
+        _state = [[json valueForKey:@"state"] intValue];
+        _postscript = [json valueForKey:@"postscript"];
+    }
+    return self;
+}
 
-/*!
- * @brief 联系人分区状态。
- */
-typedef enum _CContactZoneState {
-
-    /*!
-     * 正常状态。
-     */
-    CContactZoneStateNormal = 0,
-
-    /*!
-     * 已移除。
-     */
-    CContactZoneStateDeleted = 1
-
-} CContactZoneState;
-
-
-/*!
- * @brief 联系人分区数据。
- */
-@interface CContactZone : CJSONable
-
-@property (nonatomic, assign, readonly) UInt64 identity;
-
-@property (nonatomic, strong, readonly) NSString * name;
-
-@property (nonatomic, strong, readonly) NSString * displayName;
-
-@property (nonatomic, assign, readonly) UInt64 timestamp;
-
-@property (nonatomic, assign, readonly) CContactZoneState state;
-
-@property (nonatomic, readonly) NSArray<__kindof CContactZoneParticipant *> * participants;
-
-- (instancetype)initWithJSON:(NSDictionary *)json;
-
-- (instancetype)initWithId:(UInt64)identity name:(NSString *)name displayName:(NSString *)displayName timestamp:(UInt64)timestamp state:(CContactZoneState)state;
-
-- (BOOL)addContact:(CContactZoneParticipant *)participant;
-
-- (void)matchContact:(CContact *)contact;
+- (instancetype)initWithContactId:(UInt64)contactId state:(CContactZoneParticipantState)state postscript:(NSString *)postscript {
+    if (self = [super init]) {
+        _contactId = contactId;
+        _state = state;
+        _postscript = postscript;
+    }
+    return self;
+}
 
 @end
-
-#endif /* CContactZone_h */

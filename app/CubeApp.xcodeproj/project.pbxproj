@@ -14,6 +14,7 @@
 		C80B4FF726E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FF126E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.m */; };
 		C80B4FF826E5EA5A00AD90B2 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C80B4FF226E5EA5A00AD90B2 /* SVProgressHUD.bundle */; };
 		C80B4FFB26E5EADB00AD90B2 /* CubeUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FFA26E5EADB00AD90B2 /* CubeUIUtility.m */; };
+		C80E825027143176008A996A /* CubeContactsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C80E824F27143176008A996A /* CubeContactsHelper.m */; };
 		C81A944E27001A2F00FA13E9 /* CubeMessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C81A944D27001A2F00FA13E9 /* CubeMessageFrame.m */; };
 		C81A94502700512200FA13E9 /* UIScrollView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C81A944F2700512200FA13E9 /* UIScrollView+Extensions.m */; };
 		C81A945427005C6900FA13E9 /* CubeMessageBaseViewController+EventDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C81A945327005C6900FA13E9 /* CubeMessageBaseViewController+EventDelegate.m */; };
@@ -239,6 +240,8 @@
 		C80B4FF326E5EA5A00AD90B2 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		C80B4FF926E5EACE00AD90B2 /* CubeUIUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeUIUtility.h; sourceTree = "<group>"; };
 		C80B4FFA26E5EADB00AD90B2 /* CubeUIUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeUIUtility.m; sourceTree = "<group>"; };
+		C80E824E27143169008A996A /* CubeContactsHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeContactsHelper.h; sourceTree = "<group>"; };
+		C80E824F27143176008A996A /* CubeContactsHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeContactsHelper.m; sourceTree = "<group>"; };
 		C81A944C27001A2400FA13E9 /* CubeMessageFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeMessageFrame.h; sourceTree = "<group>"; };
 		C81A944D27001A2F00FA13E9 /* CubeMessageFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeMessageFrame.m; sourceTree = "<group>"; };
 		C81A944F2700512200FA13E9 /* UIScrollView+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Extensions.m"; sourceTree = "<group>"; };
@@ -1522,10 +1525,6 @@
 		C8E3268726E0F25F005CA08A /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				C80B4FE826E5E87E00AD90B2 /* CubeAccountExplorer.h */,
-				C80B4FE626E5E86B00AD90B2 /* CubeAccountExplorer.m */,
-				C8EAB74D26EB46BA0044A085 /* CubeAccountHelper.h */,
-				C8EAB74B26EB46B10044A085 /* CubeAccountHelper.m */,
 				C8E3268826E0F293005CA08A /* CubeAccountViewController.h */,
 				C8E3268926E0F29E005CA08A /* CubeAccountViewController.m */,
 				C8A0DA3926E2252F0032A9D5 /* CubeLoginViewController.h */,
@@ -1614,6 +1613,12 @@
 			children = (
 				C8EAB74726EB0BEA0044A085 /* CubeAccount.h */,
 				C8EAB74826EB0BF90044A085 /* CubeAccount.m */,
+				C80B4FE826E5E87E00AD90B2 /* CubeAccountExplorer.h */,
+				C80B4FE626E5E86B00AD90B2 /* CubeAccountExplorer.m */,
+				C8EAB74D26EB46BA0044A085 /* CubeAccountHelper.h */,
+				C8EAB74B26EB46B10044A085 /* CubeAccountHelper.m */,
+				C80E824E27143169008A996A /* CubeContactsHelper.h */,
+				C80E824F27143176008A996A /* CubeContactsHelper.m */,
 				C8B4F7692710401A003D9005 /* CubeContactsItemModel.h */,
 				C8B4F76A27104025003D9005 /* CubeContactsItemModel.m */,
 				C8F2A5AD26F4ABE700E17946 /* CubeConversation.h */,
@@ -1807,6 +1812,7 @@
 				C8B4F74E270FDA72003D9005 /* UITextView+TKUpdate.m in Sources */,
 				C8C81C0926FC4F0200455355 /* NSDate+Extensions.m in Sources */,
 				C8B4F751270FDA72003D9005 /* CALayer+TKUpdate.m in Sources */,
+				C80E825027143176008A996A /* CubeContactsHelper.m in Sources */,
 				C8B4F7772710577F003D9005 /* CubeContactsHeaderView.m in Sources */,
 				C8E3262E26E0DAA3005CA08A /* ZZFLEXViewModel+Angel.m in Sources */,
 				C8E31C5726EF37C2007B92F1 /* CubeProfileInfoViewController.m in Sources */,

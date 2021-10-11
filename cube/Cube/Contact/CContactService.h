@@ -128,8 +128,6 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  */
 - (void)modifyContactName:(CContact *)contact newName:(NSString *)name;
 
-//- (void)getContactZone:(NSString *)zoneName handleSuccess
-
 /*!
  * @brief 获取联系人的附录。
  * @param contact 指定联系人。
@@ -153,6 +151,14 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  * @param handler 获取到数据后的回调函数。
  */
 - (void)listGroups:(UInt64)beginning ending:(UInt64)ending handler:(void(^)(NSArray *))handler;
+
+/*!
+ * @brief 获取指定名称的联系人分区。
+ * @param zoneName 指定分区名称。
+ * @param handleSuccess 操作成功回调。
+ * @param handleFailure 操作失败回调。
+ */
+- (void)getContactZone:(NSString *)zoneName handleSuccess:(void (^)(CContactZone * zone))handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
  * @private

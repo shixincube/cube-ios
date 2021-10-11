@@ -74,6 +74,7 @@
 
 #pragma mark - 暗夜主题色
 + (UIColor *)colorDarkBG;
++ (UIColor *)colorDarkBlack;
 + (UIColor *)colorDarkTextWhite;
 + (UIColor *)colorDarkTextPlaceholder;
 + (UIColor *)colorDarkGrayLine;

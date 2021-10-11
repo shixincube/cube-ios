@@ -40,6 +40,7 @@
 #import "CDevice.h"
 #import "CGroup.h"
 #import "CContactZone.h"
+#import "CContactZoneParticipant.h"
 #import "CContactAppendix.h"
 #import "CGroupAppendix.h"
 
@@ -278,10 +279,6 @@
         return;
     }
 
-
-//    NSMutableDictionary * packetData = [[NSMutableDictionary alloc] init];
-//    [packetData setValue:[NSNumber numberWithUnsignedLongLong:contactId] forKey:@"id"];
-//    [packetData setValue:self.kernel.authToken.domain forKey:@"domain"];
     NSDictionary * packetData = @{
         @"id" : [NSNumber numberWithUnsignedLongLong:contactId],
         @"domain" : self.kernel.authToken.domain
@@ -367,6 +364,92 @@
     handler(list);
 }
 
+- (void)getContactZone:(NSString *)zoneName handleSuccess:(void (^)(CContactZone *))handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    // 从数据库里读取
+    __block CContactZone * zone = [_storage readContactZone:zoneName];
+    if (nil != zone) {
+        __block NSUInteger count = zone.participants.count;
+
+        for (CContactZoneParticipant * participant in zone.participants) {
+            [self getContact:participant.contactId handleSuccess:^(CContact *contact) {
+                // 匹配到参与人
+                [zone matchContact:contact];
+
+                --count;
+
+                if (count == 0) {
+                    handleSuccess(zone);
+                }
+            } handleFailure:^(CError * _Nullable error) {
+                --count;
+
+                if (count == 0) {
+                    handleSuccess(zone);
+                }
+            }];
+        }
+
+        // 尝试刷新数据
+        [self refreshContactZone:zone];
+
+        return;
+    }
+
+    // 数据库没有数据，从服务器获取
+    NSDictionary * data = @{
+        @"name" : zoneName
+    };
+    CPacket * request = [[CPacket alloc] initWithName:CUBE_CONTACT_GETCONTACTZONE andData:data];
+    // 发送请求
+    [self.pipeline send:CUBE_MODULE_CONTACT withPacket:request handleResponse:^(CPacket *packet) {
+        if (packet.state.code != CStateOk) {
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:packet.state.code];
+            dispatch_async(self->_threadQueue, ^{
+                handleFailure(error);
+            });
+            return;
+        }
+
+        int stateCode = [packet extractStateCode];
+        if (stateCode != CContactServiceStateOk) {
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:stateCode];
+            dispatch_async(self->_threadQueue, ^{
+                handleFailure(error);
+            });
+            return;
+        }
+
+        zone = [[CContactZone alloc] initWithJSON:[packet extractData]];
+
+        dispatch_queue_t queue = dispatch_queue_create("cube.contact.zone.update", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_async(queue, ^{
+            // 写入数据库
+            [self->_storage writeContactZone:zone];
+
+            __block NSUInteger count = zone.participants.count;
+
+            for (CContactZoneParticipant * participant in zone.participants) {
+                [self getContact:participant.contactId handleSuccess:^(CContact *contact) {
+                    // 匹配到参与人
+                    [zone matchContact:contact];
+
+                    --count;
+
+                    if (count == 0) {
+                        handleSuccess(zone);
+                    }
+                } handleFailure:^(CError * _Nullable error) {
+                    --count;
+
+                    if (count == 0) {
+                        handleSuccess(zone);
+                    }
+                }];
+            }
+        });
+    }];
+}
+
 #pragma mark - Private
 
 - (void)waitReady:(void (^)(BOOL timeout))handler {
@@ -399,6 +482,10 @@
 
     CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSignIn data:self.owner];
     [self notifyObservers:event];
+}
+
+- (void)refreshContactZone:(CContactZone *)zone {
+    
 }
 
 @end

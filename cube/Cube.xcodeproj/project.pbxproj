@@ -20,11 +20,13 @@
 		C80A209126D7379600255B11 /* CMessageState.h in Headers */ = {isa = PBXBuildFile; fileRef = C80A209026D7379600255B11 /* CMessageState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C80A209526D7390200255B11 /* CMessagingServiceState.h in Headers */ = {isa = PBXBuildFile; fileRef = C80A209426D7390200255B11 /* CMessagingServiceState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C80A209926D7410600255B11 /* CMessagingStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C80A209826D7410600255B11 /* CMessagingStorage.m */; };
+		C80E824B271407D6008A996A /* CContactZoneParticipant.m in Sources */ = {isa = PBXBuildFile; fileRef = C80E824A271407D6008A996A /* CContactZoneParticipant.m */; };
+		C80E824D27140812008A996A /* CContactZoneParticipant.h in Headers */ = {isa = PBXBuildFile; fileRef = C80E824C2714080E008A996A /* CContactZoneParticipant.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C817FE0726C12B6F0080D697 /* CContactAppendix.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE0626C12B6F0080D697 /* CContactAppendix.h */; };
 		C817FE0A26C12B7C0080D697 /* CContactAppendix.m in Sources */ = {isa = PBXBuildFile; fileRef = C817FE0926C12B7C0080D697 /* CContactAppendix.m */; };
 		C817FE0E26C12C460080D697 /* CContactEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE0D26C12C460080D697 /* CContactEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1126C14E930080D697 /* CContactServiceState.h */; };
-		C817FE1626C153250080D697 /* CContactZone.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1526C153250080D697 /* CContactZone.h */; };
+		C817FE1626C153250080D697 /* CContactZone.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1526C153250080D697 /* CContactZone.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C817FE1A26C153320080D697 /* CContactZone.m in Sources */ = {isa = PBXBuildFile; fileRef = C817FE1926C153320080D697 /* CContactZone.m */; };
 		C81A945F2700733200FA13E9 /* CPipelineStateDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C81A945E2700731B00FA13E9 /* CPipelineStateDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C81A94732700762B00FA13E9 /* CKernel+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C81A94722700762B00FA13E9 /* CKernel+Delegate.m */; };
@@ -153,6 +155,8 @@
 		C80A209426D7390200255B11 /* CMessagingServiceState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessagingServiceState.h; sourceTree = "<group>"; };
 		C80A209726D740F800255B11 /* CMessagingStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessagingStorage.h; sourceTree = "<group>"; };
 		C80A209826D7410600255B11 /* CMessagingStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMessagingStorage.m; sourceTree = "<group>"; };
+		C80E824A271407D6008A996A /* CContactZoneParticipant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactZoneParticipant.m; sourceTree = "<group>"; };
+		C80E824C2714080E008A996A /* CContactZoneParticipant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactZoneParticipant.h; sourceTree = "<group>"; };
 		C817FE0626C12B6F0080D697 /* CContactAppendix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactAppendix.h; sourceTree = "<group>"; };
 		C817FE0926C12B7C0080D697 /* CContactAppendix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContactAppendix.m; sourceTree = "<group>"; };
 		C817FE0D26C12C460080D697 /* CContactEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactEvent.h; sourceTree = "<group>"; };
@@ -379,6 +383,8 @@
 				C8C384DC26BD0306009CF806 /* CContactStorage.m */,
 				C817FE1526C153250080D697 /* CContactZone.h */,
 				C817FE1926C153320080D697 /* CContactZone.m */,
+				C80E824C2714080E008A996A /* CContactZoneParticipant.h */,
+				C80E824A271407D6008A996A /* CContactZoneParticipant.m */,
 				C8400AAE26C1F99900C8FF48 /* CDevice.h */,
 				C8400AAB26C1F98B00C8FF48 /* CDevice.m */,
 				C8400AB226C20DB600C8FF48 /* CGroup.h */,
@@ -540,6 +546,7 @@
 				C817FE1626C153250080D697 /* CContactZone.h in Headers */,
 				C817FE0726C12B6F0080D697 /* CContactAppendix.h in Headers */,
 				C8D7557626EDB14B00B7368E /* CModule.h in Headers */,
+				C80E824D27140812008A996A /* CContactZoneParticipant.h in Headers */,
 				C8077E7926F18C9200E36265 /* CAbstractContact.h in Headers */,
 				C8400ABD26C20EBB00C8FF48 /* CGroupAppendix.h in Headers */,
 				C81A945F2700733200FA13E9 /* CPipelineStateDelegate.h in Headers */,
@@ -692,6 +699,7 @@
 				C8BE510E26D87DCE00935149 /* CMessagingObserver.m in Sources */,
 				C8400ABA26C20EAB00C8FF48 /* CGroupAppendix.m in Sources */,
 				C8BE510926D8754400935149 /* CMessagingService+Core.m in Sources */,
+				C80E824B271407D6008A996A /* CContactZoneParticipant.m in Sources */,
 				C80A209926D7410600255B11 /* CMessagingStorage.m in Sources */,
 				C8077E3F26F1899F00E36265 /* DeviceUtil.m in Sources */,
 				C8BE511626D896A500935149 /* CMessagingEvent.m in Sources */,

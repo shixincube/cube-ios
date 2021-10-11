@@ -35,6 +35,8 @@
 #import <Cube/CSelf.h>
 #import <Cube/CContact.h>
 #import <Cube/CDevice.h>
+#import <Cube/CContactZone.h>
+#import <Cube/CContactZoneParticipant.h>
 
 #import <Cube/CMessagingService.h>
 #import <Cube/CMessage.h>

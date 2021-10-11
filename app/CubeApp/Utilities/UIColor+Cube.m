@@ -128,6 +128,10 @@
 
 #pragma mark - 暗夜主题色
 + (UIColor *)colorDarkBG {
+    return RGBColor(25, 25, 25);
+}
+
++ (UIColor *)colorDarkBlack {
     return RGBColor(17, 17, 17);
 }
 

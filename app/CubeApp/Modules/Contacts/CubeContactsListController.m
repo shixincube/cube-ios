@@ -55,7 +55,10 @@
     CubeContactsItemModel * groupModel = [CubeContactsItemModel modelWithTag:CubeContactsCellTypeNew imageName:@"ContactsGroup" imageURL:nil title:@"群组" subTitle:nil customData:nil];
     CubeContactsItemModel * tagModel = [CubeContactsItemModel modelWithTag:CubeContactsCellTypeNew imageName:@"ContactsTag" imageURL:nil title:@"标签" subTitle:nil customData:nil];
     NSArray * funcationData = @[newContactModel, groupModel, tagModel];
-    self.addCells([CubeContactsItemCell class]).toSection(CubeContactsSectionTypeFuncation).withDataModelArray(funcationData).selectedAction(^ (CubeContactsItemModel * model) {
+    self.addCells([CubeContactsItemCell class])
+        .toSection(CubeContactsSectionTypeFuncation)
+        .withDataModelArray(funcationData)
+        .selectedAction(^ (CubeContactsItemModel * model) {
         @strongify(self);
         if (model.tag == CubeContactsCellTypeNew) {
             
@@ -67,6 +70,12 @@
             
         }
     });
+}
+
+#pragma mark - Delegate
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return self.sectionHeaders;
 }
 
 @end

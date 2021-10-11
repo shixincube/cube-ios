@@ -63,6 +63,16 @@
 #define CUBE_CONTACT_GETCONTACTZONE @"getContactZone"
 
 /*!
+ * @brief 创建联系人分区。
+ */
+#define CUBE_CONTACT_CREATECONTACTZONE @"createContactZone"
+
+/*!
+ * @brief 删除联系人分区。
+ */
+#define CUBE_CONTACT_DELETECONTACTZONE @"deleteContactZone"
+
+/*!
  * @brief 联系人是否在分区。
  */
 #define CUBE_CONTACT_CONTAINSCONTACTINZONE @"containsContactInZone"

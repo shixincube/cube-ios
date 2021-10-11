@@ -24,57 +24,25 @@
  * SOFTWARE.
  */
 
-#ifndef CContactZone_h
-#define CContactZone_h
+#ifndef CubeContactsHelper_h
+#define CubeContactsHelper_h
 
-#import "CJSONable.h"
+#import <Foundation/Foundation.h>
 
-@class CContact;
-@class CContactZoneParticipant;
+@interface CubeContactsHelper : NSObject
 
-/*!
- * @brief 联系人分区状态。
- */
-typedef enum _CContactZoneState {
+@property (nonatomic, strong) NSMutableArray * groupedContactsData;
 
-    /*!
-     * 正常状态。
-     */
-    CContactZoneStateNormal = 0,
+@property (nonatomic, strong) NSMutableArray * sectionHeaders;
 
-    /*!
-     * 已移除。
-     */
-    CContactZoneStateDeleted = 1
+@property (nonatomic, assign, readonly) NSInteger contactsCount;
 
-} CContactZoneState;
++ (CubeContactsHelper *)sharedInstance;
 
+- (instancetype)init;
 
-/*!
- * @brief 联系人分区数据。
- */
-@interface CContactZone : CJSONable
-
-@property (nonatomic, assign, readonly) UInt64 identity;
-
-@property (nonatomic, strong, readonly) NSString * name;
-
-@property (nonatomic, strong, readonly) NSString * displayName;
-
-@property (nonatomic, assign, readonly) UInt64 timestamp;
-
-@property (nonatomic, assign, readonly) CContactZoneState state;
-
-@property (nonatomic, readonly) NSArray<__kindof CContactZoneParticipant *> * participants;
-
-- (instancetype)initWithJSON:(NSDictionary *)json;
-
-- (instancetype)initWithId:(UInt64)identity name:(NSString *)name displayName:(NSString *)displayName timestamp:(UInt64)timestamp state:(CContactZoneState)state;
-
-- (BOOL)addContact:(CContactZoneParticipant *)participant;
-
-- (void)matchContact:(CContact *)contact;
+- (void)resetDefaultContactsList;
 
 @end
 
-#endif /* CContactZone_h */
+#endif /* CubeContactsHelper_h */
