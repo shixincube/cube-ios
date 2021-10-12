@@ -31,6 +31,9 @@
 
 @class CSubject;
 
+/*!
+ * @brief 观察者事件。
+ */
 @interface CObservableEvent : NSObject
 
 /*! @brief 事件名称。 */

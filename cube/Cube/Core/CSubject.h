@@ -32,6 +32,9 @@
 @class CObserver;
 @class CObservableEvent;
 
+/*!
+ * @brief 可被观察的主题。
+ */
 @interface CSubject : NSObject
 
 /*!
