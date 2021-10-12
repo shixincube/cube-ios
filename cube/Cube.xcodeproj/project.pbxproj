@@ -25,7 +25,7 @@
 		C817FE0726C12B6F0080D697 /* CContactAppendix.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE0626C12B6F0080D697 /* CContactAppendix.h */; };
 		C817FE0A26C12B7C0080D697 /* CContactAppendix.m in Sources */ = {isa = PBXBuildFile; fileRef = C817FE0926C12B7C0080D697 /* CContactAppendix.m */; };
 		C817FE0E26C12C460080D697 /* CContactEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE0D26C12C460080D697 /* CContactEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1126C14E930080D697 /* CContactServiceState.h */; };
+		C817FE1226C14E930080D697 /* CContactServiceState.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1126C14E930080D697 /* CContactServiceState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C817FE1626C153250080D697 /* CContactZone.h in Headers */ = {isa = PBXBuildFile; fileRef = C817FE1526C153250080D697 /* CContactZone.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C817FE1A26C153320080D697 /* CContactZone.m in Sources */ = {isa = PBXBuildFile; fileRef = C817FE1926C153320080D697 /* CContactZone.m */; };
 		C81A945F2700733200FA13E9 /* CPipelineStateDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C81A945E2700731B00FA13E9 /* CPipelineStateDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +33,7 @@
 		C82DB8BA26B39B0500813378 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82DB8B926B39B0500813378 /* FMDB.framework */; };
 		C82DB8BB26B39B0500813378 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C82DB8B926B39B0500813378 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C82DB8BE26B3AE7900813378 /* CAuthStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C82DB8BD26B3AE7900813378 /* CAuthStorage.m */; };
+		C83124D72714448F001853FA /* NSString+Cube.h in Headers */ = {isa = PBXBuildFile; fileRef = C859CF4226DF263D003040CC /* NSString+Cube.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C832100026F5D77400FC02C4 /* CMessagingObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = C8BE511026D87DD700935149 /* CMessagingObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF2268EB52700B1E15E /* CAuthToken.m */; };
 		C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF9268EBD7700B1E15E /* CJSONable.m */; };
@@ -574,6 +575,7 @@
 				C8400AC426C21DC400C8FF48 /* CSelf.h in Headers */,
 				C817FE0E26C12C460080D697 /* CContactEvent.h in Headers */,
 				C8C384D626BCD7C8009CF806 /* CContactService.h in Headers */,
+				C83124D72714448F001853FA /* NSString+Cube.h in Headers */,
 				C8A0DA0526E1C8D80032A9D5 /* CUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

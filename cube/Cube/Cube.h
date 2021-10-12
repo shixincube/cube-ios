@@ -30,8 +30,10 @@
 #import <Cube/CEngine.h>
 #import <Cube/CKernel.h>
 #import <Cube/CPipelineStateDelegate.h>
+#import <Cube/CError.h>
 
 #import <Cube/CContactService.h>
+#import <Cube/CContactServiceState.h>
 #import <Cube/CSelf.h>
 #import <Cube/CContact.h>
 #import <Cube/CDevice.h>
@@ -45,3 +47,5 @@
 #import <Cube/CHyperTextMessage.h>
 
 #import <Cube/CNetworkStatusManager.h>
+
+#import <Cube/NSString+Cube.h>

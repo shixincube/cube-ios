@@ -37,6 +37,16 @@
 
 - (NSInteger)lastIndexOfChar:(char)ch;
 
+/*!
+ * @brief 获取字符串的拼音。
+ */
+- (NSString *)pinyin;
+
+/*!
+ * @brief 获取字符串的拼音首字母。
+ */
+- (NSString *)pinyinInitial;
+
 @end
 
 #endif /* NSString_Cube_h */

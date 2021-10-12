@@ -65,6 +65,8 @@
  */
 - (void)injectEngineEvent;
 
+- (void)getBuildinAccounts:(void(^)(NSArray<__kindof CubeAccount *> * accountList))handler;
+
 @end
 
 #endif /* CubeAccountHelper_h */

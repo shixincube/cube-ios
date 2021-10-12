@@ -31,6 +31,7 @@
 #import "CubeProfileViewController.h"
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
+#import "CubeContactsHelper.h"
 #import "CubeAccountExplorer.h"
 #import <Cube/Cube.h>
 
@@ -129,6 +130,11 @@
 
     // 启动即时消息模块
     [[CEngine sharedInstance].messagingService start];
+
+    // 异步初始化联系人数据
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[CubeContactsHelper sharedInstance] resetContactsList];
+    });
 }
 
 - (void)requestData:(void (^)(void))completion {

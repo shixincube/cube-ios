@@ -426,7 +426,75 @@
             // 写入数据库
             [self->_storage writeContactZone:zone];
 
-            __block NSUInteger count = zone.participants.count;
+            __block NSUInteger count = zone.count;
+
+            for (CContactZoneParticipant * participant in zone.participants) {
+                [self getContact:participant.contactId handleSuccess:^(CContact *contact) {
+                    // 匹配到参与人
+                    [zone matchContact:contact];
+
+                    --count;
+
+                    if (count == 0) {
+                        handleSuccess(zone);
+                    }
+                } handleFailure:^(CError * _Nullable error) {
+                    --count;
+
+                    if (count == 0) {
+                        handleSuccess(zone);
+                    }
+                }];
+            }
+        });
+    }];
+}
+
+- (void)createContactZone:(NSString *)zoneName displayName:(NSString *)displayName contactIdList:(NSArray<__kindof NSNumber *> *)contactIdList handleSuccess:(void (^)(CContactZone *))handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    // 从数据库里读取
+    CContactZone * zone = [_storage readContactZone:zoneName];
+    if (nil != zone) {
+        // 已经有该分区，不能创建
+        dispatch_async(_threadQueue, ^{
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNotAllowed];
+            handleFailure(error);
+        });
+        return;
+    }
+
+    NSDictionary * data = @{
+        @"name" : zoneName,
+        @"contacts" : contactIdList,
+        @"displayName" : (nil != displayName) ? displayName : @""
+    };
+    CPacket * request = [[CPacket alloc] initWithName:CUBE_CONTACT_CREATECONTACTZONE andData:data];
+    // 发送请求
+    [self.pipeline send:CUBE_MODULE_CONTACT withPacket:request handleResponse:^(CPacket *packet) {
+        if (packet.state.code != CStateOk) {
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:packet.state.code];
+            dispatch_async(self->_threadQueue, ^{
+                handleFailure(error);
+            });
+            return;
+        }
+
+        int stateCode = [packet extractStateCode];
+        if (stateCode != CContactServiceStateOk) {
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:stateCode];
+            dispatch_async(self->_threadQueue, ^{
+                handleFailure(error);
+            });
+            return;
+        }
+
+        CContactZone * zone = [[CContactZone alloc] initWithJSON:[packet extractData]];
+
+        dispatch_queue_t queue = dispatch_queue_create("cube.contact.zone.update", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_async(queue, ^{
+            // 写入数据库
+            [self->_storage writeContactZone:zone];
+
+            __block NSUInteger count = zone.count;
 
             for (CContactZoneParticipant * participant in zone.participants) {
                 [self getContact:participant.contactId handleSuccess:^(CContact *contact) {
@@ -485,7 +553,56 @@
 }
 
 - (void)refreshContactZone:(CContactZone *)zone {
-    
+    NSDictionary * data = @{
+        @"name" : zone.name,
+        @"compact": [NSNumber numberWithBool:TRUE]
+    };
+    CPacket * request = [[CPacket alloc] initWithName:CUBE_CONTACT_GETCONTACTZONE andData:data];
+    // 发送请求
+    [self.pipeline send:CUBE_MODULE_CONTACT withPacket:request handleResponse:^(CPacket *packet) {
+        if (packet.state.code != CStateOk) {
+            NSLog(@"CContactService#refreshContactZone error : %d", packet.state.code);
+            return;
+        }
+
+        int stateCode = [packet extractStateCode];
+        if (stateCode != CContactServiceStateOk) {
+            NSLog(@"CContactService#refreshContactZone error : %d", stateCode);
+            return;
+        }
+
+        CContactZone * newZone = [[CContactZone alloc] initWithJSON:[packet extractData]];
+        if (newZone.timestamp == zone.timestamp) {
+            // 时间戳没有改变，不刷新
+            return;
+        }
+
+        // 重置分区
+        [self resetContactZone:zone];
+    }];
+}
+
+- (void)resetContactZone:(CContactZone *)zone {
+    NSDictionary * data = @{
+        @"name" : zone.name
+    };
+    CPacket * request = [[CPacket alloc] initWithName:CUBE_CONTACT_GETCONTACTZONE andData:data];
+    // 发送请求
+    [self.pipeline send:CUBE_MODULE_CONTACT withPacket:request handleResponse:^(CPacket *packet) {
+        if (packet.state.code != CStateOk) {
+            NSLog(@"CContactService#resetContactZone error : %d", packet.state.code);
+            return;
+        }
+
+        int stateCode = [packet extractStateCode];
+        if (stateCode != CContactServiceStateOk) {
+            NSLog(@"CContactService#resetContactZone error : %d", stateCode);
+            return;
+        }
+
+        CContactZone * newZone = [[CContactZone alloc] initWithJSON:[packet extractData]];
+        [self->_storage writeContactZone:newZone];
+    }];
 }
 
 @end

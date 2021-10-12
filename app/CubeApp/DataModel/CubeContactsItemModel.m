@@ -25,6 +25,8 @@
  */
 
 #import "CubeContactsItemModel.h"
+#import "CubeAccount.h"
+#import "CubeAppUtil.h"
 
 @implementation CubeContactsItemModel
 
@@ -36,6 +38,17 @@
     model.title = title;
     model.subTitle = subTitle;
     model.customData = customData;
+    return model;
+}
+
++ (CubeContactsItemModel *)modelWithContact:(CContact *)contact {
+    CubeContactsItemModel * model = [[CubeContactsItemModel alloc] init];
+    model.tag = 0;
+    model.imageName = [CubeAppUtil explainAvatarName:[CubeAccount getAvatar:contact.context]];
+    model.imageURL = nil;
+    model.title = [contact getPriorityName];
+    model.subTitle = nil;
+    model.customData = contact;
     return model;
 }
 

@@ -90,6 +90,21 @@
     [CEngine sharedInstance].contactService.delegate = self;
 }
 
+- (void)getBuildinAccounts:(void (^)(NSArray<__kindof CubeAccount *> *))handler {
+    [self.explorer getBuildinAccounts:^(id data) {
+        NSArray * array = (NSArray *)data;
+        NSMutableArray * accounts = [[NSMutableArray alloc] initWithCapacity:array.count];
+        for (NSDictionary * data in array) {
+            CubeAccount * account = [[CubeAccount alloc] initWithJSON:data];
+            [accounts addObject:account];
+        }
+
+        handler(accounts);
+    } failure:^(NSError *error) {
+        handler(nil);
+    }];
+}
+
 #pragma mark - Delegate
 
 - (NSDictionary *)needContactContext:(CContact *)contact {

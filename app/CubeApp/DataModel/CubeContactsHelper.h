@@ -35,13 +35,15 @@
 
 @property (nonatomic, strong) NSMutableArray * sectionHeaders;
 
-@property (nonatomic, assign, readonly) NSInteger contactsCount;
+@property (nonatomic, assign, readonly) NSUInteger contactsCount;
+
+@property (nonatomic, strong) void(^ dataChangedBlock)(NSMutableArray * contacts, NSMutableArray * headers, NSInteger count);
 
 + (CubeContactsHelper *)sharedInstance;
 
 - (instancetype)init;
 
-- (void)resetDefaultContactsList;
+- (void)resetContactsList;
 
 @end
 

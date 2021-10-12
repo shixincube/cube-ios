@@ -56,6 +56,9 @@ typedef enum _CContactServiceState {
     /*! 未找到群组。 */
     CContactServiceStateNotFindGroup = 15,
 
+    /*! 未找到联系人分区。 */
+    CContactServiceStateNotFindContactZone = 16,
+
     /*! 令牌不一致。 */
     CContactServiceStateInconsistentToken = 21,
 

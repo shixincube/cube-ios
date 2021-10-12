@@ -99,6 +99,17 @@
                              [CubeContactsHelper sharedInstance].contactsCount,
                              @"位联系人"];
     [self.tableView reloadData];
+
+    @weakify(self);
+    // 监听数据
+    [CubeContactsHelper sharedInstance].dataChangedBlock = ^(NSMutableArray * contacts, NSMutableArray * headers, NSInteger count) {
+        @strongify(self);
+        [self.listController resetListWithContactsData:contacts sectionHeaders:headers];
+        self.footerLabel.text = [NSString stringWithFormat:@"%ld %@",
+                                 [CubeContactsHelper sharedInstance].contactsCount,
+                                 @"位联系人"];
+        [self.tableView reloadData];
+    };
 }
 
 #pragma mark - Getters

@@ -27,6 +27,7 @@
 #import "CContactZone.h"
 #import "CContactZoneParticipant.h"
 #import "CContact.h"
+#import "NSString+Cube.h"
 
 @interface CContactZone () {
     NSMutableArray<__kindof CContactZoneParticipant *> * _participantList;
@@ -97,6 +98,39 @@
 
 - (NSArray<__kindof CContactZoneParticipant *> *)participants {
     return _participantList;
+}
+
+- (NSArray<__kindof CContactZoneParticipant *> *)orderedParticipants {
+    return [_participantList sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        CContactZoneParticipant * participantA = obj1;
+        CContactZoneParticipant * participantB = obj2;
+
+        NSString * nameA = [[participantA.contact getPriorityName] pinyin];
+        NSString * nameB = [[participantB.contact getPriorityName] pinyin];
+        for (int i = 0; i < nameA.length && i < nameB.length; ++i) {
+            char a = toupper([nameA characterAtIndex:i]);
+            char b = toupper([nameB characterAtIndex:i]);
+            if (a > b) {
+                return NSOrderedDescending;
+            }
+            else if (a < b) {
+                return NSOrderedAscending;
+            }
+        }
+
+        if (nameA.length > nameB.length) {
+            return NSOrderedDescending;
+        }
+        else if (nameA.length < nameB.length) {
+            return NSOrderedAscending;
+        }
+
+        return NSOrderedSame;
+    }];
+}
+
+- (NSUInteger)count {
+    return _participantList.count;
 }
 
 @end

@@ -29,6 +29,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class CubeContactsCategory;
+
 typedef NS_ENUM(NSInteger, CubeContactsSectionType) {
     CubeContactsSectionTypeFuncation = -1,
     CubeContactsSectionTypeEnterprise = -2,
@@ -47,7 +49,7 @@ typedef NS_ENUM(NSInteger, CubeContactsCellType) {
 
 - (instancetype)initWithHostView:(__kindof UIScrollView *)hostView pushAction:(void (^)(__kindof UIViewController * viewController))pushAction;
 
-- (void)resetListWithContactsData:(NSArray *)contactsData sectionHeaders:(NSArray *)sectionHeaders;
+- (void)resetListWithContactsData:(NSArray<__kindof CubeContactsCategory *> *)contactsData sectionHeaders:(NSArray<__kindof NSString *> *)sectionHeaders;
 
 @end
 

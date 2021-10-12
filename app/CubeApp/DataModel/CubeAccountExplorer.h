@@ -105,6 +105,12 @@ typedef NS_ENUM(NSInteger, CubeAccountStateCode) {
 - (void)getEngineConfigWithSuccess:(CubeBlockRequestSuccessWithData)success
                            failure:(CubeBlockRequestFailureWithError)failure;
 
+/*!
+ * @brief 获取内置的演示用的账号数据。
+ */
+- (void)getBuildinAccounts:(CubeBlockRequestSuccessWithData)success
+                   failure:(CubeBlockRequestFailureWithError)failure;
+
 @end
 
 #endif /* CubeAccountExplorer_h */

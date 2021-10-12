@@ -25,8 +25,10 @@
  */
 
 #import "CubeContactsListController.h"
+#import "CubeContactsHeaderView.h"
 #import "CubeContactsItemModel.h"
 #import "CubeContactsItemCell.h"
+#import "CubeContactsCategory.h"
 
 @interface CubeContactsListController ()
 
@@ -43,7 +45,7 @@
     return self;
 }
 
-- (void)resetListWithContactsData:(NSArray *)contactsData sectionHeaders:(NSArray *)sectionHeaders {
+- (void)resetListWithContactsData:(NSArray<__kindof CubeContactsCategory *> *)contactsData sectionHeaders:(NSArray<__kindof NSString *> *)sectionHeaders {
     self.sectionHeaders = sectionHeaders;
 
     @weakify(self);
@@ -70,12 +72,39 @@
             
         }
     });
+    
+    // 已添加的好友联系人
+    
+    for (CubeContactsCategory * category in contactsData) {
+        NSInteger sectionTag = category.tag;
+        self.addSection(sectionTag);
+        self.setHeader([CubeContactsHeaderView class]).toSection(sectionTag).withDataModel(category.tagName);
+
+        NSMutableArray * array = [[NSMutableArray alloc] initWithCapacity:category.count];
+        for (CContactZoneParticipant * participant in category.participants) {
+            CubeContactsItemModel * model = [CubeContactsItemModel modelWithContact:participant.contact];
+            [array addObject:model];
+        }
+        self.addCells([CubeContactsItemCell class]).toSection(sectionTag).withDataModelArray(array).selectedAction(^ (CubeContactsItemModel * data) {
+            CContact * contact = data.customData;
+            @strongify(self);
+//            [self tryPushVC:];
+        });
+    }
 }
 
 #pragma mark - Delegate
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return self.sectionHeaders;
+}
+
+#pragma mark - Private
+
+- (void)tryPushVC:(UIViewController *)viewController {
+    if (self.pushAction) {
+        self.pushAction(viewController);
+    }
 }
 
 @end

@@ -161,6 +161,16 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
 - (void)getContactZone:(NSString *)zoneName handleSuccess:(void (^)(CContactZone * zone))handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
+ * @brief 创建指定的联系人分区。
+ * @param zoneName 指定分区名称。
+ * @param displayName 指定分区显示名。如果不设置显示名，可设置为 @c nil 值。
+ * @param contactIdList 指定分区的参与人 ID 列表。
+ * @param handleSuccess 操作成功回调。
+ * @param handleFailure 操作失败回调。
+ */
+- (void)createContactZone:(NSString *)zoneName displayName:(NSString *)displayName contactIdList:(NSArray<__kindof NSNumber *> *)contactIdList handleSuccess:(void (^)(CContactZone * zone))handleSuccess handleFailure:(CFailureBlock)handleFailure;
+
+/*!
  * @private
  */
 - (void)fireSignInCompleted;

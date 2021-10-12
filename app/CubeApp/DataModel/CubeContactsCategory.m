@@ -24,26 +24,34 @@
  * SOFTWARE.
  */
 
-#ifndef CubeAppMacros_h
-#define CubeAppMacros_h
+#import "CubeContactsCategory.h"
 
-#include <Foundation/Foundation.h>
+@implementation CubeContactsCategory
 
-#ifndef CUBE_APP_DEMO
-// 是否将应用程序编译为演示程序，演示程序会预置演示数据
-#define CUBE_APP_DEMO 1
-#endif
+- (instancetype)init {
+    if (self = [super init]) {
+        _participants = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
+- (instancetype)initWithTagNameCharacter:(char)character {
+    if (self = [super init]) {
+        _tag = character;
+        _tagName = [NSString stringWithFormat:@"%c", character];
+        _participants = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
-// 网络请求成功回调
-typedef void(^CubeBlockRequestSuccessWithData)(id data);
+- (void)addParticipant:(CContactZoneParticipant *)participant {
+    [_participants addObject:participant];
+}
 
-// 网络请求失败回调
-typedef void(^CubeBlockRequestFailureWithError)(NSError * error);
+#pragma mark - Getters
 
+- (NSUInteger)count {
+    return _participants.count;
+}
 
-#pragma mark - 服务器信息
-
-#define HOST_URL @"http://127.0.0.1:7777"
-
-#endif /* CubeAppMacros_h */
+@end

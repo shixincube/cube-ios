@@ -47,6 +47,8 @@
 
 + (CubeContactsItemModel *)modelWithTag:(NSInteger)tag imageName:(NSString *)imageName imageURL:(NSString *)imageURL title:(NSString *)title subTitle:(NSString *)subTitle customData:(id)customData;
 
++ (CubeContactsItemModel *)modelWithContact:(CContact *)contact;
+
 @end
 
 #endif /* CubeContactsItemModel_h */

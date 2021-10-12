@@ -24,26 +24,27 @@
  * SOFTWARE.
  */
 
-#ifndef CubeAppMacros_h
-#define CubeAppMacros_h
+#ifndef CubeContactsCategory_h
+#define CubeContactsCategory_h
 
-#include <Foundation/Foundation.h>
+#import <Foundation/Foundation.h>
 
-#ifndef CUBE_APP_DEMO
-// 是否将应用程序编译为演示程序，演示程序会预置演示数据
-#define CUBE_APP_DEMO 1
-#endif
+@interface CubeContactsCategory : NSObject
 
+@property (nonatomic, assign) NSInteger tag;
 
-// 网络请求成功回调
-typedef void(^CubeBlockRequestSuccessWithData)(id data);
+@property (nonatomic, strong) NSString * tagName;
 
-// 网络请求失败回调
-typedef void(^CubeBlockRequestFailureWithError)(NSError * error);
+@property (nonatomic, strong, readonly) NSMutableArray<__kindof CContactZoneParticipant *> * participants;
 
+@property (nonatomic, assign, readonly) NSUInteger count;
 
-#pragma mark - 服务器信息
+- (instancetype)init;
 
-#define HOST_URL @"http://127.0.0.1:7777"
+- (instancetype)initWithTagNameCharacter:(char)character;
 
-#endif /* CubeAppMacros_h */
+- (void)addParticipant:(CContactZoneParticipant *)participant;
+
+@end
+
+#endif /* CubeContactsCategory_h */

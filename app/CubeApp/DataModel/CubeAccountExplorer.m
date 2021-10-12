@@ -34,6 +34,7 @@
 #define URL_LOGOUT       @"/account/logout/"
 #define URL_REGISTER     @"/account/register/"
 #define URL_INFO         @"/account/info/"
+#define URL_BUILDIN      @"/account/buildin/"
 
 @interface CubeAccountExplorer ()
 
@@ -200,7 +201,22 @@
     }];
 }
 
-#pragma mark - Getter
+- (void)getBuildinAccounts:(CubeBlockRequestSuccessWithData)success
+                   failure:(CubeBlockRequestFailureWithError)failure {
+    NSString * url = [HOST_URL stringByAppendingString:URL_BUILDIN];
+
+    [self.httpManager GET:url
+               parameters:nil headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 请求成功
+        success(responseObject);
+    }
+                  failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 请求失败
+        failure(error);
+    }];
+}
+
+#pragma mark - Getters
 
 - (AFHTTPSessionManager *)httpManager {
     if (!_httpManager) {

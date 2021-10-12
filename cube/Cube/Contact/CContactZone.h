@@ -67,6 +67,13 @@ typedef enum _CContactZoneState {
 
 @property (nonatomic, readonly) NSArray<__kindof CContactZoneParticipant *> * participants;
 
+/*!
+ * @brief 返回联系人名称按照拼音/英文字母序排序的联系人列表。
+ */
+@property (nonatomic, readonly) NSArray<__kindof CContactZoneParticipant *> * orderedParticipants;
+
+@property (nonatomic, readonly) NSUInteger count;
+
 - (instancetype)initWithJSON:(NSDictionary *)json;
 
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name displayName:(NSString *)displayName timestamp:(UInt64)timestamp state:(CContactZoneState)state;
