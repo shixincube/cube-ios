@@ -44,7 +44,6 @@
 		C8A0DA1126E1D0440032A9D5 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0C26E1D0440032A9D5 /* WebRTC.xcframework */; };
 		C8A0DA1226E1D0440032A9D5 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8A0DA0C26E1D0440032A9D5 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8A0DA3526E1D6C40032A9D5 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3426E1D6C40032A9D5 /* UIView+Extensions.m */; };
-		C8A0DA3826E20BFD0032A9D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */; };
 		C8A0DA3B26E2253A0032A9D5 /* CubeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */; };
 		C8A83864270AA83D0061205F /* CubeEmojiKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A83863270AA83D0061205F /* CubeEmojiKeyboard.m */; };
 		C8A83866270AA8620061205F /* CubeMoreKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A83865270AA8620061205F /* CubeMoreKeyboard.m */; };
@@ -296,7 +295,6 @@
 		C8A0DA3326E1D6B80032A9D5 /* UIView+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		C8A0DA3426E1D6C40032A9D5 /* UIView+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		C8A0DA3626E1D74A0032A9D5 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C8A0DA3926E2252F0032A9D5 /* CubeLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeLoginViewController.h; sourceTree = "<group>"; };
 		C8A0DA3A26E2253A0032A9D5 /* CubeLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeLoginViewController.m; sourceTree = "<group>"; };
 		C8A83862270AA82E0061205F /* CubeEmojiKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeEmojiKeyboard.h; sourceTree = "<group>"; };
@@ -1536,7 +1534,6 @@
 				C8FD7ED426F06F05003FFE98 /* Avatar.xcassets */,
 				C8B4F76C2710427B003D9005 /* Contacts.xcassets */,
 				C8A8F23E26F9B26300E25046 /* Conversation.xcassets */,
-				C8A0DA3726E20BFD0032A9D5 /* Images.xcassets */,
 				C8B6FE8127069C6D002D033A /* Message.xcassets */,
 			);
 			path = Resources;
@@ -1710,7 +1707,6 @@
 				C8FD7ED526F06F05003FFE98 /* Avatar.xcassets in Resources */,
 				C8E3259826E0CF98005CA08A /* Assets.xcassets in Resources */,
 				C8E3267D26E0DC00005CA08A /* README.md in Resources */,
-				C8A0DA3826E20BFD0032A9D5 /* Images.xcassets in Resources */,
 				C8E3267226E0DBFF005CA08A /* LICENSE in Resources */,
 				C8D8930726FD52060062E509 /* MJRefresh.bundle in Resources */,
 				C8B6FE8227069C6D002D033A /* Message.xcassets in Resources */,
