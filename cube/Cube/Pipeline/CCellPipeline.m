@@ -37,9 +37,9 @@
 
 @property (nonatomic, strong) NSMutableDictionary * responseMap;
 
-- (CellActionDialect * )convertPacketToPrimitive:(CPacket *)packet;
+- (CellActionDialect * )convertPacketToDialect:(CPacket *)packet;
 
-- (CPacket *)convertPrimitiveToPacket:(CellActionDialect *)dialect;
+- (CPacket *)convertDialectToPacket:(CellActionDialect *)dialect;
 
 - (void)retry:(UInt64)delayInMills hangUpBefore:(BOOL)hangUpBefore;
 
@@ -112,18 +112,18 @@
         @"timestamp": [NSNumber numberWithUnsignedLongLong:timestamp]
     } forKey:[NSString stringWithFormat:@"%llu", packet.sn]];
 
-    CellActionDialect * dialect = [self convertPacketToPrimitive:packet];
+    CellActionDialect * dialect = [self convertPacketToDialect:packet];
     [self.nucleus.talkService speak:destination withPrimitive:dialect];
 }
 
 - (void)send:(NSString *)destination withPacket:(CPacket *)packet {
-    CellActionDialect * dialect = [self convertPacketToPrimitive:packet];
+    CellActionDialect * dialect = [self convertPacketToDialect:packet];
     [self.nucleus.talkService speak:destination withPrimitive:dialect];
 }
 
 #pragma mark - Private
 
-- (CellActionDialect *)convertPacketToPrimitive:(CPacket *)packet {
+- (CellActionDialect *)convertPacketToDialect:(CPacket *)packet {
     CellActionDialect * dialect = [[CellActionDialect alloc] initWithName:packet.name];
     [dialect appendParam:@"sn" longlongValue:packet.sn];
     [dialect appendParam:@"data" json:packet.data];
@@ -133,7 +133,7 @@
     return dialect;
 }
 
-- (CPacket *)convertPrimitiveToPacket:(CellActionDialect *)dialect {
+- (CPacket *)convertDialectToPacket:(CellActionDialect *)dialect {
     CPacket * packet = [[CPacket alloc] initWithName:dialect.name
                                              andData:[dialect getParamAsJson:@"data"]
                                                andSN:[dialect getParamAsLongLong:@"sn"]];
@@ -179,7 +179,7 @@
 - (void)onListened:(CellSpeaker *)speaker cellet:(NSString *)cellet primitive:(CellPrimitive *)primitive {
     CellActionDialect * dialect = [[CellActionDialect alloc] initWithPrimitive:primitive];
     // 转为数据包格式
-    CPacket *packet = [self convertPrimitiveToPacket:dialect];
+    CPacket *packet = [self convertDialectToPacket:dialect];
 
     NSString * key = [NSString stringWithFormat:@"%llu", packet.sn];
 
