@@ -84,7 +84,7 @@
         return FALSE;
     }
 
-    [self.pipeline addListener:CUBE_MODULE_CONTACT listener:_pipelineListener];
+    [self.pipeline addListener:_pipelineListener withDestination:CUBE_MODULE_CONTACT];
 
     return TRUE;
 }
@@ -92,7 +92,7 @@
 - (void)stop {
     [super stop];
 
-    [self.pipeline removeListener:CUBE_MODULE_CONTACT listener:_pipelineListener];
+    [self.pipeline removeListener:_pipelineListener withDestination:CUBE_MODULE_CONTACT];
 
     // 关闭存储
     [_storage close];

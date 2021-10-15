@@ -112,17 +112,29 @@
 
 /*!
  * @brief 添加监听器。
+ * @param listener 指定通道监听器。
  * @param destination 指定监听的目标或识别串。
+ */
+- (void)addListener:(id<CPipelineListener>)listener withDestination:(NSString *)destination;
+
+/*!
+ * @brief 添加监听器。
  * @param listener 指定通道监听器。
  */
-- (void)addListener:(NSString *)destination listener:(id<CPipelineListener>)listener;
+- (void)addListener:(id<CPipelineListener>)listener;
 
 /*!
  * @brief 移除监听器。
+ * @param listener 指定通道监听器。
  * @param destination 指定监听的目标或识别串。
+ */
+- (void)removeListener:(id<CPipelineListener>)listener withDestination:(NSString *)destination;
+
+/*!
+ * @brief 移除监听器。
  * @param listener 指定通道监听器。
  */
-- (void)removeListener:(NSString *)destination listener:(id<CPipelineListener>)listener;
+- (void)removeListener:(id<CPipelineListener>)listener;
 
 /*!
  * @brief 获取所有监听器。

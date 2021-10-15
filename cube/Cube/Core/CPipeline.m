@@ -26,6 +26,9 @@
 
 #import "CPipeline.h"
 
+// 标记不需要标记目标的监听器。
+#define DRIFTLESS_LISTENER @"*"
+
 @interface CPipeline ()
 
 @property (nonatomic, strong) NSMutableDictionary <NSString *, __kindof NSMutableArray *> *listeners;
@@ -78,7 +81,7 @@
     _port = port;
 }
 
-- (void)addListener:(NSString *)destination listener:(id<CPipelineListener>)listener {
+- (void)addListener:(id<CPipelineListener>)listener withDestination:(NSString *)destination {
     NSAssert(destination, @"Can't add listener with nil destination.");
     NSAssert(listener, @"Can't add listener with nil listener.");
 
@@ -88,11 +91,29 @@
     }
 }
 
-- (void)removeListener:(NSString *)destination listener:(id<CPipelineListener>)listener {
+- (void)addListener:(id<CPipelineListener>)listener {
+    NSAssert(listener, @"Can't add listener with nil listener.");
+
+    NSMutableArray * listeners = [self getOrCreateListeners:DRIFTLESS_LISTENER];
+    if ([listeners indexOfObject:listener] == NSNotFound) {
+        [listeners addObject:listener];
+    }
+}
+
+- (void)removeListener:(id<CPipelineListener>)listener withDestination:(NSString *)destination {
     NSAssert(destination, @"Can't add listener with nil destination.");
     NSAssert(listener, @"Can't add listener with nil listener.");
 
     NSMutableArray * listeners = [self getListeners:destination];
+    if (listeners) {
+        [listeners removeObject:listener];
+    }
+}
+
+- (void)removeListener:(id<CPipelineListener>)listener {
+    NSAssert(listener, @"Can't add listener with nil listener.");
+
+    NSMutableArray * listeners = [self getListeners:DRIFTLESS_LISTENER];
     if (listeners) {
         [listeners removeObject:listener];
     }

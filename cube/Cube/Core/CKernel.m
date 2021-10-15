@@ -107,7 +107,7 @@
  * @param config 引擎配置。
  * @param handler 回调。
  */
-- (void)checkAuth:(CKernelConfig *)config handler:(void (^)(CError *, CAuthToken *))handler;
+- (BOOL)checkAuth:(CKernelConfig *)config handler:(void (^)(CError *, CAuthToken *))handler;
 
 @end
 
@@ -137,10 +137,10 @@
 
     // 启动管道
     [_cellPipeline setRemoteAddress:_config.address withPort:_config.port];
-    [_cellPipeline addListener:@"*" listener:self];
+    [_cellPipeline addListener:self];
     [_cellPipeline open];
 
-    [self checkAuth:config handler:^(CError * error, CAuthToken * token) {
+    BOOL ret = [self checkAuth:config handler:^(CError * error, CAuthToken * token) {
         if (token) {
             // 设置数据通道的访问令牌码
             self->_cellPipeline.tokenCode = token.code;
@@ -158,7 +158,7 @@
         }
     }];
 
-    return TRUE;
+    return ret;
 }
 
 - (void)shutdown {
@@ -245,10 +245,10 @@
     }
 }
 
-- (void)checkAuth:(CKernelConfig *)config handler:(void (^)(CError * error, CAuthToken *))handler {
+- (BOOL)checkAuth:(CKernelConfig *)config handler:(void (^)(CError * error, CAuthToken *))handler {
     if (![self hasModule:CUBE_MODULE_AUTH]) {
-        handler([CError errorWithModule:@"Kernel" code:CUBE_KERNEL_SC_NO_MODULE], nil);
-        return;
+        NSLog(@"Kernel#checkAuth : Can NOT find auth module : %@", CUBE_MODULE_AUTH);
+        return FALSE;
     }
 
     CAuthService * authService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
@@ -257,7 +257,7 @@
     CAuthToken * token = [authService checkLocalToken:config.domain appKey:config.appKey];
     if (token && [token isValid]) {
         handler(nil, token);
-        return;
+        return TRUE;
     }
 
     [authService check:config.domain appKey:config.appKey handler:^(CError *error, CAuthToken *token) {
@@ -268,6 +268,8 @@
             handler(nil, token);
         }
     }];
+    
+    return TRUE;
 }
 
 @end

@@ -114,7 +114,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     // 组装插件
     [self assemble];
 
-    [self.pipeline addListener:CUBE_MODULE_MESSAGING listener:_pipelineListener];
+    [self.pipeline addListener:_pipelineListener withDestination:CUBE_MODULE_MESSAGING];
 
     // 监听联系人模块
     _contactService = (CContactService *) [self.kernel getModule:CUBE_MODULE_CONTACT];
@@ -142,7 +142,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     [contactService detachWithName:CContactEventSignIn observer:_observer];
     [contactService detachWithName:CContactEventSignOut observer:_observer];
 
-    [self.pipeline removeListener:CUBE_MODULE_MESSAGING listener:_pipelineListener];
+    [self.pipeline removeListener:_pipelineListener withDestination:CUBE_MODULE_MESSAGING];
 
     // 关闭存储
     [_storage close];

@@ -90,7 +90,7 @@
 }
 
 - (BOOL)isValid {
-    NSTimeInterval time = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970] * 1000.0f;
     UInt64 timestamp = [[NSNumber numberWithDouble:time] unsignedLongLongValue];
     return ((timestamp + 60000) < self.expiry);
 }
