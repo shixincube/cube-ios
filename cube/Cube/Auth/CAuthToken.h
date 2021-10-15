@@ -31,7 +31,7 @@
 #import "../Util/CJSONable.h"
 
 /*!
- * @brief 主访问主机信息。
+ * @brief 主访问信息。
  */
 @interface CPrimaryDescription : CJSONable
 

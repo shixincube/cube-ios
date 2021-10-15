@@ -37,6 +37,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        self.address = @"127.0.0.1";
         self.port = 7000;
         self.pipelineReady = FALSE;
         self.enabledMessaging = TRUE;
@@ -48,10 +49,10 @@
 - (instancetype)initWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey {
     if (self = [super init]) {
         self.address = address;
+        self.port = 7000;
         self.domain = domain;
         self.appKey = appKey;
 
-        self.port = 7000;
         self.pipelineReady = FALSE;
         self.enabledMessaging = TRUE;
     }
@@ -59,8 +60,26 @@
     return self;
 }
 
+- (instancetype)initWithAddress:(NSString *)address andPort:(NSUInteger)port domain:(NSString *)domain appKey:(NSString *)appKey {
+    if (self = [super init]) {
+        self.address = address;
+        self.port = port;
+        self.domain = domain;
+        self.appKey = appKey;
+
+        self.pipelineReady = FALSE;
+        self.enabledMessaging = TRUE;
+    }
+    return self;
+}
+
 + (CKernelConfig *)configWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey {
     CKernelConfig * config = [[CKernelConfig alloc] initWithAddress:address domain:domain appKey:appKey];
+    return config;
+}
+
++ (CKernelConfig *)configWithAddress:(NSString *)address andPort:(NSUInteger)port domain:(NSString *)domain appKey:(NSString *)appKey {
+    CKernelConfig * config = [[CKernelConfig alloc] initWithAddress:address andPort:port domain:domain appKey:appKey];
     return config;
 }
 
@@ -241,7 +260,7 @@
         return;
     }
 
-    [authService check:config.domain appKey:config.appKey address:config.address handler:^(CError *error, CAuthToken *token) {
+    [authService check:config.domain appKey:config.appKey handler:^(CError *error, CAuthToken *token) {
         if (error) {
             handler(error, nil);
         }

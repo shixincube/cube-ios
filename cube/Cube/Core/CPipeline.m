@@ -113,7 +113,7 @@
     NSMutableArray *listeners = [self.listeners objectForKey:destination];
     if (!listeners) {
         listeners = [NSMutableArray array];
-        [self.listeners setValue:listeners forKey:destination];
+        [self.listeners setObject:listeners forKey:destination];
     }
     return listeners;
 }

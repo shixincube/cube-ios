@@ -81,7 +81,7 @@ static NSString * sCubeDomain = @"shixincube.com";
     return nil;
 }
 
-- (void)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address handler:(void(^)(CError * error, CAuthToken * token))handler {
+- (void)check:(NSString *)domain appKey:(NSString *)appKey handler:(void(^)(CError * error, CAuthToken * token))handler {
     // 赋值 Domain 数据
     sCubeDomain = domain;
 
@@ -144,7 +144,7 @@ static NSString * sCubeDomain = @"shixincube.com";
         }
         else {
             // 开启存储错误
-            handler([CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateStorage], nil);
+            handler([CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateStorageError], nil);
         }
     });
 }

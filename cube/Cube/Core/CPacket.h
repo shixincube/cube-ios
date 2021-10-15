@@ -30,6 +30,9 @@
 #import <Foundation/Foundation.h>
 #import "CStateCode.h"
 
+/*!
+ * @brief 数据包描述。
+ */
 @interface CPacket : NSObject
 
 /*! @brief 数据包包名。 */

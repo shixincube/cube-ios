@@ -44,7 +44,7 @@ typedef enum _CAuthServiceState {
     CAuthServiceStateFailure = 9,
     
     /*! 存储故障状态码。 */
-    CAuthServiceStateStorage = 20,
+    CAuthServiceStateStorageError = 20,
     
     /*! 本地任务超时状态码。 */
     CAuthServiceStateTimeout = 21

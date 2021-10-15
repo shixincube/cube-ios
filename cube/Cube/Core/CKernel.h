@@ -59,6 +59,11 @@
 @property (nonatomic, strong) NSString * address;
 
 /*!
+ * @brief 管道服务器端口。
+ */
+@property (nonatomic, assign) NSUInteger port;
+
+/*!
  * @brief 授权的指定域。
  */
 @property (nonatomic, strong) NSString * domain;
@@ -67,11 +72,6 @@
  * @brief 当前应用申请到的 App Key 串。
  */
 @property (nonatomic, strong) NSString * appKey;
-
-/*!
- * @brief 管道服务器端口。
- */
-@property (nonatomic, assign) NSUInteger port;
 
 /*!
  * @brief 内核是否等待通道就绪再回调。
@@ -92,6 +92,15 @@
 - (instancetype)initWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey;
 
 /*!
+ * @brief 初始化。
+ * @param address 指定服务器地址。
+ * @param port 指定服务器端口。
+ * @param domain 指定所属域名称。
+ * @param appKey 指定该 App 的 Key 串。
+ */
+- (instancetype)initWithAddress:(NSString *)address andPort:(NSUInteger)port domain:(NSString *)domain appKey:(NSString *)appKey;
+
+/*!
  * @brief 指定基础配置信息创建配置实例。
  * @param address 指定服务器地址。
  * @param domain 指定所属域名称。
@@ -99,6 +108,16 @@
  * @return 返回内核配置实例。
  */
 + (CKernelConfig *)configWithAddress:(NSString *)address domain:(NSString *)domain appKey:(NSString *)appKey;
+
+/*!
+ * @brief 指定基础配置信息创建配置实例。
+ * @param address 指定服务器地址。
+ * @param port 指定服务器访问端口。
+ * @param domain 指定所属域名称。
+ * @param appKey 指定该 App 的 Key 串。
+ * @return 返回内核配置实例。
+ */
++ (CKernelConfig *)configWithAddress:(NSString *)address andPort:(NSUInteger)port domain:(NSString *)domain appKey:(NSString *)appKey;
 
 @end
 

@@ -50,10 +50,9 @@
  * @brief 校验当前的令牌是否有效。该方法先从本地获取本地令牌进行校验，如果本地令牌失效或者未找到本地令牌，则尝试从授权服务器获取有效的令牌。
  * @param domain 令牌对应的域。
  * @param appKey 令牌指定的 App Key 串。
- * @param address 授权服务器地址。
  * @param handler 操作回调。
  */
-- (void)check:(NSString *)domain appKey:(NSString *)appKey address:(NSString *)address handler:(void(^)(CError * error, CAuthToken * token))handler;
+- (void)check:(NSString *)domain appKey:(NSString *)appKey handler:(void(^)(CError * error, CAuthToken * token))handler;
 
 /*!
  * @brief 加载令牌。
