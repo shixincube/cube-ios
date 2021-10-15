@@ -60,7 +60,7 @@
  * @param appKey 指定 App Key 数据。
  * @return 返回有效的令牌。
  */
-- (CAuthToken *)checkLocalToken:(NSString *)domain appKey:(NSString *)appKey;
+- (CAuthToken *)loadLocalToken:(NSString *)domain appKey:(NSString *)appKey;
 
 /*!
  * @brief 从服务器申请令牌。

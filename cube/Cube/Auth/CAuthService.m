@@ -57,7 +57,7 @@ static NSString * sCubeDomain = @"shixincube.com";
     return self;
 }
 
-- (CAuthToken *)checkLocalToken:(NSString *)domain appKey:(NSString *)appKey {
+- (CAuthToken *)loadLocalToken:(NSString *)domain appKey:(NSString *)appKey {
     sCubeDomain = domain;
 
     CAuthStorage * storage = [[CAuthStorage alloc] init];
@@ -122,7 +122,6 @@ static NSString * sCubeDomain = @"shixincube.com";
                             // 关闭存储器
                             [storage close];
 
-//                            handler([CError errorWithModule:CUBE_MODULE_AUTH code:CAuthServiceStateFailure], nil);
                             handler(error, nil);
                         }
                         else {

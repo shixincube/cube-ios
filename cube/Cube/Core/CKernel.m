@@ -254,7 +254,7 @@
     CAuthService * authService = (CAuthService *) [self getModule:CUBE_MODULE_AUTH];
 
     // 先查找本地存储的令牌
-    CAuthToken * token = [authService checkLocalToken:config.domain appKey:config.appKey];
+    CAuthToken * token = [authService loadLocalToken:config.domain appKey:config.appKey];
     if (token && [token isValid]) {
         handler(nil, token);
         return TRUE;
