@@ -24,7 +24,7 @@
  * SOFTWARE.
  */
 
-#import "CubeAccountExplorer.h"
+#import "CubeExplorer.h"
 #import <AFNetworking/AFNetworking.h>
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
@@ -36,13 +36,13 @@
 #define URL_INFO         @"/account/info/"
 #define URL_BUILDIN      @"/account/buildin/"
 
-@interface CubeAccountExplorer ()
+@interface CubeExplorer ()
 
 @property (nonatomic, strong) AFHTTPSessionManager * httpManager;
 
 @end
 
-@implementation CubeAccountExplorer
+@implementation CubeExplorer
 
 - (NSString *)defaultAvatar {
     return @"default";
@@ -70,7 +70,7 @@
         // 请求成功
         NSDictionary * json = [responseObject toJSONObject];
         NSInteger code = [[json valueForKey:@"code"] integerValue];
-        if (code == CubeAccountStateCodeSuccess) {
+        if (code == CubeStateCodeSuccess) {
             NSString * tokenCode = (NSString *) [json valueForKey:@"token"];
             NSUInteger tokenExpireTime = [[json valueForKey:@"expire"] unsignedLongLongValue];
             [[CubeAccountHelper sharedInstance] saveToken:tokenCode tokenExpireTime:tokenExpireTime];
@@ -109,14 +109,14 @@
         // 请求成功
         NSDictionary * json = [responseObject toJSONObject];
         NSInteger code = [[json valueForKey:@"code"] integerValue];
-        if (code == CubeAccountStateCodeSuccess) {
+        if (code == CubeStateCodeSuccess) {
             // 回调成功
             CubeAccount * account = [CubeAccount accountWithJSON:[json valueForKey:@"account"]];
             success(account);
         }
         else {
             // 回调故障
-            NSError * error = [NSError errorWithDomain:@"CubeAccountExplorer" code:code userInfo:nil];
+            NSError * error = [NSError errorWithDomain:@"CubeExplorer" code:code userInfo:nil];
             failure(error);
         }
     }

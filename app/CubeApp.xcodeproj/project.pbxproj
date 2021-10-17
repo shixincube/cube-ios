@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C80B4FE726E5E86B00AD90B2 /* CubeAccountExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FE626E5E86B00AD90B2 /* CubeAccountExplorer.m */; };
+		C80B4FE726E5E86B00AD90B2 /* CubeExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FE626E5E86B00AD90B2 /* CubeExplorer.m */; };
 		C80B4FF426E5EA5A00AD90B2 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FEA26E5EA5A00AD90B2 /* SVRadialGradientLayer.m */; };
 		C80B4FF526E5EA5A00AD90B2 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FED26E5EA5A00AD90B2 /* SVProgressAnimatedView.m */; };
 		C80B4FF626E5EA5A00AD90B2 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C80B4FF026E5EA5A00AD90B2 /* SVProgressHUD.m */; };
@@ -226,8 +226,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C80B4FE626E5E86B00AD90B2 /* CubeAccountExplorer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeAccountExplorer.m; sourceTree = "<group>"; };
-		C80B4FE826E5E87E00AD90B2 /* CubeAccountExplorer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeAccountExplorer.h; sourceTree = "<group>"; };
+		C80B4FE626E5E86B00AD90B2 /* CubeExplorer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeExplorer.m; sourceTree = "<group>"; };
+		C80B4FE826E5E87E00AD90B2 /* CubeExplorer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeExplorer.h; sourceTree = "<group>"; };
 		C80B4FEA26E5EA5A00AD90B2 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		C80B4FEB26E5EA5A00AD90B2 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		C80B4FEC26E5EA5A00AD90B2 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -1605,8 +1605,8 @@
 			children = (
 				C8EAB74726EB0BEA0044A085 /* CubeAccount.h */,
 				C8EAB74826EB0BF90044A085 /* CubeAccount.m */,
-				C80B4FE826E5E87E00AD90B2 /* CubeAccountExplorer.h */,
-				C80B4FE626E5E86B00AD90B2 /* CubeAccountExplorer.m */,
+				C80B4FE826E5E87E00AD90B2 /* CubeExplorer.h */,
+				C80B4FE626E5E86B00AD90B2 /* CubeExplorer.m */,
 				C8EAB74D26EB46BA0044A085 /* CubeAccountHelper.h */,
 				C8EAB74B26EB46B10044A085 /* CubeAccountHelper.m */,
 				C8EDD425271520FD0024E852 /* CubeContactsCategory.h */,
@@ -1723,7 +1723,7 @@
 				C8E3264726E0DAA3005CA08A /* ZZMutableAttributeStringChainModel.m in Sources */,
 				C8E3264A26E0DAA3005CA08A /* NSMutableParagraphStyle+ZZFLEX.m in Sources */,
 				C8A0DA3526E1D6C40032A9D5 /* UIView+Extensions.m in Sources */,
-				C80B4FE726E5E86B00AD90B2 /* CubeAccountExplorer.m in Sources */,
+				C80B4FE726E5E86B00AD90B2 /* CubeExplorer.m in Sources */,
 				C8A8F20826F9831B00E25046 /* CubeConversationNoNetCell.m in Sources */,
 				C8B4F77327105326003D9005 /* CubeContactsSearchResultViewController.m in Sources */,
 				C8B4F74A270FDA72003D9005 /* TKThemeManager.m in Sources */,

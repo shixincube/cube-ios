@@ -28,13 +28,13 @@
 #define CubeRegisterViewController_h
 
 #import "CubeViewController.h"
-#import "CubeAccountExplorer.h"
+#import "CubeExplorer.h"
 
 @class CubeAccount;
 
 @interface CubeRegisterViewController : CubeViewController
 
-@property (nonatomic, weak) CubeAccountExplorer * explorer;
+@property (nonatomic, weak) CubeExplorer * explorer;
 
 @property (nonatomic, strong, readonly) NSString * phoneNumber;
 

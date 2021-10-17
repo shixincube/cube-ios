@@ -24,42 +24,42 @@
  * SOFTWARE.
  */
 
-#ifndef CubeAccountExplorer_h
-#define CubeAccountExplorer_h
+#ifndef CubeExplorer_h
+#define CubeExplorer_h
 
 #import <UIKit/UIKit.h>
 
 /*!
  * 状态码。
  */
-typedef NS_ENUM(NSInteger, CubeAccountStateCode) {
+typedef NS_ENUM(NSInteger, CubeStateCode) {
     /*! 成功。 */
-    CubeAccountStateCodeSuccess = 0,
+    CubeStateCodeSuccess = 0,
     
     /*! 重复的账号操作行为。 */
-    CubeAccountStateCodeRepeat = 1,
+    CubeStateCodeRepeat = 1,
     
     /*! 找不到用户。 */
-    CubeAccountStateCodeNotFindAccount = 5,
+    CubeStateCodeNotFindAccount = 5,
     
     /*! 无效的令牌。 */
-    CubeAccountStateCodeInvalidToken = 6,
+    CubeStateCodeInvalidToken = 6,
     
     /*! 找不到令牌。 */
-    CubeAccountStateCodeNotFindToken = 7,
+    CubeStateCodeNotFindToken = 7,
     
     /*! 无效账号。 */
-    CubeAccountStateCodeInvalidAccount = 8,
+    CubeStateCodeInvalidAccount = 8,
     
     /*! 数据错误。 */
-    CubeAccountStateCodeDataError = 9,
+    CubeStateCodeDataError = 9,
     
     /*! 其他状态。 */
-    CubeAccountStateCodeOther = 99
+    CubeStateCodeOther = 99
 };
 
 
-@interface CubeAccountExplorer : NSObject
+@interface CubeExplorer : NSObject
 
 /*!
  * @brief 返回默认的账号头像。
@@ -113,4 +113,4 @@ typedef NS_ENUM(NSInteger, CubeAccountStateCode) {
 
 @end
 
-#endif /* CubeAccountExplorer_h */
+#endif /* CubeExplorer_h */

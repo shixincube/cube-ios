@@ -28,7 +28,7 @@
 #define CubeAccountHelper_h
 
 #import <Foundation/Foundation.h>
-#import "CubeAccountExplorer.h"
+#import "CubeExplorer.h"
 
 @class CubeAccount;
 @class CSelf;
@@ -40,7 +40,7 @@
 
 @property (nonatomic, strong, readonly) NSString * defaultAvatarImageName;
 
-@property (nonatomic, strong, readonly) CubeAccountExplorer * explorer;
+@property (nonatomic, strong, readonly) CubeExplorer * explorer;
 
 @property (nonatomic, strong, readonly) NSString * tokenCode;
 

@@ -32,12 +32,12 @@
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
 #import "CubeContactsHelper.h"
-#import "CubeAccountExplorer.h"
+#import "CubeExplorer.h"
 #import <Cube/Cube.h>
 
 @interface CubeTabBarController () {
     
-    CubeAccountExplorer * _explorer;
+    CubeExplorer * _explorer;
 
 }
 

@@ -134,9 +134,9 @@
     return @"AvatarDefault";
 }
 
-- (CubeAccountExplorer *)explorer {
+- (CubeExplorer *)explorer {
     if (!_explorer) {
-        _explorer = [[CubeAccountExplorer alloc] init];
+        _explorer = [[CubeExplorer alloc] init];
     }
 
     return _explorer;
