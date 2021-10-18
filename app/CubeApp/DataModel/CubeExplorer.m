@@ -99,7 +99,9 @@
         @"phone" : phoneNumber,
         @"password" : password,
         @"nickname" : nickname,
-        @"avatar" : avatar };
+        @"avatar" : avatar,
+        @"vcode" : @"0000"
+    };
 
     [self.httpManager POST:url
                 parameters:params
