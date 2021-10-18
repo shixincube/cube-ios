@@ -36,8 +36,8 @@ typedef NS_ENUM(NSInteger, CubeStateCode) {
     /*! 成功。 */
     CubeStateCodeSuccess = 0,
     
-    /*! 重复的账号操作行为。 */
-    CubeStateCodeRepeat = 1,
+    /*! 不被允许的行为。 */
+    CubeStateCodeNotAllowed = 1,
     
     /*! 找不到用户。 */
     CubeStateCodeNotFindAccount = 5,
