@@ -100,7 +100,7 @@
         @"password" : password,
         @"nickname" : nickname,
         @"avatar" : avatar,
-        @"vcode" : @"0000"
+        @"vcode" : @"000000"
     };
 
     [self.httpManager POST:url

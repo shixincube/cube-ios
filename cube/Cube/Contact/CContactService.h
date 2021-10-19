@@ -41,13 +41,13 @@
 #define CUBE_MODULE_CONTACT @"Contact"
 #endif
 
-typedef void (^CubeSignBlock)(CSelf * owner);
+typedef void (^CSignBlock)(CSelf * owner);
 
-typedef void (^CubeContactBlock)(CContact * contact);
+typedef void (^CContactBlock)(CContact * contact);
 
-typedef void (^GroupBlock)(CGroup * group);
+typedef void (^CGroupBlock)(CGroup * group);
 
-typedef void (^ContactZoneBlock)(CContactZone * contactZone);
+typedef void (^CContactZoneBlock)(CContactZone * contactZone);
 
 
 /*!
@@ -89,7 +89,7 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  * @param handleFailure 操作失败回调。
  * @return 返回当次操作是否被执行。
  */
-- (BOOL)signIn:(CSelf *)me handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+- (BOOL)signIn:(CSelf *)me handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
  * @brief 签入当前终端的联系人。
@@ -99,14 +99,14 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  * @param handleFailure 操作失败回调。
  * @return 返回当次操作是否被执行。
  */
-- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
  * @brief 将当前设置的联系人签出。
  * @param handle 指定签出操作处理回调。
  * @return 是否执行了签出操作。
  */
-- (BOOL)signOut:(CubeSignBlock)handle;
+- (BOOL)signOut:(CSignBlock)handle;
 
 /*!
  * @brief 通过向服务发送状态信息验证自身连接状态。
@@ -119,7 +119,7 @@ typedef void (^ContactZoneBlock)(CContactZone * contactZone);
  * @param handleSuccess 成功获取到数据回调该函数。
  * @param handleFailure 获取数据时故障回调该函数。
  */
-- (void)getContact:(UInt64)contactId handleSuccess:(CubeContactBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+- (void)getContact:(UInt64)contactId handleSuccess:(CContactBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
  * @brief 修改指定联系人名称。该操作仅影响本地数据库的数据。

@@ -28,13 +28,15 @@
 #import "CUtils.h"
 #import <cell/CellUtil.h>
 
+#define LIFECYCLE_IN_MSEC (7L * 24L * 60L * 60L * 1000L)
+
 @implementation CEntity
 
 - (instancetype)init {
     if (self = [super init]) {
         _identity = [CellUtil generateUnsignedSerialNumber];
         _timestamp = [CUtils currentTimeMillis];
-        _expiry = _timestamp + 7 * 24 * 60 * 60 * 1000;
+        _expiry = _timestamp + LIFECYCLE_IN_MSEC;
         self.context = nil;
     }
 
@@ -45,7 +47,7 @@
     if (self = [super init]) {
         _identity = identity;
         _timestamp = [CUtils currentTimeMillis];
-        _expiry = _timestamp + 7 * 24 * 60 * 60 * 1000;
+        _expiry = _timestamp + LIFECYCLE_IN_MSEC;
         self.context = nil;
     }
     
@@ -56,7 +58,7 @@
     if (self = [super init]) {
         _identity = identity;
         _timestamp = timestamp;
-        _expiry = _timestamp + 7 * 24 * 60 * 60 * 1000;
+        _expiry = _timestamp + LIFECYCLE_IN_MSEC;
         self.context = nil;
     }
 

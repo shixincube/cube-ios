@@ -112,7 +112,7 @@
     return _selfReady && (nil != self.owner);
 }
 
-- (BOOL)signIn:(CSelf *)me handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+- (BOOL)signIn:(CSelf *)me handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     // 不允许重复签入
     if (_selfReady) {
 //        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateIllegalOperation]);
@@ -193,12 +193,12 @@
     return TRUE;
 }
 
-- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CubeSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     CSelf * owner = [[CSelf alloc] initWithId:identity name:name];
     return [self signIn:owner handleSuccess:handleSuccess handleFailure:handleFailure];
 }
 
-- (BOOL)signOut:(CubeSignBlock)handle {
+- (BOOL)signOut:(CSignBlock)handle {
     if (!_selfReady) {
         return FALSE;
     }
@@ -245,7 +245,7 @@
     }
 }
 
-- (void)getContact:(UInt64)contactId handleSuccess:(CubeContactBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+- (void)getContact:(UInt64)contactId handleSuccess:(CContactBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     // 从数据库读取
     CContact * contact = [_storage readContact:contactId];
     if (contact) {
