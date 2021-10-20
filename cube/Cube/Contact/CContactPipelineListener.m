@@ -46,7 +46,7 @@
 
 - (void)didReceive:(CPipeline *)pipeline source:(NSString *)source packet:(CPacket *)packet {
     if (packet.state.code != CStateOk) {
-        NSLog(@"CContactPipelineListener#didReceive code : %d", packet.state.code);
+        NSLog(@"CContactPipelineListener#didReceive : %d", packet.state.code);
         return;
     }
 
@@ -61,7 +61,7 @@
 - (void)didOpen:(CPipeline *)pipeline {
     // 如果用户请求签入但是签入失败（在签入时可能没有网络），则在连接建立后尝试自动签入
     if (_service.owner && ![_service isReady]) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             [self->_service signIn:self->_service.owner handleSuccess:^(CSelf *owner) {
                 // Nothing
             } handleFailure:^(CError * _Nonnull error) {
@@ -72,7 +72,7 @@
 }
 
 - (void)didClose:(CPipeline *)pipeline {
-    
+    // Nothing
 }
 
 @end

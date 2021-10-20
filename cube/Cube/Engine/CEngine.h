@@ -87,7 +87,9 @@
  * @param success 启动成功回调函数。
  * @param failure 启动故障回调函数。
  */
-- (void)startWithConfig:(CKernelConfig * _Nonnull)config success:(void(^ _Nonnull)(CEngine * _Nullable engine))success failure:(void(^ _Nonnull)(CError * _Nonnull error))failure;
+- (void)startWithConfig:(CKernelConfig * _Nonnull)config
+                success:(void(^ _Nonnull)(CEngine * _Nullable engine)) success
+                failure:(void(^ _Nonnull)(CError * _Nonnull error)) failure;
 
 /*!
  * @brief 启动魔方引擎，该方法会阻塞当前线程，直到引擎启动成功或者失败。
@@ -95,7 +97,8 @@
  * @param timeoutInMilliseconds 以毫秒为单位的超时时间。
  * @return 如果启动成功返回 @c TRUE ，否则返回 @c FALSE 。如果启动失败，可以通过 CEngine::lastError 查看错误信息。
  */
-- (BOOL)startWithConfig:(CKernelConfig * _Nonnull)config timeoutInMilliseconds:(UInt64)timeoutInMilliseconds;
+- (BOOL)startWithConfig:(CKernelConfig * _Nonnull) config
+  timeoutInMilliseconds:(UInt64) timeoutInMilliseconds;
 
 /*!
  * @brief 停止魔方引擎。
@@ -129,7 +132,7 @@
  * @param contactId 指定联系人 ID 。
  * @return 返回当前签入的 @c CSelf 实例。
  */
-- (CSelf * _Nullable)signInWithId:(UInt64)contactId;
+- (CSelf * _Nullable)signInWithId:(UInt64) contactId;
 
 /*!
  * @brief 签入指定的联系人。
@@ -138,7 +141,9 @@
  * @param context 指定联系人的上下文数据。
  * @return 返回当前签入的 @c CSelf 实例。
  */
-- (CSelf * _Nullable)signInWithId:(UInt64)contactId andName:(NSString * _Nonnull)name andContext:(NSDictionary * _Nullable)context;
+- (CSelf * _Nullable)signInWithId:(UInt64) contactId
+                          andName:(NSString * _Nonnull) name
+                       andContext:(NSDictionary * _Nullable) context;
 
 /*!
  * @brief 获取联系人服务模块。

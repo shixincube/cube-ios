@@ -127,6 +127,11 @@
         [self start];
     }
 
+    if (nil != _owner && ![_owner isEqual:me]) {
+        NSLog(@"CContactService : Can NOT use different contact to sign-in");
+        return FALSE;
+    }
+
     // 开启存储
     [_storage open:me.identity domain:me.domain];
 
@@ -134,14 +139,23 @@
     _owner = me;
 
     if (![self.pipeline isReady]) {
-        // 允许未连接状态下签入
+        // 网络未连接状态下签入
         CContact * myselfContact = [_storage readContact:me.identity];
+        // 激活令牌
+        CAuthToken * token = [self.kernel activeToken:me.identity];
 
-        if (myselfContact) {
-            _owner.context = myselfContact.context;
+        if (nil != myselfContact && nil != token) {
+            // 设置附录
             _owner.appendix = myselfContact.appendix;
+            // 设置上下文
+            if (_owner.context) {
+                [_storage updateContactContext:_owner.identity context:_owner.context];
+            }
+            else {
+                _owner.context = myselfContact.context;
+            }
 
-            dispatch_async(_threadQueue, ^{
+            dispatch_async(_threadQueue, ^ {
                 handleSuccess(self.owner);
 
                 CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
@@ -149,7 +163,7 @@
             });
         }
         else {
-            dispatch_async(_threadQueue, ^{
+            dispatch_async(_threadQueue, ^ {
                 handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNoNetwork]);
             });
         }
@@ -178,6 +192,7 @@
 
         CPacket * signInPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_SIGNIN andData:data];
         [self.pipeline send:CUBE_MODULE_CONTACT withPacket:signInPacket handleResponse:^(CPacket *packet) {
+            // 等待 Self Ready
             [self waitReady:^(BOOL timeout) {
                 if (timeout) {
                     // 超时
@@ -228,6 +243,8 @@
         self->_selfReady = FALSE;
 
         handle(self.owner);
+
+        self->_owner = nil;
     }];
 
     return TRUE;

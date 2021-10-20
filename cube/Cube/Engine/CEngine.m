@@ -62,7 +62,9 @@
     return self;
 }
 
-- (void)startWithConfig:(CKernelConfig * _Nonnull)config success:(void (^)(CEngine * _Nullable))success failure:(void (^)(CError * _Nonnull))failure {
+- (void)startWithConfig:(CKernelConfig * _Nonnull)config
+                success:(void (^)(CEngine * _Nullable))success
+                failure:(void (^)(CError * _Nonnull))failure {
     [_kernel startup:config completion:^ {
         success(self);
     } failure:^(CError * error) {
@@ -140,7 +142,9 @@
     return contactService.owner;
 }
 
-- (CSelf * _Nullable)signInWithId:(UInt64)contactId andName:(NSString * _Nonnull)name andContext:(NSDictionary * _Nullable)context {
+- (CSelf * _Nullable)signInWithId:(UInt64)contactId
+                          andName:(NSString * _Nonnull)name
+                       andContext:(NSDictionary * _Nullable)context {
     __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     __block CError * signInError = nil;
