@@ -98,7 +98,7 @@
 
 - (CAuthToken *)loadTokenWithContactId:(UInt64)contactId domain:(NSString *)domain appKey:(NSString *)appKey {
     @synchronized (self) {
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `token` WHERE `cid`=%llu AND `domain`='%@' AND `app_key`='%@' ORDER BY sn DESC", contactId, domain, appKey];
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `token` WHERE `cid`=%llu AND `domain`='%@' AND `app_key`='%@' ORDER BY `sn` DESC", contactId, domain, appKey];
         FMResultSet * result = [_db executeQuery:sql];
         if ([result next]) {
             NSString * data = [result stringForColumn:@"data"];

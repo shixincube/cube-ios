@@ -84,6 +84,9 @@
         return FALSE;
     }
 
+    // FIXME 这里应当判断一下 Kernel 是否已经获得了已经授权的令牌，如果没有令牌应当不允许启动
+    // FIXME 但是，如果判断可能会导致当应用程序以异步方式签入时，导致签入失败
+
     [self.pipeline addListener:_pipelineListener withDestination:CUBE_MODULE_CONTACT];
 
     return TRUE;
@@ -138,7 +141,7 @@
             _owner.context = myselfContact.context;
             _owner.appendix = myselfContact.appendix;
 
-            dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)*/, ^{
+            dispatch_async(_threadQueue, ^{
                 handleSuccess(self.owner);
 
                 CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
@@ -146,19 +149,21 @@
             });
         }
         else {
-            dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)*/, ^{
+            dispatch_async(_threadQueue, ^{
                 handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNoNetwork]);
             });
         }
 
         return TRUE;
     }
+    
+    // FIXME 应该判断内核是否已就绪，如果没有就绪应当进行必要等待，因为应用可能使用异步方式操作
 
     // 10 秒
     _waitReadyCount = 100;
 
     // 通知系统 Self 实例就绪
-    dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)*/, ^{
+    dispatch_async(_threadQueue, ^{
         CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
         [self notifyObservers:event];
     });
@@ -166,7 +171,7 @@
     // 激活令牌
     CAuthToken * token = [self.kernel activeToken:me.identity];
     if (token) {
-        // 打包数据
+        // 请求服务器进行签入
         NSMutableDictionary * data = [[NSMutableDictionary alloc] init];
         [data setValue:[me toJSON] forKey:@"self"];
         [data setValue:[token toJSON] forKey:@"token"];
@@ -185,7 +190,7 @@
         }];
     }
     else {
-        dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)*/, ^{
+        dispatch_async(_threadQueue, ^{
             handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateInconsistentToken]);
         });
     }

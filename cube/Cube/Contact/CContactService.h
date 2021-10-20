@@ -87,7 +87,7 @@ typedef void (^CContactZoneBlock)(CContactZone * contactZone);
  * @param me 指定签入的 @c CSelf 对象。
  * @param handleSuccess 操作成功回调。
  * @param handleFailure 操作失败回调。
- * @return 返回当次操作是否被执行。
+ * @return 如果返回 @c FALSE 表示当前状态下不能进行该操作，请检查是否正确启动魔方。
  */
 - (BOOL)signIn:(CSelf *)me handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
@@ -97,7 +97,7 @@ typedef void (^CContactZoneBlock)(CContactZone * contactZone);
  * @param name 指定签入联系人名称。
  * @param handleSuccess 操作成功回调。
  * @param handleFailure 操作失败回调。
- * @return 返回当次操作是否被执行。
+ * @return 如果返回 @c FALSE 表示当前状态下不能进行该操作，请检查是否正确启动魔方。
  */
 - (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 

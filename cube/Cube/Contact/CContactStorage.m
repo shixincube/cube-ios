@@ -61,7 +61,7 @@
 
     _domain = domain;
     
-    NSString * dbName = [NSString stringWithFormat:@"CubeContact_%@_%lld.db", domain, contactId];
+    NSString * dbName = [NSString stringWithFormat:@"CubeContact_%@_%llu.db", domain, contactId];
 
     // 创建数据库文件
     NSString * docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -90,7 +90,7 @@
     CContact * contact = nil;
 
     @synchronized (self) {
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM contact WHERE `id`=%llu", contactId];
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `contact` WHERE `id`=%llu", contactId];
         FMResultSet * result = [_db executeQuery:sql];
         if ([result next]) {
             NSString * name = [result stringForColumn:@"name"];

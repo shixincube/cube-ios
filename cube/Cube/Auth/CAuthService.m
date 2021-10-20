@@ -174,7 +174,7 @@ static NSString * sCubeDomain = @"shixincube.com";
 }
 
 - (CAuthToken *)allocToken:(UInt64)contactId {
-    if (!self.token) {
+    if (nil == self.token) {
         return nil;
     }
 

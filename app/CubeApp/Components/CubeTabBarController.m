@@ -111,8 +111,8 @@
     }
 
     NSLog(@"Cube Engine started");
-    
-    // 签入当前账号，该方法也是阻塞
+
+    // 签入当前账号，该方法为阻塞调用
     CSelf * ownerAccount = [[CEngine sharedInstance] signInWithId:current.identity
                                                           andName:current.displayName
                                                        andContext:[current toDesensitizingJSON]];
