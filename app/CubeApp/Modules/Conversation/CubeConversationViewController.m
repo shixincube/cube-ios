@@ -166,10 +166,10 @@
 
 - (void)loadData {
     // 查找数据
-    NSArray * list = [self.messagingService queryRecentMessages];
+    NSArray * list = [self.messagingService getRecentMessages];
     if (list && list.count > 0) {
         [self.conversations removeAllObjects];
-//        NSMutableArray * conversations = [[NSMutableArray alloc] initWithCapacity:list.count];
+
         for (CMessage * message in list) {
             // 创建 Conversation
             CubeConversation * conversation = [CubeConversation conversationWithMessage:message];

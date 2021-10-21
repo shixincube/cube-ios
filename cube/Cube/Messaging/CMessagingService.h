@@ -157,10 +157,22 @@
 - (BOOL)sendToContactWithId:(UInt64)contactId message:(CMessage *)message;
 
 /*!
- * @brief 查询最近的消息，每条消息都来自不同的接收联系人和群组。
- * @return 返回消息列表。如果返回 @c nil 值表示模块尚未启动。
+ * @brief 获取最近的消息清单，返回的每条消息都来自不同的会话联系人或群组。
+ * @return 返回消息列表。如果返回 @c nil 值表示消息服务模块未启动。
  */
-- (NSArray<__kindof CMessage *> *)queryRecentMessages;
+- (NSArray<__kindof CMessage *> *)getRecentMessages;
+
+/*!
+ * @brief 查询指定联系人与当前账号相关的所有消息。
+ * @param contact 指定联系人。
+ * @param beginning 指定查询的起始时间。
+ * @param limit 指定查询的最大记录数。
+ * @param completion 指定查询结果回调，数组里的消息是按照时间正序排序，即时间戳从小到大排序。
+ */
+- (void)queryMessagesWithContact:(CContact *)contact
+                       beginning:(UInt64)beginning
+                           limit:(NSInteger)limit
+                      completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
 
 /*!
  * @brief 统计与指定消息相关的联系人的未读消息数量。
@@ -184,14 +196,13 @@
  */
 - (void)markReadWithMessage:(CMessage *)message handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
-//- (void)getRecentMessageList:;
-
 /*!
- * @brief 查询指定联系人 ID 相关的所有消息，即包括该联系人发送的消息，也包含该联系人接收的消息。
+ * @brief 查询指定联系人相关的所有消息，即包括该联系人发送的消息，也包含该联系人接收的消息。
  * 从起始时间向前反向查询所有消息。
  * @param contact 指定联系人。
  * @param beginning 指定查询的起始时间。
  * @param limit 指定最大查询记录数量。
+ * @param completion 指定查询结果回调，消息数组里的消息是按照时间正序排序，即时间戳从小到大排序。
  */
 - (void)queryMessagesByReverseWithContact:(CContact *)contact
                                 beginning:(UInt64)beginning

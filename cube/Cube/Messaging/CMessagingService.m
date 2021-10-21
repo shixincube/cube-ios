@@ -210,7 +210,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     return TRUE;
 }
 
-- (NSArray<__kindof CMessage *> *)queryRecentMessages {
+- (NSArray<__kindof CMessage *> *)getRecentMessages {
     if (![self hasStarted]) {
         return nil;
     }
@@ -230,6 +230,10 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 
     return result;
+}
+
+- (void)queryMessagesWithContact:(CContact *)contact beginning:(UInt64)beginning limit:(NSInteger)limit completion:(void (^)(NSArray<__kindof CMessage *> *, BOOL))completion {
+    [self queryMessagesByReverseWithContact:contact beginning:beginning limit:limit completion:completion];
 }
 
 - (NSUInteger)countUnreadByMessage:(CMessage *)message {
