@@ -42,10 +42,10 @@
  * @param count 数量。
  * @param completed 结果回调。
  */
-- (void)getDataFromBeginningTime:(CubeMessagePanelView *)panelView
-                   beginningTime:(NSDate *)beginningTime
-                           count:(NSUInteger)count
-                       completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
+- (void)getMessages:(CubeMessagePanelView *)panelView
+  fromBeginningTime:(NSDate *)beginningTime
+              count:(NSUInteger)count
+          completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
 
 
 @optional

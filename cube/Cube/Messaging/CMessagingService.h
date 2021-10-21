@@ -184,6 +184,8 @@
  */
 - (void)markReadWithMessage:(CMessage *)message handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
+//- (void)getRecentMessageList:;
+
 /*!
  * @brief 查询指定联系人 ID 相关的所有消息，即包括该联系人发送的消息，也包含该联系人接收的消息。
  * 从起始时间向前反向查询所有消息。
@@ -196,14 +198,39 @@
                                     limit:(NSInteger)limit
                                completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
 
+/*!
+ * @brief 保存消息草稿。
+ * @param draft 指定草稿。
+ * @return 返回是否保存成功。
+ */
 - (BOOL)saveDraft:(CMessageDraft *)draft;
 
+/*!
+ * @brief 加载指定联系人的草稿。
+ * @param contact 指定联系人。
+ * @param handleSuccess 操作成功回调。
+ * @param handleFailure 操作失败回调。
+ */
 - (void)loadDraftWithContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
+/*!
+ * @brief 加载指定群组的草稿。
+ * @param group 指定群组。
+ * @param handleSuccess 操作成功回调。
+ * @param handleFailure 操作失败回调。
+ */
 - (void)loadDraftWithGroup:(CGroup *)group handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
+/*!
+ * @brief 删除指定对应联系人的草稿。
+ * @param contact 指定联系人。
+ */
 - (void)deleteDraftWithContact:(CContact *)contact;
 
+/*!
+ * @brief 删除指定的草稿。
+ * @param draft 指定草稿。
+ */
 - (void)deleteDraft:(CMessageDraft *)draft;
 
 
@@ -230,7 +257,7 @@
 
 /*!
  * @private
- * @brief 填充消息。
+ * @brief 填充消息内的实体数据实例。
  */
 - (void)fillMessage:(CMessage *)message;
 

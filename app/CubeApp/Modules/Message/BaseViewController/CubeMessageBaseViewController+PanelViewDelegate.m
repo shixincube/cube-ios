@@ -49,11 +49,11 @@
     [self dismissKeyboards];
 }
 
-- (void)getDataFromBeginningTime:(CubeMessagePanelView *)panelView
-                   beginningTime:(NSDate *)beginningTime
-                           count:(NSUInteger)count
-                       completed:(void (^)(NSDate *, NSArray *, BOOL))completed {
-    NSLog(@"CubeMessageBaseViewController#getDataFromBeginningTime");
+- (void)getMessages:(CubeMessagePanelView *)panelView
+  fromBeginningTime:(NSDate *)beginningTime
+              count:(NSUInteger)count
+          completed:(void (^)(NSDate *, NSArray *, BOOL))completed {
+    NSLog(@"CubeMessageBaseViewController#getMessages");
 
     if (panelView.contact) {
         [[CEngine sharedInstance].messagingService queryMessagesByReverseWithContact:panelView.contact

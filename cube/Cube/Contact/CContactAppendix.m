@@ -53,8 +53,6 @@
         if ([json objectForKey:@"remarkName"]) {
             _remarkName = [json valueForKey:@"remarkName"];
         }
-
-        contact.appendix = self;
     }
 
     return self;

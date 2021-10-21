@@ -110,7 +110,7 @@
 
             [result close];
 
-            // 查询附件
+            // 查找附录
             sql = [NSString stringWithFormat:@"SELECT * FROM `appendix` WHERE `id`=%lld", contactId];
             FMResultSet * appendixResult = [_db executeQuery:sql];
             if ([appendixResult next]) {

@@ -165,11 +165,11 @@
 - (void)tryToRefreshMoreRecord:(void (^)(NSInteger count, BOOL hasMore))complete {
     CWeakSelf(self);
 
-    if (self.delegate && [self.delegate respondsToSelector:@selector(getDataFromBeginningTime:beginningTime:count:completed:)]) {
-        [self.delegate getDataFromBeginningTime:self
-                                  beginningTime:self.currentDate
-                                          count:PAGE_MESSAGE_COUNT
-                                      completed:^(NSDate * date, NSArray * array, BOOL hasMore) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(getMessages:fromBeginningTime:count:completed:)]) {
+        [self.delegate getMessages:self
+                 fromBeginningTime:self.currentDate
+                             count:PAGE_MESSAGE_COUNT
+                         completed:^(NSDate * date, NSArray * array, BOOL hasMore) {
             if (array.count > 0) {
                 weak_self.currentDate = [array[0] date];
                 [weak_self.data insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, array.count)]];

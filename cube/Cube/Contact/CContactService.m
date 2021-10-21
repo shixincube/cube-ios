@@ -156,10 +156,10 @@
             }
 
             dispatch_async(_threadQueue, ^ {
-                handleSuccess(self.owner);
-
                 CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
                 [self notifyObservers:event];
+
+                handleSuccess(self.owner);
             });
         }
         else {
