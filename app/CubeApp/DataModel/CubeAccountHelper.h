@@ -67,6 +67,11 @@
 
 - (void)getBuildinAccounts:(void(^)(NSArray<__kindof CubeAccount *> * accountList))handler;
 
+/*!
+ * @brief 解释头像名为头像文件名。
+ */
++ (NSString *)explainAvatar:(NSString *)avatarName;
+
 @end
 
 #endif /* CubeAccountHelper_h */

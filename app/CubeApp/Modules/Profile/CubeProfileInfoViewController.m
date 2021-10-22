@@ -28,7 +28,6 @@
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
 #import "CubeProfileInfoAvatarCell.h"
-#import "CubeAppUtil.h"
 #import "CubeSettingItemTemplate.h"
 
 typedef NS_ENUM(NSInteger, CubeProfileInfoVCSectionType) {
@@ -66,7 +65,7 @@ typedef NS_ENUM(NSInteger, CubeProfileInfoVCSectionType) {
 
     // 头像
     CubeSettingItem * avatar = [CubeSettingItem itemWithTitle:@"头像"];
-    avatar.rightImageName = [CubeAppUtil explainAvatarName:account.avatar];
+    avatar.rightImageName = [CubeAccountHelper explainAvatar:account.avatar];
     self.addCell([CubeProfileInfoAvatarCell class]).toSection(sectionTag).withDataModel(avatar).selectedAction(^ (id data) {
         // Nothing
     });

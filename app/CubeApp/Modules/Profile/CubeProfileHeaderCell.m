@@ -26,7 +26,7 @@
 
 #import "CubeProfileHeaderCell.h"
 #import "CubeAccount.h"
-#import "CubeAppUtil.h"
+#import "CubeAccountHelper.h"
 
 #define INFO_SPACE_X 14.0f
 #define INFO_SPACE_Y 12.0f
@@ -122,7 +122,7 @@
 - (void)setAccount:(CubeAccount *)account {
     _account = account;
     
-    NSString * avatar = [CubeAppUtil explainAvatarName:account.avatar];
+    NSString * avatar = [CubeAccountHelper explainAvatar:account.avatar];
     if (nil != avatar) {
         // 使用默认头像
         [self.avatarImageView setImage:[UIImage imageNamed:avatar]];

@@ -71,7 +71,7 @@
         _storage = [[CContactStorage alloc] initWithService:self];
         _selfReady = FALSE;
 
-        self.defaultRetrospect = 30 * 24 * 60 * 60000L;
+        self.defaultRetrospect = 30L * 24L * 60L * 60000L;
 
         _threadQueue = dispatch_queue_create("CContactServiceQueue", DISPATCH_QUEUE_CONCURRENT);
     }
@@ -285,7 +285,7 @@
                 }
             }
 
-            dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)*/, ^{
+            dispatch_async(_threadQueue, ^{
                 handleSuccess(contact);
             });
             return;
@@ -294,8 +294,8 @@
 
     // 检查数据通道
     if (![self.pipeline isReady]) {
-        dispatch_async(_threadQueue/*dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)*/, ^{
-            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNotFindContact];
+        dispatch_async(_threadQueue, ^{
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNoNetwork];
             handleFailure(error);
         });
         return;
@@ -372,12 +372,15 @@
         // 更新存储
         [self->_storage writeContactAppendix:appendix];
 
+        // 赋值
+        contact.appendix = appendix;
+
         handleSuccess(contact, appendix);
     }];
 }
 
 - (void)getAppendixWithGroup:(CGroup *)group handleSuccess:(void(^)(CGroup *, CGroupAppendix *))handleSuccess handleFailure:(CFailureBlock)handleFailure {
-    
+    // TODO
 }
 
 - (void)listGroups:(UInt64)beginning ending:(UInt64)ending handler:(void (^)(NSArray *))handler {

@@ -27,7 +27,7 @@
 #import "CubeMessageBaseCell.h"
 #import "NSDate+Cube.h"
 #import "CubeAccount.h"
-#import "CubeAppUtil.h"
+#import "CubeAccountHelper.h"
 
 #define     TIMELABEL_HEIGHT    20.0f
 #define     TIMELABEL_SPACE_Y   10.0f
@@ -69,7 +69,7 @@
     [self.timeLabel setText:[NSString stringWithFormat:@"  %@  ", [message.date messageTimeInfo]]];
     [self.nameLabel setText:[message.sender getPriorityName]];
 
-    NSString * avatar = [CubeAppUtil explainAvatarName:[CubeAccount getAvatar:message.sender.context]];
+    NSString * avatar = [CubeAccountHelper explainAvatar:[CubeAccount getAvatar:message.sender.context]];
     [self.avatarButton setImage:[UIImage imageNamed:avatar] forState:UIControlStateNormal];
 
     self.showTime = NO;

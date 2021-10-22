@@ -39,11 +39,6 @@
 + (NSString *)desensitizePhoneNumber:(NSString *)phoneNumber;
 
 /*!
- * @brief 解释头像名为头像文件名。
- */
-+ (NSString *)explainAvatarName:(NSString *)avatarName;
-
-/*!
  * @brief 获取设备名称。
  */
 + (NSString*)deviceModelName;

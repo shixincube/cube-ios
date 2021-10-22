@@ -105,6 +105,28 @@
     }];
 }
 
++ (NSString *)explainAvatar:(NSString *)avatarName {
+    if ([avatarName isEqualToString:@"default"]) return @"AvatarDefault";
+    else if ([avatarName isEqualToString:@"avatar01"]) return @"Avatar01";
+    else if ([avatarName isEqualToString:@"avatar02"]) return @"Avatar02";
+    else if ([avatarName isEqualToString:@"avatar03"]) return @"Avatar03";
+    else if ([avatarName isEqualToString:@"avatar04"]) return @"Avatar04";
+    else if ([avatarName isEqualToString:@"avatar05"]) return @"Avatar05";
+    else if ([avatarName isEqualToString:@"avatar06"]) return @"Avatar06";
+    else if ([avatarName isEqualToString:@"avatar07"]) return @"Avatar07";
+    else if ([avatarName isEqualToString:@"avatar08"]) return @"Avatar08";
+    else if ([avatarName isEqualToString:@"avatar09"]) return @"Avatar09";
+    else if ([avatarName isEqualToString:@"avatar10"]) return @"Avatar10";
+    else if ([avatarName isEqualToString:@"avatar11"]) return @"Avatar11";
+    else if ([avatarName isEqualToString:@"avatar12"]) return @"Avatar12";
+    else if ([avatarName isEqualToString:@"avatar13"]) return @"Avatar13";
+    else if ([avatarName isEqualToString:@"avatar14"]) return @"Avatar14";
+    else if ([avatarName isEqualToString:@"avatar15"]) return @"Avatar15";
+    else if ([avatarName isEqualToString:@"avatar16"]) return @"Avatar16";
+
+    return avatarName;
+}
+
 #pragma mark - Delegate
 
 - (NSDictionary *)needContactContext:(CContact *)contact {

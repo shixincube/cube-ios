@@ -27,7 +27,6 @@
 #import "CubeConversation.h"
 #import "CubeAccount.h"
 #import "CubeAccountHelper.h"
-#import "CubeAppUtil.h"
 
 @interface CubeConversation ()
 
@@ -100,7 +99,7 @@
     }
 
     // 头像处理
-    self.avatarName = [CubeAppUtil explainAvatarName:self.avatarName];
+    self.avatarName = [CubeAccountHelper explainAvatar:self.avatarName];
 
     self.remindType = CubeMessageRemindTypeNormal;
 

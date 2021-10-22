@@ -35,4 +35,16 @@
     return self;
 }
 
+- (void)loadView {
+    [super loadView];
+
+    [self buildView];
+}
+
+#pragma mark - Private
+
+- (void)buildView {
+    self.navigationItem.title = @"文件";
+}
+
 @end
