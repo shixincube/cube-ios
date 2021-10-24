@@ -86,7 +86,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
         _observer = [[CMessagingObserver alloc] initWithService:self];
         _serviceReady = FALSE;
 
-        self.defaultRetrospect = 30 * 24 * 60 * 60000L;
+        self.retrospectDuration = 30L * 24L * 60L * 60000L;
 
         _pullTimer = nil;
 
@@ -537,7 +537,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     // 查询本地最近消息时间
     UInt64 time = [_storage queryLastMessageTime];
     if (0 == time) {
-        _lastMessageTime = now - self.defaultRetrospect;
+        _lastMessageTime = now - self.retrospectDuration;
     }
     else {
         _lastMessageTime = time;

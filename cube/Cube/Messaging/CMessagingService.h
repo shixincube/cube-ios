@@ -118,8 +118,8 @@
     NSTimer * _pullTimer;
 }
 
-/*! @brief 默认回溯时长，默认值：30个自然日。 */
-@property (nonatomic, assign) UInt64 defaultRetrospect;
+/*! @brief 回溯时长，默认值：30个自然日。 */
+@property (nonatomic, assign) UInt64 retrospectDuration;
 
 /*! @brief 消息服务的事件代理。 */
 @property (nonatomic, assign) id<CMessagingEventDelegate> eventDelegate;

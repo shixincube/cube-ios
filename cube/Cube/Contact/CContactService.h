@@ -71,8 +71,8 @@ typedef void (^CContactZoneBlock)(CContactZone * contactZone);
 /*! 当前有效的在线联系人，即当前引擎签入的联系人。 */
 @property (nonatomic, strong) CSelf * owner;
 
-/*! 默认回溯时长，默认值：30个自然天。 */
-@property (nonatomic, assign) UInt64 defaultRetrospect;
+/*! 回溯时长，默认值：30个自然天。 */
+@property (nonatomic, assign) UInt64 retrospectDuration;
 
 /*! 联系人模块事件代理。 */
 @property (nonatomic, weak) id<CContactEventDelegate> delegate;

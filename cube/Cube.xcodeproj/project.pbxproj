@@ -92,6 +92,7 @@
 		C8C384FA26BD2380009CF806 /* CAbstractContact.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384F926BD2380009CF806 /* CAbstractContact.m */; };
 		C8C384FF26BD275C009CF806 /* CContact.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C384FE26BD275C009CF806 /* CContact.m */; };
 		C8C3850226BD2775009CF806 /* CContact.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C3850126BD2775009CF806 /* CContact.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8C40560272583E4000DCEC8 /* CEntityInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C4055F272583E4000DCEC8 /* CEntityInspector.m */; };
 		C8C81C2526FC7BC500455355 /* CMessageType.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C81C2426FC7BC500455355 /* CMessageType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8D7556D26EDAEB400B7368E /* CKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1A56426899B770020F136 /* CKernel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8D7557026EDAECA00B7368E /* CError.h in Headers */ = {isa = PBXBuildFile; fileRef = C88461E226B55A3A00A8A3C6 /* CError.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -247,6 +248,8 @@
 		C8C384F926BD2380009CF806 /* CAbstractContact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAbstractContact.m; sourceTree = "<group>"; };
 		C8C384FE26BD275C009CF806 /* CContact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CContact.m; sourceTree = "<group>"; };
 		C8C3850126BD2775009CF806 /* CContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContact.h; sourceTree = "<group>"; };
+		C8C4055E272583D4000DCEC8 /* CEntityInspector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEntityInspector.h; sourceTree = "<group>"; };
+		C8C4055F272583E4000DCEC8 /* CEntityInspector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEntityInspector.m; sourceTree = "<group>"; };
 		C8C81C2426FC7BC500455355 /* CMessageType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessageType.h; sourceTree = "<group>"; };
 		C8DF88A6268D699C00399C99 /* cell.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cell.xcframework; path = ../../libs/cell.xcframework; sourceTree = "<group>"; };
 		C8DF88AA268D69A600399C99 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = ../../libs/WebRTC.xcframework; sourceTree = "<group>"; };
@@ -473,6 +476,8 @@
 			children = (
 				C8C384E126BD043A009CF806 /* CEntity.h */,
 				C8C384E426BD0448009CF806 /* CEntity.m */,
+				C8C4055E272583D4000DCEC8 /* CEntityInspector.h */,
+				C8C4055F272583E4000DCEC8 /* CEntityInspector.m */,
 				C88461E226B55A3A00A8A3C6 /* CError.h */,
 				C88461E326B55A4B00A8A3C6 /* CError.m */,
 				C842BDD226DE07C7008A8517 /* CHook.h */,
@@ -690,6 +695,7 @@
 				C8F4596826C5346900CC4E13 /* CContactEvent.m in Sources */,
 				C8C384F426BD1B68009CF806 /* CUtils.m in Sources */,
 				C8C384FF26BD275C009CF806 /* CContact.m in Sources */,
+				C8C40560272583E4000DCEC8 /* CEntityInspector.m in Sources */,
 				C8F4596326C4B66000CC4E13 /* CContactService+Core.m in Sources */,
 				C8DF88B9268DB2C300399C99 /* CEngine.m in Sources */,
 				C8F1A5822689AC230020F136 /* CCellPipeline.m in Sources */,

@@ -71,7 +71,7 @@
         _storage = [[CContactStorage alloc] initWithService:self];
         _selfReady = FALSE;
 
-        self.defaultRetrospect = 30L * 24L * 60L * 60000L;
+        self.retrospectDuration = 30L * 24L * 60L * 60000L;
 
         _threadQueue = dispatch_queue_create("CContactServiceQueue", DISPATCH_QUEUE_CONCURRENT);
     }

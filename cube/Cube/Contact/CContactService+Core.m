@@ -80,7 +80,7 @@
     }];
 
     UInt64 now = [CUtils currentTimeMillis];
-    [self listGroups:(now - self.defaultRetrospect) ending:now handler:^(NSArray * list) {
+    [self listGroups:(now - self.retrospectDuration) ending:now handler:^(NSArray * list) {
         gotGroups = TRUE;
         NSLog(@"List groups");
         if (gotAppendix && gotBlockList && gotTopList) {
