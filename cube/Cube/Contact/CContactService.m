@@ -118,7 +118,6 @@
 - (BOOL)signIn:(CSelf *)me handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     // 不允许重复签入
     if (_selfReady) {
-//        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateIllegalOperation]);
         return FALSE;
     }
 
@@ -149,7 +148,8 @@
             _owner.appendix = myselfContact.appendix;
             // 设置上下文
             if (_owner.context) {
-                [_storage updateContactContext:_owner.identity context:_owner.context];
+                UInt64 last = [_storage updateContactContext:_owner.identity context:_owner.context];
+                [_owner resetLast:last];
             }
             else {
                 _owner.context = myselfContact.context;
@@ -268,28 +268,39 @@
 }
 
 - (void)getContact:(UInt64)contactId handleSuccess:(CContactBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    if (!_selfReady) {
+        dispatch_async(_threadQueue, ^{
+            CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateIllegalOperation];
+            handleFailure(error);
+        });
+        return;
+    }
+    
+    if (contactId == self.owner.identity) {
+        dispatch_async(_threadQueue, ^{
+            handleSuccess(self.owner);
+        });
+        return;
+    }
+
     // 从数据库读取
     CContact * contact = [_storage readContact:contactId];
-    if (contact) {
-        // 判断是否过期
-        UInt64 now = [CUtils currentTimeMillis];
-        if (now < contact.expiry) {
-            // 没有过期
-
-            // 检查上下文
-            if (nil == contact.context && self.delegate
-                    && [self.delegate respondsToSelector:@selector(needContactContext:)]) {
-                contact.context = [self.delegate needContactContext:contact];
-                if (contact.context) {
-                    [_storage updateContactContext:contact.identity context:contact.context];
-                }
+    if (contact && [contact isValid]) {
+        // 没有过期
+        // 检查上下文
+        if (nil == contact.context && self.delegate
+                && [self.delegate respondsToSelector:@selector(needContactContext:)]) {
+            contact.context = [self.delegate needContactContext:contact];
+            if (contact.context) {
+                UInt64 last = [_storage updateContactContext:contact.identity context:contact.context];
+                [contact resetLast:last];
             }
-
-            dispatch_async(_threadQueue, ^{
-                handleSuccess(contact);
-            });
-            return;
         }
+
+        dispatch_async(_threadQueue, ^{
+            handleSuccess(contact);
+        });
+        return;
     }
 
     // 检查数据通道
@@ -324,7 +335,6 @@
         CContact * contact = [[CContact alloc] initWithJSON:[packet extractData] domain:self.kernel.authToken.domain];
 
         // 获取上下文
-
         if (nil == contact.context) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(needContactContext:)]) {
                 contact.context = [self.delegate needContactContext:contact];
@@ -349,6 +359,7 @@
 }
 
 - (void)getAppendixWithContact:(CContact *)contact handleSuccess:(void(^)(CContact *, CContactAppendix *))handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    
     NSNumber * contactId = [NSNumber numberWithUnsignedLongLong:contact.identity];
     NSDictionary * data = [NSDictionary dictionaryWithObjectsAndKeys:contactId, @"contactId", nil];
     CPacket * request = [[CPacket alloc] initWithName:CUBE_CONTACT_GETAPPENDIX andData:data];

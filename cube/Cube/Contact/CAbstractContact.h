@@ -63,6 +63,13 @@
  */
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain timestamp:(UInt64)timestamp;
 
+/*!
+ * @brief 使用 JSON 数据初始化。
+ * @param json 指定 JSON 数据结构。
+ * @return 返回对象实例。
+ */
+- (instancetype)initWithJSON:(NSDictionary *)json;
+
 @end
 
 #endif /* CAbstractContact_h */

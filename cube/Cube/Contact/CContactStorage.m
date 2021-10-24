@@ -31,15 +31,17 @@
 #import <FMDB/FMDatabase.h>
 
 @interface CContactStorage () {
-    
+
     CContactService * _service;
-    
+
     NSString * _domain;
-    
+
     FMDatabase * _db;
 }
 
 - (void)execSelfChecking;
+
+- (void)dropAllTables;
 
 @end
 
@@ -102,8 +104,13 @@
             }
 
             UInt64 timestamp = [result unsignedLongLongIntForColumn:@"timestamp"];
+            UInt64 last = [result unsignedLongLongIntForColumn:@"last"];
+            UInt64 expiry = [result unsignedLongLongIntForColumn:@"expiry"];
 
             contact = [[CContact alloc] initWithId:contactId name:name domain:_domain timestamp:timestamp];
+            // 重置时间戳
+            [contact resetExpiry:expiry lastTimestamp:last];
+            // 上下文
             if (contextData) {
                 contact.context = contextData;
             }
@@ -111,7 +118,7 @@
             [result close];
 
             // 查找附录
-            sql = [NSString stringWithFormat:@"SELECT * FROM `appendix` WHERE `id`=%lld", contactId];
+            sql = [NSString stringWithFormat:@"SELECT * FROM `appendix` WHERE `id`=%llu", contactId];
             FMResultSet * appendixResult = [_db executeQuery:sql];
             if ([appendixResult next]) {
                 NSString * appendixString = [appendixResult stringForColumn:@"data"];
@@ -143,7 +150,7 @@
             [result close];
 
             // 已经有数据进行更新
-            sql = @"UPDATE `contact` SET `name`=?, `context`=?, `timestamp`=? WHERE `id`=?";
+            sql = @"UPDATE `contact` SET `name`=?, `context`=?, `timestamp`=?, `last`=?, `expiry`=? WHERE `id`=?";
 
             NSString * contextString = nil;
             if (contact.context) {
@@ -155,36 +162,44 @@
             // 执行 SQL
             ret = [_db executeUpdate:sql, contact.name, contextString,
                    [NSNumber numberWithUnsignedLongLong:contact.timestamp],
+                   [NSNumber numberWithUnsignedLongLong:contact.last],
+                   [NSNumber numberWithUnsignedLongLong:contact.expiry],
                    [NSNumber numberWithUnsignedLongLong:contact.identity]];
 
             if (ret && contact.appendix) {
                 // 更新附录
-                sql = @"UPDATE `appendix` SET `data`=? WHERE `id`=?";
+                sql = @"UPDATE `appendix` SET `data`=?, `timestamp`=? WHERE `id`=?";
 
                 NSString * appendixString = [CUtils toStringWithJSON:[contact.appendix toJSON]];
 
-                ret = [_db executeUpdate:sql, appendixString, [NSNumber numberWithUnsignedLongLong:contact.identity]];
+                ret = [_db executeUpdate:sql, appendixString,
+                       [NSNumber numberWithUnsignedLongLong:contact.last],
+                       [NSNumber numberWithUnsignedLongLong:contact.identity]];
             }
         }
         else {
             [result close];
 
             // 没有数据进行插入
-            sql = @"INSERT INTO `contact`(`id`,`name`,`context`,`timestamp`) VALUES (?,?,?,?)";
+            sql = @"INSERT INTO `contact`(`id`,`name`,`context`,`timestamp`,`last`,`expiry`) VALUES (?,?,?,?,?,?)";
 
             NSString * contextString = contact.context ?
                     [CUtils toStringWithJSON:contact.context] : @"";
 
             // 执行 SQL
             ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:contact.identity],
-                   contact.name, contextString, [NSNumber numberWithUnsignedLongLong:contact.timestamp]];
+                   contact.name, contextString,
+                   [NSNumber numberWithUnsignedLongLong:contact.timestamp],
+                   [NSNumber numberWithUnsignedLongLong:contact.last],
+                   [NSNumber numberWithUnsignedLongLong:contact.expiry]];
 
             if (ret && contact.appendix) {
                 // 插入附录
-                sql = @"INSERT INTO `appendix`(`id`,`data`) VALUES (?,?)";
+                sql = @"INSERT INTO `appendix`(`id`,`data`,`timestamp`) VALUES (?,?,?)";
 
                 ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:contact.identity],
-                       [CUtils toStringWithJSON:[contact.appendix toJSON]]];
+                       [CUtils toStringWithJSON:[contact.appendix toJSON]],
+                       [NSNumber numberWithUnsignedLongLong:contact.last]];
             }
         }
     }
@@ -192,17 +207,20 @@
     return ret;
 }
 
-- (void)updateContactContext:(UInt64)contactId context:(NSDictionary *)context {
-    NSString * sql = @"UPDATE `contact` SET `context`=?, `timestamp`=? WHERE `id`=?";
+- (UInt64)updateContactContext:(UInt64)contactId context:(NSDictionary *)context {
+    NSString * sql = @"UPDATE `contact` SET `context`=?, `last`=?, `expiry`=? WHERE `id`=?";
 
     NSString * contextString = [CUtils toStringWithJSON:context];
 
+    UInt64 now = [CUtils currentTimeMillis];
     @synchronized (self) {
         // 执行 SQL
         [_db executeUpdate:sql, contextString,
-               [NSNumber numberWithUnsignedLongLong:[CUtils currentTimeMillis]],
-               [NSNumber numberWithUnsignedLongLong:contactId]];
+                [NSNumber numberWithUnsignedLongLong:now],
+                [NSNumber numberWithUnsignedLongLong:now + CUBE_LIFECYCLE_IN_MSEC],
+                [NSNumber numberWithUnsignedLongLong:contactId]];
     }
+    return now;
 }
 
 - (void)updateContactName:(UInt64)contactId name:(NSString *)name {
@@ -224,23 +242,26 @@
             [result close];
 
             // 有数据，更新
-            sql = @"UPDATE `appendix` SET `data`=? WHERE `id`=?";
+            sql = @"UPDATE `appendix` SET `data`=?, `timestamp`=? WHERE `id`=?";
 
             NSString * appendixString = [CUtils toStringWithJSON:[appendix toJSON]];
 
             ret = [_db executeUpdate:sql, appendixString,
+                   [NSNumber numberWithUnsignedLongLong:[CUtils currentTimeMillis]],
                    [NSNumber numberWithUnsignedLongLong:appendix.owner.identity]];
         }
         else {
             [result close];
 
             // 无数据，插入
-            sql = @"INSERT INTO `appendix`(`id`,`data`) VALUES (?,?)";
+            sql = @"INSERT INTO `appendix`(`id`,`data`,`timestamp`) VALUES (?,?,?)";
 
             NSString * appendixString = [CUtils toStringWithJSON:[appendix toJSON]];
-            
-            ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:appendix.owner.identity],
-                   appendixString];
+
+            ret = [_db executeUpdate:sql,
+                   [NSNumber numberWithUnsignedLongLong:appendix.owner.identity],
+                   appendixString,
+                   [NSNumber numberWithUnsignedLongLong:[CUtils currentTimeMillis]]];
         }
     }
 
@@ -339,7 +360,7 @@
 
 - (void)execSelfChecking {
     // 联系人表
-    NSString * sql = @"CREATE TABLE IF NOT EXISTS `contact` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `id` BIGINT, `name` TEXT, `context` TEXT, `timestamp` BIGINT)";
+    NSString * sql = @"CREATE TABLE IF NOT EXISTS `contact` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `id` BIGINT, `name` TEXT, `context` TEXT, `timestamp` BIGINT DEFAULT 0, `last` BIGINT DEFAULT 0, `expiry` BIGINT DEFAULT 0)";
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `contact` table OK");
     }
@@ -357,7 +378,7 @@
     }
 
     // 附录表
-    sql = @"CREATE TABLE IF NOT EXISTS `appendix` (`id` BIGINT PRIMARY KEY, `data` TEXT)";
+    sql = @"CREATE TABLE IF NOT EXISTS `appendix` (`id` BIGINT PRIMARY KEY, `timestamp` BIGINT, `data` TEXT)";
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `appendix` table OK");
     }
@@ -372,6 +393,16 @@
     sql = @"CREATE TABLE IF NOT EXISTS `contact_zone_participant` (`contact_zone_id` BIGINT, `contact_id` BIGINT, `state` INTEGER, `timestamp` BIGINT, `postscript` TEXT)";
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `contact_zone_participant` table OK");
+    }
+}
+
+- (void)dropAllTables {
+    if ([_db executeUpdate:@"DROP TABLE `contact`"]) {
+        NSLog(@"CContactStorage#dropAllTables : Drop `contact`");
+    }
+
+    if ([_db executeUpdate:@"DROP TABLE `appendix`"]) {
+        NSLog(@"CContactStorage#dropAllTables : Drop `appendix`");
     }
 }
 

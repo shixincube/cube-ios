@@ -46,16 +46,32 @@
     return self;
 }
 
+- (instancetype)initWithJSON:(NSDictionary *)json {
+    if (self = [super initWithJSON:json]) {
+        if ([json objectForKey:@"name"]) {
+            self.name = [json valueForKey:@"name"];
+        }
+        if ([json objectForKey:@"domain"]) {
+            self.domain = [json valueForKey:@"domain"];
+        }
+
+        if ([json objectForKey:@"context"]) {
+            self.context = [json valueForKey:@"context"];
+        }
+    }
+
+    return self;
+}
+
 - (NSMutableDictionary *)toJSON {
     NSMutableDictionary * json = [super toJSON];
-    [json setValue:[NSNumber numberWithUnsignedLongLong:self.identity] forKey:@"id"];
     [json setValue:self.name forKey:@"name"];
     [json setValue:self.domain forKey:@"domain"];
 
     if (nil != self.context) {
         [json setValue:self.context forKey:@"context"];
     }
-    
+
     return json;
 }
 

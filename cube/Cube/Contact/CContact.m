@@ -47,9 +47,9 @@
 }
 
 - (instancetype)initWithJSON:(NSDictionary *)json domain:(NSString *)domain {
-    if (self = [super initWithId:[[json valueForKey:@"id"] unsignedLongLongValue]
-                            name:[json valueForKey:@"name"]
-                          domain:domain]) {
+    if (self = [super initWithJSON:json]) {
+        self.domain = domain;
+
         _devices = [[NSMutableArray alloc] initWithCapacity:2];
 
         if ([json objectForKey:@"devices"]) {
@@ -58,11 +58,6 @@
                 CDevice * device = [CDevice deviceWithJSON:devJson];
                 [self addDevice:device];
             }
-        }
-
-        if ([json objectForKey:@"context"]) {
-            NSDictionary * context = [json valueForKey:@"context"];
-            self.context = context;
         }
     }
 
@@ -101,7 +96,7 @@
     if (_devices.count == 0) {
         return [[CDevice alloc] initWithName:@"Unknown" platform:@"null"];
     }
-    
+
     return [_devices objectAtIndex:_devices.count - 1];
 }
 
@@ -109,11 +104,11 @@
     if (self == object) {
         return TRUE;
     }
-    
+
     if (!object || ![object isKindOfClass:[self class]]) {
         return FALSE;
     }
-    
+
     CContact * other = object;
     return (other.identity == self.identity) &&
             [other.domain isEqualToString:self.domain];
@@ -121,13 +116,13 @@
 
 - (NSMutableDictionary *)toJSON {
     NSMutableDictionary * json = [super toJSON];
-    
+
     NSMutableArray * list = [[NSMutableArray alloc] initWithCapacity:_devices.count];
     for (CDevice * dev in _devices) {
         [list addObject:[dev toJSON]];
     }
     [json setValue:list forKey:@"devices"];
-    
+
     return json;
 }
 

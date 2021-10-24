@@ -72,8 +72,11 @@
 
 /*!
  * @brief 更新联系人上下文。
+ * @param contactId 联系人 ID 。
+ * @param context 联系人上下文。
+ * @return 返回更新后的时间戳。
  */
-- (void)updateContactContext:(UInt64)contactId context:(NSDictionary *)context;
+- (UInt64)updateContactContext:(UInt64)contactId context:(NSDictionary *)context;
 
 /*!
  * @brief 更新联系人名称。

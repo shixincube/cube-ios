@@ -28,15 +28,14 @@
 #import "CUtils.h"
 #import <cell/CellUtil.h>
 
-#define LIFECYCLE_IN_MSEC (7L * 24L * 60L * 60L * 1000L)
-
 @implementation CEntity
 
 - (instancetype)init {
     if (self = [super init]) {
         _identity = [CellUtil generateUnsignedSerialNumber];
         _timestamp = [CUtils currentTimeMillis];
-        _expiry = _timestamp + LIFECYCLE_IN_MSEC;
+        _last = _timestamp;
+        _expiry = _last + CUBE_LIFECYCLE_IN_MSEC;
         self.context = nil;
     }
 
@@ -47,7 +46,8 @@
     if (self = [super init]) {
         _identity = identity;
         _timestamp = [CUtils currentTimeMillis];
-        _expiry = _timestamp + LIFECYCLE_IN_MSEC;
+        _last = _timestamp;
+        _expiry = _last + CUBE_LIFECYCLE_IN_MSEC;
         self.context = nil;
     }
     
@@ -58,7 +58,33 @@
     if (self = [super init]) {
         _identity = identity;
         _timestamp = timestamp;
-        _expiry = _timestamp + LIFECYCLE_IN_MSEC;
+        _last = timestamp;
+        _expiry = _last + CUBE_LIFECYCLE_IN_MSEC;
+        self.context = nil;
+    }
+
+    return self;
+}
+
+- (instancetype)initWithJSON:(NSDictionary *)json {
+    if (self = [super init]) {
+        _identity = [[json valueForKey:@"id"] unsignedLongLongValue];
+
+        if ([json objectForKey:@"timestamp"])
+            _timestamp = [[json valueForKey:@"timestamp"] unsignedLongLongValue];
+        else
+            _timestamp = [CUtils currentTimeMillis];
+
+        if ([json objectForKey:@"last"])
+            _last = [[json valueForKey:@"last"] unsignedLongLongValue];
+        else
+            _last = [CUtils currentTimeMillis];
+
+        if ([json objectForKey:@"expiry"])
+            _expiry = [[json valueForKey:@"expiry"] unsignedLongLongValue];
+        else
+            _expiry = _last + CUBE_LIFECYCLE_IN_MSEC;
+
         self.context = nil;
     }
 
@@ -66,15 +92,36 @@
 }
 
 - (UInt64)getId {
-    return self.identity;
+    return _identity;
+}
+
+- (void)resetLast:(UInt64)time {
+    _last = time;
+    _expiry = time + CUBE_LIFECYCLE_IN_MSEC;
+}
+
+- (void)resetExpiry:(UInt64)expiry lastTimestamp:(UInt64)lastTimestamp {
+    _last = lastTimestamp;
+    _expiry = expiry;
+}
+
+- (BOOL)isValid {
+    return _expiry > [CUtils currentTimeMillis];
 }
 
 - (NSMutableDictionary *)toJSON {
-    return [[NSMutableDictionary alloc] init];
+    NSMutableDictionary * json = [[NSMutableDictionary alloc] init];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_identity] forKey:@"id"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_timestamp] forKey:@"timestamp"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_last] forKey:@"last"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_expiry] forKey:@"expiry"];
+    return json;
 }
 
 - (NSMutableDictionary *)toCompactJSON {
-    return [[NSMutableDictionary alloc] init];
+    NSMutableDictionary * json = [[NSMutableDictionary alloc] init];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_identity] forKey:@"id"];
+    return json;
 }
 
 @end

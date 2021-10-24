@@ -29,6 +29,10 @@
 
 #import "CJSONable.h"
 
+#ifndef CUBE_LIFECYCLE_IN_MSEC
+#define CUBE_LIFECYCLE_IN_MSEC (7L * 24L * 60L * 60L * 1000L)
+#endif
+
 /*!
  * @brief 信息实体对象。所有实体对象的基类。
  */
@@ -37,10 +41,13 @@
 /*! 实体 ID 。 */
 @property (nonatomic, assign, readonly) UInt64 identity;
 
-/*! 实体创建时的时间戳。 */
+/*! 数据时间戳。 */
 @property (nonatomic, assign, readonly) UInt64 timestamp;
 
-/*! 实体的到期时间。 */
+/*! 该实体数据上次更新的时间戳。 */
+@property (nonatomic, assign, readonly) UInt64 last;
+
+/*! 数据到期时间。 */
 @property (nonatomic, assign, readonly) UInt64 expiry;
 
 /*! 关联上下文数据。 */
@@ -69,10 +76,46 @@
 - (instancetype)initWithId:(UInt64)identity timestamp:(UInt64)timestamp;
 
 /*!
+ * @brief 使用 JSON 结构数据初始化。
+ * @param json 指定 JSON 数据。
+ * @return 返回实体实例。
+ */
+- (instancetype)initWithJSON:(NSDictionary *)json;
+
+/*!
  * @brief 获取实体 ID 。
  * @return 返回实体 ID 。
  */
 - (UInt64)getId;
+
+/*!
+ * @brief 重置上一次数据更新时间。
+ * @param time 指定更新时间。
+ */
+- (void)resetLast:(UInt64)time;
+
+/*!
+ * @brief 重置有效期。
+ * @param expiry 指定有效期。
+ * @param lastTimestamp 指定上一次更新数据时的时间戳。
+ */
+- (void)resetExpiry:(UInt64)expiry lastTimestamp:(UInt64)lastTimestamp;
+
+/*!
+ * @brief 数据是否在有效期内。
+ * @return 如果有效返回 @c TRUE ，否则返回 @c FALSE 。
+ */
+- (BOOL)isValid;
+
+/*!
+ * @copydoc CJSONable::toJSON
+ */
+- (NSMutableDictionary *)toJSON;
+
+/*!
+ * @copydoc CJSONable::toCompactJSON
+ */
+- (NSMutableDictionary *)toCompactJSON;
 
 @end
 
