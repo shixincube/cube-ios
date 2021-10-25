@@ -28,6 +28,7 @@
 #import "CAuthToken.h"
 #import "CError.h"
 #import "CKernel.h"
+#import "CEntityInspector.h"
 #import "CObservableEvent.h"
 #import "CUtils.h"
 #import "CContactPipelineListener.h"
@@ -50,6 +51,9 @@
 
     CContactStorage * _storage;
 
+    // 用于临时缓存实体的缓存器
+    NSMutableDictionary<__kindof NSString *, __kindof CEntity *> * _cache;
+
     BOOL _selfReady;
 
     NSInteger _waitReadyCount;
@@ -69,6 +73,7 @@
         _owner = nil;
         _pipelineListener = [[CContactPipelineListener alloc] initWithService:self];
         _storage = [[CContactStorage alloc] initWithService:self];
+        _cache = [[NSMutableDictionary alloc] init];
         _selfReady = FALSE;
 
         self.retrospectDuration = 30L * 24L * 60L * 60000L;
@@ -89,11 +94,17 @@
 
     [self.pipeline addListener:_pipelineListener withDestination:CUBE_MODULE_CONTACT];
 
+    // 使用 Inspector 管理缓存
+    [self.kernel.entityInspector depositMap:_cache];
+
     return TRUE;
 }
 
 - (void)stop {
     [super stop];
+
+    [self.kernel.entityInspector withdrawMap:_cache];
+    [_cache removeAllObjects];
 
     [self.pipeline removeListener:_pipelineListener withDestination:CUBE_MODULE_CONTACT];
 
@@ -218,7 +229,7 @@
     return [self signIn:owner handleSuccess:handleSuccess handleFailure:handleFailure];
 }
 
-- (BOOL)signOut:(CSignBlock)handle {
+- (BOOL)signOut:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     if (!_selfReady) {
         return FALSE;
     }
@@ -232,19 +243,29 @@
 
     [self.pipeline send:CUBE_MODULE_CONTACT withPacket:signOutPacket handleResponse:^(CPacket * packet) {
         if (packet.state.code != CStateOk) {
+            dispatch_async(self->_threadQueue, ^{
+                handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:packet.state.code]);
+            });
             return;
         }
 
         int stateCode = [packet extractStateCode];
         if (stateCode != CContactServiceStateOk) {
+            dispatch_async(self->_threadQueue, ^{
+                handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:stateCode]);
+            });
             return;
         }
 
         self->_selfReady = FALSE;
 
-        handle(self.owner);
+        // 关闭存储器
+        [self->_storage close];
 
-        self->_owner = nil;
+        dispatch_async(self->_threadQueue, ^{
+            handleSuccess(self->_owner);
+            self->_owner = nil;
+        });
     }];
 
     return TRUE;
@@ -283,6 +304,15 @@
         return;
     }
 
+    // 从缓存里读取
+    CEntity * entity = [_cache objectForKey:[NSString stringWithFormat:@"%llu", contactId]];
+    if (entity && [entity isKindOfClass:[CContact class]]) {
+        dispatch_async(_threadQueue, ^{
+            handleSuccess((CContact *)entity);
+        });
+        return;
+    }
+
     // 从数据库读取
     CContact * contact = [_storage readContact:contactId];
     if (contact && [contact isValid]) {
@@ -296,6 +326,9 @@
                 [contact resetLast:last];
             }
         }
+
+        // 写入缓存
+        [_cache setObject:contact forKey:[NSString stringWithFormat:@"%llu", contactId]];
 
         dispatch_async(_threadQueue, ^{
             handleSuccess(contact);
@@ -346,6 +379,9 @@
 
         // 获取附录
         [self getAppendixWithContact:contact handleSuccess:^(CContact * contact, CContactAppendix * appendix) {
+            // 写入缓存
+            [_cache setObject:contact forKey:[NSString stringWithFormat:@"%llu", contactId]];
+
             handleSuccess(contact);
         } handleFailure:^(CError * error) {
             handleFailure(error);

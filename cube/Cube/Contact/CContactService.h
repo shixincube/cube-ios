@@ -103,10 +103,11 @@ typedef void (^CContactZoneBlock)(CContactZone * contactZone);
 
 /*!
  * @brief 将当前设置的联系人签出。
- * @param handle 指定签出操作处理回调。
+ * @param handleSuccess 操作成功回调。
+ * @param handleFailure 操作失败回调。
  * @return 是否执行了签出操作。
  */
-- (BOOL)signOut:(CSignBlock)handle;
+- (BOOL)signOut:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
  * @brief 通过向服务发送状态信息验证自身连接状态。

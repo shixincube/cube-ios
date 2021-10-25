@@ -32,8 +32,9 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        _entityCreation = [CUtils currentTimeMillis];
         _identity = [CellUtil generateUnsignedSerialNumber];
-        _timestamp = [CUtils currentTimeMillis];
+        _timestamp = _entityCreation;
         _last = _timestamp;
         _expiry = _last + CUBE_LIFECYCLE_IN_MSEC;
         self.context = nil;
@@ -44,8 +45,9 @@
 
 - (instancetype)initWithId:(UInt64)identity {
     if (self = [super init]) {
+        _entityCreation = [CUtils currentTimeMillis];
         _identity = identity;
-        _timestamp = [CUtils currentTimeMillis];
+        _timestamp = _entityCreation;
         _last = _timestamp;
         _expiry = _last + CUBE_LIFECYCLE_IN_MSEC;
         self.context = nil;
@@ -56,6 +58,7 @@
 
 - (instancetype)initWithId:(UInt64)identity timestamp:(UInt64)timestamp {
     if (self = [super init]) {
+        _entityCreation = [CUtils currentTimeMillis];
         _identity = identity;
         _timestamp = timestamp;
         _last = timestamp;
@@ -68,17 +71,19 @@
 
 - (instancetype)initWithJSON:(NSDictionary *)json {
     if (self = [super init]) {
+        _entityCreation = [CUtils currentTimeMillis];
+
         _identity = [[json valueForKey:@"id"] unsignedLongLongValue];
 
         if ([json objectForKey:@"timestamp"])
             _timestamp = [[json valueForKey:@"timestamp"] unsignedLongLongValue];
         else
-            _timestamp = [CUtils currentTimeMillis];
+            _timestamp = _entityCreation;
 
         if ([json objectForKey:@"last"])
             _last = [[json valueForKey:@"last"] unsignedLongLongValue];
         else
-            _last = [CUtils currentTimeMillis];
+            _last = _entityCreation;
 
         if ([json objectForKey:@"expiry"])
             _expiry = [[json valueForKey:@"expiry"] unsignedLongLongValue];

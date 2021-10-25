@@ -29,6 +29,7 @@
 #import "CError.h"
 #import "CAuthToken.h"
 #import "CCellPipeline.h"
+#import "CEntityInspector.h"
 #import "CAuthService.h"
 #import "CContactService.h"
 #import "CKernel+Delegate.h"
@@ -132,6 +133,8 @@
 
     _working = TRUE;
 
+    _entityInspector = [[CEntityInspector alloc] init];
+
     // 配置默认规格
     [self bundleDefault];
 
@@ -162,6 +165,8 @@
 }
 
 - (void)shutdown {
+    [_entityInspector destroy];
+
     [_cellPipeline close];
 
     _working = FALSE;

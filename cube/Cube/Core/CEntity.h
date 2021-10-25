@@ -53,6 +53,9 @@
 /*! 关联上下文数据。 */
 @property (nonatomic, strong) NSDictionary * context;
 
+/*! 实体创建时的时间戳。 */
+@property (nonatomic, assign, readonly) UInt64 entityCreation;
+
 
 /*!
  * @brief 默认初始化。

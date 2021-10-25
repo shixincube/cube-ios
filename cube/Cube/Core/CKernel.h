@@ -38,6 +38,7 @@
 @class CError;
 @class CAuthToken;
 @class CPipeline;
+@class CEntityInspector;
 
 
 /*!
@@ -130,6 +131,9 @@
 
 /*! @brief 数据通道状态代理。 */
 @property (nonatomic, weak) id<CPipelineStateDelegate> pipelineStateDelegate;
+
+/*! @brief 实体生命周期管理。 */
+@property (nonatomic, strong, readonly) CEntityInspector * entityInspector;
 
 /*!
  * @brief 启动内核。

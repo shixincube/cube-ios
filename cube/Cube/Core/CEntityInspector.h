@@ -29,7 +29,29 @@
 
 #import "CEntity.h"
 
+#ifndef CUBE_MEMORY_LIFECYCLE
+#define CUBE_MEMORY_LIFECYCLE (10L * 1000L)
+#endif
+
+/*!
+ * @brief 实体管理器，用于维护实体的生命周期。
+ */
 @interface CEntityInspector : NSObject
+
+/*!
+ * @brief 存入指定映射进行生命周期管理。
+ */
+- (void)depositMap:(NSMutableDictionary<__kindof NSString *, __kindof CEntity *> *)map;
+
+/*!
+ * @brief 解除指定映射的生命周期管理。
+ */
+- (void)withdrawMap:(NSMutableDictionary<__kindof NSString *, __kindof CEntity *> *)map;
+
+/*!
+ * @brief 销毁当前管理器。
+ */
+- (void)destroy;
 
 @end
 
