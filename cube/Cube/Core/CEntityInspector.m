@@ -59,11 +59,15 @@
 }
 
 - (void)depositMap:(NSMutableDictionary<__kindof NSString *, __kindof CEntity *> *)map {
-    [self.depositedMapArray addObject:map];
+    @synchronized (self) {
+        [self.depositedMapArray addObject:map];
+    }
 }
 
 - (void)withdrawMap:(NSMutableDictionary<__kindof NSString *, __kindof CEntity *> *)map {
-    [self.depositedMapArray removeObject:map];
+    @synchronized (self) {
+        [self.depositedMapArray removeObject:map];
+    }
 }
 
 - (void)destroy {
@@ -82,13 +86,15 @@
 
     UInt64 now = [CUtils currentTimeMillis];
     // 遍历映射列表
-    for (NSMutableDictionary<__kindof NSString *, __kindof CEntity *> * map in self.depositedMapArray) {
-        NSArray<__kindof NSString *> * keyArray = [[NSArray alloc] initWithArray:[map allKeys]];
-        for (NSString * key in keyArray) {
-            CEntity * entity = [map objectForKey:key];
-            if (now - entity.entityCreation > CUBE_MEMORY_LIFECYCLE) {
-                // 超期，从内存里移除
-                [map removeObjectForKey:key];
+    @synchronized (self) {
+        for (NSMutableDictionary<__kindof NSString *, __kindof CEntity *> * map in self.depositedMapArray) {
+            NSArray<__kindof NSString *> * keyArray = [[NSArray alloc] initWithArray:[map allKeys]];
+            for (NSString * key in keyArray) {
+                CEntity * entity = [map objectForKey:key];
+                if (now - entity.entityCreation > CUBE_MEMORY_LIFECYCLE) {
+                    // 超期，从内存里移除
+                    [map removeObjectForKey:key];
+                }
             }
         }
     }
