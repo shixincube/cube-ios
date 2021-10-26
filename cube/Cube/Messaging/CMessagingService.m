@@ -3,7 +3,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2020-2022 Shixin Cube Team.
+ * Copyright (c) 2020-2022 Cube Team.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -656,14 +656,16 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
         now += 250;
 
-        NSArray * list =_jitterMap.allValues;
+        NSArray * list = _jitterMap.allValues;
         for (CEventJitter * jitter in list) {
             if (now - jitter.timestamp >= 500) {
                 NSString * key = jitter.mapKey;
                 if (key) {
                     [_jitterMap removeObjectForKey:key];
                 }
-                [self.recentEventDelegate newMessage:(CMessage *)jitter.event.data service:self];
+
+                CMessage * message = (CMessage *)jitter.event.data;
+                [self.recentEventDelegate newRecentMessage:message partner:message.partner service:self];
             }
         }
     }
@@ -695,7 +697,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     if (self.recentEventDelegate) {
         if ([event.name isEqualToString:CMessagingEventNotify]
             || [event.name isEqualToString:CMessagingEventSent]) {
-            if ([self.recentEventDelegate respondsToSelector:@selector(newMessage:service:)]) {
+            if ([self.recentEventDelegate respondsToSelector:@selector(newRecentMessage:partner:service:)]) {
                 CMessage * message = (CMessage *) event.data;
                 CEventJitter * jitter = nil;
 
@@ -716,7 +718,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
                     UInt64 time = [CUtils currentTimeMillis];
                     if (nil == jitter) {
                         jitter = [[CEventJitter alloc] initWithTimestamp:time event:event];
-                        jitter.contact = message.sender;
+                        jitter.contact = message.partner;
                         [_jitterMap setValue:jitter forKey:contactId];
                     }
                     else {

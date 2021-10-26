@@ -3,7 +3,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2020-2022 Shixin Cube Team.
+ * Copyright (c) 2020-2022 Cube Team.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -380,7 +380,7 @@
         // 获取附录
         [self getAppendixWithContact:contact handleSuccess:^(CContact * contact, CContactAppendix * appendix) {
             // 写入缓存
-            [_cache setObject:contact forKey:[NSString stringWithFormat:@"%llu", contactId]];
+            [self->_cache setObject:contact forKey:[NSString stringWithFormat:@"%llu", contactId]];
 
             handleSuccess(contact);
         } handleFailure:^(CError * error) {

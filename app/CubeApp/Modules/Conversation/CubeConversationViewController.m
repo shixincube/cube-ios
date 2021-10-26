@@ -3,7 +3,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2020-2022 Shixin Cube Team.
+ * Copyright (c) 2020-2022 Cube Team.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -259,7 +259,7 @@
 
 #pragma mark - Delegate
 
-- (void)newMessage:(CMessage *)message service:(CMessagingService *)service {
+- (void)newRecentMessage:(CMessage *)message partner:(CContact *)partner service:(CMessagingService *)service {
     if ([message isKindOfClass:[CHyperTextMessage class]]) {
         CubeConversation * conversation = [self findConversation:message];
         if (conversation) {

@@ -3,7 +3,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2020-2022 Shixin Cube Team.
+ * Copyright (c) 2020-2022 Cube Team.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +36,11 @@ typedef enum _CMessageState {
      * @brief 未知。
      */
     CMessageStateUnknown = 0,
+    
+    /*!
+     * @brief 消息出现故障。
+     */
+    CMessageStateFault = 1,
     
     /*!
      * @brief 未发送。
@@ -75,12 +80,7 @@ typedef enum _CMessageState {
     /*!
      * @brief 被阻止接收。
      */
-    CMessageStateReceiveBlocked = 52,
-    
-    /*!
-     * @brief 消息出现故障。
-     */
-    CMessageStateFault = 1
+    CMessageStateReceiveBlocked = 52
 
 } CMessageState;
 

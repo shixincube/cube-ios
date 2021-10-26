@@ -3,7 +3,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2020-2022 Shixin Cube Team.
+ * Copyright (c) 2020-2022 Cube Team.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -85,11 +85,13 @@
 @optional
 
 /*!
- * @brief 有新消息。
+ * @brief 当收到来自联系人的新消息或向指定联系人发送消息时回调该方法。
+ * 当同时有多条消息时该方法仅通知该联系人的最近一条消息。
  * @param message 消息实体。
+ * @param partner 该消息的联系人。
  * @param service 消息服务。
  */
-- (void)newMessage:(CMessage *)message service:(CMessagingService *)service;
+- (void)newRecentMessage:(CMessage *)message partner:(CContact*)partner service:(CMessagingService *)service;
 
 @end
 

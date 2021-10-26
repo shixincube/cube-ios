@@ -3,7 +3,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2020-2022 Shixin Cube Team.
+ * Copyright (c) 2020-2022 Cube Team.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,23 @@
 
 @class CContact;
 @class CGroup;
+
+/*!
+ * @brief 消息作用域。
+ */
+typedef enum _CMessageScope {
+
+    /*!
+     * @brief 无限制。
+     */
+    CMessageScopeUnlimited = 0,
+
+    /*!
+     * @brief 仅自己可见。
+     */
+    CMessageScopePrivate = 1
+
+} CMessageScope;
 
 
 /*!
