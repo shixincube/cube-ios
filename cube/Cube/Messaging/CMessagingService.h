@@ -251,22 +251,22 @@
  * @private
  * @brief 进行数据加载。
  */
-- (void)prepare:(CContactService *)contactService completedHandler:(void(^)(void))completedHandler;
+- (void)prepare:(CContactService *)contactService completionHandler:(void(^)(void))completionHandler;
 
 /*!
  * @private
  * @brief 从服务器上下载指定时间段内的数据，数据将直接写入本地存储。
  * @param beginning 指定获取消息的起始时间。
  * @param ending 指定获取消息的截止时间。
- * @param completedHandler 指定本次查询回调，该回调函数仅用于通知该次查询结束，不携带任何消息数据。
+ * @param completionHandler 指定本次查询回调，该回调函数仅用于通知该次查询结束，不携带任何消息数据。
  */
-- (void)queryRemoteMessageWithBeginning:(UInt64)beginning toEnding:(UInt64)ending completedHandler:(void(^)(void))completedHandler;
+- (void)queryRemoteMessageWithBeginning:(UInt64)beginning toEnding:(UInt64)ending completionHandler:(void(^)(void))completionHandler;
 
 /*!
  * @private
  * @brief 触发拉取消息完成回调句柄。
  */
-- (void)firePullCompletedHandler;
+- (void)firePullCompletionHandler;
 
 /*!
  * @private

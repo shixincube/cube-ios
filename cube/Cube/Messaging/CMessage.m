@@ -84,7 +84,7 @@
 }
 
 - (instancetype)initWithJSON:(NSDictionary *)json {
-    if (self = [super initWithId:[[json valueForKey:@"id"] unsignedLongLongValue]]) {
+    if (self = [super initWithJSON:json]) {
         _domain = [json valueForKey:@"domain"];
         _from = [[json valueForKey:@"from"] unsignedLongLongValue];
         _to = [[json valueForKey:@"to"] unsignedLongLongValue];
@@ -170,7 +170,6 @@
 
 - (NSMutableDictionary *)toJSON {
     NSMutableDictionary * json = [super toJSON];
-    [json setValue:[NSNumber numberWithUnsignedLongLong:self.identity] forKey:@"id"];
     [json setValue:_domain forKey:@"domain"];
     [json setValue:[NSNumber numberWithUnsignedLongLong:_from] forKey:@"from"];
     [json setValue:[NSNumber numberWithUnsignedLongLong:_to] forKey:@"to"];

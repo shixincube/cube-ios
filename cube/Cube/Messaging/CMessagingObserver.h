@@ -30,6 +30,9 @@
 #import "CObserver.h"
 #import "CMessagingService+Core.h"
 
+/*!
+ * @brief 消息模块用于监听其他模块事件的观察者。
+ */
 @interface CMessagingObserver : CObserver
 
 @property (nonatomic, strong, readonly) CMessagingService * service;

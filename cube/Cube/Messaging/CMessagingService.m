@@ -49,7 +49,7 @@
 #import "CMessageDraft.h"
 
 
-typedef void (^PullCompletedHandler)(void);
+typedef void (^PullCompletionHandler)(void);
 
 const static char * kMSQueueLabel = "CubeMessagingTQ";
 
@@ -67,7 +67,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     NSMutableDictionary <__kindof NSString *, __kindof CEventJitter * > * _jitterMap;
 }
 
-@property (nonatomic, copy) PullCompletedHandler pullCompletedHandler;
+@property (nonatomic, copy) PullCompletionHandler pullCompletionHandler;
 
 - (void)assemble;
 
@@ -118,14 +118,13 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
     // 监听联系人模块
     _contactService = (CContactService *) [self.kernel getModule:CUBE_MODULE_CONTACT];
+    [_contactService attachWithName:CContactEventSelfReady observer:_observer];
     [_contactService attachWithName:CContactEventSignIn observer:_observer];
     [_contactService attachWithName:CContactEventSignOut observer:_observer];
 
     @synchronized (self) {
         if (_contactService.owner && !_serviceReady) {
-            [self prepare:_contactService completedHandler:^ {
-                self->_serviceReady = TRUE;
-
+            [self prepare:_contactService completionHandler:^ {
                 CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
                 [self notifyObservers:event];
             }];
@@ -139,6 +138,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     [super stop];
 
     CContactService * contactService = (CContactService *) [self.kernel getModule:CUBE_MODULE_CONTACT];
+    [contactService detachWithName:CContactEventSelfReady observer:_observer];
     [contactService detachWithName:CContactEventSignIn observer:_observer];
     [contactService detachWithName:CContactEventSignOut observer:_observer];
 
@@ -164,7 +164,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 }
 
 - (BOOL)isReady {
-    return _serviceReady;
+    return _serviceReady && [self.pipeline isReady];
 }
 
 - (BOOL)isSender:(CMessage *)message {
@@ -527,7 +527,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 }
 
-- (void)prepare:(CContactService *)contactService completedHandler:(void(^)(void))completedHandler {
+- (void)prepare:(CContactService *)contactService completionHandler:(void(^)(void))completionHandler {
     CSelf * owner = contactService.owner;
     // 开启存储器
     [_storage open:owner.identity domain:owner.domain];
@@ -543,16 +543,19 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
         _lastMessageTime = time;
     }
 
+    // 服务就绪
+    _serviceReady = TRUE;
+
     // 从服务器上拉取自上一次时间戳之后的所有消息
-    [self queryRemoteMessageWithBeginning:(_lastMessageTime + 1) toEnding:now completedHandler:^ {
-        completedHandler();
+    [self queryRemoteMessageWithBeginning:(_lastMessageTime + 1) toEnding:now completionHandler:^ {
+        completionHandler();
     }];
 }
 
-- (void)queryRemoteMessageWithBeginning:(UInt64)beginning toEnding:(UInt64)ending completedHandler:(void (^)(void))completedHandler {
+- (void)queryRemoteMessageWithBeginning:(UInt64)beginning toEnding:(UInt64)ending completionHandler:(void (^)(void))completionHandler {
     // 如果没有网络直接回调函数
     if (![self.pipeline isReady]) {
-        completedHandler();
+        completionHandler();
         return;
     }
 
@@ -562,10 +565,10 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
     _pullTimer = [NSTimer scheduledTimerWithTimeInterval:10 repeats:NO block:^(NSTimer * _Nonnull timer) {
         self->_pullTimer = nil;
-        completedHandler();
+        completionHandler();
     }];
 
-    self.pullCompletedHandler = completedHandler;
+    _pullCompletionHandler = completionHandler;
 
     CSelf * owner = _contactService.owner;
 
@@ -582,11 +585,13 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     [self.pipeline send:CUBE_MODULE_MESSAGING withPacket:packet];
 }
 
-- (void)firePullCompletedHandler {
-    _pullCompletedHandler();
-    
-    // 对所有消息进行状态对比
-    
+- (void)firePullCompletionHandler {
+    if (_pullCompletionHandler) {
+        dispatch_async(_threadQueue, ^{
+            self->_pullCompletionHandler();
+            self->_pullCompletionHandler = nil;
+        });
+    }
 }
 
 - (void)fillMessage:(CMessage *)message {

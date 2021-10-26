@@ -30,6 +30,9 @@
 #import "CPipeline.h"
 #import "CMessagingService+Core.h"
 
+/*!
+ * @brief 消息模块数据通道监听器。
+ */
 @interface CMessagingPipelineListener : NSObject <CPipelineListener>
 
 /*!

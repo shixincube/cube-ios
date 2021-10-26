@@ -25,6 +25,7 @@
  */
 
 #import "CMessagingService+Core.h"
+#import "CPipeline.h"
 #import "CMessagingEvent.h"
 #import "CContactEvent.h"
 #import "CContactService.h"
@@ -37,24 +38,37 @@
 @implementation CMessagingService (Core)
 
 - (void)fireContactEvent:(CObservableEvent *)event {
-    if ([event.name isEqualToString:CContactEventSignIn] ||
-        [event.name isEqualToString:CContactEventSelfReady]) {
-        @synchronized (self) {
-            if (!_serviceReady) {
-                // 准备数据
-                [self prepare:(CContactService *)event.subject completedHandler:^ {
-                    // 服务就绪
-                    self->_serviceReady = TRUE;
-
-                    // 事件通知
-                    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
-                    [self notifyObservers:event];
-                }];
+    if ([self.pipeline isReady]) {
+        if ([event.name isEqualToString:CContactEventSignIn]) {
+            @synchronized (self) {
+                if (!_serviceReady) {
+                    // 准备数据
+                    [self prepare:(CContactService *)event.subject completionHandler:^ {
+                        // 事件通知
+                        CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
+                        [self notifyObservers:event];
+                    }];
+                }
             }
         }
+        else if ([event.name isEqualToString:CContactEventSignOut]) {
+            // TODO
+            _serviceReady = FALSE;
+        }
     }
-    else if ([event.name isEqualToString:CContactEventSignOut]) {
-        _serviceReady = FALSE;
+    else {
+        if ([event.name isEqualToString:CContactEventSelfReady]) {
+            @synchronized (self) {
+                if (!_serviceReady) {
+                    // 准备数据
+                    [self prepare:(CContactService *)event.subject completionHandler:^ {
+                        // 事件通知
+                        CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
+                        [self notifyObservers:event];
+                    }];
+                }
+            }
+        }
     }
 }
 
@@ -71,7 +85,7 @@
         _lastMessageTime = message.remoteTS;
     }
 
-    // TODO 标准 Token
+    // TODO 标准化 Token
 
     if (!exists) {
         // 获取事件钩子
@@ -88,7 +102,7 @@
         [_pullTimer invalidate];
 
         // 触发回调，通知应用已收到服务器数据
-        [self firePullCompletedHandler];
+        [self firePullCompletionHandler];
 
         _pullTimer = nil;
     }
@@ -103,6 +117,9 @@
     for (NSDictionary * json in messages) {
         [self triggerNotify:json];
     }
+
+    // 对消息进行状态对比
+    // 如果服务器状态与本地状态不一致，将服务器上的状态修改为本地状态
 }
 
 @end

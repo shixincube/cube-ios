@@ -187,15 +187,15 @@
     // 10 秒
     _waitReadyCount = 100;
 
-    // 通知系统 Self 实例就绪
-    dispatch_async(_threadQueue, ^{
-        CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
-        [self notifyObservers:event];
-    });
-
     // 激活令牌
     CAuthToken * token = [self.kernel activeToken:me.identity];
     if (token) {
+        // 通知系统 Self 实例就绪
+        dispatch_async(_threadQueue, ^{
+            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSelfReady data:self->_owner];
+            [self notifyObservers:event];
+        });
+
         // 请求服务器进行签入
         NSMutableDictionary * data = [[NSMutableDictionary alloc] init];
         [data setValue:[me toJSON] forKey:@"self"];
@@ -235,7 +235,21 @@
     }
 
     if (![self.pipeline isReady]) {
-        return FALSE;
+        // 无网络状态下签出
+        _selfReady = FALSE;
+
+        // 关闭存储
+        [_storage close];
+
+        dispatch_async(self->_threadQueue, ^{
+            CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSignOut data:self->_owner];
+            [self notifyObservers:event];
+
+            handleSuccess(self->_owner);
+            self->_owner = nil;
+        });
+
+        return TRUE;
     }
 
     NSMutableDictionary * data = [self.owner toJSON];
@@ -262,9 +276,9 @@
         // 关闭存储器
         [self->_storage close];
 
+        CSelf * owner = self->_owner;
         dispatch_async(self->_threadQueue, ^{
-            handleSuccess(self->_owner);
-            self->_owner = nil;
+            handleSuccess(owner);
         });
     }];
 

@@ -32,40 +32,40 @@
 /*! @brief 当消息模块就绪时。 */
 extern NSString * CMessagingEventReady;
 
-/*! 收到新消息。 */
+/*! @brief 收到新消息。 */
 extern NSString * CMessagingEventNotify;
 
-/*! 消息已经发出。 */
+/*! @brief 消息已经发出。 */
 extern NSString * CMessagingEventSent;
 
-/*! 消息正在发送。 */
+/*! @brief 消息正在发送。 */
 extern NSString * CMessagingEventSending;
 
-/*! 消息数据处理中。 */
+/*! @brief 消息数据处理中。 */
 extern NSString * CMessagingEventProcessing;
 
-/*! 消息被撤回。 */
+/*! @brief 消息被撤回。 */
 extern NSString * CMessagingEventRecall;
 
-/*! 消息被删除。 */
+/*! @brief 消息被删除。 */
 extern NSString * CMessagingEventDelete;
 
-/*! 消息已读。 */
+/*! @brief 消息已读。 */
 extern NSString * CMessagingEventRead;
 
-/*! 消息被发送到服务器成功标记为仅作用于自己设备。 */
+/*! @brief 消息被发送到服务器成功标记为仅作用于自己设备。 */
 extern NSString * CMessagingEventMarkOnlyOwner;
 
-/*! 消息被阻止发送。 */
+/*! @brief 消息被阻止发送。 */
 extern NSString * CMessagingEventSendBlocked;
 
-/*! 消息被阻止接收。 */
+/*! @brief 消息被阻止接收。 */
 extern NSString * CMessagingEventReceiveBlocked;
 
-/*! 消息处理故障。 */
+/*! @brief 消息处理故障。 */
 extern NSString * CMessagingEventFault;
 
-/*! 未知事件。仅用于调试。 */
+/*! @brief 未知事件。仅用于调试。 */
 extern NSString * CMessagingEventUnknown;
 
 #endif /* CMessagingEvent_h */

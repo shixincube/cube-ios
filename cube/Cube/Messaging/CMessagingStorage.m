@@ -27,6 +27,8 @@
 #import "CMessagingStorage.h"
 #import "CMessagingService+Core.h"
 #import "CMessageState.h"
+#import "CContact.h"
+#import "CGroup.h"
 #import "CUtils.h"
 #import <FMDB/FMDatabase.h>
 #import <FMDB/FMDatabaseQueue.h>
@@ -125,48 +127,15 @@
                 jsonString,
                 [NSNumber numberWithUnsignedLongLong:message.identity]];
 
-            UInt64 messagerId = 0;
-
-            // 更新最近消息
-            if ([message isFromGroup]) {
-                // TODO
-            }
-            else {
-                if ([_service isSender:message]) {
-                    messagerId = message.to;
-                }
-                else {
-                    messagerId = message.from;
-                }
-            }
-
-            sql = [NSString stringWithFormat:@"SELECT `time` FROM `recent_messager` WHERE `messager_id`=%llu", messagerId];
-            result = [db executeQuery:sql];
-            if ([result next]) {
-                UInt64 time = [result unsignedLongLongIntForColumn:@"time"];
-
-                [result close];
-
-                if (message.remoteTS > time) {
-                    // 更新记录
-                    [db executeUpdate:@"UPDATE `recent_messager` SET `time`=?, `message_id`=?, `is_group`=? WHERE `messager_id`=?",
-                        [NSNumber numberWithUnsignedLongLong:message.remoteTS],
-                        [NSNumber numberWithUnsignedLongLong:message.identity],
-                        [NSNumber numberWithInt:([message isFromGroup] ? 1 : 0)],
-                        [NSNumber numberWithUnsignedLongLong:messagerId]];
-                }
-            }
-            else {
-                [result close];
-            }
-
             exists = TRUE;
         }
         else {
+            [result close];
+
             // 写入新消息
             NSString * jsonString = [CUtils toStringWithJSON:[message toJSON]];
 
-            sql = [NSString stringWithFormat:@"INSERT INTO `message` (`id`,`from`,`to`,source,lts,rts,state,scope,data) VALUES (%llu,%llu,%llu,%llu,%llu,%llu,%d,%d,?)",
+            sql = [NSString stringWithFormat:@"INSERT INTO `message` (`id`,`from`,`to`,`source`,`lts`,`rts`,`state`,`scope`,`data`) VALUES (%llu,%llu,%llu,%llu,%llu,%llu,%d,%d,?)",
                    message.identity,
                    message.from,
                    message.to,
@@ -176,54 +145,53 @@
                    message.state,
                    [message getScope]];
 
-            BOOL ret = [db executeUpdate:sql, jsonString];
-            if (ret) {
-                UInt64 messagerId = 0;
-
-                // 更新最近消息
-                if ([message isFromGroup]) {
-                    // TODO
-                }
-                else {
-                    if ([_service isSender:message]) {
-                        messagerId = message.to;
-                    }
-                    else {
-                        messagerId = message.from;
-                    }
-                }
-
-                sql = [NSString stringWithFormat:@"SELECT `time` FROM `recent_messager` WHERE `messager_id`=%llu", messagerId];
-                result = [db executeQuery:sql];
-                if ([result next]) {
-                    [result close];
-
-                    // 更新记录
-                    [db executeUpdate:@"UPDATE `recent_messager` SET `time`=?, `message_id`=?, `is_group`=? WHERE `messager_id`=?",
-                        [NSNumber numberWithUnsignedLongLong:message.remoteTS],
-                        [NSNumber numberWithUnsignedLongLong:message.identity],
-                        [NSNumber numberWithInt:([message isFromGroup] ? 1 : 0)],
-                        [NSNumber numberWithUnsignedLongLong:messagerId]];
-                }
-                else {
-                    [result close];
-
-                    // 新记录
-                    [db executeUpdate:@"INSERT INTO `recent_messager`(messager_id,time,message_id,is_group) VALUES (?,?,?,?)",
-                        [NSNumber numberWithUnsignedLongLong:messagerId],
-                        [NSNumber numberWithUnsignedLongLong:message.remoteTS],
-                        [NSNumber numberWithUnsignedLongLong:message.identity],
-                        [NSNumber numberWithInt:([message isFromGroup] ? 1 : 0)]];
-                }
-            }
+            [db executeUpdate:sql, jsonString];
 
             exists = FALSE;
+        }
+        
+        UInt64 messagerId = 0;
+
+        // 更新最近消息
+        if ([message isFromGroup]) {
+            messagerId = message.source;
+        }
+        else {
+            messagerId = message.partner.identity;
+        }
+
+        sql = [NSString stringWithFormat:@"SELECT `time` FROM `recent_messager` WHERE `messager_id`=%llu", messagerId];
+        result = [db executeQuery:sql];
+        if ([result next]) {
+            // 有记录，判断时间戳
+            UInt64 time = [result unsignedLongLongIntForColumn:@"time"];
+
+            [result close];
+
+            if (message.remoteTS > time) {
+                // 更新记录
+                [db executeUpdate:@"UPDATE `recent_messager` SET `time`=?, `message_id`=?, `is_group`=? WHERE `messager_id`=?",
+                    [NSNumber numberWithUnsignedLongLong:message.remoteTS],
+                    [NSNumber numberWithUnsignedLongLong:message.identity],
+                    [NSNumber numberWithInt:([message isFromGroup] ? 1 : 0)],
+                    [NSNumber numberWithUnsignedLongLong:messagerId]];
+            }
+        }
+        else {
+            [result close];
+
+            // 新记录
+            [db executeUpdate:@"INSERT INTO `recent_messager` (`messager_id`,`time`,`message_id`,`is_group`) VALUES (?,?,?,?)",
+                [NSNumber numberWithUnsignedLongLong:messagerId],
+                [NSNumber numberWithUnsignedLongLong:message.remoteTS],
+                [NSNumber numberWithUnsignedLongLong:message.identity],
+                [NSNumber numberWithInt:([message isFromGroup] ? 1 : 0)]];
         }
 
         dispatch_semaphore_signal(semaphore);
     }];
 
-    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC);
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
     dispatch_semaphore_wait(semaphore, timeout);
 
     return exists;
@@ -491,14 +459,14 @@
         }
 
         // 消息表
-        sql = @"CREATE TABLE IF NOT EXISTS `message` (`id` BIGINT PRIMARY KEY, `from` BIGINT, `to` BIGINT, `source` BIGINT, `lts` BIGINT, `rts` BIGINT, `state` INT, `remote_state` INT DEFAULT 10, `scope` INT, `data` TEXT)";
+        sql = @"CREATE TABLE IF NOT EXISTS `message` (`id` BIGINT PRIMARY KEY, `from` BIGINT, `to` BIGINT, `source` BIGINT, `lts` BIGINT, `rts` BIGINT, `state` INT, `remote_state` INT DEFAULT 10, `scope` INT DEFAULT 0, `data` TEXT)";
         if ([db executeUpdate:sql]) {
             NSLog(@"CMessagingStorage#execSelfChecking : `message` table OK");
         }
 
         // 最近消息表，当前联系人和其他每一个联系人的最近消息
         // messager_id - 消息相关发件人或收件人 ID
-        // time        - 消息是时间戳
+        // time        - 消息时间戳
         // message_id  - 消息 ID
         // is_group    - 是否来自群组
         sql = @"CREATE TABLE IF NOT EXISTS `recent_messager` (`messager_id` BIGINT PRIMARY KEY, `time` BIGINT, `message_id` BIGINT, `is_group` INT)";
@@ -508,7 +476,7 @@
 
         // 消息草稿表
         // owner - 草稿对应的会话
-        // tiem  - 草稿时间
+        // time  - 草稿时间
         // data  - JSON 格式的数据
         sql = @"CREATE TABLE IF NOT EXISTS `draft` (`owner` BIGINT PRIMARY KEY, `time` BIGINT, `data` TEXT)";
         if ([db executeUpdate:sql]) {
