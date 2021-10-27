@@ -86,16 +86,15 @@
             // “我”是发件人
             self.identity = message.to;
             self.contact = message.receiver;
-            self.displayName = [message.receiver getPriorityName];
-            self.avatarName = message.receiver.context ? [CubeAccount getAvatar:message.receiver.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
         }
         else {
             // “我”是收件人
             self.identity = message.from;
             self.contact = message.sender;
-            self.displayName = [message.sender getPriorityName];
-            self.avatarName = message.sender.context ? [CubeAccount getAvatar:message.sender.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
         }
+
+        self.displayName = [self.contact getPriorityName];
+        self.avatarName = self.contact.context ? [CubeAccount getAvatar:self.contact.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
     }
 
     // 头像处理

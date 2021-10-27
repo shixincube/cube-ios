@@ -33,7 +33,7 @@
 
 - (NSString *)messageTimeInfo;
 
-- (NSString *)conversaionTimeInfo;
+- (NSString *)conversationTimeInfo;
 
 - (NSString *)messageFileTimeInfo;
 

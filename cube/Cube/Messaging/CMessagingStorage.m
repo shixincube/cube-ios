@@ -216,7 +216,7 @@
 
         // 逐一查询消息记录
         for (NSNumber * messageId in messageIdList) {
-            sql = [NSString stringWithFormat:@"SELECT * FROM `message` WHERE `id`=%llu", messageId.unsignedLongLongValue];
+            sql = [NSString stringWithFormat:@"SELECT `data` FROM `message` WHERE `id`=%llu", messageId.unsignedLongLongValue];
             result = [db executeQuery:sql];
 
             if ([result next]) {

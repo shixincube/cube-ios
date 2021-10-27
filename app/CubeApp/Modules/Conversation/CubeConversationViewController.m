@@ -165,7 +165,7 @@
 }
 
 - (void)loadData {
-    // 查找数据
+    // 从引擎获取最近消息列表
     NSArray * list = [self.messagingService getRecentMessages];
     if (list && list.count > 0) {
         [self.conversations removeAllObjects];

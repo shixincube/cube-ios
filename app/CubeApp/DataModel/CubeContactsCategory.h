@@ -29,6 +29,9 @@
 
 #import <Foundation/Foundation.h>
 
+/*!
+ * @brief 联系人清单类型。
+ */
 @interface CubeContactsCategory : NSObject
 
 @property (nonatomic, assign) NSInteger tag;

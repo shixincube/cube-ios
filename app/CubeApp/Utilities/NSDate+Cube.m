@@ -46,7 +46,7 @@
     }
 }
 
-- (NSString *)conversaionTimeInfo {
+- (NSString *)conversationTimeInfo {
     if ([self isToday]) {
         // 今天
         return self.formatHM;

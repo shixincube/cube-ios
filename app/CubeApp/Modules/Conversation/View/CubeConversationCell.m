@@ -115,7 +115,7 @@
 
     [self.nameLabel setText:conversation.displayName];
     [self.detailLabel setText:conversation.content];
-    [self.timeLabel setText:[conversation.date conversaionTimeInfo]];
+    [self.timeLabel setText:[conversation.date conversationTimeInfo]];
     [self.remindImageView setHidden:NO];
     switch (conversation.remindType) {
         case CubeMessageRemindTypeNormal:
@@ -127,7 +127,7 @@
         case CubeMessageRemindTypeNotCare:
             [self.remindImageView setImage:[UIImage imageNamed:@"ConvRemindNotCare"]];
             break;
-        case CubeMessageRemindTypeUnlike:
+        case CubeMessageRemindTypeRefused:
             [self.remindImageView setImage:[UIImage imageNamed:@"ConvRemindStop"]];
             break;
         default:

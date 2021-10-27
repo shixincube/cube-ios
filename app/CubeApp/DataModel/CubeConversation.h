@@ -30,17 +30,25 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, CubeConversationType) {
-    CubeConversationTypeContact,        // 联系人的消息
-    CubeConversationTypeGroup,          // 群组的消息
-    CubeConversationTypeOrganization,   // 企业及组织消息
-    CubeConversationTypeNotifier        // 通知
+    /*! @brief 联系人的消息。  */
+    CubeConversationTypeContact,
+    /*! @brief 群组的消息。  */
+    CubeConversationTypeGroup,
+    /*! @brief 企业及组织消息。  */
+    CubeConversationTypeOrganization,
+    /*! @brief 系统通知。  */
+    CubeConversationTypeNotifier
 };
 
 typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
-    CubeMessageRemindTypeNormal,        // 正常接受
-    CubeMessageRemindTypeClosed,        // 不提示
-    CubeMessageRemindTypeNotCare,       // 不看
-    CubeMessageRemindTypeUnlike         // 不喜欢
+    /*! @brief 正常接收。  */
+    CubeMessageRemindTypeNormal,
+    /*! @brief 接收但不提示。  */
+    CubeMessageRemindTypeClosed,
+    /*! @brief 不关注。  */
+    CubeMessageRemindTypeNotCare,
+    /*! @brief 拒绝接收。  */
+    CubeMessageRemindTypeRefused
 };
 
 
