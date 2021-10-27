@@ -81,6 +81,9 @@
 
 /*!
  * @brief 同步方式进行数据处理。
+ * @param name 钩子名称。
+ * @param data 待处理数据。
+ * @return 返回处理后的数据。
  */
 - (id)syncApply:(NSString *)name data:(id)data;
 

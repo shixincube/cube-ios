@@ -28,7 +28,7 @@
 
 @implementation CTypeableMessage
 
-- (NSString *)getType {
+- (NSString *)getTypeName {
     return [self.payload valueForKey:@"type"];
 }
 

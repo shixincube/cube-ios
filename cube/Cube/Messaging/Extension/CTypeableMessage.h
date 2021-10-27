@@ -38,7 +38,7 @@
  * @brief 获取消息类型描述。
  * @return 返回消息类型。
  */
-- (NSString *)getType;
+- (NSString *)getTypeName;
 
 @end
 

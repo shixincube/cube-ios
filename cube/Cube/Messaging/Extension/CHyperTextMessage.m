@@ -145,11 +145,11 @@
 - (void)parse:(NSString *)input {
     // AT Format: [@ name # id ]
     // Emoji Format: [E desc # code ]
-    
+
     BOOL phaseEmoji = FALSE;
     BOOL phaseAt = FALSE;
     CellByteBuffer * content = [[CellByteBuffer alloc] initWithCapacity:128];
-    CellByteBuffer * string = [[CellByteBuffer alloc] initWithCapacity:32];
+    CellByteBuffer * format = [[CellByteBuffer alloc] initWithCapacity:32];
 
     const char * inputArray = [input cStringUsingEncoding:NSUTF8StringEncoding];
     size_t length = strlen(inputArray);
@@ -163,11 +163,11 @@
                 [content put:c];
             }
             else {
-                [string put:c];
+                [format put:c];
             }
         }
         else if (c == '[') {
-            char next = inputArray[i+1];
+            char next = inputArray[i + 1];
             if (next == 'E') {
                 // 记录之前缓存里的文本数据
                 [content flip];
@@ -178,7 +178,7 @@
                 [content clear];
 
                 phaseEmoji = TRUE;
-                ++i;
+                ++i;    // 跳过 next
             }
             else if (next == '@') {
                 // 记录之前缓存里的文本数据
@@ -190,16 +190,16 @@
                 [content clear];
 
                 phaseAt = TRUE;
-                ++i;
+                ++i;    // 跳过 next
             }
         }
         else if (c == ']') {
             if (phaseEmoji) {
                 phaseEmoji = FALSE;
-                [string flip];
-                NSString * data = [CUtils byteBufferToString:string];
+                [format flip];
+                NSString * data = [CUtils byteBufferToString:format];
                 NSDictionary * emojiResult = [self parseEmoji:data];
-                [string clear];
+                [format clear];
                 
                 CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentFormatEmoji
                                                                            content:emojiResult];
@@ -207,10 +207,10 @@
             }
             else if (phaseAt) {
                 phaseAt = FALSE;
-                [string flip];
-                NSString * data = [CUtils byteBufferToString:string];
+                [format flip];
+                NSString * data = [CUtils byteBufferToString:format];
                 NSDictionary * atResult = [self parseAt:data];
-                [string clear];
+                [format clear];
 
                 CFormattedContent * fc = [[CFormattedContent alloc] initWithFormat:CFormattedContentFormatAt
                                                                            content:atResult];
@@ -222,7 +222,7 @@
                 [content put:c];
             }
             else {
-                [string put:c];
+                [format put:c];
             }
         }
     }

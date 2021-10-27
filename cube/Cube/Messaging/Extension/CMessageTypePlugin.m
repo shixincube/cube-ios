@@ -30,7 +30,6 @@
 
 NSString * CMessageTypeHypertext = @"hypertext";
 
-
 @implementation CMessageTypePlugin
 
 - (id)onEvent:(NSString *)name data:(id)data {

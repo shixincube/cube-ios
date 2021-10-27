@@ -33,7 +33,7 @@
 extern NSString * CMessageTypeHypertext;
 
 /*!
- * @brief 消息插件。
+ * @brief 消息分类实例化插件。
  */
 @interface CMessageTypePlugin : NSObject<CPlugin>
 

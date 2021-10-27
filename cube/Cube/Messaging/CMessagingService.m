@@ -71,6 +71,8 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
 - (void)assemble;
 
+- (void)dissolve;
+
 - (void)processSend:(CMessage *)message;
 
 - (void)processPushResult:(CMessage *)message responsePacket:(CPacket *)responsePacket;
@@ -136,6 +138,9 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
 - (void)stop {
     [super stop];
+
+    // 拆除插件
+    [self dissolve];
 
     CContactService * contactService = (CContactService *) [self.kernel getModule:CUBE_MODULE_CONTACT];
     [contactService detachWithName:CContactEventSelfReady observer:_observer];
@@ -220,7 +225,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
         return list;
     }
 
-    // 调取钩子
+    // 调用插件
     CHook * hook = [self.pluginSystem getHook:CInstantiateHookName];
 
     NSMutableArray<__kindof CMessage *> * result = [[NSMutableArray alloc] initWithCapacity:list.count];
@@ -426,6 +431,11 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
     // 注册插件
     [self.pluginSystem registerPlugin:CInstantiateHookName plugin:[[CMessageTypePlugin alloc] init]];
+}
+
+- (void)dissolve {
+    [self.pluginSystem clearHooks];
+    [self.pluginSystem clearPlugins];
 }
 
 - (void)processSend:(CMessage *)message {

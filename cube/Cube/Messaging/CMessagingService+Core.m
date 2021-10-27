@@ -88,7 +88,7 @@
     // TODO 标准化 Token
 
     if (!exists) {
-        // 获取事件钩子
+        // 调用插件
         CHook * hook = [self.pluginSystem getHook:CInstantiateHookName];
         CMessage * compMessage = [hook apply:message];
 
