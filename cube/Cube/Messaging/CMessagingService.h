@@ -85,23 +85,26 @@
 
 @optional
 
-/*!
+/* 已作废
  * @brief 当收到来自联系人的新消息或向指定联系人发送消息时回调该方法。
  * 当同时有多条消息时该方法仅通知该联系人的最近一条消息。
  * @param message 消息实体。
  * @param partner 该消息的联系人。
  * @param service 消息服务。
- * @deprecated 该回调在后序版本中可能取消。
  */
-- (void)newRecentMessage:(CMessage *)message partner:(CContact*)partner service:(CMessagingService *)service;
+//- (void)newRecentMessage:(CMessage *)message partner:(CContact*)partner service:(CMessagingService *)service;
 
 /*!
  * @brief 当有相关会话更新时该方法被回调。
+ * @param conversation 被更新的会话。
+ * @param service 消息服务。
  */
 - (void)conversationUpdated:(CConversation *)conversation service:(CMessagingService *)service;
 
 /*!
  * @brief 当会话清单更新时该方法被回调。
+ * @param conversationList 被更新的会话清单。
+ * @param service 消息服务。
  */
 - (void)conversationListUpdated:(NSArray<__kindof CConversation *> *)conversationList service:(CMessagingService *)service;
 
@@ -164,6 +167,10 @@
 - (BOOL)sendToContactWithId:(UInt64)contactId message:(CMessage *)message;
 
 
+/*!
+ * @brief 获取最近的消息会话清单。
+ * @return 返回会话清单。如果返回 @c nil 值表示消息服务模块未启动。
+ */
 - (NSArray<__kindof CConversation *> *)getRecentConversations;
 
 /*!
@@ -174,16 +181,16 @@
 - (NSArray<__kindof CMessage *> *)getRecentMessages;
 
 /*!
- * @brief 查询指定联系人与当前账号相关的所有消息。
- * @param contact 指定联系人。
+ * @brief 查询指定会话的消息。
+ * @param conversation 指定会话。
  * @param beginning 指定查询的起始时间。
  * @param limit 指定查询的最大记录数。
  * @param completion 指定查询结果回调，数组里的消息是按照时间正序排序，即时间戳从小到大排序。
  */
-- (void)queryMessagesWithContact:(CContact *)contact
-                       beginning:(UInt64)beginning
-                           limit:(NSInteger)limit
-                      completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
+- (void)queryMessages:(CConversation *)conversation
+            beginning:(UInt64)beginning
+                limit:(NSInteger)limit
+           completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
 
 /*
  * @brief 统计与指定消息相关的联系人的未读消息数量。
@@ -208,6 +215,7 @@
 - (void)markReadWithMessage:(CMessage *)message handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
+ * @private
  * @brief 查询指定联系人相关的所有消息，即包括该联系人发送的消息，也包含该联系人接收的消息。
  * 从起始时间向前反向查询所有消息。
  * @param contact 指定联系人。

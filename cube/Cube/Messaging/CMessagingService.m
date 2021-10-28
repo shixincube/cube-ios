@@ -250,8 +250,16 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     return result;
 }
 
-- (void)queryMessagesWithContact:(CContact *)contact beginning:(UInt64)beginning limit:(NSInteger)limit completion:(void (^)(NSArray<__kindof CMessage *> *, BOOL))completion {
-    [self queryMessagesByReverseWithContact:contact beginning:beginning limit:limit completion:completion];
+- (void)queryMessages:(CConversation *)conversation
+            beginning:(UInt64)beginning
+                limit:(NSInteger)limit
+           completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion {
+    if (conversation.contact) {
+        [self queryMessagesByReverseWithContact:conversation.contact beginning:beginning limit:limit completion:completion];
+    }
+    else if (conversation.group) {
+        
+    }
 }
 
 /*
@@ -830,6 +838,10 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
                 if (conversation) {
                     [conversation resetRecentMessage:message];
                     [self.recentEventDelegate conversationUpdated:conversation service:self];
+                }
+                else {
+                    // 创建新的会话
+                    // TODO
                 }
             }
         }
