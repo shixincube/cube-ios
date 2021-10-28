@@ -91,13 +91,19 @@
  * @param message 消息实体。
  * @param partner 该消息的联系人。
  * @param service 消息服务。
+ * @deprecated 该回调在后序版本中可能取消。
  */
 - (void)newRecentMessage:(CMessage *)message partner:(CContact*)partner service:(CMessagingService *)service;
 
-/*
- *
+/*!
+ * @brief 当有相关会话更新时该方法被回调。
  */
-- (void)conversationUpdated:(CConversation *)conversation;
+- (void)conversationUpdated:(CConversation *)conversation service:(CMessagingService *)service;
+
+/*!
+ * @brief 当会话清单更新时该方法被回调。
+ */
+- (void)conversationListUpdated:(NSArray<__kindof CConversation *> *)conversationList service:(CMessagingService *)service;
 
 @end
 

@@ -203,7 +203,7 @@
             [conversation clearUnread];
             [self.listController reloadBadge];
 
-            CubeMessageViewController * messageVC = [[CubeMessageViewController alloc] initWithConversation:conversation];
+            CubeMessageViewController * messageVC = [[CubeMessageViewController alloc] initWithConversation:conversation.conversation];
             PushVC(messageVC);
         });
 
@@ -233,6 +233,16 @@
 //    return nil;
 //}
 
+- (CubeConversation *)removeConversation:(CConversation *)conversation {
+    for (CubeConversation * cc in self.conversations) {
+        if (cc.conversation.identity == conversation.identity) {
+            [self.conversations removeObject:cc];
+            return cc;
+        }
+    }
+    return nil;
+}
+
 #pragma mark - Getters
 
 - (CubeSearchController *)searchController {
@@ -259,29 +269,38 @@
 
 #pragma mark - Delegate
 
-- (void)newRecentMessage:(CMessage *)message partner:(CContact *)partner service:(CMessagingService *)service {
-//    if ([message isKindOfClass:[CHyperTextMessage class]]) {
-//        CubeConversation * conversation = [self findConversation:message];
-//        if (conversation) {
-//            [conversation reset:message];
-//        }
-//        else {
-//            conversation = [CubeConversation conversationWithMessage:message];
-//            [self.conversations insertObject:conversation atIndex:0];
-//        }
-//
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self updateConvsationModuleWithData:self.conversations];
-//        });
-//    }
-//    else {
-//        NSLog(@"Unknown message type");
-//    }
+- (void)conversationUpdated:(CConversation *)conversation service:(CMessagingService *)service {
+    CubeConversation * cc = [self removeConversation:conversation];
+    if (nil != cc) {
+        // 更新之后重新插入
+        [cc reset:conversation];
+        [self.conversations insertObject:cc atIndex:0];
+    }
+    else {
+        // 没有该会话，创建新会话插入
+        cc = [CubeConversation conversationWithConversation:conversation];
+        [self.conversations insertObject:cc atIndex:0];
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateConvsationModuleWithData:self.conversations];
+    });
 }
 
-- (void)conversationUpdated:(CConversation *)conversation {
-    // TODO
+- (void)conversationListUpdated:(NSArray<__kindof CConversation *> *)conversationList service:(CMessagingService *)service {
+    [self.conversations removeAllObjects];
+
+    for (CConversation * conv in conversationList) {
+        CubeConversation * cc = [CubeConversation conversationWithConversation:conv];
+        [self.conversations addObject:cc];
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateConvsationModuleWithData:self.conversations];
+    });
 }
+
+#pragma mark - Network Status Changed
 
 - (void)networkStatusChanged:(CNetworkStatus)status {
     self.listController.sectionForTag(CubeConversationSectionTagAlert).clear();

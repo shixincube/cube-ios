@@ -92,6 +92,12 @@
 - (UInt64)getId;
 
 /*!
+ * @brief 重置时间戳。
+ * @param timestamp 指定时间戳。
+ */
+- (void)resetTimestamp:(UInt64)timestamp;
+
+/*!
  * @brief 重置上一次数据更新时间。
  * @param time 指定更新时间。
  */

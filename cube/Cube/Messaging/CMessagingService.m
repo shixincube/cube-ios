@@ -680,6 +680,11 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
             [self->_storage updateConversations:self->_conversations];
 
             completionHandler();
+
+            // 回调事件
+            if (self->_recentEventDelegate && [self->_recentEventDelegate respondsToSelector:@selector(conversationListUpdated:service:)]) {
+                [self->_recentEventDelegate conversationListUpdated:self->_conversations service:self];
+            }
         });
     }];
 }
@@ -788,6 +793,22 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 }
 
+- (CConversation *)findConversation:(CMessage *)message {
+    if (nil == _conversations) {
+        return nil;
+    }
+
+    NSInteger type = [message isFromGroup] ? CConversationTypeGroup : CConversationTypeContact;
+    UInt64 pivotalId = [message isFromGroup] ? message.source : message.partner.identity;
+    for (CConversation * conv in _conversations) {
+        if (type == conv.type && pivotalId == conv.pivotalId) {
+            return conv;
+        }
+    }
+
+    return nil;
+}
+
 - (void)jitterThreadTask {
     UInt64 now = [CUtils currentTimeMillis];
 
@@ -804,8 +825,12 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
                     [_jitterMap removeObjectForKey:key];
                 }
 
-                CMessage * message = (CMessage *)jitter.event.data;
-                [self.recentEventDelegate newRecentMessage:message partner:message.partner service:self];
+                CMessage * message = (CMessage *) jitter.event.data;
+                CConversation * conversation = [self findConversation:message];
+                if (conversation) {
+                    [conversation resetRecentMessage:message];
+                    [self.recentEventDelegate conversationUpdated:conversation service:self];
+                }
             }
         }
     }
@@ -837,7 +862,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     if (self.recentEventDelegate) {
         if ([event.name isEqualToString:CMessagingEventNotify]
             || [event.name isEqualToString:CMessagingEventSent]) {
-            if ([self.recentEventDelegate respondsToSelector:@selector(newRecentMessage:partner:service:)]) {
+            if ([self.recentEventDelegate respondsToSelector:@selector(conversationUpdated:service:)]) {
                 CMessage * message = (CMessage *) event.data;
                 CEventJitter * jitter = nil;
 

@@ -100,6 +100,10 @@
     return _identity;
 }
 
+- (void)resetTimestamp:(UInt64)timestamp {
+    _timestamp = timestamp;
+}
+
 - (void)resetLast:(UInt64)time {
     _last = time;
     _expiry = time + CUBE_LIFECYCLE_IN_MSEC;
