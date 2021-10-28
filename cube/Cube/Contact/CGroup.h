@@ -34,6 +34,8 @@
 
 @property (nonatomic, strong) CGroupAppendix * appendix;
 
+- (NSString *)getPriorityName;
+
 @end
 
 #endif /* CGroup_h */

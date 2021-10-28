@@ -37,6 +37,8 @@
 		C832100026F5D77400FC02C4 /* CMessagingObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = C8BE511026D87DD700935149 /* CMessagingObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8361BF3268EB52700B1E15E /* CAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF2268EB52700B1E15E /* CAuthToken.m */; };
 		C8361BFA268EBD7700B1E15E /* CJSONable.m in Sources */ = {isa = PBXBuildFile; fileRef = C8361BF9268EBD7700B1E15E /* CJSONable.m */; };
+		C8397C8A272A541F00845051 /* CConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8397C89272A541F00845051 /* CConversation.m */; };
+		C8397C8C272A543000845051 /* CConversation.h in Headers */ = {isa = PBXBuildFile; fileRef = C8397C8B272A543000845051 /* CConversation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8400AAC26C1F98B00C8FF48 /* CDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C8400AAB26C1F98B00C8FF48 /* CDevice.m */; };
 		C8400AAF26C1F99900C8FF48 /* CDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AAE26C1F99900C8FF48 /* CDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8400AB326C20DB600C8FF48 /* CGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = C8400AB226C20DB600C8FF48 /* CGroup.h */; };
@@ -177,6 +179,8 @@
 		C8361BF5268EB53300B1E15E /* CAuthToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAuthToken.h; sourceTree = "<group>"; };
 		C8361BF8268EBD6C00B1E15E /* CJSONable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJSONable.h; sourceTree = "<group>"; };
 		C8361BF9268EBD7700B1E15E /* CJSONable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJSONable.m; sourceTree = "<group>"; };
+		C8397C89272A541F00845051 /* CConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CConversation.m; sourceTree = "<group>"; };
+		C8397C8B272A543000845051 /* CConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CConversation.h; sourceTree = "<group>"; };
 		C8400AAB26C1F98B00C8FF48 /* CDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDevice.m; sourceTree = "<group>"; };
 		C8400AAE26C1F99900C8FF48 /* CDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDevice.h; sourceTree = "<group>"; };
 		C8400AB226C20DB600C8FF48 /* CGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGroup.h; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 		C80A208026D718BF00255B11 /* Messaging */ = {
 			isa = PBXGroup;
 			children = (
+				C8397C8B272A543000845051 /* CConversation.h */,
+				C8397C89272A541F00845051 /* CConversation.m */,
 				C8BFA9982704133800193794 /* CEventJitter.h */,
 				C8BFA9952704132B00193794 /* CEventJitter.m */,
 				C842BDDF26DE33F2008A8517 /* CInstantiateHook.h */,
@@ -546,6 +552,7 @@
 				C8C384E226BD043A009CF806 /* CEntity.h in Headers */,
 				C8C3850226BD2775009CF806 /* CContact.h in Headers */,
 				C842BDD026DE071C008A8517 /* CPlugin.h in Headers */,
+				C8397C8C272A543000845051 /* CConversation.h in Headers */,
 				C80A209526D7390200255B11 /* CMessagingServiceState.h in Headers */,
 				C8D7557026EDAECA00B7368E /* CError.h in Headers */,
 				C8DF88BC268DB2D300399C99 /* CAuthService.h in Headers */,
@@ -735,6 +742,7 @@
 				C817FE1A26C153320080D697 /* CContactZone.m in Sources */,
 				C8400AB626C20DC100C8FF48 /* CGroup.m in Sources */,
 				C842BDE926DE45DF008A8517 /* CTypeableMessage.m in Sources */,
+				C8397C8A272A541F00845051 /* CConversation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

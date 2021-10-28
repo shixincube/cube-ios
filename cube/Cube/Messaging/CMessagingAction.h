@@ -57,4 +57,9 @@
  */
 #define CUBE_MESSAGING_READ @"read"
 
+/*!
+ * @brief 获取会话列表。
+ */
+#define CUBE_MESSAGING_GETCONVERSATIONS @"getConversations"
+
 #endif /* CMessagingAction_h */

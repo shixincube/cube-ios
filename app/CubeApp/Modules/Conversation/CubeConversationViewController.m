@@ -166,13 +166,13 @@
 
 - (void)loadData {
     // 从引擎获取最近消息列表
-    NSArray * list = [self.messagingService getRecentMessages];
+    NSArray * list = [self.messagingService getRecentConversations];
     if (list && list.count > 0) {
         [self.conversations removeAllObjects];
 
-        for (CMessage * message in list) {
-            // 创建 Conversation
-            CubeConversation * conversation = [CubeConversation conversationWithMessage:message];
+        for (CConversation * conv in list) {
+            // 创建 Cube Conversation
+            CubeConversation * conversation = [CubeConversation conversationWithConversation:conv];
             [self.conversations addObject:conversation];
         }
 
@@ -210,28 +210,28 @@
     [self.tableView reloadData];
 }
 
-/*!
+/* FIXME 不需要的方法
  * @brief 找到消息对应的 Conversation ，如果没有找到返回 @c nil 值。
  */
-- (CubeConversation *)findConversation:(CMessage *)message {
-    UInt64 identity = message.source;
-    if (identity == 0) {
-        if (message.selfTyper) {
-            identity = message.to;
-        }
-        else {
-            identity = message.from;
-        }
-    }
-
-    for (CubeConversation * conversation in self.conversations) {
-        if (conversation.identity == identity) {
-            return conversation;
-        }
-    }
-
-    return nil;
-}
+//- (CubeConversation *)findConversation:(CMessage *)message {
+//    UInt64 identity = message.source;
+//    if (identity == 0) {
+//        if (message.selfTyper) {
+//            identity = message.to;
+//        }
+//        else {
+//            identity = message.from;
+//        }
+//    }
+//
+//    for (CubeConversation * conversation in self.conversations) {
+//        if (conversation.identity == identity) {
+//            return conversation;
+//        }
+//    }
+//
+//    return nil;
+//}
 
 #pragma mark - Getters
 
@@ -260,23 +260,27 @@
 #pragma mark - Delegate
 
 - (void)newRecentMessage:(CMessage *)message partner:(CContact *)partner service:(CMessagingService *)service {
-    if ([message isKindOfClass:[CHyperTextMessage class]]) {
-        CubeConversation * conversation = [self findConversation:message];
-        if (conversation) {
-            [conversation reset:message];
-        }
-        else {
-            conversation = [CubeConversation conversationWithMessage:message];
-            [self.conversations insertObject:conversation atIndex:0];
-        }
+//    if ([message isKindOfClass:[CHyperTextMessage class]]) {
+//        CubeConversation * conversation = [self findConversation:message];
+//        if (conversation) {
+//            [conversation reset:message];
+//        }
+//        else {
+//            conversation = [CubeConversation conversationWithMessage:message];
+//            [self.conversations insertObject:conversation atIndex:0];
+//        }
+//
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self updateConvsationModuleWithData:self.conversations];
+//        });
+//    }
+//    else {
+//        NSLog(@"Unknown message type");
+//    }
+}
 
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self updateConvsationModuleWithData:self.conversations];
-        });
-    }
-    else {
-        NSLog(@"Unknown message type");
-    }
+- (void)conversationUpdated:(CConversation *)conversation {
+    // TODO
 }
 
 - (void)networkStatusChanged:(CNetworkStatus)status {

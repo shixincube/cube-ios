@@ -45,6 +45,7 @@
 @class CMessageDraft;
 @class CContact;
 @class CGroup;
+@class CConversation;
 
 /*!
  * @brief 消息模块事件的代理协议。
@@ -93,6 +94,11 @@
  */
 - (void)newRecentMessage:(CMessage *)message partner:(CContact*)partner service:(CMessagingService *)service;
 
+/*
+ *
+ */
+- (void)conversationUpdated:(CConversation *)conversation;
+
 @end
 
 
@@ -136,13 +142,6 @@
 - (instancetype)init;
 
 /*!
- * @brief 消息是否是当前签入的联系人账号发出的。 即当前账号是否是指定消息的发件人。
- * @param message 指定消息实例。
- * @return 如果是当前签入人发出的返回 @c TRUE 。
- */
-- (BOOL)isSender:(CMessage *)message;
-
-/*!
  * @brief 向指定联系人发送消息。
  * @param conatct 指定联系人。
  * @param message 指定消息实例。
@@ -158,9 +157,13 @@
  */
 - (BOOL)sendToContactWithId:(UInt64)contactId message:(CMessage *)message;
 
+
+- (NSArray<__kindof CConversation *> *)getRecentConversations;
+
 /*!
  * @brief 获取最近的消息清单，返回的每条消息都来自不同的会话联系人或群组。
  * @return 返回消息列表。如果返回 @c nil 值表示消息服务模块未启动。
+ * @deprecated 请使用 @c getRecentConversations 替换。
  */
 - (NSArray<__kindof CMessage *> *)getRecentMessages;
 
@@ -176,11 +179,11 @@
                            limit:(NSInteger)limit
                       completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
 
-/*!
+/*
  * @brief 统计与指定消息相关的联系人的未读消息数量。
  * @return 返回未读消息数量。
  */
-- (NSUInteger)countUnreadByMessage:(CMessage *)message;
+//- (NSUInteger)countUnreadByMessage:(CMessage *)message;
 
 /*!
  * @brief 将与指定联系人相关的消息标记为已读。
@@ -273,6 +276,12 @@
  * @brief 填充消息内的实体数据实例。
  */
 - (void)fillMessage:(CMessage *)message;
+
+/*!
+ * @private
+ * @brief 填充会话内的实体数据实例。
+ */
+- (void)fillConversation:(CConversation *)conversation;
 
 @end
 

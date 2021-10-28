@@ -48,9 +48,7 @@
 
 @property (nonatomic, assign) id<CubeMessagePanelViewDelegate> delegate;
 
-@property (nonatomic, weak) CContact * contact;
-
-@property (nonatomic, weak) CGroup * group;
+@property (nonatomic, weak) CConversation * conversation;
 
 - (instancetype)initWithFrame:(CGRect)frame;
 

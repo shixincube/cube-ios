@@ -28,6 +28,8 @@
 
 @implementation CGroup
 
-
+- (NSString *)getPriorityName {
+    return nil;
+}
 
 @end

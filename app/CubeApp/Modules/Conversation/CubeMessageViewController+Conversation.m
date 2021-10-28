@@ -29,15 +29,7 @@
 @implementation CubeMessageViewController (Conversation)
 
 - (instancetype)initWithConversation:(CubeConversation *)conversation {
-    if (conversation.type == CubeConversationTypeContact) {
-        return [self initWithContact:conversation.contact];
-    }
-    else if (conversation.type == CubeConversationTypeGroup) {
-        return [self initWithGroup:conversation.group];
-    }
-    else {
-        return [super init];
-    }
+    return [self initWithConversation:conversation.conversation];
 }
 
 @end

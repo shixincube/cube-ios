@@ -113,21 +113,21 @@
         [self.avatarView setImage:[UIImage imageNamed:conversation.avatarName]];
     }
 
-    [self.nameLabel setText:conversation.displayName];
-    [self.detailLabel setText:conversation.content];
-    [self.timeLabel setText:[conversation.date conversationTimeInfo]];
+    [self.nameLabel setText:conversation.conversation.displayName];
+    [self.detailLabel setText:conversation.conversation.recentSummary];
+    [self.timeLabel setText:[conversation.conversation.date conversationTimeInfo]];
     [self.remindImageView setHidden:NO];
-    switch (conversation.remindType) {
-        case CubeMessageRemindTypeNormal:
+    switch (conversation.conversation.reminded) {
+        case CConversationRemindedNormal:
             [self.remindImageView setHidden:YES];
             break;
-        case CubeMessageRemindTypeClosed:
+        case CConversationRemindedClosed:
             [self.remindImageView setImage:[UIImage imageNamed:@"ConvRemindClose"]];
             break;
-        case CubeMessageRemindTypeNotCare:
+        case CConversationRemindedNotCare:
             [self.remindImageView setImage:[UIImage imageNamed:@"ConvRemindNotCare"]];
             break;
-        case CubeMessageRemindTypeRefused:
+        case CConversationRemindedRefused:
             [self.remindImageView setImage:[UIImage imageNamed:@"ConvRemindStop"]];
             break;
         default:

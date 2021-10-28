@@ -31,10 +31,10 @@
 
 - (void)sendTextMessage:(NSString *)text {
     CHyperTextMessage * message = [[CHyperTextMessage alloc] initWithText:text];
-    if (self.contact) {
-        [[CEngine sharedInstance].messagingService sendToContact:self.contact message:message];
+    if (self.conversation.type == CConversationTypeContact) {
+        [[CEngine sharedInstance].messagingService sendToContact:self.conversation.contact message:message];
     }
-    else if (self.group) {
+    else if (self.conversation.type == CConversationTypeGroup) {
         // TODO
     }
     else {
@@ -55,7 +55,7 @@
 }
 
 - (void)messageReceived:(CMessage *)message service:(CMessagingService *)service {
-    if (self.contact && (message.from == self.contact.identity || message.to == self.contact.identity)) {
+    if ([self.conversation isFocus:message]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self appendToShowMessage:message];
         });

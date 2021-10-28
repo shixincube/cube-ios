@@ -34,9 +34,7 @@
 
 @interface CubeMessageBaseViewController : UIViewController
 
-@property (nonatomic, strong) CContact * contact;
-
-@property (nonatomic, strong) CGroup * group;
+@property (nonatomic, strong) CConversation * conversation;
 
 /*! @brief 消息内容显示面板。 */
 @property (nonatomic, strong) CubeMessagePanelView * messagePanelView;

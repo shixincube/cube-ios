@@ -126,6 +126,7 @@
 - (NSMutableDictionary *)toCompactJSON {
     NSMutableDictionary * json = [[NSMutableDictionary alloc] init];
     [json setValue:[NSNumber numberWithUnsignedLongLong:_identity] forKey:@"id"];
+    [json setValue:[NSNumber numberWithUnsignedLongLong:_timestamp] forKey:@"timestamp"];
     return json;
 }
 

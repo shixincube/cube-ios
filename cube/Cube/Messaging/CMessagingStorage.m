@@ -84,6 +84,80 @@
     }
 }
 
+- (NSArray<__kindof CConversation *> *)queryRecentConversations:(NSInteger)limit {
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+    NSMutableArray<__kindof CConversation *> * list = [[NSMutableArray alloc] init];
+
+    [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `conversation` WHERE `state`=%ld OR `state`=%ld ORDER BY `timestamp` DESC",
+                          CConversationStateNormal, CConversationStateImportant];
+        FMResultSet * result = [db executeQuery:sql];
+        while ([result next]) {
+            NSString * messageString = [result stringForColumn:@"recent_message"];
+            CMessage * recentMessage = [[CMessage alloc] initWithJSON:[CUtils toJSONWithString:messageString]];
+
+            CConversation * conversation =
+                [[CConversation alloc] initWithId:[result unsignedLongLongIntForColumn:@"id"]
+                                        timestamp:[result unsignedLongLongIntForColumn:@"timestamp"]
+                                             type:[result intForColumn:@"type"]
+                                            state:[result intForColumn:@"state"]
+                                        pivotalId:[result unsignedLongLongIntForColumn:@"pivotal_id"]
+                                    recentMessage:recentMessage
+                                         reminded:[result intForColumn:@"remind"]];
+
+            // 填充实例
+            [_service fillConversation:conversation];
+
+            [list addObject:conversation];
+        }
+
+        [result close];
+
+        dispatch_semaphore_signal(semaphore);
+    }];
+
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC);
+    dispatch_semaphore_wait(semaphore, timeout);
+    
+    return list;
+}
+
+- (void)updateConversations:(NSArray<__kindof CConversation *> *)conversations {
+    for (CConversation * conversation in conversations) {
+        [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+            FMResultSet * result = [db executeQuery:@"SELECT `id` FROM `conversation` WHERE `id`=?",
+                                [NSNumber numberWithUnsignedLongLong:conversation.identity]];
+            if ([result next]) {
+                [result close];
+
+                // 更新
+                NSString * messageString = [CUtils toStringWithJSON:[conversation.recentMessage toJSON]];
+                [db executeUpdate:@"UPDATE `conversation` SET `timestamp`=?, `state`=?, `remind`=?, `recent_message`=? WHERE `id`=?",
+                    [NSNumber numberWithUnsignedLongLong:conversation.timestamp],
+                    [NSNumber numberWithInteger:conversation.state],
+                    [NSNumber numberWithInteger:conversation.reminded],
+                    messageString,
+                    [NSNumber numberWithUnsignedLongLong:conversation.identity]];
+            }
+            else {
+                [result close];
+
+                // 插入
+                NSString * messageString = [CUtils toStringWithJSON:[conversation.recentMessage toJSON]];
+                [db executeUpdate:@"INSERT INTO `conversation` (`id`,`timestamp`,`type`,`state`,`pivotal_id`,`remind`,`recent_message`) VALUES (?,?,?,?,?,?,?)",
+                    [NSNumber numberWithUnsignedLongLong:conversation.identity],
+                    [NSNumber numberWithUnsignedLongLong:conversation.timestamp],
+                    [NSNumber numberWithInteger:conversation.type],
+                    [NSNumber numberWithInteger:conversation.state],
+                    [NSNumber numberWithUnsignedLongLong:conversation.pivotalId],
+                    [NSNumber numberWithInteger:conversation.reminded],
+                    messageString];
+            }
+        }];
+    }
+}
+
 - (UInt64)queryLastMessageTime {
     __block UInt64 ret = 0;
     
@@ -462,6 +536,12 @@
         sql = @"CREATE TABLE IF NOT EXISTS `message` (`id` BIGINT PRIMARY KEY, `from` BIGINT, `to` BIGINT, `source` BIGINT, `lts` BIGINT, `rts` BIGINT, `state` INT, `remote_state` INT DEFAULT 10, `scope` INT DEFAULT 0, `data` TEXT)";
         if ([db executeUpdate:sql]) {
             NSLog(@"CMessagingStorage#execSelfChecking : `message` table OK");
+        }
+
+        // 会话表
+        sql = @"CREATE TABLE IF NOT EXISTS `conversation` (`id` BIGINT PRIMARY KEY, `timestamp` BIGINT, `type` INT, `state` INT, `pivotal_id` BIGINT, `remind` INT, `recent_message` TEXT, `avatar_name` TEXT DEFAULT NULL, `avatar_url` TEXT DEFAULT NULL)";
+        if ([db executeUpdate:sql]) {
+            NSLog(@"CMessagingStorage#execSelfChecking : `conversation` table OK");
         }
 
         // 最近消息表，当前联系人和其他每一个联系人的最近消息

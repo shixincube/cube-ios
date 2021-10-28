@@ -182,34 +182,34 @@
 }
 
 - (void)messageBarLoadDraft:(CubeMessageBar *)messageBar completion:(void (^)(CMessageDraft *))completion {
-    if (self.contact) {
-        [[CEngine sharedInstance].messagingService loadDraftWithContact:self.contact handleSuccess:^(id  _Nullable data) {
+    if (self.conversation.type == CConversationTypeContact) {
+        [[CEngine sharedInstance].messagingService loadDraftWithContact:self.conversation.contact handleSuccess:^(id  _Nullable data) {
             completion(data);
         } handleFailure:^(CError * _Nullable error) {
             completion(nil);
         }];
     }
-    else if (self.group) {
+    else if (self.conversation.type == CConversationTypeGroup) {
         // TODO
     }
 }
 
 - (void)messageBarSaveDraft:(CubeMessageBar *)messageBar draftText:(NSString *)draftText {
-    if (self.contact) {
+    if (self.conversation.type == CConversationTypeContact) {
         CHyperTextMessage * message = [[CHyperTextMessage alloc] initWithText:draftText];
-        CMessageDraft * draft = [[CMessageDraft alloc] initWithContact:self.contact message:message];
+        CMessageDraft * draft = [[CMessageDraft alloc] initWithContact:self.conversation.contact message:message];
         [[CEngine sharedInstance].messagingService saveDraft:draft];
     }
-    else if (self.group) {
+    else if (self.conversation.type == CConversationTypeGroup) {
         // TODO
     }
 }
 
 - (void)messageBarDeleteDraft:(CubeMessageBar *)messageBar {
-    if (self.contact) {
-        [[CEngine sharedInstance].messagingService deleteDraftWithContact:self.contact];
+    if (self.conversation.type == CConversationTypeContact) {
+        [[CEngine sharedInstance].messagingService deleteDraftWithContact:self.conversation.contact];
     }
-    else if (self.group) {
+    else if (self.conversation.type == CConversationTypeGroup) {
         // TODO
     }
 }

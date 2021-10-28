@@ -29,63 +29,15 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, CubeConversationType) {
-    /*! @brief 联系人的消息。  */
-    CubeConversationTypeContact,
-    /*! @brief 群组的消息。  */
-    CubeConversationTypeGroup,
-    /*! @brief 企业及组织消息。  */
-    CubeConversationTypeOrganization,
-    /*! @brief 系统通知。  */
-    CubeConversationTypeNotifier
-};
-
-typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
-    /*! @brief 正常接收。  */
-    CubeMessageRemindTypeNormal,
-    /*! @brief 接收但不提示。  */
-    CubeMessageRemindTypeClosed,
-    /*! @brief 不关注。  */
-    CubeMessageRemindTypeNotCare,
-    /*! @brief 拒绝接收。  */
-    CubeMessageRemindTypeRefused
-};
-
-
 /*!
  * @brief 会话描述。
  */
 @interface CubeConversation : NSObject
 
 /*!
- * @brief 会话类型。
+ * @brief 主会话实例。
  */
-@property (nonatomic, assign) CubeConversationType type;
-
-/*!
- * @brief 消息提示类型。
- */
-@property (nonatomic, assign) CubeMessageRemindType remindType;
-
-/*!
- * @brief 关联的联系人。
- */
-@property (nonatomic, strong) CContact * contact;
-
-/*!
- * @brief 关联的群组。
- */
-@property (nonatomic, strong) CGroup * group;
-
-/*!
- * @brief 该会话联系人或群组的 ID 。
- */
-@property (nonatomic, assign) UInt64 identity;
-
-/*!
- * @brief 会话显示的名称。
- */
-@property (nonatomic, strong) NSString * displayName;
+@property (nonatomic, strong, readonly) CConversation * conversation;
 
 /*!
  * @brief 头像图片名称。
@@ -98,16 +50,6 @@ typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
 @property (nonatomic, strong) NSString * avatarURL;
 
 /*!
- * @brief 日期。
- */
-@property (nonatomic, strong) NSDate * date;
-
-/*!
- * @brief 显示的内容。
- */
-@property (nonatomic, strong) NSString * content;
-
-/*!
  * @brief 未读数量。
  */
 @property (nonatomic, assign, readonly) NSInteger unread;
@@ -117,6 +59,7 @@ typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
  */
 @property (nonatomic, strong, readonly) NSString * badgeValue;
 
+
 /*!
  * @brief 是否已读消息。
  */
@@ -124,9 +67,9 @@ typedef NS_ENUM(NSInteger, CubeMessageRemindType) {
 
 - (void)clearUnread;
 
-- (void)reset:(CMessage *)message;
+- (void)reset:(CConversation *)conversation;
 
-+ (CubeConversation *)conversationWithMessage:(CMessage *)message;
++ (CubeConversation *)conversationWithConversation:(CConversation *)conversation;
 
 @end
 

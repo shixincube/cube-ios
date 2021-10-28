@@ -35,13 +35,13 @@
 #import "CGroup.h"
 #import "CSelf.h"
 #import "CDevice.h"
-
 #import "CMessage.h"
 #import "CMessagingPipelineListener.h"
 #import "CMessagingStorage.h"
 #import "CMessagingObserver.h"
 #import "CMessagingEvent.h"
 #import "CMessagingAction.h"
+#import "CConversation.h"
 #import "CPluginSystem.h"
 #import "CInstantiateHook.h"
 #import "CMessageTypePlugin.h"
@@ -57,7 +57,9 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 @interface CMessagingService () {
 
     CContactService * _contactService;
-    
+
+    NSMutableArray<__kindof CConversation *> * _conversations;
+
     NSMutableDictionary * _sendingMap;
 
     dispatch_queue_t _threadQueue;
@@ -172,15 +174,6 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     return _serviceReady && [self.pipeline isReady];
 }
 
-- (BOOL)isSender:(CMessage *)message {
-    CSelf * owner = _contactService.owner;
-    if (nil == owner) {
-        return FALSE;
-    }
-
-    return (message.from == owner.identity);
-}
-
 - (BOOL)sendToContact:(CContact *)conatct message:(CMessage *)message {
     return [self sendToContactWithId:conatct.identity message:message];
 }
@@ -215,6 +208,26 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     return TRUE;
 }
 
+- (NSArray<__kindof CConversation *> *)getRecentConversations {
+    if (![self hasStarted]) {
+        return nil;
+    }
+
+    @synchronized (self) {
+        NSArray<__kindof CConversation *> * list = [_storage queryRecentConversations:50];
+
+        if (nil == _conversations) {
+            _conversations = [[NSMutableArray alloc] initWithArray:list];
+        }
+        else {
+            [_conversations removeAllObjects];
+            [_conversations addObjectsFromArray:list];
+        }
+    }
+
+    return _conversations;
+}
+
 - (NSArray<__kindof CMessage *> *)getRecentMessages {
     if (![self hasStarted]) {
         return nil;
@@ -241,6 +254,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     [self queryMessagesByReverseWithContact:contact beginning:beginning limit:limit completion:completion];
 }
 
+/*
 - (NSUInteger)countUnreadByMessage:(CMessage *)message {
     if (![self hasStarted]) {
         return 0;
@@ -257,7 +271,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 
     return 0;
-}
+}*/
 
 - (void)markReadByContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     if (![self hasStarted]) {
@@ -556,9 +570,23 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     // 服务就绪
     _serviceReady = TRUE;
 
+    __block BOOL gotMessages = FALSE;
+    __block BOOL gotConversations = FALSE;
+
     // 从服务器上拉取自上一次时间戳之后的所有消息
     [self queryRemoteMessageWithBeginning:(_lastMessageTime + 1) toEnding:now completionHandler:^ {
-        completionHandler();
+        gotMessages = TRUE;
+        if (gotConversations) {
+            completionHandler();
+        }
+    }];
+
+    // 获取最新的会话列表
+    [self queryRemoteConversations:^ {
+        gotConversations = TRUE;
+        if (gotMessages) {
+            completionHandler();
+        }
     }];
 }
 
@@ -603,6 +631,60 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
         });
     }
 }
+
+- (void)queryRemoteConversations:(void (^)(void))completionHandler {
+    if (![self.pipeline isReady]) {
+        completionHandler();
+        return;
+    }
+
+    NSDictionary * payload = @{
+        @"limit" : [NSNumber numberWithInt:50]
+    };
+    CPacket * requestPacket = [[CPacket alloc] initWithName:CUBE_MESSAGING_GETCONVERSATIONS andData:payload];
+    [self.pipeline send:CUBE_MODULE_MESSAGING withPacket:requestPacket handleResponse:^(CPacket *packet) {
+        if (packet.state.code != CStateOk) {
+            completionHandler();
+            return;
+        }
+
+        int code = [packet extractStateCode];
+        if (code != CMessagingServiceStateOk) {
+            completionHandler();
+            return;
+        }
+
+        @synchronized (self) {
+            if (nil == self->_conversations) {
+                self->_conversations = [[NSMutableArray alloc] init];
+            }
+            else {
+                [self->_conversations removeAllObjects];
+            }
+        }
+
+        NSDictionary * data = [packet extractData];
+        NSArray * list = [data valueForKey:@"list"];
+        for (NSDictionary * json in list) {
+            CConversation * conversation = [[CConversation alloc] initWithJSON:json];
+            [self->_conversations addObject:conversation];
+        }
+
+        dispatch_queue_t queue = dispatch_queue_create("cube.messaging.conversation", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_async(queue, ^{
+            for (CConversation * conversation in self->_conversations) {
+                [self fillConversation:conversation];
+            }
+
+            // 更新到数据库
+            [self->_storage updateConversations:self->_conversations];
+
+            completionHandler();
+        });
+    }];
+}
+
+#pragma mark - Fill Message
 
 - (void)fillMessage:(CMessage *)message {
     CSelf * owner = _contactService.owner;
@@ -661,6 +743,49 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     // 阻塞线程
     dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 3000 * NSEC_PER_MSEC);
     dispatch_semaphore_wait(semaphore, timeout);
+}
+
+#pragma mark - Fill Conversation
+
+- (void)fillConversation:(CConversation *)conversation {
+    // 填充消息
+    [self fillMessage:conversation.recentMessage];
+
+    // 按类型实例化
+    if (conversation.recentMessage.type == CMessageTypeUnknown) {
+        CHook * hook = [self.pluginSystem getHook:CInstantiateHookName];
+        CMessage * compMessage = [hook apply:conversation.recentMessage];
+        [conversation resetRecentMessage:compMessage];
+    }
+
+    if (conversation.type == CConversationTypeContact) {
+        __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+        [_contactService getContact:conversation.pivotalId handleSuccess:^(CContact *contact) {
+            [conversation setPivotalWithContact:contact];
+            dispatch_semaphore_signal(semaphore);
+        } handleFailure:^(CError * _Nullable error) {
+            // Nothing
+            dispatch_semaphore_signal(semaphore);
+        }];
+
+        dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 2000 * NSEC_PER_MSEC);
+        dispatch_semaphore_wait(semaphore, timeout);
+    }
+    else if (conversation.type == CConversationTypeGroup) {
+        __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+        [_contactService getGroup:conversation.pivotalId handleSuccess:^(CGroup *group) {
+            [conversation setPivotalWithGroup:group];
+            dispatch_semaphore_signal(semaphore);
+        } handleFailure:^(CError * _Nullable error) {
+            // Nothing
+            dispatch_semaphore_signal(semaphore);
+        }];
+
+        dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 2000 * NSEC_PER_MSEC);
+        dispatch_semaphore_wait(semaphore, timeout);
+    }
 }
 
 - (void)jitterThreadTask {

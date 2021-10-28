@@ -30,12 +30,11 @@
 
 @interface CubeConversation ()
 
-@property (nonatomic, strong) CMessage * message;
-
 @end
 
 @implementation CubeConversation
 
+@synthesize conversation = _conversation;
 @synthesize unread = _unread;
 
 - (instancetype)init {
@@ -51,7 +50,7 @@
 
 - (NSInteger)unread {
     if (_unread < 0) {
-        _unread = [[CEngine sharedInstance].messagingService countUnreadByMessage:self.message];
+        _unread = 0;//[[CEngine sharedInstance].messagingService countUnreadByMessage:self.message];
     }
     return _unread;
 }
@@ -59,55 +58,30 @@
 - (void)clearUnread {
     _unread = 0;
 
-    [[CEngine sharedInstance].messagingService markReadByContact:self.message.partner handleSuccess:^(id  _Nullable data) {
-        // 标记成功
-        NSLog(@"Mark messages (%ld) read", ((NSArray *)data).count);
-    } handleFailure:^(CError * _Nullable error) {
-        // 标记失败
-        NSLog(@"Mark message read failed");
-    }];
+//    [[CEngine sharedInstance].messagingService markReadByContact:self.message.partner handleSuccess:^(id  _Nullable data) {
+//        // 标记成功
+//        NSLog(@"Mark messages (%ld) read", ((NSArray *)data).count);
+//    } handleFailure:^(CError * _Nullable error) {
+//        // 标记失败
+//        NSLog(@"Mark message read failed");
+//    }];
 }
 
-- (void)reset:(CMessage *)message {
+- (void)reset:(CConversation *)conversation {
     _unread = -1;
 
-    self.message = message;
+    _conversation = conversation;
 
-    if ([message isFromGroup]) {
-        self.type = CubeConversationTypeGroup;
-        self.identity = message.source;
-        self.group = message.sourceGroup;
+    if (conversation.type == CConversationTypeGroup) {
         // TODO 群组数据
-//        conversation.displayName = message.sourceGroup.name;
     }
-    else {
-        self.type = CubeConversationTypeContact;
-        if (message.selfTyper) {
-            // “我”是发件人
-            self.identity = message.to;
-            self.contact = message.receiver;
-        }
-        else {
-            // “我”是收件人
-            self.identity = message.from;
-            self.contact = message.sender;
-        }
-
-        self.displayName = [self.contact getPriorityName];
-        self.avatarName = self.contact.context ? [CubeAccount getAvatar:self.contact.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
+    else if (conversation.type == CConversationTypeContact) {
+        self.avatarName = (self.conversation.contact.context) ?
+            [CubeAccount getAvatar:self.conversation.contact.context] : [CubeAccountHelper sharedInstance].defaultAvatarImageName;
     }
 
     // 头像处理
     self.avatarName = [CubeAccountHelper explainAvatar:self.avatarName];
-
-    self.remindType = CubeMessageRemindTypeNormal;
-
-    // 时间
-    double time = (double) message.remoteTS;
-    self.date = [[NSDate alloc] initWithTimeIntervalSince1970:time / 1000.0f];
-
-    // 信息摘要
-    self.content = message.summary;
 }
 
 #pragma mark - Getters
@@ -117,7 +91,7 @@
         return nil;
     }
 
-    if (self.type == CubeConversationTypeContact || self.type == CubeConversationTypeGroup) {
+    if (_conversation.type == CConversationTypeContact || _conversation.type == CConversationTypeGroup) {
         return self.unread <= 99 ? [NSString stringWithFormat:@"%ld", self.unread] : @"99+";
     }
     else {
@@ -125,10 +99,10 @@
     }
 }
 
-+ (CubeConversation *)conversationWithMessage:(CMessage *)message {
-    CubeConversation * conversation = [[CubeConversation alloc] init];
-    [conversation reset:message];
-    return conversation;
++ (CubeConversation *)conversationWithConversation:(CConversation *)conversation {
+    CubeConversation * conv = [[CubeConversation alloc] init];
+    [conv reset:conversation];
+    return conv;
 }
 
 @end

@@ -41,6 +41,7 @@
 #import <Cube/CContactZoneParticipant.h>
 
 #import <Cube/CMessagingService.h>
+#import <Cube/CConversation.h>
 #import <Cube/CMessage.h>
 #import <Cube/CMessageDraft.h>
 #import <Cube/CMessageType.h>

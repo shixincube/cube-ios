@@ -604,6 +604,13 @@
     }];
 }
 
+- (void)getGroup:(UInt64)groupId handleSuccess:(CGroupBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    dispatch_async(_threadQueue, ^ {
+        CGroup * group = [[CGroup alloc] init];
+        handleSuccess(group);
+    });
+}
+
 #pragma mark - Private
 
 - (void)waitReady:(void (^)(BOOL timeout))handler {

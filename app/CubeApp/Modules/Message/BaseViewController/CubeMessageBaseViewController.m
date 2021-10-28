@@ -103,8 +103,8 @@
 
 - (void)resetView {
     NSString * bgImageName = nil;
-    if (_contact) {
-        bgImageName = [CubePreference messagePanelBackgroundWithContact:_contact];
+    if (_conversation.type == CConversationTypeContact) {
+        bgImageName = [CubePreference messagePanelBackgroundWithContact:_conversation.contact];
     }
 
     // TODO
@@ -121,25 +121,17 @@
 
 #pragma mark - Setters
 
-- (void)setContact:(CContact *)contact {
-    _group = nil;
-
-    if (_contact && _contact.identity == contact.identity) {
+- (void)setConversation:(CConversation *)conversation {
+    if (_conversation.identity == conversation.identity) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.messagePanelView scrollToBottomWithAnimation:NO];
         });
         return;
     }
 
-    _contact = contact;
-    [self.navigationItem setTitle:[contact getPriorityName]];
+    _conversation = conversation;
+    [self.navigationItem setTitle:_conversation.displayName];
     [self resetView];
-}
-
-- (void)setGroup:(CGroup *)group {
-    _contact = nil;
-    
-    _group = group;
 }
 
 #pragma mark - Getters
@@ -150,8 +142,7 @@
         CGFloat height = self.view.frame.size.height - 44.0;
         CGRect frame = CGRectMake(0, 0, width, height);
         _messagePanelView = [[CubeMessagePanelView alloc] initWithFrame:frame];
-        _messagePanelView.contact = self.contact;
-        _messagePanelView.group = self.group;
+        _messagePanelView.conversation = self.conversation;
         _messagePanelView.delegate = self;
     }
     return _messagePanelView;

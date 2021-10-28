@@ -244,7 +244,7 @@
                 }
             }];
         }];
-        
+
         _refreshHeader.lastUpdatedTimeLabel.hidden = YES;
         _refreshHeader.stateLabel.hidden = YES;
     }

@@ -28,6 +28,7 @@
 #define CMessagingStorage_h
 
 #import "CMessage.h"
+#import "CConversation.h"
 #import "CMessageState.h"
 #import "CMessageDraft.h"
 
@@ -52,6 +53,16 @@
  * @brief 关闭存储器。
  */
 - (void)close;
+
+/*!
+ * @brief 查询最近的会话列表。
+ */
+- (NSArray<__kindof CConversation *> *)queryRecentConversations:(NSInteger)limit;
+
+/*!
+ * @brief 更新列表里的所有会话。
+ */
+- (void)updateConversations:(NSArray<__kindof CConversation *> *)conversations;
 
 /*!
  * @brief 查询最近一条消息的时间戳。

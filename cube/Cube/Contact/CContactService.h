@@ -171,6 +171,9 @@ typedef void (^CContactZoneBlock)(CContactZone * contactZone);
  */
 - (void)createContactZone:(NSString *)zoneName displayName:(NSString *)displayName contactIdList:(NSArray<__kindof NSNumber *> *)contactIdList handleSuccess:(void (^)(CContactZone * zone))handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
+
+- (void)getGroup:(UInt64)groupId handleSuccess:(CGroupBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+
 /*!
  * @private
  */

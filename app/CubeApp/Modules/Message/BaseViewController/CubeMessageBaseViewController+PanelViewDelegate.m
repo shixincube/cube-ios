@@ -55,6 +55,7 @@
           completed:(void (^)(NSDate *, NSArray *, BOOL))completed {
     NSLog(@"CubeMessageBaseViewController#getMessages");
 
+    /* FIXME XJW 旧方法
     if (panelView.contact) {
         [[CEngine sharedInstance].messagingService queryMessagesByReverseWithContact:panelView.contact
                                                                            beginning:[beginningTime timeIntervalSince1970Mills]
@@ -67,7 +68,7 @@
     }
     else {
         // TODO
-    }
+    }*/
 }
 
 
