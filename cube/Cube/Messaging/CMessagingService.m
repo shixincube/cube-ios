@@ -225,7 +225,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
         }
     }
 
-    return _conversations;
+    return [self sortConversationList:_conversations];
 }
 
 - (NSArray<__kindof CMessage *> *)getRecentMessages {
@@ -691,7 +691,8 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
             // 回调事件
             if (self->_recentEventDelegate && [self->_recentEventDelegate respondsToSelector:@selector(conversationListUpdated:service:)]) {
-                [self->_recentEventDelegate conversationListUpdated:self->_conversations service:self];
+                [self->_recentEventDelegate conversationListUpdated:[self sortConversationList:self->_conversations]
+                                                            service:self];
             }
         });
     }];
@@ -815,6 +816,31 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 
     return nil;
+}
+
+- (NSArray<__kindof CConversation *> *)sortConversationList:(NSMutableArray<__kindof CConversation *> *)list {
+    return [list sortedArrayUsingComparator:^NSComparisonResult(id _Nonnull obj1, id _Nonnull obj2) {
+        CConversation * conv1 = obj1;
+        CConversation * conv2 = obj2;
+        
+        // 将 Important 置顶
+        if (conv1.type == CConversationStateNormal && conv2.type == CConversationStateImportant) {
+            return NSOrderedDescending;
+        }
+        else if (conv1.type == CConversationStateImportant && conv2.type == CConversationStateNormal) {
+            return NSOrderedAscending;
+        }
+        else {
+            if (conv1.timestamp < conv2.timestamp) {
+                return NSOrderedDescending;
+            }
+            else if (conv1.timestamp > conv2.timestamp) {
+                return NSOrderedAscending;
+            }
+            
+            return NSOrderedSame;
+        }
+    }];
 }
 
 - (void)jitterThreadTask {
