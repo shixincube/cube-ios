@@ -214,10 +214,16 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 
     @synchronized (self) {
-        if (nil == _conversations) {
+        if (nil == _conversations || _conversations.count == 0) {
             NSArray<__kindof CConversation *> * list = [_storage queryRecentConversations:100];
             NSArray<__kindof CConversation *> * sortedList = [self sortConversationList:list];
-            _conversations = [[NSMutableArray alloc] initWithArray:sortedList];
+
+            if (nil == _conversations) {
+                _conversations = [[NSMutableArray alloc] initWithArray:sortedList];
+            }
+            else {
+                [_conversations addObjectsFromArray:sortedList];
+            }
         }
     }
 
@@ -567,7 +573,13 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }];
 
     // 获取最新的会话列表
-    [self queryRemoteConversations:^ {
+    // 根据最近一次消息时间戳更新数量
+    int limit = 50;
+    if (now - _lastMessageTime > 1L * 60L * 60L * 1000L) {
+        // 大于一小时
+        limit = 200;
+    }
+    [self queryRemoteConversationsWithLimit:limit completionHandler:^{
         gotConversations = TRUE;
         if (gotMessages) {
             completionHandler();
@@ -617,14 +629,14 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 }
 
-- (void)queryRemoteConversations:(void (^)(void))completionHandler {
+- (void)queryRemoteConversationsWithLimit:(int)limit completionHandler:(void (^)(void))completionHandler {
     if (![self.pipeline isReady]) {
         completionHandler();
         return;
     }
 
     NSDictionary * payload = @{
-        @"limit" : [NSNumber numberWithInt:200]
+        @"limit" : [NSNumber numberWithInt:limit]
     };
     CPacket * requestPacket = [[CPacket alloc] initWithName:CUBE_MESSAGING_GETCONVERSATIONS andData:payload];
     [self.pipeline send:CUBE_MODULE_MESSAGING withPacket:requestPacket handleResponse:^(CPacket *packet) {
@@ -639,36 +651,35 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
             return;
         }
 
-        @synchronized (self) {
-            if (nil == self->_conversations) {
-                self->_conversations = [[NSMutableArray alloc] init];
-            }
-            else {
-                [self->_conversations removeAllObjects];
-            }
-
-            NSDictionary * data = [packet extractData];
-            NSArray * list = [data valueForKey:@"list"];
-            for (NSDictionary * json in list) {
-                CConversation * conversation = [[CConversation alloc] initWithJSON:json];
-                [self->_conversations addObject:conversation];
-            }
+        NSMutableArray<__kindof CConversation *> * conversationList = [[NSMutableArray alloc] init];
+        // 读取列表
+        NSDictionary * data = [packet extractData];
+        NSArray * list = [data valueForKey:@"list"];
+        for (NSDictionary * json in list) {
+            CConversation * conversation = [[CConversation alloc] initWithJSON:json];
+            // 填充实体
+            [self fillConversation:conversation];
+            [conversationList addObject:conversation];
         }
 
         dispatch_queue_t queue = dispatch_queue_create("cube.messaging.conversation", DISPATCH_QUEUE_CONCURRENT);
         dispatch_async(queue, ^{
-            for (CConversation * conversation in self->_conversations) {
-                [self fillConversation:conversation];
-            }
-
             // 更新到数据库
-            [self->_storage updateConversations:self->_conversations];
+            [self->_storage updateConversations:conversationList];
 
+            // 回调
             completionHandler();
 
-            // 排序并回调事件
+            // 回调事件
             if (self->_recentEventDelegate && [self->_recentEventDelegate respondsToSelector:@selector(conversationListUpdated:service:)]) {
-                [self->_recentEventDelegate conversationListUpdated:[self sortConversationList:self->_conversations]
+
+                @synchronized (self) {
+                    if (nil != self->_conversations) {
+                        [self->_conversations removeAllObjects];
+                    }
+                }
+
+                [self->_recentEventDelegate conversationListUpdated:[self getRecentConversations]
                                                             service:self];
             }
         });
