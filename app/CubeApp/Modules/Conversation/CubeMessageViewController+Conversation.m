@@ -28,7 +28,7 @@
 
 @implementation CubeMessageViewController (Conversation)
 
-- (instancetype)initWithConversation:(CubeConversation *)conversation {
+- (instancetype)initWithModel:(CubeConversation *)conversation {
     return [self initWithConversation:conversation.conversation];
 }
 

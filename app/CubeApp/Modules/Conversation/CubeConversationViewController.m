@@ -203,7 +203,7 @@
             [conversation clearUnread];
             [self.listController reloadBadge];
 
-            CubeMessageViewController * messageVC = [[CubeMessageViewController alloc] initWithConversation:conversation.conversation];
+            CubeMessageViewController * messageVC = [[CubeMessageViewController alloc] initWithModel:conversation];
             PushVC(messageVC);
         });
 

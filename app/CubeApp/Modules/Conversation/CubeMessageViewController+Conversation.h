@@ -32,7 +32,7 @@
 
 @interface CubeMessageViewController (Conversation)
 
-- (instancetype)initWithConversation:(CubeConversation *)conversation;
+- (instancetype)initWithModel:(CubeConversation *)conversation;
 
 @end
 
