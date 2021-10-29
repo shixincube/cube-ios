@@ -214,18 +214,14 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 
     @synchronized (self) {
-        NSArray<__kindof CConversation *> * list = [_storage queryRecentConversations:50];
-
         if (nil == _conversations) {
-            _conversations = [[NSMutableArray alloc] initWithArray:list];
-        }
-        else {
-            [_conversations removeAllObjects];
-            [_conversations addObjectsFromArray:list];
+            NSArray<__kindof CConversation *> * list = [_storage queryRecentConversations:100];
+            NSArray<__kindof CConversation *> * sortedList = [self sortConversationList:list];
+            _conversations = [[NSMutableArray alloc] initWithArray:sortedList];
         }
     }
 
-    return [self sortConversationList:_conversations];
+    return _conversations;
 }
 
 - (NSArray<__kindof CMessage *> *)getRecentMessages {
@@ -261,25 +257,6 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
         
     }
 }
-
-/*
-- (NSUInteger)countUnreadByMessage:(CMessage *)message {
-    if (![self hasStarted]) {
-        return 0;
-    }
-
-    if (message.source > 0) {
-        return [_storage countUnreadMessagesWithSource:message.source];
-    }
-    else if (message.to == _contactService.owner.identity) {
-        return [_storage countUnreadMessagesWithFrom:message.from];
-    }
-    else if (message.from == _contactService.owner.identity) {
-        return [_storage countUnreadMessagesWithTo:message.to];
-    }
-
-    return 0;
-}*/
 
 - (void)markReadByContact:(CContact *)contact handleSuccess:(CSuccessBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     if (![self hasStarted]) {
@@ -647,7 +624,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     }
 
     NSDictionary * payload = @{
-        @"limit" : [NSNumber numberWithInt:50]
+        @"limit" : [NSNumber numberWithInt:200]
     };
     CPacket * requestPacket = [[CPacket alloc] initWithName:CUBE_MESSAGING_GETCONVERSATIONS andData:payload];
     [self.pipeline send:CUBE_MODULE_MESSAGING withPacket:requestPacket handleResponse:^(CPacket *packet) {
@@ -669,13 +646,13 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
             else {
                 [self->_conversations removeAllObjects];
             }
-        }
 
-        NSDictionary * data = [packet extractData];
-        NSArray * list = [data valueForKey:@"list"];
-        for (NSDictionary * json in list) {
-            CConversation * conversation = [[CConversation alloc] initWithJSON:json];
-            [self->_conversations addObject:conversation];
+            NSDictionary * data = [packet extractData];
+            NSArray * list = [data valueForKey:@"list"];
+            for (NSDictionary * json in list) {
+                CConversation * conversation = [[CConversation alloc] initWithJSON:json];
+                [self->_conversations addObject:conversation];
+            }
         }
 
         dispatch_queue_t queue = dispatch_queue_create("cube.messaging.conversation", DISPATCH_QUEUE_CONCURRENT);
@@ -689,7 +666,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
             completionHandler();
 
-            // 回调事件
+            // 排序并回调事件
             if (self->_recentEventDelegate && [self->_recentEventDelegate respondsToSelector:@selector(conversationListUpdated:service:)]) {
                 [self->_recentEventDelegate conversationListUpdated:[self sortConversationList:self->_conversations]
                                                             service:self];
@@ -818,11 +795,11 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
     return nil;
 }
 
-- (NSArray<__kindof CConversation *> *)sortConversationList:(NSMutableArray<__kindof CConversation *> *)list {
+- (NSArray<__kindof CConversation *> *)sortConversationList:(NSArray<__kindof CConversation *> *)list {
     return [list sortedArrayUsingComparator:^NSComparisonResult(id _Nonnull obj1, id _Nonnull obj2) {
         CConversation * conv1 = obj1;
         CConversation * conv2 = obj2;
-        
+
         // 将 Important 置顶
         if (conv1.type == CConversationStateNormal && conv2.type == CConversationStateImportant) {
             return NSOrderedDescending;
@@ -837,7 +814,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
             else if (conv1.timestamp > conv2.timestamp) {
                 return NSOrderedAscending;
             }
-            
+
             return NSOrderedSame;
         }
     }];

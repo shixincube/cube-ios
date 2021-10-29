@@ -56,11 +56,14 @@
 
 /*!
  * @brief 查询最近的会话列表。
+ * @param limit 指定最大查询数量。
+ * @return 返回查询结构数组。
  */
 - (NSArray<__kindof CConversation *> *)queryRecentConversations:(NSInteger)limit;
 
 /*!
  * @brief 更新列表里的所有会话。
+ * @param conversations 指定会话清单。
  */
 - (void)updateConversations:(NSArray<__kindof CConversation *> *)conversations;
 

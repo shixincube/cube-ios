@@ -176,7 +176,6 @@
 /*!
  * @brief 获取最近的消息清单，返回的每条消息都来自不同的会话联系人或群组。
  * @return 返回消息列表。如果返回 @c nil 值表示消息服务模块未启动。
- * @deprecated 请使用 @c getRecentConversations 替换。
  */
 - (NSArray<__kindof CMessage *> *)getRecentMessages;
 
@@ -191,12 +190,6 @@
             beginning:(UInt64)beginning
                 limit:(NSInteger)limit
            completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
-
-/*
- * @brief 统计与指定消息相关的联系人的未读消息数量。
- * @return 返回未读消息数量。
- */
-//- (NSUInteger)countUnreadByMessage:(CMessage *)message;
 
 /*!
  * @brief 将与指定联系人相关的消息标记为已读。

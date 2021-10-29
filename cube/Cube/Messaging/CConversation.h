@@ -125,7 +125,7 @@ typedef NS_ENUM(NSInteger, CConversationReminded) {
 @property (nonatomic, strong, readonly) CGroup * group;
 
 /*!
- * @brief 会话状态。
+ * @brief 会话最近的消息。
  */
 @property (nonatomic, strong, readonly) CMessage * recentMessage;
 
@@ -165,6 +165,9 @@ typedef NS_ENUM(NSInteger, CConversationReminded) {
  */
 - (instancetype)initWithJSON:(NSDictionary *)json;
 
+/*!
+ * @brief 通过指定参数值初始化。
+ */
 - (instancetype)initWithId:(UInt64)identity
                  timestamp:(UInt64)timestamp
                       type:(CConversationType)type

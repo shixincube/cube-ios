@@ -90,8 +90,8 @@
     NSMutableArray<__kindof CConversation *> * list = [[NSMutableArray alloc] init];
 
     [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `conversation` WHERE `state`=%ld OR `state`=%ld ORDER BY `timestamp` DESC",
-                          CConversationStateNormal, CConversationStateImportant];
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `conversation` WHERE `state`=%ld OR `state`=%ld ORDER BY `timestamp` DESC LIMIT %ld",
+                          CConversationStateNormal, CConversationStateImportant, limit];
         FMResultSet * result = [db executeQuery:sql];
         while ([result next]) {
             NSString * messageString = [result stringForColumn:@"recent_message"];

@@ -37,27 +37,6 @@
 
 @implementation CConversation
 
-- (instancetype)initWithId:(UInt64)identity
-                 timestamp:(UInt64)timestamp
-                      type:(CConversationType)type
-                     state:(CConversationState)state
-                 pivotalId:(UInt64)pivotalId
-             recentMessage:(CMessage *)recentMessage
-                  reminded:(CConversationReminded)reminded {
-    if (self = [super initWithId:identity timestamp:timestamp]) {
-        _type = type;
-        _state = state;
-        _pivotalId = pivotalId;
-        _recentMessage = recentMessage;
-        _reminded = reminded;
-
-        double time = ((double)self.timestamp / 1000.0f);
-        _date = [[NSDate alloc] initWithTimeIntervalSince1970:time];
-    }
-
-    return self;
-}
-
 - (instancetype)initWithJSON:(NSDictionary *)json {
     if (self = [super initWithJSON:json]) {
         _type = [[json valueForKey:@"type"] integerValue];
@@ -74,6 +53,27 @@
         if ([json objectForKey:@"avatarURL"]) {
             _avatarURL = [json valueForKey:@"avatarURL"];
         }
+
+        double time = ((double)self.timestamp / 1000.0f);
+        _date = [[NSDate alloc] initWithTimeIntervalSince1970:time];
+    }
+
+    return self;
+}
+
+- (instancetype)initWithId:(UInt64)identity
+                 timestamp:(UInt64)timestamp
+                      type:(CConversationType)type
+                     state:(CConversationState)state
+                 pivotalId:(UInt64)pivotalId
+             recentMessage:(CMessage *)recentMessage
+                  reminded:(CConversationReminded)reminded {
+    if (self = [super initWithId:identity timestamp:timestamp]) {
+        _type = type;
+        _state = state;
+        _pivotalId = pivotalId;
+        _recentMessage = recentMessage;
+        _reminded = reminded;
 
         double time = ((double)self.timestamp / 1000.0f);
         _date = [[NSDate alloc] initWithTimeIntervalSince1970:time];
