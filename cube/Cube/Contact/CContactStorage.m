@@ -360,19 +360,19 @@
 
 - (void)execSelfChecking {
     // 联系人表
-    NSString * sql = @"CREATE TABLE IF NOT EXISTS `contact` (`sn` BIGINT PRIMARY KEY AUTOINCREMENT, `id` BIGINT, `name` TEXT, `context` TEXT, `timestamp` BIGINT DEFAULT 0, `last` BIGINT DEFAULT 0, `expiry` BIGINT DEFAULT 0)";
+    NSString * sql = @"CREATE TABLE IF NOT EXISTS `contact` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `id` BIGINT, `name` TEXT, `context` TEXT, `timestamp` BIGINT DEFAULT 0, `last` BIGINT DEFAULT 0, `expiry` BIGINT DEFAULT 0)";
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `contact` table OK");
     }
 
     // 群组表
-    sql = @"CREATE TABLE IF NOT EXISTS `group` (`sn` BIGINT PRIMARY KEY AUTOINCREMENT, `id` BIGINT, `name` TEXT, `owner` TEXT, `tag` TEXT, `creation` BIGINT, `last_active` BIGINT, `state` INTEGER, `context` TEXT)";
+    sql = @"CREATE TABLE IF NOT EXISTS `group` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `id` BIGINT, `name` TEXT, `owner` TEXT, `tag` TEXT, `creation` BIGINT, `last_active` BIGINT, `state` INTEGER, `context` TEXT)";
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `group` table OK");
     }
 
     // 群成员表
-    sql = @"CREATE TABLE IF NOT EXISTS `group_member` (`sn` BIGINT PRIMARY KEY AUTOINCREMENT, `group` BIGINT, `contact_id` BIGINT, `contact_name` TEXT, `contact_context` TEXT)";
+    sql = @"CREATE TABLE IF NOT EXISTS `group_member` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `group` BIGINT, `contact_id` BIGINT, `contact_name` TEXT, `contact_context` TEXT)";
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `group_member` table OK");
     }
