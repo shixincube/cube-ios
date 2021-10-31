@@ -215,7 +215,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
     @synchronized (self) {
         if (nil == _conversations || _conversations.count == 0) {
-            NSArray<__kindof CConversation *> * list = [_storage queryRecentConversations:100];
+            NSArray<__kindof CConversation *> * list = [_storage queryRecentConversations:50];
             NSArray<__kindof CConversation *> * sortedList = [self sortConversationList:list];
 
             if (nil == _conversations) {

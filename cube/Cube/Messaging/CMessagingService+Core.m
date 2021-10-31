@@ -38,37 +38,21 @@
 @implementation CMessagingService (Core)
 
 - (void)fireContactEvent:(CObservableEvent *)event {
-    if ([self.pipeline isReady]) {
-        if ([event.name isEqualToString:CContactEventSignIn]) {
-            @synchronized (self) {
-                if (!_serviceReady) {
-                    // 准备数据
-                    [self prepare:(CContactService *)event.subject completionHandler:^ {
-                        // 事件通知
-                        CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
-                        [self notifyObservers:event];
-                    }];
-                }
+    if ([event.name isEqualToString:CContactEventSelfReady]) {
+        @synchronized (self) {
+            if (!_serviceReady) {
+                // 准备数据
+                [self prepare:(CContactService *)event.subject completionHandler:^ {
+                    // 事件通知
+                    CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
+                    [self notifyObservers:event];
+                }];
             }
-        }
-        else if ([event.name isEqualToString:CContactEventSignOut]) {
-            // TODO
-            _serviceReady = FALSE;
         }
     }
-    else {
-        if ([event.name isEqualToString:CContactEventSelfReady]) {
-            @synchronized (self) {
-                if (!_serviceReady) {
-                    // 准备数据
-                    [self prepare:(CContactService *)event.subject completionHandler:^ {
-                        // 事件通知
-                        CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventReady data:self];
-                        [self notifyObservers:event];
-                    }];
-                }
-            }
-        }
+    else if ([event.name isEqualToString:CContactEventSignOut]) {
+        // TODO
+        _serviceReady = FALSE;
     }
 }
 
