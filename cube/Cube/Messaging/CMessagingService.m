@@ -352,7 +352,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
         return;
     }
 
-    [_storage queryReverseWithContact:contact.identity beginning:beginning limit:limit completion:^(NSArray<__kindof CMessage *> *array, BOOL hasMore) {
+    [_storage queryMessagesByReverseWithContact:contact.identity beginning:beginning limit:limit completion:^(NSArray<__kindof CMessage *> *array, BOOL hasMore) {
         if (array.count == 0) {
             completion(array, hasMore);
             return;

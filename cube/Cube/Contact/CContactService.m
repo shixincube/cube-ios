@@ -54,7 +54,7 @@
     // 用于临时缓存实体的缓存器
     NSMutableDictionary<__kindof NSString *, __kindof CEntity *> * _cache;
 
-    BOOL _selfReady;
+    BOOL _signInReady;
 
     NSInteger _waitReadyCount;
 
@@ -74,7 +74,7 @@
         _pipelineListener = [[CContactPipelineListener alloc] initWithService:self];
         _storage = [[CContactStorage alloc] initWithService:self];
         _cache = [[NSMutableDictionary alloc] init];
-        _selfReady = FALSE;
+        _signInReady = FALSE;
 
         self.retrospectDuration = 30L * 24L * 60L * 60000L;
 
@@ -111,7 +111,7 @@
     // 关闭存储
     [_storage close];
 
-    _selfReady = FALSE;
+    _signInReady = FALSE;
 }
 
 - (void)suspend {
@@ -123,12 +123,12 @@
 }
 
 - (BOOL)isReady {
-    return _selfReady && (nil != self.owner);
+    return _signInReady && (nil != self.owner);
 }
 
 - (BOOL)signIn:(CSelf *)me handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
     // 不允许重复签入
-    if (_selfReady) {
+    if (_signInReady) {
         return FALSE;
     }
 
@@ -230,13 +230,13 @@
 }
 
 - (BOOL)signOut:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
-    if (!_selfReady) {
+    if (nil == _owner) {
         return FALSE;
     }
 
     if (![self.pipeline isReady]) {
         // 无网络状态下签出
-        _selfReady = FALSE;
+        _signInReady = FALSE;
 
         // 关闭存储
         [_storage close];
@@ -271,7 +271,7 @@
             return;
         }
 
-        self->_selfReady = FALSE;
+        self->_signInReady = FALSE;
 
         // 关闭存储器
         [self->_storage close];
@@ -303,14 +303,14 @@
 }
 
 - (void)getContact:(UInt64)contactId handleSuccess:(CContactBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
-    if (!_selfReady) {
+    if (nil == _owner) {
         dispatch_async(_threadQueue, ^{
             CError * error = [CError errorWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateIllegalOperation];
             handleFailure(error);
         });
         return;
     }
-    
+
     if (contactId == self.owner.identity) {
         dispatch_async(_threadQueue, ^{
             handleSuccess(self.owner);
@@ -329,25 +329,27 @@
 
     // 从数据库读取
     CContact * contact = [_storage readContact:contactId];
-    if (contact && [contact isValid]) {
-        // 没有过期
-        // 检查上下文
-        if (nil == contact.context && self.delegate
-                && [self.delegate respondsToSelector:@selector(needContactContext:)]) {
-            contact.context = [self.delegate needContactContext:contact];
-            if (contact.context) {
-                UInt64 last = [_storage updateContactContext:contact.identity context:contact.context];
-                [contact resetLast:last];
+    if (contact) {
+        // 在没有连接服务器或者数据有效时返回
+        if (![self.pipeline isReady] || [contact isValid]) {
+            // 检查上下文
+            if (nil == contact.context && self.delegate
+                    && [self.delegate respondsToSelector:@selector(needContactContext:)]) {
+                contact.context = [self.delegate needContactContext:contact];
+                if (contact.context) {
+                    UInt64 last = [_storage updateContactContext:contact.identity context:contact.context];
+                    [contact resetLast:last];
+                }
             }
+
+            // 写入缓存
+            [_cache setObject:contact forKey:[NSString stringWithFormat:@"%llu", contactId]];
+
+            dispatch_async(_threadQueue, ^{
+                handleSuccess(contact);
+            });
+            return;
         }
-
-        // 写入缓存
-        [_cache setObject:contact forKey:[NSString stringWithFormat:@"%llu", contactId]];
-
-        dispatch_async(_threadQueue, ^{
-            handleSuccess(contact);
-        });
-        return;
     }
 
     // 检查数据通道
@@ -621,7 +623,7 @@
         return;
     }
 
-    if (_selfReady) {
+    if (_signInReady) {
         handler(FALSE);
         _waitReadyCount = 0;
         return;
@@ -639,7 +641,7 @@
     // 写入数据到存储
     [_storage writeContact:self.owner];
 
-    _selfReady = TRUE;
+    _signInReady = TRUE;
 
     CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSignIn data:self.owner];
     [self notifyObservers:event];

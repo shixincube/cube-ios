@@ -136,10 +136,10 @@
 /*!
  * @brief 反向查询消息。
  */
-- (void)queryReverseWithContact:(UInt64)contactId
-                      beginning:(UInt64)beginning
-                          limit:(NSInteger)limit
-                     completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
+- (void)queryMessagesByReverseWithContact:(UInt64)contactId
+                                beginning:(UInt64)beginning
+                                    limit:(NSInteger)limit
+                               completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion;
 
 /*!
  * @brief 写入草稿。

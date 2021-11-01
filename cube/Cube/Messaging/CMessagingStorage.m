@@ -407,17 +407,17 @@
     }];
 }
 
-- (void)queryReverseWithContact:(UInt64)contactId
-                      beginning:(UInt64)beginning
-                          limit:(NSInteger)limit
-                     completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion {
+- (void)queryMessagesByReverseWithContact:(UInt64)contactId
+                                beginning:(UInt64)beginning
+                                    limit:(NSInteger)limit
+                               completion:(void (^)(NSArray <__kindof CMessage *> * array, BOOL hasMore))completion {
     [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
         NSMutableArray<__kindof CMessage *> * array = [[NSMutableArray alloc] init];
 
         // 多查询一条记录，判断是否后续还有数据
         BOOL hasMore = FALSE;
 
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `message` WHERE `scope`=0 AND `rts`<%llu ORDER BY `rts` DESC LIMIT %ld",
+        NSString * sql = [NSString stringWithFormat:@"SELECT `data` FROM `message` WHERE `scope`=0 AND `rts`<%llu ORDER BY `rts` DESC LIMIT %ld",
                           beginning, limit + 1];
         FMResultSet * result = [db executeQuery:sql];
         while ([result next]) {
@@ -437,7 +437,7 @@
 
         [result close];
 
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             completion(array, hasMore);
         });
     }];
@@ -448,7 +448,7 @@
     __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     [_dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM `message` WHERE `id`=%llu", messageId];
+        NSString * sql = [NSString stringWithFormat:@"SELECT `data` FROM `message` WHERE `id`=%llu", messageId];
         FMResultSet * result = [db executeQuery:sql];
 
         if ([result next]) {
