@@ -195,7 +195,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
 
     UInt64 now = [CUtils currentTimeMillis];
     [message assignTS:now remoteTS:now];
-    
+
     [self fillMessage:message];
 
     // 写入数据库
@@ -529,6 +529,7 @@ const static char * kMSQueueLabel = "CubeMessagingTQ";
             [self notifyObservers:event];
         }
         else {
+            // TODO Error
             CObservableEvent * event = [[CObservableEvent alloc] initWithName:CMessagingEventFault data:message];
             [self notifyObservers:event];
         }

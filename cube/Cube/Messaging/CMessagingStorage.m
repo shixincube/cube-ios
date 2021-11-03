@@ -417,8 +417,11 @@
         // 多查询一条记录，判断是否后续还有数据
         BOOL hasMore = FALSE;
 
-        NSString * sql = [NSString stringWithFormat:@"SELECT `data` FROM `message` WHERE `scope`=0 AND `rts`<%llu ORDER BY `rts` DESC LIMIT %ld",
-                          beginning, limit + 1];
+        NSString * sql = [NSString stringWithFormat:@"SELECT `data` FROM `message` WHERE `scope`=0 AND `rts`<%llu AND (`from`=%llu OR `to`=%llu) AND `source`=0 ORDER BY `rts` DESC LIMIT %ld",
+                          beginning,
+                          contactId,
+                          contactId,
+                          limit + 1];
         FMResultSet * result = [db executeQuery:sql];
         while ([result next]) {
             if (array.count == limit) {

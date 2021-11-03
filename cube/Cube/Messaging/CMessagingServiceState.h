@@ -37,52 +37,55 @@ typedef enum _CMessagingServiceState {
 
     /*! 无效参数。 */
     CMessagingServiceStateInvalidParameter = 5,
-    
+
     /*! 遇到故障。 */
     CMessagingServiceStateFailure = 9,
-    
+
     /*! 无效域信息。 */
     CMessagingServiceStateInvalidDomain = 11,
-    
+
     /*! 数据结构错误。 */
     CMessagingServiceStateDataStructureError = 12,
-    
+
     /*! 没有域信息。 */
     CMessagingServiceStateNoDomain = 13,
-    
+
     /*! 没有设备信息。 */
     CMessagingServiceStateNoDevice = 14,
-    
+
     /*! 没有找到联系人。 */
     CMessagingServiceStateNoContact = 15,
-    
+
     /*! 没有找到群组。 */
     CMessagingServiceStateNoGroup = 16,
-    
+
     /*! 附件错误。 */
     CMessagingServiceStateAttachmentError = 17,
-    
+
     /*! 群组错误。 */
     CMessagingServiceStateGroupError = 18,
-    
+
     /*! 被对方阻止。 */
     CMessagingServiceStateBeBlocked = 30,
-    
+
     /*! 禁止操作。 */
     CMessagingServiceStateForbidden = 101,
-    
+
     /*! 不能被执行的操作。 */
     CMessagingServiceStateIllegalOperation = 103,
-    
+
     /*! 数据超时。 */
     CMessagingServiceStateDataTimeout = 104,
-    
+
     /*! 服务器故障。 */
     CMessagingServiceStateServerFault = 105,
-    
+
     /*! 存储里没有读取到数据。 */
     CMessagingServiceStateStorageNoData = 106,
-    
+
+    /*! 数据管道故障。 */
+    CMessagingServiceStatePipelineFault = 107,
+
     /*! 未知的状态。 */
     CMessagingServiceStateUnknown = 99
 
