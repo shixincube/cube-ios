@@ -30,8 +30,33 @@
 
 @implementation CContact
 
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name {
+    if (self = [super initWithId:identity name:name]) {
+        _devices = [[NSMutableArray alloc] initWithCapacity:2];
+    }
+
+    return self;
+}
+
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name context:(NSDictionary *)context {
+    if (self = [super initWithId:identity name:name]) {
+        self.context = context;
+        _devices = [[NSMutableArray alloc] initWithCapacity:2];
+    }
+
+    return self;
+}
+
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain {
     if (self = [super initWithId:identity name:name domain:domain]) {
+        _devices = [[NSMutableArray alloc] initWithCapacity:2];
+    }
+
+    return self;
+}
+
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name timestamp:(UInt64)timestamp {
+    if (self = [super initWithId:identity name:name timestamp:timestamp]) {
         _devices = [[NSMutableArray alloc] initWithCapacity:2];
     }
 
@@ -48,8 +73,6 @@
 
 - (instancetype)initWithJSON:(NSDictionary *)json domain:(NSString *)domain {
     if (self = [super initWithJSON:json]) {
-        self.domain = domain;
-
         _devices = [[NSMutableArray alloc] initWithCapacity:2];
 
         if ([json objectForKey:@"devices"]) {

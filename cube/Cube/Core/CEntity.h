@@ -29,8 +29,8 @@
 
 #import "CJSONable.h"
 
-#ifndef CUBE_LIFECYCLE_IN_MSEC
-#define CUBE_LIFECYCLE_IN_MSEC (7L * 24L * 60L * 60L * 1000L)
+#ifndef CUBE_LIFESPAN_IN_MSEC
+#define CUBE_LIFESPAN_IN_MSEC (7L * 24L * 60L * 60L * 1000L)
 #endif
 
 /*!
@@ -38,23 +38,26 @@
  */
 @interface CEntity : CJSONable
 
-/*! 实体 ID 。 */
+/*! @brief 实体 ID 。 */
 @property (nonatomic, assign, readonly) UInt64 identity;
 
-/*! 数据时间戳。 */
+/*! @brief 数据时间戳。 */
 @property (nonatomic, assign, readonly) UInt64 timestamp;
 
-/*! 该实体数据上次更新的时间戳。 */
+/*! @brief 该实体数据上次更新的时间戳。 */
 @property (nonatomic, assign, readonly) UInt64 last;
 
-/*! 数据到期时间。 */
+/*! @brief 数据到期时间。 */
 @property (nonatomic, assign, readonly) UInt64 expiry;
 
-/*! 关联上下文数据。 */
+/*! @brief 关联上下文数据。 */
 @property (nonatomic, strong) NSDictionary * context;
 
-/*! 实体创建时的时间戳。 */
+/*! @brief 实体创建时的时间戳。 */
 @property (nonatomic, assign, readonly) UInt64 entityCreation;
+
+/*! @brief 实体内存寿命。 */
+@property (nonatomic, assign) UInt64 entityLifeExpiry;
 
 
 /*!
@@ -90,12 +93,6 @@
  * @return 返回实体 ID 。
  */
 - (UInt64)getId;
-
-/*!
- * @brief 重置时间戳。
- * @param timestamp 指定时间戳。
- */
-- (void)resetTimestamp:(UInt64)timestamp;
 
 /*!
  * @brief 重置上一次数据更新时间。

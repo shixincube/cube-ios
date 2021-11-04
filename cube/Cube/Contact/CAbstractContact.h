@@ -38,7 +38,7 @@
 @property (nonatomic, strong) NSString * name;
 
 /*! @brief 联系人所属的域。 */
-@property (nonatomic, strong) NSString * domain;
+@property (nonatomic, strong, readonly) NSString * domain;
 
 /*! @brief 自定义数据，为应用程序提供关联其他数据对象的属性。 */
 @property (nonatomic, strong) id customData;
@@ -48,10 +48,27 @@
  * @brief 初始化抽象联系人。
  * @param identity 指定联系人 ID 。
  * @param name 指定联系人名称。
+ * @return 返回对象实例。
+ */
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name;
+
+/*!
+ * @brief 初始化抽象联系人。
+ * @param identity 指定联系人 ID 。
+ * @param name 指定联系人名称。
  * @param domain 指定联系人所在的域。
  * @return 返回对象实例。
  */
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain;
+
+/*!
+ * @brief 初始化抽象联系人。
+ * @param identity 指定联系人 ID 。
+ * @param name 指定联系人名称。
+ * @param timestamp 指定时间戳。
+ * @return 返回对象实例。
+ */
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name timestamp:(UInt64)timestamp;
 
 /*!
  * @brief 初始化抽象联系人。

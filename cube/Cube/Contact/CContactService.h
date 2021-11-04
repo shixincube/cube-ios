@@ -95,11 +95,12 @@ typedef void (^CContactZoneBlock)(CContactZone * contactZone);
  * @brief 签入当前终端的联系人。
  * @param identity 指定签入的联系人 ID 。
  * @param name 指定签入联系人名称。
+ * @param context 指定上下文数据。
  * @param handleSuccess 操作成功回调。
  * @param handleFailure 操作失败回调。
  * @return 如果返回 @c FALSE 表示当前状态下不能进行该操作，请检查是否正确启动魔方。
  */
-- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
+- (BOOL)signInWith:(UInt64)identity name:(NSString *)name context:(NSDictionary *)context handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
 
 /*!
  * @brief 将当前设置的联系人签出。
@@ -108,11 +109,6 @@ typedef void (^CContactZoneBlock)(CContactZone * contactZone);
  * @return 是否执行了签出操作。
  */
 - (BOOL)signOut:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure;
-
-/*!
- * @brief 通过向服务发送状态信息验证自身连接状态。
- */
-- (void)comeback;
 
 /*!
  * @brief 获取指定 ID 的联系人信息。

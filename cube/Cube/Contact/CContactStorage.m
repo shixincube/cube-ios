@@ -62,7 +62,7 @@
     }
 
     _domain = domain;
-    
+
     NSString * dbName = [NSString stringWithFormat:@"CubeContact_%@_%llu.db", domain, contactId];
 
     // 创建数据库文件
@@ -88,6 +88,8 @@
     }
 }
 
+#pragma mark - Contact
+
 - (CContact *)readContact:(UInt64)contactId {
     CContact * contact = nil;
 
@@ -99,7 +101,7 @@
 
             NSString * contextString = [result stringForColumn:@"context"];
             NSDictionary * contextData = nil;
-            if (contextString && contextString.length > 1) {
+            if (contextString && contextString.length > 2) {
                 contextData = [CUtils toJSONWithString:contextString];
             }
 
@@ -143,6 +145,9 @@
 - (BOOL)writeContact:(CContact *)contact {
     BOOL ret = FALSE;
 
+    NSString * contextString = contact.context ?
+            [CUtils toStringWithJSON:contact.context] : @"";
+
     @synchronized (self) {
         NSString * sql = [NSString stringWithFormat:@"SELECT `sn` FROM `contact` WHERE `id`=%llu", contact.identity];
         FMResultSet * result = [_db executeQuery:sql];
@@ -152,13 +157,6 @@
             // 已经有数据进行更新
             sql = @"UPDATE `contact` SET `name`=?, `context`=?, `timestamp`=?, `last`=?, `expiry`=? WHERE `id`=?";
 
-            NSString * contextString = nil;
-            if (contact.context) {
-                contextString = [CUtils toStringWithJSON:contact.context];
-            }
-            else {
-                contextString = @"";
-            }
             // 执行 SQL
             ret = [_db executeUpdate:sql, contact.name, contextString,
                    [NSNumber numberWithUnsignedLongLong:contact.timestamp],
@@ -170,9 +168,7 @@
                 // 更新附录
                 sql = @"UPDATE `appendix` SET `data`=?, `timestamp`=? WHERE `id`=?";
 
-                NSString * appendixString = [CUtils toStringWithJSON:[contact.appendix toJSON]];
-
-                ret = [_db executeUpdate:sql, appendixString,
+                ret = [_db executeUpdate:sql, [CUtils toStringWithJSON:[contact.appendix toJSON]],
                        [NSNumber numberWithUnsignedLongLong:contact.last],
                        [NSNumber numberWithUnsignedLongLong:contact.identity]];
             }
@@ -183,9 +179,6 @@
             // 没有数据进行插入
             sql = @"INSERT INTO `contact`(`id`,`name`,`context`,`timestamp`,`last`,`expiry`) VALUES (?,?,?,?,?,?)";
 
-            NSString * contextString = contact.context ?
-                    [CUtils toStringWithJSON:contact.context] : @"";
-
             // 执行 SQL
             ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:contact.identity],
                    contact.name, contextString,
@@ -195,7 +188,7 @@
 
             if (ret && contact.appendix) {
                 // 插入附录
-                sql = @"INSERT INTO `appendix`(`id`,`data`,`timestamp`) VALUES (?,?,?)";
+                sql = @"INSERT INTO `appendix` (`id`,`data`,`timestamp`) VALUES (?,?,?)";
 
                 ret = [_db executeUpdate:sql, [NSNumber numberWithUnsignedLongLong:contact.identity],
                        [CUtils toStringWithJSON:[contact.appendix toJSON]],
@@ -216,19 +209,23 @@
     @synchronized (self) {
         // 执行 SQL
         [_db executeUpdate:sql, contextString,
-                [NSNumber numberWithUnsignedLongLong:now],
-                [NSNumber numberWithUnsignedLongLong:now + CUBE_LIFECYCLE_IN_MSEC],
-                [NSNumber numberWithUnsignedLongLong:contactId]];
+            [NSNumber numberWithUnsignedLongLong:now],
+            [NSNumber numberWithUnsignedLongLong:now + CUBE_LIFESPAN_IN_MSEC],
+            [NSNumber numberWithUnsignedLongLong:contactId]];
     }
     return now;
 }
 
 - (void)updateContactName:(UInt64)contactId name:(NSString *)name {
-    NSString * sql = @"UPDATE `contact` SET `name`=? WHERE `id`=?";
+    NSString * sql = @"UPDATE `contact` SET `name`=?, `last`=?, `expiry`=? WHERE `id`=?";
+    
+    UInt64 now = [CUtils currentTimeMillis];
     @synchronized (self) {
         // 执行 SQL
         [_db executeUpdate:sql, name,
-               [NSNumber numberWithUnsignedLongLong:contactId]];
+            [NSNumber numberWithUnsignedLongLong:now],
+            [NSNumber numberWithUnsignedLongLong:now + CUBE_LIFESPAN_IN_MSEC],
+            [NSNumber numberWithUnsignedLongLong:contactId]];
     }
 }
 
@@ -254,7 +251,7 @@
             [result close];
 
             // 无数据，插入
-            sql = @"INSERT INTO `appendix`(`id`,`data`,`timestamp`) VALUES (?,?,?)";
+            sql = @"INSERT INTO `appendix` (`id`,`data`,`timestamp`) VALUES (?,?,?)";
 
             NSString * appendixString = [CUtils toStringWithJSON:[appendix toJSON]];
 
@@ -268,7 +265,7 @@
     return ret;
 }
 
-#pragma mark - # Contact Zone
+#pragma mark - Contact Zone
 
 - (CContactZone *)readContactZone:(NSString *)zoneName {
     CContactZone * zone = nil;
@@ -284,6 +281,14 @@
             CContactZoneState state = [result intForColumn:@"state"];
             // 实例化分区
             zone = [[CContactZone alloc] initWithId:identity name:name displayName:displayName timestamp:timestamp state:state];
+            // 重置内存管理使用的时间戳
+            [zone resetExpiry:[result unsignedLongLongIntForColumn:@"expiry"]
+                lastTimestamp:[result unsignedLongLongIntForColumn:@"last"]];
+
+            NSString * contextString = [result stringForColumn:@"context"];
+            if (contextString && contextString.length > 2) {
+                zone.context = [CUtils toJSONWithString:contextString];
+            }
         }
 
         [result close];
@@ -292,14 +297,23 @@
             return nil;
         }
 
+        // 读取参与人
         sql = [NSString stringWithFormat:@"SELECT * FROM `contact_zone_participant` WHERE `contact_zone_id`=%llu", zone.identity];
         FMResultSet * partResult = [_db executeQuery:sql];
         while ([partResult next]) {
             UInt64 contactId = [partResult unsignedLongLongIntForColumn:@"contact_id"];
+            UInt64 timestamp = [partResult unsignedLongLongIntForColumn:@"timestamp"];
             CContactZoneParticipantState state = [partResult intForColumn:@"state"];
             NSString * postscript = [partResult stringForColumn:@"postscript"];
 
-            CContactZoneParticipant * participant = [[CContactZoneParticipant alloc] initWithContactId:contactId state:state postscript:postscript];
+            CContactZoneParticipant * participant = [[CContactZoneParticipant alloc] initWithContactId:contactId timestamp:timestamp state:state postscript:postscript];
+
+            // 上下文数据
+            NSString * contextString = [partResult stringForColumn:@"context"];
+            if (contextString && contextString.length > 2) {
+                participant.context = [CUtils toJSONWithString:contextString];
+            }
+
             [zone addContact:participant];
         }
 
@@ -310,6 +324,8 @@
 }
 
 - (void)writeContactZone:(CContactZone *)zone {
+    NSString * contextString = zone.context ? [CUtils toStringWithJSON:zone.context] : @"";
+
     @synchronized (self) {
         NSString * sql = [NSString stringWithFormat:@"SELECT `id` FROM `contact_zone` WHERE `name`='%@'", zone.name];
         FMResultSet * result = [_db executeQuery:sql];
@@ -321,37 +337,42 @@
             [_db executeUpdate:sql];
 
             // 更新数据
-            sql = [NSString stringWithFormat:@"UPDATE `contact_zone` SET `display_name`='%@', `state`=%d, `timestamp`=%llu", zone.displayName, zone.state, zone.timestamp];
-            [_db executeUpdate:sql];
+            sql = [NSString stringWithFormat:@"UPDATE `contact_zone` SET `display_name`=?, `state`=%d, `timestamp`=%llu, `last`=%llu, `expiry`=%llu, `context`=? WHERE `id`=%llu",
+                   zone.state, zone.timestamp, zone.last, zone.expiry, zone.identity];
+            [_db executeUpdate:sql, zone.displayName, contextString];
         }
         else {
             [result close];
 
             // 不存在，写入
-            sql = @"INSERT INTO `contact_zone` (`id`,`name`,`display_name`,`state`,`timestamp`) VALUES (?,?,?,?,?)";
+            sql = @"INSERT INTO `contact_zone` (`id`,`name`,`display_name`,`state`,`timestamp`,`last`,`expiry`,`context`) VALUES (?,?,?,?,?,?,?,?)";
             [_db executeUpdate:sql,
                 [NSNumber numberWithUnsignedLongLong:zone.identity],
                 zone.name,
                 zone.displayName,
                 [NSNumber numberWithInt:zone.state],
-                [NSNumber numberWithUnsignedLongLong:zone.timestamp]
+                [NSNumber numberWithUnsignedLongLong:zone.timestamp],
+                [NSNumber numberWithUnsignedLongLong:zone.last],
+                [NSNumber numberWithUnsignedLongLong:zone.expiry],
+                contextString
             ];
         }
 
         // 写入参与人数据
         NSNumber * zoneId = [NSNumber numberWithUnsignedLongLong:zone.identity];
-        NSNumber * timestamp = [NSNumber numberWithUnsignedLongLong:zone.timestamp];
+
         for (CContactZoneParticipant * participant in zone.participants) {
             NSString * postscript = (nil != participant.postscript) ? participant.postscript : @"";
+            NSString * ctxString = (participant.context) ? [CUtils toStringWithJSON:participant.context] : @"";
 
-            sql = @"INSERT INTO `contact_zone_participant` (`contact_zone_id`,`contact_id`,`state`,`timestamp`,`postscript`) VALUES (?,?,?,?,?)";
+            sql = @"INSERT INTO `contact_zone_participant` (`contact_zone_id`,`contact_id`,`state`,`timestamp`,`postscript`,`context`) VALUES (?,?,?,?,?,?)";
             [_db executeUpdate:sql,
                 zoneId,
                 [NSNumber numberWithUnsignedLongLong:participant.contactId],
                 [NSNumber numberWithInt:participant.state],
-                timestamp,
-                postscript
-            ];
+                [NSNumber numberWithUnsignedLongLong:participant.timestamp],
+                postscript,
+                ctxString];
         }
     }
 }
@@ -384,13 +405,13 @@
     }
 
     // 联系人分区
-    sql = @"CREATE TABLE IF NOT EXISTS `contact_zone` (`id` BIGINT PRIMARY KEY, `name` TEXT, `display_name` TEXT, `state` INTEGER, `timestamp` BIGINT)";
+    sql = @"CREATE TABLE IF NOT EXISTS `contact_zone` (`id` BIGINT PRIMARY KEY, `name` TEXT, `display_name` TEXT, `state` INTEGER, `timestamp` BIGINT, `context` TEXT DEFAULT NULL, `last` BIGINT DEFAULT 0, `expiry` BIGINT DEFAULT 0)";
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `contact_zone` table OK");
     }
 
     // 联系人分区参与者
-    sql = @"CREATE TABLE IF NOT EXISTS `contact_zone_participant` (`contact_zone_id` BIGINT, `contact_id` BIGINT, `state` INTEGER, `timestamp` BIGINT, `postscript` TEXT)";
+    sql = @"CREATE TABLE IF NOT EXISTS `contact_zone_participant` (`sn` INTEGER PRIMARY KEY AUTOINCREMENT, `contact_zone_id` BIGINT, `contact_id` BIGINT, `state` INTEGER, `timestamp` BIGINT, `postscript` TEXT, `context` TEXT DEFAULT NULL)";
     if ([_db executeUpdate:sql]) {
         NSLog(@"CContactStorage#execSelfChecking : `contact_zone_participant` table OK");
     }

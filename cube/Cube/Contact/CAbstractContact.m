@@ -25,13 +25,32 @@
  */
 
 #import "CAbstractContact.h"
+#import "CAuthService.h"
 
 @implementation CAbstractContact
+
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name {
+    if (self = [super initWithId:identity]) {
+        self.name = name;
+        _domain = [CAuthService domain];
+    }
+
+    return self;
+}
 
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain {
     if (self = [super initWithId:identity]) {
         self.name = name;
-        self.domain = domain;
+        _domain = domain;
+    }
+
+    return self;
+}
+
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name timestamp:(UInt64)timestamp {
+    if (self = [super initWithId:identity timestamp:timestamp]) {
+        self.name = name;
+        _domain = [CAuthService domain];
     }
 
     return self;
@@ -40,7 +59,7 @@
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name domain:(NSString *)domain timestamp:(UInt64)timestamp {
     if (self = [super initWithId:identity timestamp:timestamp]) {
         self.name = name;
-        self.domain = domain;
+        _domain = domain;
     }
 
     return self;
@@ -48,15 +67,13 @@
 
 - (instancetype)initWithJSON:(NSDictionary *)json {
     if (self = [super initWithJSON:json]) {
-        if ([json objectForKey:@"name"]) {
-            self.name = [json valueForKey:@"name"];
-        }
-        if ([json objectForKey:@"domain"]) {
-            self.domain = [json valueForKey:@"domain"];
-        }
+        self.name = [json valueForKey:@"name"];
 
-        if ([json objectForKey:@"context"]) {
-            self.context = [json valueForKey:@"context"];
+        if ([json objectForKey:@"domain"]) {
+            _domain = [json valueForKey:@"domain"];
+        }
+        else {
+            _domain = [CAuthService domain];
         }
     }
 
@@ -67,16 +84,14 @@
     NSMutableDictionary * json = [super toJSON];
     [json setValue:self.name forKey:@"name"];
     [json setValue:self.domain forKey:@"domain"];
-
-    if (nil != self.context) {
-        [json setValue:self.context forKey:@"context"];
-    }
-
     return json;
 }
 
 - (NSMutableDictionary *)toCompactJSON {
-    return [self toJSON];
+    NSMutableDictionary * json = [super toCompactJSON];
+    [json setValue:self.name forKey:@"name"];
+    [json setValue:self.domain forKey:@"domain"];
+    return json;
 }
 
 @end

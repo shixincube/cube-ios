@@ -27,7 +27,7 @@
 #ifndef CContactZoneParticipant_h
 #define CContactZoneParticipant_h
 
-#import "CJSONable.h"
+#import "CEntity.h"
 
 @class CContact;
 
@@ -35,32 +35,37 @@
  * @brief 联系人分区成员状态。
  */
 typedef enum _CContactZoneParticipantState {
-    
+
     /*! 正常状态。 */
-    Normal = 0,
-    
+    CContactZoneParticipantStateNormal = 0,
+
     /*! 待处理状态。 */
-    Pending = 1
-    
+    CContactZoneParticipantStatePending = 1
+
 } CContactZoneParticipantState;
 
 
 /*!
  * @brief 联系人分区参与人。
  */
-@interface CContactZoneParticipant : CJSONable
+@interface CContactZoneParticipant : CEntity
+
 
 @property (nonatomic, assign, readonly) UInt64 contactId;
 
-@property (nonatomic, strong, readonly) NSString * postscript;
 
 @property (nonatomic, assign, readonly) CContactZoneParticipantState state;
 
+
+@property (nonatomic, strong, readonly) NSString * postscript;
+
+
 @property (nonatomic, strong) CContact * contact;
 
-- (instancetype)initWithJSON:(NSDictionary *)json;
 
-- (instancetype)initWithContactId:(UInt64)contactId state:(CContactZoneParticipantState)state postscript:(NSString *)postscript;
+- (instancetype)initWithContactId:(UInt64)contactId timestamp:(UInt64)timestamp state:(CContactZoneParticipantState)state postscript:(NSString *)postscript;
+
+- (instancetype)initWithJSON:(NSDictionary *)json;
 
 @end
 

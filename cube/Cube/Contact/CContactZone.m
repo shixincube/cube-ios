@@ -30,7 +30,9 @@
 #import "NSString+Cube.h"
 
 @interface CContactZone () {
+    
     NSMutableArray<__kindof CContactZoneParticipant *> * _participantList;
+    
 }
 
 @end
@@ -38,12 +40,22 @@
 
 @implementation CContactZone
 
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name displayName:(NSString *)displayName timestamp:(UInt64)timestamp state:(CContactZoneState)state {
+    if (self = [super initWithId:identity timestamp:timestamp]) {
+        _name = name;
+        _displayName = displayName;
+        _state = state;
+
+        _participantList = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
+}
+
 - (instancetype)initWithJSON:(NSDictionary *)json {
-    if (self = [super init]) {
-        _identity = [[json valueForKey:@"id"] unsignedLongLongValue];
+    if (self = [super initWithJSON:json]) {
         _name = [json valueForKey:@"name"];
         _displayName = [json valueForKey:@"displayName"];
-        _timestamp = [[json valueForKey:@"timestamp"] unsignedLongLongValue];
         _state = [[json valueForKey:@"state"] intValue];
 
         _participantList = [[NSMutableArray alloc] init];
@@ -57,20 +69,6 @@
         }
     }
 
-    return self;
-}
-
-- (instancetype)initWithId:(UInt64)identity name:(NSString *)name displayName:(NSString *)displayName timestamp:(UInt64)timestamp state:(CContactZoneState)state {
-    if (self = [super init]) {
-        _identity = identity;
-        _name = name;
-        _displayName = displayName;
-        _timestamp = timestamp;
-        _state = state;
-
-        _participantList = [[NSMutableArray alloc] init];
-    }
-    
     return self;
 }
 

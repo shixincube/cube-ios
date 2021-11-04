@@ -31,7 +31,6 @@
 #import "CCellPipeline.h"
 #import "CEntityInspector.h"
 #import "CAuthService.h"
-#import "CContactService.h"
 #import "CKernel+Delegate.h"
 
 @implementation CKernelConfig
@@ -41,7 +40,6 @@
         self.address = @"127.0.0.1";
         self.port = 7000;
         self.pipelineReady = FALSE;
-        self.enabledMessaging = TRUE;
     }
 
     return self;
@@ -55,7 +53,6 @@
         self.appKey = appKey;
 
         self.pipelineReady = FALSE;
-        self.enabledMessaging = TRUE;
     }
 
     return self;
@@ -69,7 +66,6 @@
         self.appKey = appKey;
 
         self.pipelineReady = FALSE;
-        self.enabledMessaging = TRUE;
     }
     return self;
 }
@@ -165,7 +161,15 @@
 }
 
 - (void)shutdown {
+    if (!_working) {
+        return;
+    }
+
     [_entityInspector destroy];
+
+    for (CModule * module in _modules) {
+        [module stop];
+    }
 
     [_cellPipeline close];
 
@@ -173,17 +177,18 @@
 }
 
 - (void)suspend {
-    
+    for (CModule * module in _modules) {
+        [module suspend];
+    }
 }
 
 - (void)resume {
-    if (_working) {
-        if ([self hasModule:CUBE_MODULE_CONTACT]) {
-            CContactService * contact = (CContactService *) [self getModule:CUBE_MODULE_CONTACT];
-            [contact comeback];
-        }
+    for (CModule * module in _modules) {
+        [module resume];
+    }
 
-        if (![_cellPipeline isReady]) {
+    if (_working) {
+        if (nil != _cellPipeline && ![_cellPipeline isReady]) {
             [_cellPipeline open];
         }
     }

@@ -38,7 +38,7 @@ typedef void (^wait_block_t)(void);
 static NSString * sCubeDomain = @"shixincube.com";
 
 @interface CAuthService () {
-    
+
     int waitingCount;
 }
 
@@ -68,6 +68,9 @@ static NSString * sCubeDomain = @"shixincube.com";
             self.token = token;
 
             [storage close];
+
+            // 赋值 Domain 数据
+            sCubeDomain = domain;
 
             return self.token;
         }
@@ -115,6 +118,7 @@ static NSString * sCubeDomain = @"shixincube.com";
                         return;
                     }
 
+                    // 申请令牌
                     [self applyToken:domain appKey:appKey handler:^(CError *error, CAuthToken *token) {
                         if (error) {
                             NSLog(@"CAuthService#applyToken error : %ld", error.code);
@@ -127,10 +131,11 @@ static NSString * sCubeDomain = @"shixincube.com";
                         else {
                             NSLog(@"CAuthService#applyToken OK");
 
+                            // 赋值
+                            self.token = token;
+
                             // 保存令牌
                             [storage saveToken:token];
-
-                            self.token = token;
 
                             // 关闭存储器
                             [storage close];

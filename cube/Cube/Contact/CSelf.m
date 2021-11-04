@@ -26,14 +26,21 @@
 
 #import "CSelf.h"
 #import <CDevice.h>
-#import "CAuthService.h"
 
 @implementation CSelf
 
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name {
-    if (self = [super initWithId:identity name:name domain:[CAuthService domain]]) {
+    if (self = [super initWithId:identity name:name]) {
         _device = [[CDevice alloc] init];
+        [self addDevice:_device];
+    }
 
+    return self;
+}
+
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name context:(NSDictionary *)context {
+    if (self = [super initWithId:identity name:name context:context]) {
+        _device = [[CDevice alloc] init];
         [self addDevice:_device];
     }
 
@@ -41,22 +48,8 @@
 }
 
 - (instancetype)initWithJSON:(NSDictionary *)json {
-    if (self = [super initWithId:[[json valueForKey:@"id"] unsignedLongLongValue] name:[json valueForKey:@"name"] domain:[CAuthService domain]]) {
-        _device = [[CDevice alloc] init];
-
-        [self addDevice:_device];
-
-        if ([json objectForKey:@"devices"]) {
-            NSArray * devices = [json objectForKey:@"devices"];
-            for (NSDictionary * devJson in devices) {
-                CDevice * device = [[CDevice alloc] initWithJSON:devJson];
-                [self addDevice:device];
-            }
-        }
-
-        if ([json objectForKey:@"context"]) {
-            self.context = [json valueForKey:@"context"];
-        }
+    if (self = [super initWithJSON:json]) {
+        _device = [[CDevice alloc] initWithJSON:[json valueForKey:@"device"]];
     }
 
     return self;
@@ -68,7 +61,7 @@
     if ([json objectForKey:@"context"]) {
         self.context = [json valueForKey:@"context"];
     }
-    
+
     if ([json objectForKey:@"devices"]) {
         NSArray * devices = [json objectForKey:@"devices"];
         for (NSDictionary * devJson in devices) {

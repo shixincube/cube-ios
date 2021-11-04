@@ -105,7 +105,6 @@
 
 - (void)resetRecentMessage:(CMessage *)message {
     _recentMessage = message;
-    [self resetTimestamp:message.remoteTS];
 }
 
 #pragma mark - Getters

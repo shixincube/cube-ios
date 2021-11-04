@@ -34,9 +34,9 @@
 #import <FMDB/FMDatabaseQueue.h>
 
 @interface CMessagingStorage () {
-    
+
     CMessagingService * _service;
-    
+
     NSString * _domain;
 
     FMDatabaseQueue * _dbQueue;

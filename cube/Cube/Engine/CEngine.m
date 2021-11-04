@@ -127,7 +127,7 @@
     __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
     CContactService * contactService = [self getContactService];
-    BOOL ret = [contactService signInWith:contactId name:@"Cube" handleSuccess:^(CSelf * owner) {
+    BOOL ret = [contactService signInWith:contactId name:@"Cube" context:nil handleSuccess:^(CSelf * owner) {
         dispatch_semaphore_signal(semaphore);
     } handleFailure:^(CError * _Nonnull error) {
         dispatch_semaphore_signal(semaphore);

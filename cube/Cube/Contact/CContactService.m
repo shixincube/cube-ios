@@ -56,12 +56,17 @@
 
     BOOL _signInReady;
 
-    NSInteger _waitReadyCount;
+    NSInteger _waitSignInCount;
 
     dispatch_queue_t _threadQueue;
 }
 
-- (void)waitReady:(void(^)(BOOL timeout))handler;
+/*!
+ * @brief 通过向服务发送状态信息验证自身连接状态。
+ */
+- (void)comeback;
+
+- (void)waitSignIn:(void(^)(BOOL timeout))handler;
 
 @end
 
@@ -88,9 +93,6 @@
     if (![super start]) {
         return FALSE;
     }
-
-    // FIXME 这里应当判断一下 Kernel 是否已经获得了已经授权的令牌，如果没有令牌应当不允许启动
-    // FIXME 但是，如果判断可能会导致当应用程序以异步方式签入时，导致签入失败
 
     [self.pipeline addListener:_pipelineListener withDestination:CUBE_MODULE_CONTACT];
 
@@ -120,6 +122,7 @@
 
 - (void)resume {
     [super resume];
+    [self comeback];
 }
 
 - (BOOL)isReady {
@@ -132,14 +135,37 @@
         return FALSE;
     }
 
+    if (nil != _owner && ![_owner isEqual:me]) {
+        NSLog(@"CContactService : Can NOT use different contact to sign-in");
+        return FALSE;
+    }
+
     // 检查是否已经启动模块
     if (![self hasStarted]) {
         [self start];
     }
 
-    if (nil != _owner && ![_owner isEqual:me]) {
-        NSLog(@"CContactService : Can NOT use different contact to sign-in");
-        return FALSE;
+    NSThread * thread = [[NSThread alloc] initWithBlock:^{
+        [self runSignInTask:me handleSuccess:handleSuccess handleFailure:handleFailure];
+    }];
+    [thread start];
+
+    return TRUE;
+}
+
+- (void)runSignInTask:(CSelf *)me handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    // 等待内核就绪
+    int count = 500;
+    NSTimeInterval time = 1.0f / 1000.0f * 10.0f;
+    while (![self.kernel isReady] && count > 0) {
+        --count;
+        [NSThread sleepForTimeInterval:time];
+    }
+
+    if (![self.kernel isReady]) {
+        // 内核未就绪
+        handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateNotAllowed]);
+        return;
     }
 
     // 开启存储
@@ -150,20 +176,21 @@
 
     if (![self.pipeline isReady]) {
         // 网络未连接状态下签入
-        CContact * myselfContact = [_storage readContact:me.identity];
+        CContact * selfContact = [_storage readContact:me.identity];
         // 激活令牌
         CAuthToken * token = [self.kernel activeToken:me.identity];
 
-        if (nil != myselfContact && nil != token) {
+        if (nil != selfContact && nil != token) {
             // 设置附录
-            _owner.appendix = myselfContact.appendix;
+            _owner.appendix = selfContact.appendix;
             // 设置上下文
             if (_owner.context) {
+                // 更新联系人的上下文
                 UInt64 last = [_storage updateContactContext:_owner.identity context:_owner.context];
                 [_owner resetLast:last];
             }
             else {
-                _owner.context = myselfContact.context;
+                _owner.context = selfContact.context;
             }
 
             dispatch_async(_threadQueue, ^ {
@@ -179,13 +206,13 @@
             });
         }
 
-        return TRUE;
+        return;
     }
     
-    // FIXME 应该判断内核是否已就绪，如果没有就绪应当进行必要等待，因为应用可能使用异步方式操作
+    // 访问服务器进行签入
 
     // 10 秒
-    _waitReadyCount = 100;
+    _waitSignInCount = 100;
 
     // 激活令牌
     CAuthToken * token = [self.kernel activeToken:me.identity];
@@ -203,8 +230,8 @@
 
         CPacket * signInPacket = [[CPacket alloc] initWithName:CUBE_CONTACT_SIGNIN andData:data];
         [self.pipeline send:CUBE_MODULE_CONTACT withPacket:signInPacket handleResponse:^(CPacket *packet) {
-            // 等待 Self Ready
-            [self waitReady:^(BOOL timeout) {
+            // 等待 Sign In 完成
+            [self waitSignIn:^(BOOL timeout) {
                 if (timeout) {
                     // 超时
                     handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateServerError]);
@@ -220,12 +247,10 @@
             handleFailure([[CError alloc] initWithModule:CUBE_MODULE_CONTACT code:CContactServiceStateInconsistentToken]);
         });
     }
-
-    return TRUE;
 }
 
-- (BOOL)signInWith:(UInt64)identity name:(NSString *)name handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
-    CSelf * owner = [[CSelf alloc] initWithId:identity name:name];
+- (BOOL)signInWith:(UInt64)identity name:(NSString *)name context:(NSDictionary *)context handleSuccess:(CSignBlock)handleSuccess handleFailure:(CFailureBlock)handleFailure {
+    CSelf * owner = [[CSelf alloc] initWithId:identity name:name context:context];
     return [self signIn:owner handleSuccess:handleSuccess handleFailure:handleFailure];
 }
 
@@ -320,7 +345,7 @@
 
     // 从缓存里读取
     CEntity * entity = [_cache objectForKey:[NSString stringWithFormat:@"%llu", contactId]];
-    if (entity && [entity isKindOfClass:[CContact class]]) {
+    if (entity) {
         dispatch_async(_threadQueue, ^{
             handleSuccess((CContact *)entity);
         });
@@ -456,34 +481,33 @@
     // 从数据库里读取
     __block CContactZone * zone = [_storage readContactZone:zoneName];
     if (nil != zone) {
-        __block NSUInteger count = zone.participants.count;
+        if ([zone isValid]) {
+            __block NSUInteger count = zone.participants.count;
 
-        for (CContactZoneParticipant * participant in zone.participants) {
-            [self getContact:participant.contactId handleSuccess:^(CContact *contact) {
-                // 匹配到参与人
-                [zone matchContact:contact];
+            for (CContactZoneParticipant * participant in zone.participants) {
+                [self getContact:participant.contactId handleSuccess:^(CContact *contact) {
+                    // 匹配到参与人
+                    [zone matchContact:contact];
 
-                --count;
+                    --count;
 
-                if (count == 0) {
-                    handleSuccess(zone);
-                }
-            } handleFailure:^(CError * _Nullable error) {
-                --count;
+                    if (count == 0) {
+                        handleSuccess(zone);
+                    }
+                } handleFailure:^(CError * _Nullable error) {
+                    --count;
 
-                if (count == 0) {
-                    handleSuccess(zone);
-                }
-            }];
+                    if (count == 0) {
+                        handleSuccess(zone);
+                    }
+                }];
+            }
         }
-
-        // 尝试刷新数据
-        [self refreshContactZone:zone];
 
         return;
     }
 
-    // 数据库没有数据，从服务器获取
+    // 数据库没有数据或已经过期，从服务器获取
     NSDictionary * data = @{
         @"name" : zoneName
     };
@@ -615,17 +639,19 @@
 
 #pragma mark - Private
 
-- (void)waitReady:(void (^)(BOOL timeout))handler {
-    --_waitReadyCount;
-    if (_waitReadyCount <= 0) {
+- (void)waitSignIn:(void (^)(BOOL timeout))handler {
+    --_waitSignInCount;
+    if (_waitSignInCount <= 0) {
+        // 超时
         handler(TRUE);
-        _waitReadyCount = 0;
+        _waitSignInCount = 0;
         return;
     }
 
     if (_signInReady) {
+        // 未超时
         handler(FALSE);
-        _waitReadyCount = 0;
+        _waitSignInCount = 0;
         return;
     }
 
@@ -633,15 +659,16 @@
     dispatch_after(delayInNanoSeconds,
                 dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
                 ^(void) {
-                    [self waitReady:handler];
+                    [self waitSignIn:handler];
                 });
 }
 
 - (void)fireSignInCompleted {
+    // 更新状态
+    _signInReady = TRUE;
+
     // 写入数据到存储
     [_storage writeContact:self.owner];
-
-    _signInReady = TRUE;
 
     CObservableEvent * event = [[CObservableEvent alloc] initWithName:CContactEventSignIn data:self.owner];
     [self notifyObservers:event];

@@ -43,9 +43,18 @@
  * @brief 初始化。
  * @param identity 指定联系人 ID 。
  * @param name 指定名称。
- * @return 返回实例。
+ * @return 返回 @c CSelf 实例。
  */
 - (instancetype)initWithId:(UInt64)identity name:(NSString *)name;
+
+/*!
+ * @brief 初始化。
+ * @param identity 指定联系人 ID 。
+ * @param name 指定名称。
+ * @param context 指定上下文数据。
+ * @return 返回 @c CSelf 实例。
+ */
+- (instancetype)initWithId:(UInt64)identity name:(NSString *)name context:(NSDictionary *)context;
 
 /*!
  * @brief 初始化。

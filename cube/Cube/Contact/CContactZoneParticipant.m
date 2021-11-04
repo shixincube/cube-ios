@@ -28,20 +28,20 @@
 
 @implementation CContactZoneParticipant
 
-- (instancetype)initWithJSON:(NSDictionary *)json {
-    if (self = [super init]) {
-        _contactId = [[json valueForKey:@"id"] unsignedLongLongValue];
-        _state = [[json valueForKey:@"state"] intValue];
-        _postscript = [json valueForKey:@"postscript"];
+- (instancetype)initWithContactId:(UInt64)contactId timestamp:(UInt64)timestamp state:(CContactZoneParticipantState)state postscript:(NSString *)postscript {
+    if (self = [super initWithId:contactId timestamp:timestamp]) {
+        _contactId = contactId;
+        _state = state;
+        _postscript = postscript;
     }
     return self;
 }
 
-- (instancetype)initWithContactId:(UInt64)contactId state:(CContactZoneParticipantState)state postscript:(NSString *)postscript {
-    if (self = [super init]) {
-        _contactId = contactId;
-        _state = state;
-        _postscript = postscript;
+- (instancetype)initWithJSON:(NSDictionary *)json {
+    if (self = [super initWithJSON:json]) {
+        _contactId = [[json valueForKey:@"id"] unsignedLongLongValue];
+        _state = [[json valueForKey:@"state"] intValue];
+        _postscript = [json valueForKey:@"postscript"];
     }
     return self;
 }
