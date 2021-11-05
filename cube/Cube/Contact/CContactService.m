@@ -675,6 +675,7 @@
 }
 
 - (void)refreshContactZone:(CContactZone *)zone {
+    // TODO XJW 需要修改流程 2021-11-05
     NSDictionary * data = @{
         @"name" : zone.name,
         @"compact": [NSNumber numberWithBool:TRUE]

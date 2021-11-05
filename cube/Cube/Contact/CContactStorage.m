@@ -333,8 +333,10 @@
             [result close];
 
             // 已存在，重置参与人数据，删除已存在数据
-            sql = [NSString stringWithFormat:@"DELETE FROM `contact_zone_participant` WHERE `contact_zone_id`=%llu", zone.identity];
-            [_db executeUpdate:sql];
+            if (zone.count > 0) {
+                sql = [NSString stringWithFormat:@"DELETE FROM `contact_zone_participant` WHERE `contact_zone_id`=%llu", zone.identity];
+                [_db executeUpdate:sql];
+            }
 
             // 更新数据
             sql = [NSString stringWithFormat:@"UPDATE `contact_zone` SET `display_name`=?, `state`=%d, `timestamp`=%llu, `last`=%llu, `expiry`=%llu, `context`=? WHERE `id`=%llu",
@@ -344,7 +346,7 @@
         else {
             [result close];
 
-            // 不存在，写入
+            // 不存在，插入数据
             sql = @"INSERT INTO `contact_zone` (`id`,`name`,`display_name`,`state`,`timestamp`,`last`,`expiry`,`context`) VALUES (?,?,?,?,?,?,?,?)";
             [_db executeUpdate:sql,
                 [NSNumber numberWithUnsignedLongLong:zone.identity],

@@ -40,11 +40,6 @@
     handler(list);
 }
 
-- (void)listTopList:(void (^)(NSArray *))handler {
-    // TODO
-    NSMutableArray * list = [[NSMutableArray alloc] init];
-    handler(list);
-}
 
 - (void)triggerSignIn:(int)code payload:(NSDictionary *)payload {
 //    NSLog(@"Trigger sign-in state: %d", code);
@@ -65,16 +60,15 @@
     __block BOOL gotAppendix = FALSE;
     __block BOOL gotGroups = FALSE;
     __block BOOL gotBlockList = FALSE;
-    __block BOOL gotTopList = FALSE;
 
     [self getAppendixWithContact:self.owner handleSuccess:^(CContact * contact, CContactAppendix * appendix) {
         gotAppendix = TRUE;
         NSLog(@"Got appendix");
-        if (gotGroups && gotBlockList && gotTopList) {
+        if (gotGroups && gotBlockList) {
             [self fireSignInCompleted];
         }
     } handleFailure:^(CError * error) {
-        if (gotGroups && gotBlockList && gotTopList) {
+        if (gotGroups && gotBlockList) {
             [self fireSignInCompleted];
         }
     }];
@@ -83,7 +77,7 @@
     [self listGroups:(now - self.retrospectDuration) ending:now handler:^(NSArray * list) {
         gotGroups = TRUE;
         NSLog(@"List groups");
-        if (gotAppendix && gotBlockList && gotTopList) {
+        if (gotAppendix && gotBlockList) {
             [self fireSignInCompleted];
         }
     }];
@@ -91,15 +85,7 @@
     [self listBlockList:^(NSArray * list) {
         gotBlockList = TRUE;
         NSLog(@"Got block list");
-        if (gotAppendix && gotGroups && gotTopList) {
-            [self fireSignInCompleted];
-        }
-    }];
-
-    [self listTopList:^(NSArray * list) {
-        gotTopList = TRUE;
-        NSLog(@"Got top list");
-        if (gotAppendix && gotBlockList && gotGroups) {
+        if (gotAppendix && gotGroups) {
             [self fireSignInCompleted];
         }
     }];
