@@ -41,7 +41,7 @@
     if (self = [super initWithJSON:json]) {
         _type = [[json valueForKey:@"type"] integerValue];
         _state = [[json valueForKey:@"state"] integerValue];
-        _reminded = [[json valueForKey:@"remind"] integerValue];
+        _reminding = [[json valueForKey:@"remind"] integerValue];
         _pivotalId = [[json valueForKey:@"pivotal"] unsignedLongLongValue];
 
         NSDictionary * messageJson = [json valueForKey:@"recentMessage"];
@@ -67,13 +67,13 @@
                      state:(CConversationState)state
                  pivotalId:(UInt64)pivotalId
              recentMessage:(CMessage *)recentMessage
-                  reminded:(CConversationReminded)reminded {
+                 reminding:(CConversationReminding)reminding {
     if (self = [super initWithId:identity timestamp:timestamp]) {
         _type = type;
         _state = state;
         _pivotalId = pivotalId;
         _recentMessage = recentMessage;
-        _reminded = reminded;
+        _reminding = reminding;
 
         double time = ((double)self.timestamp / 1000.0f);
         _date = [[NSDate alloc] initWithTimeIntervalSince1970:time];
@@ -133,7 +133,7 @@
     NSMutableDictionary * json = [super toCompactJSON];
     [json setValue:[NSNumber numberWithInteger:_type] forKey:@"type"];
     [json setValue:[NSNumber numberWithInteger:_state] forKey:@"state"];
-    [json setValue:[NSNumber numberWithInteger:_reminded] forKey:@"remind"];
+    [json setValue:[NSNumber numberWithInteger:_reminding] forKey:@"reminding"];
     [json setValue:[NSNumber numberWithUnsignedLongLong:_pivotalId] forKey:@"pivotal"];
     [json setValue:[_recentMessage toJSON] forKey:@"recentMessage"];
     return json;
@@ -143,7 +143,7 @@
     NSMutableDictionary * json = [super toCompactJSON];
     [json setValue:[NSNumber numberWithInteger:_type] forKey:@"type"];
     [json setValue:[NSNumber numberWithInteger:_state] forKey:@"state"];
-    [json setValue:[NSNumber numberWithInteger:_reminded] forKey:@"remind"];
+    [json setValue:[NSNumber numberWithInteger:_reminding] forKey:@"reminding"];
     [json setValue:[NSNumber numberWithUnsignedLongLong:_pivotalId] forKey:@"pivotal"];
     return json;
 }

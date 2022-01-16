@@ -79,18 +79,18 @@ typedef NS_ENUM(NSInteger, CConversationState) {
 /*!
  * @brief 会话提醒类型。
  */
-typedef NS_ENUM(NSInteger, CConversationReminded) {
+typedef NS_ENUM(NSInteger, CConversationReminding) {
     /*! @brief 正常接收。 */
-    CConversationRemindedNormal = 1,
+    CConversationRemindingNormal = 1,
 
     /*! @brief 接收不提醒。 */
-    CConversationRemindedClosed = 2,
+    CConversationRemindingClosed = 2,
 
     /*! @brief 接收但不关注。 */
-    CConversationRemindedNotCare = 3,
+    CConversationRemindingNotCare = 3,
 
     /*! @brief 不接收。 */
-    CConversationRemindedRefused = 4
+    CConversationRemindingRefused = 4
 };
 
 
@@ -132,7 +132,7 @@ typedef NS_ENUM(NSInteger, CConversationReminded) {
 /*!
  * @brief 会话提醒类型。
  */
-@property (nonatomic, assign, readonly) CConversationReminded reminded;
+@property (nonatomic, assign, readonly) CConversationReminding reminding;
 
 /*!
  * @brief 头像名称。
@@ -174,7 +174,7 @@ typedef NS_ENUM(NSInteger, CConversationReminded) {
                      state:(CConversationState)state
                  pivotalId:(UInt64)pivotalId
              recentMessage:(CMessage *)recentMessage
-                  reminded:(CConversationReminded)reminded;
+                 reminding:(CConversationReminding)reminding;
 
 /*!
  * @brief 判断指定消息是否属于该会话。

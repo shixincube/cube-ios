@@ -104,7 +104,7 @@
                                             state:[result intForColumn:@"state"]
                                         pivotalId:[result unsignedLongLongIntForColumn:@"pivotal_id"]
                                     recentMessage:recentMessage
-                                         reminded:[result intForColumn:@"remind"]];
+                                        reminding:[result intForColumn:@"reminding"]];
 
             // 填充实例
             [_service fillConversation:conversation];
@@ -136,7 +136,7 @@
                 [db executeUpdate:@"UPDATE `conversation` SET `timestamp`=?, `state`=?, `remind`=?, `recent_message`=? WHERE `id`=?",
                     [NSNumber numberWithUnsignedLongLong:conversation.timestamp],
                     [NSNumber numberWithInteger:conversation.state],
-                    [NSNumber numberWithInteger:conversation.reminded],
+                    [NSNumber numberWithInteger:conversation.reminding],
                     messageString,
                     [NSNumber numberWithUnsignedLongLong:conversation.identity]];
             }
@@ -151,7 +151,7 @@
                     [NSNumber numberWithInteger:conversation.type],
                     [NSNumber numberWithInteger:conversation.state],
                     [NSNumber numberWithUnsignedLongLong:conversation.pivotalId],
-                    [NSNumber numberWithInteger:conversation.reminded],
+                    [NSNumber numberWithInteger:conversation.reminding],
                     messageString];
             }
         }];

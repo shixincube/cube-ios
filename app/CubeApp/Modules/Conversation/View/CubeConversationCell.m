@@ -117,17 +117,17 @@
     [self.detailLabel setText:conversation.conversation.recentSummary];
     [self.timeLabel setText:[conversation.conversation.date conversationTimeInfo]];
     [self.remindImageView setHidden:NO];
-    switch (conversation.conversation.reminded) {
-        case CConversationRemindedNormal:
+    switch (conversation.conversation.reminding) {
+        case CConversationRemindingNormal:
             [self.remindImageView setHidden:YES];
             break;
-        case CConversationRemindedClosed:
+        case CConversationRemindingClosed:
             [self.remindImageView setImage:[UIImage imageNamed:@"ConvRemindClose"]];
             break;
-        case CConversationRemindedNotCare:
+        case CConversationRemindingNotCare:
             [self.remindImageView setImage:[UIImage imageNamed:@"ConvRemindNotCare"]];
             break;
-        case CConversationRemindedRefused:
+        case CConversationRemindingRefused:
             [self.remindImageView setImage:[UIImage imageNamed:@"ConvRemindStop"]];
             break;
         default:
